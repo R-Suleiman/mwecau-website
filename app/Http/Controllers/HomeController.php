@@ -11,10 +11,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
+     //this a default laravel middleware to applied inside the controller to protect all the routes inside this controller
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -24,5 +26,21 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function about()
+    {
+        return view('about');
+    }
+    public function academics()
+    {
+        return view('academics');
+    }
+    public function events()
+    {
+        return view('events');
+    }
+    public function campusLife()
+    {
+        return view('campus-life');
     }
 }

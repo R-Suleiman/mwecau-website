@@ -1,0 +1,1097 @@
+/* styles.css */
+body {
+    color: #000;
+    background-color: #fff;
+    overflow-x: hidden;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+/* university header tag */
+.uniHeader{
+    background-color: #3b2a68;
+    color: white;
+}
+/* night-mode.css */
+.night-mode {
+    color: #fff !important;
+    background-color: #000 !important;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+.navbar-nav .nav-link{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+/* coursel images */
+.landing-image {
+    background-image: linear-gradient(rgba(0, 10, 10, 0.5), #513f83),
+      url('../img/uni.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    width: 100%;
+    position: relative;
+  }
+/* coursel images */
+.background-container {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    animation: zoomInOut 10s infinite alternate;
+}
+.nav-content {
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    /* transform: translate(-50%, -50%); */
+    color: white;
+    font-weight: bolder;
+    }
+    .dark-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: rgba(1, 2, 2, 0.6);
+    }
+
+a {
+    text-decoration: none;
+}
+
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+.admissionBtn{
+    padding: 8px;
+    /* width: 20%; */
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 8px;
+    background-color: #513f83;
+}
+.admissionBtn:hover{
+    background-color: #e000e7;
+    transition: 0.7s;
+    transform: scale(1.1);
+}
+
+/* overlay image for welcome section */
+.image-container {
+    position: relative;
+}
+.overlay-image {
+    position: absolute;
+    border-radius: 8px;
+    border-bottom: 5px solid #513f83;
+    top: 70%;
+    left: 100px;
+    width: 60%;
+    /* height: 250px; */
+}
+.welcomeBtn{
+    padding: 5px;
+    /* width: 30%; */
+    border: 1px solid #fcfbfd;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #513f81;
+}
+.welcomeBtn:hover{
+    color: white;
+    transition: 0.7s;
+    transform: scale(1.1);
+}
+/*media Query For welcome Section */
+@media only screen and (max-width: 992px){
+
+    .welcomeImgContainer{
+        margin-bottom: 40px;
+    }
+}
+@media only screen and (max-width: 768px){
+
+    .overlay-image{
+        margin-top: -40px;
+    }
+}
+@media only screen and (max-width: 992px){
+
+    .overlay-image{
+        margin-top: -30px;
+    }
+}
+/* overlay image for news and updates section */
+.image-containerNews {
+    position: relative;
+}
+@media only screen and (max-width:768px){
+    .contain{
+        padding-bottom: 25px;
+    }
+}
+.newsBtn{
+    padding: 8px;
+    /* width: 30%; */
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 8px;
+    background-color: #513f83;
+}
+.newsBtn:hover{
+    transition: 0.7s;
+    transform: scale(1.1);
+}
+.overlay-newsImage {
+    position: absolute;
+    border-radius: 8px;
+    border-bottom: 2px solid #513f83;
+    top: 80%;
+    margin-left: 33px;
+    width: 90%;
+}
+/* css for news section ends here */
+
+/* css for why choose us starts here */
+.whyButtons{
+    padding: 5px;
+    width: 50%;
+    border: 1px solid #513f81;
+    color: #513f81;
+    border-radius: 5px;
+    background-color: #f8f6f8;
+}
+.whyButtons:hover{
+    background-color: #513f81;
+    color: white;
+    transition: 0.8s;
+    transform: scale(1.1);
+}
+/* css for choose us section ends here */
+
+/* css for explore more section starts here */
+.explore{
+    background-image: linear-gradient(rgba(0,0,0,0.1), #000), url('../img/uni.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 460px;
+    width: 100%;
+    position: relative;
+}
+.exploretxt{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bolder;
+}
+.exploretxt h1{
+    font-size: 4rem;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+.exploreBtn{
+    padding: 15px;
+    /* width: 40%; */
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 8px;
+    background-color: #513f83;
+}
+.exploreBtn:hover{
+    background-color: #513f83;
+    transition: 0.7s;
+    transform: scale(1.1);
+}
+/* css for explore section in index page ends here */
+
+/* box shadow for the cards in section studying at Mwenge Catholic University */
+.bottomBorder{
+    border-radius: 9px;
+    border-bottom: 5px solid #513f83;
+    border-top: 5px solid #513f83;
+    border-style: double;
+    box-shadow: 0 0 20px 0px #513f83;
+}
+/* hovering cards on section studying at mwenge catholic university image effect */
+.bottomBorder img {
+    transition: transform 0.8s;
+}
+.bottomBorder img:hover {
+    transform: scale(1.1); 
+    width: 100%;
+}
+/* css for studying at mwenge section ends here */
+
+/* for upcoming events section */
+.upComingEvent{
+    background-image: linear-gradient(rgba(30, 90, 0, 0.1), #371d38), url('../img/uni.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 460px;
+    width: 100%;
+    position: relative;
+}
+.upComingEventText {
+    position: absolute;
+    top: 60%;
+    width: 80%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bolder;
+}
+.upComingEvent2 .card{
+    border: none;
+    /* height: 320px; */
+    border-left: 2px solid #513f83;
+    border-right: 2px solid #513f83;
+}
+.upComingEvent2 img{
+    object-fit: cover;
+}
+.upComingEvent2 img:hover{
+   transform: scale(1.1);
+   transition: 0.9s;
+}
+.eventsBtn1{
+    padding: 8px;
+    width: 30%;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #e000e7;
+}
+.eventsBtn{
+    padding: 15px;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 8px;
+    background-color: #513f83;
+}
+.eventsBtn:hover{
+    /* background-color: #e000e7; */
+    transition: 0.7s;
+    transform: scale(1.1);
+}
+/* css for event section in index page ends here */
+
+/*css for favorite color for icons starts here */
+.icons{
+    color: #513f83;
+}
+/* css for mission-card in about page */
+.mission-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 6px 6px 5px 5px grey;
+}
+.mission-card :hover{
+box-shadow: 10px 10px 10px 5px grey;
+}
+
+/* underline decor line for h1 tag */
+.underline{
+    position: relative;
+    display: inline-block;
+}
+.underline h1:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    /* Adjust this to change the width of the line */
+    margin: auto;
+    border-bottom: 3px solid rgb(105, 9, 85);
+    /* Adjust this to change the style of the line */
+}
+
+/* a favorite site color */
+.favColor{
+    color: #513f83;
+}
+
+/*css for academics page images starts here */
+.academics1 {
+    background-image: linear-gradient(rgba(50, 50, 0, 0.2), #593d58), url('../img/studdents1.JPG');
+    background-size: cover;
+    background-position: center;
+    height: 460px;
+    width: 100%;
+    position: relative;
+}
+.academicsText1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bolder;
+}
+.academics1 h1 {
+    font-size: 4rem;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+.academics2 {
+    background-image: linear-gradient(rgba(223, 118, 230, 0.3), #513f81), url('../img/students2.JPG');
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    min-height: 470px;
+    width: 100%;
+    position: relative;
+}
+.academicsText2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+.academics2 h3 {
+    font-weight: bold;
+    color: #4b1a4d;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+/* Additional styling for small screens */
+@media (max-width: 767px) {
+    .academicsText2 {
+        top: 50%; 
+    }
+
+    .academics2 {
+        min-height: 590px;
+    }
+}
+/* overlay image for card in academics section */
+.academics-container {
+    position: relative;
+}
+.overlay-academicsCard {
+    position: absolute;
+    border-radius: 8px;
+    border-bottom: 5px solid #513f83;
+    top: 30%;
+    left: 500px;
+    width: 100%;
+    height: 250px;
+}
+/* cards in academics page */
+.right{
+    margin-bottom: 100px;
+    margin-left: -190px;
+}
+.right .card{
+    border: 1px solid #4b1a4d;
+    box-shadow: 1px 5px 30px #e000e7;
+    margin-top: 50px;
+}
+@media only screen and (max-width: 768px){
+
+    .right{
+        width: 98%;
+        margin: 0;
+        margin-top: -130px;
+        text-align: justify;
+    }
+}
+
+.left2{
+    margin-bottom: 100px;
+    margin-right: -190px;
+
+}
+.left2 .card{
+    /* border: 1px solid #4b1a4d; */
+    box-shadow: 1px 3px 18px #e000e7;
+    margin-top: 50px;
+}
+@media only screen and (max-width: 768px){
+
+    .left2{
+        width: 98%;
+        margin: 0;
+        margin-top: -130px;
+        /* margin-left: 100px; */
+        text-align: justify;
+    }
+}
+/* style for buttons on about page */
+.programsBtn{
+    padding: 5px;
+    border: 1px solid #513f81;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #513f83;
+}
+.programsBtn:hover{
+    /* background-color: #513f81; */
+    color: white;
+    transition: 0.8s;
+    transform: scale(1.1);
+}
+/* style for buttons on about page */
+.learnBtn{
+    padding: 5px;
+    /* width: 0%; */
+    border: 1px solid #513f81;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #513f83;
+}
+.learnBtn:hover{
+    /* background-color: #513f81; */
+    color: white;
+    transition: 0.8s;
+    transform: scale(1.1);
+}
+/* for website footer section */
+.footer-container {
+    background-image: linear-gradient(rgba(47, 14, 49, 0.9), #513f81), url('/img/uni.jpg');
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    width: 100%;
+    position: relative;
+    /* background-color: #4b1a4d; */
+}
+
+.footerText {
+    color: white;
+}
+
+/* sulee */
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .background-container {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    animation: zoomInOut 10s infinite alternate;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  @keyframes zoomInOut {
+    0% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .nav-content {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: left;
+    font-weight: bolder;
+  }
+  
+  .nav-content p {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+  
+  .admission-btn {
+    background-color: rgb(177, 28, 177);
+    color: white;
+  }
+  
+  .admission-btn:hover {
+    background-color: white;
+    color: rgb(177, 28, 177);
+  }
+  
+  .about-container {
+    margin: 100px auto;
+    padding: 10px;
+  }
+  
+  .about-container h3,
+  .academic-cont h3 {
+    color: rgb(177, 28, 177);
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-stretch: expanded;
+    border-bottom: 2px solid rgb(177, 28, 177);
+  }
+  
+  .about-container p {
+    font-size: 20px;
+    text-align: justify;
+  }
+  
+  .mission-block {
+    padding: 30px 5px;
+    background-color: whitesmoke;
+  }
+  
+  .mission-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 6px 6px 5px 5px grey;
+  }
+  
+  .mission-card:hover {
+    box-shadow: 10px 10px 10px 5px grey;
+  }
+  
+  .academic-cont {
+    margin: 100px 10px;
+  }
+  
+  /* partners */
+  
+  /* contact */
+  .contact-content {
+    padding: 5px;
+  }
+  
+  .contact-content label {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .contact-content p {
+    font-size: 16px;
+  }
+  
+  .contact-box p {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .contact-form {
+    padding: 10px;
+    margin: 5px;
+  }
+  
+  .form-inputs label,
+  .contact-box label {
+    margin: 3px;
+    color: rgb(65, 62, 62);
+  }
+  
+  .form-inputs input,
+  textarea {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: whitesmoke;
+    margin: 5px;
+  }
+  
+  .form-btn {
+    background-color: #513f83;
+    color: white;
+    margin: 10px;
+  }
+  
+  .form-btn:hover {
+    background-color: white;
+    color: #513f83;
+    border: 1px solid #513f83;
+  }
+  .contact-map {
+    width: 100%;
+    height: 650px;
+  }
+  
+  /* gallery */
+  .gallery {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 10px;
+    border-radius: 10px;
+  }
+  
+  .gallery-cont img {
+    width: 100%;
+    height: 280px;
+  }
+  
+  /* partners */
+  .partners {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #513f83;
+    border-radius: 10px;
+  }
+  
+  .partner {
+    padding: 10px;
+  }
+  
+  .partner img {
+    width: 80%;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  /* Events */
+  .find-events {
+    width: 100%;
+    max-width: 98%;
+    padding: 15px;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+  .event-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-group {
+    width: 30%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .event-form {
+    padding: 10px;
+    border-bottom: 2px solid #513f83;
+  }
+  
+  .event-form input,
+  select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px #513f83;
+  }
+  
+  .search-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #513f83;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .search-btn:hover {
+    background-color: white;
+    color: #513f83;
+    border: 1px solid #513f83;
+  }
+  
+  .event-img {
+    overflow: hidden;
+  }
+  
+  .event-img img {
+    width: 100%;
+    height: 200px;
+    border-radius: 3px;
+    transition: transform 0.8s;
+  }
+  
+  .main-events {
+    background-color: white;
+    padding: 20px;
+    border-radius: 2px;
+    margin: 10px;
+  }
+  
+  .events-cont {
+    margin: 15px 30px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(230, 226, 226);
+  }
+  
+  .events-cont:hover .event-img img {
+    transform: scale(1.1);
+  }
+  
+  .stamps {
+    display: flex;
+    align-items: center;
+  }
+  
+  .stamps i,
+  .stamps span,
+  .event-content p,
+  .event-content label {
+    font-weight: normal;
+    font-size: 17px;
+    margin: 8px 5px;
+    color: rgb(92, 89, 89);
+    text-align: justify;
+  }
+  
+  .event-btn {
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .link {
+    color: black;
+  }
+  .link:hover {
+    color: #513f83;
+  }
+  
+  /* event */
+  .event-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    margin: 10px 0;
+  }
+  
+  .event-header p {
+    font-size: 20px;
+    color: rgb(78, 76, 76);
+    margin-top: 30px;
+  }
+  
+  .event-header h2 {
+    font-size: 45px;
+    margin: 0 0 20px 0;
+  }
+  
+  .event-header img {
+    width: 90%;
+  }
+  
+  .event-row {
+    width: 90%;
+    margin: 10px auto;
+    padding: 0;
+    display: flex;
+  }
+  
+  .about-event {
+    width: 100%;
+    margin: 10px 0;
+    padding: 50px;
+    background-color: white;
+  }
+  
+  .about-event p {
+    font-size: 18px;
+    color: rgb(78, 76, 76);
+    text-align: justify;
+  }
+  
+  .other-event-det,
+  .event-speaker,
+  .event-thoughts {
+    background-color: white;
+    padding: 30px;
+    margin: 10px 0;
+    height: fit-content;
+  }
+  
+  .other-event-det {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .event-detail {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    border-bottom: 1px solid #cbc0e7;
+  }
+  
+  .event-detail div {
+    display: flex;
+    align-content: center;
+  }
+  
+  .event-detail div i {
+    margin: 0 10px;
+    color: #513f83;
+  }
+  
+  .event-detail div h6 {
+    font-weight: 600;
+  }
+  
+  .event-detail label {
+    color: rgb(88, 87, 87);
+  }
+  
+  .exp-flag {
+    background-color: #a895dd;
+    padding: 5px;
+    border-bottom: none;
+    border-left: 3px solid #513f83;
+  }
+  
+  .event-socials {
+    border-bottom: none;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .event-socials i {
+    border: 1px solid #cbc0e7;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .event-socials i:hover {
+    background-color: #513f83;
+    color: white;
+  }
+  
+  .speaker-profile {
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+  }
+  
+  .speaker-profile img {
+    width: 25%;
+    margin-right: 25px;
+    border-radius: 50%;
+  }
+  
+  .speaker-details {
+    margin: 5px;
+    padding: 5px;
+  }
+  
+  .speaker-details h5 {
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+  }
+  
+  .speaker-details label,
+  .speaker-details p {
+    color: rgb(94, 92, 92);
+    margin-bottom: 10px;
+  }
+  
+  .event-form2 {
+    width: 100%;
+    flex-direction: column;
+    border: none;
+  }
+  
+  .event-form2 input {
+    width: 48%;
+    border: 1px solid #513f83;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px #513f83;
+  }
+  
+  .event-form2 textarea {
+    width: 98%;
+    border: 1px solid #513f83;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0px 1px #513f83;
+  }
+  
+  .event-inputs {
+    width: 100%;
+    display: flex;
+  }
+  
+  /* CAMPUS LIFE */
+  .campus-row {
+    margin: 10px 10px;
+    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .campus-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .campus-card img {
+    width: 90%;
+    height: 240px;
+    transition: transform 0.8s;
+  }
+  
+  .campus-card .card-title {
+    color: black;
+    font-weight: 600;
+    margin: 10px 0;
+    font-size: 20px;
+  }
+  
+  .campus-card p {
+    color: rgb(99, 97, 97);
+    font-size: 18px;
+  }
+  
+  .campus-card:hover .card-img-top {
+    transform: scale(1.1);
+  }
+  
+  
+  @media screen and (max-width: 950px) {
+    .events-cont {
+      margin: 15px 0;
+      padding: 0;
+    }
+    .event-img img {
+      width: 100%;
+      height: 150px;
+    }
+  
+    .campus-row {
+    margin: 10px 5px;
+    padding: 10px 5px;
+    }
+  
+    .campus-card img {
+    width: 98%;
+  }
+  
+  .talent-content-container {
+  
+    padding: 30px 50px 110px 200px;
+  }
+  }
+  
+  @media screen and (max-width: 767px) and (min-width: 480px) {
+    .event-img img {
+      width: 80%;
+      height: 250px;
+    }
+  
+    .events-cont {
+      margin: 15px;
+      padding: 10px;
+    }
+  
+    .event-row {
+      width: 100%;
+    }
+  
+    .speaker-profile {
+      width: 100%;
+      padding: 10px 5px;
+      margin: 5px 0;
+    }
+  
+    .about-event {
+      width: 100%;
+      padding: 30px;
+    }
+  
+    .speaker-profile img {
+      width: 20%;
+      height: 80px;
+      margin-right: 5px;
+    }
+  
+    .event-inputs {
+      flex-direction: column;
+    }
+  
+    .event-form2 input {
+      width: 98%;
+      border: 1px solid #513f83;
+    }
+  
+    .event-header h2 {
+      font-size: 22px;
+    }
+  
+    .event-header img {
+      width: 100%;
+    }
+  
+    .card-1 {
+      width: 70%;
+      float: left;
+    }
+  
+    .card-2 {
+      width: 70%;
+      margin: 0 auto;
+    }
+  
+    .card-3 {
+      width: 70%;
+      margin-left: auto;
+    }
+  
+    .talent-content-container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .talent-pics {
+    width: 100%;
+    height: 300px;
+    left: 0;
+    top: 0;
+    margin-bottom: 50px;
+  }
+  
+  .talent-content p {
+    text-align: center;
+  }
+  
+  .pic-nav {
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  }
+

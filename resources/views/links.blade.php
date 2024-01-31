@@ -1,0 +1,10 @@
+ <!-- for title img -->
+ <link rel="shortcut icon" type="../image/icon" href="../img/logo.jpg" />
+ <link rel="stylesheet" href="{{ asset('../css/style.css') }}">
+ <link rel="stylesheet" href="{{ asset('./bootstrap/css/bootstrap.min.css') }}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="{{ asset('../jquery/css/dataTables.bootstrap5.min.css') }}">
+
+ <script src="{{ asset('../jquery/js/jquery-3.5.1.js') }}"></script>
+ <script src="{{ asset('../jquery/js/jquery.dataTables.min.js') }}"></script>
+ <script src="{{ asset('../jquery/js/dataTables.bootstrap5.min.js') }}"></script>
