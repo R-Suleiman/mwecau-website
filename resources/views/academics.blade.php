@@ -181,7 +181,7 @@
                 <div class="text-center mt-3">
                     <h1>Not sure what to study?</h1>
                     <span>Discover the right program for you</span> <br>
-                    <button class="learnBtn btn-lg ">Ask a Quiz <i class="fas fa-arrow-circle-right"></i></button>
+                    <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i class="fas fa-arrow-circle-right"></i></button>
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@
 
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <button class="btn btn-brand shadow-lg" id="nightModeToggle"> <i class="fas fa-moon"></i>
+                            <button class="btn shadow-lg" id="nightModeToggle"> <i class="fas fa-moon"></i>
                                 mode</button>
                         </li>
                     </ul>

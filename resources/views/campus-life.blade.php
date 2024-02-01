@@ -72,8 +72,8 @@
         <div class="landing-image">
           <div class="landing-text nav-content">
             <!-- <h1>Welcome to Mwenge Catholic University</h1> -->
-            <div class="underline mt-5 mb-5">
-              <h1 style="text-align: center">Campus Life</h1>
+            <div class="mt-5 mb-5">
+              <h1 class="text-center display-1 fw-bold">Campus Life</h1>
             </div>
           </div>
         </div>

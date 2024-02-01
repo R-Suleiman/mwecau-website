@@ -26,27 +26,27 @@
 
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/img/uni.jpg" class="d-block w-100 background-container" alt="..." />
+        <img src="/img/students1.jpg" class="d-block w-100 background-container" alt="..." />
         <div class="dark-overlay">
           <div class="nav-content">
             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
             <p style="color: white;">Fall 2024 applications are now open</p>
-            <button class="btn admission-btn">Admissions</button>
+            <button class="btn admissionBtn">Admissions</button>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/img/students1.JPG" class="d-block w-100 background-container" alt="..." />
+        <img src="/img/students2.JPG" class="d-block w-100 background-container" alt="..." />
         <div class="dark-overlay">
           <div class="nav-content">
             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
             <p>Fall 2024 applications are now open</p>
-            <button class="btn admission-btn">Admissions</button>
+            <button class="btn admissionBtn">Admissions</button>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/img/students4.jpg" class="d-block w-100 background-container" alt="..." />
+        <img src="/img/students3.jpg" class="d-block w-100 background-container" alt="..." />
         <div class="dark-overlay">
           <div class="nav-content">
             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
@@ -103,60 +103,63 @@
           MWECAU Mission and Vision
         </h2>
       </div>
-      <div class="col-sm-3 mb-5">
+
+      <div class="col-md-4 col-lg-3 col-sm-6 mb-5">
         <div class="card h-100 d-flex flex-column " style="width: 100%; border: none; ">
           <div class="card-body mission-card" style="border-radius: 10px">
-            <i class="fa fa-bullseye display-3 mb-3 icons"></i>
+            <i class="fa fa-eye display-5 mb-3 icons"></i>
+            <h5 class="card-title">Vision</h5>
+            <div class="card-text">
+              <strong>Vision </strong>is to be a “leading University that sets a national,
+              regional, and international example in Education and Training,
+              Research, and Consulting as well as Community Service.”
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-3 col-sm-6 mb-5">
+        <div class="card h-100 d-flex flex-column " style="width: 100%; border: none; ">
+          <div class="card-body mission-card" style="border-radius: 10px">
+            <i class="fa fa-bullseye display-5 mb-3 icons"></i>
             <h5 class="card-title">Mission</h5>
-            <p class="card-text">
-              The mission of the University is “to produce professionally
+            <div class="card-text">
+              <strong>The mission</strong> of the University is “to produce professionally
               competent, innovative, and committed graduates who are grounded
               on professional excellence and moral integrity for provision of
               quality services to Tanzanian and the global community
-            </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-5">
-        <div class="card h-100 d-flex flex-column " style="width: 100%; border: none; ">
-          <div class="card-body mission-card" style="border-radius: 10px">
-            <i class="fa fa-eye display-3 mb-3 icons"></i>
-            <h5 class="card-title">Vision</h5>
-            <p class="card-text">
-              Vision is to be a “leading University that sets a national,
-              regional, and international example in Education and Training,
-              Research, and Consulting as well as Community Service.”
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3 mb-5">
+
+      <div class="col-md-4 col-lg-3 col-sm-6 mb-5">
         <div class="card h-100 d-flex flex-column" style="width: 100%; border: none; ">
           <div class="card-body mission-card" style="border-radius: 10px">
-            <i class="fa fa-file-text display-3 mb-3 icons"></i>
+            <i class="fa fa-file-text display-5 mb-3 icons"></i>
             <h5 class="card-title">Core values</h5>
-            <p class="card-text">
+            <div class="card-text">
             <ul class="list-unstyled">
-              <li><i class="fa fa-angle-double-right" style="margin-right: 10px;"></i> Integrity</li>
-              <li><i class="fa fa-angle-double-right" style="margin-right: 10px;"></i> Trust</li>
-              <li><i class="fa fa-angle-double-right" style="margin-right: 10px;"></i> Excellence</li>
-              <li><i class="fa fa-angle-double-right" style="margin-right: 10px;"></i> Accountability</li>
-              <li><i class="fa fa-angle-double-right" style="margin-right: 10px;"></i> Respect</li>
-              <li><i class="fa fa-angle-double-right" style="margin-right: 10px;"></i> Teamwork</li>
-              <li><i class="fa fa-angle-double-right" style="margin-right: 10px;"></i> Service</li>
+              <li><i class="fas fa-arrow-circle-right fs-5 favColor"></i> Integrity</li>
+              <li><i class="fas fa-arrow-circle-right fs-5 favColor" style="margin-right: 10px;"></i> Trust</li>
+              <li><i class="fas fa-arrow-circle-right fs-5 favColor" style="margin-right: 10px;"></i> Excellence</li>
+              <li><i class="fas fa-arrow-circle-right fs-5 favColor" style="margin-right: 10px;"></i> Accountability</li>
+              <li><i class="fas fa-arrow-circle-right fs-5 favColor" style="margin-right: 10px;"></i> Respect</li>
+              <li><i class="fas fa-arrow-circle-right fs-5 favColor" style="margin-right: 10px;"></i> Teamwork</li>
+              <li><i class="fas fa-arrow-circle-right fs-5 favColor" style="margin-right: 10px;"></i> Service</li>
             </ul>
-            </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-3 mb-5">
+      <div class="col-md-4 col-lg-3 col-sm-6 mb-5">
         <div class="card h-100 d-flex flex-column " style="width: 100%; border: none; ">
           <div class="card-body mission-card" style="border-radius: 10px">
-            <i class="fa fa-pencil display-3 mb-3 icons"></i>
+            <i class="fa fa-pencil display-5 mb-3 icons"></i>
             <h5 class="card-title">Motto / Slogan</h5>
-            <p class="card-text">
+            <div class="card-text">
               The University is dedicated to St. Joseph the Worker, with the motto ‘‘Lux Mundi’’ which translates in English to “Light of the World.”
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -174,40 +177,59 @@
   </div>
 
   <!-- academics -->
-  <div class="container">
-    <div class="row academic-cont">
+  <div class="container text-center ">
+    <div class="row academic-cont justify-content-around align-items-start ">
       <div class="underline mt-2 mb-5 ">
-        <h2 style="text-align: center; ">
-          Life at MWECAU
-        </h2>
+        <h2>Life at MWECAU</h2>
       </div>
+      <!-- your starts here -->
       <div class="col-sm-4 mb-5">
         <div class="card h-100 d-flex flex-column mission-card" style="width: 100%; border: none">
-          <img src="assets/img/MWECAU logo.png" class="card-img-top" alt="..." style="width: 60%;">
+
           <div class="card-body mission-card">
+            <img src="/img/mwecau.png" class="card-img-top img-fluid rounded-circle " alt="..." style="width: 60%;">
             <h5 class="card-title">Affordability</h5>
-            <p class="card-text" style="text-align: center;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Learn more</a>
+            <div class="card-text">
+              <p style="text-align: center;">
+                Some quick example text to build on the card
+                title and make up the bulk of the card's content.
+              </p>
+              <a href="#"> <button class="missionBtn">Learn more</button> </a>
+            </div>
+
           </div>
         </div>
       </div>
+
       <div class="col-sm-4 mb-5">
         <div class="card h-100 d-flex flex-column mission-card" style="width: 100%; border: none">
-          <img src="assets/img/MWECAU logo.png" class="card-img-top" alt="..." style="width: 60%;">
           <div class="card-body mission-card">
+            <img src="/img/mwecau.png" class="card-img-top  img-fluid rounded-circle " alt="..." style="width: 60%;">
             <h5 class="card-title">Academics</h5>
-            <p class="card-text" style="text-align: center;">An education at MWECAU has limitless possibilities. Our courses are taught by esteemed faculty members.</p>
-            <a href="#" class="btn btn-primary">Learn more</a>
+            <div class="card-text">
+              <p style="text-align: center;">
+                An education at MWECAU has limitless possibilities.
+                Our courses are taught by esteemed faculty members.
+              </p>
+              <a href="#"> <button class="missionBtn">Learn more</button> </a>
+            </div>
+
           </div>
         </div>
       </div>
+
       <div class="col-sm-4 mb-5">
         <div class="card h-100 d-flex flex-column mission-card" style="width: 100%; border: none">
-          <img src="assets/img/MWECAU logo.png" class="card-img-top" alt="..." style="width: 60%;">
           <div class="card-body mission-card">
+            <img src="/img/mwecau.png" class="card-img-top  img-fluid rounded-circle " alt="..." style="width: 60%;">
             <h5 class="card-title">Inspiring student's life</h5>
-            <p class="card-text" style="text-align: center;">Our residential system creates more opportunities for learning with peers and professors from different backgrounds. </p>
-            <a href="#" class="btn btn-primary">Learn more</a>
+            <div class="card-text">
+              <p style="text-align: center;">
+                Our residential system creates more opportunities for learning with peers and professors from different backgrounds.
+              </p>
+              <a href="#"> <button class="missionBtn">Learn more</button> </a>
+            </div>
+
           </div>
         </div>
       </div>
@@ -218,56 +240,82 @@
   <div class="container-fluid mt-5 mb-5">
     <div class="row gallery">
       <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-        <img src="assets/img/students1.JPG" alt="">
+        <img src="/img/students1.JPG" alt="">
       </div>
       <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-        <img src="assets/img/uni.jpg" alt="">
+        <img src="/img/uni.jpg" alt="">
       </div>
       <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-        <img src="assets/img/students3.jpg" alt="">
+        <img src="/img/students3.jpg" alt="">
       </div>
       <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-        <img src="assets/img/students2.JPG" alt="">
+        <img src="/img/students2.JPG" alt="">
       </div>
       <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-        <img src="assets/img/students4.jpg" alt="">
+        <img src="/img/uni.jpg" alt="">
       </div>
       <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-        <img src="assets/img/uni2.JPG" alt="">
+        <img src="/img/students2.JPG" alt="">
       </div>
     </div>
   </div>
 
 
-  <!-- partners -->
+  <section>
+    <!-- partners -->
 
-  <div class="container mt-5 mb-5">
+    <div class="container text-center mt-5 mb-5">
     <div class="underline mt-2 mb-5 " style="width: 100%;">
-      <h2 style="text-align: center; ">
-        Our Partners
-      </h2>
+          <h2> Partner Institutions</h2>
+        </div>
+      <div class="row justify-content-between align-items-start partners">
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.tfs.go.tz/index.php/en"><img src="/img/misitu.png" alt=""></a>
+        </div>
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.ternet.or.tz/"><img src="/img/ternet.png" alt=""></a>
+        </div>
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.uniservitate.org/"><img src="/img/univervitate.jpg" alt=""></a>
+        </div>
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.mic.ul.ie/"><img src="/img/MIC.png" alt=""></a>
+        </div>
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.agrolab.us/"><img src="/img/agroLab.png" alt=""></a>
+        </div>
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.misereor.org/"><img src="/img/misereor.png" alt=""></a>
+        </div>
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.porticus.com/en/home"><img src="/img/porticus.png" alt=""></a>
+        </div>
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.walsh.edu/"><img src="/img/walsh university.png" alt=""></a>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.kuleuven.be/english/kuleuven/"><img src="/img/logo.svg" alt=""></a>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://unik.ac.ug/"><img src="/img/cropped-cropped-UniKWebiste-Hi.png" alt=""></a>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.inn.no/english/"><img src="/img/inn-eng-logo.svg" alt=""></a>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://www.tuas.fi/en/"><img src="/img/turku-AMK.svg" alt=""></a>
+        </div>
+
+        <div class="col-6 col-lg-2 col-md-4 partner">
+          <a href="https://susie.turkuamk.fi/"><img src="/img/susie.png" alt=""></a>
+        </div>
+      </div>
     </div>
-    <div class="row partners">
-      <div class="col-6 col-lg-2 col-md-4 partner">
-        <img src="assets/img/MWECAU logo.png" alt="">
-      </div>
-      <div class="col-6 col-lg-2 col-md-4 partner">
-        <img src="assets/img/study1.jpg" alt="">
-      </div>
-      <div class="col-6 col-lg-2 col-md-4 partner">
-        <img src="assets/img/mwecau2.jpg" alt="">
-      </div>
-      <div class="col-6 col-lg-2 col-md-4 partner">
-        <img src="assets/img/marv.jpg" alt="">
-      </div>
-      <div class="col-6 col-lg-2 col-md-4 partner">
-        <img src="assets/img/marv.jpg" alt="">
-      </div>
-      <div class="col-6 col-lg-2 col-md-4 partner">
-        <img src="assets/img/marv.jpg" alt="">
-      </div>
-    </div>
-  </div>
+  </section>
 
   <!-- visiting mwecau -->
   <!-- <div class="container-fluid">
@@ -305,13 +353,9 @@
   <!-- counter -->
   <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 
-  <!-- slick -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js" integrity="sha512-KgffulL3mxrOsDicgQWA11O6q6oKeWcV00VxgfJw4TcM8XRQT8Df9EsrYxDf7tpVpfl3qcYD96BpyPvA4d1FDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <script src="assets/js/about.js"></script>
+ @include('jslinks')
 
 </body>
 

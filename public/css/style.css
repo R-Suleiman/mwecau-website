@@ -19,13 +19,10 @@ body {
 .navbar-nav .nav-link{
     color: white;
 }
-a{
-    text-decoration: none;
-}
 /* coursel images */
 .landing-image {
-    background-image: linear-gradient(rgba(0, 10, 10, 0.5), #513f83),
-      url('../img/uni.jpg');
+    background-image: linear-gradient(rgba(0, 10, 10, 0.1), #513f83),
+      url('../img/university-image1.JPG');
     background-size: cover;
     background-position: center;
     height: 500px;
@@ -204,11 +201,10 @@ a {
     border: 1px solid #fff;
     color: #fff;
     border-radius: 8px;
-    background-color: #513f83;
+    background-color: #e000e7;
 }
 .exploreBtn:hover{
-    background-color: #513f83;
-    transition: 0.7s;
+    transition: 0.9s;
     transform: scale(1.1);
 }
 /* css for explore section in index page ends here */
@@ -293,10 +289,15 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 6px 6px 5px 5px grey;
+    box-shadow: 6px 6px 5px 5px #513f83;
 }
-.mission-card :hover{
-box-shadow: 10px 10px 10px 5px grey;
+.missionBtn{
+  padding: 5px;
+  width: 50%;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #513f83;
 }
 
 /* underline decor line for h1 tag */
@@ -324,7 +325,7 @@ box-shadow: 10px 10px 10px 5px grey;
 
 /*css for academics page images starts here */
 .academics1 {
-    background-image: linear-gradient(rgba(50, 50, 0, 0.2), #593d58), url('../img/studdents1.JPG');
+    background-image: linear-gradient(rgba(50, 50, 0, 0.2), #593d58), url('../img/students1.JPG');
     background-size: cover;
     background-position: center;
     height: 460px;
@@ -359,9 +360,13 @@ box-shadow: 10px 10px 10px 5px grey;
     color: white;
     transform: translate(-50%, -50%);
 }
+.academics2 .card-text{
+  color: #000;
+}
 .academics2 h3 {
+  font-style: italic;
     font-weight: bold;
-    color: #4b1a4d;
+    color: #513f83;
     font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 /* Additional styling for small screens */
@@ -456,9 +461,16 @@ box-shadow: 10px 10px 10px 5px grey;
     transition: 0.8s;
     transform: scale(1.1);
 }
+.learnBtn2{
+  border: none;
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #e000e7;
+}
 /* for website footer section */
 .footer-container {
-    background-image: linear-gradient(rgba(47, 14, 49, 0.9), #513f81), url('/img/uni.jpg');
+    background-image: linear-gradient(rgba(47, 14, 49, 0.8), #513f81), url('/img/uni.jpg');
     background-size: cover;
     background-position: center;
     height: auto;
@@ -466,7 +478,9 @@ box-shadow: 10px 10px 10px 5px grey;
     position: relative;
     /* background-color: #4b1a4d; */
 }
-
+.footer-container a{
+  text-decoration: none;
+}
 .footerText {
     color: white;
 }
@@ -644,7 +658,7 @@ box-shadow: 10px 10px 10px 5px grey;
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #513f83;
+    /* background-color: #513f83; */
     border-radius: 10px;
   }
   
@@ -655,7 +669,7 @@ box-shadow: 10px 10px 10px 5px grey;
   .partner img {
     width: 80%;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 10%;
   }
   
   /* Events */
@@ -947,7 +961,9 @@ box-shadow: 10px 10px 10px 5px grey;
     align-items: center;
     justify-content: space-between;
   }
-  
+  .campus-row a{
+    text-decoration: none;
+  }
   .campus-card {
     display: flex;
     flex-direction: column;

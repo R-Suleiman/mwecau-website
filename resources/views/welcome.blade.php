@@ -37,7 +37,7 @@
                         <div class="nav-content" data-aos="flip-up">
                             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
                             <p>Call 2024 applications are now open</p>
-                            <a href="about.html"><button class="admissionBtn fs-5 ">Admissions 2023/2024</button></a>
+                            <a href="about.html"><button class="admissionBtn fs-5">Admissions 2024/2025</button></a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                             <p>with any of our examples ranging from using parts of the
                                 framework to custom components
                                 and layouts.</p>
-                            <a href="about.html"><button class="admissionBtn fs-5 ">Admissions 2023/2024</button></a>
+                            <a href="about.html"><button class="admissionBtn fs-5 ">Admissions 2024/2025</button></a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         <div class="nav-content">
                             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
                             <p>Call 2024 applications are now open</p>
-                            <a href="about.html"><button class="admissionBtn fs-5 ">Admissions 2023/2024</button></a>
+                            <a href="about.html"><button class="admissionBtn fs-5 ">Admissions 2024/2025</button></a>
                         </div>
                     </div>
                 </div>
@@ -265,7 +265,7 @@
                     WE ARE MAKING LEARNING MORE RELEVANT AND TRANSFORMATIONAL.
                 </p>
                 <div class="text-lg-end">
-                    <a href="about.html"><button class="exploreBtn">Call for Application 2023/2024<i class="fa fa-arrow-right"></i></button></a>
+                    <a href="about.html"><button class="exploreBtn">Call for Application 2024/2025<i class="fa fa-arrow-right"></i></button></a>
                 </div>
             </div>
         </div>
@@ -395,6 +395,7 @@
     </section>
     <!-- including a site footer -->
     @include('partials.footer')
+    @include('jslinks')
 
 
 
