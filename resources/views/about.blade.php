@@ -26,22 +26,22 @@
 
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="/img/students1.jpg" class="d-block w-100 background-container" alt="..." />
+      <img src="/img/university-image-4.JPG" class="d-block w-100 background-container" alt="..." />
         <div class="dark-overlay">
           <div class="nav-content">
             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
             <p style="color: white;">Fall 2024 applications are now open</p>
-            <button class="btn admissionBtn">Admissions</button>
+            <a href="about.html"><button class="admissionBtn fs-5">Admissions 2024/2025</button></a>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="/img/students2.JPG" class="d-block w-100 background-container" alt="..." />
+        <img src="/img/university-image1.JPG" class="d-block w-100 background-container" alt="..." />
         <div class="dark-overlay">
           <div class="nav-content">
             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
             <p>Fall 2024 applications are now open</p>
-            <button class="btn admissionBtn">Admissions</button>
+            <a href="about.html"><button class="admissionBtn fs-5">Admissions 2024/2025</button></a>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
           <div class="nav-content">
             <h1 class="display-4 fw-bold">Discover the world of possibility with MWECAU</h1>
             <p>Fall 2024 applications are now open</p>
-            <button class="btn admission-btn">Admissions</button>
+            <a href="about.html"><button class="admissionBtn fs-5">Admissions 2024/2025</button></a>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
   <div class="container-fluid about-container">
     <div class="row mission-block">
       <div class="underline mt-2 mb-5 ">
-        <h2 style="text-align: center; ">
+        <h2 class="text-center">
           MWECAU Mission and Vision
         </h2>
       </div>
@@ -270,7 +270,8 @@
         </div>
       <div class="row justify-content-between align-items-start partners">
         <div class="col-6 col-lg-2 col-md-4 partner">
-          <a href="https://www.tfs.go.tz/index.php/en"><img src="/img/misitu.png" alt=""></a>
+          <a href="https://www.tfs.go.tz/index.php/en"><img src="/img/misitu.png
+          " alt=""></a>
         </div>
         <div class="col-6 col-lg-2 col-md-4 partner">
           <a href="https://www.ternet.or.tz/"><img src="/img/ternet.png" alt=""></a>
@@ -346,16 +347,13 @@
 
   <!-- Footer -->
   @include('partials.footer')
-
-
-  <!--bootstrap  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   @include('jslinks')
   <!-- counter -->
   <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 
   
 
- @include('jslinks')
+
 
 </body>
 

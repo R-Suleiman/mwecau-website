@@ -29,7 +29,7 @@
           <div class="landing-text nav-content">
             <!-- <h1>Welcome to Mwenge Catholic University</h1> -->
             <div class="underline mt-5 mb-5">
-              <h1 style="text-align: center">Events</h1>
+              <h1 class="text-center display-1 fw-bold">Events</h1>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
               <input type="text" name="keywords" placeholder="keywords" />
             </div>
             <div class="form-group" style="width: 10%">
-              <button class="search-btn">Find Events</button>
+            <a href="#"> <button class="search-btn">Find Events</button></a>
             </div>
           </form>
         </div>

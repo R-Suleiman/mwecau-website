@@ -3,7 +3,7 @@ body {
     color: #000;
     background-color: #fff;
     overflow-x: hidden;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
 }
 /* university header tag */
 .uniHeader{
@@ -151,6 +151,7 @@ a {
     position: absolute;
     border-radius: 8px;
     border-bottom: 2px solid #513f83;
+    color: #000;
     top: 80%;
     margin-left: 33px;
     width: 90%;
@@ -215,7 +216,12 @@ a {
     border-bottom: 5px solid #513f83;
     border-top: 5px solid #513f83;
     border-style: double;
-    box-shadow: 0 0 20px 0px #513f83;
+    box-shadow: 0 0 1px #513f83;
+}
+.coursesBorder{
+  border-radius: 9px;
+  border-bottom: 2px solid #e000e7;
+  /* border-top: 2px solid #e000e7; */
 }
 /* hovering cards on section studying at mwenge catholic university image effect */
 .bottomBorder img {
@@ -321,6 +327,17 @@ a {
 /* a favorite site color */
 .favColor{
     color: #513f83;
+}
+.favBackground{
+  background-color: #513f83;
+}
+.iconsColor{
+  color: white;
+}
+.iconsColor:hover{
+  color: #e000e7;
+  transition: 0.5s;
+  transform: scale(1.1);
 }
 
 /*css for academics page images starts here */
@@ -445,6 +462,18 @@ a {
     color: white;
     transition: 0.8s;
     transform: scale(1.1);
+}
+/* style for buttons on course details page */
+.courseBtn{
+  width: auto;
+  padding: 8px;
+  border: 1px solid #513f81;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #513f83;
+
+  display: inline-flex;
+  align-items: end;
 }
 /* style for buttons on about page */
 .learnBtn{
@@ -1111,3 +1140,284 @@ a {
   }
   }
 
+  /* Events */
+.find-events {
+  width: 100%;
+  max-width: 98%;
+  padding: 15px;
+  margin: 10px auto;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.event-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form-group {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.event-form {
+  padding: 10px;
+  border-bottom: 2px solid #513f83;
+}
+
+.event-form input,
+select {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0px 1px #513f83;
+}
+
+.search-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: #513f83;
+  color: white;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: white;
+  color: #513f83;
+  border: 1px solid #513f83;
+}
+
+.event-img {
+  overflow: hidden;
+}
+
+.event-img img {
+  width: 100%;
+  height: 200px;
+  border-radius: 3px;
+  transition: transform 0.8s;
+}
+
+.main-events {
+  background-color: white;
+  padding: 20px;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+.events-cont {
+  margin: 15px 30px;
+  padding: 10px;
+  border-bottom: 1px solid rgb(230, 226, 226);
+}
+
+.events-cont:hover .event-img img {
+  transform: scale(1.1);
+}
+
+.stamps {
+  display: flex;
+  align-items: center;
+}
+
+.stamps i,
+.stamps span,
+.event-content p,
+.event-content label {
+  font-weight: normal;
+  font-size: 17px;
+  margin: 8px 5px;
+  color: rgb(92, 89, 89);
+  text-align: justify;
+}
+
+.event-btn {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.link {
+  color: black;
+}
+.link:hover {
+  color: #513f83;
+}
+
+/* event */
+.event-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 30px;
+  margin: 10px 0;
+}
+
+.event-header p {
+  font-size: 20px;
+  color: rgb(78, 76, 76);
+  margin-top: 30px;
+}
+
+.event-header h2 {
+  font-size: 45px;
+  margin: 0 0 20px 0;
+}
+
+.event-header img {
+  width: 90%;
+}
+
+.event-row {
+  width: 90%;
+  margin: 10px auto;
+  padding: 0;
+  display: flex;
+}
+
+.about-event {
+  width: 100%;
+  margin: 10px 0;
+  padding: 50px;
+  background-color: white;
+}
+
+.about-event p {
+  font-size: 18px;
+  color: rgb(78, 76, 76);
+  text-align: justify;
+}
+
+.other-event-det,
+.event-speaker,
+.event-thoughts {
+  background-color: white;
+  padding: 30px;
+  margin: 10px 0;
+  height: fit-content;
+}
+
+.other-event-det {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+}
+
+.event-detail {
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  border-bottom: 1px solid #cbc0e7;
+}
+
+.event-detail div {
+  display: flex;
+  align-content: center;
+}
+
+.event-detail div i {
+  margin: 0 10px;
+  color: #513f83;
+}
+
+.event-detail div h6 {
+  font-weight: 600;
+}
+
+.event-detail label {
+  color: rgb(88, 87, 87);
+}
+
+.exp-flag {
+  background-color: #a895dd;
+  padding: 5px;
+  border-bottom: none;
+  border-left: 3px solid #513f83;
+}
+
+.event-socials {
+  border-bottom: none;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.event-socials i {
+  border: 1px solid #cbc0e7;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.event-socials i:hover {
+  background-color: #513f83;
+  color: white;
+}
+
+.speaker-profile {
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+}
+
+.speaker-profile img {
+  width: 25%;
+  margin-right: 25px;
+  border-radius: 50%;
+}
+
+.speaker-details {
+  margin: 5px;
+  padding: 5px;
+}
+
+.speaker-details h5 {
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+}
+
+.speaker-details label,
+.speaker-details p {
+  color: rgb(94, 92, 92);
+  margin-bottom: 10px;
+}
+
+.event-form2 {
+  width: 100%;
+  flex-direction: column;
+  border: none;
+}
+
+.event-form2 input,
+.event-form2 select {
+  width: 48%;
+  border: 1px solid #513f83;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0px 1px #513f83;
+}
+
+.event-form2 textarea {
+  width: 98%;
+  border: 1px solid #513f83;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0px 1px #513f83;
+}
+
+.event-inputs {
+  width: 100%;
+  display: flex;
+}

@@ -31,10 +31,6 @@ class HomeController extends Controller
     {
         return view('about');
     }
-    public function academics()
-    {
-        return view('academics');
-    }
     public function events()
     {
         return view('events');

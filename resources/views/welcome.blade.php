@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Mwenge Catholic University</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
     @include('links')
     <!-- Styles
         <style>
@@ -203,8 +198,8 @@
                         <div class="card-body">
                             <i class="favColor fas fa-users display-3"></i>
                         </div>
-                        <div class="card-text">
-                            <h5>Qualified Staffs</h5>
+                        <div class="card-text text-dark">
+                            <h5>Qualified Staffs  <i class="fas fa-circle-check favColor"></i></h5>
                             <p>
                                 Our financial aid program makes UniCamp affordable for every family throughout the
                                 world.
@@ -221,8 +216,8 @@
                         <div class="card-body">
                             <i class="favColor fas fa-file-invoice-dollar display-3"></i>
                         </div>
-                        <div class="card-text">
-                            <h5>Affordability</h5>
+                        <div class="card-text text-dark">
+                            <h5>Affordability  <i class="fas fa-circle-check favColor"></i></h5>
                             <p>
                                 Our financial aid program makes UniCamp affordable for every family throughout the
                                 world.
@@ -239,8 +234,8 @@
                         <div class="card-body">
                             <i class="favColor fa fa-graduation-cap display-3"></i>
                         </div>
-                        <div class="card-text">
-                            <h5>Qualified Staffs <i class="fas fa-circle-check text-success"></i></h5>
+                        <div class="card-text text-dark">
+                            <h5>Qualified Staffs <i class="fas fa-circle-check favColor"></i></h5>
                             <p>
                                 Our financial aid program makes UniCamp affordable for every family throughout the
                                 world.
@@ -289,9 +284,9 @@
                         <div class="card-body">
                             <img src="img/students1.JPG" style="width: 100%; border-radius: 8px;" alt="Course">
                         </div>
-                        <div class="card-text">
+                        <div class="card-text text-dark ">
                             <h4>Undergraduate Admissions</h4>
-                            Whatever you're seeking from your college experience, you'll find it at UniCamp.
+                            Whatever you're seeking from your college experience, you'll find it at Mwenge Catholic University.
                         </div>
                     </div>
                 </div>
@@ -301,9 +296,9 @@
                         <div class="card-body">
                             <img src="img/students3.jpg" style="width: 100%; border-radius: 8px;" alt="Course">
                         </div>
-                        <div class="card-text">
+                        <div class="card-text text-dark">
                             <h4>Non-Degree Admissions</h4>
-                            Whatever you're seeking from your college experience, you'll find it at UniCamp.
+                            Whatever you're seeking from your college experience, you'll find it at Mwenge Catholic University.
                         </div>
                     </div>
                 </div>
@@ -313,9 +308,9 @@
                         <div class="card-body">
                             <img src="img/students2.JPG" style="width: 100%; border-radius: 8px;" alt="Course">
                         </div>
-                        <div class="card-text">
+                        <div class="card-text text-dark">
                             <h4>Postgraduate Admissions</h4>
-                            Whatever you're seeking from your college experience, you'll find it at UniCamp.
+                            Whatever you're seeking from your college experience, you'll find it at Mwenge Catholic University.
                         </div>
                     </div>
                 </div>

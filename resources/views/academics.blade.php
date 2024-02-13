@@ -78,7 +78,7 @@
                                     the
                                     right one for you.
                                 </p>
-                                <a href="post-graduate.html">  <button class="programsBtn">Read More <i class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{route ('post-graduate') }}">  <button class="programsBtn">Post-Graduate Courses <i class="fas fa-arrow-right"></i></button></a>
                               
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                     the
                                     right one for you.
                                 </p>
-                               <a href="undergraduate.html"><button class="programsBtn">Read More <i class="fas fa-arrow-right"></i></button></a> 
+                               <a href="{{ route ('undergraduate') }}"><button class="programsBtn">Read More <i class="fas fa-arrow-right"></i></button></a> 
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                                     the
                                     right one for you.
                                 </p>
-                                <a href="non-degree.html"> <button class="programsBtn">Read More <i class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{ route ('non-degree') }}"> <button class="programsBtn">Read More <i class="fas fa-arrow-right"></i></button></a>
                                
                             </div>
                         </div>
@@ -189,6 +189,7 @@
 
 
     @include('partials.footer')
+    @include('jslinks')
     <!-- footer end -->
 
     <!-- jQuery -->
