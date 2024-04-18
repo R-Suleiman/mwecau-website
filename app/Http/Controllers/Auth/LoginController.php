@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,34 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+
+        return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ], [
+            'email' => 'Please type in your email address.',
+            'password' => 'Please type in your password.',
+        ]);
+        // $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+
+            Alert::success('Message', 'You have loggen in successfully')->autoClose('7000');
+            return redirect()->route('admin.dashboard');
+        } else {
+
+            Alert::error('Attention', 'Invalid email address or password')->autoClose('6000');
+            return back()->with('message' ,'Invalid email address/password');
+        }
     }
 }

@@ -1,145 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MWECAU | Events</title>
-     
-    @include('links')
+    <title>MWECAU | Post Event</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/style.css" />
     <!-- font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"/>
+    @include('links')
+</head>
 
-      <style>
-        a{
-            text-decoration: none;
-        }
-      </style>
-  </head>
-  <body style="background-color: whitesmoke">
-  @include('partials.navbar')
-    <!-- bg -->
-    <section>
-      <div>
-        <div class="landing-image">
-          <div class="landing-text nav-content">
-            <!-- <h1>Welcome to Mwenge Catholic University</h1> -->
-            <div class="underline mt-5 mb-5">
-              <h1 class="text-center display-1 fw-bold">Events</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<body style="background-color: whitesmoke">
+    <!-- navbar -->
+    @include('partials.navbar')
 
     <!-- main content -->
+    <div class="container">
+        <div class="mt-5 col-4">
+            @if (session()->has('message'))
+                <span class="alert alert-success shadow">
+                    {{ session('message') }}
+                </span>
+            @endif
+        </div>
+        <div class="mb-3">
+            @if (session()->has('fail'))
+                <span class="alert alert-danger p-3 mt-5">
+                    {{ session('fail') }}
+                </span>
+            @endif
+        </div>
+    </div>
+
+
+
     <div class="container-fluid">
-      <div class="row">
-        <div class="find-events">
-          <form class="event-form">
-            <div class="form-group">
-              <label for="date">Date from:</label><br />
-              <input type="date" name="date" id="date" style="width: 70%" />
-            </div>
-            <div class="form-group">
-              <select name="category">
-                <option value="All categories">All categories</option>
-                <option value="Academic">Academic</option>
-                <option value="Entertainments">Entertainments</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <input type="text" name="keywords" placeholder="keywords" />
-            </div>
-            <div class="form-group" style="width: 10%">
-            <a href="#"> <button class="search-btn">Find Events</button></a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid main-events">
-      <div class="row events-cont">
-        <div class="col-12 col-lg-3 col-md-3 event-img">
-          <a href=""
-            ><img src="/img/students1.JPG" alt="event image"
-          /></a>
-        </div>
-        <div class="col-12 col-lg-7 col-md-6 event-content">
-          <label>Category</label>
-          <a href="" class="link"
-            ><h3>This is where the title of an event stays</h3></a
-          >
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt
-            perferendis dolore dolorem consequuntur similique iusto iste numquam
-            sed modi. Sequi beatae voluptatibus ipsum aperiam atque. Non placeat
-            pariatur ipsum omnis....
-          </p>
-        </div>
-        <div class="col-12 col-lg-2 col-md-3">
-          <div class="stamps">
-            <i class="fa fa-clock"></i> <span>2:30 pm - 3:30 pm</span>
-          </div>
-          <div class="stamps">
-            <i class="fa fa-calendar"></i> <span> April 19, 2024</span>
-          </div>
-          <div class="stamps">
-            <i class="fa fa-map-marker"></i> <span>MWECAU</span>
-          </div>
-          <a href="event.html"
-            ><button class="search-btn event-btn">view more</button></a
-          >
-        </div>
-      </div>
+        <form class="row event-row" action="{{ route('post_event') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
 
-      <div class="row events-cont">
-        <div class="col-12 col-lg-3 col-md-3 event-img">
-          <a href=""
-            ><img src="/img/students2.JPG" alt="event image"
-          /></a>
-        </div>
-        <div class="col-12 col-lg-7 col-md-6 event-content">
-          <label>Category</label>
-          <a href="" class="link"
-            ><h3>This is where the title of an event stays</h3></a
-          >
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt
-            perferendis dolore dolorem consequuntur similique iusto iste numquam
-            sed modi. Sequi beatae voluptatibus ipsum aperiam atque. Non placeat
-            pariatur ipsum omnis....
-          </p>
-        </div>
-        <div class="col-12 col-lg-2 col-md-3">
-          <div class="stamps">
-            <i class="fa fa-clock"></i> <span>2:30 pm - 3:30 pm</span>
-          </div>
-          <div class="stamps">
-            <i class="fa fa-calendar"></i> <span> April 19, 2024</span>
-          </div>
-          <div class="stamps">
-            <i class="fa fa-map-marker-alt"></i> <span>MWECAU</span>
-          </div>
-          <a href="event.html"
-            ><button class="search-btn event-btn">view more</button></a
-          >
-        </div>
-      </div>
-    </div>
+            <div class="col-sm-12 col-lg-8">
+                <div class="about-event col-sm-12 ">
+                    <div class="underline mt-1 mb-4">
+                        <h3 class="favColor">About The Event</h3>
+                    </div>
+                    <h5>Fill details about the Event</h5>
+                    <div class="event-form2">
+                        <div class="event-inputs col-sm-12 ">
 
+                            <input type="text" class="form-control"
+                                id="event_title" name="event_title" placeholder="Event Title" />
+
+
+                            <select name="event_category" id="event_category" class="form-control">
+                                <option value="Event Category">-- Event Category --</option>
+                                <option value="academic">Academic</option>
+                                <option value="clubsOrganizations">Clubs & Organization</option>
+                                <option value="sportsEntertainment">Sports & Entertainment</option>
+                                <option value="culture">Culture</option>
+                                <option value="creativityTalents">Creativity & Talents</option>
+                            </select>
+                        </div>
+
+                        <textarea name="event_description" id="event_description" cols="50" rows="5"
+                            class="form-control @error('event_description') @enderror is-invalid" placeholder="Event Description"></textarea>
+
+                        <div>
+                            <span class="text-danger">
+                                @error('event_description')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+
+                        <label>Event Image</label> <br />
+                        <input type="file" class="form-control @error('event_image') @enderror is-invalid "
+                            id="event_image" name="event_image" /> <br />
+
+                        <div>
+                            <span class="text-danger">
+                                @error('event_image')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-speaker">
+                    <div class="underline mt-1 mb-4">
+                        <h3 class="text-center favColor">Speakers or Organizers Details</h3>
+                        <h5>
+                            Please provide details about the main Organizer or Speaker of the
+                            event
+                        </h5>
+                    </div>
+
+                    <div class="event-form2">
+                        <div class="event-inputs">
+                            <input type="text" class="form-control" id="speaker_fullname" name="speaker_fullname"
+                                placeholder="Full Name" />
+                            <input type="text" class="form-control" id="speaker_profession" name="speaker_profession"
+                                placeholder="Profession" />
+                        </div>
+                        <textarea class="form-control" id="speaker_info" name="speaker_info" cols="50" rows="5"
+                            placeholder="A brief about of the Speaker/Organizer"></textarea>
+                        <label>Speaker Photo (Optional)</label> <br />
+                        <input type="file" class="form-control" id="speaker_photo " name="speaker_photo" /> <br />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-4 other-event-det post-event-det">
+                <div class="underline mt-1 mb-4">
+                    <h3 class="text-center favColor">More Event Details</h3>
+                </div>
+                <div class="event-form2">
+                    <div class="event-detail">
+                        <div>
+
+                            <h6><i class="fa fa-bill"></i> Cost</h6>
+                        </div>
+                        <input type="text" class="form-control" id="event_cost" name="event_cost"
+                            placeholder="default: free" />
+                    </div>
+                    <div class="event-detail">
+                        <div>
+                            <i class="fa fa-calendar"></i>
+                            <h6>Event Date</h6>
+                        </div>
+                        <input type="date" class="form-control" id="event_date" name="event_date" />
+                    </div>
+                    <div class="event-detail">
+                        <div>
+                            <i class="fa fa-clock"></i>
+                            <h6>Event Start Time</h6>
+                        </div>
+                        <input type="text" class="form-control" id="eventStart_time" name="eventStart_time"
+                            placeholder="e.g. 11:30 am" />
+                    </div>
+                    <div class="event-detail">
+                        <div>
+                            <i class="fa fa-clock"></i>
+                            <h6>Event End Time</h6>
+                        </div>
+                        <input type="text" class="form-control" id="eventEnd_time" name="eventEnd_time"
+                            placeholder="e.g. 04:00 pm" />
+                    </div>
+                    <div class="event-detail">
+                        <div>
+                            <i class="fas fa-location"></i>
+                            <h6>Location</h6>
+                        </div>
+                        <input type="text" class="form-control" id="event_location" name="event_location" />
+                    </div>
+                    <div class="event-detail">
+                        <div>
+                            <i class="fa fa-user"></i>
+                            <h6>organizer</h6>
+                        </div>
+                        <input type="text" class="form-control" id="event_organizer" name="event_organizer"
+                            placeholder="e.g. John Doe" />
+                    </div>
+                    <div class="event-detail">
+                        <div>
+                            <i class="fas fa-users"></i>
+                            <h6>Total Slots</h6>
+                        </div>
+                        <input type="text" class="form-control" id="total_slots" name="total_slots"
+                            placeholder="e.g. 100" />
+                    </div>
+                    <div class="event-detail">
+                        <div>
+                            <i class="fa fa-lock"></i>
+                            <h6>Booked Slots</h6>
+                        </div>
+                        <input type="text" class="form-control" id="booked_slots" name="booked_slots" />
+                    </div>
+
+                    <button type="submit" class="admissionBtn">Post Event</button>
+
+                    <!-- <div class="event-detail exp-flag">
+            <p style="margin: 5px 20px">This event has already expired</p>
+          </div>
+          <div class="event-detail event-socials">
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-tumblr"></i>
+            <i class="fa fa-envelope"></i>
+          </div> -->
+                </div>
+            </div>
+        </form>
+    </div>
     <!-- main content end -->
 
-    @include('partials.footer')
+    <!-- Footer -->
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    @include('partials.footer')
+    @include('jslinks')
+</body>
+
 </html>

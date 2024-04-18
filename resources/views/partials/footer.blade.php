@@ -2,16 +2,20 @@
   <section class="footer-container text-white ">
       <!-- Section: Social media -->
       <div class="text-centr text-lg-start  text-white ">
-          <div class="d-flex justify-content-between p-4" style="background-color: #513f83; border-bottom: 1px solid white">
+          <div class="d-flex justify-content-between p-4" style="background-color: #513f83; border-bottom: 1px solid white;">
               <div class="me-5">
                   <h6>Get connected with us on social networks:</h6>
               </div>
-              <div>
-                  <a href="" class="text-white me-4"> <i class="fab fa-facebook-f iconsColor fs-4 "></i> </a>
-                  <a href="" class="text-white me-4"> <i class="fab fa-x fw-bold iconsColor fs-4"></i> </a>
-                  <a href="" class="text-white me-4"> <i class="fab fa-google iconsColor fs-4"></i> </a>
-                  <a href="" class="text-white me-4"> <i class="fab fa-instagram iconsColor fs-4"></i> </a>
-                  <a href="" class="text-white me-4"> <i class="fab fa-linkedin iconsColor fs-4"></i> </a>
+              <div class="a home-sci">
+                <div class="row justify-content-center">
+                    <div class="align-items-center">
+                           <a href="https://www.facebook.com/mwecau2016/" target="_blank" class=""> <i class="fab fa-facebook-f fs-3 icon" style="--color: #2abccf"></i> </a>
+                  <a href="https://twitter.com/mwecau1" target="_blank" class="text-white me-4"> <i class="fab fa-x fw-bold icon fs-3" style="--color: #2abccf"></i> </a>
+                  <a href="https://www.instagram.com/mwengecatholicuniversity/" target="_blank" class="text-white me-4"> <i class="fab fa-instagram icon fs-3" style="--color: #2abccf"></i> </a>
+                  <a href="https://www.linkedin.com/company/mwenge-catholic-university/" target="_blank" class="text-white me-4"> <i class="fab fa-linkedin icon fs-3"style="--color: #2abccf"></i> </a>
+                    </div>
+                </div>
+
                 </div>
           </div>
       </div>
@@ -42,16 +46,16 @@
                   <h6 class="text-uppercase fw-bold ">Popular links</h6>
                   <hr class=" mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #e000ef; height: 5px" />
                   <ul class="list-unstyled">
-                      <li class="mb-3"><a href="#!" class="text-light">Online Application</a></li>
-                      <li class="mb-3"><a href="#!" class="text-light">University Management System(UMS)</a></li>
-                      <li class="mb-3"><a href="#!" class="text-light">Google Scholar</a></li>
-                      <li class="mb-3"><a href="#!" class="text-light">Learning Management System(LMS)</a>
+                      <li class="mb-3"><a href="https://uas.mwecau.ac.tz/" target="_blank" class="text-light">Online Application</a></li>
+                      <li class="mb-3"><a href="https://ums.mwecau.ac.tz/" target="_blank" class="text-light">University Management System(UMS)</a></li>
+                      <li class="mb-3"><a href="https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=mwecau.ac.tz&btnG=" target="_blank" class="text-light">Google Scholar</a></li>
+                      <li class="mb-3"><a href="https://lms.mwecau.ac.tz/" target="_blank" class="text-light">Learning Management System(LMS)</a>
                       </li>
                       <li class="mb-3"><a href="#!" class="text-light">Ministry of Education, Science, and Technology</a></li>
-                      <li class="mb-3"><a href="#!" class="text-light">TCU</a></li>
-                      <li class="mb-3"><a href="#!" class="text-light">NACTE</a></li>
-                      <li class="mb-3"><a href="#!" class="text-light">HESLB</a></li>
-                      <li class="mb-3"><a href="#!" class="text-light">NACTVET</a></li>
+                      <li class="mb-3"><a href="https://www.tcu.go.tz/" target="_blank" class="text-light">TCU</a></li>
+                      <li class="mb-3"><a href="https://www.nactvet.go.tz/" class="text-light">NACTE</a></li>
+                      <li class="mb-3"><a href="https://www.heslb.go.tz/?lang=" class="text-light">HESLB</a></li>
+                      <li class="mb-3"><a href="https://www.nactvet.go.tz/" class="text-light">NACTVET</a></li>
                   </ul>
               </div>
 

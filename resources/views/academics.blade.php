@@ -18,9 +18,56 @@
 </head>
 
 <body>
+    @include('preloader')
     @include('partials.navbar')
+
+    {{-- about us landing page --}}
+    <section class="">
+        <div class="text-center wrapper align-content-center"
+            style="position: relative; background: linear-gradient(to right, #513f83, #513f83); min-height: 100vh;">
+            <section>
+                <div class="academis1 text-center">
+                    <div class="academicsText1 justify-items-around align-content-center">
+                        <h1 class="underline display-1">Admissions</h1>
+                        <p class="fs-5">
+                            Studying at Mwenge catholic University is a great way to enhance your career.
+                            In today’s competitive environment, professionals need the skills to adapt
+                            to an ever-changing world.
+                        </p>
+
+                        <div class="d-none">
+                            <a href="{{ route('login') }}"><button class="btn btn-warning" data-aos="fade-right"
+                                    data-aos-duration="2000">Login</button></a>
+                            <a href="{{ route('register') }}"><button class="btn btn-warning" data-aos="fade-left"
+                                    data-aos-duration="2000">Register
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <div class="custom-shape-divider-bottom-1713166410">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                        opacity=".25" class="shape-fill"></path>
+                    <path
+                        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                        opacity=".5" class="shape-fill"></path>
+                    <path
+                        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
     <section>
-        <div class="academics1 text-center">
+        <div class="academics1 text-center d-none ">
             <div class="academicsText1 justify-items-around align-content-center">
                 <h1>Admissions</h1>
                 <p class="text-lowercase fs-5">
@@ -46,7 +93,7 @@
                         well-rounded leaders whomake a positive impact on the world.
                     </p>
 
-                    <h1>Here we set University Statistical data count (Suleiman)</h1>
+                    <div class="elfsight-app-bb3abb2b-f006-4982-93a0-a3efdda478c1" data-elfsight-app-lazy></div>
                 </div>
 
             </div>
@@ -67,19 +114,21 @@
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
+                            <div class="card-title text-dark ">
                                 <h1>Post-Graduate programs</h1>
                             </div>
-                            <div class="card-text">
+                            <div class="card-text text-dark ">
                                 <p class="fs-6">
-                                    UniCamp offers a range of bachelor, associate, and honours degrees. Undergraduate
+                                    Mwenge Catholic University offers a range of bachelor, associate, and honours
+                                    degrees. Undergraduate
                                     students
                                     benefit from the extraordinary resources. Browse our undergraduate programs and find
                                     the
                                     right one for you.
                                 </p>
-                                <a href="{{route ('post-graduate') }}">  <button class="programsBtn">Post-Graduate Courses <i class="fas fa-arrow-right"></i></button></a>
-                              
+                                <a href="{{ route('post-graduate') }}"> <button class="programsBtn">Post-Graduate
+                                        Courses <i class="fas fa-arrow-right"></i></button></a>
+
                             </div>
                         </div>
                     </div>
@@ -92,18 +141,17 @@
                 <div class="left2 col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
+                            <div class="card-title text-dark ">
                                 <h1>Undergraduate programs</h1>
                             </div>
-                            <div class="card-text">
+                            <div class="card-text text-dark">
                                 <p class="fs-6">
-                                    UniCamp offers a range of bachelor, associate, and honours degrees. Undergraduate
-                                    students
+                                    Mwenge Catholic University a range of Undergraduate degrees students
                                     benefit from the extraordinary resources. Browse our undergraduate programs and find
-                                    the
-                                    right one for you.
+                                    the right one for you.
                                 </p>
-                               <a href="{{ route ('undergraduate') }}"><button class="programsBtn">Read More <i class="fas fa-arrow-right"></i></button></a> 
+                                <a href="{{ route('undergraduate') }}"><button class="programsBtn">Undergraduate
+                                        Courses <i class="fas fa-arrow-right"></i></button></a>
                             </div>
                         </div>
                     </div>
@@ -121,19 +169,18 @@
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
+                            <div class="card-title text-dark ">
                                 <h1>Non-Degree programs</h1>
                             </div>
-                            <div class="card-text">
+                            <div class="card-text text-dark ">
                                 <p class="fs-6">
-                                    UniCamp offers a range of bachelor, associate, and honours degrees. Undergraduate
-                                    students
-                                    benefit from the extraordinary resources. Browse our undergraduate programs and find
-                                    the
-                                    right one for you.
+                                    Mwenge Catholic University a range of non-degree programms
+                                    student benefit from the extraordinary resources. Browse our non-degree programs and
+                                    find the right one for you.
                                 </p>
-                                <a href="{{ route ('non-degree') }}"> <button class="programsBtn">Read More <i class="fas fa-arrow-right"></i></button></a>
-                               
+                                <a href="{{ route('non-degree') }}"> <button class="programsBtn">Non-degree Courses <i
+                                            class="fas fa-arrow-right"></i></button></a>
+
                             </div>
                         </div>
                     </div>
@@ -181,7 +228,8 @@
                 <div class="text-center mt-3">
                     <h1>Not sure what to study?</h1>
                     <span>Discover the right program for you</span> <br>
-                    <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i class="fas fa-arrow-circle-right"></i></button>
+                    <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i
+                            class="fas fa-arrow-circle-right"></i></button>
                 </div>
             </div>
         </div>

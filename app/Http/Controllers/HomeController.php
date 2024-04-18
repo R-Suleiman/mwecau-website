@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\event;
 
 class HomeController extends Controller
 {
@@ -12,7 +13,7 @@ class HomeController extends Controller
      * @return void
      */
 
-     //this a default laravel middleware to applied inside the controller to protect all the routes inside this controller
+    //this a default laravel middleware to applied inside the controller to protect all the routes inside this controller
     // public function __construct()
     // {
     //     $this->middleware('auth');
@@ -23,10 +24,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // public function index()
+    // {
+    //     return view('home');
+    // }
     public function index()
     {
-        return view('home');
+        $uniEvents = Event::latest()->take(3)->get();
+        return view('welcome', compact('uniEvents'));
     }
+
     public function about()
     {
         return view('about');
@@ -35,8 +42,13 @@ class HomeController extends Controller
     {
         return view('events');
     }
+
     public function campusLife()
     {
         return view('campus-life');
+    }
+    public function icons()
+    {
+        return view('icons');
     }
 }
