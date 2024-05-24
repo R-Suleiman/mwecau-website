@@ -20,7 +20,7 @@
     <div class="container  mt-3 mb-4">
         <div class="row g-5" style="text-align: justify;">
             <div class="col-lg-4 mb-3">
-                <div class="card bg-light border night-mode mt-5 ">
+                <div class="card darkMode mt-5 ">
                     <h5 class="card-header"> {{ $showCourseDetails->course_title }}</h5>
                     <div class="card-body">
                         <div class="card-text">
@@ -36,7 +36,7 @@
             </div>
             <div class="col-lg-7">
                 <p>
-                    <strong class="favColor fs-4">Description:</strong>
+                    <strong class="favColor darkMode fs-4">Description:</strong>
                 @php
                     $descriptionSentences = explode('.', $showCourseDetails->course_description);
                 @endphp
@@ -46,7 +46,7 @@
                 @endforeach
                 </p>
 
-                <p class="lh-3 "> <strong class="favColor fs-4">Entry Qualification:</strong> <br>
+                <p class="lh-3 "> <strong class="favColor darkMode fs-4">Entry Qualification:</strong> <br>
                     {{ $showCourseDetails->course_entry_qualification }}</p>
 
                 {{-- <p style="text-align:justify">{{ $showCourseDetails->course_description }}</p> --}}

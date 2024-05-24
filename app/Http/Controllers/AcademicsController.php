@@ -16,10 +16,10 @@ class AcademicsController extends Controller
     //storing course
 
 
-    public function courseList()
+    public function programsList()
     {
         $courses = course::all();
-        return view('programs.course-list', compact('courses'));
+        return view('programs.programs-list', compact('courses'));
     }
 
     //function to return view for updating a specific course details

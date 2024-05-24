@@ -4,23 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\event;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EventsController extends Controller
 {
     //
-    public function events()
+    public function event()
     {
-        return view('events');
-
+        return view('admin.event');
     }
     //  this function post university events
-    public function post_event(Request $request)
+    public function createEvent(Request $request)
     {
         $request->validate([
             'event_title' => ['required', 'string'],
             'event_category' => ['required', 'string'],
             'event_description' => ['required', 'string'],
-            'event_image' => ['required','image', 'mimes:jpeg,png,jpg,gif', 'max:1024', 'nullable'],
+            'event_image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024', 'nullable'],
             'speaker_fullname' => ['required', 'string'],
             'speaker_profession' => ['required', 'string'],
             'speaker_info' => ['required', 'string'],
@@ -40,14 +40,14 @@ class EventsController extends Controller
             $event_image = $request->file('event_image');
             $eventImageName = time() . '' . $event_image->getClientOriginalExtension();
             $event_image->move(public_path('images/eventImages'), $eventImageName);
-        }else {
+        } else {
             $eventImageName = null;
         }
         if ($request->hasFile('speaker_photo')) {
             $speaker_photo = $request->file('speaker_photo');
             $speakerPhotoName = time() . '' . $speaker_photo->getClientOriginalExtension();
             $speaker_photo->move(public_path('images/eventsImages'), $speakerPhotoName);
-        }else {
+        } else {
             $speakerPhotoName = null;
         }
 
@@ -72,9 +72,35 @@ class EventsController extends Controller
         $events->save();
         if ($events) {
             return redirect()->back()->with('message', 'Event posted successfully');
-        }else {
-            return redirect()->with('fail', 'Something went wrong');
+        } else {
+            Alert::error('Attention', 'Something went wrong');
+            return redirect()->back();
         }
+    }
+    public function eventslist()
+    {
+        $events = event::all();
+        return view('admin.events-list', compact('events'));
+    }
+    // for an admin
+    public function adminEventDetails($id)
+    {
 
+        $eventDetails = event::findOrFail($id);
+        return view('admin.event-details', compact('eventDetails'));
+    }
+    // for web user
+    public function eventDetails($id)
+    {
+
+        $eventDetails = event::findOrFail($id);
+        return view('event-details', compact('eventDetails'));
+    }
+    //editing an event
+    public function editEvent($id)
+    {
+        $event = event::findOrFail($id);
+
+        return view('admin.edit-event', compact('event'));
     }
 }

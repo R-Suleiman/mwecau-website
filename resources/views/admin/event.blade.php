@@ -35,8 +35,11 @@
         </div>
     </div>
 
+
+
     <div class="container-fluid">
-        <form class="row event-row" action="{{ route('admin.create.event') }}" method="POST" enctype="multipart/form-data">
+        <form class="row event-row" action="{{ route('admin.create.event') }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('POST')
 
@@ -49,11 +52,12 @@
                     <div class="event-form2">
                         <div class="event-inputs col-sm-12 ">
 
-                            <input type="text" class="form-control darkMode"
-                                id="event_title" name="event_title" placeholder="Event Title" />
+                            <input type="text" class="form-control darkMode" id="event_title" name="event_title"
+                                placeholder="Event Title" />
 
 
-                            <select name="event_category" id="event_category" class="form-control darkMode">
+                            <select name="event_category" id="event_category"
+                                class="form-control darkMode @error('event_category') is-invalid  @enderror">
                                 <option value="Event Category">-- Event Category --</option>
                                 <option value="academic">Academic</option>
                                 <option value="clubsOrganizations">Clubs & Organization</option>
@@ -61,10 +65,16 @@
                                 <option value="culture">Culture</option>
                                 <option value="creativityTalents">Creativity & Talents</option>
                             </select>
+
+                            @error('event_category')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <textarea name="event_description" id="event_description" cols="50" rows="5"
-                            class="form-control darkMode @error('event_description') @enderror is-invalid" placeholder="Event Description"></textarea>
+                            class="form-control darkMode @error('event_description') is-invalid  @enderror" placeholder="Event Description"></textarea>
 
                         <div>
                             <span class="text-danger">
@@ -75,8 +85,8 @@
                         </div>
 
                         <label>Event Image</label> <br />
-                        <input type="file" class="form-control darkMode @error('event_image') @enderror is-invalid "
-                            id="event_image" name="event_image" /> <br />
+                        <input type="file" class="form-control darkMode @error('event_image') is-invalid @enderror"
+                            id="event_image" name="event_image" />
 
                         <div>
                             <span class="text-danger">

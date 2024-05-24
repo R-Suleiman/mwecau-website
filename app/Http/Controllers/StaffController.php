@@ -10,7 +10,7 @@ class StaffController extends Controller
     //return list of all staffs
     public function staff()
     {
-        $staffs = staff::all();
+        $staffs = staff::paginate(10);
         return view('mwecau-staffs', compact('staffs'));
     }
     // returning staff profile
@@ -19,10 +19,5 @@ class StaffController extends Controller
         $staffProfile = staff::findOrFail($id);
         return view('mwecau-staff-profile', compact('staffProfile'));
     }
-    // //registering staff
-    // public function staffForm()
-    // {
-    //     return view('register-staff');
-    // }
 
 }

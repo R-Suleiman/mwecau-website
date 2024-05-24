@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\event;
+use App\Models\staff;
 
 class HomeController extends Controller
 {
@@ -30,8 +31,10 @@ class HomeController extends Controller
     // }
     public function index()
     {
-        $uniEvents = Event::latest()->take(3)->get();
-        return view('welcome', compact('uniEvents'));
+
+        $UniversityEvents = Event::all();
+        $latestEvent = Event::latest()->take(1)->get();
+        return view('welcome', compact('latestEvent', 'UniversityEvents'));
     }
 
     public function about()

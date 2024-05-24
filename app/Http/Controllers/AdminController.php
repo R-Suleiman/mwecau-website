@@ -75,7 +75,8 @@ class AdminController extends Controller
 
         $newCourse->save();
 
-        return redirect()->back()->with('message', 'Course Added Successfully');
+        Alert::success('Message', 'Course added successfully');
+        return redirect()->back();
     }
     //returning view for specific course details
     public function courseDetails($id)
@@ -122,8 +123,6 @@ class AdminController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
             $path = 'images/coursePhotos';
-
-
 
             // Checking if course thumbnail exists and if a new image has been uploaded
             if ($request->hasFile('course_thumbnail')) {
@@ -186,7 +185,11 @@ class AdminController extends Controller
             'language' => ['required'],
             'staffProfile_picture' => ['required', 'image', 'mimes:png', 'max:1024'],
         ], [
-            'staffID' => 'staff id is required',
+            'staffID.required' => 'staff id is required',
+            'staffID.unique' => 'Staff with this ID has already been registered',
+            'staffProfile_picture.required' => 'Please select staff profile picture',
+            'staffProfile_picture.mimes' => 'Please select file .PNG file type',
+            'staffProfile_picture.max' => 'file should not exceed 1MB',
         ]);
 
         if ($request->hasFile('staffProfile_picture')) {
@@ -217,19 +220,20 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
-    // returning specific staff profile
-    public function staffProfile($id)
-    {
 
-        $staffProfile = staff::findOrFail($id);
-        return view('admin.staff-profile', compact('staffProfile'));
-    }
     //rettuning the list of staffs
     public function listOfStaff()
     {
 
         $listOfStaff = staff::all();
         return view('admin.list-of-staff', compact('listOfStaff'));
+    }
+    // returning specific staff profile
+    public function staffProfile($id)
+    {
+
+        $staffProfile = staff::findOrFail($id);
+        return view('admin.staff-profile', compact('staffProfile'));
     }
     //form for editing a specific staff profile
     public function editStaffProfile($id)
@@ -249,7 +253,7 @@ class AdminController extends Controller
         $request->validate([
             'title' => ['required', 'string'],
             'staffID' => ['required'],
-            // 'staffID' => ['required', Rule::unique('staffs,',)->ignore($staffDetails->sta)],
+            // 'staffID' => ['required', Rule::unique('staffs,',)->ignore($staffDetails->ID)],
             // 'staffID' => 'required|unique:staffs,staffID,' . $staffDetails->id,
 
             'firstName' => ['required', 'string'],
@@ -264,10 +268,11 @@ class AdminController extends Controller
             'language' => ['required'],
             'staffProfile_picture' => ['image', 'mimes:png', 'max:1024'],
         ], [
-            'staffID' => 'This staff id is already taken',
+            'staffID' => 'Staff with this ID is already exist',
+            'staffID.unique' => 'This ID has already been registered',
+            'staffProfile_picture.mimes' => 'Please select .PNG file type.',
+            'staffProfile_picture.max' => 'File size should not exceed 1MB, please select another.',
         ]);
-
-        // $staffDetails = staff::findOrFail($id);
 
         //staff profile picture processing
         if ($request->hasFile('staffProfile_picture')) {
@@ -286,7 +291,6 @@ class AdminController extends Controller
             $staffDetails->staffProfile_picture = $filename;
         }
 
-
         //updating course details
         $staffDetails->title = $request->title;
         $staffDetails->staffID = $request->staffID;
@@ -302,13 +306,11 @@ class AdminController extends Controller
         $staffDetails->language = $request->language;
 
 
-        $staffDetails->save();
+        $staffDetails->update();
 
-        alert::success('Message', 'Staff Infor Updated successfully');
-        return view('admin.edit-staff-profile', compact('staffDetails'));
+        alert::success('Message', 'successfully Updated');
+        return redirect()->back();
     }
-
-
 
     public function destroyStaff($id)
     {
@@ -317,19 +319,5 @@ class AdminController extends Controller
         $DeleteStaff->delete();
 
         return redirect()->back();
-    }
-
-
-    //events routes starts here
-    public function eventslist()
-    {
-        $events = event::all();
-        return view('admin.events-list', compact('events'));
-    }
-    public function eventDetails($id)
-    {
-
-        $eventDetails = event::findOrFail($id);
-        return view('admin.event-details', compact('eventDetails'));
     }
 }

@@ -30,7 +30,7 @@
                     <div class="academicsText1 justify-items-around align-content-center">
                         <h1 class="underline display-1">Admissions</h1>
                         <p class="fs-5">
-                            Studying at Mwenge catholic University is a great way to enhance your career.
+                            Studying at Mwenge Catholic University is a great way to enhance your career.
                             In today’s competitive environment, professionals need the skills to adapt
                             to an ever-changing world.
                         </p>
@@ -102,22 +102,21 @@
 
     <!-- admission programs -->
     <section>
-
         <div class="admissionOverlay container my-5 py-5 text-center rounded" data-aos="fade-up"
             data-aos-duration="3000">
             <div class="row justify-content-around align-items-start">
                 <!-- post-graduate -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4 d-md-block">
-                    <img src="img/students3.jpg" class="img-fluid rounded d-" alt="Welcome at Mwecau">
+                    <img src="img/postgrad.jpeg" class="img-fluid rounded d-" alt="Welcome at Mwecau">
                 </div>
 
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card">
+                    <div class="card darkMode">
                         <div class="card-body">
-                            <div class="card-title text-dark ">
+                            <div class="card-title">
                                 <h1>Post-Graduate programs</h1>
                             </div>
-                            <div class="card-text text-dark ">
+                            <div class="card-text">
                                 <p class="fs-6">
                                     Mwenge Catholic University offers a range of bachelor, associate, and honours
                                     degrees. Undergraduate
@@ -136,15 +135,15 @@
 
                 <!-- undergraduate -->
                 <div class="right2 col-12 col-md-6 col-lg-6 mb-4 d-md-block d-lg-none d-sm-block">
-                    <img src="img/students2.JPG" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
                 </div>
                 <div class="left2 col-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card">
+                    <div class="card darkMode">
                         <div class="card-body">
-                            <div class="card-title text-dark ">
+                            <div class="card-title">
                                 <h1>Undergraduate programs</h1>
                             </div>
-                            <div class="card-text text-dark">
+                            <div class="card-text">
                                 <p class="fs-6">
                                     Mwenge Catholic University a range of Undergraduate degrees students
                                     benefit from the extraordinary resources. Browse our undergraduate programs and find
@@ -158,21 +157,21 @@
                 </div>
 
                 <div class="right2 col-12 col-md-12 col-lg-6 mb-4 d-none d-lg-block d-md-none">
-                    <img src="img/students2.JPG" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
                 </div>
 
                 <!-- Non-degree programs -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4">
-                    <img src="img/marv.jpg" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
                 </div>
 
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card">
+                    <div class="card darkMode">
                         <div class="card-body">
-                            <div class="card-title text-dark ">
+                            <div class="card-title">
                                 <h1>Non-Degree programs</h1>
                             </div>
-                            <div class="card-text text-dark ">
+                            <div class="card-text">
                                 <p class="fs-6">
                                     Mwenge Catholic University a range of non-degree programms
                                     student benefit from the extraordinary resources. Browse our non-degree programs and
@@ -196,7 +195,7 @@
             <div class="container academicsText2 p-sm-5">
                 <div class="row g-5 ">
                     <div class="col-12 col-md-6 mb-2">
-                        <div class="card shadow-lg">
+                        <div class="card shadow-lg darkMode">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h3>Learning Abroad</h3>
@@ -211,7 +210,7 @@
                     </div>
 
                     <div class="col-12 col-md-6 mb-2">
-                        <div class="card shadow-lg">
+                        <div class="card shadow-lg darkMode">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h3>Career Development</h3>
@@ -225,8 +224,8 @@
                     </div>
                 </div>
 
-                <div class="text-center mt-3">
-                    <h1>Not sure what to study?</h1>
+                <div class="text-center text-white mt-3">
+                    <h2 class="">Not sure what to study?</h2>
                     <span>Discover the right program for you</span> <br>
                     <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i
                             class="fas fa-arrow-circle-right"></i></button>

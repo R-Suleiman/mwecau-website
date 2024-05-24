@@ -19,5 +19,6 @@
 
 <script src="{{ asset('/bootstrap/js/bootstrap.bundle.js') }}"></script>
 <!-- <script src="{{ asset('../jquery/js/jquery-3.5.1.js') }}"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <!-- <script src="{{ asset('../jquery/js/jquery.dataTables.min.js') }}"></script> -->
 <!-- <script src="{{ asset('../jquery/js/dataTables.bootstrap5.min.js') }}"></script> -->

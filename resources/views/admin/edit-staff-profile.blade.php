@@ -5,20 +5,18 @@
         <div class="main-content">
             <div class="container">
                 <div class="content-box">
-                    <p class="fs-5">You're about to edit profile details for ...</p>
-
-
                     @include('preloader')
                     <div class="container mt-5 ">
-                        <form action="{{ route('admin.update.staff.profile', $staffDetails->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.staff.profile', $staffDetails->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="row">
                                 <div class="mb-4">
-                                    <h2 class="text-center fw-bold">{{ 'Update' }} <strong
-                                            class="favColor">{{ $staffDetails->firstName }} </strong> Profile informations
-                                    </h2>
+                                    <h5>{{ 'Hi,' }} <strong class="favColor">
+                                            {{ $staffDetails->firstName }} </strong> you're about to edit some information related to your profile.
+                                    </h5>
                                 </div>
 
                                 <div class="col-12 col-md-6 col-lg-6 mb-4">
@@ -185,7 +183,7 @@
 
                                 <div class="col-12 col-md-6 col-lg-6 mb-4">
                                     <img src="{{ asset('images/staffProfiles/' . $staffDetails->staffProfile_picture) }}"
-                                        class="img-fluid shadow-lg  w-50 mb-3" alt="profile picture"
+                                        class="img-fluid shadow-lg rounded-circle w-50 mb-3" alt="profile picture"
                                         style="background-color: rgb(107, 107, 252);"> <br>
 
                                     <label class="fw-bold mb-1 favColor"

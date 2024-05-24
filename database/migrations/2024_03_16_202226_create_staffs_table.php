@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('phone');
             $table->enum('gender', ['male', 'female'])->default('female');
             $table->string('nationality');
-            $table->enum('language', ['swahili', 'english', 'swahili and english'])->default('English');
+            $table->enum('language', ['Swahili', 'English', 'Swahili and english', 'Swahili/English'])->default('English');
             $table->string('staffProfile_picture')->default('null');
             $table->timestamps();
         });

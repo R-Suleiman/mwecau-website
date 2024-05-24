@@ -129,11 +129,11 @@
     </section>
 
     <!-- main content -->
-    <div class="container-fluid" style="background-color: white">
+    <div class="container-fluid">
       <div class="underline mt-5 mb-2" style="width: 100%;">
           <h1 style="text-align: center">Student Life</h1>
       </div>
-      <p style="text-align: center; font-size: 20px; color: rgb(99, 97, 97);">Life at MWECAU is enriching, exciting, and energizing</p>
+      <p style="text-align: center; font-size: 20px; color: rgb(199, 191, 191);">Life at MWECAU is enriching, exciting, and energizing</p>
       <div
         class="row pt-5 campus-row"
       >
@@ -141,7 +141,7 @@
          <a href="#" class="card-1"> <div class="card h-100 campus-card" style="width: 100%; border: none">
         <img src="/img/students1.JPG" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Student Affairs</h5>
+            <h4 class="card-title">Student Affairs</h4>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
           </div>
@@ -157,12 +157,12 @@
           </div>
           </a>
         </div>
-        <div class="col-12 col-md-4 col-lg-4 mb-4 d-flex">
-         <a href="#" class="card-3"> <div class="card h-100  campus-card" style="width: 100%; border: none">
+        <div class="col-12 col-md-4 col-lg-4 mb-4 d-flex darkMode">
+         <a href="#" class="card-3"> <div class="card h-100  campus-card darkMode" style="width: 100%; border: none">
             <img src="/img/students3.jpg" class="card-img-top" alt="...">
             <div class="card-body ">
-              <h5 class="card-title">Housing</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-tile">Housing</h5>
+              <div class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
             </div>
           </div>
           </a>
@@ -172,17 +172,17 @@
 
     <div class="container-fluid ">
       <div class="row talent-cont">
-        <div class="talent-content-container">
+        <div class="card border-0 shadow-lg   talent-content-container darkMode">
           <!-- <div class="talent-content"> -->
             <div class="underline mt-4 mb-5" style="width: 80%;">
                 <h1 style="text-align: center">Creativity & Talents</h1>
             </div>
-            <p>MWECAU has a rich tradition of fostering creativity and talents, and presents a wide range of performances.</p>
+            <span>MWECAU has a rich tradition of fostering creativity and talents, and presents a wide range of performances.</span>
             <div class="pic-nav">
 
-              <h3>Picture 1</h3>
-              <h3>Picture 2</h3>
-              <h3>Picture 3</h3>
+              <h4>Picture 1</h4>
+              <h4>Picture 2</h4>
+              <h4>Picture 3</h4>
             </div>
           <!-- </div> -->
           <div class="talent-pics">

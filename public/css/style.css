@@ -54,6 +54,11 @@ body:not(.loaded) #content {
     background-color: #0f1520 !important;
     font-family: "Trebuchet MS", "Lucida Sans Unicode";
 }
+.dark-orange {
+    color: #e000e7 !important;
+}
+
+/* navbar css */
 .navbar-nav .nav-link {
     color: white;
 }
@@ -61,6 +66,55 @@ body:not(.loaded) #content {
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
+.slide-in-down .nav-item {
+    animation: slide-in-down 0.5s ease forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.slide-in-down .nav-item:nth-child(1) {
+    animation-delay: 0.2s; /* Delay */
+}
+
+.slide-in-down .nav-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.slide-in-down .nav-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.slide-in-down .nav-item:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+.slide-in-down .nav-item:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+.slide-in-down .nav-item:nth-child(6) {
+    animation-delay: 1.4s;
+}
+
+.slide-in-down .nav-item:nth-child(7) {
+    animation-delay: 1.6s;
+}
+
+.slide-in-down .nav-item:nth-child(8) {
+    animation-delay: 1.8s;
+}
+
+@keyframes slide-in-down {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 .sliderArrows {
     color: #e000e7;
 }
@@ -196,7 +250,7 @@ a {
 }
 @media only screen and (max-width: 768px) {
     .contain {
-        padding-bottom: 25px;
+        padding-bottom: 255px;
     }
 }
 @media only screen and (max-width: 768px) {
@@ -315,9 +369,10 @@ a {
 }
 .studyingAtMwenge {
     transition: transform 1s;
+    height: 460px;
 }
 .studyingAtMwenge:hover {
-    transform: scale(1.1);
+    transform: scale(1);
     box-shadow: 1px 1px 13px #e000e7;
     width: 100%;
 }
@@ -381,6 +436,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 340px;
     /* box-shadow: 6px 6px 5px 5px #513f83; */
 }
 .missionBtn {
@@ -435,8 +491,8 @@ a {
 
 /*css for academics page images starts here */
 .academics1 {
-    background-image: linear-gradient(rgba(223, 118, 230, 0.3), #513f81),
-        url("../img/mwecau.png");
+    background-image: linear-gradient(rgba(223, 118, 230, 0), #513f81),
+        url("../img/sample-banner2.jpg");
     background-size: cover;
     background-position: center;
     height: 460px;
@@ -466,12 +522,12 @@ a {
     position: absolute;
     top: 50%;
     left: 50%;
-    color: white;
+    /* color: white; */
     transform: translate(-50%, -50%);
 }
-.academics2 .card-text {
+/* .academics2 .card-text {
     color: #000;
-}
+} */
 .academics2 h3 {
     font-style: italic;
     font-weight: bold;
@@ -538,6 +594,18 @@ a {
         text-align: justify;
     }
 }
+
+/* css for academics */
+.programsCards {
+    transition: transform 1s;
+    height: 360px;
+}
+.programsCards:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 13px #e000e7;
+    width: 100%;
+}
+
 /* style for buttons on about page */
 .programsBtn {
     padding: 5px;
@@ -564,6 +632,7 @@ a {
     display: inline-flex;
     align-items: end;
 }
+
 /* style for buttons on about page */
 .learnBtn {
     padding: 5px;

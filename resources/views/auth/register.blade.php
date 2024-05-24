@@ -5,9 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header favColor">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    <div class="text-center">
+                        <img src="../img/mwecau.png" class="img-fluid rounded-circle w-25 h-25  mb-4" alt="club">
+                    </div>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

@@ -16,11 +16,11 @@
                 <div class="row">
                     <h3 class="title">Staff Profile</h3>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card border border-1 border-primary shadow-lg ">
+                        <div class="card shadow-lg">
                             <div class="card-body">
                                 <div class="text-center mb-4"> <img
                                         src="{{ asset('images/staffProfiles/' . $staffProfile->staffProfile_picture) }}"
-                                        class="img-fluid  w-50 " alt=""
+                                        class="img-fluid rounded-circle w-50 " alt=""
                                         style="background-color: rgb(107, 107, 252)"></div>
 
                                 <div class="card-text text-center ">

@@ -53,7 +53,7 @@
                             <tr>
                                 <th style="width: 5%">S/N</th>
                                 <th style="width: 27%">Event name</th>
-                                <th style="width: 27%">Event Category</th>
+                                 <th style="width: 27%">Event Category</th>
                                 <th style="width: 19%">Location</th>
                                 <th style="width: 15%">Date</th>
                                 <th style="width: 19%">Host</th>
@@ -72,15 +72,18 @@
                                     <td class="actions-col">
                                         <a href="{{ route('admin.event-details', [$allUniEvent->id]) }}">
                                             <i class="fa fa-eye actions-icon view"></i>
-                                        </a><i class="fa fa-pen actions-icon edit"></i><i
-                                            class="fa fa-trash actions-icon delete"></i>
+                                        </a>
+                                        <a href="{{ route('admin.edit.event', [$allUniEvent->id]) }}">
+                                            <i class="fa fa-pen actions-icon edit"></i>
+                                        </a>
+                                        <i class="fa fa-trash actions-icon delete"></i>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="view-all-btn">
-                        <a href="{{ route('admin.events.list') }}">
+                        <a href="{{ route('admin.event') }}">
                             <button class="btn">View all >></button>
                         </a>
                     </div>
@@ -114,7 +117,7 @@
                                         <a href="{{ route('edit.staff.profile', [$allUniStaff->id]) }}"> <i
                                                 class="fa fa-pen actions-icon edit"></i></a>
 
-                                         <form action="{{ route('staff.destroy', ['id' => $allUniStaff->id]) }}"
+                                        <form action="{{ route('staff.destroy', ['id' => $allUniStaff->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('DELETE')
@@ -129,11 +132,11 @@
 
                         </tbody>
                     </table>
-                    <div class="view-all-btn">
+                    {{-- <div class="view-all-btn">
                         <a href="{{ route('admin.events.list') }}">
                             <button class="btn">View all >></button>
                         </a>
-                    </div>
+                    </div> --}}
 
                 </div>
                 {{-- programs --}}
@@ -188,7 +191,7 @@
                         </tbody>
                     </table>
                     <div class="view-all-btn">
-                        <a href="{{ route('course-list') }}">
+                        <a href="{{ route('programs-list') }}">
                             <button class="btn">View all >></button>
                         </a>
                     </div>
