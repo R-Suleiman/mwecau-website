@@ -243,8 +243,6 @@ class AdminController extends Controller
         return view('admin.edit-staff-profile', compact('staffDetails'));
     }
 
-
-
     //updating a specific staff profile
     public function updateStaffProfile(Request $request, $id)
     {
