@@ -111,7 +111,7 @@
                                     <td>{{ $allUniStaff->lastName }}</td>
                                     <td>{{ $allUniStaff->department }}</td>
                                     <td class="actions-col">
-                                        <a href="{{ route('staff-profile', [$allUniStaff->id]) }}">
+                                        <a href="{{ route('staff-profiles', [$allUniStaff->id]) }}">
                                             <i class="fa fa-eye actions-icon view"></i>
                                         </a>
                                         <a href="{{ route('edit.staff.profile', [$allUniStaff->id]) }}"> <i

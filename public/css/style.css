@@ -5,6 +5,10 @@ body {
     overflow-x: hidden;
     font-family: "Trebuchet MS", "Lucida Sans Unicode";
 }
+.favbg {
+    background-color: #513f83;
+    color: white;
+}
 /* preloader */
 /* Preloader styles */
 #preloader {
@@ -61,11 +65,24 @@ body:not(.loaded) #content {
 /* navbar css */
 .navbar-nav .nav-link {
     color: white;
+    font-size: 18px;
 }
 /* CSS to enable hover for dropdown */
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
+/* multi-level dropdoen */
+/* .dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+} */
+
 .slide-in-down .nav-item {
     animation: slide-in-down 0.5s ease forwards;
     opacity: 0;
@@ -114,7 +131,6 @@ body:not(.loaded) #content {
     }
 }
 
-
 .sliderArrows {
     color: #e000e7;
 }
@@ -152,10 +168,10 @@ body:not(.loaded) #content {
 
 /* coursel images */
 .background-container {
-    height: 100vh;
+    /* height: 100vh; */
     position: relative;
     overflow: hidden;
-    animation: zoomInOut 10s infinite alternate;
+    /* animation: zoomInOut 10s infinite alternate; */
 }
 .nav-content {
     position: absolute;
@@ -253,19 +269,30 @@ a {
         padding-bottom: 255px;
     }
 }
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
     .secondCard {
-        padding-top: 900px;
+        padding-top: 150px;
     }
 }
-@media only screen and (max-width: 433px) {
+@media only screen and (max-width: 480px) {
     .secondCard {
-        padding-top: 900px;
+        padding-top: 150px;
+    }
+} */
+@media only screen and (max-width: 486px) {
+    .secondCard {
+        padding-top: 130px;
+    }
+}
+@media only screen and (max-width: 430px) {
+    .secondCard {
+        padding-top: 130px;
     }
 }
 @media only screen and (max-width: 992px) {
     .secondCard {
-        padding-top: 100px;
+        padding-top: 130px;
+        width: 100%;
         display: flex;
         justify-content: space-between;
     }
@@ -369,8 +396,16 @@ a {
 }
 .studyingAtMwenge {
     transition: transform 1s;
-    height: 460px;
+    height: 490px;
 }
+/* @media (min-width: 462px) and (max-width: 766px) {
+    .programsBtn {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+} */
+
 .studyingAtMwenge:hover {
     transform: scale(1);
     box-shadow: 1px 1px 13px #e000e7;
@@ -594,7 +629,15 @@ a {
         text-align: justify;
     }
 }
-
+@media only screen and (max-width: 856) {
+    .left2 {
+        width: 98%;
+        margin: 0;
+        margin-top: -130px;
+        margin-left: 100px;
+        text-align: justify;
+    }
+}
 /* css for academics */
 .programsCards {
     transition: transform 1s;
@@ -612,7 +655,7 @@ a {
     border: 1px solid #513f81;
     color: #fff;
     border-radius: 5px;
-    background-color: #513f83;
+    background-color: #e000e7;
 }
 .programsBtn:hover {
     /* background-color: #513f81; */
@@ -1154,9 +1197,7 @@ select {
     align-items: center;
     justify-content: space-between;
 }
-.campus-row a {
-    text-decoration: none;
-}
+
 .campus-card {
     display: flex;
     flex-direction: column;
@@ -1186,120 +1227,236 @@ select {
     transform: scale(1.1);
 }
 
-@media screen and (max-width: 950px) {
-    .events-cont {
-        margin: 15px 0;
-        padding: 0;
-    }
-    .event-img img {
-        width: 100%;
-        height: 150px;
-    }
-
-    .campus-row {
-        margin: 10px 5px;
-        padding: 10px 5px;
-    }
-
-    .campus-card img {
-        width: 98%;
-    }
-
-    .talent-content-container {
-        padding: 30px 50px 110px 200px;
-    }
+.talent-cont {
+    margin: 30px 10px 30px auto;
+    padding: 20px 5px;
 }
 
-@media screen and (max-width: 767px) and (min-width: 480px) {
-    .event-img img {
-        width: 80%;
-        height: 250px;
-    }
+.talent-content-container {
+    width: 70%;
+    margin-left: auto;
+    background-color: white;
+    display: flex;
+    padding: 30px;
+    align-items: center;
+}
 
-    .events-cont {
-        margin: 15px;
-        padding: 10px;
-    }
+.talent-pics {
+    width: 80%;
+    height: auto;
+    margin-left: -45%;
+    margin-right: 10px;
+    /* position: relative; */
+}
 
-    .event-row {
-        width: 100%;
-    }
+.talent-content {
+    width: 75%;
+    margin-left: auto;
+    padding: 10px;
+}
 
-    .speaker-profile {
-        width: 100%;
-        padding: 10px 5px;
-        margin: 5px 0;
-    }
+.talent-content-container p {
+    font-size: 20px;
+    color: rgb(99, 97, 97);
+    margin-bottom: 20px;
+}
 
-    .about-event {
-        width: 100%;
-        padding: 30px;
-    }
+.talent-content-container h3 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: rgb(99, 97, 97);
+}
 
-    .speaker-profile img {
-        width: 20%;
-        height: 80px;
-        margin-right: 5px;
-    }
+.talent-pics img {
+    width: 100%;
+    max-width: 600px;
+    margin: 5px;
+    cursor: pointer;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+}
 
-    .event-inputs {
-        flex-direction: column;
-    }
+.pic-nav h3 {
+    cursor: pointer;
+}
 
-    .event-form2 input {
-        width: 98%;
-        border: 1px solid #513f83;
-    }
+.fade-in {
+    display: block; /* Display the image when fade-in class is added */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
 
-    .event-header h2 {
-        font-size: 22px;
-    }
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: none;
+}
 
-    .event-header img {
-        width: 100%;
-    }
+.campus-gallery {
+    width: 100%;
+    margin: 10px auto;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
-    .card-1 {
-        width: 70%;
-        float: left;
-    }
+.gallery-pic {
+    height: auto;
+    width: 22%;
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+}
 
-    .card-2 {
-        width: 70%;
-        margin: 0 auto;
-    }
+.campus-gallery-img {
+    width: 100%;
+    transition: transform 1s;
+    z-index: 0;
+}
 
-    .card-3 {
-        width: 70%;
-        margin-left: auto;
-    }
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
-    .talent-content-container {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
+.gallery-pic:hover .campus-gallery-img {
+    cursor: pointer;
+    transform: scale(1.1);
+}
 
-    .talent-pics {
-        width: 100%;
-        height: 300px;
-        left: 0;
-        top: 0;
-        margin-bottom: 50px;
-    }
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(81, 63, 131, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
 
-    .talent-content p {
-        text-align: center;
-    }
+.gallery-pic:hover .gallery-overlay {
+    opacity: 1;
+}
 
-    .pic-nav {
-        width: 75%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+.gallery-overlay-icon {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.sports {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.sports-col2,
+.sports-col1 {
+    flex: 1;
+    padding: 0;
+    margin: 0px 10px;
+    overflow: hidden;
+}
+
+.sports-col1 {
+    position: relative;
+}
+
+.sports-col1 img {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+}
+
+.sports-col1:hover .sports-col1-img {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.sports-col2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.col2-div1 {
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.col2-div2 {
+    position: relative;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.col2-div1:hover .sp-1 {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.col2-div2:hover .sp-2 {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.sports-col2-img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+    transition: transform 1s;
+}
+
+.sport-tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #513f83;
+    color: white;
+    padding: 5px;
+    width: fit-content;
+}
+
+.sport-tag p {
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    margin: 5px;
+}
+
+/* ICT SERVICES */
+.ict-row {
+    margin: 10px 10px;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ict-resource-row {
+    padding: 0 10px;
+}
+
+.ict-resource {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin: 2px 0;
+}
+
+.ict-resource:hover {
+    color: blue;
+}
+
+.ict-resource i {
+    margin-right: 8px;
 }
 
 /* Events */
@@ -1722,4 +1879,21 @@ select {
 
 .prof-qual-table {
     display: none;
+}
+
+@media screen and (max-width: 950px) {
+    .campus-row {
+        margin: 10px 5px;
+        padding: 10px 5px;
+      }
+
+      .campus-card img {
+        width: 98%;
+      }
+
+      .campus-gallery div {
+        width: 45%;
+        margin: 4px;
+      }
+
 }

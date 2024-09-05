@@ -25,20 +25,6 @@
 
                         </div>
 
-                        {{-- <div class="col-12 col-md-6 col-lg-6 mb-4">
-                    <label class="fw-bold mb-3" for="course_entry_qualification">{{ 'Entry Qualification' }}</label>
-                    <input type="text" class="form-control @error('course_entry_qualification') is-invalid @enderror"
-                        value="{{ old('course_entry_qualification') }}" name="course_entry_qualification" id="course_entry_qualification"
-                        placeholder="What's entry qualification for the course">
-
-                    @error('course_entry_qualification')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-
-                </div> --}}
-
                         <div class="col-12 col-md-6 col-lg-6 mb-4">
                             <label class="fw-bold mb-3 " for="course_code">Course Code</label>
                             <input type="text" class="form-control @error('course_code') is-invalid @enderror"

@@ -54,7 +54,28 @@
                         <span class="nav-words">Events</span>
                     </li>
                 </a>
-                <a href="">
+
+                <a href="{{ route('admin.post.announcement') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Post Announcement</span>
+                    </li>
+                </a>
+
+                <a href="{{ route('admin.all.site.images') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Manage Site images</span>
+                    </li>
+                </a>
+
+                <a href="{{ route('admin.statistics') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Uni statistics</span>
+                    </li>
+                </a>
+                <a href="{{ route('site.images') }}">
                     <li class="nav-item">
                         <i class="fa fa-key nav-icons"></i>
                         <span class="nav-words">Change Password</span>

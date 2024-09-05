@@ -14,10 +14,9 @@ class StaffController extends Controller
         return view('mwecau-staffs', compact('staffs'));
     }
     // returning staff profile
-    public function staffProfile($id){
+    public function staffProfile($first_name, $last_name){
 
-        $staffProfile = staff::findOrFail($id);
-        return view('mwecau-staff-profile', compact('staffProfile'));
+        return view('mwecau-staff-profile', compact('first_name', 'last_name'));
     }
 
 }

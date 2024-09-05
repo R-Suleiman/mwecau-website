@@ -92,8 +92,28 @@
                         Mwenge Catholic University prepares students with the transformative experience and to be
                         well-rounded leaders whomake a positive impact on the world.
                     </p>
+                    {{-- counter --}}
+                    <div class="container-fluid my-3" style="background-color: white">
+                        <div class="row d-flex p-2 fs-4">
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="establishedCount"></span>
+                                <label>Established</label>
+                            </div>
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="facultyCount"></span>
+                                <label>Faculties</label>
+                            </div>
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="studentsCount"></span>
+                                <label>Students</label>
+                            </div>
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="gRareCount"></span>
+                                <label>Graduation Rate</label>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="elfsight-app-bb3abb2b-f006-4982-93a0-a3efdda478c1" data-elfsight-app-lazy></div>
                 </div>
 
             </div>
@@ -107,14 +127,18 @@
             <div class="row justify-content-around align-items-start">
                 <!-- post-graduate -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4 d-md-block">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded d-" alt="Welcome at Mwecau">
+                    @if ($postgraduateImage)
+                        <img src="{{ asset('/images/pageImages/' . $postgraduateImage->image) }}"
+                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded d-" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h1>Post-Graduate programs</h1>
+                                <h2>{{Str::ucfirst($postgraduateImage->header)  }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -125,8 +149,8 @@
                                     the
                                     right one for you.
                                 </p>
-                                <a href="{{ route('post-graduate') }}"> <button class="programsBtn">Post-Graduate
-                                        Courses <i class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{ route('programmeCategory', 'post-graduate') }}"> <button class="programsBtn">Post-Graduate
+                                        Programs <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>
                         </div>
@@ -135,13 +159,17 @@
 
                 <!-- undergraduate -->
                 <div class="right2 col-12 col-md-6 col-lg-6 mb-4 d-md-block d-lg-none d-sm-block">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @if ($undergraduateImage)
+                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}"
+                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
                 <div class="left2 col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h1>Undergraduate programs</h1>
+                                <h2>{{Str::ucfirst($undergraduateImage->header)  }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -149,27 +177,35 @@
                                     benefit from the extraordinary resources. Browse our undergraduate programs and find
                                     the right one for you.
                                 </p>
-                                <a href="{{ route('undergraduate') }}"><button class="programsBtn">Undergraduate
-                                        Courses <i class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{ route('programmeCategory', 'undergraduate') }}"><button class="programsBtn">Undergraduate
+                                        Programs <i class="fas fa-arrow-right"></i></button></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="right2 col-12 col-md-12 col-lg-6 mb-4 d-none d-lg-block d-md-none">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @if ($undergraduateImage)
+                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}"
+                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <!-- Non-degree programs -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @if ($nonDegreeImage)
+                    <img src="{{ asset('/images/pageImages/' . $nonDegreeImage->image) }}"
+                        class="img-fluid rounded" alt="Welcome at Mwecau">
+                @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h1>Non-Degree programs</h1>
+                                <h2>{{Str::ucfirst($nonDegreeImage->header)  }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -177,8 +213,8 @@
                                     student benefit from the extraordinary resources. Browse our non-degree programs and
                                     find the right one for you.
                                 </p>
-                                <a href="{{ route('non-degree') }}"> <button class="programsBtn">Non-degree Courses <i
-                                            class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{ route('programmeCategory', 'non-degree') }}"> <button class="programsBtn">Non-Degree Programs
+                                        <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>
                         </div>
@@ -187,7 +223,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- academics images -->
     <section>
@@ -242,6 +277,7 @@
     <!-- jQuery -->
 
     <script src="custom.js"></script>
+    <script src="{{ asset('../js/counter.js') }}"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="node_modules/aos/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

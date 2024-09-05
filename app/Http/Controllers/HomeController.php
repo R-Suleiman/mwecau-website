@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\event;
+use App\Models\Image;
 use App\Models\staff;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -31,10 +32,11 @@ class HomeController extends Controller
     // }
     public function index()
     {
-
+        // $images = Image::orderBy('created_at', 'desc')->get();
+        $images = Image::all();
         $UniversityEvents = Event::all();
         $latestEvent = Event::latest()->take(1)->get();
-        return view('welcome', compact('latestEvent', 'UniversityEvents'));
+        return view('welcome', compact('latestEvent', 'UniversityEvents', 'images'));
     }
 
     public function about()
@@ -49,6 +51,28 @@ class HomeController extends Controller
     public function campusLife()
     {
         return view('campus-life');
+    }
+    public function itServices()
+    {
+        $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
+        return view('IT-services', compact('ictBanner'));
+    }
+    public function research()
+    {
+        $images = Image::all();
+        $UniversityEvents = Event::all();
+        $latestEvent = Event::latest()->take(1)->get();
+        return view('research', compact('latestEvent', 'UniversityEvents', 'images'));
+    }
+    public function uniEvents()
+    {
+        $event = Event::all();
+        return view('all-uni-events', compact('event'));
+    }
+    public function newsUpdates()
+    {
+        $newsUpdates = Event::all();
+        return view('news-updates', compact('newsUpdates'));
     }
     public function icons()
     {

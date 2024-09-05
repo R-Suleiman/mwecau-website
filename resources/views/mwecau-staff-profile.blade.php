@@ -1,3 +1,20 @@
+@php
+    $staff_details;
+    $staff_department;
+    foreach ($faculties as $faculty) {
+        $faculty_departments = $faculty['departments'];
+        foreach ($faculty_departments as $department) {
+            $department_staffs = $department['staffs'];
+            foreach ($department_staffs as $staff) {
+                if ($staff['first_name'] === $first_name && $staff['last_name'] === $last_name) {
+                    $staff_department = $department;
+                    $staff_details = $staff;
+                }
+            }
+        }
+    }
+@endphp
+
 @include('links')
 @include('partials.navbar')
 <section class="main-section">
@@ -12,18 +29,25 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card shadow-lg darkMode">
                         <div class="card-body">
-                            <div class="text-center mb-4"> <img
-                                    src="{{ asset('images/staffProfiles/' . $staffProfile->staffProfile_picture) }}"
-                                    class="img-fluid rounded-circle w-50 " alt=""
-                                    style="background-color: rgb(107, 107, 252)"></div>
+                            @if ($staff_details['photo'] === '')
+                                @if ($staff_details['gender'] === 'M')
+                                    <div class="text-center mb-4">
+                                        <img src="{{ asset('../img/staff profiles/Male_Avatar.jpg') }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                    </div>
+                                @else
+                                    <div class="text-center mb-4">
+                                        <img src="{{ asset('../img/staff profiles/female_avatar.jpg') }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                    </div>
+                                @endif
+                            @else
+                                <div class="text-center mb-4">
+                                    <img src="" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                </div>
+                            @endif
 
                             <div class="card-text text-center ">
-                                <span> <strong>{{ $staffProfile->title }}</strong> {{ $staffProfile->firstName }}
-                                    {{ $staffProfile->lastName }}</span> <br>
-                                <span> <strong>Department : </strong> {{ $staffProfile->department }} </span><br>
-                                <span> <strong
-                                        class="text-danger">{{ 'Sehemu hii natakiwa nieweke title ya staff' }}</strong>
-                                </span>
+                                <span>{{ $staff_details['first_name'] }}
+                                    {{ $staff_details['last_name'] }}</span> <br>
                             </div>
                         </div>
                     </div>
@@ -33,49 +57,30 @@
                     <table class="table table-success table-hover table-bordered table-striped ">
                         <tr>
                             <th>Name: </th>
-                            <td>{{ $staffProfile->firstName }} {{ $staffProfile->lastName }}</td>
+                            <td>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}
+                                {{ $staff_details['other_name'] }} {{ $staff_details['last_name'] }}</td>
                         </tr>
                         <tr>
                             <th>Gender: </th>
-                            <td>{{ $staffProfile->gender }}</td>
+                            <td>{{ $staff_details['gender'] }}</td>
                         </tr>
                         <tr>
-                            <th>Nationality: </th>
-                            <td class="text-uppercase">{{ $staffProfile->nationality }}</td>
+                            <th>Designation: </th>
+                            <td>{{ $staff_details['position'] }}</td>
                         </tr>
                         <tr>
-                            <th>Language: </th>
-                            <td>{{ $staffProfile->language }}</td>
+                            <th>Department: </th>
+                            <td>{{ $staff_department['dept_name'] }} ({{ $staff_department['dept_short_name'] }})</td>
+                        </tr>
+                        <tr>
+                            <th>Specialization: </th>
+                            <td>{{ $staff_details['specialization'] }}</td>
+                        </tr>
+                        <tr>
+                            <th>Highest Award Level: </th>
+                            <td>{{ $staff_details['highest_award_level'] }}</td>
                         </tr>
                     </table>
-
-                    <div class="row">
-                        <div class="col-sm-4 col-md-4 col-lg-4">
-                            <h5 class="mb-2">Personal Contacts</h5>
-                            <div class="mb-0">
-                                <i class=" fa fa-envelope"></i>
-                                <span>{{ $staffProfile->email }}</span>
-                            </div> <br>
-
-                            <div>
-                                <i class=" fa fa-phone"></i>
-                                <span>{{ $staffProfile->phone }}</span>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4 col-md-4 col-lg-8">
-                            <h5 class="mb-2">Office Contacts</h5>
-                            <div class="mb-0">
-                                <i class=" fa fa-envelope"></i>
-                                <span>{{ $staffProfile->email }}</span>
-                            </div><br>
-
-                            <div class="mb-2">
-                                <i class=" fa fa-phone"></i>
-                                <span>{{ $staffProfile->phone }}</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -84,22 +89,24 @@
         <div class="content-box">
             <div class="container ">
                 <div class="about">
-                    <span class="favColor fw-bold darkMode mt-3">About {{ $staffProfile->firstName }}</span>
-                    <p>{{ $staffProfile->aboutStaff }}</p>
-
-                    <h4 class="favColor darkMode">Academic Qualifications</h4>
-                    <p>
-                        @php
-                            $descriptionSentences = explode('.', $staffProfile->academicQualification);
-                        @endphp
-
-                        @foreach ($descriptionSentences as $sentence)
-                            <p>{{ $sentence }}.</p>
-                        @endforeach
-                    </p>
+                    <h4 class="favColor">About {{ $staff_details['first_name'] }} {{ $staff_details['last_name'] }}
+                    </h4>
+                    <p>Bio Coming soon...</p>
                 </div>
 
-                <div>
+                <div class="about">
+                    <h4 class="favColor">Contacts</h4>
+                    <div class="my-2">
+                        <i class=" fa fa-envelope"></i>
+                        <label>{{ $staff_details['official_email'] }}</label>
+                    </div>
+                    <div class="my-2">
+                        <i class=" fa fa-phone"></i>
+                        <label>{{ $staff_details['phones'] }}</label>
+                    </div>
+                </div>
+
+                {{-- <div>
                     <div class="d-flex gap-3">
                         <button class="btn btn-secondary mb-2 btn-sm darkMode">
                             <i class="fa fa-graduation-cap icon"></i> Academic Qualifications
@@ -182,7 +189,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

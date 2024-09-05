@@ -71,3 +71,18 @@ $(document).ready(function () {
     ],
   })
 })
+
+        // home corousel
+        $(document).ready(function() {
+            $('.homeSlider').slick({
+                dots: true,
+                infinite: true,
+                speed: 1000,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                fade: true,
+                cssEase: 'linear',
+                adaptiveHeight: true
+            });
+        });
+
