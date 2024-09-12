@@ -1,89 +1,77 @@
 @extends('layouts.admin')
 
 @section('content')
-<section class="main-section">
-      <div class="main-content">
-        <div class="stats-box">
-          <h3 class="title">Events</h3>
+    <section class="main-section">
+        <div class="main-content">
+            <div class="text-end m-3">
+                <a href="{{ route('admin.event') }}">
+
+                    <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Event</button>
+                </a>
+            </div>
+
+            <div class="content-box">
+                <div class="category-content">
+                    @php
+                        $counter = 1;
+                    @endphp
+                    <table class="myTable content-table">
+                        <thead>
+                            <tr class="favbg">
+                                <th style="width: 5%">S/N</th>
+                                <th style="width: 27%">Event name</th>
+                                <th style="width: 19%">Location</th>
+                                <th style="width: 15%">Date</th>
+                                <th style="width: 19%">Host</th>
+                                <th style="width: 15%">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($events as $event)
+                                <tr>
+                                    <td>{{ $counter++ }}</td>
+                                    <td>{{ $event->event_title }}</td>
+                                    <td>{{ $event->event_location }}</td>
+                                    <td>{{ $event->event_date }}</td>
+                                    <td>{{ $event->event_organizer }}</td>
+                                    <td class="actions-col">
+
+                                        <a href="{{ route('admin.event-details', [$event->id]) }}">
+                                            <button class="btn btn-secondary"> <i class="fa fa-eye"
+                                                    aria-hidden="true"></i></button>
+                                        </a>
+
+                                        <a href="{{ route('admin.edit.event', $event->id) }}">
+                                            <button class="btn btn-warning mx-3"> <i class="fa fa-pencil"
+                                                    aria-hidden="true"></i></button>
+                                        </a>
+
+                                        <form action="{{ route('admin.destroy.event', $event->id) }}" method="POST">
+                                            @csrf
+                                            @method('POST')
+                                            <button class="btn btn-danger"> <i class="fa fa-trash"
+                                                    aria-hidden="true"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
-        <div class="content-box">
-          <div class="find-events">
-            <form class="event-form">
-              <div class="form-group">
-                <label for="date">Date from:</label><br />
-                <input type="date" name="date" id="date" style="width: 65%" />
-              </div>
-              <div class="form-group">
-                <select name="category">
-                  <option value="All categories">All</option>
-                  <option value="Academic">Academics</option>
-                  <option value="Entertainments">Entertainments</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  name="keywords"
-                  placeholder="search program"
-                />
-              </div>
-              <div class="form-group" style="width: 10%; padding: 0">
-                <button class="btn">Search</button>
-              </div>
-            </form>
-          </div>
-
-          <div class="category-content">
-            @php
-                $counter = 1;
-            @endphp
-            <table class="content-table">
-              <thead>
-                <tr>
-                  <th style="width: 5%">S/N</th>
-                  <th style="width: 27%">Event name</th>
-                  <th style="width: 19%">Location</th>
-                  <th style="width: 15%">Date</th>
-                  <th style="width: 19%">Host</th>
-                  <th style="width: 15%">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($events as $event )
-              <tr>
-                  <td>{{ $counter++ }}</td>
-                  <td>{{ $event->event_title }}</td>
-                  <td>{{ $event->event_location }}</td>
-                  <td>{{ $event->event_date }}</td>
-                  <td>{{ $event->event_organizer }}</td>
-                  <td class="actions-col">
-                    <a href="{{ route('admin.event-details', [$event->id]) }}">
-                      <i class="fa fa-eye actions-icon view"></i>
-                    </a>
-                    <i class="fa fa-pen actions-icon edit"></i
-                    ><i class="fa fa-trash actions-icon delete"></i>
-                  </td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-
-            <!-- pagination here -->
-          </div>
-        </div>
-      </div>
     </section>
 @endsection
 
 
-    <script>
-      const eventsTable = document.querySelector('.events-table')
+<script>
+    const eventsTable = document.querySelector('.events-table')
 
-      window.addEventListener('load', () => {
+    window.addEventListener('load', () => {
         eventsTable.style.display = 'block'
-      })
-    </script>
-    {{-- <script src="./sidebar.js"></script> --}}
-  </body>
+    })
+</script>
+{{-- <script src="./sidebar.js"></script> --}}
+</body>
+
 </html>

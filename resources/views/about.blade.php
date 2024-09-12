@@ -33,7 +33,7 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/img/university-image-4.JPG" class="d-block w-100 background-container" alt="..." />
+                <img src="/img/mwecau_image3.JPG" class="d-block w-100 background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
                         <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/img/university-image1.JPG" class="d-block w-100 background-container" alt="..." />
+                <img src="/img/mwecau_image5.JPG" class="d-block w-100 background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
                         <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
@@ -60,7 +60,7 @@
             </div>
             <div class="carousel-item">
                 {{-- <img src="../i" alt=""> --}}
-                <img src="/img/site banners/BANNER APPLIED BIOLOGY.jpg"
+                <img src="/img/mwecau_image1.JPG"
                     class="d-block w-100 img-fluid background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
@@ -411,16 +411,16 @@
     <div class="container-fluid mt-5 mb-5">
         <div class="row gallery">
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/students1.JPG" alt="">
+                <img src="/img/mwecau_image1.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/uni.jpg" alt="">
+                <img src="/img/mwecau_image2.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/students3.jpg" alt="">
+                <img src="/img/mwecau_image3.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/students2.JPG" alt="">
+                <img src="/img/mwecau_image4.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
                 <img src="/img/uni.jpg" alt="">

@@ -59,6 +59,9 @@
                 <div class="collapse navbar-collapse slide-in-dow" id="navmenu">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
+                            <a href="{{ url('/') }}" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('faculty', $faculty_name) }}" class="nav-link">About</a>
                         </li>
 
@@ -70,14 +73,15 @@
                             <ul class="dropdown-menu">
                                 @foreach ($faculty_departments as $department)
                                     <li><a class="dropdown-item"
-                                            href="{{ route('department', [ $faculty_name, $department['dept_name']]) }}">{{ $department['dept_name'] }}</a>
+                                            href="{{ route('department', [$faculty_name, $department['dept_name']]) }}">{{ $department['dept_name'] }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('department.programmes', [$faculty_name]) }}">Programmes</a>
+                            <a class="nav-link"
+                                href="{{ route('department.programmes', [$faculty_name]) }}">Programmes</a>
                         </li>
 
                         <li class="nav-item">
@@ -289,7 +293,7 @@
     <script src="{{ asset('../../jquery/js/dataTables.bootstrap5.min.js') }}"></script>
     {{-- <script src="{{ asset('js/counter.js') }}"></script> --}}
 
-@include('jslinks')
+    @include('jslinks')
 
     {{-- <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script> --}}
 </body>

@@ -1,3 +1,22 @@
+@php
+    $postgraduateProgrammes = [];
+    $undergraduateProgrammes = [];
+    $nondegreeProgrammes = [];
+    foreach ($faculties as $faculty) {
+        foreach ($faculty['departments'] as $department) {
+            foreach ($department['programmes'] as $programme) {
+                if ($programme['study_level_code'] === 'MAS' || $programme['study_level_code'] === 'PHD') {
+                    array_push($postgraduateProgrammes, $programme);
+                } elseif ($programme['study_level_code'] === 'DEG') {
+                    array_push($undergraduateProgrammes, $programme);
+                } elseif ($programme['study_level_code'] === 'CET' || $programme['study_level_code'] === 'DIP') {
+                    array_push($nondegreeProgrammes, $programme);
+                }
+            }
+        }
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,131 +51,114 @@
         </div>
 
         {{-- postgraduate course --}}
-        <div class="postgraduate-table">
+        <div class="postgraduate-table my-5">
             @php
                 $postgraduatecounter = 1;
             @endphp
             <h4 class="mb-4 mt-4">Post-Graduate programs</h4>
-            <table class="table table-bordered table-secondary table-responsive">
+            <table  class="myTable table table-bordered text-sm">
                 <thead>
-                    <tr>
-                        <th>Course title</th>
-                        <th>Action</th>
+                    <tr class="favbg">
+                        <th>S/N</th>
+                        <th>Programme ID</th>
+                        <th>Program Name</th>
+                        <th>Duration</th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($courses as $course)
-                        @if ($course->course_category == 'postgraduate')
+                        @foreach ($postgraduateProgrammes as $programme)
                             <tr>
-                                <td> <strong> {{ $postgraduatecounter++ }} : </strong>
-                                    <a href="{{ route('course_details', $course->id) }}"
-                                        class="text-decoration-none text-dark">
-                                        {{ $course->course_title }}
-                                    </a>
-                                </td>
+                                <td>{{ $postgraduatecounter++ }}</td>
+                                <td>{{ $programme['programme_id'] }}</td>
+                                <td>{{ $programme['programme_name'] }}</td>
+                                <td>{{ $programme['prog_duration'] }} years</td>
                                 <td>
-                                    <a href="{{ route('course_details', $course->id) }}">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
+                                    <a
+                                        href="{{ route('course_details', ['post-graduate', $programme['programme_name']]) }}"><button
+                                            class="btn btn-outline-secondary">view</button></a>
                                 </td>
                             </tr>
-                        @endif
-                    @endforeach
-
+                        @endforeach
                 </tbody>
+
             </table>
-            <div>
+            {{-- <div>
                 <a href="{{ route('all.courses.pdf') }}">
                     <p class="favColor darkMode">Download PDF <i class="favColor far fa-file-pdf fs-2"
                             aria-hidden="true"></i></p>
                 </a>
-
-            </div>
-            @if ($courses->isEmpty())
-                <p class="alert alert-warning fw-bold " role="alert">Currently No Course registered</p>
-            @endif
+            </div> --}}
         </div>
 
         {{-- undergraduate table --}}
-        <div class="undergraduate-table">
+        <div class="undergraduate-table my-5">
             @php
                 $undergraduatecounter = 1;
             @endphp
             <h4 class="mb-4 mt-4">{{ 'Undergraduate programs' }}</h4>
-            <table class="table table-bordered table-secondary table-responsive">
+            <table class="myTable table table-bordered text-sm">
                 <thead>
-                    <tr>
-                        <th>Course title</th>
-                        <th>Action</th>
+                    <tr class="favbg">
+                        <th>S/N</th>
+                        <th>Programme ID</th>
+                        <th>Program Name</th>
+                        <th>Duration</th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($courses as $course)
-                        @if ($course->course_category == 'undergraduate')
+                        @foreach ($undergraduateProgrammes as $programme)
                             <tr>
-                                <td> <strong> {{ $undergraduatecounter++ }} : </strong> <a
-                                        href="{{ route('course_details', $course->id) }}"class="text-decoration-none text-dark ">{{ $course->course_title }}</a>
-                                </td>
-                                <td><a href="{{ route('course_details', $course->id) }}">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> </a>
-
+                                <td>{{ $undergraduatecounter++ }}</td>
+                                <td>{{ $programme['programme_id'] }}</td>
+                                <td>{{ $programme['programme_name'] }}</td>
+                                <td>{{ $programme['prog_duration'] }} years</td>
+                                <td>
+                                    <a
+                                        href="{{ route('course_details', ['post-graduate', $programme['programme_name']]) }}"><button
+                                            class="btn btn-outline-secondary">view</button></a>
                                 </td>
                             </tr>
-                        @endif
-                    @endforeach
+                        @endforeach
                 </tbody>
-            </table>
-            <div>
-                <a href="{{ route('all.courses.pdf') }}">
-                    <p class="favColor darkMode">Download PDF <i class="favColor far fa-file-pdf fs-2"
-                            aria-hidden="true"></i></p>
-                </a>
 
-            </div>
-            @if ($courses->isEmpty())
-                <p class="alert alert-warning fw-bold " role="alert">Currently No Course registered</p>
-            @endif
+            </table>
         </div>
 
         {{-- NonDegree table --}}
-        <div class="nonDegree-table">
+        <div class="nonDegree-table my-5">
             @php
                 $nonDegereeCounter = 1;
             @endphp
             <h4 class="mb-4 mt-4">{{ 'Non Degree programs' }}</h4>
-            <table class="table table-bordered table-secondary table-responsive">
+            <table class="myTable table table-bordered text-sm">
                 <thead>
-                    <tr>
-                        <th>Course title</th>
-                        <th>Action</th>
+                    <tr class="favbg">
+                        <th>S/N</th>
+                        <th>Programme ID</th>
+                        <th>Program Name</th>
+                        <th>Duration</th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($courses as $course)
-                        @if ($course->course_category == 'non-degree')
+                        @foreach ($nondegreeProgrammes as $programme)
                             <tr>
-                                <td> <strong> {{ $nonDegereeCounter++ }} : </strong> <a
-                                        href="{{ route('course_details', $course->id) }}"class="text-decoration-none text-dark ">{{ $course->course_title }}</a>
-                                </td>
-                                <td><a href="{{ route('course_details', $course->id) }}">
-                                        <i class="fa fa-eye" aria-hidden="true"></i> </a>
-
+                                <td>{{ $nonDegereeCounter++ }}</td>
+                                <td>{{ $programme['programme_id'] }}</td>
+                                <td>{{ $programme['programme_name'] }}</td>
+                                <td>{{ $programme['prog_duration'] }} years</td>
+                                <td>
+                                    <a
+                                        href="{{ route('course_details', ['post-graduate', $programme['programme_name']]) }}"><button
+                                            class="btn btn-outline-secondary">view</button></a>
                                 </td>
                             </tr>
-                        @endif
-                    @endforeach
+                        @endforeach
                 </tbody>
-            </table>
-            <div>
-                <a href="{{ route('all.courses.pdf') }}">
-                    <p class="favColor darkMode">Download PDF <i class="favColor far fa-file-pdf fs-2"
-                            aria-hidden="true"></i></p>
-                </a>
 
-            </div>
-            @if ($courses->isEmpty())
-                <p class="alert alert-warning fw-bold " role="alert">Currently No Course registered</p>
-            @endif
+            </table>
         </div>
     </div>
 

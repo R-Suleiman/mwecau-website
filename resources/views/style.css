@@ -509,7 +509,7 @@ a {
 }
 
 .academics2 {
-    background-image: linear-gradient(rgba(223, 118, 230, 0.3), #513f81),
+    background-image:
         url("../img/students2.JPG");
     background-size: cover;
     background-position: center;

@@ -64,7 +64,6 @@
                         <th>Programme ID</th>
                         <th>Programme Name</th>
                         <th>Duration</th>
-                        <th>Delivery Mode</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -76,7 +75,6 @@
                             <td>{{ $programme['programme_id'] }}</td>
                             <td>{{ $programme['programme_name'] }}</td>
                             <td>{{ $programme['prog_duration'] }} years</td>
-                            <td></td>
                             <td><a class="text-decoration-none"
                                     href="{{ route('course_details', [$programme_category, $programme['programme_name']]) }}">
                                     View <i class="fas fa-eye"></i> </td></a>

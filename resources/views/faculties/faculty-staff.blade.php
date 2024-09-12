@@ -37,7 +37,7 @@
                         @foreach ($staffs as $staff)
                             <tr>
                                 <td>{{ $counter++ }}</td>
-                                <td>{{ $staff['first_name'] }}</td>
+                                <td>{{ $staff_details['salutation'] }}. {{ $staff['first_name'] }}</td>
                                 <td>{{ $staff['other_name'] }}</td>
                                 <td>{{ $staff['last_name'] }}</td>
                                 <td>{{ $department['dept_short_name'] }}</td>

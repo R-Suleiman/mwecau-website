@@ -229,42 +229,41 @@
         <div class="academics2">
             <div class="container academicsText2 p-sm-5">
                 <div class="row g-5 ">
-                    <div class="col-12 col-md-6 mb-2">
+                    <div class="col-12 col-md-12 col-lg-6 mb-2">
                         <div class="card shadow-lg darkMode">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h3>Learning Abroad</h3>
                                 </div>
                                 <div class="card-text mb-3">
-                                    Mwenge Catholic University is a global institution, and there are vast opportunities
-                                    to learn and pursue research
+                                    <p>
+                                        Mwenge Catholic University (MWECAU) offers students the chance to boarden their academic and cultural horizons through international student exchange programs. Partnering with prestigious institutions such as Inland Norway University of Applied Science, Mary Immaculate College in Ireland Catholic University of Louvain in Belgium, and the University of Georgia (UGA) in the United States, MWECAU provides a platform for student to engage with diverse global perspectives. These opportunities enrich their educational experience, enhance intercultural understanding, and strengthen their global networks.
+                                    </p>
                                 </div>
-                                <button class="learnBtn">Learn more <i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 mb-2">
+                    <div class="col-12 col-md-12 col-lg-6 mb-2">
                         <div class="card shadow-lg darkMode">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h3>Career Development</h3>
                                 </div>
                                 <div class="card-text mb-2">
-                                    We empower you to discover your interests and pursue your passions while studying.
+                                   Mwenge Catholic Univeristy (MWECAU) provides students with the opportunity to engange with contemporary issues critical to todays's society, offering speciaized courses in area such as child protection, executive management, servant leadership, entrepreneurship, and digital marketing. Through these students gains practical skills and knowledge that prepare them to address modern challenges, lead with integrity and thrive i dynamic business and social environment. MWECAU equips graduates with the tools to make meaningful and global workforce.
                                 </div>
-                                <button class="learnBtn">Learn more <i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="text-center text-white mt-3">
+                {{-- <div class="text-center text-white mb-5">
                     <h2 class="">Not sure what to study?</h2>
                     <span>Discover the right program for you</span> <br>
                     <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i
                             class="fas fa-arrow-circle-right"></i></button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

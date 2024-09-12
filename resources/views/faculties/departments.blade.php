@@ -20,8 +20,8 @@
 @section('content')
     <section class="main-section">
         <div class="header-box text-center my-5">
-            <h1 class="fs-2 text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})</h1>
-            <h3 class="fs-4 text-center favColor mt-3 mb-3">{{ $dept_name }} ({{ $department_data['dept_short_name'] }})</h3>
+            {{-- <h1 class="fs-2 text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})</h1> --}}
+            <h1 class="fs-4 fw-bold text-center favColor mt-3 mb-3">{{ $dept_name }} ({{ $department_data['dept_short_name'] }})</h1>
         </div>
         <div class="content-box">
             <div class="profile">
@@ -33,10 +33,6 @@
                         <table class="bio-tb">
                             <tr>
                                 <th>Name: </th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Title: </th>
                                 <td></td>
                             </tr>
                             <tr>
@@ -63,8 +59,8 @@
                     <p>{{ $department_data['dept_descriptions'] }}</p>
                 </div>
 
-                <div class="about">
-                    <h5>Programs under Department</h5>
+                <div class="about mt-5 mb-5">
+                    <h5 class="mb-4">Programs under Department</h5>
                     <div class="tables">
                        <table id="myTable" class=" table table-bordered text-sm">
                         <thead>

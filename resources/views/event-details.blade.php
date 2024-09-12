@@ -7,8 +7,8 @@
                 <div class=" container-fluid event-header">
                     <p>{{ $eventDetails->event_category }}</p>
                     <div class="underline mt-1 mb-3">
-                        <h3 style="text-align: center">About <strong
-                                class="favColor fs-4">{{ $eventDetails->event_title }} </strong> Event</h3>
+                        <h3 style="text-align: center"> <strong
+                                class="favColor fs-1">{{ $eventDetails->event_title }} </strong> </h3>
                     </div>
                     <div class="mt-4">
                         <img src="{{ asset('images/eventImages/' . $eventDetails->event_image) }}"

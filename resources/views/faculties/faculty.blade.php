@@ -11,7 +11,7 @@ $faculty_data;
     <div class="container">
         <div class="row">
             <div class="my-5 text-center">
-                <h1 class="fs-2 text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})</h1>
+                <h1 class="fs-2 fw-bold text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})</h1>
             </div>
 
         </div>
@@ -26,10 +26,6 @@ $faculty_data;
                             <table class="bio-tb">
                                 <tr>
                                     <th>Name: </th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>Title: </th>
                                     <td></td>
                                 </tr>
                                 <tr>

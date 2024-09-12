@@ -41,7 +41,7 @@
                                 @endif
                             @else
                                 <div class="text-center mb-4">
-                                    <img src="" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                    <img src="{{ $staff_details['photo'] }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
                                 </div>
                             @endif
 

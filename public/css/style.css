@@ -18,7 +18,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* Dark fade background */
-    display: flex;
+    display: fll;
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -52,6 +52,18 @@ body:not(.loaded) #content {
     background-color: #3b2a68;
     color: white;
 }
+
+.marquee {
+    border-right: 1px solid #fff;
+    text-align:center;
+    padding: 0 10px;
+    color: white;
+}
+
+.marquee:hover {
+    color: white;
+}
+
 /* night-mode.css */
 .night-mode {
     color: #fff !important;
@@ -144,6 +156,13 @@ body:not(.loaded) #content {
     width: 100%;
     position: relative;
 }
+.landing-image-campus {
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
 /* curvy for about page */
 .custom-shape-divider-bottom-1713166410 {
     position: absolute;
@@ -188,7 +207,7 @@ body:not(.loaded) #content {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(1, 2, 2, 0.6);
+    /* background: rgba(1, 2, 2, 0.1); */
 }
 
 a {
@@ -339,8 +358,7 @@ a {
 
 /* css for explore more section starts here */
 .explore {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), #000),
-        url("../img/uni.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.1), #000), url("../img/campus-life/0J3A0457MWECAU.JPG");
     background-size: cover;
     background-position: center;
     height: 460px;
@@ -544,9 +562,9 @@ a {
 }
 
 .academics2 {
-    background-image: linear-gradient(rgba(223, 118, 230, 0.3), #513f81),
-        url("../img/students2.JPG");
+    background-image: url("../img/campus-life/mwecau_image1.JPG");
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
     height: auto;
     min-height: 470px;
@@ -570,9 +588,14 @@ a {
     font-family: "Trebuchet MS", Arial, sans-serif;
 }
 /* Additional styling for small screens */
+@media (max-width: 990px){
+    .academics2{
+        height: 1050px;
+    }
+}
 @media (max-width: 767px) {
     .academicsText2 {
-        top: 50%;
+        margin-top: 40px;
     }
 
     .academics2 {
@@ -725,7 +748,7 @@ a {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.0);
 }
 
 .background-container {
