@@ -19,20 +19,6 @@
 
 <body style="background-color: whitesmoke">
     @include('partials.navbar')
-
-    <!-- bg -->
-    <section>
-        <div>
-            <div class="landing-image">
-                <div class="landing-text nav-content">
-                    <!-- <h1>Welcome to Mwenge Catholic University</h1> -->
-                    <div class="underline mt-5 mb-5">
-                        <h1 style="text-align: center">Announcements</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- main content -->
     <div class="container-fluid main-events">
         <div class="row events-cont">
@@ -40,14 +26,14 @@
                 @foreach ($newsUpdates as $newsUpdate)
                 <div class="col-12 col-lg-10 col-md-9 event-content">
                         <a href="" class="link">
-                            <h3>{{ $newsUpdate->event_title }}</h3>
+                            <h3>{{ $newsUpdate->name }}</h3>
                         </a>
                         <p>
-                            {{ $newsUpdate->event_description }}
+                            {{ $newsUpdate->description }}
                         </p>
                     </div>
                     <div class="col-12 col-lg-2 col-md-3">
-                        <a href="{{ route('event-details', $newsUpdate->id) }}"><button class="btn search-btn event-btn">view more</button></a>
+                        <a href="{{ route('announcement-details', $newsUpdate->id) }}"><button class="btn search-btn event-btn">view more</button></a>
                     </div>
                     <hr>
                 @endforeach

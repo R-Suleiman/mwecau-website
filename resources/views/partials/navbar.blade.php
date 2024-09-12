@@ -34,27 +34,27 @@
               }
 
               a {
-                text-decoration: none;
-                color: black;
+                  text-decoration: none;
+                  color: black;
               }
 
               @media screen and (max-width:580px) {
-                #sub-faculty {
-                  display: none;
-                  position: absolute;
-                  left: 0;
-                  top: 100%;
-              }
+                  #sub-faculty {
+                      display: none;
+                      position: absolute;
+                      left: 0;
+                      top: 100%;
+                  }
               }
           </style>
 
           <section>
               <div class="uniHeader container-fluid text-center shadow-lg d-none d-lg-block d-md-none">
+
                   <h1> Mwenge Catholic University</h1> <span> <q class="fst-italic">Lux Mundi - Light of the
                           World</q></span>
               </div>
-              <nav class="navbar navbar-expand-lg shadow-lg"
-                  style="background-color: #513F83; color:#fff; border-bottom: 1px solid #fff">
+              <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
                   <div class="container">
                       <a class=" navbar-brand text-decoration-none fw-bold" href="{{ url('/') }}"
                           style="color: #fff;">
@@ -100,7 +100,9 @@
                                           <ul class="dropdown-menu" id="sub-faculty">
                                               @foreach ($faculties as $faculty)
                                                   <li><a class="dropdown-item"
-                                                          href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }} ({{ $faculty['faculty_short_name'] }})</a></li>
+                                                          href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }}
+                                                          ({{ $faculty['faculty_short_name'] }})
+                                                      </a></li>
                                               @endforeach
                                           </ul>
                                       </li>
@@ -115,31 +117,57 @@
                               </li>
 
                               <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                                      data-bs-toggle="dropdown" aria-expanded="false">
+                                      Campuses
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                      <li class="dropdown-item">
+                                          <a href="">Msarikie Campus</a>
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <a href="">Hedaru Campus</a>
+                                      </li>
+                                  </ul>
+                              </li>
+
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                                      data-bs-toggle="dropdown" aria-expanded="false">
+                                      Research
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                      <li class="dropdown-item">
+                                          <a href="https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=mwecau.ac.tz&btnG="
+                                              target="_blank">Google Scholar</a>
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <a href="{{ route('projects') }}">Project</a>
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <a href="">Outreach Programs</a>
+                                      </li>
+                                  </ul>
+                              </li>
+
+                              <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Campuses
+                                    Services
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-item">
-                                        <a href="">Msarikie Campus</a>
+                                        <a href="{{ route('IT.services') }}" >ICT Sevices</a>
                                     </li>
                                     <li class="dropdown-item">
-                                        <a href="">Hedaru Campus</a>
+                                        <a href="{{ route('library') }}">Library</a>
                                     </li>
                                 </ul>
                             </li>
 
-                              <li class="nav-item"> 
-                                  <a href="{{ route('IT.services') }}" class="nav-link">ICT Services</a>
-                              </li>
-
                               <li class="nav-item">
-                                  <a href="{{ route('research') }}" class="nav-link">Research</a>
+                                  <a href="" class="nav-link">Linkages</a>
                               </li>
-
-                            <li class="nav-item">
-                                <a href="" class="nav-link">Linkages</a>
-                            </li>
 
                               <li class="nav-item">
                                   <a href="{{ route('campus-life') }}" class="nav-link">Campus Life</a>
@@ -148,6 +176,24 @@
                       </div>
                   </div>
               </nav>
+
+              <div class="d-flex p-2"
+                  style="align-items: center;  border-bottom: 1px solid #fff; color:white; background-color: #513F83;">
+                  <marquee behavior="scroll" direction="left">
+                      @if ($news)
+                          @foreach ($news->take(5) as $news)
+                              <a href="{{ route('announcement-details', $news->id) }}"
+                                  class="marquee fw-bold"><span>{{ $news->name }}</span></a>
+                          @endforeach
+                      @endif
+                  </marquee>
+
+                  <a href="https://uas.mwecau.ac.tz/">
+                      <button class="btn fw-bold" style="width: 150px; background-color: #e000e7; color: white">Apply
+                          Now</button>
+                  </a>
+              </div>
+
           </section>
           <script>
               document.querySelectorAll('.dropdown-submenu a.dropdown-toggle').forEach(function(element) {

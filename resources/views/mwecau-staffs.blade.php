@@ -41,7 +41,7 @@
                     <img class="img-fluid" src="{{ asset('../img/staff profiles/Bishop_Ludovick_Joseph_Minde.jpg') }}" alt=""
                         style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
-                        <label class="fw-bold">Bishop Ludovick Joseph Minde</label>
+                        <label class="fw-bold">Rt. Rev. Ludovick Joseph Minde</label>
                         <label>Chairman of University Council</label>
                     </div>
                 </div>
@@ -74,10 +74,10 @@
                 </div>
 
                 <div class="col-sm-6 col-md-3 col-lg-4 text-center my-4">
-                    <img class="img-fluid" src="{{ asset('../img/staff profiles/VC-MWECAU.jpg') }}" alt=""
+                    <img class="img-fluid" src="" alt=""
                         style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
-                        <label class="fw-bold">Kimaro</label>
+                        <label class="fw-bold">Prof. Didas Kimaro</label>
                         <label>DVC-PFA</label>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
             @php
                 $counter = 1;
             @endphp
-            <table id="myTable" class="table table-bordered table-secondary table-responsive">
+            <table class="myTable table table-bordered table-secondary table-responsive">
                 <thead>
                     <tr>
                         <th>S/N</th>
@@ -132,7 +132,7 @@
                             @foreach ($department['staffs'] as $staff)
                             <tr>
                                 <td>{{ $counter++ }}</td>
-                                <td>{{ $staff['first_name'] }}</td>
+                                <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
                                 <td>{{ $staff['other_name'] }}</td>
                                 <td>{{ $staff['last_name'] }}</td>
                                 <td>{{ $department['dept_short_name'] }}</td>

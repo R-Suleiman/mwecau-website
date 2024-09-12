@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\event;
 use App\Models\Image;
+use App\Models\NewsUpdate;
 use App\Models\staff;
 use Illuminate\Http\Request;
 
@@ -35,8 +36,9 @@ class HomeController extends Controller
         // $images = Image::orderBy('created_at', 'desc')->get();
         $images = Image::all();
         $UniversityEvents = Event::all();
-        $latestEvent = Event::latest()->take(1)->get();
-        return view('welcome', compact('latestEvent', 'UniversityEvents', 'images'));
+        $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
+        $latestEvent = Event::orderBy('created_at', 'desc')->get();
+        return view('welcome', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
     }
 
     public function about()
@@ -50,12 +52,18 @@ class HomeController extends Controller
 
     public function campusLife()
     {
-        return view('campus-life');
+        $campusImage = Image::where('image_section', 'campus-life')->first();
+        return view('campus-life', compact('campusImage'));
     }
     public function itServices()
     {
         $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
         return view('IT-services', compact('ictBanner'));
+    }
+    public function library()
+    {
+        $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
+        return view('library', compact('ictBanner'));
     }
     public function research()
     {
@@ -71,11 +79,38 @@ class HomeController extends Controller
     }
     public function newsUpdates()
     {
-        $newsUpdates = Event::all();
+        $newsUpdates = NewsUpdate::all();
         return view('news-updates', compact('newsUpdates'));
+    }
+    public function announcementDetails($id)
+    {
+        $announcementDetails = NewsUpdate::findOrFail($id);
+
+        return view('announcement-details', compact('announcementDetails'));
     }
     public function icons()
     {
         return view('icons');
     }
+    public function documentPreview($attachment)
+    {
+        // Fetch the attachment
+        $attachmentFile = NewsUpdate::where('attachment', $attachment)->first();
+
+        // Check if the file exists in the database
+        if (!$attachmentFile) {
+            return redirect()->back()->with('error', 'The specified attachment does not exist in our records.');
+        }
+
+        // Construct the file path
+        $filePath = public_path('documents/announcementAttachments/' . $attachmentFile->attachment);
+
+        // Check if the file exists in the file system
+        if (!file_exists($filePath)) {
+            return redirect()->back()->with('error', 'File not found on the server.');
+        }
+
+        return response()->file($filePath);
+    }
+
 }

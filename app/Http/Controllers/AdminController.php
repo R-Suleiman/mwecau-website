@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\staff;
 use App\Models\course;
 use App\Models\Statistic;
+use App\Models\NewsUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,34 @@ class AdminController extends Controller
     {
         return view('admin.post-announcement');
     }
+    public function postAnnouncement(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'max:200'],
+            'description' => ['nullable', 'max:500'],
+            'posting_date' => ['required'],
+            'attachment' => ['nullable', 'file', 'max:2048', 'mimes:pdf'],
+        ]);
+
+        // File upload processing
+        $attachmentName = null;
+        if ($request->hasFile('attachment')) {
+            $attachment = $request->file('attachment');
+            $attachmentName = time() . '_' . $attachment->getClientOriginalName();
+            $attachment->move(public_path('documents/announcementAttachments'), $attachmentName);
+        }
+
+        // Save the announcement
+        $newAnnouncement = new NewsUpdate();
+        $newAnnouncement->name = $request->name;
+        $newAnnouncement->description = $request->description;
+        $newAnnouncement->posting_date = $request->posting_date;
+        $newAnnouncement->attachment = $attachmentName;
+        $newAnnouncement->save();
+
+        return redirect()->back()->with('succes', 'Announcement Posted Successfully');
+    }
+
     public function siteImage()
     {
         // $siteImages = Image::first();
@@ -117,7 +146,7 @@ class AdminController extends Controller
             $image->move(public_path('images/pageImages'), $imageName);
 
             // Checking if the image exists, then deleting it
-            $existingImage = public_path('images/pageImages/' . $changeImage->image);
+            $existingImage = public_path('/images/pageImages/' . $changeImage->image);
             if (File::exists($existingImage)) {
                 File::delete($existingImage);
             }
@@ -131,6 +160,20 @@ class AdminController extends Controller
         Alert::success('success', 'Image Updated successfully');
 
         return redirect()->back();
+    }
+    public function deleteImage($id)
+    {
+        $deleteImage = Image::findOrFail($id);
+
+        // Deleting existing image
+        $existingImage = public_path('images/pageImages' . $deleteImage->picture);
+
+        if (File::exists($existingImage)) {
+            File::delete($existingImage);
+        }
+        $deleteImage->delete();
+
+        return redirect()->back()->with('message', 'Image deleted successfully');
     }
     //returning program registration form
     public function registerCourse()

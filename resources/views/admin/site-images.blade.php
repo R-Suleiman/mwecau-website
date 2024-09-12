@@ -4,6 +4,11 @@
         <div class="main-content">
             <div class="container mb-4 mt-4">
                 <h2 class="text-center fw-semibold favColor"> {{ 'Site Image Management' }} </h1>
+
+                    <div class="text-end">
+                        <a href="{{ route('admin.all.site.images') }}">
+                            <button class="btn btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                    </div>
                     <form action="{{ route('upload.page.image') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
@@ -44,6 +49,7 @@
                                     <option value="courses">Courses</option>
                                     <option value="about">About Page</option>
                                     <option value="academics">Academics</option>
+                                    <option value="campus-life">Campus life</option>
                                     <option value="undergraduate">undergraduate Banner Programmes</option>
                                     <option value="postgraduate">postgraduate Banner Programmes</option>
                                     <option value="non-degree">NonD-Degree Banner Programmes</option>
@@ -69,6 +75,7 @@
                                     <option value="homeprograms">Home programs</option>
                                     <option value="course-banner">Course banner</option>
                                     <option value="courses-banner">Courses banner</option>
+                                    <option value="campus-life">Campus life banner</option>
                                     <option value="ict-banner">ICT Banner</option>
                                 </select>
 

@@ -24,19 +24,7 @@
   </head>
   <body style="background-color: whitesmoke">
 @include('partials.navbar')
-    <!-- bg -->
-    <section>
-      <div>
-        <div class="landing-image">
-          <div class="landing-text nav-content">
-            <!-- <h1>Welcome to Mwenge Catholic University</h1> -->
-            <div class="underline mt-5 mb-5">
-              <h1 style="text-align: center">Events</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- main content -->
     {{-- <div class="container-fluid">
@@ -93,7 +81,7 @@
           <div class="stamps">
             <i class="fa fa-map-marker"></i> <span>{{ $events->event_location }}</span>
           </div>
-          <a href="event.html"
+          <a href="{{ route('event-details', $events->id) }}"
             ><button class="btn search-btn event-btn">view more</button></a
           >
         </div>

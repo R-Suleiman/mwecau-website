@@ -24,6 +24,11 @@
         $('#myTable').DataTable();
         select: true
     });
+
+    $(document).ready(function() {
+        $('.myTable').DataTable();
+        select: true
+    });
 </script>
 
 <script src="{{ asset('/bootstrap/js/bootstrap.bundle.js') }}"></script>
