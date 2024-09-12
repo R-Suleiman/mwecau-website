@@ -20,78 +20,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
     @include('partials.navbar')
 
-    <!-- corousel -->
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
 
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/img/mwecau_image3.JPG" class="d-block w-100 background-container" alt="..." />
-                <div class="dark-overlay">
-                    <div class="nav-content">
-                        <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
-                            possibility with MWECAU</h1>
-                        <p style="color: white;">Fall 2024 applications are now open</p>
-                        <a href="https://uas.mwecau.ac.tz" target="_blank"><button
-                                class="admissionBtn fs-5 animate__animated animate__fadeInRight">Admissions
-                                2024/2025</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/img/mwecau_image5.JPG" class="d-block w-100 background-container" alt="..." />
-                <div class="dark-overlay">
-                    <div class="nav-content">
-                        <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
-                            possibility with MWECAU</h1>
-                        <p>Fall 2024 applications are now open</p>
-                        <a href="https://uas.mwecau.ac.tz" target="_blank"><button
-                                class="admissionBtn fs-5 animate__animated animate__fadeInRight">Admissions
-                                2024/2025</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                {{-- <img src="../i" alt=""> --}}
-                <img src="/img/mwecau_image1.JPG"
-                    class="d-block w-100 img-fluid background-container" alt="..." />
-                <div class="dark-overlay">
-                    <div class="nav-content">
-                        <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
-                            possibility with MWECAU</h1>
-                        <p>Fall 2024 applications are now open</p>
-                        <a href="https://uas.mwecau.ac.tz" target="_blank"><button
-                                class="admissionBtn fs-5 animate__animated animate__fadeInRight">Admissions
-                                2024/2025</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev sliderArrows" type="button" data-bs-target="#carouselExampleFade"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-ico" aria-hidden="true"> <i class="fa fa-arrow-circle-left fs-1 "
-                    aria-hidden="true"></i> </span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-ico sliderArrows" aria-hidden="true"> <i
-                    class="fa fa-arrow-circle-right fs-1 " aria-hidden="true"></i> </span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    <div class="">
+        <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
     </div>
 
     <!-- main content -->
     <div class="container about-container text-center ">
-        <div class="underline mt-2 mb-3 " style="width: fit-content; margin-left: 0">
+        <div class="underline mb-2" style="width: fit-content; margin-left: 0">
             <h2 style="text-align: center; ">
-                About Us
+                About MWECAU
             </h2>
         </div>
         <div class="row gap-4">
@@ -105,12 +43,6 @@
                     In order to prepare for your future career or pursue academic and professional advancement, be
                     it education,
                     administration, sciences, law and/or social sciences, think of MWECAU as your best choice.
-                    <!-- Our thoroughly tested
-                        programmes offer you an intellectual and social engagement to form you into a critical-thinking
-                        citizen presently needed
-                        by society. Our business administration, marketing and accounting programmes will prepare you to
-                        engage in the business
-                        world, as an entrepreneur or work in any of the many financial institutions. -->
                 </p>
             </div>
             <div class="col-sm-5 ">
@@ -315,22 +247,22 @@
     <!-- counters -->
         {{-- counter --}}
         <div class="container-fluid my-3" style="background-color: white">
-            <div class="row d-flex p-2 fs-4">
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+            <div class="counter row d-flex p-2 fs-4">
+                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                     <span for="" id="establishedCount"></span>
                     <label>Established</label>
                 </div>
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                     <span for="" id="facultyCount"></span>
                     <label>Faculties</label>
                 </div>
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                     <span for="" id="studentsCount"></span>
                     <label>Students</label>
                 </div>
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                     <span for="" id="gRareCount"></span>
-                    <label>Graduation Rate</label>
+                    <label class="text-center">Graduation Rate</label>
                 </div>
             </div>
         </div>
@@ -498,7 +430,6 @@
     @include('jslinks')
 
     <script src="{{ asset('../js/counter.js') }}"></script>
-    <script src="{{ asset('../js/about2.js') }}"></script>
 </body>
 
 </html>

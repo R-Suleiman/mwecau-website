@@ -38,12 +38,13 @@ class HomeController extends Controller
         $UniversityEvents = Event::all();
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
-        return view('welcome', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
+        return view('index', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
     }
 
     public function about()
     {
-        return view('about');
+        $courseImage = Image::where('image_section', '=', 'course-banner')->first();
+        return view('about', compact('courseImage'));
     }
     public function events()
     {

@@ -110,7 +110,7 @@ class AcademicsController extends Controller
 
 
     public function showCourseDetails($programme_category, $programme_name)
-    {
+    { 
         $courseImage = Image::where('image_section', '=', 'course-banner')->first();
         return view('programs.course_details', compact('programme_category', 'programme_name', 'courseImage'));
     }
