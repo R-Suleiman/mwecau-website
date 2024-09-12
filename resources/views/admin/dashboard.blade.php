@@ -71,12 +71,21 @@
                                     <td class="text-uppercase favColor">{{ $allUniEvent->event_organizer }}</td>
                                     <td class="actions-col">
                                         <a href="{{ route('admin.event-details', [$allUniEvent->id]) }}">
-                                            <i class="fa fa-eye actions-icon view"></i>
+                                            <button class="btn btn-secondary"> <i class="fa fa-eye"
+                                                    aria-hidden="true"></i></button>
                                         </a>
-                                        <a href="{{ route('admin.edit.event', [$allUniEvent->id]) }}">
-                                            <i class="fa fa-pen actions-icon edit"></i>
+
+                                        <a href="{{ route('admin.edit.event', $allUniEvent->id) }}">
+                                            <button class="btn btn-warning mx-3"> <i class="fa fa-pencil"
+                                                    aria-hidden="true"></i></button>
                                         </a>
-                                        <i class="fa fa-trash actions-icon delete"></i>
+
+                                        <form action="{{ route('admin.destroy.event', $allUniEvent->id) }}" method="POST">
+                                            @csrf
+                                            @method('POST')
+                                            <button class="btn btn-danger"> <i class="fa fa-trash"
+                                                    aria-hidden="true"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -111,7 +120,7 @@
                                     <td>{{ $allUniStaff->lastName }}</td>
                                     <td>{{ $allUniStaff->department }}</td>
                                     <td class="actions-col">
-                                        <a href="{{ route('staff-profile', [$allUniStaff->id]) }}">
+                                        <a href="{{ route('staff-profiles', [$allUniStaff->id]) }}">
                                             <i class="fa fa-eye actions-icon view"></i>
                                         </a>
                                         <a href="{{ route('edit.staff.profile', [$allUniStaff->id]) }}"> <i

@@ -2,46 +2,30 @@
 @include('partials.navbar')
 <section class="main-section">
     <div class="main-content">
-        <div class="stats-box">
-            <h3 class="title">Event</h3>
-        </div>
-
         <div class="content-box event-box">
             <div class="category-content">
                 <div class=" container-fluid event-header">
-                    <p>Category</p>
-                    <h2 class="favColor">{{ $eventDetails->event_title }}</h2>
-                    <div class="">
+                    <p>{{ $eventDetails->event_category }}</p>
+                    <div class="underline mt-1 mb-3">
+                        <h3 style="text-align: center"> <strong
+                                class="favColor fs-1">{{ $eventDetails->event_title }} </strong> </h3>
+                    </div>
+                    <div class="mt-4">
                         <img src="{{ asset('images/eventImages/' . $eventDetails->event_image) }}"
-                            alt="{{ $eventDetails->event_image }}" class="h-15 img-fluid ">
+                            alt="{{ $eventDetails->event_image }}" class=" img-fluid ">
                     </div>
                 </div>
 
                 <div class="container-fluid">
                     <div class="row event-row">
-                        <div class="col-sm-12 col-lg-8">
-                            <div class="about-event">
-                                <div class="underline mt-1 mb-5">
-                                    <h3 style="text-align: center">About <strong
-                                            class="favColor fs-4">{{ $eventDetails->event_title }} </strong> Event</h3>
-                                </div>
+                        <div class="col-sm-12 col-lg-10 mx-auto">
+                            <div class="about-event text-center">
                                 <p>
                                     {{ $eventDetails->event_description }}
                                 </p>
-                                <p>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Qui a facilis ut laborum, eligendi minus quod praesentium
-                                    culpa odio maxime, dicta error perspiciatis quas sequi
-                                    adipisci tempora. Illum, rerum beatae!
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Temporibus accusamus eveniet odio nihil maiores nesciunt
-                                    aperiam! Consequatur ex, quod omnis recusandae error esse
-                                    ad dolore perspiciatis sequi nisi! Qui, quisquam!
-                                </p>
+
                             </div>
-                            <div class="event-speaker">
+                            {{-- <div class="event-speaker">
                                 <div class="underline mt-1 mb-3">
                                     <h3 class="text-center favColor fw-bold ">Our Speakers</h3>
                                 </div>
@@ -62,9 +46,9 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="col-sm-12 col-lg-4 other-event-det">
+                        {{-- <div class="col-sm-12 col-lg-4 other-event-det">
                             <div class="event-detail">
                                 <div>
                                     <i class="fa fa-bill"></i>
@@ -126,7 +110,7 @@
                                 <i class="fab fa-tumblr"></i>
                                 <i class="fa fa-envelope"></i>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

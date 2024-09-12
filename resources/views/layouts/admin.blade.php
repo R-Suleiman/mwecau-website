@@ -36,25 +36,46 @@
                         <span class="nav-words">Home</span>
                     </li>
                 </a>
-                <a href="{{ route('list-of-programs') }}">
+                <a href="{{ route('admin.research.list') }}">
                     <li class="nav-item">
                         <i class="fa fa-university nav-icons"></i>
-                        <span class="nav-words">Programmes</span>
+                        <span class="nav-words">Manage Research</span>
                     </li>
                 </a>
-                <a href="{{ route('admin.list-of-staff') }}">
+                {{-- <a href="{{ route('admin.list-of-staff') }}">
                     <li class="nav-item">
                         <i class="fa fa-users nav-icons"></i>
                         <span class="nav-words">Staff</span>
                     </li>
-                </a>
+                </a> --}}
                 <a href="{{ route('admin.events.list') }}">
                     <li class="nav-item">
                         <i class="fa fa-calendar nav-icons"></i>
                         <span class="nav-words">Events</span>
                     </li>
                 </a>
-                <a href="">
+
+                <a href="{{ route('admin.post.announcement') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Post Announcement</span>
+                    </li>
+                </a>
+
+                <a href="{{ route('admin.all.site.images') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Manage Site images</span>
+                    </li>
+                </a>
+
+                <a href="{{ route('admin.statistics') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Uni statistics</span>
+                    </li>
+                </a>
+                <a href="{{ route('site.images') }}">
                     <li class="nav-item">
                         <i class="fa fa-key nav-icons"></i>
                         <span class="nav-words">Change Password</span>
@@ -133,9 +154,8 @@
         });
     </script>
 
+    @include('jslinks')
 
 </body>
 
 </html>
-
-

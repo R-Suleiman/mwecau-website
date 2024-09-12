@@ -20,11 +20,11 @@ class EventsController extends Controller
             'event_title' => ['required', 'string'],
             'event_category' => ['required', 'string'],
             'event_description' => ['required', 'string'],
-            'event_image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024', 'nullable'],
+            'event_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024', 'nullable'],
             'speaker_fullname' => ['required', 'string'],
             'speaker_profession' => ['required', 'string'],
             'speaker_info' => ['required', 'string'],
-            'speaker_photo' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024', 'nullable'],
+            'speaker_photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024', 'nullable'],
             'event_cost' => ['required', 'string'],
             'event_date' => ['required', 'string'],
             'eventStart_time' => ['required', 'string'],
@@ -102,5 +102,74 @@ class EventsController extends Controller
         $event = event::findOrFail($id);
 
         return view('admin.edit-event', compact('event'));
+    }
+    public function updateEvent(Request $request, $id)
+    {
+        $request->validate([
+            'event_title' => ['nullable', 'string'],
+            'event_category' => ['nullable', 'string'],
+            'event_description' => ['nullable', 'string'],
+            'event_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024'],
+            'speaker_fullname' => ['nullable', 'string'],
+            'speaker_profession' => ['nullable', 'string'],
+            'speaker_info' => ['nullable', 'string'],
+            'speaker_photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:1024'],
+            'event_cost' => ['nullable', 'string'],
+            'event_date' => ['nullable', 'string'],
+            'eventStart_time' => ['nullable', 'string'],
+            'eventEnd_time' => ['nullable', 'string'],
+            'event_location' => ['nullable', 'string'],
+            'event_organizer' => ['nullable', 'string'],
+            'total_slots' => ['nullable', 'string'],
+            'booked_slots' => ['nullable', 'string'],
+        ]);
+
+        $eventUpdate = Event::findOrFail($id);
+
+        // Handle event image upload
+        if ($request->hasFile('event_image')) {
+            $event_image = $request->file('event_image');
+            $eventImageName = time() . '.' . $event_image->getClientOriginalExtension();
+            $event_image->move(public_path('images/eventImages'), $eventImageName);
+            $eventUpdate->event_image = $eventImageName;
+        }
+
+        // Handle speaker photo upload
+        if ($request->hasFile('speaker_photo')) {
+            $speaker_photo = $request->file('speaker_photo');
+            $speakerPhotoName = time() . '.' . $speaker_photo->getClientOriginalExtension();
+            $speaker_photo->move(public_path('images/eventsImages'), $speakerPhotoName);
+            $eventUpdate->speaker_photo = $speakerPhotoName;
+        }
+
+        // Update event fields
+        $eventUpdate->event_title = $request->event_title ?? $eventUpdate->event_title;
+        $eventUpdate->event_category = $request->event_category ?? $eventUpdate->event_category;
+        $eventUpdate->event_description = $request->event_description ?? $eventUpdate->event_description;
+        $eventUpdate->speaker_fullname = $request->speaker_fullname ?? $eventUpdate->speaker_fullname;
+        $eventUpdate->speaker_profession = $request->speaker_profession ?? $eventUpdate->speaker_profession;
+        $eventUpdate->speaker_info = $request->speaker_info ?? $eventUpdate->speaker_info;
+        $eventUpdate->event_cost = $request->event_cost ?? $eventUpdate->event_cost;
+        $eventUpdate->event_date = $request->event_date ?? $eventUpdate->event_date;
+        $eventUpdate->eventStart_time = $request->eventStart_time ?? $eventUpdate->eventStart_time;
+        $eventUpdate->eventEnd_time = $request->eventEnd_time ?? $eventUpdate->eventEnd_time;
+        $eventUpdate->event_location = $request->event_location ?? $eventUpdate->event_location;
+        $eventUpdate->event_organizer = $request->event_organizer ?? $eventUpdate->event_organizer;
+        $eventUpdate->total_slots = $request->total_slots ?? $eventUpdate->total_slots;
+        $eventUpdate->booked_slots = $request->booked_slots ?? $eventUpdate->booked_slots;
+
+        $eventUpdate->save();
+
+        return $eventUpdate
+            ? redirect()->back()->with('message', 'Event updated successfully')
+            : redirect()->back()->with('error', 'Something went wrong');
+    }
+
+    public function eventDestroty($id)
+    {
+        $destroyEvent = Event::findOrFail($id);
+
+        $destroyEvent->delete();
+        return redirect()->back()->with('success', 'Event deleted successfully');
     }
 }

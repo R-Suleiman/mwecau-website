@@ -2,9 +2,6 @@
 @section('content')
     <section class="main-section">
         <div class="main-content">
-            <div class="stats-box">
-                <h3 class="title">Event</h3>
-            </div>
 
             <div class="content-box event-box">
                 <div class="category-content">
@@ -17,7 +14,7 @@
                         </div>
                     </div>
 
-                    <div class="container-fluid">
+                    <div class="container-fluid ">
                         <div class="row event-row">
                             <div class="col-sm-12 col-lg-8">
                                 <div class="about-event">

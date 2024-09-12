@@ -65,7 +65,22 @@
                                     <td>{{ $listOfProgram->course_category }}</td>
                                     <td>{{ $listOfProgram->course_title }}</td>
                                     <td>{{ $listOfProgram->course_title }}</td>
-                                    <td class="actions-col">
+                                    <td>
+                                        <a class="btn btn-warning btn-sm" href="{{ route('admin.course_update_form', [$listOfProgram->id]) }}">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="btn btn-secondary btn-sm" href="{{ route('admin.course.details', [$listOfProgram->id]) }}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        <form method="POST" action="{{ route('course.destroy', ['id' => $listOfProgram->id]) }}"
+                                            enctype="multipart/form-data" class="delete-form d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-danger btn-sm delete-button delete-btn"><i
+                                                    class="fa fa-trash-alt" aria-hidden="true"></i></button>
+                                        </form>
+                                    </td>
+                                    {{-- <td class="actions-col d-flex align-items-center">
                                         <a href="{{ route('admin.course.details', [$listOfProgram->id]) }}"><i
                                                 class="fa fa-eye actions-icon view"></i></a>
                                         <a href="{{ route('admin.course_update_form', [$listOfProgram->id]) }}"> <i
@@ -75,17 +90,13 @@
                                             method="post">
                                             @csrf
                                             @method('DELETE')
+
                                             <button type="submit" class="btn deletebtn" data-confirm-delete="true"
                                                 id="deletebtn">
                                                 <i class="fa fa-trash actions-icon delete"></i>
                                             </button>
                                         </form>
-
-                                        <button type="submit" class="btn deleteBtn" data-confirm-delete="true"
-                                            id="deletebtn">
-                                            <i class="fa fa-trash actions-icon delete"></i>
-                                        </button>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

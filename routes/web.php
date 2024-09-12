@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\AcademicsController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventsController;
-use App\Http\Controllers\PdfController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\AcademicsController;
+use App\Http\Controllers\ResearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,19 @@ Auth::routes();
 Route::controller(AdminController::class)->prefix('admin')->middleware('admin')->group(function () {
     Route::get('dashboard',  'adminHome')->name('admin.dashboard');
 
+    //webiste page management
+    Route::get('manage-site-images', 'siteImage')->name('site.images');
+    Route::post('manage-site-images', 'uploadPageImage')->name('upload.page.image');
+    Route::get('/all-site-images', 'allSiteImages')->name('admin.all.site.images');
+    Route::get('/image-update/{id}', 'changeImageView')->name('admin.update.image');
+    Route::post('/change-image/{id}', 'changeImage')->name('admin.change.image');
+    Route::delete('/delete-image/{id}', 'deleteImage')->name('admin.delete.image');
+    //uni Statistics routes
+    Route::get('/uni-statistics', 'statistics')->name('admin.statistics');
+    Route::post('/post-statistic', 'postStatistics')->name('admin.post.statistic');
+    //announcements routes
+    Route::get('/post-announcement', 'postAnnouncementView')->name('admin.post.announcement');
+    Route::post('/post-announcement', 'postAnnouncement')->name('post.announcement');
     //admin programs related routes
     Route::get('register-course', 'registerCourse')->name('register-course');
     Route::post('storeCourse',  'storeCourse')->name('storeCourse'); //sending to the database
@@ -46,7 +61,7 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     Route::get('register-staff', 'staffForm')->name('register-staff');
     Route::post('registerStaff', 'registerStaff')->name('registerStaff'); //sending to the database
     Route::get('list-of-staff',  'listOfStaff')->name('admin.list-of-staff');
-    Route::get('staff-profile\{id}', 'staffProfile')->name('staff-profile');  //preview specific staff profile
+    Route::get('staff-profile\{id}', 'staffProfile')->name('staff-profiles');  //preview specific staff profile
     Route::get('edit-staff-profile/{id}', 'editStaffProfile')->name('edit.staff.profile'); //editing specific staff profile details
     Route::put('updateStaffProfile/{id}', 'updateStaffProfile')->name('admin.update.staff.profile');
     Route::delete('staff/{id}', 'destroyStaff')->name('staff.destroy');
@@ -57,31 +72,60 @@ Route::controller(EventsController::class)->prefix('admin')->group(function () {
     Route::get('event',  'event')->middleware('admin')->name('admin.event');
     Route::post('create-event', 'createEvent')->middleware('admin')->name('admin.create.event');
     Route::get('edit-event/{id}', 'editEvent')->middleware('admin')->name('admin.edit.event');
-    Route::put('update-event', 'updateEvent')->middleware('admin')->name('admin-update-event');
+    Route::post('update-event/{id}', 'updateEvent')->middleware('admin')->name('admin-update-event');
     Route::get('events', 'eventslist')->name('admin.events.list');
     Route::get('event-details/{id}', 'adminEventDetails')->name('admin.event-details');
+    Route::post('/destroy-event/{id}', 'eventDestroty')->name('admin.destroy.event');
 });
 
 //site navigation tabs related routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('campus-life', [App\Http\Controllers\HomeController::class, 'campusLife'])->name('campus-life');
+Route::get('/research', [App\Http\Controllers\HomeController::class, 'research'])->name('research');
+Route::get('IT-services', [App\Http\Controllers\HomeController::class, 'itServices'])->name('IT.services');
+Route::get('/library', [App\Http\Controllers\HomeController::class, 'library'])->name('library');
 Route::get('academics', [App\Http\Controllers\AcademicsController::class, 'academics'])->name('academics');
+Route::get('/university-events', [App\Http\Controllers\HomeController::class, 'uniEvents'])->name('university.events');
+Route::get('/news/updates', [App\Http\Controllers\HomeController::class, 'newsUpdates'])->name('university.news.updates');
 Route::get('/events/event-details/{id}', [App\Http\Controllers\EventsController::class, 'eventDetails'])->name('event-details');
+Route::get('/announcement-details/{id}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
+Route::get('/announcement-details/{id}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
+Route::get('/event-attachment/preview/{attachment}', [App\Http\Controllers\HomeController::class, 'documentPreview'])->name('announcement.attachment.preview');
 
 //programs related routes
+Route::controller(AcademicsController::class)->group(function () {
+    Route::get('/faculties/{faculty_name}', 'faculty')->name('faculty');
+    Route::get('/faculties/{faculty_name}/staff', 'staff')->name('faculty.staff');
+    Route::get('/faculties/{faculty_name}/{dept_name}', 'department')->name('department');
+    Route::get('/faculties/{faculty_name}/programmes/programme-list', 'departmentProgrammes')->name('department.programmes');
+});
 Route::controller(AcademicsController::class)->prefix('programs')->group(function () {
     Route::get('programs-list',  'programsList')->name('programs-list');
-    Route::get('post-graduate', 'postGraduate')->name('post-graduate');
+    Route::get('/{programme_category}', 'programmeCategory')->name('programmeCategory');
     Route::get('undergraduate', 'underGraduate')->name('undergraduate');
     Route::get('non-degree', 'nonDegree')->name('non-degree');
-    Route::get('course_details=\OEmldndkfVhdjavddh{id}', 'showCourseDetails')->name('course_details');
+    Route::get('/{programme_category}/{programme_name}', 'showCourseDetails')->name('course_details');
+    Route::get('/academics/json', 'academicsJson')->name('academics.json');
 });
 
 //staff related routes
-Route::get('mwecau-staff', [\App\Http\Controllers\StaffController::class, 'staff'])->name('mwecau-staffs');
-Route::get('mwecau-staff-profile=\hd8GkGOEmldndkfVhdjavddhgcsFsjsaid\{id}\MbWvk', [\App\Http\Controllers\StaffController::class, 'staffProfile'])->name('mwecau-staff-profile');
+Route::get('/mwecau-staff', [\App\Http\Controllers\StaffController::class, 'staff'])->name('mwecau-staffs');
+Route::get('/staff/{first_name} {last_name}', [\App\Http\Controllers\StaffController::class, 'staffProfile'])->name('staff-profile');
 
+Route::controller(ResearchController::class)->group(function () {
+    Route::get('/projects', 'research')->name('projects');
+    Route::get('/resource-details/{header}', 'researchDetails')->name('research.project.details');
+    Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+        Route::get('/research-details/{header}', 'resourceDetails')->name('admin.research.details');
+        Route::get('/list-of-research', 'listOfResearch')->name('admin.research.list');
+        Route::get('/post-reseacrh', 'postResearchView')->name('admin.post.research');
+        Route::post('/new-research', 'postResearch')->name('admin.post.new.research');
+        Route::get('/edit-resource/{header}', 'editresearchView')->name('admin.edit.resource');
+        Route::put('/update-resource/{id}', 'updateResearch')->name('admin.udate.resource');
+        Route::delete('/delete-resource/{id}', 'destroyResearch')->name('admin-destroy.resource');
+    });
+});
 
 //routes for uploadind and previewing uploaded pdfs
 Route::get('/upload-pdf-form', [PdfController::class, 'uploadPdfForm'])->name('pdf.upload.form');

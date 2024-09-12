@@ -33,7 +33,7 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/img/university-image-4.JPG" class="d-block w-100 background-container" alt="..." />
+                <img src="/img/mwecau_image3.JPG" class="d-block w-100 background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
                         <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/img/university-image1.JPG" class="d-block w-100 background-container" alt="..." />
+                <img src="/img/mwecau_image5.JPG" class="d-block w-100 background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
                         <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
@@ -60,7 +60,7 @@
             </div>
             <div class="carousel-item">
                 {{-- <img src="../i" alt=""> --}}
-                <img src="/img/site banners/BANNER APPLIED BIOLOGY.jpg"
+                <img src="/img/mwecau_image1.JPG"
                     class="d-block w-100 img-fluid background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
@@ -89,13 +89,13 @@
 
     <!-- main content -->
     <div class="container about-container text-center ">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="underline mt-2 mb-3 ">
-                    <h2 style="text-align: center; ">
-                        About Us
-                    </h2>
-                </div>
+        <div class="underline mt-2 mb-3 " style="width: fit-content; margin-left: 0">
+            <h2 style="text-align: center; ">
+                About Us
+            </h2>
+        </div>
+        <div class="row gap-4">
+            <div class="col-sm-5 ">
                 <p>
                     Welcome to Mwenge Catholic University (MWECAU), a University that gives you the opportunity to
                     pursue quality education
@@ -113,7 +113,7 @@
                         world, as an entrepreneur or work in any of the many financial institutions. -->
                 </p>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5 ">
                 <p>
                     Our community is being called to reimagine the future. As the only
                     university where a renowned design school comes together with
@@ -164,13 +164,13 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-lg-3 col-sm-6 mb-5">
-                <div class="card darkMode">
-                    <div class="card-body" style="border-radius: 10px">
-                        <i class="fa fa-file-text display-5 mb-3 icons"></i>
-                        <h5 class="card-title">Core values</h5>
+            <div class="col-md-4 col-lg-3 col-sm-6 mb-5 ">
+                <div class="mission-card card darkMode overflow-auto">
+                    <div class="card-body" style="border-radius: 10px; width: 100%" id="card-body">
+                        <i class="fa fa-file-text display-5 mb-3 icons" id="card-icon"></i>
+                        <h5 class="card-title" id="card-title">Core values</h5>
 
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion accordion-flush overflow-auto card-list" id="accordionFlushExample" style="overflow-y:scroll; height: 210px;">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed darkMode " type="button"
@@ -296,7 +296,7 @@
                 <div class="mission-card card d-flex flex-column darkMode" style="width: 100%; border: none; ">
                     <div class="card-body" style="border-radius: 10px">
                         <i class="fa fa-pencil display-5 mb-3 icons"></i>
-                        <h5 class="card-title">Motto / Slogan</h5>
+                        <h5 class="card-title">Motto</h5>
                         <div class="card-text text-start ">
                             The University is dedicated to St. Joseph the Worker, with the motto ‘‘Lux Mundi’’ which
                             translates in English to “Light of the World.”
@@ -309,16 +309,31 @@
 
     <!-- video -->
     <div class="container-fluid mb-5" style="margin: 10px">
-        <iframe width="100%" height="550" src="https://www.youtube.com/embed/1T_B9-kAKDE?si=it0oEVNizz0J76rI"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+        <iframe width="100%" height="550" src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
     <!-- counters -->
-    <div class="container">
-        <div class="elfsight-app-bb3abb2b-f006-4982-93a0-a3efdda478c1" data-elfsight-app-lazy></div>
-    </div>
+        {{-- counter --}}
+        <div class="container-fluid my-3" style="background-color: white">
+            <div class="row d-flex p-2 fs-4">
+                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                    <span for="" id="establishedCount"></span>
+                    <label>Established</label>
+                </div>
+                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                    <span for="" id="facultyCount"></span>
+                    <label>Faculties</label>
+                </div>
+                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                    <span for="" id="studentsCount"></span>
+                    <label>Students</label>
+                </div>
+                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                    <span for="" id="gRareCount"></span>
+                    <label>Graduation Rate</label>
+                </div>
+            </div>
+        </div>
 
     <!-- academics -->
     <div class="container text-center ">
@@ -396,16 +411,16 @@
     <div class="container-fluid mt-5 mb-5">
         <div class="row gallery">
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/students1.JPG" alt="">
+                <img src="/img/mwecau_image1.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/uni.jpg" alt="">
+                <img src="/img/mwecau_image2.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/students3.jpg" alt="">
+                <img src="/img/mwecau_image3.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/students2.JPG" alt="">
+                <img src="/img/mwecau_image4.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
                 <img src="/img/uni.jpg" alt="">
@@ -476,43 +491,14 @@
         </div>
     </section>
 
-    <!-- visiting mwecau -->
-    <!-- <div class="container-fluid">
-      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="uni.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="pic3-980x453.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="uni.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-    </div> -->
-
     <!-- main content end -->
 
     <!-- Footer -->
     @include('partials.footer')
     @include('jslinks')
-    <!-- counter -->
 
-
-
-
-
-
+    <script src="{{ asset('../js/counter.js') }}"></script>
+    <script src="{{ asset('../js/about2.js') }}"></script>
 </body>
 
 </html>

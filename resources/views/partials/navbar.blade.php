@@ -1,12 +1,60 @@
           <!-- navigation bar -->
           @include('preloader')
+
+          <style>
+              #sub-faculty {
+                  display: none;
+                  position: absolute;
+                  left: 100%;
+                  top: 0;
+              }
+
+              #faculty:hover+#sub-faculty {
+                  display: block;
+              }
+
+              .dropdown-submenu:hover>#sub-faculty {
+                  display: block;
+              }
+
+              .dropdown-menu {
+                  position: relative;
+                  z-index: 1000;
+              }
+
+              .dropdown-submenu:hover>.dropdown-menu {
+                  display: block;
+                  top: 0;
+                  left: 100%;
+                  margin-top: -1px;
+              }
+
+              .dropdown-submenu {
+                  position: relative;
+              }
+
+              a {
+                  text-decoration: none;
+                  color: black;
+              }
+
+              @media screen and (max-width:580px) {
+                  #sub-faculty {
+                      display: none;
+                      position: absolute;
+                      left: 0;
+                      top: 100%;
+                  }
+              }
+          </style>
+
           <section>
               <div class="uniHeader container-fluid text-center shadow-lg d-none d-lg-block d-md-none">
+
                   <h1> Mwenge Catholic University</h1> <span> <q class="fst-italic">Lux Mundi - Light of the
                           World</q></span>
               </div>
-              <nav class="navbar navbar-expand-lg shadow-lg"
-                  style="background-color: #513F83; color:#fff; border-bottom: 1px solid #fff">
+              <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
                   <div class="container">
                       <a class=" navbar-brand text-decoration-none fw-bold" href="{{ url('/') }}"
                           style="color: #fff;">
@@ -30,82 +78,133 @@
                               <li class="nav-item dropdown">
                                   <a class="nav-link dropdown-toggle" href="#" role="button"
                                       data-bs-toggle="dropdown" aria-expanded="false">
-                                      About Us
+                                      About
                                   </a>
                                   <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="{{ route('about') }}">About University</a></li>
                                       <li><a class="dropdown-item" href="{{ route('mwecau-staffs') }}">Staff</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('programs-list') }}">Programs</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('mwecau-staffs') }}">Library (web
-                                              display)</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('register-staff') }}">Student
-                                              Government</a></li>
+                                      <li><a class="dropdown-item" href="{{ route('programs-list') }}">Programmes</a>
+                                      </li>
                                   </ul>
                               </li>
 
-                              <li class="nav-item">
-                                  <a href="{{ route('academics') }}" class="nav-link">Academics </a>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                                      data-bs-toggle="dropdown" aria-expanded="false">
+                                      Academics
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                      <li class="dropdown-submenu">
+                                          <a class="dropdown-item dropdown-toggle" href="#"
+                                              id="faculty">Faculties</a>
+                                          <ul class="dropdown-menu" id="sub-faculty">
+                                              @foreach ($faculties as $faculty)
+                                                  <li><a class="dropdown-item"
+                                                          href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }}
+                                                          ({{ $faculty['faculty_short_name'] }})
+                                                      </a></li>
+                                              @endforeach
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <a href="{{ route('academics') }}">Programmes</a>
+                                      </li>
+                                  </ul>
                               </li>
 
                               <li class="nav-item">
                                   <a href="https://uas.mwecau.ac.tz" target="_blank" class="nav-link">Admission</a>
                               </li>
 
-                              <li class="nav-item">
-                                  <a href="{{ route('icons') }}" class="nav-link">ICT Services</a>
-                              </li>
-
-                              <li class="nav-item">
-                                  <a href="{{ route('pdf.upload.form') }}" class="nav-link">Research</a>
-                              </li>
-
-                              <li class="nav-item">
-                                  <a href="{{ route('campus-life') }}" class="nav-link">Campus Life</a>
+                              <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" role="button"
+                                      data-bs-toggle="dropdown" aria-expanded="false">
+                                      Campuses
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                      <li class="dropdown-item">
+                                          <a href="">Msarikie Campus</a>
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <a href="">Hedaru Campus</a>
+                                      </li>
+                                  </ul>
                               </li>
 
                               <li class="nav-item dropdown">
                                   <a class="nav-link dropdown-toggle" href="#" role="button"
                                       data-bs-toggle="dropdown" aria-expanded="false">
-                                      Link
+                                      Research
                                   </a>
                                   <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="{{ route('admin.event') }}">Action</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('register-course') }}">Another
-                                              action</a></li>
-                                      <li>
-                                          <hr class="dropdown-divider">
+                                      <li class="dropdown-item">
+                                          <a href="https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=mwecau.ac.tz&btnG="
+                                              target="_blank">Google Scholar</a>
                                       </li>
-                                      <li><a class="dropdown-item" href="{{ route('programs-list') }}">course list (web
-                                              display)</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('mwecau-staffs') }}">staff list (web
-                                              display)</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('register-staff') }}">register staff
-                                              (admin route)</a></li>
-                                      <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
-
-                                      <div class="" aria-labelledby="">
-                                          <a class="" href="{{ route('logout') }}"
-                                              onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                              {{ __('Logout') }}
-                                          </a>
-
-                                          <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                              class="d-none">
-                                              @csrf
-                                          </form>
-                                      </div>
+                                      <li class="dropdown-item">
+                                          <a href="{{ route('projects') }}">Project</a>
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <a href="">Outreach Programs</a>
+                                      </li>
                                   </ul>
                               </li>
 
-                          </ul>
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Services
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item">
+                                        <a href="{{ route('IT.services') }}" >ICT Sevices</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="{{ route('library') }}">Library</a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                          <ul class="navbar-nav ms-auto">
                               <li class="nav-item">
-                                  <button class="btn shadow-lg text-light" id="nightModeToggle">
-                                      <i class="fas fa-moon" aria-hidden="true"></i>`</button>
+                                  <a href="" class="nav-link">Linkages</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a href="{{ route('campus-life') }}" class="nav-link">Campus Life</a>
                               </li>
                           </ul>
                       </div>
                   </div>
               </nav>
+
+              <div class="d-flex p-2"
+                  style="align-items: center;  border-bottom: 1px solid #fff; color:white; background-color: #513F83;">
+                  <marquee behavior="scroll" direction="left">
+                      @if ($news)
+                          @foreach ($news->take(5) as $news)
+                              <a href="{{ route('announcement-details', $news->id) }}"
+                                  class="marquee fw-bold"><span>{{ $news->name }}</span></a>
+                          @endforeach
+                      @endif
+                  </marquee>
+
+                  <a href="https://uas.mwecau.ac.tz/">
+                      <button class="btn fw-bold" style="width: 150px; background-color: #e000e7; color: white">Apply
+                          Now</button>
+                  </a>
+              </div>
+
           </section>
+          <script>
+              document.querySelectorAll('.dropdown-submenu a.dropdown-toggle').forEach(function(element) {
+                  element.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      const nextEl = this.nextElementSibling;
+                      const isVisible = nextEl.style.display === 'block';
+                      document.querySelectorAll('.dropdown-submenu .dropdown-menu').forEach(function(submenu) {
+                          submenu.style.display = 'none';
+                      });
+                      nextEl.style.display = isVisible ? 'none' : 'block';
+                  });
+              });
+          </script>

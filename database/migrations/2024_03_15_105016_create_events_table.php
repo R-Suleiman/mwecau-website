@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('event_title');
             $table->string('event_category');
-            $table->string('event_description');
+            $table->text('event_description');
             $table->string('event_image')->nullable();
             $table->string('speaker_fullname');
             $table->string('speaker_profession');
-            $table->string('speaker_info');
+            $table->tex('speaker_info');
             $table->string('speaker_photo')->nullable();
             $table->string('event_cost');
             $table->date('event_date');

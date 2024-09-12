@@ -92,8 +92,28 @@
                         Mwenge Catholic University prepares students with the transformative experience and to be
                         well-rounded leaders whomake a positive impact on the world.
                     </p>
+                    {{-- counter --}}
+                    <div class="container-fluid my-3" style="background-color: white">
+                        <div class="row d-flex p-2 fs-4">
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="establishedCount"></span>
+                                <label>Established</label>
+                            </div>
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="facultyCount"></span>
+                                <label>Faculties</label>
+                            </div>
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="studentsCount"></span>
+                                <label>Students</label>
+                            </div>
+                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                                <span for="" id="gRareCount"></span>
+                                <label>Graduation Rate</label>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="elfsight-app-bb3abb2b-f006-4982-93a0-a3efdda478c1" data-elfsight-app-lazy></div>
                 </div>
 
             </div>
@@ -107,14 +127,18 @@
             <div class="row justify-content-around align-items-start">
                 <!-- post-graduate -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4 d-md-block">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded d-" alt="Welcome at Mwecau">
+                    @if ($postgraduateImage)
+                        <img src="{{ asset('/images/pageImages/' . $postgraduateImage->image) }}"
+                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded d-" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h1>Post-Graduate programs</h1>
+                                <h2>{{Str::ucfirst($postgraduateImage->header)  }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -125,8 +149,8 @@
                                     the
                                     right one for you.
                                 </p>
-                                <a href="{{ route('post-graduate') }}"> <button class="programsBtn">Post-Graduate
-                                        Courses <i class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{ route('programmeCategory', 'post-graduate') }}"> <button class="programsBtn">Post-Graduate
+                                        Programs <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>
                         </div>
@@ -135,13 +159,17 @@
 
                 <!-- undergraduate -->
                 <div class="right2 col-12 col-md-6 col-lg-6 mb-4 d-md-block d-lg-none d-sm-block">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @if ($undergraduateImage)
+                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}"
+                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
                 <div class="left2 col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h1>Undergraduate programs</h1>
+                                <h2>{{Str::ucfirst($undergraduateImage->header)  }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -149,27 +177,35 @@
                                     benefit from the extraordinary resources. Browse our undergraduate programs and find
                                     the right one for you.
                                 </p>
-                                <a href="{{ route('undergraduate') }}"><button class="programsBtn">Undergraduate
-                                        Courses <i class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{ route('programmeCategory', 'undergraduate') }}"><button class="programsBtn">Undergraduate
+                                        Programs <i class="fas fa-arrow-right"></i></button></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="right2 col-12 col-md-12 col-lg-6 mb-4 d-none d-lg-block d-md-none">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @if ($undergraduateImage)
+                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}"
+                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <!-- Non-degree programs -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4">
-                    <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau">
+                    @if ($nonDegreeImage)
+                    <img src="{{ asset('/images/pageImages/' . $nonDegreeImage->image) }}"
+                        class="img-fluid rounded" alt="Welcome at Mwecau">
+                @endif
+                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h1>Non-Degree programs</h1>
+                                <h2>{{Str::ucfirst($nonDegreeImage->header)  }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -177,8 +213,8 @@
                                     student benefit from the extraordinary resources. Browse our non-degree programs and
                                     find the right one for you.
                                 </p>
-                                <a href="{{ route('non-degree') }}"> <button class="programsBtn">Non-degree Courses <i
-                                            class="fas fa-arrow-right"></i></button></a>
+                                <a href="{{ route('programmeCategory', 'non-degree') }}"> <button class="programsBtn">Non-Degree Programs
+                                        <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>
                         </div>
@@ -188,48 +224,46 @@
         </div>
     </section>
 
-
     <!-- academics images -->
     <section>
         <div class="academics2">
             <div class="container academicsText2 p-sm-5">
                 <div class="row g-5 ">
-                    <div class="col-12 col-md-6 mb-2">
+                    <div class="col-12 col-md-12 col-lg-6 mb-2">
                         <div class="card shadow-lg darkMode">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h3>Learning Abroad</h3>
                                 </div>
                                 <div class="card-text mb-3">
-                                    Mwenge Catholic University is a global institution, and there are vast opportunities
-                                    to learn and pursue research
+                                    <p>
+                                        Mwenge Catholic University (MWECAU) offers students the chance to boarden their academic and cultural horizons through international student exchange programs. Partnering with prestigious institutions such as Inland Norway University of Applied Science, Mary Immaculate College in Ireland Catholic University of Louvain in Belgium, and the University of Georgia (UGA) in the United States, MWECAU provides a platform for student to engage with diverse global perspectives. These opportunities enrich their educational experience, enhance intercultural understanding, and strengthen their global networks.
+                                    </p>
                                 </div>
-                                <button class="learnBtn">Learn more <i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 mb-2">
+                    <div class="col-12 col-md-12 col-lg-6 mb-2">
                         <div class="card shadow-lg darkMode">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h3>Career Development</h3>
                                 </div>
                                 <div class="card-text mb-2">
-                                    We empower you to discover your interests and pursue your passions while studying.
+                                   Mwenge Catholic Univeristy (MWECAU) provides students with the opportunity to engange with contemporary issues critical to todays's society, offering speciaized courses in area such as child protection, executive management, servant leadership, entrepreneurship, and digital marketing. Through these students gains practical skills and knowledge that prepare them to address modern challenges, lead with integrity and thrive i dynamic business and social environment. MWECAU equips graduates with the tools to make meaningful and global workforce.
                                 </div>
-                                <button class="learnBtn">Learn more <i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="text-center text-white mt-3">
+                {{-- <div class="text-center text-white mb-5">
                     <h2 class="">Not sure what to study?</h2>
                     <span>Discover the right program for you</span> <br>
                     <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i
                             class="fas fa-arrow-circle-right"></i></button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -242,6 +276,7 @@
     <!-- jQuery -->
 
     <script src="custom.js"></script>
+    <script src="{{ asset('../js/counter.js') }}"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="node_modules/aos/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

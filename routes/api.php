@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AcademicsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::controller(AcademicsController::class)->group(function(){
+    Route::get('/academics', 'academicsJson');
+});
+
+Route::controller(ApiController::class)->group(function(){
+    Route::get('/university-structure', 'UniversityStructure');
 });
