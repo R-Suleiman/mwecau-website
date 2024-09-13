@@ -2,12 +2,11 @@ const establishedCount = document.getElementById('establishedCount')
 const facultyCount = document.getElementById('facultyCount')
 const studentsCount = document.getElementById('studentsCount')
 const gRareCount = document.getElementById('gRareCount')
-let statistics
+let statistics = null;
 
 const getStatistics = async () => {
     const response = await fetch('/api/academics')
      statistics = await response.json()
-    console.log(statistics)
 }
 
 getStatistics()
@@ -18,6 +17,7 @@ let studentsCounter = 0
 let gRareCounter = 0
 
 const established = setInterval(() => {
+    if(statistics !== null) {
 statistics.forEach((statistic) => {
     if(statistic.statistic_name === 'Established') {
         if (establishedCounter <= statistic.value) {
@@ -34,9 +34,11 @@ statistics.forEach((statistic) => {
         }
     }
   })
+}
 },60)
 
   const faculty = setInterval(() => {
+    if(statistics !== null) {
     statistics.forEach((statistic) => {
         if(statistic.statistic_name === 'Faculty') {
     if (facultyCounter <= 3) {
@@ -47,9 +49,11 @@ statistics.forEach((statistic) => {
     }
 }
 })
+    }
   }, 100)
 
     const students = setInterval(() => {
+        if(statistics !== null) {
         statistics.forEach((statistic) => {
             if(statistic.statistic_name === 'Students') {
       if (studentsCounter <= statistic.value) {
@@ -66,9 +70,11 @@ statistics.forEach((statistic) => {
       }
     }
 })
+        }
     }, 60)
 
   const gRate = setInterval(() => {
+    if(statistics !== null) {
     statistics.forEach((statistic) => {
         if(statistic.statistic_name === 'Graduation rate') {
     if (gRareCounter <= statistic.value) {
@@ -85,6 +91,7 @@ statistics.forEach((statistic) => {
     }
 }
 })
+    }
   }, 100)
 
 

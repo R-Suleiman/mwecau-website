@@ -27,10 +27,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    // public function index()
-    // {
-    //     return view('home');
-    // }
+    public function connection_error()
+    {
+        return view('errors.503');
+    }
     public function index()
     {
         // $images = Image::orderBy('created_at', 'desc')->get();

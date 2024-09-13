@@ -20,9 +20,8 @@ use App\Http\Controllers\ResearchController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/503', [\App\Http\Controllers\HomeController::class, 'connection_error']);
+
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 
 //home route

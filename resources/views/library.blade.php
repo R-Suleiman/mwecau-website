@@ -39,8 +39,6 @@
                     <i class="fa fa-link"></i>
                     <span>University Management System (UMS)</span>
                 </a> --}}
-
-
                 <p>
                     Our hardworking IT team is here to make sure that MWECAU community
                     has dependable access to cutting-edge technological solutions.
@@ -64,9 +62,9 @@
                 <img style="width: 100%" src="{{asset('img/campus life/library5.JPG')}}" alt="">
             </div>
         </div>
-        <div class="row pt-5 px-5 ict-resource-row">
+        <div class="row px-5 ict-resource-row">
                 <!-- gallery -->
-    <div class="container-fluid mt-5 mb-5">
+    <div class="container-fluid mt-2 mb-5">
         <div class="row gallery">
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
                 <img src="img/campus life/library5.JPG" alt="">

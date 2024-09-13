@@ -1336,6 +1336,7 @@ select {
     top: 0;
     left: 0;
     width: 100%;
+    min-width: 100%;
     height: 100%;
     z-index: 1;
     background: rgba(81, 63, 131, 0.6);
@@ -1351,6 +1352,7 @@ select {
 }
 
 .gallery-overlay-icon {
+    text-align: center;
     color: #fff;
     font-size: 2rem;
 }
@@ -1885,6 +1887,11 @@ select {
     display: none;
 }
 
+.list-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
 @media screen and (max-width: 950px) {
     .campus-row {
         margin: 10px 5px;
@@ -1895,9 +1902,33 @@ select {
         width: 98%;
       }
 
+      .talent-content-container {
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+      }
+
+      .talent-pics, .talent-content {
+        width: 100%;
+        margin: 0;
+      }
+
       .campus-gallery div {
         width: 45%;
         margin: 4px;
+      }
+
+      .sports {
+        display: block;
+      }
+
+      .sports-col1, .sports-col2 {
+        margin: 20px auto;
+        width: 90%;
+      }
+
+      .gallery-overlay {
+        width: 100%;
       }
 
 }

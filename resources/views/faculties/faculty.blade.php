@@ -1,9 +1,21 @@
 @php
-$faculty_data;
+    $faculty_data;
+    $staff_details = null;
+    $staff_department = null;
     foreach ($faculties as $faculty) {
-       if ($faculty['faculty_name'] === $faculty_name) {
-        $faculty_data = $faculty;
-       }
+        if ($faculty['faculty_name'] === $faculty_name) {
+            $faculty_data = $faculty;
+            $faculty_departments = $faculty['departments'];
+            foreach ($faculty_departments as $department) {
+                $department_staffs = $department['staffs'];
+                foreach ($department_staffs as $staff) {
+                    if (str_contains($staff['position'], 'Dean')) {
+                        $staff_department = $department;
+                        $staff_details = $staff;
+                    }
+                }
+            }
+        }
     }
 @endphp
 @extends('layouts.faculty')
@@ -11,40 +23,76 @@ $faculty_data;
     <div class="container">
         <div class="row">
             <div class="my-5 text-center">
-                <h1 class="fs-2 fw-bold text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})</h1>
+                <h1 class="fs-2 fw-bold text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})
+                </h1>
             </div>
 
         </div>
         <section class="main-section">
             <div class="content-box">
-                <div class="profile">
-                    <div class="short-profile">
-                        <img src="" alt="profile photo">
-                    </div>
-                    <div class="long-profile">
-                        <div class="biodata">
-                            <table class="bio-tb">
+                @if ($staff_details !== null)
+                <div class="container mt-2">
+                    <div class="row mb-5 ">
+                        <h3 class="title favColor darkMode">{{ 'Staff Profile' }}</h3>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card shadow-lg darkMode">
+                                <div class="card-body">
+                                    @if ($staff_details['photo'] === '')
+                                        @if ($staff_details['gender'] === 'M')
+                                            <div class="text-center mb-4">
+                                                <img src="{{ asset('../img/staff profiles/Male_Avatar.jpg') }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                            </div>
+                                        @else
+                                            <div class="text-center mb-4">
+                                                <img src="{{ asset('../img/staff profiles/female_avatar.jpg') }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                            </div>
+                                        @endif
+                                    @else
+                                        <div class="text-center mb-4">
+                                            <img src="{{ $staff_details['photo'] }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                        </div>
+                                    @endif
+
+                                    <div class="card-text text-center ">
+                                        <span>{{ $staff_details['first_name'] }}
+                                            {{ $staff_details['last_name'] }}</span> <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-8">
+                            <table class="table table-success table-hover table-bordered table-striped ">
                                 <tr>
                                     <th>Name: </th>
-                                    <td></td>
+                                    <td>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}
+                                        {{ $staff_details['other_name'] }} {{ $staff_details['last_name'] }}</td>
                                 </tr>
                                 <tr>
                                     <th>Designation: </th>
-                                    <td></td>
+                                    <td>{{ $staff_details['position'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Department: </th>
+                                    <td>{{ $staff_department['dept_name'] }} ({{ $staff_department['dept_short_name'] }})</td>
+                                </tr>
+                                <tr>
+                                    <th>Specialization: </th>
+                                    <td>{{ $staff_details['specialization'] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Highest Award Level: </th>
+                                    <td>{{ $staff_details['highest_award_level'] }}</td>
                                 </tr>
                                 <tr>
                                     <th>Email: </th>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>Contacts: </th>
-                                    <td></td>
+                                    <td>{{ $staff_details['official_email'] }}</td>
                                 </tr>
                             </table>
                         </div>
-
                     </div>
                 </div>
+                @endif
 
                 <div class="about-box">
                     <div class="about">
@@ -52,10 +100,10 @@ $faculty_data;
                         <p>{{ $faculty_data['faculty_descriptions'] }}</p>
                     </div>
 
-                    <div class="about">
+                    {{-- <div class="about">
                         <h5>Faculty Structure</h5>
                         <p>Coming Soon...</p>
-                    </div>
+                    </div> --}}
 
                     <div class="about">
                         <h5>Contact Us</h5>

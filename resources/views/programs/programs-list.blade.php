@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mwecau | Course list</title>
+    <title>Mwecau | Programmes list</title>
 
     @include('links')
 </head>
@@ -56,6 +56,7 @@
                 $postgraduatecounter = 1;
             @endphp
             <h4 class="mb-4 mt-4">Post-Graduate programs</h4>
+            <div class="list-table">
             <table  class="myTable table table-bordered text-sm">
                 <thead>
                     <tr class="favbg">
@@ -83,12 +84,7 @@
                 </tbody>
 
             </table>
-            {{-- <div>
-                <a href="{{ route('all.courses.pdf') }}">
-                    <p class="favColor darkMode">Download PDF <i class="favColor far fa-file-pdf fs-2"
-                            aria-hidden="true"></i></p>
-                </a>
-            </div> --}}
+            </div>
         </div>
 
         {{-- undergraduate table --}}
@@ -97,6 +93,7 @@
                 $undergraduatecounter = 1;
             @endphp
             <h4 class="mb-4 mt-4">{{ 'Undergraduate programs' }}</h4>
+            <div class="list-table">
             <table class="myTable table table-bordered text-sm">
                 <thead>
                     <tr class="favbg">
@@ -124,6 +121,7 @@
                 </tbody>
 
             </table>
+            </div>
         </div>
 
         {{-- NonDegree table --}}
@@ -132,6 +130,7 @@
                 $nonDegereeCounter = 1;
             @endphp
             <h4 class="mb-4 mt-4">{{ 'Non Degree programs' }}</h4>
+            <div class="list-table">
             <table class="myTable table table-bordered text-sm">
                 <thead>
                     <tr class="favbg">
@@ -159,6 +158,7 @@
                 </tbody>
 
             </table>
+            </div>
         </div>
     </div>
 

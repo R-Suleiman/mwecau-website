@@ -1,25 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mwecau| Academics</title>
-
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
-    <script src="node_modules/bootstrap/dist/js/jquery.min.js"></script>
-    <script src="node_modules/aos/dist/aos.js"></script>
-    <link rel="stylesheet" href="style.css">
-
-    @include('links')
-</head>
-
-<body>
-    @include('preloader')
-    @include('partials.navbar')
+@extends('layouts.web')
+@section('content')
 
     {{-- about us landing page --}}
     <section class="">
@@ -94,22 +74,22 @@
                     </p>
                     {{-- counter --}}
                     <div class="container-fluid my-3" style="background-color: white">
-                        <div class="row d-flex p-2 fs-4">
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                        <div class="counter row d-flex p-2 fs-4">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="establishedCount"></span>
                                 <label>Established</label>
                             </div>
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="facultyCount"></span>
                                 <label>Faculties</label>
                             </div>
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="studentsCount"></span>
                                 <label>Students</label>
                             </div>
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="gRareCount"></span>
-                                <label>Graduation Rate</label>
+                                <label class="text-center">Graduation Rate</label>
                             </div>
                         </div>
                     </div>
@@ -257,29 +237,10 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="text-center text-white mb-5">
-                    <h2 class="">Not sure what to study?</h2>
-                    <span>Discover the right program for you</span> <br>
-                    <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i
-                            class="fas fa-arrow-circle-right"></i></button>
-                </div> --}}
             </div>
         </div>
     </section>
-
-
-    @include('partials.footer')
-    @include('jslinks')
-    <!-- footer end -->
-
-    <!-- jQuery -->
-
-    <script src="custom.js"></script>
     <script src="{{ asset('../js/counter.js') }}"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="node_modules/aos/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-</body>
 
-</html>
+    @endsection
+
