@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\event;
 use App\Models\Image;
-use App\Models\staff;
 use App\Models\NewsUpdate;
+use App\Models\staff;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -73,6 +73,7 @@ class HomeController extends Controller
 
     public function campusLife()
     {
+
         $campusImage = Image::where('image_section', 'campus-life')->first();
         return view('campus-life', compact('campusImage'));
     }
@@ -81,6 +82,7 @@ class HomeController extends Controller
         $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
         return view('IT-services', compact('ictBanner'));
     }
+
     public function library()
     {
         $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
@@ -103,16 +105,14 @@ class HomeController extends Controller
         $newsUpdates = NewsUpdate::all();
         return view('news-updates', compact('newsUpdates'));
     }
+
     public function announcementDetails($id)
     {
         $announcementDetails = NewsUpdate::findOrFail($id);
 
         return view('announcement-details', compact('announcementDetails'));
     }
-    public function icons()
-    {
-        return view('icons');
-    }
+
     public function documentPreview($attachment)
     {
         // Fetch the attachment
