@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.css">
     <!-- Include SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
@@ -34,6 +35,12 @@
                     <li class="nav-item">
                         <i class="fa fa-home nav-icons"></i>
                         <span class="nav-words">Home</span>
+                    </li>
+                </a>
+                <a href="{{ route('admin.about') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-home nav-icons"></i>
+                        <span class="nav-words">About Page</span>
                     </li>
                 </a>
                 <a href="{{ route('admin.research.list') }}">
@@ -155,7 +162,7 @@
     </script>
 
     @include('jslinks')
-
+    @include('partials.ckeditor')
 </body>
 
 </html>

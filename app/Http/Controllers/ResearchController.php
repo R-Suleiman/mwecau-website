@@ -10,7 +10,7 @@ class ResearchController extends Controller
     //for web display
     public function research()
     {
-        $research = Research::all();
+        $research = Research::orderBy('created_at', 'desc')->get();
         return view('research.projects', compact('research'));
     }
     public function researchDetails($header)

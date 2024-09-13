@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\event;
 use App\Models\Image;
-use App\Models\NewsUpdate;
 use App\Models\staff;
+use App\Models\NewsUpdate;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,21 +17,14 @@ class HomeController extends Controller
      * @return void
      */
 
-    //this a default laravel middleware to applied inside the controller to protect all the routes inside this controller
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    // public function index()
-    // {
-    //     return view('home');
-    // }
+
     public function index()
     {
         // $images = Image::orderBy('created_at', 'desc')->get();
@@ -41,10 +35,37 @@ class HomeController extends Controller
         return view('welcome', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
     }
 
+    // Cleaning the CK editor content
+    public function cleanHtml($html) {
+        $cleaned_html = html_entity_decode($html);
+        return $cleaned_html;
+    }
+
     public function about()
     {
-        return view('about');
+        // Fetch the first record or modify it to fetch specific records
+        $aboutPage = About::first();
+
+        // Check if aboutPage exists
+        if ($aboutPage) {
+            $content = $aboutPage->description; // Fetch the description
+
+            // Find the split index to break the content in half
+            $splitIndex = strlen($content) / 2;
+
+            // Split the description into two parts
+            $part1 = $this->cleanHtml(substr($content, 0, $splitIndex));
+            $part2 = $this->cleanHtml(substr($content, $splitIndex));
+
+            // Pass both parts of the description and the name to the view
+            return view('about', [
+                'header' => $aboutPage->header,
+                'part1' => $part1,
+                'part2' => $part2
+            ]);
+        }
     }
+
     public function events()
     {
         return view('events');
@@ -112,5 +133,4 @@ class HomeController extends Controller
 
         return response()->file($filePath);
     }
-
 }

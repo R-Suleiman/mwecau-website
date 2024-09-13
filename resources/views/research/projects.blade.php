@@ -29,10 +29,10 @@
                 @foreach ($research as $research)
                     <div class="col-12 col-lg-10 col-md-9 event-content">
                         <a href="" class="link">
-                            <h3>{{ $counter++ }} : {{ $research->header }}</h3>
+                            <h4>{{ $counter++ }} : {{ $research->header }}</h4>
                         </a>
                         <p>
-                            {{ $research->description }}
+                            {{ Str::limit( $research->description, 190)}}
                         </p>
                     </div>
                     <div class="col-12 col-lg-2 col-md-3">

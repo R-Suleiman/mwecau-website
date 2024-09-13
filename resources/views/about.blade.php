@@ -60,8 +60,7 @@
             </div>
             <div class="carousel-item">
                 {{-- <img src="../i" alt=""> --}}
-                <img src="/img/mwecau_image1.JPG"
-                    class="d-block w-100 img-fluid background-container" alt="..." />
+                <img src="/img/mwecau_image1.JPG" class="d-block w-100 img-fluid background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
                         <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
@@ -88,44 +87,37 @@
     </div>
 
     <!-- main content -->
-    <div class="container about-container text-center ">
-        <div class="underline mt-2 mb-3 " style="width: fit-content; margin-left: 0">
-            <h2 style="text-align: center; ">
-                About Us
-            </h2>
-        </div>
-        <div class="row gap-4">
-            <div class="col-sm-5 ">
-                <p>
-                    Welcome to Mwenge Catholic University (MWECAU), a University that gives you the opportunity to
-                    pursue quality education
-                    in truthfulness and freedom of thought, so that you may gain professional competency to boldly
-                    serve and contribute to the development of humanity.
-
-                    In order to prepare for your future career or pursue academic and professional advancement, be
-                    it education,
-                    administration, sciences, law and/or social sciences, think of MWECAU as your best choice.
-                    <!-- Our thoroughly tested
-                        programmes offer you an intellectual and social engagement to form you into a critical-thinking
-                        citizen presently needed
-                        by society. Our business administration, marketing and accounting programmes will prepare you to
-                        engage in the business
-                        world, as an entrepreneur or work in any of the many financial institutions. -->
+    <div class="container">
+        <div class="row g-0">
+            <h2 class="text-center"> {{ $header }}</h2>
+            <div class="col-md col-lg 6 lh-">
+                <p class="lh-1 fs-1">
+                    {!! $part1 !!}
                 </p>
             </div>
-            <div class="col-sm-5 ">
+            <div class="col-md col-lg 6">
+                {!! $part2 !!}
                 <p>
-                    Our community is being called to reimagine the future. As the only
-                    university where a renowned design school comes together with
-                    premier colleges, we are making learning more relevant and
-                    transformational. We are enriched by the wide range of experiences
-                    and perspectives of our students, faculty, staff and alumni.
-                    Preparing students to make meaningful contributions to society as
-                    leaders in a complex world.
+
                 </p>
             </div>
         </div>
     </div>
+    {{-- <div class="container about-container text-center ">
+        <div class="underline mt-2 mb-3 " style="width: fit-content; margin-left: 0">
+            <h2 style="text-align: center; ">
+
+            </h2>
+        </div>
+        <div class="row gap-4">
+            <div class="col-sm-5 ">
+
+            </div>
+            <div class="col-sm-5 ">
+
+            </div>
+        </div>
+    </div> --}}
 
     <div class="container-fluid about-container text-center ">
         <div class="row mission-block">
@@ -170,7 +162,8 @@
                         <i class="fa fa-file-text display-5 mb-3 icons" id="card-icon"></i>
                         <h5 class="card-title" id="card-title">Core values</h5>
 
-                        <div class="accordion accordion-flush overflow-auto card-list" id="accordionFlushExample" style="overflow-y:scroll; height: 210px;">
+                        <div class="accordion accordion-flush overflow-auto card-list" id="accordionFlushExample"
+                            style="overflow-y:scroll; height: 210px;">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed darkMode " type="button"
@@ -308,32 +301,80 @@
     </div>
 
     <!-- video -->
-    <div class="container-fluid mb-5" style="margin: 10px">
-        <iframe width="100%" height="550" src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12 col-lg 3 col-md-2">
+                <div class="card">
+                    <div class="ratio ratio-16x9">
 
-    <!-- counters -->
-        {{-- counter --}}
-        <div class="container-fluid my-3" style="background-color: white">
-            <div class="row d-flex p-2 fs-4">
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="establishedCount"></span>
-                    <label>Established</label>
-                </div>
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="facultyCount"></span>
-                    <label>Faculties</label>
-                </div>
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="studentsCount"></span>
-                    <label>Students</label>
-                </div>
-                <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="gRareCount"></span>
-                    <label>Graduation Rate</label>
+                        <iframe width="100%" height="550"
+                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
+            <div class="col-12 col-lg 3 col-md-2">
+                <div class="card">
+                    <div class="ratio ratio-16x9">
+
+                        <iframe width="100%" height="550"
+                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg 3 col-md-2">
+                <div class="card" style="width: 100%;">
+                    <!-- Video Embed -->
+                    <div class="ratio ratio-16x9">
+
+                        <iframe width="100%" height="550"
+                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+    </div>
+    {{-- <div class="container-fluid mb-5" style="margin: 10px">
+        <iframe width="100%" height="550" src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div> --}}
+
+    <!-- counters -->
+    {{-- counter --}}
+    <div class="container-fluid my-5" style="background-color: white">
+        <div class="row d-flex p-2 fs-4">
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="establishedCount"></span>
+                <label>Established</label>
+            </div>
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="facultyCount"></span>
+                <label>Faculties</label>
+            </div>
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="studentsCount"></span>
+                <label>Students</label>
+            </div>
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="gRareCount"></span>
+                <label>Graduation Rate</label>
+            </div>
+        </div>
+    </div>
 
     <!-- academics -->
     <div class="container text-center ">
@@ -343,8 +384,7 @@
             </div>
             <!-- your starts here -->
             <div class="col-sm-4 mb-5">
-                <div class="mission-card card h-100 d-flex flex-column darkMode"
-                    style="width: 100%; border: none">
+                <div class="mission-card card h-100 d-flex flex-column darkMode" style="width: 100%; border: none">
 
                     <div class="card-body ">
                         <img src="/img/mwecau.png" class="card-img-top img-fluid rounded-circle " alt="..."

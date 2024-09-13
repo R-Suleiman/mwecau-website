@@ -1,5 +1,18 @@
+<style>
+    .main-container {
+        width: 795px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 @extends('layouts.admin')
 @section('content')
+    <div class="main-container">
+        <div >
+            <p>Hello from CKEditor 5!</p>
+        </div>
+    </div>
+
     <section class="main-section">
         <div class="main-content">
             <div class="container mb-4 mt-4">
@@ -45,7 +58,7 @@
 
                         <div class="col-12 col-md-6 col-lg-6 mb-4">
                             <label class="fw-bold mb-3 " for="description">Description</label>
-                            <textarea class="form-control" id="description" name="description" cols="50" rows="5"
+                            <textarea id="editor" class="form-control" id="description" name="description" cols="50" rows="5"
                                 placeholder="Describe the project"></textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -53,6 +66,9 @@
                                 </span>
                             @enderror
                         </div>
+
+                        <textarea id="ckeditor"></textarea>
+
                     </div>
                     <button type="submit" class="btn btn-success fw-bold ">{{ 'Post' }}</button>
                 </form>
