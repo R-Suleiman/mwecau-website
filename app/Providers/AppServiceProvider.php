@@ -20,9 +20,6 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot()
     {
         $faculties;
@@ -42,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
             // If cache or API call failed, provide a fallback
             if ($faculties === null) {
-                return view('faculties.faculty', ['faculties' => [], 'error' => 'Unable to fetch programs at this time.']);
+                abort(503, 'No internet access');
             }
 
             View::share('faculties', $faculties);
@@ -55,8 +52,8 @@ class AppServiceProvider extends ServiceProvider
                 $programs = Cache::get('faculty_data');
                 return view('faculties.faculty', ['faculties' => $faculties]);
             } else {
-                // If no cached data, show an error
-                return view('faculties.faculty', ['faculties' => [], 'error' => 'Unable to fetch programs and no cached data available.']);
+               abort(503, 'No internet access');
+
             }
         }
 

@@ -12,15 +12,6 @@
         }
     }
 
-    // Cleaning the HTML content
-    function cleanHtml($html)
-    {
-        $apiResponse = $html;
-        $data = html_entity_decode($apiResponse);
-        return $data;
-    }
-    $cleanedDescription = cleanHtml($programme_details['entry_qualification_descr']);
-
 @endphp
 
 @extends('layouts.faculty')
@@ -53,16 +44,22 @@
             </div>
             <div class="col-lg-7">
                 <h4>About {{ $programme_details['programme_name'] }}</h4>
-                <p class="d-flex flex-column my-2">
-                    <label class="mb-3"> <strong>Admission criteria:</strong>
-                        {{ $programme_details['admission_criteria'] }}</label>
-                    <label class="mb-3"> <strong>Minimum points:</strong>
-                        {{ $programme_details['minimum_points'] }}</label>
-                </p>
-                <p>
+
                     <strong>Entry Qualificattions: </strong>
-                    {!! $cleanedDescription !!}
-                </p>
+                    @foreach ($programme_details['entry_qualifications'] as $qualification)
+                    @php
+                          // Cleaning the HTML content
+                          $cleanedDescription = html_entity_decode($qualification['entry_qualification_descr']);
+                    @endphp
+                    <p class="my-2">
+                    <label class="mb-3"> <strong>Admission criteria:</strong>
+                        {{ $qualification['admission_criteria'] }}</label>
+                    <label class="mb-3"> <strong>Minimum points:</strong>
+                        {{ $qualification['minimum_points'] }}</label>
+                        <label class="mb-3"> <strong>Entry Qualificaton description:</strong>
+                            {!! $cleanedDescription !!}</label>
+                    </p>
+                    @endforeach
 
                 <a href="https://uas.mwecau.ac.tz" target="_blank">
                     <button class="admissionBtn btn-lg">Click here to apply now</button>

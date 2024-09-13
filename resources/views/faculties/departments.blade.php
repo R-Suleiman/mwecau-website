@@ -1,6 +1,7 @@
 @php
     $faculty_data;
     $department_data;
+    $department_staff;
     foreach ($faculties as $faculty) {
         if ($faculty['faculty_name'] === $faculty_name) {
             $faculty_data = $faculty;
@@ -12,6 +13,7 @@
     foreach ($faculty_departments as $department) {
         if ($department['dept_name'] === $dept_name) {
             $department_data = $department;
+            $department_staff = $department['staffs'];
         }
     }
 @endphp
@@ -20,38 +22,72 @@
 @section('content')
     <section class="main-section">
         <div class="header-box text-center my-5">
-            {{-- <h1 class="fs-2 text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})</h1> --}}
             <h1 class="fs-4 fw-bold text-center favColor mt-3 mb-3">{{ $dept_name }} ({{ $department_data['dept_short_name'] }})</h1>
         </div>
         <div class="content-box">
-            <div class="profile">
-                <div class="short-profile">
-                    <img src="" alt="profile photo">
-                </div>
-                <div class="long-profile">
-                    <div class="biodata">
-                        <table class="bio-tb">
+            {{-- HOD's Profile --}}
+
+            {{-- <div class="container mt-2">
+                <div class="row mb-5 ">
+                    <h3 class="title favColor darkMode">{{ 'Staff Profile' }}</h3>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card shadow-lg darkMode">
+                            <div class="card-body">
+                                @if ($staff_details['photo'] === '')
+                                    @if ($staff_details['gender'] === 'M')
+                                        <div class="text-center mb-4">
+                                            <img src="{{ asset('../img/staff profiles/Male_Avatar.jpg') }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                        </div>
+                                    @else
+                                        <div class="text-center mb-4">
+                                            <img src="{{ asset('../img/staff profiles/female_avatar.jpg') }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="text-center mb-4">
+                                        <img src="{{ $staff_details['photo'] }}" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                    </div>
+                                @endif
+
+                                <div class="card-text text-center ">
+                                    <span>{{ $staff_details['first_name'] }}
+                                        {{ $staff_details['last_name'] }}</span> <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-8">
+                        <table class="table table-success table-hover table-bordered table-striped ">
                             <tr>
                                 <th>Name: </th>
-                                <td></td>
+                                <td>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}
+                                    {{ $staff_details['other_name'] }} {{ $staff_details['last_name'] }}</td>
                             </tr>
                             <tr>
                                 <th>Designation: </th>
-                                <td></td>
+                                <td>{{ $staff_details['position'] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Department: </th>
+                                <td>{{ $staff_department['dept_name'] }} ({{ $staff_department['dept_short_name'] }})</td>
+                            </tr>
+                            <tr>
+                                <th>Specialization: </th>
+                                <td>{{ $staff_details['specialization'] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Highest Award Level: </th>
+                                <td>{{ $staff_details['highest_award_level'] }}</td>
                             </tr>
                             <tr>
                                 <th>Email: </th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>Contacts: </th>
-                                <td></td>
+                                <td>{{ $staff_details['official_email'] }}</td>
                             </tr>
                         </table>
                     </div>
-
                 </div>
-            </div>
+            </div> --}}
 
             <div class="about-box">
                 <div class="about">
@@ -111,7 +147,37 @@
 
                     </table>
                     </div>
+                </div>
 
+                <div class="about mt-5 mb-5">
+                    <h5 class="mb-4">Staff under Department</h5>
+                    <div class="tables">
+                        <table id="myTable" class="table table-bordered text-sm">
+                            <thead>
+                                <tr class="favbg">
+                                    <th>S/N</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Surname</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    @foreach ($department_staff as $staff)
+                                        <tr>
+                                            <td>{{ $counter++ }}</td>
+                                            <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
+                                            <td>{{ $staff['other_name'] }}</td>
+                                            <td>{{ $staff['last_name'] }}</td>
+                                            <td>
+                                                <a href="{{ route('staff-profile', [$staff['first_name'], $staff['last_name']] ) }}"><button class="btn btn-outline-secondary">view</button></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                            </tbody>
+
+                        </table>
+                    </div>
                 </div>
 
                 <div class="about">

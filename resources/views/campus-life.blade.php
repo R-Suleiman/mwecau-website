@@ -74,21 +74,13 @@
         <div class="row talent-cont">
             <div class="talent-content-container">
                 <div class="talent-pics">
-                    <!-- <div
-                  style="
-                    width: 80%;
-                    height: 100%;
-                    position: relative;
-                    background-color: blue;
-                  "
-                > -->
+
                     <img src="{{ asset('img/campus-life/spirtual4.jpg') }} " alt="students" class="fade-in"
                         data-target="1" />
                     <img src="{{ asset('img/campus-life/spirtual1.jpg') }} " alt="students" class="fade-out"
                         data-target="2" />
                     <img src="{{ asset('img/campus-life/spirtual3.jpg') }} " alt="students" class="fade-out"
                         data-target="3" />
-                    <!-- </div> -->
                 </div>
                 <div class="talent-content">
                     <div class="underline mt-4 mb-5" style="width: 80%">

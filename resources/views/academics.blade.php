@@ -1,5 +1,6 @@
 @extends('layouts.web')
 @section('content')
+
     {{-- about us landing page --}}
     <section class="">
         <div class="text-center wrapper align-content-center"
@@ -73,22 +74,22 @@
                     </p>
                     {{-- counter --}}
                     <div class="container-fluid my-3" style="background-color: white">
-                        <div class="row d-flex p-2 fs-4">
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                        <div class="counter row d-flex p-2 fs-4">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="establishedCount"></span>
                                 <label>Established</label>
                             </div>
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="facultyCount"></span>
                                 <label>Faculties</label>
                             </div>
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="studentsCount"></span>
                                 <label>Students</label>
                             </div>
-                            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center">
+                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
                                 <span for="" id="gRareCount"></span>
-                                <label>Graduation Rate</label>
+                                <label class="text-center">Graduation Rate</label>
                             </div>
                         </div>
                     </div>
@@ -254,4 +255,7 @@
             </div>
         </div>
     </section>
-@endsection
+    <script src="{{ asset('../js/counter.js') }}"></script>
+
+    @endsection
+

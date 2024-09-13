@@ -26,6 +26,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function connection_error()
+    {
+        return view('errors.503');
+    }
 
     public function index()
     {
@@ -38,6 +42,7 @@ class HomeController extends Controller
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
         return view('index', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
+
     }
 
     // Cleaning the CK editor content
@@ -49,6 +54,8 @@ class HomeController extends Controller
 
     public function about()
     {
+        $courseImage = Image::where('image_section', '=', 'course-banner')->first();
+        return view('about', compact('courseImage'));
         // Set canonical URL
         SEOTools::setCanonical(url()->current());
         //fetching gallery images
