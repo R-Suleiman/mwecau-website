@@ -34,6 +34,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/img/mwecau_image3.JPG" class="d-block w-100 background-container" alt="..." />
+                <img src="/img/mwecau_image3.JPG" class="d-block w-100 background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
                         <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Discover the world of
@@ -46,6 +47,7 @@
                 </div>
             </div>
             <div class="carousel-item">
+                <img src="/img/mwecau_image5.JPG" class="d-block w-100 background-container" alt="..." />
                 <img src="/img/mwecau_image5.JPG" class="d-block w-100 background-container" alt="..." />
                 <div class="dark-overlay">
                     <div class="nav-content">
@@ -452,14 +454,18 @@
         <div class="row gallery">
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
                 <img src="/img/mwecau_image1.JPG" alt="">
+                <img src="/img/mwecau_image1.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                <img src="/img/mwecau_image2.JPG" alt="">
                 <img src="/img/mwecau_image2.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
                 <img src="/img/mwecau_image3.JPG" alt="">
+                <img src="/img/mwecau_image3.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                <img src="/img/mwecau_image4.JPG" alt="">
                 <img src="/img/mwecau_image4.JPG" alt="">
             </div>
             <div class="col-6 col-lg-2 col-md-4 gallery-cont">

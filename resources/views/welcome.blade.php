@@ -57,6 +57,9 @@
                         by society. <a href="{{ route('about') }}" class="fw-bold favColor"> <button
                                 class="btn favbg text-white"> Read More <i class="fa fa-arrow-circle-right text-white"
                                     aria-hidden="true"></i> </button></a>
+                        by society. <a href="{{ route('about') }}" class="fw-bold favColor"> <button
+                                class="btn favbg text-white"> Read More <i class="fa fa-arrow-circle-right text-white"
+                                    aria-hidden="true"></i> </button></a>
                     </p>
                 </div>
 
@@ -76,14 +79,22 @@
             <div class="row mt-4">
                 <div class="col-12 col-md-12 col-lg-8">
                     @foreach ($announcements->take(1) as $event)
+                    @foreach ($announcements->take(1) as $event)
                         <div class="container">
                             <div class="mb-3">
+                                <span class="favColor fw-bold">Latest event</span>
                                 <span class="favColor fw-bold">Latest event</span>
                             </div>
 
                             <div class="image-containerNews mb-5">
                                 <img class="img-fluid w-75" src="{{ asset('img/updatejpg') }}" alt=""
+                                <img class="img-fluid w-75" src="{{ asset('img/updatejpg') }}" alt=""
                                     style=" border: 1px solid #513f83; border-radius: 7px;">
+
+                                {{-- <img class="img-fluid w-75"
+                                    src="{{ asset('images/announcementImages/' . $event->event_image) }}" alt=""
+                                    style=" border: 1px solid #513f83; border-radius: 7px;"> --}}
+
 
                                 {{-- <img class="img-fluid w-75"
                                     src="{{ asset('images/announcementImages/' . $event->event_image) }}" alt=""
@@ -94,9 +105,11 @@
                                         <div class="card-body p-3">
 
                                             <h6 class="card-title text-uppercase fw-bold favColor">
+                                            <h6 class="card-title text-uppercase fw-bold favColor">
                                                 <a
                                                     href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
                                             </h6>
+                                            <p class="card-text fst-italic">{{ $event->description }}</p>
                                             <p class="card-text fst-italic">{{ $event->description }}</p>
                                         </div>
                                     </div>
@@ -109,17 +122,23 @@
                 <div class="col-12 col-md-6 col-lg-4 secondCard" style="overflow-x: auto; height: 499px;">
                     <div class="card secondCard border-0 team-slider darkMode"
                         style="overflow-y: auto;  border-right: 1px solid #513f83;">
+                        style="overflow-y: auto;  border-right: 1px solid #513f83;">
                         <span class="text-secondary">Other University events.</span>
 
+                        @if ($announcements->count() > 0)
+                            @foreach ($announcements->take(4) as $UniversityEvent)
                         @if ($announcements->count() > 0)
                             @foreach ($announcements->take(4) as $UniversityEvent)
                                 <div class="card-body">
                                     <h6 class="card-title favColor">
                                         <img src="{{ asset('img/new_icon.png') }}" alt="" style="width: 40px">
+                                        <img src="{{ asset('img/new_icon.png') }}" alt="" style="width: 40px">
                                         <a class="darkMode"
+                                            href="{{ route('announcement-details', [$UniversityEvent->id]) }}">{{ $UniversityEvent->name }}
                                             href="{{ route('announcement-details', [$UniversityEvent->id]) }}">{{ $UniversityEvent->name }}
                                     </h6>
                                     <small
+                                        class="fw-bold card-title text-secondary">{{ $UniversityEvent->created_at }}</small>
                                         class="fw-bold card-title text-secondary">{{ $UniversityEvent->created_at }}</small>
                                 </div>
                             @endforeach
@@ -145,11 +164,13 @@
 
     </section>
     <!-- why choose MWECAU section -->
+    <!-- why choose MWECAU section -->
     <section>
         <div class="container my-5  text-center rounded" data-aos="fade-up" data-aos-duration="2000">
             <div class="row g-2 justify-content-around align-items-start">
                 <div class="mb-5 ">
                     <div class="underline">
+                        <h1>Why Choose <span class="favColor fw-bold">MWECAU</span></h1>
                         <h1>Why Choose <span class="favColor fw-bold">MWECAU</span></h1>
                     </div> <br>
                     <span>We Are One of The Largest, Most Diverse Universities in The Tanzania</span>
@@ -167,6 +188,11 @@
                                     faculty members.
                                 </p>
                                 <div class="mb-3">
+                                    <a href="{{ route('academics') }}">
+                                        <button class="whyButtons"> Read More
+                                            <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </a>
                                     <a href="{{ route('academics') }}">
                                         <button class="whyButtons"> Read More
                                             <i class="fas fa-arrow-right"></i>
@@ -229,6 +255,10 @@
     <section>
         <div class="explore">
             <div class="exploretxt">
+                <h1 class="text-lg-start fw-bold">We are Mwenge Catholic <br> University</h1>
+                <p class="text-lowercase ">
+                    We are Different,
+                    WE MAKE LEARNING MORE RELEVANT, AND TRANSFORMATIONAL.
                 <h1 class="text-lg-start fw-bold">We are Mwenge Catholic <br> University</h1>
                 <p class="text-lowercase ">
                     We are Different,
@@ -323,6 +353,25 @@
                                         class="text-decoration-none text-light ">{{ $UniversityEvent->event_title }}
                                     </a>
 
+                @foreach ($latestEvent->take(1) as $UniversityEvent)
+                    <div class="col-12 col-md-12 col-lg-6 mb-4">
+                        <div class="upComingEvent">
+                            <div class="upComingEventText">
+                                <div class="mb-5 ">
+                                    <a href="{{ route('event-details', $UniversityEvent->id) }}"><button
+                                            class="eventsBtn1 fw-bold fs-5 fst-italic ">
+                                            {{ $UniversityEvent->event_date }}
+                                        </button></a>
+                                </div>
+                                <p class="fs-4">
+                                    <a href="{{ route('event-details', [$UniversityEvent->id]) }}"
+                                        class="text-decoration-none text-light ">{{ $UniversityEvent->event_title }}
+                                    </a>
+
+                                </p>
+                                <div class="fst-italic text-decoration-underline ">
+                                    {{ $UniversityEvent->eventStart_time }} - {{ $UniversityEvent->eventEnd_time }}
+                                </div>
                                 </p>
                                 <div class="fst-italic text-decoration-underline ">
                                     {{ $UniversityEvent->eventStart_time }} - {{ $UniversityEvent->eventEnd_time }}
@@ -331,7 +380,26 @@
                         </div>
                     </div>
                 @endforeach
+                @endforeach
 
+                @foreach ($UniversityEvents->take(2) as $UniversityEvent)
+                    <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
+                        <a href="{{ route('event-details', $UniversityEvent->id) }}" class="text-decoration-none">
+                            <div class="card">
+                                <div class="card-body"> <img src="img/mwecau.jpg" style="width: 100%;"
+                                        alt="">
+                                </div>
+                                <div class="card-text">
+                                    <p>
+                                    <h6 class="fst-italic fw-bold favColor">{{ $UniversityEvent->event_title }}</h6>
+                                    </p>
+                                    <div class="fst-italic text-decoration-underline ">
+                                        {{ $UniversityEvent->eventStart_time }} -
+                                        {{ $UniversityEvent->eventEnd_time }}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                 @foreach ($UniversityEvents->take(2) as $UniversityEvent)
                     <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
                         <a href="{{ route('event-details', $UniversityEvent->id) }}" class="text-decoration-none">
@@ -355,6 +423,10 @@
                 @endforeach
 
                 {{-- <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
+                    </div>
+                @endforeach
+
+                {{-- <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
                     <a href="about.html" class="text-decoration-none">
                         <div class="card">
                             <div class="card-body"> <img src="img/university-image-4.JPG" style="width: 100%;"
@@ -371,6 +443,8 @@
 
                         </div>
                     </a>
+
+                </div> --}}
 
                 </div> --}}
 
