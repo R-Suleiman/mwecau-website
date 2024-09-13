@@ -16,7 +16,7 @@
                             <h3>{{ $counter++ }} : {{ $details->header }}</h3>
                         </a>
                         <p>
-                            {{ $details->description }}
+                            {!! $details->description !!}
                         </p>
                     </div>
                     <div class="col-12 col-lg-3 col-md-4 d-flex" style="justify-content: space-between">

@@ -7,6 +7,8 @@ use App\Models\event;
 use App\Models\Image;
 use App\Models\NewsUpdate;
 use App\Models\staff;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,28 +29,34 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $images = Image::orderBy('created_at', 'desc')->get();
+        // Set the title
+        SEOTools::setTitle('Mwenge Catholic Univeristy | University in Tanzania');
+        // Set canonical URL
+        SEOTools::setCanonical('https://mwecau.ac.tz/');
         $images = Image::all();
         $UniversityEvents = Event::all();
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
-        return view('welcome', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
+        return view('index', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
     }
 
     // Cleaning the CK editor content
-    public function cleanHtml($html) {
+    public function cleanHtml($html)
+    {
         $cleaned_html = html_entity_decode($html);
         return $cleaned_html;
     }
 
     public function about()
     {
-        // Fetch the first record or modify it to fetch specific records
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
+        //fetching gallery images
+        $galleryImages = Image::where('image_section', 'about-gallery')->get();
+        $partnersImages = Image::where('image_section', 'about-partners')->get();
         $aboutPage = About::first();
-
-        // Check if aboutPage exists
         if ($aboutPage) {
-            $content = $aboutPage->description; // Fetch the description
+            $content = $aboutPage->description;
 
             // Find the split index to break the content in half
             $splitIndex = strlen($content) / 2;
@@ -57,39 +65,49 @@ class HomeController extends Controller
             $part1 = $this->cleanHtml(substr($content, 0, $splitIndex));
             $part2 = $this->cleanHtml(substr($content, $splitIndex));
 
-            // Pass both parts of the description and the name to the view
             return view('about', [
                 'header' => $aboutPage->header,
                 'part1' => $part1,
-                'part2' => $part2
+                'part2' => $part2,
+                'galleryImages' => $galleryImages,
+                'partnersImages' => $partnersImages
             ]);
         }
     }
 
     public function events()
     {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         return view('events');
     }
 
     public function campusLife()
     {
-
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         $campusImage = Image::where('image_section', 'campus-life')->first();
         return view('campus-life', compact('campusImage'));
     }
     public function itServices()
     {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
         return view('IT-services', compact('ictBanner'));
     }
 
     public function library()
     {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
         return view('library', compact('ictBanner'));
     }
     public function research()
     {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         $images = Image::all();
         $UniversityEvents = Event::all();
         $latestEvent = Event::latest()->take(1)->get();
@@ -97,17 +115,23 @@ class HomeController extends Controller
     }
     public function uniEvents()
     {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         $event = Event::all();
         return view('all-uni-events', compact('event'));
     }
     public function newsUpdates()
     {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         $newsUpdates = NewsUpdate::all();
         return view('news-updates', compact('newsUpdates'));
     }
 
     public function announcementDetails($id)
     {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
         $announcementDetails = NewsUpdate::findOrFail($id);
 
         return view('announcement-details', compact('announcementDetails'));

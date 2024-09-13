@@ -1,5 +1,5 @@
-@include('links')
-@include('partials.navbar')
+@extends('layouts.web')
+@section('content')
 <section class="main-section">
     <div class="main-content">
         <div class="content-box event-box">
@@ -118,9 +118,6 @@
     </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
-    integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     const eventsTable = document.querySelector('.events-table')
 
@@ -128,5 +125,4 @@
         eventsTable.style.display = 'block'
     })
 </script>
-{{-- <script src="./sidebar.js"></script> --}}
-@include('partials.footer')
+@endsection

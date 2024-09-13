@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mwecau | Course list</title>
-
-    @include('links')
-</head>
-
-<body>
-    @include('partials.navbar')
+@extends('layouts.web')
+@section('content')
     <div class="container">
         <div class="mt-5 mb-4">
             <div class="mb-5">
@@ -38,8 +26,8 @@
                 </div>
 
                 <div class="col-sm-6 col-md-3 col-lg-4 text-center my-4">
-                    <img class="img-fluid" src="{{ asset('../img/staff profiles/Bishop_Ludovick_Joseph_Minde.jpg') }}" alt=""
-                        style="border-radius: 9px; width: 170px">
+                    <img class="img-fluid" src="{{ asset('../img/staff profiles/Bishop_Ludovick_Joseph_Minde.jpg') }}"
+                        alt="" style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
                         <label class="fw-bold">Rt. Rev. Ludovick Joseph Minde</label>
                         <label>Chairman of University Council</label>
@@ -47,8 +35,8 @@
                 </div>
 
                 <div class="col-sm-6 col-md-3 col-lg-4 text-center my-4">
-                    <img class="img-fluid" src="{{ asset('../img/staff profiles/Rt Rev Rogath Kimaryo.jpg') }}" alt=""
-                        style="border-radius: 9px; width: 170px">
+                    <img class="img-fluid" src="{{ asset('../img/staff profiles/Rt Rev Rogath Kimaryo.jpg') }}"
+                        alt="" style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
                         <label class="fw-bold">Rt. Rev. Rogath Kimaryo</label>
                         <label>Chairman Planning & Finance</label>
@@ -74,8 +62,7 @@
                 </div>
 
                 <div class="col-sm-6 col-md-3 col-lg-4 text-center my-4">
-                    <img class="img-fluid" src="" alt=""
-                        style="border-radius: 9px; width: 170px">
+                    <img class="img-fluid" src="" alt="" style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
                         <label class="fw-bold">Prof. Didas Kimaro</label>
                         <label>DVC-PFA</label>
@@ -130,16 +117,18 @@
                     @foreach ($faculties as $faculty)
                         @foreach ($faculty['departments'] as $department)
                             @foreach ($department['staffs'] as $staff)
-                            <tr>
-                                <td>{{ $counter++ }}</td>
-                                <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
-                                <td>{{ $staff['other_name'] }}</td>
-                                <td>{{ $staff['last_name'] }}</td>
-                                <td>{{ $department['dept_short_name'] }}</td>
-                                <td>
-                                    <a href="{{ route('staff-profile', [$staff['first_name'], $staff['last_name']] ) }}"><button class="btn btn-outline-secondary">view</button></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $counter++ }}</td>
+                                    <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
+                                    <td>{{ $staff['other_name'] }}</td>
+                                    <td>{{ $staff['last_name'] }}</td>
+                                    <td>{{ $department['dept_short_name'] }}</td>
+                                    <td>
+                                        <a
+                                            href="{{ route('staff-profile', [$staff['first_name'], $staff['last_name']]) }}"><button
+                                                class="btn btn-outline-secondary">view</button></a>
+                                    </td>
+                                </tr>
                             @endforeach
                         @endforeach
                     @endforeach
@@ -156,8 +145,4 @@
                 staffTable.style.display = 'block'
             })
         </script>
-        <script src="{{ asset('js/dashboard.js') }}"></script>
-        @include('jslinks')
-</body>
-
-</html>
+    @endsection

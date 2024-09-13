@@ -7,7 +7,8 @@
 
                     <div class="text-end">
                         <a href="{{ route('admin.all.site.images') }}">
-                            <button class="btn btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                            <button class="btn btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                Back</button></a>
                     </div>
                     <form action="{{ route('upload.page.image') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -71,7 +72,9 @@
                                     <option value="homeslider">Home slider</option>
                                     <option value="homeprograms">Home programs</option>
                                     <option value="homeVc">Home VC</option>
-                                    <option value="aboutslider">About silder</option>
+                                    <option value="aboutslider">About banner</option>
+                                    <option value="about-gallery">About Gallery Images</option>
+                                    <option value="about-partners">About Partners</option>
                                     <option value="homeprograms">Home programs</option>
                                     <option value="course-banner">Course banner</option>
                                     <option value="courses-banner">Courses banner</option>
@@ -97,13 +100,26 @@
                                 </span>
                             </div>
 
-                            <div class="col-12 col-md-6 col-lg-6 mb-4">
+                            <div class="col-12 col-md-6 col-lg-6 mb-4 mt-3">
                                 <label class="mb-3 " for="image">{{ 'Image' }}</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror"
                                     value="{{ old('image') }}" name="image" id="image"
                                     placeholder="Enter course duration">
 
                                 @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-12 col-md-6 col-lg-6 mb-4 mt-3">
+                                <label class="mb-3 " for="link">{{ 'This applies to partnets images Only' }}</label>
+                                <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                    value="{{ old('link') }}" name="link" id="sub_header"
+                                    placeholder="Enter partnets logo link">
+
+                                @error('link')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -130,9 +146,3 @@
         </div>
     </section>
 @endsection
-
-{{-- MAIL_MAILER=smtp
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=06526e0805ffa8
-MAIL_PASSWORD=444b53b8a5ad66 --}}

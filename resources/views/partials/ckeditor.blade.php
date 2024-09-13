@@ -7,18 +7,75 @@
         }
     }
 </script>
-    <script type="module">
+
+<script type="module">
+    import {
+        ClassicEditor,
+        Essentials,
+        Paragraph,
+        Bold,
+        Italic,
+        Font,
+        List,
+        Alignment,
+        BlockQuote,
+        Link,
+        Image,
+        ImageToolbar,
+        ImageCaption,
+        ImageStyle,
+        Table,
+        TableToolbar,
+        CodeBlock,
+        Highlight,
+        FindAndReplace,
+        SpecialCharacters,
+        SpecialCharactersEssentials
+    } from 'ckeditor5';
+
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            plugins: [
+                Essentials, Paragraph, Bold, Italic, Font, List,
+                Alignment, BlockQuote, Link, Image, ImageToolbar,
+                ImageCaption, ImageStyle, Table, TableToolbar, CodeBlock,
+                Highlight, FindAndReplace, SpecialCharacters, SpecialCharactersEssentials
+            ],
+            toolbar: [
+                'undo', 'redo', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                'alignment', 'blockQuote', 'link', 'imageUpload', 'insertTable', 'codeBlock', '|',
+                'highlight', 'findAndReplace', 'specialCharacters', '|',
+                'bulletedList', 'numberedList'
+            ],
+            image: {
+                toolbar: ['imageTextAlternative', '|', 'imageStyle:full', 'imageStyle:side']
+            },
+            table: {
+                contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+            }
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+    {{-- <script type="module">
         import {
             ClassicEditor,
             Essentials,
             Paragraph,
             Bold,
             Italic,
-            Font
+            Font,
+            bullets
         } from 'ckeditor5';
         ClassicEditor
             .create(document.querySelector('#editor'), {
-                plugins: [Essentials, Paragraph, Bold, Italic, Font],
+                plugins: [Essentials, Paragraph, Bold, Italic, Font, bullets],
                 toolbar: [
                     'undo', 'redo', '|', 'bold', 'italic', '|',
                     'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
@@ -30,7 +87,7 @@
             .catch(error => {
                 console.error(error);
             });
-    </script>
+    </script> --}}
     <!-- A friendly reminder to run on a server, remove this during the integration. -->
     <script>
         window.onload = function() {

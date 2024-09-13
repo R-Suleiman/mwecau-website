@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MWECAU | Post Event</title>
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <!-- css -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- font awesome -->
-    @include('links')
-</head>
-
-<body class="darkMode" style="background-color: whitesmoke">
-    <!-- navbar -->
-    @include('partials.navbar')
-
+@extends('layouts.web')
+@section('content')
     <!-- main content -->
     <div class="container">
         <div class="mt-5 col-4">
@@ -49,8 +32,8 @@
                     <div class="event-form2">
                         <div class="event-inputs col-sm-12 ">
 
-                            <input type="text" class="form-control darkMode"
-                                id="event_title" name="event_title" placeholder="Event Title" />
+                            <input type="text" class="form-control darkMode" id="event_title" name="event_title"
+                                placeholder="Event Title" />
 
 
                             <select name="event_category" id="event_category" class="form-control darkMode">
@@ -180,27 +163,8 @@
                     </div>
 
                     <button type="submit" class="admissionBtn">Post Event</button>
-
-                    <!-- <div class="event-detail exp-flag">
-            <p style="margin: 5px 20px">This event has already expired</p>
-          </div>
-          <div class="event-detail event-socials">
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-linkedin-in"></i>
-            <i class="fab fa-tumblr"></i>
-            <i class="fa fa-envelope"></i>
-          </div> -->
                 </div>
             </div>
         </form>
     </div>
-    <!-- main content end -->
-
-    <!-- Footer -->
-
-    @include('partials.footer')
-    @include('jslinks')
-</body>
-
-</html>
+@endsection

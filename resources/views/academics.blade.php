@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mwecau| Academics</title>
-
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="node_modules/aos/dist/aos.css">
-    <script src="node_modules/bootstrap/dist/js/jquery.min.js"></script>
-    <script src="node_modules/aos/dist/aos.js"></script>
-    <link rel="stylesheet" href="style.css">
-
-    @include('links')
-</head>
-
-<body>
-    @include('preloader')
-    @include('partials.navbar')
-
+@extends('layouts.web')
+@section('content')
     {{-- about us landing page --}}
     <section class="">
         <div class="text-center wrapper align-content-center"
@@ -122,14 +101,13 @@
 
     <!-- admission programs -->
     <section>
-        <div class="admissionOverlay container my-5 py-5 text-center rounded" data-aos="fade-up"
-            data-aos-duration="3000">
+        <div class="admissionOverlay container my-5 py-5 text-center rounded" data-aos="fade-up" data-aos-duration="3000">
             <div class="row justify-content-around align-items-start">
                 <!-- post-graduate -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4 d-md-block">
                     @if ($postgraduateImage)
-                        <img src="{{ asset('/images/pageImages/' . $postgraduateImage->image) }}"
-                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                        <img src="{{ asset('/images/pageImages/' . $postgraduateImage->image) }}" class="img-fluid rounded"
+                            alt="Welcome at Mwecau">
                     @endif
                     {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded d-" alt="Welcome at Mwecau"> --}}
                 </div>
@@ -138,7 +116,7 @@
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h2>{{Str::ucfirst($postgraduateImage->header)  }} Programmes</h2>
+                                <h2>{{ Str::ucfirst($postgraduateImage->header) }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -149,7 +127,8 @@
                                     the
                                     right one for you.
                                 </p>
-                                <a href="{{ route('programmeCategory', 'post-graduate') }}"> <button class="programsBtn">Post-Graduate
+                                <a href="{{ route('programmeCategory', 'post-graduate') }}"> <button
+                                        class="programsBtn">Post-Graduate
                                         Programs <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>
@@ -160,8 +139,8 @@
                 <!-- undergraduate -->
                 <div class="right2 col-12 col-md-6 col-lg-6 mb-4 d-md-block d-lg-none d-sm-block">
                     @if ($undergraduateImage)
-                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}"
-                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}" class="img-fluid rounded"
+                            alt="Welcome at Mwecau">
                     @endif
                     {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
@@ -169,7 +148,7 @@
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h2>{{Str::ucfirst($undergraduateImage->header)  }} Programmes</h2>
+                                <h2>{{ Str::ucfirst($undergraduateImage->header) }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -177,7 +156,8 @@
                                     benefit from the extraordinary resources. Browse our undergraduate programs and find
                                     the right one for you.
                                 </p>
-                                <a href="{{ route('programmeCategory', 'undergraduate') }}"><button class="programsBtn">Undergraduate
+                                <a href="{{ route('programmeCategory', 'undergraduate') }}"><button
+                                        class="programsBtn">Undergraduate
                                         Programs <i class="fas fa-arrow-right"></i></button></a>
                             </div>
                         </div>
@@ -186,8 +166,8 @@
 
                 <div class="right2 col-12 col-md-12 col-lg-6 mb-4 d-none d-lg-block d-md-none">
                     @if ($undergraduateImage)
-                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}"
-                            class="img-fluid rounded" alt="Welcome at Mwecau">
+                        <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}" class="img-fluid rounded"
+                            alt="Welcome at Mwecau">
                     @endif
                     {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
@@ -195,9 +175,9 @@
                 <!-- Non-degree programs -->
                 <div class="left col-12 col-md-6 col-lg-6 mb-4">
                     @if ($nonDegreeImage)
-                    <img src="{{ asset('/images/pageImages/' . $nonDegreeImage->image) }}"
-                        class="img-fluid rounded" alt="Welcome at Mwecau">
-                @endif
+                        <img src="{{ asset('/images/pageImages/' . $nonDegreeImage->image) }}" class="img-fluid rounded"
+                            alt="Welcome at Mwecau">
+                    @endif
                     {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
 
@@ -205,7 +185,7 @@
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">
-                                <h2>{{Str::ucfirst($nonDegreeImage->header)  }} Programmes</h2>
+                                <h2>{{ Str::ucfirst($nonDegreeImage->header) }} Programmes</h2>
                             </div>
                             <div class="card-text">
                                 <p class="fs-6">
@@ -213,7 +193,8 @@
                                     student benefit from the extraordinary resources. Browse our non-degree programs and
                                     find the right one for you.
                                 </p>
-                                <a href="{{ route('programmeCategory', 'non-degree') }}"> <button class="programsBtn">Non-Degree Programs
+                                <a href="{{ route('programmeCategory', 'non-degree') }}"> <button
+                                        class="programsBtn">Non-Degree Programs
                                         <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>
@@ -237,7 +218,14 @@
                                 </div>
                                 <div class="card-text mb-3">
                                     <p>
-                                        Mwenge Catholic University (MWECAU) offers students the chance to boarden their academic and cultural horizons through international student exchange programs. Partnering with prestigious institutions such as Inland Norway University of Applied Science, Mary Immaculate College in Ireland Catholic University of Louvain in Belgium, and the University of Georgia (UGA) in the United States, MWECAU provides a platform for student to engage with diverse global perspectives. These opportunities enrich their educational experience, enhance intercultural understanding, and strengthen their global networks.
+                                        Mwenge Catholic University (MWECAU) offers students the chance to boarden their
+                                        academic and cultural horizons through international student exchange programs.
+                                        Partnering with prestigious institutions such as Inland Norway University of Applied
+                                        Science, Mary Immaculate College in Ireland Catholic University of Louvain in
+                                        Belgium, and the University of Georgia (UGA) in the United States, MWECAU provides a
+                                        platform for student to engage with diverse global perspectives. These opportunities
+                                        enrich their educational experience, enhance intercultural understanding, and
+                                        strengthen their global networks.
                                     </p>
                                 </div>
                             </div>
@@ -251,35 +239,19 @@
                                     <h3>Career Development</h3>
                                 </div>
                                 <div class="card-text mb-2">
-                                   Mwenge Catholic Univeristy (MWECAU) provides students with the opportunity to engange with contemporary issues critical to todays's society, offering speciaized courses in area such as child protection, executive management, servant leadership, entrepreneurship, and digital marketing. Through these students gains practical skills and knowledge that prepare them to address modern challenges, lead with integrity and thrive i dynamic business and social environment. MWECAU equips graduates with the tools to make meaningful and global workforce.
+                                    Mwenge Catholic Univeristy (MWECAU) provides students with the opportunity to engange
+                                    with contemporary issues critical to todays's society, offering speciaized courses in
+                                    area such as child protection, executive management, servant leadership,
+                                    entrepreneurship, and digital marketing. Through these students gains practical skills
+                                    and knowledge that prepare them to address modern challenges, lead with integrity and
+                                    thrive i dynamic business and social environment. MWECAU equips graduates with the tools
+                                    to make meaningful and global workforce.
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="text-center text-white mb-5">
-                    <h2 class="">Not sure what to study?</h2>
-                    <span>Discover the right program for you</span> <br>
-                    <button class="learnBtn2 btn-lg mt-3">Ask a Quiz <i
-                            class="fas fa-arrow-circle-right"></i></button>
-                </div> --}}
             </div>
         </div>
     </section>
-
-
-    @include('partials.footer')
-    @include('jslinks')
-    <!-- footer end -->
-
-    <!-- jQuery -->
-
-    <script src="custom.js"></script>
-    <script src="{{ asset('../js/counter.js') }}"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="node_modules/aos/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-</body>
-
-</html>
+@endsection

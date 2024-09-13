@@ -21,7 +21,7 @@ class ResearchController extends Controller
     //admin display
     public function listOfResearch()
     {
-        $research = Research::all();
+        $research =  Research::all();
         return view('admin.research.research-list', compact('research'));
     }
     public function resourceDetails($header)

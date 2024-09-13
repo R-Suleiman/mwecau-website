@@ -47,17 +47,10 @@
                     <li class="nav-item">
                         <i class="fa fa-university nav-icons"></i>
                         <span class="nav-words">Manage Research</span>
-                        <span class="nav-words">Manage Research</span>
                     </li>
                 </a>
-                {{-- <a href="{{ route('admin.list-of-staff') }}">
-                {{-- <a href="{{ route('admin.list-of-staff') }}">
-                    <li class="nav-item">
-                        <i class="fa fa-users nav-icons"></i>
-                        <span class="nav-words">Staff</span>
-                    </li>
-                </a> --}}
-                </a> --}}
+
+                </a>
                 <a href="{{ route('admin.events.list') }}">
                     <li class="nav-item">
                         <i class="fa fa-calendar nav-icons"></i>

@@ -59,7 +59,7 @@
                     <hr>
                     <p><h2 class="text-uppercase">{{ $about->header }}</h2></p>
                     <div class="d-flex">
-                        <p>{{ Str::limit($about->description, 200) }}</p>
+                        <p>{!! Str::limit($about->description, 200) !!}</p>
                         <a href="{{ route('admin.edit.about', $about->id) }}">
                             <button class="btn btn-warning"> <i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </a>
