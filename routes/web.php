@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FacultyController;
-use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\ResearchController;
+use App\Http\Controllers\AcademicsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +107,13 @@ Route::controller(AcademicsController::class)->prefix('programs')->group(functio
     Route::get('non-degree', 'nonDegree')->name('non-degree');
     Route::get('/{programme_category}/{programme_name}', 'showCourseDetails')->name('course_details');
     Route::get('/academics/json', 'academicsJson')->name('academics.json');
+});
+
+Route::controller(AboutController::class)->prefix('admin')->group(function () {
+    Route::get('/about', 'postAboutView')->name('admin.about');
+    Route::get('/edit-about/{id}', 'updateAboutView')->name('admin.edit.about');
+    Route::put('/update-about/{id}', 'updateAbout')->name('admin.update.about');
+    Route::delete('/destroy-about', 'deleteAbout')->name('admin.destroy.about');
 });
 
 //staff related routes

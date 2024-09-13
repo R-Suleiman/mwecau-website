@@ -17,20 +17,8 @@
     }
 @endphp
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mwecau | Programmes list</title>
-
-    @include('links')
-</head>
-
-<body>
-    @include('partials.navbar')
+@extends('layouts.web')
+@section('content')
     <div class="container">
         <div class="mt-5 mb-3 mx-4 text-start">
             <h2>{{ 'All registered Programs' }}</h2>
@@ -194,9 +182,4 @@
             progTable.style.display = 'block'
         })
     </script>
-
-    @include('jslinks')
-    @include('partials.footer')
-</body>
-
-</html>
+@endsection

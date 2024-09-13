@@ -91,7 +91,8 @@ class AdminController extends Controller
             'description' => ['max:255', 'string', 'nullable'],
             'page' => ['required', 'max:255', 'string'],
             'image_section' => ['required', 'max:255', 'string'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:7048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,JPG,svg,gif|max:12288',
+            'link' => ['nullable'],
 
         ], [
             'image.dimensions' => 'The image dimensions are not within the allowed range. Please upload an image between 100x100 and 2000x2000 pixels.',
@@ -112,6 +113,7 @@ class AdminController extends Controller
         $newPageImage->page = $request->page;
         $newPageImage->image_section = $request->image_section;
         $newPageImage->image = $imageName;
+        $newPageImage->link = $request->link;
 
         //saving records
         $newPageImage->save();

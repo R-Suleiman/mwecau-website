@@ -21,7 +21,7 @@
                                     <h3>{{ $counter++ }} : {{ $research->header }}</h3>
                                 </a>
                                 <p>
-                                    {{ $research->description }}
+                                    {!! Str::limit($research->description, 300)  !!}
                                 </p>
                             </div>
                             <div class="col-12 col-lg-3 col-md-4 d-flex" style="justify-content: space-between">

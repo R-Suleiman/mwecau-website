@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mwecau | Staff list</title>
-
-    @include('links')
-</head>
-
-<body>
-    @include('partials.navbar')
+@extends('layouts.web')
+@section('content')
     <div class="container">
         <div class="mt-5 mb-4">
             <div class="mb-5">
@@ -135,8 +124,4 @@
                 staffTable.style.display = 'block'
             })
         </script>
-        <script src="{{ asset('js/dashboard.js') }}"></script>
-        @include('jslinks')
-</body>
-
-</html>
+    @endsection

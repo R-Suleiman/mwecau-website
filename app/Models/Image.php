@@ -15,6 +15,7 @@ class Image extends Model
         'descirption',
         'page',
         'image_section',
-        'image'
+        'image',
+        'link'
     ];
 }

@@ -1944,3 +1944,15 @@ select {
         align-items: center;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .exploretxt h1 {
+        font-size: 3rem;
+    }
+
+    .counter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

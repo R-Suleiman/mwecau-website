@@ -14,20 +14,8 @@
 
 @endphp
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course | {{ $programme_name }}</title>
-
-    @include('links')
-</head>
-
-<body>
-    @include('partials.navbar')
-
+@extends('layouts.faculty')
+@section('content')
     <div class="">
         <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
     </div>
@@ -79,9 +67,4 @@
             </div>
         </div>
     </div>
-
-    @include('partials.footer')
-    @include('jslinks')
-</body>
-
-</html>
+@endsection

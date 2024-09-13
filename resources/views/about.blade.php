@@ -1,59 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MWECAU | About Us</title>
-    <!--slick  slider-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
-        integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
-        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @include('links')
-</head>
-
-<body>
-    <!-- partners -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
-    @include('partials.navbar')
-
-
-    <div class="">
-        <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
-    </div>
-
+@extends('layouts.web')
+@section('content')
     <!-- main content -->
-    <div class="container about-container text-center ">
-        <div class="underline mb-2" style="width: fit-content; margin-left: 0">
-            <h2 style="text-align: center; ">
-                About MWECAU
-            </h2>
-        </div>
-        <div class="row gap-4">
-            <div class="col-sm-5 ">
-                <p>
-                    Welcome to Mwenge Catholic University (MWECAU), a University that gives you the opportunity to
-                    pursue quality education
-                    in truthfulness and freedom of thought, so that you may gain professional competency to boldly
-                    serve and contribute to the development of humanity.
-
-                    In order to prepare for your future career or pursue academic and professional advancement, be
-                    it education,
-                    administration, sciences, law and/or social sciences, think of MWECAU as your best choice.
+    <div class="container">
+        <div class="row g-0">
+            <h2 class="text-center"> {{ $header }}</h2>
+            <div class="col-md col-lg 6 lh-">
+                <p class="lh-1 fs-1">
+                    {!! $part1 !!}
                 </p>
             </div>
-            <div class="col-sm-5 ">
+            <div class="col-md col-lg 6">
+                {!! $part2 !!}
                 <p>
-                    Our community is being called to reimagine the future. As the only
-                    university where a renowned design school comes together with
-                    premier colleges, we are making learning more relevant and
-                    transformational. We are enriched by the wide range of experiences
-                    and perspectives of our students, faculty, staff and alumni.
-                    Preparing students to make meaningful contributions to society as
-                    leaders in a complex world.
+
                 </p>
             </div>
         </div>
@@ -102,12 +61,13 @@
                         <i class="fa fa-file-text display-5 mb-3 icons" id="card-icon"></i>
                         <h5 class="card-title" id="card-title">Core values</h5>
 
-                        <div class="accordion accordion-flush overflow-auto card-list" id="accordionFlushExample" style="overflow-y:scroll; height: 210px;">
+                        <div class="accordion accordion-flush overflow-auto card-list" id="accordionFlushExample"
+                            style="overflow-y:scroll; height: 210px;">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed darkMode " type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                        aria-expanded="false" aria-controls="flush-collapseOne">
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
                                         Integrity
                                     </button>
                                 </h2>
@@ -120,8 +80,8 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingTwo">
                                     <button class="accordion-button collapsed darkMode" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                        aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
                                         Trust
                                     </button>
                                 </h2>
@@ -148,8 +108,8 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingFour">
                                     <button class="accordion-button collapsed darkMode" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
-                                        aria-expanded="false" aria-controls="flush-collapseFour">
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                        aria-controls="flush-collapseFour">
                                         Accountability
                                     </button>
                                 </h2>
@@ -203,24 +163,7 @@
 
                         </div>
 
-                        {{--
-                        <div class="card-text text-dark text-start">
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-arrow-circle-right fs-5 favColor"></i> Integrity</li>
-                                <li><i class="fas fa-arrow-circle-right fs-5 favColor"
-                                        style="margin-right: 10px;"></i> Trust</li>
-                                <li><i class="fas fa-arrow-circle-right fs-5 favColor"
-                                        style="margin-right: 10px;"></i> Excellence</li>
-                                <li><i class="fas fa-arrow-circle-right fs-5 favColor"
-                                        style="margin-right: 10px;"></i> Accountability</li>
-                                <li><i class="fas fa-arrow-circle-right fs-5 favColor"
-                                        style="margin-right: 10px;"></i> Respect</li>
-                                <li><i class="fas fa-arrow-circle-right fs-5 favColor"
-                                        style="margin-right: 10px;"></i> Teamwork</li>
-                                <li><i class="fas fa-arrow-circle-right fs-5 favColor"
-                                        style="margin-right: 10px;"></i> Service</li>
-                            </ul>
-                        </div> --}}
+
                     </div>
                 </div>
             </div>
@@ -240,32 +183,73 @@
     </div>
 
     <!-- video -->
-    <div class="container-fluid mb-5" style="margin: 10px">
-        <iframe width="100%" height="550" src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12 col-lg 3 col-md-2">
+                <div class="card">
+                    <div class="ratio ratio-16x9">
 
-    <!-- counters -->
-        {{-- counter --}}
-        <div class="container-fluid my-3" style="background-color: white">
-            <div class="counter row d-flex p-2 fs-4">
-                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="establishedCount"></span>
-                    <label>Established</label>
-                </div>
-                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="facultyCount"></span>
-                    <label>Faculties</label>
-                </div>
-                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="studentsCount"></span>
-                    <label>Students</label>
-                </div>
-                <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                    <span for="" id="gRareCount"></span>
-                    <label class="text-center">Graduation Rate</label>
+                        <iframe width="100%" height="550"
+                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
+            <div class="col-12 col-lg 3 col-md-2">
+                <div class="card">
+                    <div class="ratio ratio-16x9">
+
+                        <iframe width="100%" height="550"
+                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg 3 col-md-2">
+                <div class="card" style="width: 100%;">
+                    <!-- Video Embed -->
+                    <div class="ratio ratio-16x9">
+
+                        <iframe width="100%" height="550"
+                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+    </div>
+
+    {{-- counter --}}
+    <div class="container-fluid my-5" style="background-color: white">
+        <div class="row d-flex p-2 fs-4">
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="establishedCount"></span>
+                <label>Established</label>
+            </div>
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="facultyCount"></span>
+                <label>Faculties</label>
+            </div>
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="studentsCount"></span>
+                <label>Students</label>
+            </div>
+            <div class="favColor fw-bold col-3 d-flex flex-column align-items-center ">
+                <span for="" id="gRareCount"></span>
+                <label>Graduation Rate</label>
+            </div>
+        </div>
+    </div>
 
     <!-- academics -->
     <div class="container text-center ">
@@ -275,8 +259,7 @@
             </div>
             <!-- your starts here -->
             <div class="col-sm-4 mb-5">
-                <div class="mission-card card h-100 d-flex flex-column darkMode"
-                    style="width: 100%; border: none">
+                <div class="mission-card card h-100 d-flex flex-column darkMode" style="width: 100%; border: none">
 
                     <div class="card-body ">
                         <img src="/img/mwecau.png" class="card-img-top img-fluid rounded-circle " alt="..."
@@ -342,27 +325,15 @@
     <!-- gallery -->
     <div class="container-fluid mt-5 mb-5">
         <div class="row gallery">
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/mwecau_image1.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/mwecau_image2.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/mwecau_image3.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/mwecau_image4.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/uni.jpg" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="/img/students2.JPG" alt="">
-            </div>
+            @if ($galleryImages)
+                @foreach ($galleryImages as $galleryImage)
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="{{ asset('/images/pageImages/' . $galleryImage->image) }}" alt="">
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
-
 
     <section>
         <!-- partners -->
@@ -372,64 +343,17 @@
                 <h2> Partner Institutions</h2>
             </div>
             <div class="row justify-content-between align-items-start partners">
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.tfs.go.tz/index.php/en"><img src="/img/misitu.png
-          "
-                            alt=""></a>
-                </div>
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.ternet.or.tz/"><img src="/img/ternet.png" alt=""></a>
-                </div>
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.uniservitate.org/"><img src="/img/univervitate.jpg" alt=""></a>
-                </div>
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.mic.ul.ie/"><img src="/img/MIC.png" alt=""></a>
-                </div>
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.agrolab.us/"><img src="/img/agroLab.png" alt=""></a>
-                </div>
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.misereor.org/"><img src="/img/misereor.png" alt=""></a>
-                </div>
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.porticus.com/en/home"><img src="/img/porticus.png" alt=""></a>
-                </div>
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.walsh.edu/"><img src="/img/walsh university.png" alt=""></a>
-                </div>
+                @if ($partnersImages)
+                    @foreach ($partnersImages as $partnersImage)
+                        <div class="col-6 col-lg-2 col-md-4 partner">
+                            <a href="{{ $partnersImage->link }}"><img
+                                    src="{{ asset('/images/pageImages/' . $partnersImage->image) }}" alt=""></a>
+                        </div>
+                    @endforeach
+                @endif
 
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.kuleuven.be/english/kuleuven/"><img src="/img/logo.svg" alt=""></a>
-                </div>
-
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://unik.ac.ug/"><img src="/img/cropped-cropped-UniKWebiste-Hi.png"
-                            alt=""></a>
-                </div>
-
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.inn.no/english/"><img src="/img/inn-eng-logo.svg" alt=""></a>
-                </div>
-
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://www.tuas.fi/en/"><img src="/img/turku-AMK.svg" alt=""></a>
-                </div>
-
-                <div class="col-6 col-lg-2 col-md-4 partner">
-                    <a href="https://susie.turkuamk.fi/"><img src="/img/susie.png" alt=""></a>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- main content end -->
-
-    <!-- Footer -->
-    @include('partials.footer')
-    @include('jslinks')
-
-    <script src="{{ asset('../js/counter.js') }}"></script>
-</body>
-
-</html>
+@endsection

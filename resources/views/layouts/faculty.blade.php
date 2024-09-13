@@ -36,8 +36,6 @@
 
     @endphp
 
-    <!-- navigation bar -->
-    @include('preloader')
     <section>
         <div class="uniHeader container-fluid text-center shadow-lg d-none d-lg-block d-md-none">
             <a class="text-decoration-none text-white" href="{{ url('/') }}">

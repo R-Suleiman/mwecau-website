@@ -21,7 +21,7 @@
                         <div class="col-12 col-md-6 col-lg-6 mb-4">
                             <label class="fw-bold mb-3 " for="header">{{ 'Header' }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                value="{{ $editResearch->header }}" name="header" id="header"
+                                value="{!! $editResearch->header !!}" name="header" id="header"
                                 placeholder="Enter Project Header">
 
                             @error('header')
@@ -48,10 +48,10 @@
                         </div>
 
 
-                        <div class="col-12 col-md-6 col-lg-6 mb-4">
+                        <div class="col-12 col-md">
                             <label class="fw-bold mb-3 " for="description">Description</label>
-                            <textarea class="form-control" id="description" name="description" cols="50" rows="5"
-                                placeholder="A brief about announcement">{{ $editResearch->description }}</textarea>
+                            <textarea id="editor" class="form-control" id="description" name="description" cols="50" rows="5"
+                                placeholder="A brief about announcement">{!! Str::words( $editResearch->description) !!}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success fw-bold ">{{ 'Post' }}</button>
+                    <button type="submit" class="btn btn-success fw-bold ">{{ 'Save' }}</button>
                 </form>
             </div>
         </div>

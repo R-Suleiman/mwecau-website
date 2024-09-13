@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+    {!! SEO::generate() !!}
+    {!! OpenGraph::generate() !!}
 
     @include('links')
     <style>
         body {
             overflow-x: none;
         }
+
         #sub-faculty {
             display: none;
             position: absolute;
@@ -57,8 +61,9 @@
         }
     </style>
 </head>
+
 <body style="overflow-x: none;">
-{{-- navbar --}}
+    {{-- navbar --}}
     <section>
         <div class="uniHeader container-fluid text-center shadow-lg d-none d-lg-block d-md-none">
 
@@ -67,8 +72,8 @@
         </div>
         <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
             <div class="container">
-                <a class=" navbar-brand text-decoration-none fw-bold" href="{{ url('/') }}"
-                    style="color: #fff;">
+
+                <a class=" navbar-brand text-decoration-none fw-bold" href="{{ url('/') }}" style="color: #fff;">
                     <img class="img-fluid d-none d-md-block d-sm-block" src="../../img/mwecau.png"
                         style="width: 100px;">
                 </a>
@@ -87,8 +92,9 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 About
                             </a>
                             <ul class="dropdown-menu">
@@ -100,14 +106,15 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Academics
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#"
-                                        id="faculty">Faculties</a>
+
+                                    <a class="dropdown-item dropdown-toggle" href="#" id="faculty">Faculties</a>
                                     <ul class="dropdown-menu" id="sub-faculty">
                                         @foreach ($faculties as $faculty)
                                             <li><a class="dropdown-item"
@@ -128,8 +135,9 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Campuses
                             </a>
                             <ul class="dropdown-menu">
@@ -143,8 +151,9 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Research
                             </a>
                             <ul class="dropdown-menu">
@@ -162,19 +171,20 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" role="button"
-                              data-bs-toggle="dropdown" aria-expanded="false">
-                              Services
-                          </a>
-                          <ul class="dropdown-menu">
-                              <li class="dropdown-item">
-                                  <a href="{{ route('IT.services') }}" >ICT Sevices</a>
-                              </li>
-                              <li class="dropdown-item">
-                                  <a href="{{ route('library') }}">Library</a>
-                              </li>
-                          </ul>
-                      </li>
+
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">
+                                    <a href="{{ route('IT.services') }}">ICT Sevices</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="{{ route('library') }}">Library</a>
+                                </li>
+                            </ul>
+                        </li>
 
                         <li class="nav-item">
                             <a href="" class="nav-link">Linkages</a>
