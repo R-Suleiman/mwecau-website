@@ -42,7 +42,6 @@ class HomeController extends Controller
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
         return view('index', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
-
     }
 
     // Cleaning the CK editor content
@@ -54,14 +53,16 @@ class HomeController extends Controller
 
     public function about()
     {
-        $courseImage = Image::where('image_section', '=', 'course-banner')->first();
-        return view('about', compact('courseImage'));
+        //
+        //        return view('about', compact('courseImage'));
         // Set canonical URL
         SEOTools::setCanonical(url()->current());
         //fetching gallery images
+        $courseImage = Image::where('image_section', '=', 'course-banner')->first();
         $galleryImages = Image::where('image_section', 'about-gallery')->get();
         $partnersImages = Image::where('image_section', 'about-partners')->get();
         $aboutPage = About::first();
+
         if ($aboutPage) {
             $content = $aboutPage->description;
 
@@ -77,7 +78,8 @@ class HomeController extends Controller
                 'part1' => $part1,
                 'part2' => $part2,
                 'galleryImages' => $galleryImages,
-                'partnersImages' => $partnersImages
+                'partnersImages' => $partnersImages,
+                'courseImage' => $courseImage
             ]);
         }
     }

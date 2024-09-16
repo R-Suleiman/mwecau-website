@@ -1,16 +1,19 @@
 @extends('layouts.web')
 @section('content')
-    <!-- bg -->
+    {{-- banner --}}
     <section>
         <div>
             {{-- landing-image --}}
             <div class="">
-                <img class="img-fluid w-100" src="{{ asset('images/pageImages/' . $ictBanner->image) }}" alt="">
-                {{-- <div class="landing-text nav-content">
-                    <div class="underline mt-5 mb-5">
-                        <h1 style="text-align: center">ICT Services</h1>
+                @if ($ictBanner)
+                    <img class="img-fluid w-100" src="{{ asset('images/pageImages/' . $ictBanner->image) }}" alt="">
+                @else
+                    <div class="landing-text nav-content">
+                        <div class="underline mt-5 mb-5">
+                            <h1 style="text-align: center">ICT Services</h1>
+                        </div>
                     </div>
-                </div> --}}
+                @endif
             </div>
         </div>
     </section>
@@ -26,7 +29,7 @@
                     services to improve their academic and administrative experiences.
                 </p>
 
-                <h3>ICT Resorces</h3>
+                <h3>ICT Resources</h3>
                 <a href="https://ums.mwecau.ac.tz" target="_blank" class="ict-resource">
                     <i class="fa fa-link"></i>
                     <span>University Management System (UMS)</span>
@@ -68,45 +71,5 @@
         </div>
         <div class="row pt-5 px-5 ict-resource-row"></div>
     </div>
-
     <!-- main content end -->
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get all caption elements
-            var captions = document.querySelectorAll('.pic-nav h3')
-
-            // Attach click event to each caption
-            captions.forEach(function(caption) {
-                caption.addEventListener('click', function() {
-                    var target = this.getAttribute('data-target')
-
-                    // normalize all the heads
-                    document.querySelectorAll('.pic-nav h3').forEach(function(head) {
-                        head.style.fontWeight = 'normal'
-                    })
-
-                    var targetHead = document.querySelector(
-                        '.pic-nav h3[data-target="' + target + '"]'
-                    )
-                    targetHead.style.fontWeight = '600'
-
-                    // Hide all images
-                    document
-                        .querySelectorAll('.talent-pics img')
-                        .forEach(function(image) {
-                            image.classList.remove('fade-in')
-                            image.classList.add('fade-out')
-                        })
-
-                    // Show the clicked image
-                    var targetImage = document.querySelector(
-                        '.talent-pics img[data-target="' + target + '"]'
-                    )
-                    targetImage.classList.remove('fade-out')
-                    targetImage.classList.add('fade-in')
-                })
-            })
-        })
-    </script>
 @endsection

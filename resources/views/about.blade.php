@@ -1,11 +1,11 @@
 @extends('layouts.web')
 @section('content')
     <!-- main content -->
-    <div class="container">
+    <div class="container mt-5">
         <div class="row g-0">
-            <h2 class="text-center"> {{ $header }}</h2>
+            <h2 class="text-center text-uppercase mb-3 favColor"> {{ $header }}</h2>
             <div class="col-md col-lg 6 lh-">
-                <p class="lh-1 fs-1">
+                <p class="lh-1 fs-1" style="line-height: 50px">
                     {!! $part1 !!}
                 </p>
             </div>
