@@ -222,11 +222,10 @@ class AdminController extends Controller
         return redirect()->back();
     }
     //returning view for specific course details
-    public function courseDetails($id)
+    public function courseDetails($programme_name)
     {
-        $courseDetails = course::findOrFail($id);
-
-        return view('admin.course_details', compact('courseDetails'));
+        $courseImage = Image::where('image_section', '=', 'course-banner')->first();
+        return view('admin.course_details', compact('programme_name', 'courseImage'));
     }
 
     //returning list of all programs
@@ -364,27 +363,13 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    //rettuning the list of staffs
-    public function listOfStaff()
-    {
 
-        $listOfStaff = staff::all();
-        return view('admin.list-of-staff', compact('listOfStaff'));
-    }
     // returning specific staff profile
-    public function staffProfile($id)
+    public function staffProfile($first_name, $last_name)
     {
-
-        $staffProfile = staff::findOrFail($id);
-        return view('admin.staff-profile', compact('staffProfile'));
+        return view('admin.staff-profile', compact('first_name', 'last_name'));
     }
-    //form for editing a specific staff profile
-    public function editStaffProfile($id)
-    {
 
-        $staffDetails = staff::findOrFail($id);
-        return view('admin.edit-staff-profile', compact('staffDetails'));
-    }
 
     //updating a specific staff profile
     public function updateStaffProfile(Request $request, $id)

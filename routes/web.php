@@ -53,7 +53,7 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     Route::get('register-course', 'registerCourse')->name('register-course');
     Route::post('storeCourse',  'storeCourse')->name('storeCourse'); //sending to the database
     Route::get('list-of-programs',  'listOfPrograms')->name('list-of-programs');
-    Route::get('course_details/{id}',  'courseDetails')->name('admin.course.details');
+    Route::get('programme_details/{programme_name}',  'courseDetails')->name('admin.course.details');
     Route::get('course_update_form/{id}',  'courseUpdateForm')->name('admin.course_update_form');
     Route::put('updateCourseDetails/{id}',  'updateCourseDetails')->name('admin.update.course');
     Route::delete('course/{id}', 'destroy')->name('course.destroy');
@@ -61,7 +61,7 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     Route::get('register-staff', 'staffForm')->name('register-staff');
     Route::post('registerStaff', 'registerStaff')->name('registerStaff'); //sending to the database
     Route::get('list-of-staff',  'listOfStaff')->name('admin.list-of-staff');
-    Route::get('staff-profile\{id}', 'staffProfile')->name('staff-profiles');  //preview specific staff profile
+    Route::get('staff-profile/{first_name} {last_name}', 'staffProfile')->name('staff-profiles');  //preview specific staff profile
     Route::get('edit-staff-profile/{id}', 'editStaffProfile')->name('edit.staff.profile'); //editing specific staff profile details
     Route::put('updateStaffProfile/{id}', 'updateStaffProfile')->name('admin.update.staff.profile');
     Route::delete('staff/{id}', 'destroyStaff')->name('staff.destroy');
@@ -117,12 +117,16 @@ Route::controller(AboutController::class)->prefix('admin')->group(function () {
 });
 
 //staff related routes
-Route::get('/mwecau-staff', [\App\Http\Controllers\StaffController::class, 'staff'])->name('mwecau-staffs');
+Route::get('/administrative-unit', [\App\Http\Controllers\StaffController::class, 'administrativeUnit'])->name('administrative-unit');
+Route::get('/mwecau-administrative-staff', [\App\Http\Controllers\StaffController::class, 'administrativeStaff'])->name('mwecau-administrative-staff');
+Route::get('/mwecau-academic-staff', [\App\Http\Controllers\StaffController::class, 'academicStaff'])->name('mwecau-academic-staff');
 Route::get('/staff/{first_name} {last_name}', [\App\Http\Controllers\StaffController::class, 'staffProfile'])->name('staff-profile');
 
 Route::controller(ResearchController::class)->group(function () {
     Route::get('/projects', 'research')->name('projects');
-    Route::get('/resource-details/{header}', 'researchDetails')->name('research.project.details');
+    Route::get('/resource-details/{header}', 'researchDetails')->where('header', '.*')->name('research.project.details');
+    Route::get('/outreach-programs', 'outreach')->name('outreach');
+    Route::get('/outreach-details/{header}', 'outreachDetails')->name('research.outreach.details');
     Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/research-details/{header}', 'resourceDetails')->name('admin.research.details');
         Route::get('/list-of-research', 'listOfResearch')->name('admin.research.list');

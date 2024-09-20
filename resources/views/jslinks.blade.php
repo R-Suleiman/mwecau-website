@@ -16,19 +16,6 @@
 <script src="{{ asset('../js/custom.js') }}"></script>
 <script src="{{ asset('css/aos/dist/aos.js') }}"></script>
 
-
-<script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-        select: true
-    });
-
-    $(document).ready(function() {
-        $('.myTable').DataTable();
-        select: true
-    });
-</script>
-
 <script src="{{ asset('/bootstrap/js/bootstrap.bundle.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
     integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
@@ -36,12 +23,18 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
 
-{{-- <script src="{{ asset('jquery/js/jquery-3.5.1.js') }}"></script> --}}
-<script src="{{ asset('jquery/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('jquery/js/dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('../jquery/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('../jquery/js/dataTables.bootstrap5.min.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.myTable').DataTable();
+        select: true
+    });
+</script>
 
     <!-- slick -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js" ></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js" ></script> --}}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" ></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" ></script> --}}

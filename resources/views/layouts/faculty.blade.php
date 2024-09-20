@@ -76,12 +76,12 @@
                                 @endforeach
                             </ul>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ route('department.programmes', [$faculty_name]) }}">Programmes</a>
-                        </li>
-
+                        @if ($faculty_data['faculty_id'] !== '0')
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="{{ route('department.programmes', [$faculty_name]) }}">Programmes</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a href="{{ route('faculty.staff', $faculty_name) }}" class="nav-link">Staff</a>
                     </ul>

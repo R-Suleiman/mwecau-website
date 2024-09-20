@@ -10,56 +10,6 @@
     {!! OpenGraph::generate() !!}
 
     @include('links')
-    <style>
-        body {
-            overflow-x: none;
-        }
-
-        #sub-faculty {
-            display: none;
-            position: absolute;
-            left: 100%;
-            top: 0;
-        }
-
-        #faculty:hover+#sub-faculty {
-            display: block;
-        }
-
-        .dropdown-submenu:hover>#sub-faculty {
-            display: block;
-        }
-
-        .dropdown-menu {
-            position: relative;
-            z-index: 1000;
-        }
-
-        .dropdown-submenu:hover>.dropdown-menu {
-            display: block;
-            top: 0;
-            left: 100%;
-            margin-top: -1px;
-        }
-
-        .dropdown-submenu {
-            position: relative;
-        }
-
-        a {
-            text-decoration: none;
-            color: black;
-        }
-
-        @media screen and (max-width:580px) {
-            #sub-faculty {
-                display: none;
-                position: absolute;
-                left: 0;
-                top: 100%;
-            }
-        }
-    </style>
 </head>
 
 <body style="overflow-x: none;">
@@ -67,11 +17,27 @@
     <section>
         <div class="uniHeader container-fluid text-center shadow-lg d-none d-lg-block d-md-none">
 
-            <h1> Mwenge Catholic University</h1> <span> <q class="fst-italic">Lux Mundi - Light of the
-                    World</q></span>
+            <h1> Mwenge Catholic University</h1> <span> <q class="fst-italic">Lux Mundi - Light of the World</q></span>
+        </div>
+        {{-- small nav --}}
+        <div class="small-nav">
+                <ul class="text-uppercase">
+                    <li>
+                        <a href="#" >Alumni</a>
+                    </li>
+                    <li>
+                        <a href="#" >join instructions</a>
+                    </li>
+                    <li>
+                        <a href="#" >fee structure</a>
+                    </li>
+                    <li>
+                        <a href="#" >almanac</a>
+                    </li>
+                </ul>
         </div>
         <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
-            <div class="container">
+            <div class="container-fluid">
 
                 <a class=" navbar-brand text-decoration-none fw-bold" href="{{ url('/') }}" style="color: #fff;">
                     <img class="img-fluid d-none d-md-block d-sm-block" src="../../img/mwecau.png"
@@ -92,35 +58,53 @@
                         </li>
 
                         <li class="nav-item dropdown">
-
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 About
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('about') }}">About University</a></li>
-                                <li><a class="dropdown-item" href="{{ route('mwecau-staffs') }}">Staff</a></li>
+                                <li class="dropdown-item"><a href="{{ route('about') }}">About University</a></li>
+                                @foreach ($faculties as $faculty)
+                                @if ($faculty['faculty_id'] === '0')
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }} Unit
+                                            ({{ $faculty['faculty_short_name'] }})
+                                        </a></li>
+                                @endif
+                            @endforeach
+                                {{-- <li><a class="dropdown-item" href="{{ route('administrative-unit') }}">Administrative
+                                        Unit</a></li> --}}
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" id="staff" href="#">Staff</a>
+                                    <ul class="dropdown-menu" id="sub-staff">
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('mwecau-administrative-staff') }}">Administrative
+                                                Staff</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('mwecau-academic-staff') }}">Academic Staff</a></li>
+                                    </ul>
+                                </li>
                                 <li><a class="dropdown-item" href="{{ route('programs-list') }}">Programmes</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="nav-item dropdown">
-
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Academics
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-submenu">
-
-                                    <a class="dropdown-item dropdown-toggle" href="#" id="faculty">Faculties</a>
+                                    <a class="dropdown-item dropdown-toggle " i="faculty" href="#">Faculties</a>
                                     <ul class="dropdown-menu" id="sub-faculty">
                                         @foreach ($faculties as $faculty)
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }}
-                                                    ({{ $faculty['faculty_short_name'] }})
-                                                </a></li>
+                                            @if ($faculty['faculty_id'] !== '0')
+                                                <li><a class="dropdown-item"
+                                                        href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }}
+                                                        ({{ $faculty['faculty_short_name'] }})
+                                                    </a></li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </li>
@@ -138,16 +122,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-item">
-                                    <a href="">Admission Information</a>
+                                    <a href="{{ route('academics')}}">Admission Information</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="#">Application Informations</a>
+                                    <a href="{{ route ('programs-list')}}">Programmes</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="https://uas.mwecau.ac.tz">Apply Online Now</a>
+                                    <a href="https://uas.mwecau.ac.tz">Apply Now</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="">Joining Instructions</a>
+                                    <a href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf">Joining Instructions</a>
                                 </li>
                             </ul>
                         </li>
@@ -183,15 +167,15 @@
                                     <a href="{{ route('projects') }}">Project</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="">Outreach Programs</a>
+                                    <a href="{{ route('outreach') }}">Outreach Programs</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="nav-item dropdown">
 
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Services
                             </a>
                             <ul class="dropdown-menu">
@@ -199,7 +183,7 @@
                                     <a href="{{ route('IT.services') }}">ICT Sevices</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="#">Health Centers Services</a>
+                                    <a href="#">Health Center Services</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a href="#">Guidance and Counseling</a>
@@ -236,7 +220,7 @@
             </div>
         </nav>
 
-        <div class="d-flex p-2"
+        <div class="d-flex px-2"
             style="align-items: center;  border-bottom: 1px solid #fff; color:white; background-color: #513F83;">
             <marquee behavior="scroll" direction="left">
                 @if ($news)
@@ -460,5 +444,4 @@
         });
     </script>
 </body>
-
 </html>

@@ -95,17 +95,17 @@
                     <p>{{ $department_data['dept_descriptions'] }}</p>
                 </div>
 
+                @if ($faculty_data['faculty_id'] !== '0')
                 <div class="about mt-5 mb-5">
                     <h5 class="mb-4">Programs under Department</h5>
                     <div class="tables">
-                       <table id="myTable" class=" table table-bordered text-sm">
+                       <table class="myTable table table-bordered text-sm">
                         <thead>
                             <tr class="favbg">
                                 <th>S/N</th>
                                 <th>Programme ID</th>
                                 <th>Program Name</th>
                                 <th>Duration</th>
-                                <th>Delivery Mode</th>
                                 <th>actions</th>
                             </tr>
                         </thead>
@@ -134,7 +134,6 @@
                                     <td>{{ $programme['programme_id'] }}</td>
                                     <td>{{ $programme['programme_name'] }}</td>
                                     <td>{{ $programme['prog_duration'] }} years</td>
-                                    <td></td>
                                     <td>
                                         <a
                                             href="{{ route('course_details', [$programme_category, $programme['programme_name']]) }}"><button
@@ -148,11 +147,13 @@
                     </table>
                     </div>
                 </div>
+                @endif
+
 
                 <div class="about mt-5 mb-5">
                     <h5 class="mb-4">Staff under Department</h5>
                     <div class="tables">
-                        <table id="myTable" class="table table-bordered text-sm">
+                        <table class="myTable table table-bordered text-sm">
                             <thead>
                                 <tr class="favbg">
                                     <th>S/N</th>
@@ -163,6 +164,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                $counter = 1;
+                            @endphp
                                     @foreach ($department_staff as $staff)
                                         <tr>
                                             <td>{{ $counter++ }}</td>

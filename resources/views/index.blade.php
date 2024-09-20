@@ -197,7 +197,7 @@
                                     Africa and worldwide.
                                 </p>
                                 <div class="mb-3">
-                                    <a href="{{ route('mwecau-staffs') }}"><button class="whyButtons"> Read More <i
+                                    <a href="{{ route('mwecau-academic-staff') }}"><button class="whyButtons"> Read More <i
                                                 class="fas fa-arrow-right"></i></button></a>
                                 </div>
                             </div>
@@ -296,7 +296,7 @@
                     <div class="col-12 col-md-12 col-lg-6 mb-4">
                         <div class="upComingEvent">
                             <div class="upComingEventText">
-                                <div class="mb-5 ">
+                                <div class="mb-5">
                                     <a href="{{ route('event-details', $UniversityEvent->id) }}"><button
                                             class="eventsBtn1 fw-bold fs-5 fst-italic ">
                                             {{ $UniversityEvent->event_date }}

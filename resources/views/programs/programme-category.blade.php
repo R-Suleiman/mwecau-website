@@ -27,7 +27,7 @@
     $programmes_count = count($programme_list);
 @endphp
 
-@extends('layouts.faculty')
+@extends('layouts.web')
 @section('content')
     <div class="">
         <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
@@ -46,7 +46,7 @@
                 $counter = 1;
             @endphp
 
-            <table id="myTable" class="table table-bordered text-sm">
+            <table class="myTable table table-bordered text-sm">
                 <thead>
                     <tr class="favbg">
                         <th>S/N</th>

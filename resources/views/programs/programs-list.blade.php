@@ -14,7 +14,7 @@
                 }
             }
         }
-    }
+    } 
 @endphp
 
 @extends('layouts.web')

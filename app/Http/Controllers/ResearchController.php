@@ -10,14 +10,28 @@ class ResearchController extends Controller
     //for web display
     public function research()
     {
-        $research = Research::orderBy('created_at', 'desc')->get();
-        return view('research.projects', compact('research'));
+        $projects = Research::orderBy('created_at', 'desc')->where('category', 'project')->get();
+        return view('research.projects', compact('projects'));
     }
+
     public function researchDetails($header)
     {
         $research = Research::where('header', $header)->get();
         return view('research.research-details', compact('research'));
     }
+
+    public function outreach()
+    {
+        $outreach = Research::orderBy('created_at', 'desc')->where('category', 'outreach')->get();
+        return view('research.outreach', compact('outreach'));
+    }
+
+    public function outreachDetails($header)
+    {
+        $outreach = Research::where('header', $header)->get();
+        return view('research.outreach-details', compact('outreach'));
+    }
+
     //admin display
     public function listOfResearch()
     {

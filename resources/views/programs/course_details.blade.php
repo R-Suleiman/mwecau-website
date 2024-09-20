@@ -14,7 +14,7 @@
 
 @endphp
 
-@extends('layouts.faculty')
+@extends('layouts.web')
 @section('content')
     <div class="">
         <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
@@ -51,14 +51,14 @@
                           // Cleaning the HTML content
                           $cleanedDescription = html_entity_decode($qualification['entry_qualification_descr']);
                     @endphp
-                    <p class="my-2">
-                    <label class="mb-3"> <strong>Admission criteria:</strong>
-                        {{ $qualification['admission_criteria'] }}</label>
-                    <label class="mb-3"> <strong>Minimum points:</strong>
-                        {{ $qualification['minimum_points'] }}</label>
-                        <label class="mb-3"> <strong>Entry Qualificaton description:</strong>
-                            {!! $cleanedDescription !!}</label>
-                    </p>
+                     <p class="my-4" style="border-top: 2px solid blue">
+                        <label class="mb-3"> <strong>Admission criteria:</strong>
+                            {{ $qualification['admission_criteria'] }}</label> <br>
+                        <label class="mb-3"> <strong>Minimum points:</strong>
+                            {{ $qualification['minimum_points'] }}</label> <br>
+                            <label> <strong>Entry Qualificaton description:</strong>
+                                {!! $cleanedDescription !!}</label>
+                        </p>
                     @endforeach
 
                 <a href="https://uas.mwecau.ac.tz" target="_blank">

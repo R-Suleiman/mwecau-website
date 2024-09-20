@@ -1,7 +1,17 @@
+@php
+    $staff = 0;
+    $program = 0;
+    foreach ($faculties as $faculty) {
+        foreach ($faculty['departments'] as $department) {
+            $staffCount = count($department['staffs']);
+            $programCount = count($department['programmes']);
+            $program = $program + $programCount;
+            $staff = $staff + $staffCount;
+        }
+    }
+@endphp
+
 @extends('layouts.admin')
-
-
-
 @section('content')
     <section class="main-section">
 
@@ -12,14 +22,14 @@
                         <i class="fa fa-university"></i>
                         <label>Programmes</label>
                     </div>
-                    <span>{{ $totalUniCourses }}</span>
+                    <span>{{ $program }}</span>
                 </div>
                 <div class="stat">
                     <div class="top-label">
                         <i class="fa fa-users"></i>
                         <label>Staff</label>
                     </div>
-                    <span>{{ $totalUnistaff }}+</span>
+                    <span>{{ $staff }}</span>
                 </div>
                 <div class="stat">
                     <div class="top-label">
@@ -48,12 +58,12 @@
                     @php
                         $eventCounter = 1;
                     @endphp
-                    <table class="content-table">
+                    <table class="myTable content-table">
                         <thead>
                             <tr>
                                 <th style="width: 5%">S/N</th>
                                 <th style="width: 27%">Event name</th>
-                                 <th style="width: 27%">Event Category</th>
+                                <th style="width: 27%">Event Category</th>
                                 <th style="width: 19%">Location</th>
                                 <th style="width: 15%">Date</th>
                                 <th style="width: 19%">Host</th>
@@ -99,53 +109,42 @@
                 </div>
                 {{-- staff --}}
                 <div class="category-content staff-table">
-                    @php
-                        $counter = 1;
-                    @endphp
-                    <table class="content-table">
+
+                    <table class="myTable content-table">
                         <thead>
                             <tr>
-                                <th style="width: 5%">S/N</th>
-                                <th style="width: 23%">First name</th>
-                                <th style="width: 23%">Last Name</th>
-                                <th style="width: 16%">Department</th>
-                                <th style="width: 10%">Actions</th>
+                                <th>S/N</th>
+                                <th>First name</th>
+                                <th>Middle name</th>
+                                <th>Last Name</th>
+                                <th>Department</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allUniStaff as $allUniStaff)
-                                <tr>
-                                    <td>{{ $counter++ }}</td>
-                                    <td>{{ $allUniStaff->firstName }}</td>
-                                    <td>{{ $allUniStaff->lastName }}</td>
-                                    <td>{{ $allUniStaff->department }}</td>
-                                    <td class="actions-col">
-                                        <a href="{{ route('staff-profiles', [$allUniStaff->id]) }}">
-                                            <i class="fa fa-eye actions-icon view"></i>
-                                        </a>
-                                        <a href="{{ route('edit.staff.profile', [$allUniStaff->id]) }}"> <i
-                                                class="fa fa-pen actions-icon edit"></i></a>
-
-                                        <form action="{{ route('staff.destroy', ['id' => $allUniStaff->id]) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn deletetn" data-confirm-delete="true"
-                                                id="deletebtn">
-                                                <i class="fa fa-trash actions-icon delete"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+                            @php
+                                $counter = 1;
+                            @endphp
+                            @foreach ($faculties as $faculty)
+                                @foreach ($faculty['departments'] as $department)
+                                    @foreach ($department['staffs'] as $staff)
+                                        <tr>
+                                            <td>{{ $counter++ }}</td>
+                                            <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
+                                            <td>{{ $staff['other_name'] }}</td>
+                                            <td>{{ $staff['last_name'] }}</td>
+                                            <td>{{ $department['dept_short_name'] }}</td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('staff-profiles', [$staff['first_name'], $staff['last_name']]) }}"><button
+                                                        class="btn btn-outline-secondary">view</button></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
                             @endforeach
-
                         </tbody>
                     </table>
-                    {{-- <div class="view-all-btn">
-                        <a href="{{ route('admin.events.list') }}">
-                            <button class="btn">View all >></button>
-                        </a>
-                    </div> --}}
 
                 </div>
                 {{-- programs --}}
@@ -153,57 +152,39 @@
                     @php
                         $programCounter = 1;
                     @endphp
-                    <table class="content-table">
+                    <table class="myTable content-table">
                         <thead>
                             <tr>
-                                <th style="width: 5%;">S/N</th>
-                                <th style="width: 25%">Course title</th>
-                                <th style="width: 18%">Course category</th>
-                                <th style="width: 25%">Department</th>
-                                <th style="width: 10%">Total students</th>
-                                <th style="width: 15%">Actions</th>
+                                <th>S/N</th>
+                                <th>Programme ID</th>
+                                <th>Program Name</th>
+                                <th>Duration</th>
+                                <th>actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allUniCourses as $allUniCourse)
-                                <tr>
-                                    <td>{{ $programCounter++ }}</td>
-                                    <td>{{ $allUniCourse->course_title }}</td>
-                                    <td>{{ $allUniCourse->course_category }}</td>
-                                    <td>{{ $allUniCourse->course_code }}</td>
-                                    <td>250</td>
-                                    <td class="actions-col">
-                                        <a href="{{ route('admin.course.details', [$allUniCourse->id]) }}"><i
-                                                class="fa fa-eye actions-icon view"></i></a>
-                                        <a href="{{ route('admin.course_update_form', [$allUniCourse->id]) }}"> <i
-                                                class="fa fa-pen actions-icon edit"></i></a>
-
-                                        <form action="{{ route('course.destroy', ['id' => $allUniCourse->id]) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn deletetn" data-confirm-delete="true"
-                                                id="deleebtn">
-                                                <i class="fa fa-trash actions-icon delete"></i>
-                                            </button>
-                                        </form>
-
-                                        <button type="submit" class="btn deletebtn" data-confirm-delete="true"
-                                            id="deletetn">
-                                            <i class="fa fa-trash actions-icon delete"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                            @php
+                                $postgraduatecounter = 1;
+                            @endphp
+                            @foreach ($faculties as $faculty)
+                                @foreach ($faculty['departments'] as $department)
+                                    @foreach ($department['programmes'] as $programme)
+                                        <tr>
+                                            <td>{{ $postgraduatecounter++ }}</td>
+                                            <td>{{ $programme['programme_id'] }}</td>
+                                            <td>{{ $programme['programme_name'] }}</td>
+                                            <td>{{ $programme['prog_duration'] }} years</td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('admin.course.details', $programme['programme_name']) }}"><button
+                                                        class="btn btn-outline-secondary">view</button></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
                             @endforeach
-
-
                         </tbody>
                     </table>
-                    <div class="view-all-btn">
-                        <a href="{{ route('programs-list') }}">
-                            <button class="btn">View all >></button>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
