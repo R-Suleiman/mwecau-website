@@ -1,80 +1,129 @@
 @extends('layouts.web')
 @section('content')
 
+<style>
+    a {
+        color: blue;
+    }
+    .lib-links {
+        display: flex;
+        flex-direction: column
+    }
+   .lib-links a:hover {
+        text-decoration: underline
+    }
+</style>
+
     <!-- bg -->
     <section>
         <div>
             {{-- landing-image --}}
             <div class="">
                 {{-- <img class="img-fluid w-100" src="{{ asset('images/pageImages/' . $ictBanner->image) }}" alt=""> --}}
-                <img class="img-fluid w-100" src="{{asset('images/pageImages/1725858684-BANNER APPLY NOW 2.jpg')}}" alt="">
+                <img class="img-fluid w-100" src="{{ asset('images/pageImages/BANNER-WEB-LIBRARY.jpg') }}" alt="">
             </div>
         </div>
     </section>
 
     <!-- main content -->
     <div class="container-fluid" style="background-color: white">
-        <div class="row py-5 ict-row">
+        <div class="row py-1 ict-row">
             <div class="col-12 col-md-6 col-lg-6 mb-4">
                 <p>
                     Welcome to the page for Library Services of the Mwenge Catholic
                     University (MWECAU).
                 </p>
 
-                <p> More description about the library....</p>
+                <p> The Library has diversity of information resources collected on various specialized disciplines as
+                    provided for by the University Curricula and University community needs in particular , it has both
+                    print and non-print formats of information resource.
+                </p>
 
-                <h3>Library Links</h3>
-                {{-- <a href="https://ums.mwecau.ac.tz" target="_blank" class="ict-resource">
-                    <i class="fa fa-link"></i>
-                    <span>University Management System (UMS)</span>
-                </a> --}}
+                <p>
+                <h3>Objectives of MWECAU Library</h3>
+                The main Objective is to develop and maintain library and information services in the relevant disciplines
+                so as to support core function of the university in teaching research and outreach including consultancy
+                services as well as provide information to other categories of users.
+                </p>
+
+                <p>
+                <h3>Opening and closing of Library</h3>
+                Monday to Friday forom 09:00 AM - 10:00 PM
+                Sunday from 09:00 AM - 18:00 PM
+                Saturday and public Holiday are closed.
+                </p>
+
                 <p>
                     Our hardworking IT team is here to make sure that MWECAU community
                     has dependable access to cutting-edge technological solutions.
                 </p>
-
-                <h6><b>Contact details:</b></h6>
-                <p>
-                    Contact our IT Helpdesk at
-                    <a href="mailto:ictsupport@mwecau.ac.tz"></a> for any IT-related
-                    questions, help, or technical support. From 08:00 to 16:00, our
-                    helpful staff can assist you.
-                </p>
-
-                <p>
-                    We are committed to constantly enhancing our offerings in order to
-                    satisfy the changing technological requirements of the academic
-                    community.
-                </p>
             </div>
             <div class="col-12 col-md-6 col-lg-6 mb-4">
-                <img style="width: 100%" src="{{asset('img/campus life/library5.JPG')}}" alt="">
+                <img style="width: 100%" src="{{ asset('img/campus life/library5.JPG') }}" alt="">
+            </div>
+        </div>
+
+        <div class="row py-1 ict-row">
+            <h3 class="text-center">Library Links</h3>
+            <div class="col-12 col-md-6 col-lg-6 mb-4 lib-links">
+                <h4>Free Electronic BOOKS</h4>
+                <a href="http://www.freefullpdf.com">http://www.freefullpdf.com</a>
+                <a href="www.pdfdrive.net">www.pdfdrive.ne</a>
+                <a href="www.b-ok.org">www.b-ok.org</a>
+                <a href="www.bookfi.net">www.bookfi.net</a>
+                <a href="www.sharebookfree.com">www.sharebookfree.com</a>
+                <a href="www.manybooks.net">www.manybooks.net</a>
+                <a href="www.bookyards.com">www.bookyards.com</a>
+                <a href="www.freecomputerbooks.com">www.freecomputerbooks.com</a>
+                <a href="www.essays.se">www.essays.se</a>
+                <a href="http://bookzz.org/"> http://bookzz.org/</a>
+                <a href="http://bookboon.com/">http://bookboon.com/</a>
+                <a href="https://books.google.com/">https://books.google.com/</a>
+                <a href="http://golibgen.io/">http://golibgen.io/</a>
+                <a href="www.libgen.info">www.libgen.info</a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6 mb-4 lib-links">
+                <h4>Subscribed E-Resource Books from COTUL.</h4>
+                <a href="http://www.jstor.org/">http://www.jstor.org</a>
+                <a href="http://www.tandfonline.com/">http://www.tandfonline.com/</a>
+                <a href="http://www.cambridge.org/">http://www.cambridge.org/</a>
+                <a href="http://emeraldinsight.com/">http://emeraldinsight.com/</a>
+                <a href="http://www.elibrary.imf.org/">http://www.elibrary.imf.org/</a>
+                <a href="https://research.ebsco.com/">https://research.ebsco.com/</a>
+                <a href="http://onlinelibrary.wiley.com/">http://onlinelibrary.wiley.com/</a>
+                <a href="http://www.siam.org/">http://www.siam.org/</a>
+                <a href="http://pubs.rsc.org/">http://pubs.rsc.org/</a>
+                <a href="https://www.astm.org/ ">https://www.astm.org/ </a>
+                <a href="http://www.liebertpub.com/">http://www.liebertpub.com/</a>
+                <a href=" http://www.birpublications.org/"> http://www.birpublications.org/</a>
+                <a href="https://journals.sagepub.com/ ">https://journals.sagepub.com/ </a>
+                <a href="https://academic.oup.com/journals ">https://academic.oup.com/journals </a>
             </div>
         </div>
         <div class="row px-5 ict-resource-row">
-                <!-- gallery -->
-    <div class="container-fluid mt-2 mb-5">
-        <div class="row gallery">
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="img/campus life/library5.JPG" alt="">
+            <!-- gallery -->
+            <div class="container-fluid mt-2 mb-5">
+                <div class="row gallery">
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="img/campus life/library5.JPG" alt="">
+                    </div>
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="img/campus life/library5.JPG" alt="">
+                    </div>
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="img/campus life/library5.JPG" alt="">
+                    </div>
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="img/campus life/library5.JPG" alt="">
+                    </div>
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="img/campus life/library5.JPG" alt="">
+                    </div>
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="img/campus life/library5.JPG" alt="">
+                    </div>
+                </div>
             </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="img/campus life/library5.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="img/campus life/library5.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="img/campus life/library5.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="img/campus life/library5.JPG" alt="">
-            </div>
-            <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                <img src="img/campus life/library5.JPG" alt="">
-            </div>
-        </div>
-    </div>
         </div>
     </div>
 
@@ -119,4 +168,3 @@
         })
     </script>
 @endsection
-

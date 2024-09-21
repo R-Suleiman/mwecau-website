@@ -2,16 +2,15 @@
 @section('content')
     <section class="main-section">
         <div class="main-content">
-
             <div class="content-box event-box">
                 <div class="category-content">
                     <div class=" container-fluid event-header">
                         <p>Category</p>
                         <h2 class="favColor">{{ $eventDetails->event_title }}</h2>
-                        <div class="">
+                        {{-- <div class="">
                             <img src="{{ asset('images/eventImages/' . $eventDetails->event_image) }}"
                                 alt="{{ $eventDetails->event_image }}" class="h-15 img-fluid ">
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="container-fluid ">
@@ -20,27 +19,15 @@
                                 <div class="about-event">
                                     <div class="underline mt-1 mb-5">
                                         <h3 style="text-align: center">About <strong
-                                                class="favColor fs-4">{{ $eventDetails->event_title }} </strong> Event</h3>
+                                                class="favColor fs-4">{{ $eventDetails->event_title }} </strong></h3>
                                     </div>
                                     <p>
                                         {{ $eventDetails->event_description }}
                                     </p>
-                                    <p>
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Qui a facilis ut laborum, eligendi minus quod praesentium
-                                        culpa odio maxime, dicta error perspiciatis quas sequi
-                                        adipisci tempora. Illum, rerum beatae!
-                                    </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Temporibus accusamus eveniet odio nihil maiores nesciunt
-                                        aperiam! Consequatur ex, quod omnis recusandae error esse
-                                        ad dolore perspiciatis sequi nisi! Qui, quisquam!
-                                    </p>
                                 </div>
                                 <div class="event-speaker">
                                     <div class="underline mt-1 mb-3">
-                                        <h3 class="text-center favColor fw-bold ">Our Speakers</h3>
+                                        <h3 class="text-center favColor fw-bold ">Event Host</h3>
                                     </div>
 
                                     <div class="speaker-profile">
@@ -49,13 +36,6 @@
                                         <div class="speaker-details">
                                             <h5>{{ $eventDetails->speaker_fullname }}</h5>
                                             <label class="fw-bold text-primary fst-italic ">{{ $eventDetails->speaker_profession }}</label>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Esse, ducimus! Nulla, doloribus, excepturi quam
-                                                quod recusandae mollitia ad, sit blanditiis fugiat
-                                                pariatur accusamus ipsa! Magni dolorum reiciendis hic
-                                                quis ratione!
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +62,7 @@
                                     </div>
                                     <label>{{ $eventDetails->eventStart_time }}</label>
                                 </div>
-                                <div class="event-detail">
+                                <div class="event-detail flex-column align-items-start">
                                     <div>
                                         <i class="fa fa-map-marker"></i>
                                         <h6>Location</h6>
@@ -110,7 +90,7 @@
                                     </div>
                                     <label>{{ $eventDetails->booked_slots }}</label>
                                 </div>
-                                <div class="event-detail exp-flag">
+                                {{-- <div class="event-detail exp-flag">
                                     <p style="margin: 5px 20px">
                                         This event has already expired
                                     </p>
@@ -121,7 +101,7 @@
                                     <i class="fab fa-linkedin-in"></i>
                                     <i class="fab fa-tumblr"></i>
                                     <i class="fa fa-envelope"></i>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

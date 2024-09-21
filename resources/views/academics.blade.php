@@ -72,33 +72,17 @@
                         Mwenge Catholic University prepares students with the transformative experience and to be
                         well-rounded leaders whomake a positive impact on the world.
                     </p>
-                    {{-- counter --}}
-                    <div class="container-fluid my-3" style="background-color: white">
-                        <div class="counter row d-flex p-2 fs-4">
-                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                                <span for="" id="establishedCount"></span>
-                                <label>Established</label>
-                            </div>
-                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                                <span for="" id="facultyCount"></span>
-                                <label>Faculties</label>
-                            </div>
-                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                                <span for="" id="studentsCount"></span>
-                                <label>Students</label>
-                            </div>
-                            <div class="favColor my-2 fw-bold col-3 d-flex flex-column align-items-center ">
-                                <span for="" id="gRareCount"></span>
-                                <label class="text-center">Graduation Rate</label>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
         </div>
     </section>
+
+    {{-- counter --}}
+    <div class="container-fluid my-5" style="background-color: white">
+        <div class="row d-flex p-2 fs-4 flex-wrap counters">
+
+        </div>
+    </div>
 
     <!-- admission programs -->
     <section>
@@ -143,7 +127,6 @@
                         <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}" class="img-fluid rounded"
                             alt="Welcome at Mwecau">
                     @endif
-                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
                 <div class="left2 col-12 col-md-6 col-lg-6 mb-4">
                     <div class="card darkMode">
@@ -170,7 +153,6 @@
                         <img src="{{ asset('/images/pageImages/' . $undergraduateImage->image) }}" class="img-fluid rounded"
                             alt="Welcome at Mwecau">
                     @endif
-                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <!-- Non-degree programs -->
@@ -179,7 +161,6 @@
                         <img src="{{ asset('/images/pageImages/' . $nonDegreeImage->image) }}" class="img-fluid rounded"
                             alt="Welcome at Mwecau">
                     @endif
-                    {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded" alt="Welcome at Mwecau"> --}}
                 </div>
 
                 <div class="right col-12 col-md-6 col-lg-6 mb-4">

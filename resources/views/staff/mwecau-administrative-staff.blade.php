@@ -1,4 +1,3 @@
-
 @extends('layouts.web')
 @section('content')
     <div class="container">
@@ -72,7 +71,7 @@
             </div>
 
             <div class="favColor mb-5 darkMode">
-                <h2 class="text-center">Staff/Employees</h2>
+                <h2 class="text-center">Administrative Staff</h2>
             </div>
             @php
                 $counter = 1;
@@ -94,26 +93,27 @@
                             $counter = 1;
                         @endphp
                         @foreach ($faculties as $faculty)
-                            @foreach ($faculty['departments'] as $department)
-                                @foreach ($department['staffs'] as $staff)
-                                    <tr>
-                                        <td>{{ $counter++ }}</td>
-                                        <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
-                                        <td>{{ $staff['other_name'] }}</td>
-                                        <td>{{ $staff['last_name'] }}</td>
-                                        <td>{{ $department['dept_short_name'] }}</td>
-                                        <td>
-                                            <a
-                                                href="{{ route('staff-profile', [$staff['first_name'], $staff['last_name']]) }}"><button
-                                                    class="btn btn-outline-secondary">view</button></a>
-                                        </td>
-                                    </tr>
+                            @if ($faculty['faculty_id'] === '0')
+                                @foreach ($faculty['departments'] as $department)
+                                    @foreach ($department['staffs'] as $staff)
+                                        <tr>
+                                            <td>{{ $counter++ }}</td>
+                                            <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
+                                            <td>{{ $staff['other_name'] }}</td>
+                                            <td>{{ $staff['last_name'] }}</td>
+                                            <td>{{ $department['dept_short_name'] }}</td>
+                                            <td>
+                                                <a
+                                                    href="{{ route('staff-profile', [$staff['first_name'], $staff['last_name']]) }}"><button
+                                                        class="btn btn-outline-secondary">view</button></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
-                            @endforeach
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
-                {{ $staffs->links() }}
             </div>
         </div>
 

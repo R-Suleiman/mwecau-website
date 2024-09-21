@@ -18,7 +18,7 @@
                 $counter = 1;
             @endphp
         <div class="tables">
-            <table id="myTable" class="table table-bordered text-sm">
+            <table class="myTable table table-bordered text-sm">
                 <thead>
                     <tr class="favbg">
                         <th>S/N</th>

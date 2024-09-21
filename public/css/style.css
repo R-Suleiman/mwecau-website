@@ -29,15 +29,14 @@ body {
     }
 }
 #spinner {
-    width: 50px; /* Adjust as needed */
-    height: 50px; /* Adjust as needed */
-    border: 3px solid #ccc; /* Adjust as needed */
-    border-top-color: #333; /* Adjust as needed */
+    width: 50px;
+    height: 50px;
+    border: 3px solid #ccc;
+    border-top-color: #333;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
-/* Hide the preloader when page is fully loaded */
 body.loaded #preloader {
     display: none;
 }
@@ -79,21 +78,14 @@ body:not(.loaded) #content {
     color: white;
     font-size: 18px;
 }
+.navbar-nav .nav-link:hover {
+    font-size: 18px;
+    color: #f4aaf7;
+}
 /* CSS to enable hover for dropdown */
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
-/* multi-level dropdoen */
-/* .dropdown-submenu {
-    position: relative;
-}
-
-.dropdown-submenu .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -6px;
-    margin-left: -1px;
-} */
 
 .slide-in-down .nav-item {
     animation: slide-in-down 0.5s ease forwards;
@@ -187,16 +179,14 @@ body:not(.loaded) #content {
 
 /* coursel images */
 .background-container {
-    /* height: 100vh; */
     position: relative;
     overflow: hidden;
-    /* animation: zoomInOut 10s infinite alternate; */
+
 }
 .nav-content {
     position: absolute;
     top: 37%;
     left: 10%;
-    /* transform: translate(-50%, -50%); */
     color: white;
     font-weight: bolder;
 }
@@ -207,7 +197,6 @@ body:not(.loaded) #content {
     width: 100%;
     height: 100%;
     z-index: 1;
-    /* background: rgba(1, 2, 2, 0.1); */
 }
 
 a {
@@ -288,16 +277,7 @@ a {
         padding-bottom: 255px;
     }
 }
-/* @media only screen and (max-width: 768px) {
-    .secondCard {
-        padding-top: 150px;
-    }
-}
-@media only screen and (max-width: 480px) {
-    .secondCard {
-        padding-top: 150px;
-    }
-} */
+
 @media only screen and (max-width: 486px) {
     .secondCard {
         padding-top: 130px;
@@ -338,7 +318,6 @@ a {
     margin-left: 33px;
     width: 90%;
 }
-/* css for news section ends here */
 
 /* css for why choose us starts here */
 .whyButtons {
@@ -354,7 +333,6 @@ a {
     color: white;
     transition: 1s;
 }
-/* css for choose us section ends here */
 
 /* css for explore more section starts here */
 .explore {
@@ -389,7 +367,6 @@ a {
     transition: 0.9s;
     transform: scale(1.1);
 }
-/* css for explore section in index page ends here */
 
 /* box shadow for the cards in section studying at Mwenge Catholic University */
 .bottomBorder {
@@ -402,9 +379,8 @@ a {
 .coursesBorder {
     border-radius: 9px;
     border-bottom: 2px solid #e000e7;
-    /* border-top: 2px solid #e000e7; */
 }
-/* hovering cards on section studying at mwenge catholic university image effect */
+
 .bottomBorder img {
     transition: transform 0.8s;
 }
@@ -416,20 +392,12 @@ a {
     transition: transform 1s;
     height: 490px;
 }
-/* @media (min-width: 462px) and (max-width: 766px) {
-    .programsBtn {
-        width: 100%;
-        margin: 0 auto;
-        display: block;
-    }
-} */
 
 .studyingAtMwenge:hover {
     transform: scale(1);
     box-shadow: 1px 1px 13px #e000e7;
     width: 100%;
 }
-/* css for studying at mwenge section ends here */
 
 /* for upcoming events section */
 .upComingEvent {
@@ -452,7 +420,6 @@ a {
 }
 .upComingEvent2 .card {
     border: none;
-    /* height: 320px; */
     border-left: 2px solid #513f83;
     border-right: 2px solid #513f83;
 }
@@ -465,7 +432,7 @@ a {
 }
 .eventsBtn1 {
     padding: 8px;
-    width: 30%;
+    width: max-content;
     border: 1px solid #fff;
     color: #fff;
     border-radius: 3px;
@@ -478,7 +445,6 @@ a {
     border-radius: 8px;
     background: linear-gradient(to left, #513f83, #e000e7);
 }
-/* css for event section in index page ends here */
 
 /*css for favorite color for icons starts here */
 .icons {
@@ -490,7 +456,6 @@ a {
     flex-direction: column;
     align-items: center;
     height: 340px;
-    /* box-shadow: 6px 6px 5px 5px #513f83; */
 }
 .missionBtn {
     padding: 5px;
@@ -513,10 +478,8 @@ a {
     right: 0;
     bottom: 0;
     width: 50%;
-    /* Adjust this to change the width of the line */
     margin: auto;
     border-bottom: 3px solid rgb(105, 9, 85);
-    /* Adjust this to change the style of the line */
 }
 
 /* a favorite site color */
@@ -727,8 +690,7 @@ a {
     color: white;
 }
 
-/* sulee */
-
+/* S */
 .dark-overlay {
     position: absolute;
     top: 0;
@@ -1598,26 +1560,6 @@ select {
     width: 90%;
 }
 
-.event-row {
-    width: 90%;
-    margin: 10px auto;
-    padding: 0;
-    display: flex;
-}
-
-.about-event {
-    width: 100%;
-    margin: 10px 0;
-    padding: 50px;
-    background-color: white;
-}
-
-.about-event p {
-    font-size: 18px;
-    color: rgb(78, 76, 76);
-    text-align: justify;
-}
-
 .other-event-det,
 .event-speaker,
 .event-thoughts {
@@ -1892,6 +1834,117 @@ select {
     overflow-x: auto;
 }
 
+.counter {
+    margin: 10px 0;
+}
+
+/* Nav toggles */
+        #sub-faculty {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+
+        #sub-staff {
+            display: none
+        }
+
+        #faculty:hover+#sub-faculty {
+            display: block;
+        }
+
+        #staff:hover+#sub-staff {
+            display: block;
+        }
+
+        .dropdown-submenu:hover>#sub-faculty, .dropdown-submenu:hover>#sub-staff {
+            display: block;
+        }
+
+        .dropdown-menu {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .dropdown-submenu:hover>.dropdown-menu {
+            display: block;
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+/* Home small nave */
+.small-nav {
+    background-color: #463479;
+    /* background-color: #513f83; */
+    width: 100%;
+    padding: 2px;
+}
+
+.small-nav ul {
+    display: flex;
+    text-align: center;
+    width: min-content;
+    padding: 0 2px;
+    margin: 0 auto;
+}
+
+.small-nav ul li {
+    padding: 8px;
+    font-size: 16px;
+    list-style-type: none;
+    /* margin: 0 2px; */
+    width: max-content;
+    border-right: 1px solid #e000e7;
+    border-left: 1px solid #e000e7;
+}
+
+.small-nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+.small-nav ul li a:hover {
+    color: #e000e7;
+}
+
+@media screen and (max-width:580px) {
+            #sub-faculty {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 100%;
+            }
+            #sub-staff {
+                display: none;
+                position: absolute;
+                left: 10%;
+                top: 100%;
+            }
+            .counters {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .small-nav ul li {
+                padding: 4px;
+                font-size: 12px;
+
+            }
+        }
+
 @media screen and (max-width: 950px) {
     .campus-row {
         margin: 10px 5px;
@@ -1931,6 +1984,64 @@ select {
         width: 100%;
       }
 
+      .events-cont {
+        margin: 15px 0;
+        padding: 0;
+      }
+
+      .event-img img {
+        width: 100%;
+        height: 150px;
+      }
+      .other-event-det {
+        position: static;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 480px) {
+    .event-img img {
+        width: 80%;
+        height: 250px;
+    }
+
+    .events-cont {
+        margin: 15px;
+        padding: 10px;
+    }
+
+    .event-row {
+        width: 100%;
+    }
+
+    .speaker-profile {
+        width: 100%;
+        padding: 10px 5px;
+        margin: 5px 0;
+    }
+
+    .about-event {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .event-inputs {
+        flex-direction: column;
+    }
+
+    .event-form2 input, .event-form2 select {
+        width: 98%;
+        border: 1px solid #513f83;
+    }
+
+    .event-header h2 {
+        font-size: 22px;
+    }
+
+    .event-header img {
+        width: 100%;
+    }
+
+
 }
 
 @media screen and (max-width: 480px) {
@@ -1938,21 +2049,5 @@ select {
         font-size: 3rem;
     }
 
-    .counter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
-@media screen and (max-width: 480px) {
-    .exploretxt h1 {
-        font-size: 3rem;
-    }
-
-    .counter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-}

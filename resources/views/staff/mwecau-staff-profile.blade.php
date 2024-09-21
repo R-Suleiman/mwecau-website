@@ -25,7 +25,6 @@
 
             <div class="container mt-5">
                 <div class="row mb-5 ">
-                    <h3 class="title favColor darkMode">{{ 'Staff Profile' }}</h3>
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card shadow-lg darkMode">
                             <div class="card-body">
@@ -49,7 +48,7 @@
                                 @endif
 
                                 <div class="card-text text-center ">
-                                    <span>{{ $staff_details['first_name'] }}
+                                    <span>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}
                                         {{ $staff_details['last_name'] }}</span> <br>
                                 </div>
                             </div>

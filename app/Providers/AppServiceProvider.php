@@ -22,18 +22,18 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $faculties;
+        // $faculties;
         try {
             // Make the API request
              $faculties = Cache::remember('faculty_data', 43200, function () {
                 $response = Http::get('https://ums.mwecau.ac.tz/Api/get_university_structure');
                 if ($response->successful()) {
-                     return $response->json();  
-//                    $faculties = $response->json();
+                     return $response->json();
+                //    $faculties = $response->json();
                 } else {
                     Log::error('Failed to fetch programs from API: ' . $response->status());
-                    $faculties = null;
-                    // return null;
+                    // $faculties = null;
+                    return null;
                 }
              });
 
