@@ -21,20 +21,20 @@
         </div>
         {{-- small nav --}}
         <div class="small-nav">
-                <ul class="text-uppercase">
-                    <li>
-                        <a href="#" >Alumni</a>
-                    </li>
-                    <li>
-                        <a href="#" >join instructions</a>
-                    </li>
-                    <li>
-                        <a href="#" >fee structure</a>
-                    </li>
-                    <li>
-                        <a href="#" >almanac</a>
-                    </li>
-                </ul>
+            <ul class="text-uppercase">
+                <li>
+                    <a href="#">Alumni</a>
+                </li>
+                <li>
+                    <a href="#">join instructions</a>
+                </li>
+                <li>
+                    <a href="#">fee structure</a>
+                </li>
+                <li>
+                    <a href="#">almanac</a>
+                </li>
+            </ul>
         </div>
         <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
             <div class="container-fluid">
@@ -65,13 +65,14 @@
                             <ul class="dropdown-menu">
                                 <li class="dropdown-item"><a href="{{ route('about') }}">About University</a></li>
                                 @foreach ($faculties as $faculty)
-                                @if ($faculty['faculty_id'] === '0')
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }} Unit
-                                            ({{ $faculty['faculty_short_name'] }})
-                                        </a></li>
-                                @endif
-                            @endforeach
+                                    @if ($faculty['faculty_id'] === '0')
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }}
+                                                Unit
+                                                ({{ $faculty['faculty_short_name'] }})
+                                            </a></li>
+                                    @endif
+                                @endforeach
                                 {{-- <li><a class="dropdown-item" href="{{ route('administrative-unit') }}">Administrative
                                         Unit</a></li> --}}
                                 <li class="dropdown-submenu">
@@ -122,16 +123,18 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-item">
-                                    <a href="{{ route('academics')}}">Admission Information</a>
+                                    <a href="{{ route('academics') }}">Admission Information</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="{{ route ('programs-list')}}">Programmes</a>
+                                    <a href="{{ route('programs-list') }}">Programmes</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a href="https://uas.mwecau.ac.tz">Apply Now</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf">Joining Instructions</a>
+                                    <a
+                                        href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf">Joining
+                                        Instructions</a>
                                 </li>
                             </ul>
                         </li>
@@ -154,8 +157,8 @@
 
                         <li class="nav-item dropdown">
 
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Research
                             </a>
                             <ul class="dropdown-menu">
@@ -225,14 +228,14 @@
             <marquee behavior="scroll" direction="left">
                 @if ($news)
                     @foreach ($news->take(5) as $news)
-                        <a href="{{ route('announcement-details', $news->id) }}"
+                        <a href="{{ route('announcement-details', $news->name) }}"
                             class="marquee fw-bold"><span>{{ $news->name }}</span></a>
                     @endforeach
                 @endif
             </marquee>
 
             <a href="https://uas.mwecau.ac.tz/">
-                <button class="btn fw-bold" style="width: 150px; background-color: #e000e7; color: white">Apply
+                <button class="btn fw-bold mb-1" style="width: 150px; background-color: #e000e7; color: white">Apply
                     Now</button>
             </a>
         </div>
@@ -444,4 +447,5 @@
         });
     </script>
 </body>
+
 </html>

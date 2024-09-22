@@ -137,11 +137,11 @@ class HomeController extends Controller
         return view('news-updates', compact('newsUpdates'));
     }
 
-    public function announcementDetails($id)
+    public function announcementDetails($announcementName)
     {
         // Set canonical URL
         SEOTools::setCanonical(url()->current());
-        $announcementDetails = NewsUpdate::findOrFail($id);
+        $announcementDetails = NewsUpdate::where('name', $announcementName)->first();
 
         return view('announcement-details', compact('announcementDetails'));
     }
