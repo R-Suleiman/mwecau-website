@@ -79,7 +79,7 @@
 
                                             <h6 class="card-title text-uppercase fw-bold favColor">
                                                 <a
-                                                    href="{{ route('announcement-details', [$event->id]) }}">{{ $event->name }}</a>
+                                                    href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
                                             </h6>
                                             <p class="card-text fst-italic">{{ $event->description }}</p>
                                         </div>
@@ -101,7 +101,7 @@
                                     <h6 class="card-title favColor">
                                         <img src="{{ asset('img/new_icon.png') }}" alt="" style="width: 40px">
                                         <a class="darkMode"
-                                            href="{{ route('announcement-details', [$UniversityEvent->id]) }}">{{ $UniversityEvent->name }}
+                                            href="{!! route('announcement-details', [$UniversityEvent->name]) !!}">{{ $UniversityEvent->name }}
                                     </h6>
                                     <small
                                         class="fw-bold card-title text-secondary">{{ $UniversityEvent->created_at }}</small>
@@ -109,9 +109,7 @@
                             @endforeach
                         @else
                             <div>
-                                <span class="alert alert-warning" role="alert"><strong>Currently there is no
-                                        university
-                                        event regitered.</strong></span>
+                                <span class="alert alert-warning" role="alert"><strong>Currently news posted.</strong></span>
                             </div>
                         @endif
 

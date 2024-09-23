@@ -89,8 +89,8 @@ Route::get('academics', [App\Http\Controllers\AcademicsController::class, 'acade
 Route::get('/university-events', [App\Http\Controllers\HomeController::class, 'uniEvents'])->name('university.events');
 Route::get('/news/updates', [App\Http\Controllers\HomeController::class, 'newsUpdates'])->name('university.news.updates');
 Route::get('/events/event-details/{id}', [App\Http\Controllers\EventsController::class, 'eventDetails'])->name('event-details');
-Route::get('/announcement-details/{id}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
-Route::get('/announcement-details/{id}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
+Route::get('/announcement-details/{announcementName}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
+// Route::get('/announcement-details/{id}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
 Route::get('/event-attachment/preview/{attachment}', [App\Http\Controllers\HomeController::class, 'documentPreview'])->name('announcement.attachment.preview');
 
 //programs related routes

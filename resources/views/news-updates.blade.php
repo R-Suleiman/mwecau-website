@@ -14,7 +14,7 @@
                         </p>
                     </div>
                     <div class="col-12 col-lg-2 col-md-3">
-                        <a href="{{ route('announcement-details', $newsUpdate->id) }}"><button
+                        <a href="{{ route('announcement-details', $newsUpdate->name) }}"><button
                                 class="btn search-btn event-btn">view more</button></a>
                     </div>
                     <hr>
