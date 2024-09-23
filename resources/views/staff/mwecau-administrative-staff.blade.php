@@ -56,13 +56,13 @@
                     <img class="img-fluid" src="{{ asset('../img/staff profiles/VC-MWECAU.jpg') }}" alt=""
                         style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
-                        <label class="fw-bold">Prof. Phillbert Vumilia</label>
+                        <label class="fw-bold">Rev.Prof. Philbert Vumilia</label>
                         <label>Vice Chancellor</label>
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-md-3 col-lg-4 text-center my-4">
-                    <img class="img-fluid" src="" alt="" style="border-radius: 9px; width: 170px">
+                    <img class="img-fluid" src="{{ asset('../img/staff profiles/prof. kimaro.jpg') }}" alt="" style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
                         <label class="fw-bold">Prof. Didas Kimaro</label>
                         <label>DVC-PFA</label>

@@ -66,7 +66,7 @@ class HomeController extends Controller
         $aboutPage = About::first();
 
         if ($aboutPage) {
-            $content = $aboutPage->description;
+            $content = $aboutPage->description; 
 
             // Find the split index to break the content in half
             $splitIndex = strlen($content) / 2;
