@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pdfs', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('file_name'); // Store the original file name
-            $table->string('file_path'); // Store the file path in storage
+            $table->string('header')->nullable();
+            $table->string('type');
+            $table->text('description')->nullable();
+            $table->string('file');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pdfs');
+        Schema::dropIfExists('documents');
     }
 };

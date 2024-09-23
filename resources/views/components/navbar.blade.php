@@ -7,18 +7,21 @@
         </div>
         {{-- small nav --}}
         <div class="small-nav">
-            <ul class="text-uppercase">
+            <ul class="d-flex justify-content-end fw-bold text-small">
                 <li>
                     <a href="#">Alumni</a>
                 </li>
                 <li>
-                    <a href="#">join instructions</a>
+                    <a href="{{ route('uni.journals') }}">Journals</a>
                 </li>
                 <li>
-                    <a href="#">fee structure</a>
+                    <a href="#">Joining instructions</a>
                 </li>
                 <li>
-                    <a href="#">almanac</a>
+                    <a href="#">Fee structure</a>
+                </li>
+                <li>
+                    <a href="#">Almanac</a>
                 </li>
             </ul>
         </div>

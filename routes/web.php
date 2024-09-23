@@ -27,7 +27,7 @@ Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLog
 
 //home route
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
-Route::get('icons', [\App\Http\Controllers\HomeController::class, 'icons'])->name('icons');
+Route::get('journals', [\App\Http\Controllers\HomeController::class, 'UniJournals'])->name('uni.journals');
 
 Auth::routes();
 
@@ -54,8 +54,10 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     Route::post('storeCourse',  'storeCourse')->name('storeCourse'); //sending to the database
     Route::get('list-of-programs',  'listOfPrograms')->name('list-of-programs');
     Route::get('programme_details/{programme_name}',  'courseDetails')->name('admin.course.details');
-    Route::get('course_update_form/{id}',  'courseUpdateForm')->name('admin.course_update_form');
-    Route::put('updateCourseDetails/{id}',  'updateCourseDetails')->name('admin.update.course');
+
+    Route::get('pdf',  'postPdfView')->name('admin.post.pdf');
+    Route::post('post-pdf',  'postPdf')->name('admin.new.pdf');
+
     Route::delete('course/{id}', 'destroy')->name('course.destroy');
     //admin staff related routes
     Route::get('register-staff', 'staffForm')->name('register-staff');
@@ -90,8 +92,10 @@ Route::get('/university-events', [App\Http\Controllers\HomeController::class, 'u
 Route::get('/news/updates', [App\Http\Controllers\HomeController::class, 'newsUpdates'])->name('university.news.updates');
 Route::get('/events/event-details/{id}', [App\Http\Controllers\EventsController::class, 'eventDetails'])->name('event-details');
 Route::get('/announcement-details/{announcementName}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
-// Route::get('/announcement-details/{id}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
+
 Route::get('/event-attachment/preview/{attachment}', [App\Http\Controllers\HomeController::class, 'documentPreview'])->name('announcement.attachment.preview');
+
+Route::get('/uni-pdf-preview/{id}', [App\Http\Controllers\HomeController::class, 'UniPdfsPreview'])->name('uni-pdf-preview');
 
 //programs related routes
 Route::controller(AcademicsController::class)->group(function () {

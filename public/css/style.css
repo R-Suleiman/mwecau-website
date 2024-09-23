@@ -1891,17 +1891,17 @@ select {
     padding: 2px;
 }
 
-.small-nav ul {
+/* .small-nav ul {
     display: flex;
-    text-align: center;
+    text-align: start;
     width: min-content;
     padding: 0 2px;
     margin: 0 auto;
-}
+} */
 
 .small-nav ul li {
     padding: 8px;
-    font-size: 16px;
+    font-size: 13px;
     list-style-type: none;
     /* margin: 0 2px; */
     width: max-content;

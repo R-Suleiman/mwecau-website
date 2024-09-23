@@ -6,10 +6,13 @@ use App\Models\event;
 use App\Models\Image;
 use App\Models\staff;
 use App\Models\course;
+use App\Models\Document;
+use Barryvdh\DomPDF\PDF;
 use App\Models\Statistic;
 use App\Models\NewsUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Models\Pdf as ModelsPdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
@@ -236,64 +239,7 @@ class AdminController extends Controller
 
         return view('admin.list-of-programs', compact('listOfPrograms'));
     }
-    //function to return view for updating a specific course details
-    public function courseUpdateForm($id)
-    {
 
-        $courseData = course::findOrFail($id);
-        return view('admin.course_update_form', compact('courseData'));
-    }
-    // this function updates the specific course details
-    public function updateCourseDetails(Request $request, $id)
-    {
-        $request->validate([
-            'course_title' => ['required', 'string'],
-            'course_description' => ['required', 'string'],
-            'course_entry_qualification' => ['required', 'string'],
-            'course_code' => ['required', 'string'],
-            'course_duration' => ['required', 'string'],
-            'course_category' => ['required', 'string'],
-            'course_thumbnail' => ['image', 'mimes:jpg,png,jpeg', 'max:4024'],
-        ]);
-
-        // Find course by id
-        $updatedCourseDetails = Course::findOrFail($id);
-
-        // File processing
-        if ($request->hasFile('course_thumbnail')) {
-            $file = $request->file('course_thumbnail');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $path = 'images/coursePhotos';
-
-            // Checking if course thumbnail exists and if a new image has been uploaded
-            if ($request->hasFile('course_thumbnail')) {
-                $existingCourseThumbnail = public_path($path . '/' . $updatedCourseDetails->course_thumbnail);
-                if (File::exists($existingCourseThumbnail)) {
-                    File::delete($existingCourseThumbnail);
-                }
-            }
-
-            // Moving and saving new course thumbnail
-            $file->move($path, $filename);
-
-            // Update course thumbnail in database
-            $updatedCourseDetails->course_thumbnail = $filename;
-        }
-
-        // Update other course details
-        $updatedCourseDetails->course_title = $request->course_title;
-        $updatedCourseDetails->course_description = $request->course_description;
-        $updatedCourseDetails->course_entry_qualification = $request->course_entry_qualification;
-        $updatedCourseDetails->course_code = $request->course_code;
-        $updatedCourseDetails->course_duration = $request->course_duration;
-        $updatedCourseDetails->course_category = $request->course_category;
-
-        // Save the updated course
-        $updatedCourseDetails->save();
-        Alert::success('Messsage', 'Course details is successfully updated');
-        return redirect()->back();
-    }
     //deteting course and all its related details
     public function destroy($id)
     {
@@ -302,7 +248,38 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+    //function to return view for Pdf's
+    public function postPdfView()
+    {
+        return view('admin.post-pdf');
+    }
+    public function postPdf(Request $request)
+    {
+        $request->validate([
+            'header' => ['nullable', 'string'],
+            'description' => ['nullable', 'string'],
+            'type' => ['required', 'string'],
+            'file' => ['required', 'mimes:pdf', 'max:2048'],
+        ]);
 
+        // File processing
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->move(public_path('documents/pdfs'), $fileName);
+        }
+        $newPDF = new Document();
+
+        $newPDF->header = $request->header;
+        $newPDF->description = $request->description;
+        $newPDF->type = $request->type;
+        $newPDF->file = $fileName;
+
+        Alert::success('Message', 'PDF uploaded successfully.');
+
+        $newPDF->save();
+        return redirect()->back();
+    }
     //returning staff registration form
     public function staffForm()
     {
