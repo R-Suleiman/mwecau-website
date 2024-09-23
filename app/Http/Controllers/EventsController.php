@@ -143,26 +143,24 @@ class EventsController extends Controller
         }
 
         // Update event fields
-        $eventUpdate->event_title = $request->event_title ?? $eventUpdate->event_title;
-        $eventUpdate->event_category = $request->event_category ?? $eventUpdate->event_category;
-        $eventUpdate->event_description = $request->event_description ?? $eventUpdate->event_description;
-        $eventUpdate->speaker_fullname = $request->speaker_fullname ?? $eventUpdate->speaker_fullname;
-        $eventUpdate->speaker_profession = $request->speaker_profession ?? $eventUpdate->speaker_profession;
-        $eventUpdate->speaker_info = $request->speaker_info ?? $eventUpdate->speaker_info;
-        $eventUpdate->event_cost = $request->event_cost ?? $eventUpdate->event_cost;
-        $eventUpdate->event_date = $request->event_date ?? $eventUpdate->event_date;
-        $eventUpdate->eventStart_time = $request->eventStart_time ?? $eventUpdate->eventStart_time;
-        $eventUpdate->eventEnd_time = $request->eventEnd_time ?? $eventUpdate->eventEnd_time;
-        $eventUpdate->event_location = $request->event_location ?? $eventUpdate->event_location;
-        $eventUpdate->event_organizer = $request->event_organizer ?? $eventUpdate->event_organizer;
-        $eventUpdate->total_slots = $request->total_slots ?? $eventUpdate->total_slots;
-        $eventUpdate->booked_slots = $request->booked_slots ?? $eventUpdate->booked_slots;
+        $eventUpdate->event_title = $request->event_title;
+        $eventUpdate->event_category = $request->event_category;
+        $eventUpdate->event_description = $request->event_description;
+        $eventUpdate->speaker_fullname = $request->speaker_fullname;
+        $eventUpdate->speaker_profession = $request->speaker_profession;
+        $eventUpdate->speaker_info = $request->speaker_info;
+        $eventUpdate->event_cost = $request->event_cost;
+        $eventUpdate->event_date = $request->event_date;
+        $eventUpdate->eventStart_time = $request->eventStart_time;
+        $eventUpdate->eventEnd_time = $request->eventEnd_time;
+        $eventUpdate->event_location = $request->event_location;
+        $eventUpdate->event_organizer = $request->event_organizer;
+        $eventUpdate->total_slots = $request->total_slots;
+        $eventUpdate->booked_slots = $request->booked_slots;
 
         $eventUpdate->save();
 
-        return $eventUpdate
-            ? redirect()->back()->with('message', 'Event updated successfully')
-            : redirect()->back()->with('error', 'Something went wrong');
+        return redirect()->back()->with('message', 'Event updated successfully');
     }
 
     public function eventDestroty($id)

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pdf;
 use App\Models\About;
+use App\Models\Document;
 use App\Models\event;
 use App\Models\Image;
-use App\Models\NewsUpdate;
 use App\Models\staff;
+use App\Models\NewsUpdate;
+use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -145,7 +147,11 @@ class HomeController extends Controller
 
         return view('announcement-details', compact('announcementDetails'));
     }
-
+    public function UniJournals()
+    {
+        $pdf = Document::where('type', 'journal')->get();
+        return view('journals', compact('pdf'));
+    }
     public function documentPreview($attachment)
     {
         // Fetch the attachment
@@ -158,6 +164,26 @@ class HomeController extends Controller
 
         // Construct the file path
         $filePath = public_path('documents/announcementAttachments/' . $attachmentFile->attachment);
+
+        // Check if the file exists in the file system
+        if (!file_exists($filePath)) {
+            return redirect()->back()->with('error', 'File not found on the server.');
+        }
+
+        return response()->file($filePath);
+    }
+    public function UniPdfsPreview($file)
+    {
+        // Fetch the attachment
+        $file = Document::where('file', $file)->first();
+
+        // Check if the file exists in the database
+        if (!$file) {
+            return redirect()->back()->with('error', 'The specified attachment does not exist in our records.');
+        }
+
+        // Construct the file path
+        $filePath = public_path('/documents/pdfs/' . $file->file);
 
         // Check if the file exists in the file system
         if (!file_exists($filePath)) {

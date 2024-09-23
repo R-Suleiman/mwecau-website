@@ -1,0 +1,76 @@
+@extends('layouts.admin')
+@section('content')
+    <section class="main-section">
+        <div class="main-content">
+            <div class="container mb-4 mt-4">
+                <div class="text-end">
+                    <a href=""> <button class="btn btn-primary btn-sm">back</button></a>
+                </div>
+                <h2 class="text-center">{{ 'Post Universtiy Documents' }}</h2>
+                <hr>
+
+                <form action="{{ route('admin.new.pdf') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+
+                    <div class="row mt-4 ">
+                        <div class="col-12 col-md-6 col-lg-6 mb-4">
+                            <label class="mb-3 " for="header">{{ 'Document Title (Optional)' }}</label>
+                            <input type="text" class="form-control @error('header') is-invalid @enderror"
+                                value="{{ old('header') }}" name="header" id="header"
+                                placeholder="Header if applicable">
+
+                            @error('header')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-6 mb-4">
+                            <label class="mb-3 " for="type">{{ 'Document type' }}</label>
+                            <select class="form-control form-select" name="type" id="type">
+                                <option value="journal">Journal</option>
+                                <option value="joining-instruction">Joining Instruction</option>
+                                <option value="almanac">Almanac</option>
+                                <option value="fee-structure">Fee Structure</option>
+                            </select>
+
+                            @error('type')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-6 mb-4">
+                            <label class="mb-3"
+                                for="description">{{ 'Description about the Document (Optional)' }}</label>
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
+                                cols="30" rows="10" placeholder="Type in the description about the document of applicable">{{ old('description') }}</textarea>
+
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <label class="mb-3 mt-3 favColor" for="file">{{ 'File (attachment)' }}</label>
+                            <input type="file" class="form-control @error('file') is-invalid @enderror" name="file"
+                                id="file">
+
+                            @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning fw-bold ">{{ 'Post' }}</button>
+                </form>
+            </div>
+        </div>
+    </section>
+@endsection

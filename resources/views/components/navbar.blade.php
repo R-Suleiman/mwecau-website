@@ -12,6 +12,9 @@
                     <a href="#">Alumni</a>
                 </li>
                 <li>
+                    <a href="{{ route('uni.journals') }}">Journals</a>
+                </li>
+                <li>
                     <a href="#">Joining instructions</a>
                 </li>
                 <li>

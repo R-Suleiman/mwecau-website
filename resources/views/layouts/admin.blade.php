@@ -72,6 +72,13 @@
                     </li>
                 </a>
 
+                <a href="{{ route('admin.post.pdf') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Manage Documents</span>
+                    </li>
+                </a>
+
                 <a href="{{ route('admin.statistics') }}">
                     <li class="nav-item">
                         <i class="fa fa-calendar nav-icons"></i>

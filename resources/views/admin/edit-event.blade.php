@@ -95,7 +95,7 @@
 
                                     <h6><i class="fa fa-bill"></i> Cost</h6>
                                 </div>
-                                <input type="text" class="form-control" {{ $event->event_cost }} id="event_cost" name="event_cost"
+                                <input type="text" class="form-control" value="{{ $event->event_cost }}"  id="event_cost" name="event_cost"
                                     placeholder="default: free" />
                             </div>
                             <div class="event-detail">
@@ -103,14 +103,14 @@
                                     <i class="fa fa-calendar"></i>
                                     <h6>Event Date</h6>
                                 </div>
-                                <input type="date" class="form-control" id="event_date" {{ $event->event_date }} name="event_date" />
+                                <input type="date" class="form-control" id="event_date" value="{{ $event->event_date }}" name="event_date" />
                             </div>
                             <div class="event-detail">
                                 <div>
                                     <i class="fa fa-clock"></i>
                                     <h6>Event Start Time</h6>
                                 </div>
-                                <input type="text" class="form-control" {{ $event->eventStart_time }}  id="eventStart_time" name="eventStart_time"
+                                <input type="text" class="form-control" value="{{ $event->eventStart_time }}"   id="eventStart_time" name="eventStart_time"
                                     placeholder="e.g. 11:30 am" />
                             </div>
                             <div class="event-detail">
@@ -118,7 +118,7 @@
                                     <i class="fa fa-clock"></i>
                                     <h6>Event End Time</h6>
                                 </div>
-                                <input type="text" class="form-control" id="eventEnd_time" {{ $event->eventEnd_time }}  name="eventEnd_time"
+                                <input type="text" class="form-control" id="eventEnd_time" value="{{ $event->eventEnd_time }}"   name="eventEnd_time"
                                     placeholder="e.g. 04:00 pm" />
                             </div>
                             <div class="event-detail">
@@ -126,14 +126,14 @@
                                     <i class="fas fa-location"></i>
                                     <h6>Location</h6>
                                 </div>
-                                <input type="text" class="form-control" id="event_location" {{ $event->event_location }}   name="event_location" />
+                                <input type="text" class="form-control" id="event_location" value="{{ $event->event_location }}"    name="event_location" />
                             </div>
                             <div class="event-detail">
                                 <div>
                                     <i class="fa fa-user"></i>
                                     <h6>organizer</h6>
                                 </div>
-                                <input type="text" class="form-control" id="event_organizer" {{ $event->event_organizer }}   name="event_organizer"
+                                <input type="text" class="form-control" id="event_organizer" value="{{ $event->event_organizer }}"    name="event_organizer"
                                     placeholder="e.g. John Doe" />
                             </div>
                             <div class="event-detail">
@@ -141,7 +141,7 @@
                                     <i class="fas fa-users"></i>
                                     <h6>Total Slots</h6>
                                 </div>
-                                <input type="text" class="form-control" id="total_slots" {{ $event->total_slots }}  name="total_slots"
+                                <input type="text" class="form-control" id="total_slots" value="{{ $event->total_slots }} "  name="total_slots"
                                     placeholder="e.g. 100" />
                             </div>
                             <div class="event-detail">
@@ -149,21 +149,10 @@
                                     <i class="fa fa-lock"></i>
                                     <h6>Booked Slots</h6>
                                 </div>
-                                <input type="text" class="form-control" {{ $event->booked_slots }}  id="booked_slots" name="booked_slots" />
+                                <input type="text" class="form-control" value="{{ $event->booked_slots }}"   id="booked_slots" name="booked_slots" />
                             </div>
 
-                            <button type="submit" class="admissionBtn">Post Event</button>
-
-                            <!-- <div class="event-detail exp-flag">
-                    <p style="margin: 5px 20px">This event has already expired</p>
-                  </div>
-                  <div class="event-detail event-socials">
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-linkedin-in"></i>
-                    <i class="fab fa-tumblr"></i>
-                    <i class="fa fa-envelope"></i>
-                  </div> -->
+                            <button type="submit" class="admissionBtn">Update</button>
                         </div>
                     </div>
                 </form>
