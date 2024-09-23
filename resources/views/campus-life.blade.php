@@ -31,8 +31,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Student Affairs</h5>
                             <p class="card-text">
-                                Some quick example text to build on the card title and make up
-                                the bulk of the card's content.
+                                At MWECAU, Students organization play a key role at enhancing students experience.
                             </p>
                         </div>
                     </div>
@@ -46,8 +45,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Clubs and Organization</h5>
                             <p class="card-text">
-                                Some quick example text to build on the card title and make up
-                                the bulk of the card's content.
+                                The University offers various clubs and association that cater to academic, social and cultural interest.
                             </p>
                         </div>
                     </div>
@@ -60,8 +58,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Housing</h5>
                             <p class="card-text">
-                                Some quick example text to build on the card title and make up
-                                the bulk of the card's content.
+                                MWECAU offers on-campus housing facility that provides a safe and conducive living environments for students.
                             </p>
                         </div>
                     </div>

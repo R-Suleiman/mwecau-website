@@ -55,8 +55,14 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     Route::get('list-of-programs',  'listOfPrograms')->name('list-of-programs');
     Route::get('programme_details/{programme_name}',  'courseDetails')->name('admin.course.details');
 
+    Route::get('university-documents',  'documents')->name('admin.documents.pdf');
     Route::get('pdf',  'postPdfView')->name('admin.post.pdf');
     Route::post('post-pdf',  'postPdf')->name('admin.new.pdf');
+
+    Route::get('edit-pdf',  'editDocumentView')->name('admin.edit.pdf');
+    Route::put('edit-pdf',  'updatePDF')->name('admin.update.pdf');
+
+    Route::put('delete-pdf/{id}',  'destroyDocument')->name('admin.delete.pdf');
 
     Route::delete('course/{id}', 'destroy')->name('course.destroy');
     //admin staff related routes

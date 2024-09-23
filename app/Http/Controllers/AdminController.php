@@ -259,7 +259,7 @@ class AdminController extends Controller
             'header' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'type' => ['required', 'string'],
-            'file' => ['required', 'mimes:pdf', 'max:2048'],
+            'file' => ['required', 'file', 'max:2048'],
         ]);
 
         // File processing
@@ -278,6 +278,18 @@ class AdminController extends Controller
         Alert::success('Message', 'PDF uploaded successfully.');
 
         $newPDF->save();
+        return redirect()->back();
+    }
+    public function documents()
+    {
+        $documents = Document::all();
+        return view('admin.documents', compact('documents'));
+    }
+    public function destroyDocument($id)
+    {
+        $destroyFile = Document::findOrFail($id);
+        $destroyFile->delete();
+
         return redirect()->back();
     }
     //returning staff registration form

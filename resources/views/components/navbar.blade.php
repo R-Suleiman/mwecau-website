@@ -6,7 +6,7 @@
             <h1> Mwenge Catholic University</h1> <span> <q class="fst-italic">Lux Mundi - Light of the World</q></span>
         </div>
         {{-- small nav --}}
-        <div class="small-nav">
+        <div class="small-nav d-none d-md-block">
             <ul class="d-flex justify-content-end fw-bold text-small">
                 <li>
                     <a href="#">Alumni</a>
@@ -21,7 +21,7 @@
                     <a href="#">Fee structure</a>
                 </li>
                 <li>
-                    <a href="#">Almanac</a>
+                    <a target="_blank" href="{{route('uni-pdf-preview', $almanac->file)}}">Almanac</a>
                 </li>
             </ul>
         </div>
