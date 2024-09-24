@@ -64,9 +64,11 @@ class AppServiceProvider extends ServiceProvider
             ->first();
         $undergrduateJoiningInstruction = Document::where('type', 'joining-instruction')
             ->where('level', 'undergrduate')
+            ->orderByDesc('created_at')
             ->first();
         $NondegreeJoiningInstruction = Document::where('type', 'joining-instruction')
             ->where('level', 'non-degree')
+            ->orderByDesc('created_at')
             ->first();
         //getting fee structure
         $feeStructure = Document::where('type', 'fee-structure')->first();
