@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Document;
 use App\Models\NewsUpdate;
+use App\Models\Document;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Http;
@@ -58,8 +58,13 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $joiningInstruction = Document::where('type', 'joining-instruction')->first();
+        $feeStructure = Document::where('type', 'fee-structure')->first();
+        $almanac = Document::where('type', 'almanac')->first();
         $news = NewsUpdate::orderBy('created_at', 'desc')->get();
 
+        View::share('joiningInstruction', $joiningInstruction);
+        View::share('feeStructure', $feeStructure);
+        View::share('almanac', $almanac);
         View::share('news', $news);
         View::share('joiningInstruction', $joiningInstruction);
     }

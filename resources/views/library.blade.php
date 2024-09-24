@@ -20,7 +20,7 @@
             {{-- landing-image --}}
             <div class="">
                 {{-- <img class="img-fluid w-100" src="{{ asset('images/pageImages/' . $ictBanner->image) }}" alt=""> --}}
-                <img class="img-fluid w-100" src="{{ asset('images/pageImages/BANNER-WEB-LIBRARY.jpg') }}" alt="">
+                <img class="img-fluid w-100" src="{{ asset('img/site banners/BANNER-LIBRARY.jpg') }}" alt="">
             </div>
         </div>
     </section>
@@ -105,22 +105,22 @@
             <div class="container-fluid mt-2 mb-5">
                 <div class="row gallery">
                     <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                        <img src="img/campus life/library5.JPG" alt="">
+                        <img src="img/campus life/books.JPG" alt="">
+                    </div>
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="img/campus life/library3.JPG" alt="">
                     </div>
                     <div class="col-6 col-lg-2 col-md-4 gallery-cont">
                         <img src="img/campus life/library5.JPG" alt="">
                     </div>
                     <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                        <img src="img/campus life/library5.JPG" alt="">
+                        <img src="img/campus life/library2.JPG" alt="">
                     </div>
                     <div class="col-6 col-lg-2 col-md-4 gallery-cont">
                         <img src="img/campus life/library5.JPG" alt="">
                     </div>
                     <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                        <img src="img/campus life/library5.JPG" alt="">
-                    </div>
-                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                        <img src="img/campus life/library5.JPG" alt="">
+                        <img src="img/campus life/library1.JPG" alt="">
                     </div>
                 </div>
             </div>

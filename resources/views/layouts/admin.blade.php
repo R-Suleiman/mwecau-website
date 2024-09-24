@@ -72,7 +72,8 @@
                     </li>
                 </a>
 
-                <a href="{{ route('admin.post.pdf') }}">
+                {{-- <a href="{{ route('admin.post.pdf') }}"> --}}
+                    <a href="{{ route('admin.documents.pdf') }}">
                     <li class="nav-item">
                         <i class="fa fa-calendar nav-icons"></i>
                         <span class="nav-words">Manage Documents</span>

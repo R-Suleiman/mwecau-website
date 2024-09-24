@@ -1,18 +1,28 @@
 @extends('layouts.web')
 @section('content')
+
+<style>
+    body {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode";
+}
+</style>
+
+<div>
+    <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
+</div>
+
     <!-- main content -->
     <div class="container mt-5">
-        <div class="row g-0">
-            <h2 class="text-center text-uppercase mb-3 favColor"> {{ $header }}</h2>
-            <div class="col-md col-lg 6 lh-">
-                <p class="lh-1 fs-1" style="line-height: 50px">
+        <div class="row g-3">
+            <h2 class="text-center text-uppercase mb-3 favColor"> ABOUT MWECAU</h2>
+            <div class="col-md col-lg 6">
+                <p class="lh-1 fs-1" style="line-height: 50px; text-align: justify">
                     {!! $part1 !!}
                 </p>
             </div>
             <div class="col-md col-lg 6">
-                {!! $part2 !!}
-                <p>
-
+                <p style="text-align: justify">
+                    {!! $part2 !!}
                 </p>
             </div>
         </div>
@@ -31,7 +41,7 @@
                     <div class="card-body" style="border-radius: 10px">
                         <i class="fa fa-eye display-5 mb-3 icons"></i>
                         <h5 class="card-title">Vision</h5>
-                        <div class="card-text text-start">
+                        <div class="card-text" style="text-align: justify">
                             <strong>Vision </strong>is to be a “leading University that sets a national,
                             regional, and international example in Education and Training,
                             Research, and Consulting as well as Community Service.”
@@ -45,7 +55,7 @@
                     <div class="card-body" style="border-radius: 10px">
                         <i class="text-center fa fa-bullseye display-5 mb-3 icons"></i>
                         <h5 class="card-title text-center">Mission</h5>
-                        <div class="card-text text-start">
+                        <div class="card-text" style="text-align: justify">
                             <strong>The mission</strong> of the University is “to produce professionally
                             competent, innovative, and committed graduates who are grounded
                             on professional excellence and moral integrity for provision of
@@ -172,7 +182,7 @@
                     <div class="card-body" style="border-radius: 10px">
                         <i class="fa fa-pencil display-5 mb-3 icons"></i>
                         <h5 class="card-title">Motto</h5>
-                        <div class="card-text text-start ">
+                        <div class="card-text" style="text-align: justify">
                             The University is dedicated to St. Joseph the Worker, with the motto ‘‘Lux Mundi’’ which
                             translates in English to “Light of the World.”
                         </div>
@@ -201,11 +211,7 @@
                 <div class="card">
                     <div class="ratio ratio-16x9">
 
-                        <iframe width="100%" height="550"
-                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/87dhot_YHHs?si=x-VxTsJtzanNT9N6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -215,11 +221,7 @@
                     <!-- Video Embed -->
                     <div class="ratio ratio-16x9">
 
-                        <iframe width="100%" height="550"
-                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gO9flfYARIA?si=pY5WodV24AVNBbeE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
                     </div>
                 </div>
@@ -252,8 +254,7 @@
                         <h5 class="card-title">Affordability</h5>
                         <div class="card-text text-start">
                             <p>
-                                Some quick example text to build on the card
-                                title and make up the bulk of the card's content.
+                               Education and life at MWECAU is affordable for everyone.
                             </p>
                             <div class="text-center">
                                 <a href="#"> <button class="missionBtn">Learn more</button> </a>

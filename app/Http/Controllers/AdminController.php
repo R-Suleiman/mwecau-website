@@ -287,7 +287,18 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+    public function documents()
+    {
+        $documents = Document::all();
+        return view('admin.documents', compact('documents'));
+    }
+    public function destroyDocument($id)
+    {
+        $destroyFile = Document::findOrFail($id);
+        $destroyFile->delete();
 
+        return redirect()->back();
+    }
     //returning staff registration form
     public function staffForm()
     {

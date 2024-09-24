@@ -23,7 +23,7 @@
                     <img class="img-fluid" src="{{ asset('../img/VC-MWECAU.jpg') }}" alt=""
                         style="border-radius: 9px">
                     <div class="mt-3">
-                        <p>Prof. Philibert Vumilia</p>
+                        <p>Rev.Prof. Philbertt Vumilia</p>
                         <p>Vice Chancellor</p>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                             <div class="card-text mt-5">
                                 <h5>Academics <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    An education at Mwecau has limitless possibilities. Our courses are taught by
+                                    Education at Mwecau has limitless possibilities. Our courses are taught by
                                     esteemed
                                     faculty members.
                                 </p>
@@ -290,31 +290,9 @@
                     </div>
                 </div>
 
-                @foreach ($latestEvent->take(1) as $UniversityEvent)
-                    <div class="col-12 col-md-12 col-lg-6 mb-4">
-                        <div class="upComingEvent">
-                            <div class="upComingEventText">
-                                <div class="mb-5">
-                                    <a href="{{ route('event-details', $UniversityEvent->id) }}"><button
-                                            class="eventsBtn1 fw-bold fs-5 fst-italic ">
-                                            {{ $UniversityEvent->event_date }}
-                                        </button></a>
-                                </div>
-                                <p class="fs-4">
-                                    <a href="{{ route('event-details', [$UniversityEvent->id]) }}"
-                                        class="text-decoration-none text-light ">{{ $UniversityEvent->event_title }}
-                                    </a>
-
-                                </p>
-                                <div class="fst-italic text-decoration-underline ">
-                                    {{ $UniversityEvent->eventStart_time }} - {{ $UniversityEvent->eventEnd_time }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @foreach ($UniversityEvents->take(2) as $UniversityEvent)
+                <div class="container-fluid mt-5 mb-5">
+                    <div class="row gallery">
+                        @foreach ($UniversityEvents as $UniversityEvent)
                     <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
                         <a href="{{ route('event-details', $UniversityEvent->id) }}" class="text-decoration-none">
                             <div class="card">
@@ -332,9 +310,10 @@
                                 </div>
                             </div>
                         </a>
-
                     </div>
                 @endforeach
+                    </div>
+                </div>
 
             </div>
             <div class="">
