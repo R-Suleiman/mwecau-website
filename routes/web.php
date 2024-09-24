@@ -62,7 +62,7 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     Route::get('edit-pdf',  'editDocumentView')->name('admin.edit.pdf');
     Route::put('edit-pdf',  'updatePDF')->name('admin.update.pdf');
 
-    Route::put('delete-pdf/{id}',  'destroyDocument')->name('admin.delete.pdf');
+    Route::delete('delete-pdf/{id}',  'destroyDocument')->name('admin.delete.pdf');
 
     Route::delete('course/{id}', 'destroy')->name('course.destroy');
     //admin staff related routes

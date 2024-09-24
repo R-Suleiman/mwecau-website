@@ -26,17 +26,17 @@ class AppServiceProvider extends ServiceProvider
         // $faculties;
         try {
             // Make the API request
-             $faculties = Cache::remember('faculty_data', 43200, function () {
+            $faculties = Cache::remember('faculty_data', 43200, function () {
                 $response = Http::get('https://ums.mwecau.ac.tz/Api/get_university_structure');
                 if ($response->successful()) {
-                     return $response->json();
-                //    $faculties = $response->json();
+                    return $response->json();
+                    //    $faculties = $response->json();
                 } else {
                     Log::error('Failed to fetch programs from API: ' . $response->status());
                     // $faculties = null;
                     return null;
                 }
-             });
+            });
 
             // If cache or API call failed, provide a fallback
             if ($faculties === null) {
@@ -53,17 +53,31 @@ class AppServiceProvider extends ServiceProvider
                 $programs = Cache::get('faculty_data');
                 return view('faculties.faculty', ['faculties' => $faculties]);
             } else {
-               abort(503, 'No internet access');
-
+                abort(503, 'No internet access');
             }
         }
 
-        $joiningInstruction = Document::where('type', 'joining-instruction')->first();
+        //fetching joining instructions
+        $postgraduateJoiningInstruction = Document::where('type', 'joining-instruction')
+            ->where('level', 'postgraduate')
+            ->orderByDesc('created_at')
+            ->first();
+        $undergrduateJoiningInstruction = Document::where('type', 'joining-instruction')
+            ->where('level', 'undergrduate')
+            ->orderByDesc('created_at')
+            ->first();
+        $NondegreeJoiningInstruction = Document::where('type', 'joining-instruction')
+            ->where('level', 'non-degree')
+            ->orderByDesc('created_at')
+            ->first();
+        //getting fee structure
         $feeStructure = Document::where('type', 'fee-structure')->first();
         $almanac = Document::where('type', 'almanac')->first();
         $news = NewsUpdate::orderBy('created_at', 'desc')->get();
 
-        View::share('joiningInstruction', $joiningInstruction);
+        View::share('postgraduateJoiningInstruction', $postgraduateJoiningInstruction);
+        View::share('undergrduateJoiningInstruction', $undergrduateJoiningInstruction);
+        View::share('NondegreeJoiningInstruction', $NondegreeJoiningInstruction);
         View::share('feeStructure', $feeStructure);
         View::share('almanac', $almanac);
         View::share('news', $news);

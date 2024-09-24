@@ -255,11 +255,13 @@ class AdminController extends Controller
     }
     public function postPdf(Request $request)
     {
+        // Validation logic
         $request->validate([
             'header' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'type' => ['required', 'string'],
-            'file' => ['required', 'file', 'max:2048'],
+            'file' => ['required', 'mimes:pdf', 'max:2048'],
+            'level' => ['required_if:type,joining-instruction'],
         ]);
 
         // File processing
@@ -268,16 +270,21 @@ class AdminController extends Controller
             $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path('documents/pdfs'), $fileName);
         }
-        $newPDF = new Document();
 
+        $newPDF = new Document();
         $newPDF->header = $request->header;
         $newPDF->description = $request->description;
         $newPDF->type = $request->type;
         $newPDF->file = $fileName;
 
+        if ($request->type == 'joining-instruction') {
+            $newPDF->level = $request->level;
+        }
+
         Alert::success('Message', 'PDF uploaded successfully.');
 
         $newPDF->save();
+
         return redirect()->back();
     }
     public function documents()
@@ -290,6 +297,7 @@ class AdminController extends Controller
         $destroyFile = Document::findOrFail($id);
         $destroyFile->delete();
 
+        Alert::success('Message', 'successfully deleted');
         return redirect()->back();
     }
     //returning staff registration form
