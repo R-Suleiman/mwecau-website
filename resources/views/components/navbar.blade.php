@@ -15,18 +15,26 @@
                     <a href="{{ route('uni.journals') }}">Journals</a>
                 </li>
                 <li>
-                    @if ($joiningInstruction)
-                        <a target="_blank" href="{{ route('uni-pdf-preview', $joiningInstruction->file) }}">Joining
+                    @if ($postgraduateJoiningInstruction)
+                        <a target="_blank" href="{{ route('uni-pdf-preview', $postgraduateJoiningInstruction->file) }}">Joining
                             instructions</a>
+                    @else
+                        <a href="#">Joining instructions</a>
                     @endif
 
                 </li>
                 <li>
                     <a href="#">Fee structure</a>
                 </li>
-                <li>
-                    <a target="_blank" href="{{route('uni-pdf-preview', $almanac->file)}}">Almanac</a>
-                </li>
+                @if ($almanac)
+                    <li>
+                        <a target="_blank" href="{{ route('uni-pdf-preview', $almanac->file) }}">Almanac</a>
+                    </li>
+                @else
+                    <li>
+                        <a target="_blank" href="">Almanac</a>
+                    </li>
+                @endif
             </ul>
         </div>
         <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">

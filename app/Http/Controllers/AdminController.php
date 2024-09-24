@@ -297,6 +297,7 @@ class AdminController extends Controller
         $destroyFile = Document::findOrFail($id);
         $destroyFile->delete();
 
+        Alert::success('Message', 'successfully deleted');
         return redirect()->back();
     }
     //returning staff registration form

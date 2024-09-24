@@ -57,15 +57,27 @@ class AppServiceProvider extends ServiceProvider
             }
         }
 
-        $joiningInstruction = Document::where('type', 'joining-instruction')->first();
+        //fetching joining instructions
+        $postgraduateJoiningInstruction = Document::where('type', 'joining-instruction')
+            ->where('level', 'postgraduate')
+            ->orderByDesc('created_at')
+            ->first();
+        $undergrduateJoiningInstruction = Document::where('type', 'joining-instruction')
+            ->where('level', 'undergrduate')
+            ->first();
+        $NondegreeJoiningInstruction = Document::where('type', 'joining-instruction')
+            ->where('level', 'non-degree')
+            ->first();
+        //getting fee structure
         $feeStructure = Document::where('type', 'fee-structure')->first();
         $almanac = Document::where('type', 'almanac')->first();
         $news = NewsUpdate::orderBy('created_at', 'desc')->get();
 
-        View::share('joiningInstruction', $joiningInstruction);
+        View::share('postgraduateJoiningInstruction', $postgraduateJoiningInstruction);
+        View::share('undergrduateJoiningInstruction', $undergrduateJoiningInstruction);
+        View::share('NondegreeJoiningInstruction', $NondegreeJoiningInstruction);
         View::share('feeStructure', $feeStructure);
         View::share('almanac', $almanac);
         View::share('news', $news);
-        View::share('joiningInstruction', $joiningInstruction);
     }
 }
