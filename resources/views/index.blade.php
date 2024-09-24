@@ -144,7 +144,7 @@
                             <div class="card-text mt-5">
                                 <h5>Academics <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    An education at Mwecau has limitless possibilities. Our courses are taught by
+                                    Education at Mwecau has limitless possibilities. Our courses are taught by
                                     esteemed
                                     faculty members.
                                 </p>

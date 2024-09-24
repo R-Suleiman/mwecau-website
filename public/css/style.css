@@ -1900,19 +1900,19 @@ select {
 } */
 
 .small-nav ul li {
-    padding: 8px;
     font-size: 13px;
     list-style-type: none;
-    /* margin: 0 2px; */
     width: max-content;
-    border-right: 1px solid #e000e7;
-    border-left: 1px solid #e000e7;
+    /* border-left: 1px solid #e000e7; */
 }
 
 .small-nav ul li a {
+    padding: 0 8px;
     text-decoration: none;
     color: white;
     font-family: "Trebuchet MS", Arial, sans-serif;
+    border-left: 2px solid #e000e7;
+
 }
 
 .small-nav ul li a:hover {

@@ -4,7 +4,7 @@
         <div class="main-content">
             <div class="container mb-4 mt-4">
                 <div class="text-end">
-                    <a href=""> <button class="btn btn-primary btn-sm">back</button></a>
+                    <a href="{{route('admin.documents.pdf')}}"> <button class="btn btn-primary btn-sm">back</button></a>
                 </div>
                 <h2 class="text-center">{{ 'Post Universtiy Documents' }}</h2>
                 <hr>
