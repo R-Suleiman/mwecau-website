@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Document;
 use App\Models\NewsUpdate;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Pagination\Paginator;
@@ -25,17 +26,17 @@ class AppServiceProvider extends ServiceProvider
         // $faculties;
         try {
             // Make the API request
-             $faculties = Cache::remember('faculty_data', 43200, function () {
+            $faculties = Cache::remember('faculty_data', 43200, function () {
                 $response = Http::get('https://ums.mwecau.ac.tz/Api/get_university_structure');
                 if ($response->successful()) {
-                     return $response->json();
-                //    $faculties = $response->json();
+                    return $response->json();
+                    //    $faculties = $response->json();
                 } else {
                     Log::error('Failed to fetch programs from API: ' . $response->status());
                     // $faculties = null;
                     return null;
                 }
-             });
+            });
 
             // If cache or API call failed, provide a fallback
             if ($faculties === null) {
@@ -52,12 +53,14 @@ class AppServiceProvider extends ServiceProvider
                 $programs = Cache::get('faculty_data');
                 return view('faculties.faculty', ['faculties' => $faculties]);
             } else {
-               abort(503, 'No internet access');
-
+                abort(503, 'No internet access');
             }
         }
 
+        $joiningInstruction = Document::where('type', 'joining-instruction')->first();
         $news = NewsUpdate::orderBy('created_at', 'desc')->get();
+
         View::share('news', $news);
+        View::share('joiningInstruction', $joiningInstruction);
     }
 }

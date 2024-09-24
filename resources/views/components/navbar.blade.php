@@ -15,7 +15,11 @@
                     <a href="{{ route('uni.journals') }}">Journals</a>
                 </li>
                 <li>
-                    <a href="#">Joining instructions</a>
+                    @if ($joiningInstruction)
+                        <a target="_blank" href="{{ route('uni-pdf-preview', $joiningInstruction->file) }}">Joining
+                            instructions</a>
+                    @endif
+
                 </li>
                 <li>
                     <a href="#">Fee structure</a>
@@ -224,7 +228,8 @@
             </marquee>
 
             <a href="https://uas.mwecau.ac.tz/">
-                <button class="btn fw-bold mb-1 d-none d-md-block" style="width: 150px; background-color: #e000e7; color: white">Apply
+                <button class="btn fw-bold mb-1 d-none d-md-block"
+                    style="width: 150px; background-color: #e000e7; color: white">Apply
                     Now</button>
             </a>
         </div>
