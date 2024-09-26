@@ -1,15 +1,15 @@
 @extends('layouts.web')
 @section('content')
 
-<style>
-    body {
-    font-family: "Trebuchet MS", "Lucida Sans Unicode";
-}
-</style>
+    <style>
+        body {
+            font-family: "Trebuchet MS", "Lucida Sans Unicode";
+        }
+    </style>
 
-<div>
-    <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
-</div>
+    <div>
+        <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
+    </div>
 
     <!-- main content -->
     <div class="container mt-5">
@@ -83,7 +83,9 @@
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body darkMode">The University will model, both in attitude and in behaviour, a strong sense of acting uprightly and act with honesty, sincerity and high ethical standard of love of God and neighbor.</div>
+                                    <div class="accordion-body darkMode">The University will model, both in attitude and in
+                                        behaviour, a strong sense of acting uprightly and act with honesty, sincerity and
+                                        high ethical standard of love of God and neighbor.</div>
                                 </div>
                             </div>
 
@@ -97,7 +99,8 @@
                                 </h2>
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body darkMode">Our commitment builds confidence to our stakeholders.</div>
+                                    <div class="accordion-body darkMode">Our commitment builds confidence to our
+                                        stakeholders.</div>
                                 </div>
                             </div>
 
@@ -111,7 +114,10 @@
                                 </h2>
                                 <div id="flush-collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body darkMode">The unicersity will deliver its programs in such a manner as to ensure academic rigor and relevance and commits us to challenge ourselves to utilize our God-given gifts - intellectual, social, physical, spiritual, and ethical. Our goal is to produce the highest quality.</div>
+                                    <div class="accordion-body darkMode">The unicersity will deliver its programs in such a
+                                        manner as to ensure academic rigor and relevance and commits us to challenge
+                                        ourselves to utilize our God-given gifts - intellectual, social, physical,
+                                        spiritual, and ethical. Our goal is to produce the highest quality.</div>
                                 </div>
                             </div>
 
@@ -125,7 +131,8 @@
                                 </h2>
                                 <div id="flush-collapseFour" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body darkMode">We recognize and live up our responsibility to our students, campus resources and community at large.</div>
+                                    <div class="accordion-body darkMode">We recognize and live up our responsibility to our
+                                        students, campus resources and community at large.</div>
                                 </div>
                             </div>
 
@@ -139,7 +146,9 @@
                                 </h2>
                                 <div id="flush-collapseFive" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body darkMode">It moves to understand the gifts and unique contributions of every person in the University community and to value diverse perspectives and value life.</div>
+                                    <div class="accordion-body darkMode">It moves to understand the gifts and unique
+                                        contributions of every person in the University community and to value diverse
+                                        perspectives and value life.</div>
                                 </div>
                             </div>
 
@@ -153,7 +162,8 @@
                                 </h2>
                                 <div id="flush-collapseSix" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body darkMode">Our community work together to support our vision as well as our student's success. </div>
+                                    <div class="accordion-body darkMode">Our community work together to support our vision
+                                        as well as our student's success. </div>
                                 </div>
                             </div>
 
@@ -167,7 +177,9 @@
                                 </h2>
                                 <div id="flush-collapseSeven" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body darkMode">The university will work to meet the learning demands of the individual student through quality program and a supportive learning environment.</div>
+                                    <div class="accordion-body darkMode">The university will work to meet the learning
+                                        demands of the individual student through quality program and a supportive learning
+                                        environment.</div>
                                 </div>
                             </div>
 
@@ -211,7 +223,11 @@
                 <div class="card">
                     <div class="ratio ratio-16x9">
 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/87dhot_YHHs?si=x-VxTsJtzanNT9N6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/87dhot_YHHs?si=x-VxTsJtzanNT9N6"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -221,7 +237,11 @@
                     <!-- Video Embed -->
                     <div class="ratio ratio-16x9">
 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gO9flfYARIA?si=pY5WodV24AVNBbeE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/gO9flfYARIA?si=pY5WodV24AVNBbeE"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
                     </div>
                 </div>
@@ -254,7 +274,7 @@
                         <h5 class="card-title">Affordability</h5>
                         <div class="card-text text-start">
                             <p>
-                               Education and life at MWECAU is affordable for everyone.
+                                Education and life at MWECAU is affordable for everyone.
                             </p>
                             <div class="text-center">
                                 <a href="#"> <button class="missionBtn">Learn more</button> </a>
@@ -321,10 +341,11 @@
         </div>
     </div>
 
+    {{-- our partners --}}
     <section>
         <!-- partners -->
 
-        <div class="container text-center mt-5 mb-5">
+        <div class="container text-center mt-5">
             <div class="underline mt-2 mb-5 " style="width: 100%;">
                 <h2> Partner Institutions</h2>
             </div>

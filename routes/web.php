@@ -98,10 +98,13 @@ Route::get('/university-events', [App\Http\Controllers\HomeController::class, 'u
 Route::get('/news/updates', [App\Http\Controllers\HomeController::class, 'newsUpdates'])->name('university.news.updates');
 Route::get('/events/event-details/{id}', [App\Http\Controllers\EventsController::class, 'eventDetails'])->name('event-details');
 Route::get('/announcement-details/{announcementName}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
-
-Route::get('/event-attachment/preview/{attachment}', [App\Http\Controllers\HomeController::class, 'documentPreview'])->name('announcement.attachment.preview');
-
+//announcement attachment preview route
+Route::get('/announcement-attachment/preview/{attachment}', [App\Http\Controllers\HomeController::class, 'documentPreview'])->name('announcement.attachment.preview');
+//University Document preview route
 Route::get('/uni-pdf-preview/{id}', [App\Http\Controllers\HomeController::class, 'UniPdfsPreview'])->name('uni-pdf-preview');
+//event attachment preview route
+Route::get('/event-attachment-preview/{eventFileName}', [App\Http\Controllers\HomeController::class, 'eventAttachmentPreview'])->name('event-attachment-preview');
+
 
 //programs related routes
 Route::controller(AcademicsController::class)->group(function () {

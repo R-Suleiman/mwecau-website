@@ -25,7 +25,7 @@ class PdfController extends Controller
     {
         // Validate the uploaded file
         $request->validate([
-            'pdf_file' => 'required|mimes:pdf,max:2048' // Adjust the max file size as needed
+            'pdf_file' => 'required|mimes:pdf,max:5021' // Adjust the max file size as needed
         ], [
             'pdf_file' => 'you can only upload pdf file and it should not be more than 2MB file size',
         ]);

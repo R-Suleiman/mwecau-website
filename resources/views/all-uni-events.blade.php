@@ -5,10 +5,12 @@
             @foreach ($event as $events)
                 <div class="row events-cont">
                     <div class="col-12 col-lg-3 col-md-3 event-img">
-                        {{-- <a href=""><img src="{{ assets/img/students1.JPG }}" alt="event image"/> --}}
-                        <img src="{{ asset('images/eventImages/' . $events->event_image) }}" alt="{{ $events->event_image }}"
-                            class=" img-fluid ">
-                        </a>
+                        @if ($events->event_image != null)
+                            <img src="{{ asset('images/eventImages/' . $events->event_image) }}"
+                                alt="{{ $events->event_image }}" class=" img-fluid ">
+                        @else
+                            <img src="{{ asset('img/mwecau.png') }}" alt="{{ $events->event_image }}" class="img-fluid">
+                        @endif
                     </div>
                     <div class="col-12 col-lg-7 col-md-6 event-content">
                         <label>{{ $events->event_category }}</label>

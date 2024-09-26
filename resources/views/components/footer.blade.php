@@ -121,18 +121,42 @@
                         @if ($NondegreeJoiningInstruction)
                             <li class="mb-3"><a target="_blank"
                                     href="{{ route('uni-pdf-preview', $NondegreeJoiningInstruction->file) }}"
-                                    target="_blank" class="text-light">Join Instructions (Non)</a></li>
+                                    target="_blank" class="text-light">Join Instructions (Non-Degree)</a></li>
                         @else
                             <li class="mb-3"><a
                                     href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf"
                                     target="_blank" class="text-light">Join Instructions (Postgraduate)</a></li>
                         @endif
-                        <li class="mb-3"><a
-                                href="https://mwecau.ternet.or.tz/storage/files/1/Non-degree-Programmes-Fee-Structure-2022-2023.pdf"
-                                target="_blank" class="text-light">Fee Structure (Non-Degree s)</a></li>
-                        <li class="mb-3"><a
-                                href="https://mwecau.ternet.or.tz/storage/files/1/Non-degree-Programmes-Fee-Structure-2022-2023.pdf"
-                                target="_blank" class="text-light">Fee Structure (Non-degree)</a></li>
+                        {{-- fee structures --}}
+
+                        {{-- for postgraduate --}}
+                        @if ($postgraduateFeeStructure)
+                            <li class="mb-3"><a
+                                    href="{{ route('uni-pdf-preview', $postgraduateFeeStructure->file) }}"
+                                    target="_blank" class="text-light">Fee Structure (Postgraduate)</a></li>
+                        @else
+                            <li class="mb-3"><a href="#" target="_blank" class="text-light">Fee Structure
+                                    (Postgraduate)</a></li>
+                        @endif
+
+                        {{-- for undergraduate --}}
+                        @if ($undergrduateFeeStructure)
+                            <li class="mb-3"><a
+                                    href="{{ route('uni-pdf-preview', $undergrduateFeeStructure->file) }}"
+                                    target="_blank" class="text-light">Fee Structure (Undergraduate)</a></li>
+                        @else
+                            <li class="mb-3"><a href="#" target="_blank" class="text-light">Fee Structure
+                                    (Undergraduate)</a></li>
+                        @endif
+
+                        {{-- for Non-Degree Programmes --}}
+                        @if ($NondegreeFeeStructure)
+                            <li class="mb-3"><a href="{{ route('uni-pdf-preview', $NondegreeFeeStructure->file) }}"
+                                    target="_blank" class="text-light">Fee Structure (Non-Degree)</a></li>
+                        @else
+                            <li class="mb-3"><a href="#" target="_blank" class="text-light">Fee Structure
+                                    (Non-Degree)</a></li>
+                        @endif
                     </ul>
                 </div>
 
@@ -158,7 +182,7 @@
                         <li class="mb-3"><a href="https://www.tcu.go.tz/" target="_blank"
                                 class="text-light">TCU</a>
                         </li>
-                        <li class="mb-3"><a href="https://www.necta.go.tz/" class="text-light">NECTA</a></li>
+                        <li class="mb-3"><a href="https://www.nglp.net/" class="text-light">Next Generation Leadership Programme</a></li>
                         <li class="mb-3"><a href="https://www.heslb.go.tz/?lang=" class="text-light">HESLB</a></li>
                         <li class="mb-3"><a href="https://www.nactvet.go.tz/" class="text-light">NACTVET</a></li>
                     </ul>
