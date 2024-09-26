@@ -6,7 +6,25 @@
             <h1> Mwenge Catholic University</h1> <span> <q class="fst-italic">Lux Mundi - Light of the World</q></span>
         </div>
         {{-- small nav --}}
-        <div class="small-nav d-none d-md-block">
+        <div class="small-nav d-none d-md-flex align-items-center justify-content-between">
+            <div>
+                <ul class="d-flex justify-content-end fw-bold text-small">
+                    <li>
+                        <a href="https://www.facebook.com/mwecau2016/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/mwengecatholicuniversity/" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/mwecau1" target="_blank"><i class="fab fa-x"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/mwenge-catholic-university/" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
             <ul class="d-flex justify-content-end fw-bold text-small">
                 <li>
                     <a href="#">Alumni</a>
@@ -14,17 +32,47 @@
                 <li>
                     <a href="{{ route('uni.journals') }}">Journals</a>
                 </li>
-                <li>
-                    @if ($postgraduateJoiningInstruction)
-                        <a target="_blank" href="{{ route('uni-pdf-preview', $postgraduateJoiningInstruction->file) }}">Joining
-                            instructions</a>
-                    @else
-                        <a href="#">Joining instructions</a>
-                    @endif
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Joining instructions
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a target="_blank" style="border: none; color: black"
+                                href="{{ route('uni-pdf-preview', $postgraduateJoiningInstruction->file) }}">Postgraduate</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a target="_blank" style="border: none; color: black"
+                                href="{{ route('uni-pdf-preview', $undergrduateJoiningInstruction->file) }}">Undergraduate</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a target="_blank" style="border: none; color: black"
+                                href="{{ route('uni-pdf-preview', $NondegreeJoiningInstruction->file) }}">Non-degree</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="#">Fee structure</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Fee Structure
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a target="_blank" style="border: none; color: black"
+                                href="{{ route('uni-pdf-preview', $postgraduateFeeStructure->file) }}">Postgraduate</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a target="_blank" style="border: none; color: black"
+                                href="{{ route('uni-pdf-preview', $undergrduateFeeStructure->file) }}">Undergraduate</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a target="_blank" style="border: none; color: black"
+                                href="{{ route('uni-pdf-preview', $NondegreeFeeStructure->file) }}">Non-degree</a>
+                        </li>
+                    </ul>
                 </li>
                 @if ($almanac)
                     <li>
@@ -69,7 +117,7 @@
                                     @if ($faculty['faculty_id'] === '0')
                                         <li><a class="dropdown-item"
                                                 href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }}
-                                                Unit
+
                                                 ({{ $faculty['faculty_short_name'] }})
                                             </a></li>
                                     @endif
@@ -92,8 +140,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Academics
                             </a>
                             <ul class="dropdown-menu">
@@ -118,8 +166,8 @@
 
                         <li class="nav-item dropdown">
 
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Admission
                             </a>
                             <ul class="dropdown-menu">
@@ -142,8 +190,8 @@
 
                         <li class="nav-item dropdown">
 
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Campuses
                             </a>
                             <ul class="dropdown-menu">
@@ -234,7 +282,7 @@
                     @endforeach
                 @endif
             </marquee>
-
+            $events = Event::orderBy('created_at', 'desc')->take(5)->get();
             <a href="https://uas.mwecau.ac.tz/">
                 <button class="btn fw-bold mb-1 d-none d-md-block"
                     style="width: 150px; background-color: #e000e7; color: white">Apply

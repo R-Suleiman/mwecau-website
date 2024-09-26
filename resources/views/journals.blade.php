@@ -12,7 +12,7 @@
                                 Preview attachment <i class="fa fa-download" aria-hidden="true"></i>
                             </button>
                         </a>
-                    </div>
+                    </div> 
                     <hr>
                 @endforeach
             @else
