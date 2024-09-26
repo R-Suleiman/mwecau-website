@@ -6,7 +6,24 @@
             <h1> Mwenge Catholic University</h1> <span> <q class="fst-italic">Lux Mundi - Light of the World</q></span>
         </div>
         {{-- small nav --}}
-        <div class="small-nav d-none d-md-block">
+        <div class="small-nav d-none d-md-flex align-items-center justify-content-between">
+            <div class="small-nav-social">
+                <ul class="d-flex justify-content-start fw-bold text-small">
+                    <li>
+                        <a href="https://www.facebook.com/mwecau2016/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/mwengecatholicuniversity/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/mwenge-catholic-university/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/mwecau1" target="_blank"><i class="fab fa-x"></i></a>
+                    </li>
+                </ul>
+            </div>
+
             <ul class="d-flex justify-content-end fw-bold text-small">
                 <li>
                     <a href="#">Alumni</a>

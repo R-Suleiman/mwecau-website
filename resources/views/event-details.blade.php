@@ -2,9 +2,6 @@
 @section('content')
 
 <section class="main-section">
-    <div class="main-content">
-        <div class="content-box event-box">
-            <div class="category-content">
                 <div class="container-fluid event-header">
                     <p>{{ $eventDetails->event_category }}</p>
                     <div class="underline mt-1">
@@ -106,9 +103,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <script>
