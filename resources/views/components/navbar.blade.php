@@ -278,12 +278,12 @@
                 @if ($combinedItems->isNotEmpty())
                     @foreach ($combinedItems as $item)
                         @if ($item instanceof App\Models\NewsUpdate)
-                            <span class="fw-bold">Latest News: </span>
+                            <span class="fw-bold" style="color: #f866b9">Latest News: </span>
                             <a href="{{ route('announcement-details', $item->name) }}" class="marquee">
                                 <span>{{ $item->name }}</span>
                             </a>
                         @elseif ($item instanceof App\Models\Event)
-                            <span class="fw-bold">Conferences: </span>
+                            <span class="fw-bold" style="color: #f866b9">Upcoming Events </span>
                             <a href="{{ route('event-details', $item->id) }}" class="marquee">
                                 <span>{{ $item->event_title }}</span>
                             </a>

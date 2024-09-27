@@ -47,8 +47,6 @@
                             @enderror
                         </div>
 
-                        <textarea id="ckeditor"></textarea>
-
                     </div>
                     <button type="submit" class="btn btn-success fw-bold ">{{ 'Post' }}</button>
                 </form>
