@@ -282,7 +282,7 @@
                     @endforeach
                 @endif
             </marquee>
-            $events = Event::orderBy('created_at', 'desc')->take(5)->get();
+            {{-- $events = Event::orderBy('created_at', 'desc')->take(5)->get(); --}}
             <a href="https://uas.mwecau.ac.tz/">
                 <button class="btn fw-bold mb-1 d-none d-md-block"
                     style="width: 150px; background-color: #e000e7; color: white">Apply

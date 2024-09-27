@@ -19,16 +19,16 @@ return new class extends Migration
             $table->string('event_image')->nullable();
             $table->string('speaker_fullname');
             $table->string('speaker_profession');
-            $table->tex('speaker_info');
+            $table->tex('speaker_info')->nullable();
             $table->string('speaker_photo')->nullable();
-            $table->string('event_cost');
+            $table->string('event_cost')->nullable();
             $table->date('event_date');
             $table->time('eventStart_time');
             $table->time('eventEnd_time');
             $table->string('event_location');
             $table->string('event_organizer');
-            $table->string('total_slots');
-            $table->string('booked_slots');
+            $table->string('total_slots')->nullable();
+            $table->string('booked_slots')->nullable();
             $table->timestamps();
         });
     }
