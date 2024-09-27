@@ -275,14 +275,22 @@
         <div class="d-flex px-2"
             style="align-items: center;  border-bottom: 1px solid #fff; color:white; background-color: #513F83;">
             <marquee behavior="scroll" direction="left">
-                @if ($news)
-                    @foreach ($news->take(5) as $news)
-                        <a href="{{ route('announcement-details', $news->name) }}"
-                            class="marquee fw-bold"><span>{{ $news->name }}</span></a>
+                @if ($combinedItems->isNotEmpty())
+                    @foreach ($combinedItems as $item)
+                        @if ($item instanceof App\Models\NewsUpdate)
+                            <span class="fw-bold" style="color: #f866b9">Latest News: </span>
+                            <a href="{{ route('announcement-details', $item->name) }}" class="marquee">
+                                <span>{{ $item->name }}</span>
+                            </a>
+                        @elseif ($item instanceof App\Models\Event)
+                            <span class="fw-bold" style="color: #f866b9">Upcoming Events </span>
+                            <a href="{{ route('event-details', $item->id) }}" class="marquee">
+                                <span>{{ $item->event_title }}</span>
+                            </a>
+                        @endif
                     @endforeach
                 @endif
             </marquee>
-            {{-- $events = Event::orderBy('created_at', 'desc')->take(5)->get(); --}}
             <a href="https://uas.mwecau.ac.tz/">
                 <button class="btn fw-bold mb-1 d-none d-md-block"
                     style="width: 150px; background-color: #e000e7; color: white">Apply

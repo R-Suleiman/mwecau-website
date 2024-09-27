@@ -35,19 +35,11 @@ class AdminController extends Controller
     public function adminHome()
     {
 
-        // $title = 'Delete User!';
-        // $text = "Are you sure you want to delete?";
-        // confirmDelete($title, $text);
-
-        $adminName = Auth::user(); //getting name of the authenticated admin
-        $totalUniCourses = Course::all()->count(); //getting total number of courses
-        $totalUnistaff = staff::all()->count(); //getting total number of staff
-        $totalUnievents = event::all()->count(); //getting tottal number of events
-        $allUniStaff = staff::all();
-        $allUniCourses = course::all();
+        $adminName = Auth::user();
+        $totalUnievents = event::all()->count(); 
         $allUniEvents = event::all();
 
-        return view('admin.dashboard', compact('totalUniCourses', 'totalUnistaff', 'totalUnievents', 'adminName', 'allUniStaff', 'allUniCourses', 'allUniEvents'));
+        return view('admin.dashboard', compact('totalUnievents', 'adminName', 'allUniEvents'));
     }
     public function postAnnouncementView()
     {

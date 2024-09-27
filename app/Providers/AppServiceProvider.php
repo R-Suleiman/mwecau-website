@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\NewsUpdate;
 use App\Models\Document;
-use App\Models\Event;
+use App\Models\event;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Http;
@@ -87,12 +87,14 @@ class AppServiceProvider extends ServiceProvider
             ->first();
 
         $almanac = Document::where('type', 'almanac')->first();
-        $news = NewsUpdate::orderBy('created_at', 'desc')->get();
-        $events = Event::orderBy('created_at', 'desc')->take(5)->get();
+        // Fetch the latest news and events
+        $news = NewsUpdate::orderBy('created_at', 'desc')->take(2)->get();
+        $events = Event::orderBy('created_at', 'desc')->take(3)->get();
 
         // Combine the two collections
         $combinedItems = $news->concat($events);
         View::share('combinedItems', $combinedItems);
+
 
         View::share('postgraduateJoiningInstruction', $postgraduateJoiningInstruction);
         View::share('undergrduateJoiningInstruction', $undergrduateJoiningInstruction);
