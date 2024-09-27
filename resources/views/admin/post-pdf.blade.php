@@ -4,7 +4,7 @@
         <div class="main-content">
             <div class="container mb-4 mt-4">
                 <div class="text-end">
-                    <a href="{{route('admin.documents.pdf')}}"> <button class="btn btn-primary btn-sm">back</button></a>
+                    <a href="{{ route('admin.documents.pdf') }}"> <button class="btn btn-primary btn-sm">back</button></a>
                 </div>
                 <h2 class="text-center">{{ 'Post Universtiy Documents' }}</h2>
                 <hr>
@@ -99,7 +99,7 @@
         const levelDiv = document.getElementById('level-div');
 
         typeSelect.addEventListener('change', function() {
-            if (this.value === 'joining-instruction') {
+            if (this.value === 'joining-instruction' || 'fee-structure') {
                 levelDiv.style.display = 'block';
             } else {
                 levelDiv.style.display = 'none';

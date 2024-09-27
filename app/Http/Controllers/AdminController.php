@@ -260,8 +260,8 @@ class AdminController extends Controller
             'header' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'type' => ['required', 'string'],
-            'file' => ['required', 'mimes:pdf', 'max:2048'],
-            'level' => ['required_if:type,joining-instruction'],
+            'file' => ['required', 'mimes:pdf', 'max:5120'],
+            'level' => ['required_if:type,joining-instruction,fee-structure', 'string'],
         ]);
 
         // File processing
@@ -277,7 +277,7 @@ class AdminController extends Controller
         $newPDF->type = $request->type;
         $newPDF->file = $fileName;
 
-        if ($request->type == 'joining-instruction') {
+        if ($request->type == 'joining-instruction' || 'fee-structure') {
             $newPDF->level = $request->level;
         }
 

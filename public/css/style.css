@@ -1417,10 +1417,11 @@ select {
     text-decoration: none;
     color: black;
     margin: 2px 0;
+    color: blue;
 }
 
 .ict-resource:hover {
-    color: blue;
+    color: #e000e7;
 }
 
 .ict-resource i {
@@ -1798,6 +1799,10 @@ select {
     width: 45%;
 }
 
+.content-box {
+    overflow-x: auto;
+}
+
 .about-box {
     width: 95%;
     margin: 10px auto;
@@ -1825,7 +1830,7 @@ select {
     border-bottom: 1px solid black;
 }
 
-.prof-qual-table {
+.content-table {
     display: none;
 }
 

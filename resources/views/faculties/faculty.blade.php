@@ -57,7 +57,7 @@
                                     @endif
 
                                     <div class="card-text text-center ">
-                                        <span>{{ $staff_details['first_name'] }}
+                                        <span>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }} {{ $staff_details['other_name'] }}
                                             {{ $staff_details['last_name'] }}</span> <br>
                                     </div>
                                 </div>

@@ -100,8 +100,7 @@
                                 <div class="card-body">
                                     <h6 class="card-title favColor">
                                         <img src="{{ asset('img/new_icon.png') }}" alt="" style="width: 40px">
-                                        <a class="darkMode"
-                                            href="{!! route('announcement-details', [$UniversityEvent->name]) !!}">{{ $UniversityEvent->name }}
+                                        <a class="darkMode" href="{!! route('announcement-details', [$UniversityEvent->name]) !!}">{{ $UniversityEvent->name }}
                                     </h6>
                                     <small
                                         class="fw-bold card-title text-secondary">{{ $UniversityEvent->created_at }}</small>
@@ -109,7 +108,8 @@
                             @endforeach
                         @else
                             <div>
-                                <span class="alert alert-warning" role="alert"><strong>Currently news posted.</strong></span>
+                                <span class="alert alert-warning" role="alert"><strong>Currently news
+                                        posted.</strong></span>
                             </div>
                         @endif
 
@@ -144,9 +144,7 @@
                             <div class="card-text mt-5">
                                 <h5>Academics <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    Education at Mwecau has limitless possibilities. Our courses are taught by
-                                    esteemed
-                                    faculty members.
+                                    At Mwenge Catholic University, inspiring academic learning is fostered through a rigorous curriculum that emphasizes critical thinking, research, and practical application.
                                 </p>
                                 <div class="mb-3">
                                     <a href="{{ route('academics') }}">
@@ -168,9 +166,8 @@
                             <div class="card-text mt-5">
                                 <h5>Inspiring Student Life <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    Our residential system creates more opportunities for learning with peers and
-                                    professors
-                                    from different backgrounds.
+                                    Our residential systems and facilities creates more opportunities for learning with peers and
+                                    professors from different backgrounds.
                                 </p>
                                 <div class="mb-3">
                                     <a href="{{ route('campus-life') }}"><button class="whyButtons"> Read More <i
@@ -189,10 +186,7 @@
                             <div class="card-text mt-5 ">
                                 <h5>Qualified Staffs <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    Our financial aid program makes Mwenge Catholic University affordable for every
-                                    family
-                                    throughout
-                                    Africa and worldwide.
+                                    Mwenge Catholic University is supported by over 200 highly qualified academic and administrative staff, dedicated to providing quality education and services to its students.
                                 </p>
                                 <div class="mb-3">
                                     <a href="{{ route('mwecau-academic-staff') }}"><button class="whyButtons"> Read More <i
@@ -291,35 +285,88 @@
                 </div>
 
                 <div class="container-fluid mt-5 mb-5">
-                    <div class="row gallery">
-                        @foreach ($UniversityEvents as $UniversityEvent)
-                    <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
-                        <a href="{{ route('event-details', $UniversityEvent->id) }}" class="text-decoration-none">
-                            <div class="card">
-                                <div class="card-body"> <img src="img/mwecau.jpg" style="width: 100%;"
-                                        alt="">
+                    @if ($UniversityEvents->isNotEmpty())
+                        <div class="row gallery g-5">
+                            @foreach ($UniversityEvents as $UniversityEvent)
+                                <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
+                                    <a href="{{ route('event-details', $UniversityEvent->id) }}"
+                                        class="text-decoration-none">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                @if ($UniversityEvent->event_image == null)
+                                                    <img src="{{ asset('img/mwecau.png') }}" alt="Default Image"
+                                                        class="img-fluid mx-auto d-block" style="width: 30%;">
+                                                @else
+                                                    <img src="{{ asset('images/eventImages/' . $UniversityEvent->event_image) }}"
+                                                        class="img-fluid" style="width: 100%;" alt="Event Image">
+                                                @endif
+
+                                            </div>
+                                            <div class="card-text">
+                                                <p>
+                                                <h6 class="fst-italic fw-bold favColor">
+                                                    {{ $UniversityEvent->event_title }}
+                                                </h6>
+                                                </p>
+                                                <div class="fst-italic text-decoration-underline ">
+                                                    {{ $UniversityEvent->eventStart_time }} -
+                                                    {{ $UniversityEvent->eventEnd_time }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="card-text">
-                                    <p>
-                                    <h6 class="fst-italic fw-bold favColor">{{ $UniversityEvent->event_title }}</h6>
-                                    </p>
-                                    <div class="fst-italic text-decoration-underline ">
-                                        {{ $UniversityEvent->eventStart_time }} -
-                                        {{ $UniversityEvent->eventEnd_time }}
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <span class="alert alert-warning">There are no upcoming university events at the moment. Please
+                            check back soon for new updates!</span>
+                    @endif
                 </div>
 
             </div>
-            <div class="">
-                <a href="{{ route('university.events') }}"><button class="eventsBtn"> More Mwecau Events <i
-                            class="fas fa-arrow-right"></i></button></a>
-            </div>
+            @if ($UniversityEvents->isNotEmpty())
+                <div class="">
+                    <a href="{{ route('university.events') }}"><button class="eventsBtn"> More Mwecau Events <i
+                                class="fas fa-arrow-right"></i></button></a>
+                </div>
+            @endif
+
         </div>
     </section>
- @endsection
+
+        <!-- gallery -->
+        <div class="container-fluid mt-5 mb-5">
+            <div class="row gallery">
+                @if ($galleryImages)
+                    @foreach ($galleryImages as $galleryImage)
+                        <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                            <img src="{{ asset('/images/pageImages/' . $galleryImage->image) }}" alt="">
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+
+        {{-- our partners --}}
+        <section>
+            <!-- partners -->
+
+            <div class="container text-center mt-5 mb-5">
+                <div class="underline mt-2 " style="width: 100%;">
+                    <h2> Partner Institutions</h2>
+                </div>
+                <div class="row justify-content-between align-items-start partners">
+                    @if ($partnersImages)
+                        @foreach ($partnersImages as $partnersImage)
+                            <div class="col-6 col-lg-2 col-md-4 partner">
+                                <a href="{{ $partnersImage->link }}"><img
+                                        src="{{ asset('/images/pageImages/' . $partnersImage->image) }}" alt=""></a>
+                            </div>
+                        @endforeach
+                    @endif
+
+                </div>
+            </div>
+        </section>
+@endsection

@@ -8,7 +8,7 @@
                 </div>
                 <h2 class="text-center">{{ 'University Documents' }}</h2>
                 <hr>
-                @if ($documents)
+                @if ($documents->isNotEmpty())
                     @foreach ($documents as $document)
                         <div class="">
                             <h4>{{ $document->header }}</h4>
@@ -26,6 +26,11 @@
                         </div>
                         <hr>
                     @endforeach
+                @else
+                    <div class="mt-5">
+                        <span class="alert alert-warning mt-5">There are no upcoming university events at the moment. Please
+                            check back soon for new updates!</span>
+                    </div>
                 @endif
 
             </div>

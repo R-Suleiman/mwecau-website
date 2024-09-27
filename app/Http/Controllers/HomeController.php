@@ -39,11 +39,17 @@ class HomeController extends Controller
         SEOTools::setTitle('Mwenge Catholic Univeristy | University in Tanzania');
         // Set canonical URL
         SEOTools::setCanonical('https://mwecau.ac.tz/');
+
+        $galleryImages = Image::where('image_section', 'about-gallery')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $partnersImages = Image::where('image_section', 'about-partners')->get();
+
         $images = Image::all();
         $UniversityEvents = Event::all();
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
-        return view('index', compact('latestEvent', 'UniversityEvents', 'images', 'announcements'));
+        return view('index', compact('latestEvent', 'UniversityEvents', 'images', 'announcements', 'galleryImages', 'partnersImages'));
     }
 
     // Cleaning the CK editor content
@@ -66,7 +72,7 @@ class HomeController extends Controller
         $aboutPage = About::first();
 
         if ($aboutPage) {
-            $content = $aboutPage->description; 
+            $content = $aboutPage->description;
 
             // Find the split index to break the content in half
             $splitIndex = strlen($content) / 2;
@@ -190,6 +196,24 @@ class HomeController extends Controller
             return redirect()->back()->with('error', 'File not found on the server.');
         }
 
+        return response()->file($filePath);
+    }
+    public function eventAttachmentPreview($eventFileName)
+    {
+        // Fetch the attachment
+        $file = Event::where('file', $eventFileName)->first();
+
+        if (!$file) {
+            return redirect()->back()->with('error', 'The specified attachment does not exist in our records.');
+        }
+
+        $filePath = public_path('documents/event-documents/' . $file->file);
+
+        if (!file_exists($filePath)) {
+            return redirect()->back()->with('error', 'File not found on the server.');
+        }
+
+        // Return the file for preview
         return response()->file($filePath);
     }
 }
