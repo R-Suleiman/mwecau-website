@@ -28,32 +28,25 @@
                     </div>
                 </div>
 
-                <div class="welcomeImgContainer col-md-9 col-lg-8">
+                <div class="welcomeImgContainer col-12 col-md-9 col-lg-8 d-flex flex-column justify-content-center align-items-center">
                     <h4>Welcome to Mwenge Catholic University</h4>
-                    <p style="text-align: justify; line-height: 2rem;">
-                        Welcome to Mwenge Catholic University (MWECAU), a University that gives you the opportunity to
-                        pursue quality education
-                        in truthfulness and freedom of thought, so that you may gain professional competency to boldly
-                        serve and contribute to the development of humanity.
-
-                        In order to prepare for your future career or pursue academic and professional advancement, be
-                        it education,
-                        administration, sciences, law and/or social sciences, think of MWECAU as your best choice.
-                        Our thoroughly tested
-                        programmes offer you an intellectual and social engagement to form you into a critical-thinking
-                        citizen presently needed
-                        by society. <a href="{{ route('about') }}" class="fw-bold favColor"> <button
-                                class="btn favbg text-white"> Read More <i class="fa fa-arrow-circle-right text-white"
-                                    aria-hidden="true"></i> </button></a>
+                    <p class="text-justify" style="line-height: 2rem;">
+                        {!! $part1 !!} {!! Str::limit($part2, 400) !!}
+                        <a href="{{ route('about') }}" class="fw-bold favColor">
+                            <button class="btn favbg text-white">
+                                Read More <i class="fa fa-arrow-circle-right text-white" aria-hidden="true"></i>
+                            </button>
+                        </a>
                     </p>
                 </div>
+
 
             </div>
         </div>
     </section>
 
     <!-- news and updates section -->
-    <section class="mt-5 mb-4">
+    <section class="mt-3 mb-4">
         <div class="container">
             <div class="row align-items-center">
                 <div class="underline col-lg-6">
@@ -62,27 +55,25 @@
             </div>
 
             <div class="row mt-4">
-                <div class="col-12 col-md-12 col-lg-8">
+                <div class="col-12 col-md-6 col-lg-8">
                     @foreach ($announcements->take(1) as $event)
-                        <div class="container">
-                            <div class="mb-3">
-                                <span class="favColor fw-bold">Latest event</span>
-                            </div>
+                        <div class="mb-3">
+                            <span class="favColor fw-bold">Latest event</span>
+                        </div>
 
-                            <div class="image-containerNews mb-5">
-                                <img class="img-fluid w-75" src="{{ asset('img/updatejpg') }}" alt=""
-                                    style=" border: 1px solid #513f83; border-radius: 7px;">
+                        <div class="image-containerNews mb-5">
+                            <img class="img-fluid w-75" src="{{ asset('img/updatejpg') }}" alt=""
+                                style=" border: 1px solid #513f83; border-radius: 7px;">
 
-                                <div class="overlay-newsImage shadow-lg">
-                                    <div class="card">
-                                        <div class="card-body p-3">
+                            <div class="overlay-newsImage shadow-lg">
+                                <div class="card">
+                                    <div class="card-body p-3">
 
-                                            <h6 class="card-title text-uppercase fw-bold favColor">
-                                                <a
-                                                    href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
-                                            </h6>
-                                            <p class="card-text fst-italic">{{ $event->description }}</p>
-                                        </div>
+                                        <h6 class="card-title text-uppercase text-center fw-bold favColor">
+                                            <a
+                                                href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
+                                        </h6>
+                                        <p class="card-text fst-italic">{{ $event->description }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,20 +81,19 @@
                     @endforeach
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-4 secondCard" style="overflow-x: auto; height: 499px;">
-                    <div class="card secondCard border-0 team-slider darkMode"
-                        style="overflow-y: auto;  border-right: 1px solid #513f83;">
-                        <span class="text-secondary">Other University events.</span>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card border-0 team-slider" style="overflow-x: auto; height: 499px;">
+                        <span class="favColor text-center mt-5">Other University events.</span>
 
                         @if ($announcements->count() > 0)
                             @foreach ($announcements->take(4) as $UniversityEvent)
                                 <div class="card-body">
                                     <h6 class="card-title favColor">
                                         <img src="{{ asset('img/new_icon.png') }}" alt="" style="width: 40px">
-                                        <a class="darkMode" href="{!! route('announcement-details', [$UniversityEvent->name]) !!}">{{ $UniversityEvent->name }}
+                                        <a class="" href="{!! route('announcement-details', [$UniversityEvent->name]) !!}">{{ $UniversityEvent->name }}
                                     </h6>
                                     <small
-                                        class="fw-bold card-title text-secondary">{{ $UniversityEvent->created_at }}</small>
+                                        class="fw-bold card-title text-secondary">{{ $UniversityEvent->posting_date }}</small>
                                 </div>
                             @endforeach
                         @else
@@ -112,15 +102,12 @@
                                         posted.</strong></span>
                             </div>
                         @endif
-
                     </div>
-
+                    <div class="text-end mt-5">
+                        <a href="{{ route('university.news.updates') }}"><button class="newsBtn text-end"> View all News <i
+                                    class="fa fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
-
-            </div>
-            <div class="text-end">
-                <a href="{{ route('university.news.updates') }}"><button class="newsBtn text-end"> View all News <i
-                            class="fa fa-arrow-right"></i></button></a>
             </div>
         </div>
     </section>
@@ -144,7 +131,9 @@
                             <div class="card-text mt-5">
                                 <h5>Academics <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    At Mwenge Catholic University, inspiring academic learning is fostered through a rigorous curriculum that emphasizes critical thinking, research, and practical application.
+                                    At Mwenge Catholic University, inspiring academic learning is fostered through a
+                                    rigorous curriculum that emphasizes critical thinking, research, and practical
+                                    application.
                                 </p>
                                 <div class="mb-3">
                                     <a href="{{ route('academics') }}">
@@ -166,7 +155,8 @@
                             <div class="card-text mt-5">
                                 <h5>Inspiring Student Life <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    Our residential systems and facilities creates more opportunities for learning with peers and
+                                    Our residential systems and facilities creates more opportunities for learning with
+                                    peers and
                                     professors from different backgrounds.
                                 </p>
                                 <div class="mb-3">
@@ -186,7 +176,9 @@
                             <div class="card-text mt-5 ">
                                 <h5>Qualified Staffs <i class="fa fa-circle-check favColor"></i></h5>
                                 <p>
-                                    Mwenge Catholic University is supported by over 200 highly qualified academic and administrative staff, dedicated to providing quality education and services to its students.
+                                    Mwenge Catholic University is supported by over 200 highly qualified academic and
+                                    administrative staff, dedicated to providing quality education and services to its
+                                    students.
                                 </p>
                                 <div class="mb-3">
                                     <a href="{{ route('mwecau-academic-staff') }}"><button class="whyButtons"> Read More <i
@@ -335,38 +327,38 @@
         </div>
     </section>
 
-        <!-- gallery -->
-        <div class="container-fluid mt-5 mb-5">
-            <div class="row gallery">
-                @if ($galleryImages)
-                    @foreach ($galleryImages as $galleryImage)
-                        <div class="col-6 col-lg-2 col-md-4 gallery-cont">
-                            <img src="{{ asset('/images/pageImages/' . $galleryImage->image) }}" alt="">
+    <!-- gallery -->
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row gallery">
+            @if ($galleryImages)
+                @foreach ($galleryImages as $galleryImage)
+                    <div class="col-6 col-lg-2 col-md-4 gallery-cont">
+                        <img src="{{ asset('/images/pageImages/' . $galleryImage->image) }}" alt="">
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    </div>
+
+    {{-- our partners --}}
+    <section>
+        <!-- partners -->
+
+        <div class="container text-center mt-5 mb-5">
+            <div class="underline mt-2 " style="width: 100%;">
+                <h2> Partner Institutions</h2>
+            </div>
+            <div class="row justify-content-between align-items-start partners">
+                @if ($partnersImages)
+                    @foreach ($partnersImages as $partnersImage)
+                        <div class="col-6 col-lg-2 col-md-4 partner">
+                            <a href="{{ $partnersImage->link }}"><img
+                                    src="{{ asset('/images/pageImages/' . $partnersImage->image) }}" alt=""></a>
                         </div>
                     @endforeach
                 @endif
+
             </div>
         </div>
-
-        {{-- our partners --}}
-        <section>
-            <!-- partners -->
-
-            <div class="container text-center mt-5 mb-5">
-                <div class="underline mt-2 " style="width: 100%;">
-                    <h2> Partner Institutions</h2>
-                </div>
-                <div class="row justify-content-between align-items-start partners">
-                    @if ($partnersImages)
-                        @foreach ($partnersImages as $partnersImage)
-                            <div class="col-6 col-lg-2 col-md-4 partner">
-                                <a href="{{ $partnersImage->link }}"><img
-                                        src="{{ asset('/images/pageImages/' . $partnersImage->image) }}" alt=""></a>
-                            </div>
-                        @endforeach
-                    @endif
-
-                </div>
-            </div>
-        </section>
+    </section>
 @endsection

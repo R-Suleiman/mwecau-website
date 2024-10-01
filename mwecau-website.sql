@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 26, 2024 at 08:25 AM
+-- Generation Time: Sep 27, 2024 at 10:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -45,56 +45,18 @@ INSERT INTO `abouts` (`id`, `header`, `description`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses`
+-- Table structure for table `conferences`
 --
 
-CREATE TABLE `courses` (
+CREATE TABLE `conferences` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `course_title` varchar(255) NOT NULL,
-  `course_description` text NOT NULL,
-  `course_entry_qualification` text NOT NULL,
-  `course_code` varchar(255) NOT NULL,
-  `course_duration` varchar(255) NOT NULL,
-  `course_category` enum('undergraduate','postgraduate','non-degree') NOT NULL,
-  `course_thumbnail` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `date` date NOT NULL,
+  `link` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `courses`
---
-
-INSERT INTO `courses` (`id`, `course_title`, `course_description`, `course_entry_qualification`, `course_code`, `course_duration`, `course_category`, `course_thumbnail`, `created_at`, `updated_at`) VALUES
-(1, 'Doctor of Philosophy in Education (PhD)', 'Master of Education or related field with an average of “B” or a minimum GPA of 3.0.', 'Master of Education or related field with an average of “B” or a minimum GPA of 3.0.', 'PhD', '(3 Years)', 'postgraduate', '1714898730.jpg', '2024-03-20 16:42:39', '2024-05-05 05:45:30'),
-(2, 'Master of Science with Education', 'Bachelor’s degree in Science (Education) or Education (Science) in the following Science Subjects: Biology, Chemistry, and Mathematics with an average of “B” or a minimum GPA of 2,7,  OR Postgraduate Diploma in Education with an average of “B” or a minimum GPA of 3,0', 'Bachelor’s degree in Science (Education) or Education (Science) in the following Science Subjects: Biology, Chemistry, and Mathematics with an average of “B” or a minimum GPA of 2.7. OR Postgraduate Diploma in Education with an average of “B” or a minimum GPA of 3.0.', 'Masters1', '2 Years', 'postgraduate', '1710965075jpg', '2024-03-20 17:04:35', '2024-03-20 17:04:35'),
-(3, 'Master of Education', 'Bachelor’s degree in Education or related field with an average of “B”', 'Bachelor’s degree in Education or related field with an average of “B” or a minimum GPA of 2.7. or  Postgraduate Diploma in Education  with an  average of B or a minimum GPA  of  3.0', 'Masters2', '2 Years', 'postgraduate', '1710965143jpg', '2024-03-20 17:05:43', '2024-03-20 17:05:43'),
-(4, 'Master of Business Administration', 'Bachelor’s degree in any relevant field with an average of “B” or a minimum GPA of', 'Bachelor’s degree in any relevant field with an average of “B” or a minimum GPA of 2.7. OR A candidate without a minimum GPA of 2.7 in the Bachelor’s degree must have an average of “C” or a minimum GPA of 2.0 PLUS a Postgraduate diploma in a Business related field. OR Professional qualifications such as CPA (T), ACCA, CSP or PSPTB.', 'Masters3', '2 Years', 'postgraduate', '1710965226jpg', '2024-03-20 17:07:06', '2024-03-20 17:07:06'),
-(5, 'Postgraduate Diploma in Business Management', 'Bachelor’s degree or Advanced Diploma in Accounting, Finance, Marketing, Human Resources or Business-related field with an average of “B” or a minimum GPA of', 'Bachelor’s degree or Advanced Diploma in Accounting, Finance, Marketing, Human Resources or Business-related field with an average of “B” or a minimum GPA of 3.0. OR Professional Qualifications such as CPA (T), ACCA, CSP or PSPTB.', 'Masters4', '1 year', 'postgraduate', '1710965413jpg', '2024-03-20 17:10:13', '2024-03-20 17:10:13'),
-(6, 'Postgraduate Diploma in Education', 'Bachelor’s degree with a minimum GPA of 20 or C grade', 'Bachelor’s degree with a minimum GPA of 2.0 or C grade.', 'Masters5', '1 year', 'postgraduate', '1710998343png', '2024-03-21 02:19:03', '2024-03-21 02:19:03'),
-(8, 'Certificate in Laws', 'Holders of a certificate of secondary education examination (CSEE) with at least four (4) passes in non-religious subjects including the English Language', 'Holders of a certificate of secondary education examination (CSEE) with at least four (4) passes in non-religious subjects including the English Language', 'non2', '1 year', 'non-degree', '1710998568jpg', '2024-03-21 02:22:48', '2024-03-21 02:22:48'),
-(9, 'Certificate in Procurement and Supply', 'Holders of Certificate of Secondary Education Examination ( CSEE ) with at least four (4) passes in non-religious subjects', 'Holders of Certificate of Secondary Education Examination ( CSEE ) with at least four (4) passes in non-religious subjects', 'non3', '1 year', 'non-degree', '1710999300PNG', '2024-03-21 02:35:00', '2024-03-21 02:35:00'),
-(10, 'Certificate in Social Work', 'Holders of Certificate of Secondary Education Examination (CSEE) with at least four (4) passes in non-religious subjects', 'Holders of Certificate of Secondary Education Examination (CSEE) with at least four (4) passes in non-religious subjects', 'non4', '1 year', 'non-degree', '1710999414png', '2024-03-21 02:36:54', '2024-03-21 02:36:54'),
-(11, 'Ordinary Diploma in Business Administration', 'Holders of Basic Technician Certificate (NTA level 4) in Business Administration OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary Principal subjects', 'Holders of Basic Technician Certificate (NTA level 4) in Business Administration OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary Principal subjects', 'non5', '2 Years', 'non-degree', '1710999481jpg', '2024-03-21 02:38:01', '2024-03-21 02:38:01'),
-(12, 'Ordinary Diploma in Law', 'Holders of Basic Technician Certificate (NTA Level 4) in Procurement and Supply, Logistics, Clearing and Forwarding OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary in Principal subjects', 'Holders of Basic Technician Certificate (NTA Level 4) in Procurement and Supply, Logistics, Clearing and Forwarding OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary in Principal subjects', 'non6', '2 Years', 'non-degree', '1710999546png', '2024-03-21 02:39:06', '2024-03-21 02:39:06'),
-(13, 'Ordinary Diploma in Social Work', 'Holder of Basic Technician Certificate (NTA Level 4) in Social Work, Gender and Community Development OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary in Principal subjects', 'Holder of Basic Technician Certificate (NTA Level 4) in Social Work, Gender and Community Development OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary in Principal subjects', 'non7', '2 Years', 'non-degree', '1710999621jpg', '2024-03-21 02:40:21', '2024-03-21 02:40:21'),
-(15, 'Ordinary Diploma in Procurement and Supply', 'Holders of Basic Technician Certificate (NTA Level 4) in Procurement and Supply, Logistics, Clearing and Forwarding OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary in Principal subjects', 'Holders of Basic Technician Certificate (NTA Level 4) in Procurement and Supply, Logistics, Clearing and Forwarding OR Advanced Certificate of Secondary Education Examination (ACSEE) with at least one Principal pass and one Subsidiary in Principal subjects', 'non8', '2 Years', 'non-degree', '1710999767jpg', '2024-03-21 02:42:47', '2024-03-21 02:42:47'),
-(16, 'Bachelor of Arts in Geography and Environmental', 'This is a Science course that is important to everyday life. It deals with the properties, composition and structure of elements and compounds used in daily life (water, oil, perfumes, soup, paper, minerals, plastics, drugs, etc. The Government policy of industrialization has resulted to a high demand for qualified chemists for Industries, Government Institutions and research Institutions in the country.\r\n\r\nTo this end, the course curriculum for BSc in General Chemistry prepares students to apply chemistry principles required for Industry and research. Prospective students will be exposed to practical oriented skills that prepare them to work in different sectors in the country.\r\nBSc. in General Chemistry graduates will possess strong analytical skills to operation, development methods and analyze chemicals using modern analytical tools. They will also be able to develop and monitor the production of quality chemical products. Students will work on a research project of their choice that creates products or solves community problems. This programme is for students with career interest related to chemical Industries and Research Institutions.\r\n\r\nProgramme Goals.\r\n\r\n1:  To equip students with concepts/principles of chemistry required for research and industry.\r\n 1: To provides the students with the skills of creating products used in daily life.', 'This is a Science course that', 'under1', '3 years', 'undergraduate', '1711142005.jpg', '2024-03-21 02:45:39', '2024-03-22 18:13:25'),
-(17, 'Bachelor of Science in Applied Biology', 'This programme is for all those interested in the various areas of biology, ranging from Microbiology, cellular Biology, Biochemistry, molecular biology and Genetics, Biomedicine, Environmental and Agricultural Biology. Unlike a very broad-based, general biology degree at a university, this programme course will offer specific biological and technical knowledge which is of essential significance for industrial applications. In doing so our teaching is highly interdisciplinary aimed at giving a student insights into the many different areas of application of biology, and at the same time, a high level of problem-solving capability.\r\n\r\nPrincipally, the student will have an opportunity to combine a degree in biology with another degree in real life application of the knowledge acquired. In so doing, the Applied Biology degree at Mwenge Catholic University, is a strongly interdisciplinary programme. A research project during final year will accord the students more opportunity to practice Science writing and give additional openings to practice the knowledge gained in class. During the training, students will have an exposure to major on issues facing sustainability of human populations and natural resources.\r\n\r\nProgramme Goals:\r\n\r\n    To enable students to acquire and apply foundational knowledge, concepts, and theories in biology.\r\n 1: To facilitate collection, synthetization and critical evaluation of information in order to suggest solutions to environmental, agricultural, industrial and human health-related problems.\r\n 2:To enable acquisition a broad range of tools that can be applied in research and in the workplace to solve biological problems\r\n 3:To enable one to earn professional certifications in order to increase employment prospects.\r\n  4:To equip one with independent critical thinking and strong written communication skills, ready to integrate and apply acquired knowledge in the society\'s greatest glitches', 'olecular biology and Genetics, Biomedicine, Environmental and Agricultural Biology. Unlike a very broad-based, general biology degree at a university, this programme course will offer specific biological and technical knowledge which is of essential significance for industrial applications.', 'BScAPB', '3 years', 'undergraduate', '1724671626.jpg', '2024-03-21 02:49:27', '2024-08-26 08:27:06'),
-(18, 'Bachelor of Arts with Education', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, Economics, Commerce, Accountancy or Advanced Mathematics', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, Economics, Commerce, Accountancy or Advanced Mathematics', 'under2', '3 years', 'undergraduate', '1711000229png', '2024-03-21 02:50:29', '2024-03-21 02:50:29'),
-(19, 'Bachelor of Science with Education', 'Two principal passes in the following subjects: Physics, Chemistry, Biology, Advanced Mathematics, Geography or Computer Science', 'Two principal passes in the following subjects: Physics, Chemistry, Biology, Advanced Mathematics, Geography or Computer Science', 'under3', '3 years', 'undergraduate', '1711000305PNG', '2024-03-21 02:51:45', '2024-03-21 02:51:45'),
-(20, 'Bachelor of Business Administration and Management', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition. In addition, an applicant must have a subsidiary in Advanced Mathematics/ Basic Applied Mathematics at A-Level or a minimum of “D” grade in Mathematics at O-Level.', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition. In addition, an applicant must have a subsidiary in Advanced Mathematics/ Basic Applied Mathematics at A-Level or a minimum of “D” grade in Mathematics at O-Level.', 'under4', '2 Years', 'undergraduate', '1711000370jpg', '2024-03-21 02:52:50', '2024-03-31 15:39:00'),
-(21, 'Bachelor of Arts in Sociology and Social Work', 'Admission Requirements\r\n\r\nTwo principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Social Work, Gender and Development, Community Development, Development Studies, Counseling Psychology, Nursing, Education, Rural Development, Human Resource, Business Administration, Diplomacy or Law with an average of “B’’ or a minimum GPA of 3.0.', 'Admission Requirements\r\n\r\nTwo principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Social Work, Gender and Development, Community Development, Development Studies, Counseling Psychology, Nursing, Education, Rural Development, Human Resource, Business Administration, Diplomacy or Law with an average of “B’’ or a minimum GPA of 3.0.', 'under5', '3 years', 'undergraduate', '1711000451jpg', '2024-03-21 02:54:11', '2024-03-21 02:54:11'),
-(22, 'Bachelor of Science in Mathematics and Statistics', 'Two principal passes, one in Advanced Mathematics and the other one from the following subjects: Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Geography, Agriculture, Computer Science or Nutrition\r\nOR\r\n\r\nDiploma in Statistics, Applied Statistics, Biostatistics or Education with Mathematics as a teaching subject with an average of “B’’ or a minimum GPA of 3.0.', 'Two principal passes, one in Advanced Mathematics and the other one from the following subjects: Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Geography, Agriculture, Computer Science or Nutrition\r\nOR\r\n\r\nDiploma in Statistics, Applied Statistics, Biostatistics or Education with Mathematics as a teaching subject with an average of “B’’ or a minimum GPA of 3.0.', 'under6', '3 years', 'undergraduate', '1711000515PNG', '2024-03-21 02:55:15', '2024-03-21 02:55:15'),
-(23, 'Bachelor of Arts in Philosophy with Ethics', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Divinity or Nutrition.\r\nOR\r\n\r\nAny Diploma with an average of “B’’ or a minimum GPA of 3.0.', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Divinity or Nutrition.\r\nOR\r\n\r\nAny Diploma with an average of “B’’ or a minimum GPA of 3.0.', 'under7', '3 years', 'undergraduate', '1711000566PNG', '2024-03-21 02:56:06', '2024-03-21 02:56:06'),
-(25, 'Bachelor of Arts in Project Planning and Management', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Divinity or Nutrition.\r\nOR\r\n\r\nDiploma in Development Planning, Accountancy, Business Administration, Records and Archives, Social work, Public Administration, Marketing Management, Local Government Accounting and Finance, Procurement and Supply, Cooperative Management and Accounting, Public Sector Financial Management, Development Administration and Management, Development Economics, Public Policy and Planning, Agriculture Economics, Education, Development Planning, Environment Planning, Investment Planning, Records Management, Community Development, Local Government Administration, Human Resource Management, Business Planning, Land Use Planning, Cartography, Project Training, Law, Gender and Development, Economics Planning, Health Science, Social Welfare, Wild Life Management, Urban Planning, Cooperative Management and Accounting with an average of “B’’ or a minimum GPA of 3.0.', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Divinity or Nutrition.\r\nOR\r\n\r\nDiploma in Development Planning, Accountancy, Business Administration, Records and Archives, Social work, Public Administration, Marketing Management, Local Government Accounting and Finance, Procurement and Supply, Cooperative Management and Accounting, Public Sector Financial Management, Development Administration and Management, Development Economics, Public Policy and Planning, Agriculture Economics, Education, Development Planning, Environment Planning, Investment Planning, Records Management, Community Development, Local Government Administration, Human Resource Management, Business Planning, Land Use Planning, Cartography, Project Training, Law, Gender and Development, Economics Planning, Health Science, Social Welfare, Wild Life Management, Urban Planning, Cooperative Management and Accounting with an average of “B’’ or a minimum GPA of 3.0.', 'under8', '3 years', 'undergraduate', '1711000668jpg', '2024-03-21 02:57:48', '2024-03-21 02:57:48'),
-(26, 'Bachelor of Science in Computer Science', 'Two principal passes in the following subjects: Geography, Economics, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture or Computer Science.\r\nOR\r\n\r\nDiploma in ICT, Computer Science, Information Systems, Software Engineering, Business Informatics, Computer Engineering or Telecommunication Engineering with an average of “B’’ or a minimum GPA of 3.0.', 'Two principal passes in the following subjects: Geography, Economics, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture or Computer Science.\r\nOR\r\n\r\nDiploma in ICT, Computer Science, Information Systems, Software Engineering, Business Informatics, Computer Engineering or Telecommunication Engineering with an average of “B’’ or a minimum GPA of 3.0.', 'under9', '3 years', 'undergraduate', '1711000749jpg', '2024-03-21 02:59:09', '2024-03-21 02:59:09'),
-(27, 'Bachelor of Science in Chemistry', 'Two principal passes, one in Chemistry and in one of the following subjects: Geography, Physics, Advanced Mathematics, Biology, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Education (Science), Pharmaceutical Sciences, Chemistry or Laboratory Technology with an average of “B’’ or a minimum GPA of 3.0.', 'Two principal passes, one in Chemistry and in one of the following subjects: Geography, Physics, Advanced Mathematics, Biology, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Education (Science), Pharmaceutical Sciences, Chemistry or Laboratory Technology with an average of “B’’ or a minimum GPA of 3.0.', 'chemistry', '3 years', 'undergraduate', '1711014303.jpg', '2024-03-21 03:01:53', '2024-03-31 15:51:11'),
-(28, 'Bachelor of Science in Applied Biology', 'Two principal passes, one in Biology and in one of the following subjects: Geography, Physics, Advanced Mathematics, Chemistry, Agriculture, Computer Science or Nutrition.\r\n\r\nOR.\r\n\r\nDiploma in Education, Agriculture, Forestry, Aquaculture or Biological Sciences with an average of “B’’ or a minimum GPA of 3,0', 'Two principal passes, one in Biology and in one of the following subjects: Geography, Physics, Advanced Mathematics, Chemistry, Agriculture, Computer Science or Nutrition.\r\nOR.\r\n\r\nDiploma in Education, Agriculture, Forestry, Aquaculture or Biological Sciences with an average of “B’’ or a minimum GPA of 3.0.', 'bios12', '3 years', 'undergraduate', '1711015838.jpg', '2024-03-21 03:03:18', '2024-03-21 07:10:58'),
-(29, 'Bachelor of Laws', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy or Advanced Mathematics. If one of the principals is not English an applicant must have a minimum of “C” grade in English at O-Level or Foundation Programme of the OUT with a minimum GPA of 3.0.\r\nOR.\r\n\r\nDiploma in Law or Law Enforcement with an average of “B’’ or a minimum GPA of 3.0.', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy or Advanced Mathematics. If one of the principals is not English an applicant must have a minimum of “C” grade in English at O-Level or Foundation Programme of the OUT with a minimum GPA of 3.0.\r\nOR.\r\n\r\nDiploma in Law or Law Enforcement with an average of “B’’ or a minimum GPA of 3.0.', 'LLB', '3 years', 'undergraduate', '1711001060jpg', '2024-03-21 03:04:20', '2024-03-31 04:23:32'),
-(30, 'Bachelor of Procurement and Supply Chain Management', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Procurement and Logistics Management, Logistics and Transport Management, Freight Clearing and Forwarding, Accounting, Business Administration or Information and Communication Technology with an average of “B’’ or a minimum GPA of 3.0. OR Foundation Certificate of The OUT with a minimum GPA of 3.0.', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Procurement and Logistics Management, Logistics and Transport Management, Freight Clearing and Forwarding, Accounting, Business Administration or Information and Communication Technology with an average of “B’’ or a minimum GPA of 3.0. OR Foundation Certificate of The OUT with a minimum GPA of 3.0.', 'chain', '3 years', 'undergraduate', '1711001157jpg', '2024-03-21 03:05:57', '2024-03-21 03:05:57'),
-(31, 'Bachelor of Accounting and Finance', 'Two principal passes in the following subjects: History, Geography, Economics, Commerce, Accountancy, Physics, Chemistry, Biology or Advanced Mathematics. If one of the principals is not Advanced Mathematics an applicant must have a subsidiary pass in Advanced Mathematics/Basic Applied Mathematics at A-Level or a “D” grade in Basic Mathematics at O-Level.\r\nOR\r\n\r\nDiploma in Business Administration, Marketing, Social Studies, Industrial Relations, Economic Studies, Public Sector Finance Management, Information Technology with Accounting, Human Resources, Management, Financial Administration, Local Government Accounting and Finance, Insurance and Risk Management, Customs and Tax Management, Freight Clearing and Forwarding, Statistics, Business Management and Logistic Management or Banking and Finance, Accountancy Procurement and Supplies Management with an average of “B’’ or a minimum GPA of 3.0. OR Foundation Programme of The OUT with a minimum of GPA of 3.0 in Business Cluster.', 'Two principal passes in the following subjects: History, Geography, Economics, Commerce, Accountancy, Physics, Chemistry, Biology or Advanced Mathematics. If one of the principals is not Advanced Mathematics an applicant must have a subsidiary pass in Advanced Mathematics/Basic Applied Mathematics at A-Level or a “D” grade in Basic Mathematics at O-Level.\r\nOR\r\n\r\nDiploma in Business Administration, Marketing, Social Studies, Industrial Relations, Economic Studies, Public Sector Finance Management, Information Technology with Accounting, Human Resources, Management, Financial Administration, Local Government Accounting and Finance, Insurance and Risk Management, Customs and Tax Management, Freight Clearing and Forwarding, Statistics, Business Management and Logistic Management or Banking and Finance, Accountancy Procurement and Supplies Management with an average of “B’’ or a minimum GPA of 3.0. OR Foundation Programme of The OUT with a minimum of GPA of 3.0 in Business Cluster.', 'accounts', '3 years', 'undergraduate', '1711001233png', '2024-03-21 03:07:13', '2024-03-21 03:07:13'),
-(32, 'Bachelor of Arts in Social Work and Human Rights', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Social work, Law, Community development, Counseling psychology, Early Childhood Education, Nursing, Education, Gender studies, Rural development, Development studies, Project planning management and Social security with an average of “B’’ or a minimum GPA of 3.0. OR Foundation Programme of The OUT with a minimum of GPA of 3.0', 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.\r\nOR\r\n\r\nDiploma in Social work, Law, Community development, Counseling psychology, Early Childhood Education, Nursing, Education, Gender studies, Rural development, Development studies, Project planning management and Social security with an average of “B’’ or a minimum GPA of 3.0. OR Foundation Programme of The OUT with a minimum of GPA of 3.0', 'social work', '3 years', 'undergraduate', '1711001301jpeg', '2024-03-21 03:08:21', '2024-03-21 03:08:21');
 
 -- --------------------------------------------------------
 
@@ -182,6 +144,22 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `footers`
+--
+
+CREATE TABLE `footers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `category` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -284,7 +262,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2024_09_23_110947_add_type_pdfs_table', 19),
 (25, '2024_09_23_111341_create_documents_table', 20),
 (26, '2024_09_24_041524_add_level_to_documents_table', 21),
-(27, '2024_09_25_040152_add_file_to_event_table', 22);
+(27, '2024_09_25_040152_add_file_to_event_table', 22),
+(28, '2024_09_27_072007_create_footers_table', 23),
+(29, '2024_09_27_080115_create_conferences_table', 24);
 
 -- --------------------------------------------------------
 
@@ -396,39 +376,6 @@ INSERT INTO `research` (`id`, `header`, `description`, `category`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staffs`
---
-
-CREATE TABLE `staffs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `title` enum('Mr','Ms','Dr','Prof') NOT NULL DEFAULT 'Mr',
-  `staffID` varchar(255) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `aboutStaff` text NOT NULL,
-  `academicQualification` text NOT NULL,
-  `department` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `gender` enum('male','female') NOT NULL DEFAULT 'female',
-  `nationality` varchar(255) NOT NULL,
-  `language` enum('swahili','english','swahili and english') NOT NULL DEFAULT 'english',
-  `staffProfile_picture` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `staffs`
---
-
-INSERT INTO `staffs` (`id`, `title`, `staffID`, `firstName`, `lastName`, `aboutStaff`, `academicQualification`, `department`, `email`, `phone`, `gender`, `nationality`, `language`, `staffProfile_picture`, `created_at`, `updated_at`) VALUES
-(2, 'Mr', 'MWECAU-0152', 'Athanas', 'Sing\'ambi', 'Master of Business Administration in Marketing Management\r\nBachelor of Public Relations and Marketing', 'Communication Strategies\r\nMarketing', 'PRO/DEBS', 'athanas@mwecau.ac.tz', '+255755154215', 'male', 'Tanzania', 'english', '1714839220.png', '2024-03-22 09:08:42', '2024-05-04 13:13:48'),
-(4, 'Dr', 'MWECAU-0152', 'Daniel', 'Temu', 'Prudence is cognisant of strategic public relations practice, strategic communication, communication research, media management, media ethics, and several other areas of media studies (both traditional media and new media). Prudence has a rich  academic and research history accumulated from the following higher learning institutions in Tanzania', 'Tutorial Assistant Fellow, St Augustine University of Tanzania (SAUT), Mwanza main campus, Faculty of Social Sciences, Department of PR and Advertising (2008-2010).\r\n\r\nAssistant Lecturer (six years), St Augustine University of Tanzania (SAUT), Mwanza main campus, Faculty of Social Sciences, Department of PR and Advertising (2011-2016).\r\n\r\nPart-time Assistant Lecturer (one year), Institute of Rular Development Planning (IRDP), Lake Zone Center (LZC) (2016).\r\n\r\nAssistant Lecturer (two years), Tumaini University Dar es Salaam College (TUDARCo), Department of Mass Communication (2016-2018).\r\n\r\nPart-time Assistant Lecturer (two years), University of Dar es Salaam (UDSM), School of Journalism and Mass Communication (SJMC) (2016-2018), and\r\n\r\nCurrently Lecturer at The University of Dodoma (UDOM), Department of Arts and Media Studies (AMS) (2018 onwards).', 'DNSIT', 'djtemu@gmail.com', '+255624861910', 'male', 'tanzania', 'swahili', '1711881097.png', '2024-03-31 04:31:43', '2024-05-06 08:23:17');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `statistics`
 --
 
@@ -489,11 +436,10 @@ ALTER TABLE `abouts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `courses`
+-- Indexes for table `conferences`
 --
-ALTER TABLE `courses`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `courses_course_code_unique` (`course_code`);
+ALTER TABLE `conferences`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `documents`
@@ -513,6 +459,12 @@ ALTER TABLE `events`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `footers`
+--
+ALTER TABLE `footers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `images`
@@ -559,12 +511,6 @@ ALTER TABLE `research`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `staffs`
---
-ALTER TABLE `staffs`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `statistics`
 --
 ALTER TABLE `statistics`
@@ -588,10 +534,10 @@ ALTER TABLE `abouts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `courses`
+-- AUTO_INCREMENT for table `conferences`
 --
-ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+ALTER TABLE `conferences`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -612,6 +558,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `footers`
+--
+ALTER TABLE `footers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
@@ -621,7 +573,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `news_updates`
@@ -640,12 +592,6 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `research`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `staffs`
---
-ALTER TABLE `staffs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `statistics`

@@ -27,7 +27,7 @@
             </div>
             <ul class="d-flex justify-content-end fw-bold text-small">
                 <li>
-                    <a href="#">Alumni</a>
+                    <a href="{{ route('alumni.home') }}" target="_blank">Alumni</a>
                 </li>
                 <li>
                     <a href="{{ route('uni.journals') }}">Journals</a>
@@ -113,6 +113,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-item"><a href="{{ route('about') }}">About University</a></li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" id="staff" href="#">Staff</a>
+                                    <ul class="dropdown-menu" id="sub-staff">
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('mwecau-administrative-staff') }}">Administrative
+                                                Staff</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('mwecau-academic-staff') }}">Academic Staff</a></li>
+                                    </ul>
+                                </li>
                                 @foreach ($faculties as $faculty)
                                     @if ($faculty['faculty_id'] === '0')
                                         <li><a class="dropdown-item"
@@ -124,16 +134,6 @@
                                 @endforeach
                                 {{-- <li><a class="dropdown-item" href="{{ route('administrative-unit') }}">Administrative
                                         Unit</a></li> --}}
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" id="staff" href="#">Staff</a>
-                                    <ul class="dropdown-menu" id="sub-staff">
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('mwecau-administrative-staff') }}">Administrative
-                                                Staff</a></li>
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('mwecau-academic-staff') }}">Academic Staff</a></li>
-                                    </ul>
-                                </li>
                                 <li><a class="dropdown-item" href="{{ route('programs-list') }}">Programmes</a>
                                 </li>
                             </ul>

@@ -1,0 +1,18 @@
+/* university header tag */
+.uniHeader {
+    background-color: #3b2a68;
+    color: white;
+}
+/* navbar css */
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 18px;
+}
+.navbar-nav .nav-link:hover {
+    font-size: 18px;
+    color: #f4aaf7;
+}
+/* CSS to enable hover for dropdown */
+.navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}

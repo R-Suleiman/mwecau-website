@@ -3,13 +3,8 @@
     <!-- bg -->
     <section>
         <div>
-            <div class="landing-image-campus"
-                style="background-image: url({{ $campusImage ? asset('images/pageImages/' . $campusImage->image) : '' }})">
-                <div class="landing-text nav-content">
-                    <!-- <h1>Welcome to Mwenge Catholic University</h1> -->
-                    <div class="underline mt-5 mb-5">
-                    </div>
-                </div>
+            <div>
+                <img src="{{ $campusImage ? asset('images/pageImages/' . $campusImage->image) : '' }}" alt="" class="w-100">
             </div>
         </div>
     </section>
