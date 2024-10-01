@@ -15,15 +15,6 @@
                             to an ever-changing world.
                         </p>
 
-                        <div class="d-none">
-                            <a href="{{ route('login') }}"><button class="btn btn-warning" data-aos="fade-right"
-                                    data-aos-duration="2000">Login</button></a>
-                            <a href="{{ route('register') }}"><button class="btn btn-warning" data-aos="fade-left"
-                                    data-aos-duration="2000">Register
-                                </button>
-                            </a>
-                        </div>
-
                     </div>
                 </div>
             </section>
@@ -97,8 +88,8 @@
                     {{-- <img src="img/postgrad.jpeg" class="img-fluid rounded d-" alt="Welcome at Mwecau"> --}}
                 </div>
 
-                <div class="right col-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card darkMode">
+                <div class="right col-12 col-md-6 col-lg-6 mb-5">
+                    <div class="card">
                         <div class="card-body">
                             <div class="card-title">
                                 <h2>{{ Str::ucfirst($postgraduateImage->header) }} Programmes</h2>
@@ -128,7 +119,7 @@
                             alt="Welcome at Mwecau">
                     @endif
                 </div>
-                <div class="left2 col-12 col-md-6 col-lg-6 mb-4">
+                <div class="left2 col-12 col-md-6 col-lg-6 mb-5">
                     <div class="card darkMode">
                         <div class="card-body">
                             <div class="card-title">

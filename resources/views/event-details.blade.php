@@ -8,34 +8,36 @@
             </div>
         </div>
 
-        <div class="container-fluid">
-            <div class="row event-row">
+        {{-- <div class="container-fluid"> --}}
+        <div class="container">
+            {{-- <div class="row event-row"> --}}
+            <div class="row">
                 <div class="col-sm-12 col-lg-8">
-                    <div class="about-event">
-                        <div class="underline mt-1 mb-5">
-                            <h3 style="text-align: center">About <strong
-                                    class="favColor fs-4">{{ $eventDetails->event_title }} </strong></h3>
-                        </div>
-                        <p>
-                            {{ $eventDetails->event_description }}
-                        </p>
-
-                        @if ($eventDetails->file != null)
-                            <div class="mb-5 mt-3">
-                                <a target="_blank" href="{{ route('event-attachment-preview', $eventDetails->file) }}">
-                                    <button class="btn favbg text-white">
-                                        Preview Attachment <i class="fa fa-download" aria-hidden="true"></i>
-                                    </button>
-                                </a>
-                            </div>
-                        @else
-                            <div class="mt-5">
-                                <span class="alert alert-warning shadow-lg">No attachment is available for this
-                                    event.</span>
-                            </div>
-                        @endif
-
+                    {{-- <div class="about-event"> --}}
+                    <div class="mt-1 mb-5">
+                        <h3>About <strong class="favColor fs-4">{{ $eventDetails->event_title }} </strong></h3>
                     </div>
+                    <p>
+                        {{ $eventDetails->event_description }}
+                    </p>
+
+                    @if ($eventDetails->file != null)
+                        <div class="mb-5 mt-3">
+                            <a target="_blank" href="{{ route('event-attachment-preview', $eventDetails->file) }}">
+                                <button class="btn favbg text-white">
+                                    Preview Attachment <i class="fa fa-download" aria-hidden="true"></i>
+                                </button>
+                            </a>
+                        </div>
+                    @else
+
+                        <div class="col-12 mt-5 mb-5">
+                            <span class="alert alert-warning shadow">No attachment is available for this
+                                event.</span>
+                        </div>
+                    @endif
+
+                    {{-- </div> --}}
                     <div class="event-speaker">
                         <div class="underline mt-1 mb-3">
                             <h3 class="text-center favColor fw-bold ">Event Host</h3>

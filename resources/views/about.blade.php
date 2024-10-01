@@ -207,8 +207,8 @@
     <!-- video -->
     <div class="container mb-5">
         <div class="row">
-            <div class="col-12 col-lg 3 col-md-2">
-                <div class="card">
+            <div class="col-12 col-lg 3 col-md-2 mb-3">
+                <div class="card youtubeCards">
                     <div class="ratio ratio-16x9">
 
                         <iframe width="100%" height="550"
@@ -220,7 +220,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg 3 col-md-2">
-                <div class="card">
+                <div class="card youtubeCards">
                     <div class="ratio ratio-16x9">
 
                         <iframe width="560" height="315"
@@ -233,7 +233,7 @@
             </div>
 
             <div class="col-12 col-lg 3 col-md-2">
-                <div class="card" style="width: 100%;">
+                <div class="card youtubeCards" style="width: 100%;">
                     <!-- Video Embed -->
                     <div class="ratio ratio-16x9">
 

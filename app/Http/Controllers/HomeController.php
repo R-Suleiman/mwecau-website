@@ -40,6 +40,14 @@ class HomeController extends Controller
         // Set canonical URL
         SEOTools::setCanonical('https://mwecau.ac.tz/');
 
+        $aboutPage = About::first();
+        $content = $aboutPage->description;
+
+        $splitIndex = strlen($content) / 2;
+
+        $part1 = $this->cleanHtml(substr($content, 0, $splitIndex));
+        $part2 = $this->cleanHtml(substr($content, $splitIndex));
+
         $galleryImages = Image::where('image_section', 'about-gallery')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -49,7 +57,16 @@ class HomeController extends Controller
         $UniversityEvents = Event::all();
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
-        return view('index', compact('latestEvent', 'UniversityEvents', 'images', 'announcements', 'galleryImages', 'partnersImages'));
+        return view('index', compact(
+            'latestEvent',
+            'UniversityEvents',
+            'images',
+            'announcements',
+            'galleryImages',
+            'partnersImages',
+            'part1',
+            'part2',
+        ));
     }
 
     // Cleaning the CK editor content

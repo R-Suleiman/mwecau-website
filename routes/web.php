@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ResearchController;
@@ -49,10 +50,12 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     //announcements routes
     Route::get('/post-announcement', 'postAnnouncementView')->name('admin.post.announcement');
     Route::post('/post-announcement', 'postAnnouncement')->name('post.announcement');
-    //admin programs related routes
+
+    //admin programs related routes  CHECK ON THIS ROUTES
     Route::get('register-course', 'registerCourse')->name('register-course');
     Route::post('storeCourse',  'storeCourse')->name('storeCourse'); //sending to the database
     Route::get('list-of-programs',  'listOfPrograms')->name('list-of-programs');
+
     Route::get('programme_details/{programme_name}',  'courseDetails')->name('admin.course.details');
 
     Route::get('university-documents',  'documents')->name('admin.documents.pdf');
@@ -105,7 +108,6 @@ Route::get('/uni-pdf-preview/{id}', [App\Http\Controllers\HomeController::class,
 //event attachment preview route
 Route::get('/event-attachment-preview/{eventFileName}', [App\Http\Controllers\HomeController::class, 'eventAttachmentPreview'])->name('event-attachment-preview');
 
-
 //programs related routes
 Route::controller(AcademicsController::class)->group(function () {
     Route::get('/faculties/{faculty_name}', 'faculty')->name('faculty');
@@ -116,8 +118,11 @@ Route::controller(AcademicsController::class)->group(function () {
 Route::controller(AcademicsController::class)->prefix('programs')->group(function () {
     Route::get('programs-list',  'programsList')->name('programs-list');
     Route::get('/{programme_category}', 'programmeCategory')->name('programmeCategory');
-    Route::get('undergraduate', 'underGraduate')->name('undergraduate');
-    Route::get('non-degree', 'nonDegree')->name('non-degree');
+
+    // CHECK ON THIS IF SHOULD STAY
+    // Route::get('undergraduate', 'underGraduate')->name('undergraduate');
+    // Route::get('non-degree', 'nonDegree')->name('non-degree');
+
     Route::get('/{programme_category}/{programme_name}', 'showCourseDetails')->name('course_details');
     Route::get('/academics/json', 'academicsJson')->name('academics.json');
 });
@@ -163,3 +168,12 @@ Route::get('/generate-pdf', [PDFController::class, 'generateAllPDF'])->name('all
 Route::get('/generate-postgraduate-pdf', [PDFController::class, 'generatePostGraduatePDF'])->name('postgraduate.pdf');
 Route::get('/generate-undergraduate-pdf', [PDFController::class, 'generateUndergraduatePDF'])->name('undergraduate.pdf');
 Route::get('/generate-non-degree-pdf', [PDFController::class, 'generateAllNonDegreePDF'])->name('non-degree.pdf');
+
+
+//Alumni related routes
+
+// Route::domain('https://fos.mwecau.ac.tz/')->group(function () {
+    Route::controller(AlumniController::class)->group(function () {
+        Route::get('alumni-home', 'index')->name('alumni.home');
+    });
+// });
