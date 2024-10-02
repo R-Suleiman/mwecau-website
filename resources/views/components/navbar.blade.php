@@ -85,6 +85,9 @@
                 @endif
             </ul>
         </div>
+    </section>
+
+    <section style="position: sticky; top: 0; z-index: 1">
         <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
             <div class="container-fluid">
 
@@ -92,7 +95,7 @@
                     <img class="img-fluid d-none d-md-block d-sm-block" src="../../img/mwecau.png"
                         style="width: 100px;">
                 </a>
-                <div class="d-md-block d-lg-none d-sm-block">
+                <div class="uniHeader2 d-md-block d-lg-none d-sm-block">
                     <h4>Mwenge Catholic University <br> </h4>
                     <small> <q class="fst-italic">Lux Mundi - Light of the World</q></small>
                 </div>
@@ -271,6 +274,9 @@
                 </div>
             </div>
         </nav>
+
+    </section>
+    <section>
 
         <div class="d-flex px-2"
             style="align-items: center;  border-bottom: 1px solid #fff; color:white; background-color: #513F83;">
