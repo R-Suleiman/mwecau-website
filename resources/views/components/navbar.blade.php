@@ -36,6 +36,39 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
+                        Timetables
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if ($postgraduateTimetable == null && $undergraduateTimetable == null && $NondegreeTimetable == null)
+                        <li class="dropdown-submenu text-primary">
+                            <span class="">No timetable found</span>
+                        </li>
+                    @endif
+
+                        @if ($postgraduateTimetable)
+                            <li class="dropdown-submenu">
+                                <a target="_blank" style="border: none; color: black"
+                                    href="{{ route('uni-pdf-preview', $postgraduateTimetable->file) }}">Postgraduate</a>
+                            </li>
+                        @endif
+                        @if ($undergraduateTimetable)
+                            <li class="dropdown-item">
+                                <a target="_blank" style="border: none; color: black"
+                                    href="{{ route('uni-pdf-preview', $undergraduateTimetable->file) }}">Undergraduate</a>
+                            </li>
+                        @endif
+                        @if ($NondegreeTimetable)
+                            <li class="dropdown-item">
+                                <a target="_blank" style="border: none; color: black"
+                                    href="{{ route('uni-pdf-preview', $NondegreeTimetable->file) }}">Non-degree</a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Joining instructions
                     </a>
                     <ul class="dropdown-menu">
@@ -110,8 +143,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 About
                             </a>
                             <ul class="dropdown-menu">

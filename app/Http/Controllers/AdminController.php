@@ -36,7 +36,7 @@ class AdminController extends Controller
     {
 
         $adminName = Auth::user();
-        $totalUnievents = event::all()->count(); 
+        $totalUnievents = event::all()->count();
         $allUniEvents = event::all();
 
         return view('admin.dashboard', compact('totalUnievents', 'adminName', 'allUniEvents'));
@@ -253,7 +253,7 @@ class AdminController extends Controller
             'description' => ['nullable', 'string'],
             'type' => ['required', 'string'],
             'file' => ['required', 'mimes:pdf', 'max:5120'],
-            'level' => ['required_if:type,joining-instruction,fee-structure', 'string'],
+            'level' => ['required_if:type,joining-instruction,fee-structure,timetable', 'string'],
         ]);
 
         // File processing

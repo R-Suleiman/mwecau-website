@@ -59,10 +59,10 @@
                     @foreach ($announcements->take(1) as $event)
                         <div class="mb-3">
                             <span class="favColor fw-bold">Latest event</span>
-                        </div> 
+                        </div>
 
                         <div class="image-containerNews mb-5">
-                            <img class="img-fluid w-75" src="{{ asset('img/updatejpg') }}" alt=""
+                            <img class="img-fluid w-75" src="{{ asset('img/LATEST.jpg') }}" alt=""
                                 style=" border: 1px solid #513f83; border-radius: 7px;">
 
                             <div class="overlay-newsImage shadow-lg">
@@ -121,7 +121,7 @@
                     <div class="underline">
                         <h1>Why Choose <span class="favColor fw-bold">MWECAU</span></h1>
                     </div> <br>
-                    <span>We Are One of The Largest, Most Diverse Universities in The Tanzania</span>
+                    <span>We are one of the most robust and diverse universities in Tanzania.</span>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
@@ -197,8 +197,8 @@
     <section>
         <div class="explore">
             <div class="exploretxt">
-                <h1 class="text-lg-start fw-bold">We are Mwenge Catholic <br> University</h1>
-                <p class="text-lowercase ">
+                <h1 class="text-lg-start text-uppercase fw-bold">We are Mwenge Catholic <br> University</h1>
+                <p class="text-lowercase">
                     We are Different,
                     WE MAKE LEARNING MORE RELEVANT, AND TRANSFORMATIONAL.
                 </p>

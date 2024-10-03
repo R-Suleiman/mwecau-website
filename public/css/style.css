@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap");
 
 /* styles.css */
 body {
@@ -24,19 +24,20 @@ body {
     color: white;
 }
 
-.uniHeader h1, .uniHeader2 h4 {
+.uniHeader h1,
+.uniHeader2 h4 {
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
-
 }
 
-.uniHeader span, .uniHeader2 small {
+.uniHeader span,
+.uniHeader2 small {
     font-family: "Merriweather", sans-serif;
 }
 
 .marquee {
     border-right: 1px solid #fff;
-    text-align:center;
+    text-align: center;
     padding: 0 10px;
     color: white;
 }
@@ -157,7 +158,6 @@ body {
 .background-container {
     position: relative;
     overflow: hidden;
-
 }
 .nav-content {
     position: absolute;
@@ -312,7 +312,8 @@ a {
 
 /* css for explore more section starts here */
 .explore {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), #000), url("../img/campus-life/0J3A0457MWECAU.JPG");
+    background: linear-gradient(rgba(0, 0, 0, 0.1), #000),
+        url("../img/campus-life/0J3A0457MWECAU.JPG");
     background-size: cover;
     background-position: center;
     height: 460px;
@@ -329,7 +330,10 @@ a {
 }
 .exploretxt h1 {
     font-size: 4rem;
-    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-family: "Oswald", sans-serif;
+}
+.exploretxt p {
+    font-family: "Merriweather", sans-serif;
 }
 .exploreBtn {
     padding: 15px;
@@ -549,8 +553,8 @@ iframe:hover {
     font-family: "Trebuchet MS", Arial, sans-serif;
 }
 /* Additional styling for small screens */
-@media (max-width: 990px){
-    .academics2{
+@media (max-width: 990px) {
+    .academics2 {
         height: 1050px;
     }
 }
@@ -707,7 +711,7 @@ iframe:hover {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.0);
+    background: rgba(0, 0, 0, 0);
 }
 
 .background-container {
@@ -795,7 +799,6 @@ a {
 .academic-cont {
     margin: 100px 10px;
 }
-
 
 /* contact */
 .contact-content {
@@ -1249,7 +1252,6 @@ select {
     max-width: 600px;
     margin: 5px;
     cursor: pointer;
-
 }
 
 .pic-nav h3 {
@@ -1853,49 +1855,50 @@ select {
 }
 
 /* Nav toggles */
-        #sub-faculty {
-            display: none;
-            position: absolute;
-            left: 100%;
-            top: 0;
-        }
+#sub-faculty {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
 
-        #sub-staff {
-            display: none
-        }
+#sub-staff {
+    display: none;
+}
 
-        #faculty:hover+#sub-faculty {
-            display: block;
-        }
+#faculty:hover + #sub-faculty {
+    display: block;
+}
 
-        #staff:hover+#sub-staff {
-            display: block;
-        }
+#staff:hover + #sub-staff {
+    display: block;
+}
 
-        .dropdown-submenu:hover>#sub-faculty, .dropdown-submenu:hover>#sub-staff {
-            display: block;
-        }
+.dropdown-submenu:hover > #sub-faculty,
+.dropdown-submenu:hover > #sub-staff {
+    display: block;
+}
 
-        .dropdown-menu {
-            position: relative;
-            z-index: 1000;
-        }
+.dropdown-menu {
+    position: relative;
+    z-index: 1000;
+}
 
-        .dropdown-submenu:hover>.dropdown-menu {
-            display: block;
-            top: 0;
-            left: 100%;
-            margin-top: -1px;
-        }
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
 
-        .dropdown-submenu {
-            position: relative;
-        }
+.dropdown-submenu {
+    position: relative;
+}
 
-        a {
-            text-decoration: none;
-            color: black;
-        }
+a {
+    text-decoration: none;
+    color: black;
+}
 
 /* Home small nave */
 .small-nav {
@@ -1926,7 +1929,6 @@ select {
     color: white;
     font-family: "Trebuchet MS", Arial, sans-serif;
     border-left: 2px solid #e000e7;
-
 }
 
 .small-nav ul li a:hover {
@@ -1967,7 +1969,7 @@ select {
     font-family: "Merriweather", serif;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
     .center-div h1 {
         text-transform: uppercase;
         font-size: 2rem;
@@ -1980,92 +1982,93 @@ select {
     }
 }
 
-@media screen and (max-width:580px) {
-            #sub-faculty {
-                display: none;
-                position: absolute;
-                left: 0;
-                top: 100%;
-            }
-            #sub-staff {
-                display: none;
-                position: absolute;
-                left: 10%;
-                top: 100%;
-            }
-            .counters {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
+@media screen and (max-width: 580px) {
+    #sub-faculty {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+    }
+    #sub-staff {
+        display: none;
+        position: absolute;
+        left: 10%;
+        top: 100%;
+    }
+    .counters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-            .small-nav ul li {
-                padding: 4px;
-                font-size: 12px;
+    .small-nav ul li {
+        padding: 4px;
+        font-size: 12px;
+    }
 
-            }
+    .center-div h1 {
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        font-family: "Oswald", sans-serif;
+    }
 
-            .center-div h1 {
-                text-transform: uppercase;
-                font-size: 1.2rem;
-                font-family: "Oswald", sans-serif;
-            }
-
-            .center-div p {
-                font-size: 0.7rem;
-                font-family: "Merriweather", serif;
-            }
-        }
+    .center-div p {
+        font-size: 0.7rem;
+        font-family: "Merriweather", serif;
+    }
+}
 
 @media screen and (max-width: 950px) {
     .campus-row {
         margin: 10px 5px;
         padding: 10px 5px;
-      }
+    }
 
-      .campus-card img {
+    .campus-card img {
         width: 98%;
-      }
+    }
 
-      .talent-content-container {
+    .talent-content-container {
         flex-direction: column;
         align-items: center;
         width: 95%;
-      }
+    }
 
-      .talent-pics, .talent-content {
+    .talent-pics,
+    .talent-content {
         width: 100%;
         margin: 0;
-      }
+    }
 
-      .campus-gallery div {
+    .campus-gallery div {
         width: 45%;
         margin: 4px;
-      }
+    }
 
-      .sports {
+    .sports {
         display: block;
-      }
+    }
 
-      .sports-col1, .sports-col2 {
+    .sports-col1,
+    .sports-col2 {
         margin: 20px auto;
         width: 90%;
-      }
+    }
 
-      .gallery-overlay {
+    .gallery-overlay {
         width: 100%;
-      }
+    }
 
-      .events-cont {
+    .events-cont {
         margin: 15px 0;
         padding: 0;
-      }
+    }
 
-      .event-img img {
+    .event-img img {
         width: 100%;
         height: 150px;
-      }
-      .other-event-det {
+    }
+    .other-event-det {
         position: static;
     }
 }
@@ -2100,7 +2103,8 @@ select {
         flex-direction: column;
     }
 
-    .event-form2 input, .event-form2 select {
+    .event-form2 input,
+    .event-form2 select {
         width: 98%;
         border: 1px solid #513f83;
     }
@@ -2112,14 +2116,10 @@ select {
     .event-header img {
         width: 100%;
     }
-
-
 }
 
 @media screen and (max-width: 480px) {
     .exploretxt h1 {
         font-size: 3rem;
     }
-
 }
-
