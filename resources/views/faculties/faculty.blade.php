@@ -23,14 +23,25 @@
 @endphp
 @extends('layouts.faculty')
 @section('content')
-    <div class="container">
-        <div class="row">
+<div>
+@if ($faculty_data['faculty_id'] === '1')
+<img src="{{ asset('img/site banners/FOS.jpg') }}" alt="" class="w-100">
+@elseif ($faculty_data['faculty_id'] === '2')
+<img src="{{ asset('img/site banners/(FoHBS).jpg') }}" alt="" class="w-100">
+@elseif ($faculty_data['faculty_id'] === '3')
+<img src="{{ asset('img/site banners/(FoED).jpg') }}" alt="" class="w-100">
+@elseif ($faculty_data['faculty_id'] === '4')
+<img src="{{ asset('img/site banners/(DNoDP).jpg') }}" alt="" class="w-100">
+@endif
+</div>
+
+    <div class="container mt-5">
+        {{-- <div class="row">
             <div class="my-5 text-center">
                 <h1 class="fs-2 fw-bold text-center favColor">{{ $faculty_name }} ({{ $faculty_data['faculty_short_name'] }})
                 </h1>
             </div>
-
-        </div>
+        </div> --}}
         <section class="main-section">
             <div class="content-box">
                 @if ($staff_details !== null)

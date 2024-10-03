@@ -283,8 +283,7 @@
                 <div class="mission-card card h-100 d-flex flex-column darkMode" style="width: 100%; border: none">
 
                     <div class="card-body ">
-                        <img src="/img/mwecau.png" class="card-img-top img-fluid rounded-circle " alt="..."
-                            style="width: 60%;">
+                        <i class="favColor fa fa-file-invoice-dollar display-3 mb-3"></i>
                         <h5 class="card-title">Affordability</h5>
                         <div class="card-text text-start">
                             <p>
@@ -303,8 +302,7 @@
             <div class="col-sm-4 mb-5">
                 <div class="card h-100 d-flex flex-column mission-card darkMode" style="width: 100%; border: none">
                     <div class="card-body">
-                        <img src="/img/mwecau.png" class="card-img-top  img-fluid rounded-circle " alt="..."
-                            style="width: 60%;">
+                        <i class="favColor fa fa-book display-3 mb-3"></i>
                         <h5 class="card-title">Academics</h5>
                         <div class="card-text text-start">
                             <p>
@@ -323,8 +321,7 @@
             <div class="col-sm-4 mb-5">
                 <div class="card h-100 d-flex flex-column mission-card darkMode" style="width: 100%; border: none">
                     <div class="card-body">
-                        <img src="/img/mwecau.png" class="card-img-top  img-fluid rounded-circle " alt="..."
-                            style="width: 60%;">
+                        <i class="favColor fa fa-users display-3 mb-3"></i>
                         <h5 class="card-title">Inspiring student's life</h5>
                         <div class="card-text text-start">
                             <p>

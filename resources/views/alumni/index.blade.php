@@ -122,7 +122,7 @@
                 </a>
             </div>
             <div class="mt-5" style="width: max-content">
-                <a href="{{ route('university.events') }}"><button class="eventsBtn"> More Mwecau Events <i
+                <a href="#"><button class="eventsBtn"> More Alumni News <i
                             class="fas fa-arrow-right"></i></button></a>
             </div>
         </div>
