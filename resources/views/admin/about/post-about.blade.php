@@ -55,12 +55,15 @@
                 <div class="col-12 col-10 mt-5">
                     <h3 class="text-center text-uppercase"> Current about content </h3>
                     <hr>
-                    <p><h2 class="text-uppercase">{{ $about->header }}</h2></p>
+                    <p>
+                    <h2 class="text-uppercase">{{ $about->header }}</h2>
+                    </p>
                     <div class="d-flex">
-                        <p>{!! Str::limit($about->description, 200) !!}</p>
-                        <a href="{{ route('admin.edit.about', $about->id) }}">
-                            <button class="btn btn-warning"> <i class="fa fa-pencil" aria-hidden="true"></i></button>
-                        </a>
+                        <p>{!! Str::limit($about->description, 400) !!}
+                            <a href="{{ route('admin.edit.about', $about->id) }}">
+                                <button class="btn btn-warning"> <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

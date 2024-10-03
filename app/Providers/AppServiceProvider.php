@@ -24,20 +24,20 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        //  $faculties = null;
+        $faculties = null;
         try {
             // Make the API request
-           $faculties = Cache::remember('faculty_data', 43200, function () {
+            // $faculties = Cache::remember('faculty_data', 43200, function () {
             $response = Http::get('https://ums.mwecau.ac.tz/Api/get_university_structure');
             if ($response->successful()) {
-               return $response->json();
-                //  $faculties = $response->json();
+                // return $response->json();
+                $faculties = $response->json();
             } else {
                 Log::error('Failed to fetch programs from API: ' . $response->status());
-                //  $faculties = null;
-               return null;
+                $faculties = null;
+                // return null;
             }
-           });
+            // });
 
             // If cache or API call failed, provide a fallback
             if ($faculties === null) {
@@ -86,6 +86,20 @@ class AppServiceProvider extends ServiceProvider
             ->orderByDesc('created_at')
             ->first();
 
+        //fetching Timetables
+        $postgraduateTimetable = Document::where('type', 'timetable')
+            ->where('level', 'postgraduate')
+            ->orderByDesc('created_at')
+            ->first();
+        $undergraduateTimetable = Document::where('type', 'timetable')
+            ->where('level', 'undergraduate')
+            ->orderByDesc('created_at')
+            ->first();
+        $NondegreeTimetable = Document::where('type', 'timetable')
+            ->where('level', 'non-degree')
+            ->orderByDesc('created_at')
+            ->first();
+
         $almanac = Document::where('type', 'almanac')->first();
         // Fetch the latest news and events
         $news = NewsUpdate::orderBy('created_at', 'desc')->take(2)->get();
@@ -96,13 +110,20 @@ class AppServiceProvider extends ServiceProvider
         View::share('combinedItems', $combinedItems);
 
 
+        //sharing joining instructions varibales to the view
         View::share('postgraduateJoiningInstruction', $postgraduateJoiningInstruction);
         View::share('undergrduateJoiningInstruction', $undergrduateJoiningInstruction);
         View::share('NondegreeJoiningInstruction', $NondegreeJoiningInstruction);
 
+        //sharing fee-structure varibales to the view
         View::share('postgraduateFeeStructure', $postgraduateFeeStructure);
         View::share('undergrduateFeeStructure', $undergrduateFeeStructure);
         View::share('NondegreeFeeStructure', $NondegreeFeeStructure);
+
+        //sharing timetable varibales to the view
+        View::share('postgraduateTimetable', $postgraduateTimetable);
+        View::share('undergraduateTimetable', $undergraduateTimetable);
+        View::share('NondegreeTimetable', $NondegreeTimetable);
 
         View::share('almanac', $almanac);
 

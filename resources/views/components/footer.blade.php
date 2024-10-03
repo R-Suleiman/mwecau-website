@@ -182,6 +182,7 @@
                         <li class="mb-3"><a href="https://www.tcu.go.tz/" target="_blank"
                                 class="text-light">TCU</a>
                         </li>
+                        <li class="mb-3"><a href="https://www.nglp.net/" class="text-light">NGLP</a></li>
                         <li class="mb-3"><a href="https://www.nglp.net/" class="text-light">Next Generation Leadership Programme (NGLP)</a></li>
                         <li class="mb-3"><a href="https://www.heslb.go.tz/?lang=" class="text-light">HESLB</a></li>
                         <li class="mb-3"><a href="https://www.nactvet.go.tz/" class="text-light">NACTVET</a></li>

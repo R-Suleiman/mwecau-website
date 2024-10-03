@@ -54,7 +54,7 @@
     <section>
         <div class="container text-center mt-4 mb-4">
             <div class="justify-items-around align-content-center">
-                <div class=" underline col-10">
+                <div class="underline col-10">
                     <img src="img/mwecau.png" class="img-fluid rounded-circle shadow-lg"
                         alt="Mwenge Catholic University logo" style="width: 23%;">
                     <br>

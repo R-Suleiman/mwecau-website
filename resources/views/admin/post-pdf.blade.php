@@ -34,6 +34,7 @@
                                 <option value="joining-instruction">Joining Instruction</option>
                                 <option value="almanac">Almanac</option>
                                 <option value="fee-structure">Fee Structure</option>
+                                <option value="timetable">Timetable</option>
                             </select>
 
                             @error('type')
@@ -99,7 +100,8 @@
         const levelDiv = document.getElementById('level-div');
 
         typeSelect.addEventListener('change', function() {
-            if (this.value === 'joining-instruction' || 'fee-structure') {
+            if (this.value === 'joining-instruction' || this.value === 'fee-structure' || this.value ===
+                'timetable') {
                 levelDiv.style.display = 'block';
             } else {
                 levelDiv.style.display = 'none';

@@ -26,19 +26,19 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('campus-life') }}" class="nav-link">News</a>
+                            <a href="#" class="nav-link">News</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('campus-life') }}" class="nav-link">Events</a>
+                            <a href="#" class="nav-link">Events</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('campus-life') }}" class="nav-link">Alumni Resources</a>
+                            <a href="#" class="nav-link">Alumni Resources</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('campus-life') }}" class="nav-link">Contact</a>
+                            <a href="#" class="nav-link">Contact</a>
                         </li>
                     </ul>
                 </div>

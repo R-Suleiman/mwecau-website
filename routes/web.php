@@ -99,8 +99,8 @@ Route::get('/library', [App\Http\Controllers\HomeController::class, 'library'])-
 Route::get('academics', [App\Http\Controllers\AcademicsController::class, 'academics'])->name('academics');
 Route::get('/university-events', [App\Http\Controllers\HomeController::class, 'uniEvents'])->name('university.events');
 Route::get('/news/updates', [App\Http\Controllers\HomeController::class, 'newsUpdates'])->name('university.news.updates');
-Route::get('/events/event-details/{id}', [App\Http\Controllers\EventsController::class, 'eventDetails'])->name('event-details');
-Route::get('/announcement-details/{announcementName}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->name('announcement-details');
+Route::get('/events/event-details/{id}', [App\Http\Controllers\EventsController::class, 'eventDetails'])->where('id', '.*')->name('event-details');
+Route::get('/announcement-details/{announcementName}', [App\Http\Controllers\HomeController::class, 'announcementDetails'])->where('announcementName', '.*')->name('announcement-details');
 //announcement attachment preview route
 Route::get('/announcement-attachment/preview/{attachment}', [App\Http\Controllers\HomeController::class, 'documentPreview'])->name('announcement.attachment.preview');
 //University Document preview route
@@ -173,7 +173,7 @@ Route::get('/generate-non-degree-pdf', [PDFController::class, 'generateAllNonDeg
 //Alumni related routes
 
 // Route::domain('https://fos.mwecau.ac.tz/')->group(function () {
-    Route::controller(AlumniController::class)->group(function () {
-        Route::get('alumni-home', 'index')->name('alumni.home');
-    });
+Route::controller(AlumniController::class)->group(function () {
+    Route::get('alumni-home', 'index')->name('alumni.home');
+});
 // });
