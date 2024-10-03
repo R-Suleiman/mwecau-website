@@ -92,7 +92,7 @@ class HomeController extends Controller
             $content = $aboutPage->description;
 
             // Find the split index to break the content in half
-            $splitIndex = strlen($content) / 2;
+            $splitIndex = (strlen($content) / 2) + 31;
 
             // Split the description into two parts
             $part1 = $this->cleanHtml(substr($content, 0, $splitIndex));

@@ -216,7 +216,7 @@
                                         target="_blank">Google Scholar</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="{{ route('projects') }}">Project</a>
+                                    <a href="{{ route('projects') }}">Projects</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a href="{{ route('outreach') }}">Outreach Programs</a>

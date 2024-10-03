@@ -59,7 +59,7 @@
                     @foreach ($announcements->take(1) as $event)
                         <div class="mb-3">
                             <span class="favColor fw-bold">Latest event</span>
-                        </div>
+                        </div> 
 
                         <div class="image-containerNews mb-5">
                             <img class="img-fluid w-75" src="{{ asset('img/updatejpg') }}" alt=""
@@ -246,7 +246,7 @@
                                                     $route = route('programmeCategory', 'post-graduate');
                                                 } elseif ($image->header == 'Undergraduate Admissions') {
                                                     $route = route('programmeCategory', 'undergraduate');
-                                                } elseif ($image->header == 'Non-Degree Admission') {
+                                                } elseif ($image->header == 'Non-Degree Admissions') {
                                                     $route = route('programmeCategory', 'non-degree');
                                                 }
                                             @endphp
