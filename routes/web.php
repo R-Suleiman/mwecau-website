@@ -132,7 +132,7 @@ Route::controller(AboutController::class)->prefix('admin')->group(function () {
     Route::get('/edit-about/{id}', 'updateAboutView')->name('admin.edit.about');
     Route::put('/update-about/{id}', 'updateAbout')->name('admin.update.about');
     Route::delete('/destroy-about', 'deleteAbout')->name('admin.destroy.about');
-});
+}); 
 
 //staff related routes
 Route::get('/administrative-unit', [\App\Http\Controllers\StaffController::class, 'administrativeUnit'])->name('administrative-unit');

@@ -7,8 +7,22 @@
         }
     </style>
 
-    <div>
+    {{-- <div>
         <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
+    </div> --}}
+    <div class="vid">
+        <video width="100%" autoplay loop muted>
+            <source src="{{asset('videos/Sequence 01.mp4')}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+            <div class="center-div">
+                <div class="text-white text-center">
+                    <h1 >About Mwenge Catholic University</h1>
+                    <p>We prepare students to make meaningful contributions to society as leaders in a complex world</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- main content -->
@@ -294,7 +308,7 @@
                         <h5 class="card-title">Academics</h5>
                         <div class="card-text text-start">
                             <p>
-                                An education at MWECAU has limitless possibilities.
+                                Education at MWECAU has limitless possibilities.
                                 Our courses are taught by esteemed faculty members.
                             </p>
                             <div class="text-center">

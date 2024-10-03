@@ -103,29 +103,29 @@
                         @if ($postgraduateJoiningInstruction)
                             <li class="mb-3"><a target="_blank"
                                     href="{{ route('uni-pdf-preview', $postgraduateJoiningInstruction->file) }}"
-                                    target="_blank" class="text-light">Join Instructions (Postgraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Postgraduate Programmes)</a></li>
                         @else
                             <li class="mb-3"><a
                                     href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf"
-                                    target="_blank" class="text-light">Join Instructions (Postgraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Postgraduate Programmes)</a></li>
                         @endif
                         @if ($undergrduateJoiningInstruction)
                             <li class="mb-3"><a target="_blank"
                                     href="{{ route('uni-pdf-preview', $undergrduateJoiningInstruction->file) }}"
-                                    target="_blank" class="text-light">Join Instructions (Undergraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Undergraduate Programmes)</a></li>
                         @else
                             <li class="mb-3"><a
                                     href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf"
-                                    target="_blank" class="text-light">Join Instructions (Undergraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Undergraduate Programmes)</a></li>
                         @endif
                         @if ($NondegreeJoiningInstruction)
                             <li class="mb-3"><a target="_blank"
                                     href="{{ route('uni-pdf-preview', $NondegreeJoiningInstruction->file) }}"
-                                    target="_blank" class="text-light">Join Instructions (Non-Degree)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Non-Degree Programmes)</a></li>
                         @else
                             <li class="mb-3"><a
                                     href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf"
-                                    target="_blank" class="text-light">Join Instructions (Postgraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Postgraduate Programmes)</a></li>
                         @endif
                         {{-- fee structures --}}
 
@@ -182,7 +182,7 @@
                         <li class="mb-3"><a href="https://www.tcu.go.tz/" target="_blank"
                                 class="text-light">TCU</a>
                         </li>
-                        <li class="mb-3"><a href="https://www.nglp.net/" class="text-light">Next Generation Leadership Programme</a></li>
+                        <li class="mb-3"><a href="https://www.nglp.net/" class="text-light">Next Generation Leadership Programme (NGLP)</a></li>
                         <li class="mb-3"><a href="https://www.heslb.go.tz/?lang=" class="text-light">HESLB</a></li>
                         <li class="mb-3"><a href="https://www.nactvet.go.tz/" class="text-light">NACTVET</a></li>
                     </ul>

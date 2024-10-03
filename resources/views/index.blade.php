@@ -30,7 +30,7 @@
 
                 <div class="welcomeImgContainer col-12 col-md-9 col-lg-8 d-flex flex-column justify-content-center align-items-center">
                     <h4>Welcome to Mwenge Catholic University</h4>
-                    <p class="text-justify" style="line-height: 2rem;">
+                    <p style="line-height: 2rem; text-align: justify;">
                         {!! $part1 !!} {!! Str::limit($part2, 400) !!}
                         <a href="{{ route('about') }}" class="fw-bold favColor">
                             <button class="btn favbg text-white">
