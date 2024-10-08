@@ -265,7 +265,7 @@
                                     <a href="{{ route('IT.services') }}">ICT Sevices</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="#">Health Center Services</a>
+                                    <a href="{{route('health.center')}}">Health Center Services</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a href="#">Guidance and Counseling</a>

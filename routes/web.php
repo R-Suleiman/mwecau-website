@@ -12,6 +12,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
+use App\Http\Controllers\HealthService\HealthServiceController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -133,6 +135,13 @@ Route::controller(AcademicsController::class)->group(function () {
     });
 });
 
+Route::controller(AboutController::class)->prefix('admin')->group(function () {
+    Route::get('/about', 'postAboutView')->name('admin.about');
+    Route::get('/edit-about/{id}', 'updateAboutView')->name('admin.edit.about');
+    Route::put('/update-about/{id}', 'updateAbout')->name('admin.update.about');
+    Route::delete('/destroy-about', 'deleteAbout')->name('admin.destroy.about');
+});
+
 //staff related routes
 Route::get('/administrative-unit', [\App\Http\Controllers\StaffController::class, 'administrativeUnit'])->name('administrative-unit');
 Route::get('/mwecau-administrative-staff', [\App\Http\Controllers\StaffController::class, 'administrativeStaff'])->name('mwecau-administrative-staff');
@@ -180,3 +189,9 @@ Route::controller(AlumniController::class)->group(function () {
     Route::get('alumni-home', 'index')->name('alumni.home');
 });
 // });
+
+// Route::domain('https://health.mwecau.ac.tz/')->group(function () {
+    Route::controller(HealthServiceController::class)->group(function () {
+        Route::get('health-center', 'index')->name('health.center');
+    });
+    // });
