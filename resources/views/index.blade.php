@@ -23,14 +23,15 @@
                     <img class="img-fluid" src="{{ asset('../img/VC-MWECAU.jpg') }}" alt=""
                         style="border-radius: 9px">
                     <div class="mt-3">
-                        <p>Rev.Prof. Philbertt Vumilia</p>
+                        <p>Rev.Prof. Philbert Vumilia</p>
                         <p>Vice Chancellor</p>
                     </div>
                 </div>
 
-                <div class="welcomeImgContainer col-12 col-md-9 col-lg-8 d-flex flex-column justify-content-center align-items-center">
+                <div
+                    class="welcomeImgContainer col-12 col-md-9 col-lg-8 d-flex flex-column justify-content-center align-items-center">
                     <h4>Welcome to Mwenge Catholic University</h4>
-                    <p class="text-justify" style="line-height: 2rem;">
+                    <p style="line-height: 2rem; text-align: justify;">
                         {!! $part1 !!} {!! Str::limit($part2, 400) !!}
                         <a href="{{ route('about') }}" class="fw-bold favColor">
                             <button class="btn favbg text-white">
@@ -46,7 +47,58 @@
     </section>
 
     <!-- news and updates section -->
-    <section class="mt-3 mb-4">
+
+    <div class="container">
+        <h4>Latest News and Updates</h4>
+        <div class="news-main-div" style="width: 100%;">
+            <div class="news-small-div" style="width: 100%">
+                {{-- <h5 class="favColor">Latest</h5> --}}
+                <div class="card border-0" style="width: 100%">
+                    <img class="img-fluid w-75 text-center" src="{{ asset('img/LATEST1.jpg') }}" alt=""
+                        style="border: 1px solid #513f83; border-radius: 7px;">
+                    @if ($announcements)
+                        @foreach ($announcements->take(1) as $event)
+                            <div class="card-body">
+                                <h6 class="card-title text-uppercase fw-bold favColor">
+                                    <a href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
+                                </h6>
+                                <p class="card-text fst-italic">{!! Str::limit($event->description, 50) !!}</p>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+            <div class="news-small-div" style="width: 100%;">
+                <h5 class="favColor">Other University Updates</h5>
+                @if ($announcements->count() > 0)
+                    @foreach ($announcements->take(4) as $UniversityEvent)
+                        <div class="card mb-2" style="width: 100%">
+                            <div class="card-body">
+                                <h6 class="card-title favColor">
+                                    <img src="{{ asset('img/new_icon.png') }}" alt=""
+                                        style="width: 40px; vertical-align: middle;">
+                                    <a
+                                        href="{{ route('announcement-details', [$UniversityEvent->name]) }}">{{ $UniversityEvent->name }}</a>
+                                </h6>
+                                <small class="fw-bold text-secondary">{{ $UniversityEvent->posting_date }}</small>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div>
+                        <span class="alert alert-warning" role="alert"><strong>No news currently
+                                posted.</strong></span>
+                    </div>
+                @endif
+                <div class="text-end mt-5">
+                    <a href="{{ route('university.news.updates') }}"><button class="newsBtn text-end"> View all News <i
+                                class="fa fa-arrow-right"></i></button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <section class="mt-3 mb-4">
         <div class="container">
             <div class="row align-items-center">
                 <div class="underline col-lg-6">
@@ -56,33 +108,36 @@
 
             <div class="row mt-4">
                 <div class="col-12 col-md-6 col-lg-8">
-                    @foreach ($announcements->take(1) as $event)
-                        <div class="mb-3">
-                            <span class="favColor fw-bold">Latest event</span>
-                        </div>
+                    @if ($announcements)
+                        @foreach ($announcements->take(1) as $event)
+                            <div class="mb-3">
+                                <span class="favColor fw-bold">Latest event</span>
+                            </div>
 
-                        <div class="image-containerNews mb-5">
-                            <img class="img-fluid w-75" src="{{ asset('img/updatejpg') }}" alt=""
-                                style=" border: 1px solid #513f83; border-radius: 7px;">
+                            <div class="mb-5 position-relative">
+                                <img class="img-fluid w-75" src="{{ asset('img/LATEST1.jpg') }}" alt=""
+                                    style=" border: 1px solid #513f83; border-radius: 7px;">
 
-                            <div class="overlay-newsImage shadow-lg">
-                                <div class="card">
-                                    <div class="card-body p-3">
+                                <div class="overlay-newsCard shadow-lg mb-5">
+                                    <div class="card">
+                                        <div class="card-body p-3">
 
-                                        <h6 class="card-title text-uppercase text-center fw-bold favColor">
-                                            <a
-                                                href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
-                                        </h6>
-                                        <p class="card-text fst-italic">{{ $event->description }}</p>
+                                            <h6 class="card-title text-uppercase text-center fw-bold favColor">
+                                                <a
+                                                    href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
+                                            </h6>
+                                            <p class="card-text fst-italic"> {!! Str::limit($event->description, '50') !!}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
+
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card border-0 team-slider" style="overflow-x: auto; height: 499px;">
+                <div class="col-12 col-md-6 col-lg-4 mt-5">
+                    <div class="card border-0 team-slider" style="height: 499px;">
                         <span class="favColor text-center mt-5">Other University events.</span>
 
                         @if ($announcements->count() > 0)
@@ -110,7 +165,69 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
+
+    <!-- news and updates section -->
+    {{-- <section class="mt-3 mb-4">
+        <div class="container">
+            <h2 class="">News & Updates</h2>
+            <div class="row d-lg-flex mt-4">
+                <div class="col-12 col-md-6 col-lg-8">
+                    @foreach ($announcements->take(1) as $event)
+                        <div class="mb-3">
+                            <span class="favColor fw-bold">Latest event</span>
+                        </div>
+
+                        <div class="image-containerNews mb-5">
+                            <img class="img-fluid w-75" src="{{ asset('img/LATEST1.jpg') }}" alt=""
+                                style=" border: 1px solid #513f83; border-radius: 7px;">
+
+                            <div class="overlay-newsImage shadow-lg">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h6 class="card-title text-uppercase text-center fw-bold favColor">
+                                            <a
+                                                href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
+                                        </h6>
+                                        <p class="card-text fst-italic"> {!! Str::limit($event->description, '50') !!}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 mt-lg-0 mt-5">
+                    <div class="card border-0 team-slider" style="overflow-x: auto; height: 499px;">
+                        <span class="favColor text-center">Other University events.</span>
+
+                        @if ($announcements->count() > 0)
+                            @foreach ($announcements->take(4) as $UniversityEvent)
+                                <div class="card-body">
+                                    <h6 class="card-title favColor">
+                                        <img src="{{ asset('img/new_icon.png') }}" alt="" style="width: 40px">
+                                        <a class="" href="{!! route('announcement-details', [$UniversityEvent->name]) !!}">{{ $UniversityEvent->name }}
+                                    </h6>
+                                    <small
+                                        class="fw-bold card-title text-secondary">{{ $UniversityEvent->posting_date }}</small>
+                                </div>
+                            @endforeach
+                        @else
+                            <div>
+                                <span class="alert alert-warning" role="alert"><strong>Currently news
+                                        posted.</strong></span>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="text-end mt-5">
+                        <a href="{{ route('university.news.updates') }}"><button class="newsBtn text-end"> View all News <i
+                                    class="fa fa-arrow-right"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> --}}
 
     </section>
     <!-- why choose MWECAU section -->
@@ -121,7 +238,7 @@
                     <div class="underline">
                         <h1>Why Choose <span class="favColor fw-bold">MWECAU</span></h1>
                     </div> <br>
-                    <span>We Are One of The Largest, Most Diverse Universities in The Tanzania</span>
+                    <span>We are one of the most robust and diverse universities in Tanzania.</span>
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
@@ -181,8 +298,8 @@
                                     students.
                                 </p>
                                 <div class="mb-3">
-                                    <a href="{{ route('mwecau-academic-staff') }}"><button class="whyButtons"> Read More <i
-                                                class="fas fa-arrow-right"></i></button></a>
+                                    <a href="{{ route('mwecau-academic-staff') }}"><button class="whyButtons"> Read More
+                                            <i class="fas fa-arrow-right"></i></button></a>
                                 </div>
                             </div>
                         </div>
@@ -197,8 +314,8 @@
     <section>
         <div class="explore">
             <div class="exploretxt">
-                <h1 class="text-lg-start fw-bold">We are Mwenge Catholic <br> University</h1>
-                <p class="text-lowercase ">
+                <h1 class="text-lg-start text-uppercase fw-bold">We are Mwenge Catholic <br> University</h1>
+                <p class="text-lowercase">
                     We are Different,
                     WE MAKE LEARNING MORE RELEVANT, AND TRANSFORMATIONAL.
                 </p>
@@ -246,7 +363,7 @@
                                                     $route = route('programmeCategory', 'post-graduate');
                                                 } elseif ($image->header == 'Undergraduate Admissions') {
                                                     $route = route('programmeCategory', 'undergraduate');
-                                                } elseif ($image->header == 'Non-Degree Admission') {
+                                                } elseif ($image->header == 'Non-Degree Admissions') {
                                                     $route = route('programmeCategory', 'non-degree');
                                                 }
                                             @endphp
@@ -301,8 +418,8 @@
                                                 </h6>
                                                 </p>
                                                 <div class="fst-italic text-decoration-underline ">
-                                                    {{ $UniversityEvent->eventStart_time }} -
-                                                    {{ $UniversityEvent->eventEnd_time }}
+                                                    {{ $UniversityEvent->event_date }}
+                                                    {{-- {{ $UniversityEvent->eventEnd_time }} --}}
                                                 </div>
                                             </div>
                                         </div>

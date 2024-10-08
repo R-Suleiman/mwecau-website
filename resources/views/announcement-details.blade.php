@@ -5,7 +5,7 @@
             <div class="col-12">
                 <h3 class="text-center favColor mb-3 fw-bold fs-1 lh-base">{{ $announcementDetails->name }}</h3>
                 <div class="text-start">
-                    <p style="line-height: 32px">{{ $announcementDetails->description }}</p>
+                    <p style="line-height: 32px">{!! $announcementDetails->description !!}</p>
                 </div>
 
                 <div class="row">

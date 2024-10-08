@@ -14,9 +14,7 @@
                     </div>
                     <div class="col-12 col-lg-7 col-md-6 event-content">
                         <label>{{ $events->event_category }}</label>
-                        <a href="" class="link">
-                            <h3>{{ $events->event_title }}</h3>
-                        </a>
+                        <h3>{{ $events->event_title }}</h3>
                         <p>
                             {{ $events->event_decription }}
                         </p>

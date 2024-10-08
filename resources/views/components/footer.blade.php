@@ -103,29 +103,35 @@
                         @if ($postgraduateJoiningInstruction)
                             <li class="mb-3"><a target="_blank"
                                     href="{{ route('uni-pdf-preview', $postgraduateJoiningInstruction->file) }}"
-                                    target="_blank" class="text-light">Join Instructions (Postgraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Postgraduate Programmes)</a>
+                            </li>
                         @else
                             <li class="mb-3"><a
                                     href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf"
-                                    target="_blank" class="text-light">Join Instructions (Postgraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Postgraduate Programmes)</a>
+                            </li>
                         @endif
                         @if ($undergrduateJoiningInstruction)
                             <li class="mb-3"><a target="_blank"
                                     href="{{ route('uni-pdf-preview', $undergrduateJoiningInstruction->file) }}"
-                                    target="_blank" class="text-light">Join Instructions (Undergraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Undergraduate
+                                    Programmes)</a></li>
                         @else
                             <li class="mb-3"><a
                                     href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf"
-                                    target="_blank" class="text-light">Join Instructions (Undergraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Undergraduate
+                                    Programmes)</a></li>
                         @endif
                         @if ($NondegreeJoiningInstruction)
                             <li class="mb-3"><a target="_blank"
                                     href="{{ route('uni-pdf-preview', $NondegreeJoiningInstruction->file) }}"
-                                    target="_blank" class="text-light">Join Instructions (Non-Degree)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Non-Degree Programmes)</a>
+                            </li>
                         @else
                             <li class="mb-3"><a
                                     href="https://mwecau.ternet.or.tz/storage/files/1/Joining_Instruction/Joining-Instructions-for-postgraduate-students-2022-2023.pdf"
-                                    target="_blank" class="text-light">Join Instructions (Postgraduate)</a></li>
+                                    target="_blank" class="text-light">Joining Instruction (Postgraduate
+                                    Programmes)</a></li>
                         @endif
                         {{-- fee structures --}}
 
@@ -160,33 +166,21 @@
                     </ul>
                 </div>
 
-                <div class="col-md col-sm-6 col-xsm-6 col-md mt-5 py-lg-5 py-md-3">
-                    <h6 class="text-uppercase fw-bold ">Popular links</h6>
-                    <hr class=" mt-0 d-inline-block mx-auto"
-                        style="width: 60px; background-color: #e000ef; height: 5px" />
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><a href="https://uas.mwecau.ac.tz/" target="_blank"
-                                class="text-light">Online
-                                Application</a></li>
-                        <li class="mb-3"><a href="https://ums.mwecau.ac.tz/" target="_blank"
-                                class="text-light">University Management System(UMS)</a></li>
-                        <li class="mb-3"><a
-                                href="https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=mwecau.ac.tz&btnG="
-                                target="_blank" class="text-light">Google Scholar</a></li>
-                        <li class="mb-3"><a href="https://lms.mwecau.ac.tz/" target="_blank"
-                                class="text-light">Learning
-                                Management System(LMS)</a>
-                        </li>
-                        <li class="mb-3"><a href="#!" class="text-light">Ministry of Education, Science, and
-                                Technology</a></li>
-                        <li class="mb-3"><a href="https://www.tcu.go.tz/" target="_blank"
-                                class="text-light">TCU</a>
-                        </li>
-                        <li class="mb-3"><a href="https://www.nglp.net/" class="text-light">Next Generation Leadership Programme</a></li>
-                        <li class="mb-3"><a href="https://www.heslb.go.tz/?lang=" class="text-light">HESLB</a></li>
-                        <li class="mb-3"><a href="https://www.nactvet.go.tz/" class="text-light">NACTVET</a></li>
-                    </ul>
-                </div>
+                @if ($footer->isNotEmpty())
+                    <div class="col-md col-sm-6 col-xsm-6 col-md mt-5 py-lg-5 py-md-3">
+                        <h6 class="text-uppercase fw-bold ">Popular links</h6>
+                        <hr class=" mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #e000ef; height: 5px" />
+                        @foreach ($footer as $item)
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><a href="{{ $item->link }}" target="_blank" class="text-light">
+                                        {{ $item->name }}
+                                    </a></li>
+                            </ul>
+                        @endforeach
+
+                    </div>
+                @endif
 
                 <div class="col-md col-sm-6 col-md mt-5 py-lg-5 py-md-3">
                     <h6 class="text-uppercase fw-bold ">Contacts</h6>

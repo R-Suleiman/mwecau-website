@@ -1,9 +1,42 @@
+:root {
+    --favColor: #3b2a68;
+}
+
+body {
+    color: #000;
+    background-color: #fff;
+    overflow-x: hidden;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode";
+}
+
 /* university header tag */
 .uniHeader {
     background-color: #3b2a68;
     color: white;
 }
-/* navbar css */
+
+.underline {
+    position: relative;
+    display: inline-block;
+}
+.underline h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    margin: auto;
+    border-bottom: 3px solid rgb(105, 9, 85);
+}
+
+.favColor {
+    color: var(--favColor);
+}
+.favBackground {
+    background-color: var(--favColor);
+}
+
 .navbar-nav .nav-link {
     color: white;
     font-size: 18px;
@@ -12,7 +45,34 @@
     font-size: 18px;
     color: #f4aaf7;
 }
-/* CSS to enable hover for dropdown */
+
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
+
+.gallery-cont img {
+    width: 100%;
+    /* height: 300px; */
+}
+
+.pgrapgh {
+    text-align: justify;
+}
+
+.alumni-events .card {
+    border: none;
+    border-radius: 0%;
+    border-right: 1px solid rgb(230, 224, 224);
+}
+.alumni-events img {
+    object-fit: cover;
+}
+.alumni-events img:hover {
+    transform: scale(1.1);
+    transition: 0.9s;
+}
+
+.card span {
+    color: gray;
+}
+

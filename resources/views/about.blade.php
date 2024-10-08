@@ -7,8 +7,22 @@
         }
     </style>
 
-    <div>
+    {{-- <div>
         <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
+    </div> --}}
+    <div class="vid">
+        <video width="100%" autoplay loop muted>
+            <source src="{{asset('videos/Sequence 01.mp4')}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+            <div class="center-div">
+                <div class="text-white text-center">
+                    <h1 >About Mwenge Catholic University</h1>
+                    <p>We prepare students to make meaningful contributions to society as leaders in a complex world</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- main content -->
@@ -269,8 +283,7 @@
                 <div class="mission-card card h-100 d-flex flex-column darkMode" style="width: 100%; border: none">
 
                     <div class="card-body ">
-                        <img src="/img/mwecau.png" class="card-img-top img-fluid rounded-circle " alt="..."
-                            style="width: 60%;">
+                        <i class="favColor fa fa-file-invoice-dollar display-3 mb-3"></i>
                         <h5 class="card-title">Affordability</h5>
                         <div class="card-text text-start">
                             <p>
@@ -289,12 +302,11 @@
             <div class="col-sm-4 mb-5">
                 <div class="card h-100 d-flex flex-column mission-card darkMode" style="width: 100%; border: none">
                     <div class="card-body">
-                        <img src="/img/mwecau.png" class="card-img-top  img-fluid rounded-circle " alt="..."
-                            style="width: 60%;">
+                        <i class="favColor fa fa-book display-3 mb-3"></i>
                         <h5 class="card-title">Academics</h5>
                         <div class="card-text text-start">
                             <p>
-                                An education at MWECAU has limitless possibilities.
+                                Education at MWECAU has limitless possibilities.
                                 Our courses are taught by esteemed faculty members.
                             </p>
                             <div class="text-center">
@@ -309,8 +321,7 @@
             <div class="col-sm-4 mb-5">
                 <div class="card h-100 d-flex flex-column mission-card darkMode" style="width: 100%; border: none">
                     <div class="card-body">
-                        <img src="/img/mwecau.png" class="card-img-top  img-fluid rounded-circle " alt="..."
-                            style="width: 60%;">
+                        <i class="favColor fa fa-users display-3 mb-3"></i>
                         <h5 class="card-title">Inspiring student's life</h5>
                         <div class="card-text text-start">
                             <p>

@@ -9,7 +9,7 @@
                 $counter = 1;
             @endphp
             @if ($projects->isEmpty())
-            <span class="alert alert-warning">No outreach Programs Available</span>
+            <span class="alert alert-warning">No Projects Available</span>
             @else
             @if (count($projects) > 0)
                 @foreach ($projects as $project)

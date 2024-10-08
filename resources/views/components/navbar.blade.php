@@ -36,6 +36,33 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
+                        Timetables
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if ($postgraduateTimetable)
+                            <li class="dropdown-submenu">
+                                <a target="_blank" style="border: none; color: black"
+                                    href="{{ route('uni-pdf-preview', $postgraduateTimetable->file) }}">Postgraduate</a>
+                            </li>
+                        @endif
+                        @if ($undergraduateTimetable)
+                            <li class="dropdown-item">
+                                <a target="_blank" style="border: none; color: black"
+                                    href="{{ route('uni-pdf-preview', $undergraduateTimetable->file) }}">Undergraduate</a>
+                            </li>
+                        @endif
+                        @if ($NondegreeTimetable)
+                            <li class="dropdown-item">
+                                <a target="_blank" style="border: none; color: black"
+                                    href="{{ route('uni-pdf-preview', $NondegreeTimetable->file) }}">Non-degree</a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Joining instructions
                     </a>
                     <ul class="dropdown-menu">
@@ -85,6 +112,9 @@
                 @endif
             </ul>
         </div>
+    </section>
+
+    <section style="position: sticky; top: 0; z-index: 1">
         <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
             <div class="container-fluid">
 
@@ -92,7 +122,7 @@
                     <img class="img-fluid d-none d-md-block d-sm-block" src="../../img/mwecau.png"
                         style="width: 100px;">
                 </a>
-                <div class="d-md-block d-lg-none d-sm-block">
+                <div class="uniHeader2 d-md-block d-lg-none d-sm-block">
                     <h4>Mwenge Catholic University <br> </h4>
                     <small> <q class="fst-italic">Lux Mundi - Light of the World</q></small>
                 </div>
@@ -107,8 +137,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 About
                             </a>
                             <ul class="dropdown-menu">
@@ -216,7 +246,7 @@
                                         target="_blank">Google Scholar</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="{{ route('projects') }}">Project</a>
+                                    <a href="{{ route('projects') }}">Projects</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a href="{{ route('outreach') }}">Outreach Programs</a>
@@ -272,9 +302,12 @@
             </div>
         </nav>
 
+    </section>
+    <section>
+
         <div class="d-flex px-2"
             style="align-items: center;  border-bottom: 1px solid #fff; color:white; background-color: #513F83;">
-            <marquee behavior="scroll" direction="left">
+            <marquee behavior="scroll" direction="left" onmouseover="stop()" onmouseout="start()">
                 @if ($combinedItems->isNotEmpty())
                     @foreach ($combinedItems as $item)
                         @if ($item instanceof App\Models\NewsUpdate)

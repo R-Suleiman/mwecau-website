@@ -143,7 +143,7 @@ class EventsController extends Controller
             'event_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:3024'],
             'speaker_fullname' => ['required', 'string'],
             'speaker_profession' => ['nullable', 'string'],
-            'speaker_info' => ['nullable', 'string'],
+            'speaker_info' => ['required', 'string'],
             'speaker_photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:3024'],
             'event_cost' => ['nullable', 'string'],
             'event_date' => ['required', 'string'],

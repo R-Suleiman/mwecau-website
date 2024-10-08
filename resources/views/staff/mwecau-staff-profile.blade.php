@@ -17,13 +17,13 @@
 
 @extends('layouts.web')
 @section('content')
-    <section class="main-section">
+    <section class="main-section profile-info-sec">
         <div class="main-content">
             <div class="stats-box">
                 {{-- <h3 class="title">Staff Profile</h3> --}}
             </div>
 
-            <div class="container mt-5">
+            <div class="container-fluid mt-5 staff-container">
                 <div class="row mb-5 ">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card shadow-lg darkMode">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 col-lg-8">
+                    <div class="col-12 col-md-6 col-lg-8 prof-details-block">
                         <table class="table table-success table-hover table-bordered table-striped ">
                             <tr>
                                 <th>Name: </th>
@@ -87,8 +87,8 @@
                 </div>
             </div>
 
-            <div class="content-box">
-                <div class="container ">
+            <div class="content-box staff-container">
+                <div class="container-fluid ">
                     <div class="row">
                         <div class="col-12 col-md-8">
                             <div class="about">
@@ -115,8 +115,8 @@
             </div>
 
             {{-- Qualifications --}}
-            <div class="content-box my-5">
-                <div class="container ">
+            <div class="content-box my-5 staff-container">
+                <div class="container-fluid ">
                     <div class="d-flex gap-3">
                         <button class="btn btn-secondary mb-2 btn-sm darkMode academic-q-btn">
                             <i class="fa fa-graduation-cap icon"></i> Academic Qualifications
@@ -166,8 +166,8 @@
             </div>
 
             {{-- Research --}}
-            <div class="content-box my-5">
-                <div class="container ">
+            <div class="content-box my-5 staff-container">
+                <div class="container-fluid ">
                     <div class="d-flex gap-3">
                         <button class="btn btn-secondary mb-2 btn-sm darkMode publications-btn">
                             <i class="fa fa-book icon"></i> Publications

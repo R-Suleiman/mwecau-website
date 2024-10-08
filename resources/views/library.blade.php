@@ -46,7 +46,7 @@
                 services as well as provide information to other categories of users.
                 </p>
 
-                <p>
+                <p> 
                 <h3>Opening and closing of Library</h3>
                 Monday to Friday forom 09:00 AM - 10:00 PM
                 Sunday from 09:00 AM - 18:00 PM
@@ -100,7 +100,7 @@
                 <a href="https://academic.oup.com/journals ">https://academic.oup.com/journals </a>
             </div>
         </div>
-        <div class="row px-5 ict-resource-row">
+        <div class="row ict-resource-row">
             <!-- gallery -->
             <div class="container-fluid mt-2 mb-5">
                 <div class="row gallery">
