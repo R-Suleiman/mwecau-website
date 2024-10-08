@@ -10,6 +10,8 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
+use App\Http\Controllers\HealthService\HealthServiceController;
+
 
 /*
 |--------------------------------------------------------------------------
