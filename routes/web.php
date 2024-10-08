@@ -4,6 +4,8 @@ use App\Http\Controllers\Announcement\AnnouncementController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HealthService\HealthServiceController;
+use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
@@ -180,3 +182,10 @@ Route::controller(AlumniController::class)->group(function () {
     Route::get('alumni-home', 'index')->name('alumni.home');
 });
 // });
+
+//Alumni related routes
+// Route::domain('https://fos.mwecau.ac.tz/')->group(function () {
+    Route::controller(HealthServiceController::class)->group(function () {
+        Route::get('health-center', 'index')->name('health.center');
+    });
+    // });
