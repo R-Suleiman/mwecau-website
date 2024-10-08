@@ -6,11 +6,9 @@
             @if (count($newsUpdates) > 0)
                 @foreach ($newsUpdates as $newsUpdate)
                     <div class="col-12 col-lg-10 col-md-9 event-content">
-                        <a href="" class="link">
-                            <h3>{{ $newsUpdate->name }}</h3>
-                        </a>
+                        <h3>{{ $newsUpdate->name }}</h3>
                         <p>
-                            {{ $newsUpdate->description }}
+                            {!! Str::limit($newsUpdate->description, '190') !!}
                         </p>
                     </div>
                     <div class="col-12 col-lg-2 col-md-3">

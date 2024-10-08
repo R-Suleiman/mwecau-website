@@ -22,7 +22,7 @@ class FooterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:40'],
+            'name' => ['required', 'string'],
             'description' => ['nullable'],
             'link' => ['nullable'],
             'category' => ['required']

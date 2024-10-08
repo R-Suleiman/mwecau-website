@@ -19,78 +19,77 @@
 @extends('layouts.admin')
 
 @section('content')
-    <section class="main-section">
-        <div class="main-content">
-            <div class="container">
-                <div class="row">
-                    <h3 class="title">Staff Profile</h3>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card shadow-lg darkMode">
-                            <div class="card-body">
-                                @if ($staff_details['photo'] === '')
-                                    @if ($staff_details['gender'] === 'M')
-                                        <div class="text-center mb-4">
-                                            <img src="{{ asset('../img/staff profiles/Male_Avatar.jpg') }}"
-                                                class="img-fluid rounded-circle w-50 " alt="staff photo">
-                                        </div>
-                                    @else
-                                        <div class="text-center mb-4">
-                                            <img src="{{ asset('../img/staff profiles/female_avatar.jpg') }}"
-                                                class="img-fluid rounded-circle w-50 " alt="staff photo">
-                                        </div>
-                                    @endif
-                                @else
-                                    <div class="text-center mb-4">
-                                        <img src="{{ $staff_details['photo'] }}" class="img-fluid rounded-circle w-50 "
-                                            alt="staff photo">
-                                    </div>
-                                @endif
-
-                                <div class="card-text text-center ">
-                                    <span>{{ $staff_details['first_name'] }}
-                                        {{ $staff_details['last_name'] }}</span> <br>
+    <div class="container">
+        <div class="row">
+            <h3 class="title">Staff Profile</h3>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card shadow-lg darkMode">
+                    <div class="card-body">
+                        @if ($staff_details['photo'] === '')
+                            @if ($staff_details['gender'] === 'M')
+                                <div class="text-center mb-4">
+                                    <img src="{{ asset('../img/staff profiles/Male_Avatar.jpg') }}"
+                                        class="img-fluid rounded-circle w-50 " alt="staff photo">
                                 </div>
+                            @else
+                                <div class="text-center mb-4">
+                                    <img src="{{ asset('../img/staff profiles/female_avatar.jpg') }}"
+                                        class="img-fluid rounded-circle w-50 " alt="staff photo">
+                                </div>
+                            @endif
+                        @else
+                            <div class="text-center mb-4">
+                                <img src="{{ $staff_details['photo'] }}" class="img-fluid rounded-circle w-50 "
+                                    alt="staff photo">
                             </div>
+                        @endif
+
+                        <div class="card-text text-center ">
+                            <span>{{ $staff_details['first_name'] }}
+                                {{ $staff_details['last_name'] }}</span> <br>
                         </div>
                     </div>
-
-                    <div class="col-12 col-md-6 col-lg-8">
-                        <table class="table table-success table-hover table-bordered table-striped ">
-                            <tr>
-                                <th>Name: </th>
-                                <td>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}
-                                    {{ $staff_details['other_name'] }} {{ $staff_details['last_name'] }}</td>
-                            </tr>
-                            <tr>
-                                <th>Gender: </th>
-                                <td>{{ $staff_details['gender'] }}</td>
-                            </tr>
-                            <tr>
-                                <th>Designation: </th>
-                                <td>{{ $staff_details['position'] }}</td>
-                            </tr>
-                            <tr>
-                                <th>Department: </th>
-                                <td>{{ $staff_department['dept_name'] }} ({{ $staff_department['dept_short_name'] }})</td>
-                            </tr>
-                            <tr>
-                                <th>Specialization: </th>
-                                <td>{{ $staff_details['specialization'] }}</td>
-                            </tr>
-                            <tr>
-                                <th>Highest Award Level: </th>
-                                <td>{{ $staff_details['highest_award_level'] }}</td>
-                            </tr>
-                        </table>
-                    </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="content-box">
+            <div class="col-12 col-md-6 col-lg-8">
+                <table class="table table-success table-hover table-bordered table-striped ">
+                    <tr>
+                        <th>Name: </th>
+                        <td>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}
+                            {{ $staff_details['other_name'] }} {{ $staff_details['last_name'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender: </th>
+                        <td>{{ $staff_details['gender'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Designation: </th>
+                        <td>{{ $staff_details['position'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Department: </th>
+                        <td>{{ $staff_department['dept_name'] }} ({{ $staff_department['dept_short_name'] }})</td>
+                    </tr>
+                    <tr>
+                        <th>Specialization: </th>
+                        <td>{{ $staff_details['specialization'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Highest Award Level: </th>
+                        <td>{{ $staff_details['highest_award_level'] }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="content-box">
                 <div class="content-box">
                     <div class="container ">
                         <div class="about">
-                            <h4 class="favColor">About {{ $staff_details['first_name'] }} {{ $staff_details['last_name'] }}
+                            <h4 class="favColor">About {{ $staff_details['first_name'] }}
+                                {{ $staff_details['last_name'] }}
                             </h4>
                             <p>Bio Coming soon...</p>
                         </div>
@@ -109,11 +108,6 @@
                     </div>
                 </div>
             </div>
-                </div>
-            </div>
-
-
-
         </div>
-    </section>
+    </div>
 @endsection

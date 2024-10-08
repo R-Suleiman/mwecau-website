@@ -10,7 +10,7 @@ class ResearchController extends Controller
     //for web display
     public function research()
     {
-        $projects = Research::orderBy('created_at', 'desc')->where('category', 'project')->get();
+        $projects = Research::where('category', 'project')->get();
         return view('research.projects', compact('projects'));
     }
 
@@ -35,7 +35,7 @@ class ResearchController extends Controller
     //admin display
     public function listOfResearch()
     {
-        $research =  Research::all();
+        $research = Research::orderByDesc('created_at')->get();
         return view('admin.research.research-list', compact('research'));
     }
     public function resourceDetails($header)
@@ -53,6 +53,10 @@ class ResearchController extends Controller
             'header' => ['required', 'max:255'],
             'category' => ['required'],
             'description' => ['required']
+        ], [
+            'header' => 'Kindly fill in this field.',
+            'category' => 'Kindly select the category of what you are about to post',
+            'description' => 'The Description field can\'t be empty',
         ]);
 
         $newResearch = new Research();
