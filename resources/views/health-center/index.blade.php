@@ -13,5 +13,5 @@
             3. check on layout issue
             4. check on web.php
         </div>
-    </div>
+    </div> 
 @endsection
