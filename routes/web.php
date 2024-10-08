@@ -14,8 +14,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
-use App\Http\Controllers\HealthService\HealthServiceController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -193,7 +191,7 @@ Route::controller(AlumniController::class)->group(function () {
 // });
 
 // Route::domain('https://health.mwecau.ac.tz/')->group(function () {
-    Route::controller(HealthServiceController::class)->group(function () {
-        Route::get('health-center', 'index')->name('health.center');
-    });
-    // });
+Route::controller(HealthServiceController::class)->group(function () {
+    Route::get('health-center', 'index')->name('health.center');
+});
+// });
