@@ -39,12 +39,6 @@
                         Timetables
                     </a>
                     <ul class="dropdown-menu">
-                        @if ($postgraduateTimetable == null && $undergraduateTimetable == null && $NondegreeTimetable == null)
-                        <li class="dropdown-submenu text-primary">
-                            <span class="">No timetable found</span>
-                        </li>
-                    @endif
-
                         @if ($postgraduateTimetable)
                             <li class="dropdown-submenu">
                                 <a target="_blank" style="border: none; color: black"
@@ -313,7 +307,7 @@
 
         <div class="d-flex px-2"
             style="align-items: center;  border-bottom: 1px solid #fff; color:white; background-color: #513F83;">
-            <marquee behavior="scroll" direction="left">
+            <marquee behavior="scroll" direction="left" onmouseover="stop()" onmouseout="start()">
                 @if ($combinedItems->isNotEmpty())
                     @foreach ($combinedItems as $item)
                         @if ($item instanceof App\Models\NewsUpdate)

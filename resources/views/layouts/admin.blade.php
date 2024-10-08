@@ -13,6 +13,7 @@
     <!-- Include SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
+    <x-application-logo />
     @include('links')
 </head>
 
@@ -58,7 +59,7 @@
                     </li>
                 </a>
 
-                <a href="{{ route('admin.post.announcement') }}">
+                <a href="{{ route('admin.announcement.list') }}">
                     <li class="nav-item">
                         <i class="fa fa-calendar nav-icons"></i>
                         <span class="nav-words">Post Announcement</span>
@@ -72,8 +73,7 @@
                     </li>
                 </a>
 
-                {{-- <a href="{{ route('admin.post.pdf') }}"> --}}
-                    <a href="{{ route('admin.documents.pdf') }}">
+                <a href="{{ route('admin.documents.pdf') }}">
                     <li class="nav-item">
                         <i class="fa fa-calendar nav-icons"></i>
                         <span class="nav-words">Manage Documents</span>
@@ -86,6 +86,14 @@
                         <span class="nav-words">Uni statistics</span>
                     </li>
                 </a>
+
+                <a href="{{ route('admin.footer.item.list.view') }}">
+                    <li class="nav-item">
+                        <i class="fa fa-calendar nav-icons"></i>
+                        <span class="nav-words">Manage Footer</span>
+                    </li>
+                </a>
+
                 <a href="{{ route('site.images') }}">
                     <li class="nav-item">
                         <i class="fa fa-key nav-icons"></i>
@@ -123,7 +131,12 @@
     </div>
 
     <main class="py-0">
-        @yield('content')
+        <section class="main-section">
+            <div class="main-content">
+                @yield('content')
+                <x-copyright />
+            </div>
+        </section>
         @include('sweetalert::alert')
     </main>
 

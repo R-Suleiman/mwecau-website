@@ -158,7 +158,7 @@ class HomeController extends Controller
     {
         // Set canonical URL
         SEOTools::setCanonical(url()->current());
-        $newsUpdates = NewsUpdate::all();
+        $newsUpdates = NewsUpdate::orderBy('created_at', 'desc')->get();
         return view('news-updates', compact('newsUpdates'));
     }
 
@@ -169,6 +169,14 @@ class HomeController extends Controller
         $announcementDetails = NewsUpdate::where('name', $announcementName)->first();
 
         return view('announcement-details', compact('announcementDetails'));
+    }
+    public function announcement()
+    {
+        // Set canonical URL
+        SEOTools::setCanonical(url()->current());
+        $announcement = NewsUpdate::all();
+        return view('announcement', compact('announcement'));
+
     }
     public function UniJournals()
     {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 27, 2024 at 10:40 AM
+-- Generation Time: Oct 04, 2024 at 09:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -40,7 +40,7 @@ CREATE TABLE `abouts` (
 --
 
 INSERT INTO `abouts` (`id`, `header`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'About', '<p><strong>Welcome to Mwenge Catholic University (MWECAU),</strong> a University that gives you the opportunity to pursue quality education in truthfulness and <span style=\"font-family:\'Courier New\', Courier, monospace;\">f</span><span style=\"font-family:Arial, Helvetica, sans-serif;\">reedom of thought, so that you may gain professional competency to boldly serve and contribute to the development of humanity. In order to prepare for your future career or pursue academic and professional advancement, be it education, administration, sciences, law and/or social sciences, think of MWECAU as your </span><span style=\"font-family:\'Trebuchet MS\', Helvetica, sans-serif;\">best choice.&nbsp;</span></p><p>Our community is being called to reimagine the future. As the only university where a renowned design school comes together with premier colleges, we are making learning more relevant and transformational. We are enriched by the wide range of experiences and perspectives of our students, faculty, staff and alumni. Preparing students to make meaningful contributions to society as leaders in a complex world.</p>', NULL, '2024-09-13 04:50:20');
+(1, 'About', '<p style=\"text-align:justify;\"><strong>Welcome to Mwenge Catholic University (MWECAU),</strong> a University that gives you the opportunity to pursue quality education in truthfulness and freedom of thought, so that you may gain professional competency to boldly serve and contribute to the development of humanity. In order to prepare for your future career or pursue academic and professional advancement, be it education, administration, sciences, law and/or social sciences, think of MWECAU as your best choice.&nbsp;</p><p style=\"text-align:justify;\">Our community is being called to reimagine the future. As the only university where a renowned design school comes together with premier colleges, we are making learning more relevant and transformational. We are enriched by the wide range of experiences and perspectives of our students, faculty, staff and alumni. Preparing students to make meaningful contributions to society as leaders in a complex world.</p>', NULL, '2024-10-02 10:59:17');
 
 -- --------------------------------------------------------
 
@@ -57,6 +57,19 @@ CREATE TABLE `conferences` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
+  `course_name` varchar(255) NOT NULL,
+  `course_desc` varchar(255) NOT NULL,
+  `duration` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -90,7 +103,8 @@ INSERT INTO `documents` (`id`, `header`, `type`, `description`, `file`, `created
 (10, NULL, 'joining-instruction', NULL, '1727246769-Joining-Instructions-for-postgraduate-students-2022-2023.pdf', '2024-09-25 03:46:09', '2024-09-25 03:46:09', 'postgraduate'),
 (11, NULL, 'joining-instruction', NULL, '1727246789-Joining Instructions for Undergraduate 2024-2025.pdf', '2024-09-25 03:46:29', '2024-09-25 03:46:29', 'undergraduate'),
 (12, NULL, 'joining-instruction', NULL, '1727246805-Joining Instructions for Cert and Dip 2024-2025.pdf', '2024-09-25 03:46:45', '2024-09-25 03:46:45', 'non-degree'),
-(13, 'Almanac', 'almanac', NULL, '1727247760-ALMANAC FOR THE ACADEMIC YEAR 2024-2025.pdf', '2024-09-25 04:02:40', '2024-09-25 04:02:40', 'undergraduate');
+(13, 'Almanac', 'almanac', NULL, '1727247760-ALMANAC FOR THE ACADEMIC YEAR 2024-2025.pdf', '2024-09-25 04:02:40', '2024-09-25 04:02:40', 'undergraduate'),
+(14, 'Undergraduate Timetable', 'timetable', NULL, '1727967011-Undergraduate_TT_2024-2025_sem1_09272024_1st Draft.pdf', '2024-10-03 11:50:11', '2024-10-03 11:50:11', 'undergraduate');
 
 -- --------------------------------------------------------
 
@@ -189,8 +203,8 @@ INSERT INTO `images` (`id`, `header`, `sub_header`, `description`, `page`, `imag
 (1, 'Discover the world of possibilities with MWECAU', 'Discover the world of possibility with MWECAU', NULL, 'home', 'homeslider', '1725868680-BANNER-WEB-CONF.jpg', NULL, '2024-08-26 06:27:38', '2024-09-09 04:58:00'),
 (2, 'Postgraduate Admissions', NULL, 'Whatever you\'re seeking from your college experience, you\'ll find it at Mwenge Catholic University.', 'home', 'homeprograms', '1724832606-BBZV6239.JPG', NULL, '2024-08-26 06:57:11', '2024-08-28 05:10:06'),
 (3, 'Undergraduate Admissions', NULL, 'Whatever you\'re seeking from your college experience, you\'ll find it at Mwenge Catholic University.', 'home', 'homeprograms', '1724788003-LXKC1912.JPG', NULL, '2024-08-26 07:13:51', '2024-08-27 16:46:43'),
-(4, 'Non-Degree Admission', NULL, 'Whatever you\'re seeking from your college experience, you\'ll find it at Mwenge Catholic University.', 'home', 'homeprograms', '1724767041-COII6861.JPG', NULL, '2024-08-26 08:13:07', '2024-08-27 10:57:21'),
-(5, NULL, NULL, NULL, 'home', 'homeslider', '1725624100-BANNER-WEB-CONFIRM-3.jpg', NULL, '2024-08-26 08:23:42', '2024-09-06 09:01:40'),
+(4, 'Non-Degree Admissions', NULL, 'Whatever you\'re seeking from your college experience, you\'ll find it at Mwenge Catholic University.', 'home', 'homeprograms', '1724767041-COII6861.JPG', NULL, '2024-08-26 08:13:07', '2024-08-27 10:57:21'),
+(5, NULL, NULL, NULL, 'home', 'homeslider', '1727939396-BANNER-WEB-CONFIRM-tu.jpg', NULL, '2024-08-26 08:23:42', '2024-10-03 04:09:56'),
 (6, NULL, NULL, NULL, 'course', 'course-banner', '1725858684-BANNER APPLY NOW 2.jpg', NULL, '2024-08-26 08:34:21', '2024-09-09 02:11:24'),
 (7, 'undergraduate', NULL, NULL, 'academics', 'academics-undergraduate', '1724922980-FRUZ9645.JPG', NULL, '2024-08-26 08:46:11', '2024-08-29 06:16:20'),
 (8, 'Discover the world of possibilities with MWECAU', NULL, NULL, 'home', 'homeslider', '1725890640-BANNER-WEB-moja.jpg', NULL, '2024-08-27 16:57:39', '2024-09-09 11:04:00'),
@@ -287,12 +301,15 @@ CREATE TABLE `news_updates` (
 --
 
 INSERT INTO `news_updates` (`id`, `name`, `description`, `posting_date`, `attachment`, `created_at`, `updated_at`) VALUES
-(1, 'The 16 MWECAU Graduation Ceremony', 'We are delighted to announce that Mwenge Catholic University will celebrate its 16th Graduation Ceremony on Saturday, the 25th of November, 2023. This significant event will commence with a Holy Mass at 08:00 AM, to be followed by a grandiose Academic Procession at 11:00 AM.', '2023-08-09', '1725855559_Graduation Announcement 2023.pdf', '2024-09-09 01:19:19', '2024-09-09 01:19:19'),
+(1, '17th MWECAU Graduation Ceremony', '17th MWECAU Graduation Ceremony\nWe are pleased to inform the graduates of the 2023/2024 academic year and the general public that Mwenge Catholic University will hold its 17th Graduation Ceremony on Saturday, 23rd November 2024 at the University Campus, from 8:00 a.m. to 2:00 p.m. The event will commence with a Holy Mass at 8:00 a.m. followed by the Academic Procession at 10:00 a.m.\nGraduation gowns and booklets will be available for collection from Wednesday, 20th November to Friday, 22nd November 2024. Graduands are reminded that the return of gowns will take place from Monday, 25th November to Wednesday, 20th November 2024. A late return will incur a penalty of Tsh 10,000 per day.\nA compulsory graduation rehearsal will be held on Friday, 25th November 2024, at 2:00 p.m. All graduates are required to attend.\nWe cordially invite you to join us in celebrating this significant academic event.', '2023-08-09', '1725855559_Graduation Announcement 2024.pdf', '2024-09-09 01:19:19', '2024-09-09 01:19:19'),
 (2, 'VACANCY ANNOUNCEMENT Deadline 25 Feb. 2024', 'VACANCY ANNOUNCEMENT Deadline 25 Feb. 2024', '2024-07-18', '1725856608_JOB ADVERT_FEB 21_2024(1).pdf', '2024-09-09 01:36:48', '2024-09-09 01:36:48'),
 (3, 'SUPP/SPECIAL NON-DEGREE TIMETABLE', 'SUPP/SPECIAL NON-DEGREE TIMETABLE', '2024-08-07', '1725856829_2023-2024 Supp, Special - Non-degree.pdf', '2024-09-09 01:40:29', '2024-09-09 01:40:29'),
 (4, 'Non Degree Results Semester 2', 'Non Degree Results Semester 2', '2024-07-15', '1725856608_JOB ADVERT_FEB 21_2024(1).pdf', '2024-09-09 01:42:51', '2024-09-09 01:42:51'),
 (5, 'MWECAU Job Advert July 2024', 'Mwenge Catholic University (MWECAU) is a secular, private and non-profit institution of\nhigher learning owned and managed by the Tanzania Episcopal Conference (TEC). The\nUniversity offers holistic education based on profound principles of teaching and research, which\nis echoed through community service as a commitment of the University to the development of\nTanzania. MWECAU aims at training confident and self-motivated professionals, ready to work\nin various capacities in an ever-dynamic global society. MWECAU offers various academic\nprogrammes from Certificate, Diploma, Bachelors, Masters and PhD degrees. The University is\nlocated in Moshi about 10 kilometers north of Moshi Town, on the lower slopes of Mt.\nKilimanjaro, Tanzania.\nMWECAU invites dynamic and suitable qualified Tanzanians to fill the following vacant posts\nas mentioned below.', '2024-08-05', NULL, '2024-09-09 01:44:40', '2024-09-09 01:44:40'),
-(6, 'Selected Applicants Round 1 Degree', NULL, '2024-09-03', '1725857154_Selected-Applicants-Round-1-Degree.pdf', '2024-09-09 01:45:54', '2024-09-09 01:45:54');
+(6, ' Selected Applicants Round 1 Degree', NULL, '2024-09-03', '1725857154_Selected-Applicants-Round-1-Degree.pdf', '2024-09-09 01:45:54', '2024-09-09 01:45:54'),
+(7, 'Selected Applicants Round 2 Degree', 'Selected Applicants to Bachelor’s Degree Programmes Round 2 Academic Year 2024/2025\nWe are pleased to inform all applicants selected to join various Bachelor’s Degree programmes at Mwenge Catholic University (MWECAU) for 2024/2025. Congratulations on your selection, and we warmly welcome you to the MWECAU community!', '2024-10-04', '1728019327_Admission Round 2.pdf', '2024-10-04 02:22:07', '2024-10-04 02:22:07'),
+(8, 'Selected Applicants Round 2 Degree Programmes ..................', 'Selected Applicants to Bachelor’s Degree Programmes Round 2 Academic Year 2024/2025\r\nWe are pleased to inform all applicants selected to join various Bachelor’s Degree programmes at Mwenge Catholic University (MWECAU) for 2024/2025. Congratulations on your selection, and we warmly welcome you to the MWECAU community!\r\n1.    Multiple selected applicants should confirm their application via https://www.uas.mwecau.ac.tz/ using confirmation codes provided by TCU\r\n2.    Single Admitted applicants no confirmation needed. Download the admission letter on your application accounts\r\nAll new students are required to report to the University for registration and orientation starting on 14th October 2024. Please ensure you bring the following documents on your first day of reporting:\r\n•    Original academic certificates and transcripts\r\n•    Birth certificate\r\n•    Completed medical examination form\r\nWe look forward to supporting your academic journey at MWECAU and encourage you to prepare for an exciting and enriching university experience.\r\nClick here to view a list of selected applicants\r\nFor further inquiries, please contact the Admissions Office.\r\nKaribu Sana!\r\nIssued by \r\nPublic Relations Office', '2024-10-04', '1728023540_Admission Round 2-compressed.pdf', '2024-10-04 03:32:20', '2024-10-04 03:32:20'),
+(9, 'msaki hali', '<p>Selected Applicants to Bachelor’s Degree Programmes Round 2 Academic Year 2024/2025<br>We are pleased to inform all applicants selected to join various Bachelor’s Degree programmes at Mwenge Catholic University (MWECAU) for 2024/2025. Congratulations on your selection, and we warmly welcome you to the MWECAU community!<br>1.&nbsp;&nbsp;&nbsp;&nbsp;Multiple selected applicants should confirm their application via <a href=\"https://www.uas.mwecau.ac.tz/ \">https://www.uas.mwecau.ac.tz/ </a>using confirmation codes provided by TCU<br>2.&nbsp;&nbsp;&nbsp;&nbsp;Single Admitted applicants no confirmation needed. Download the admission letter on your application accounts<br>All new students are required to report to the University for registration and orientation starting on 14th October 2024. Please ensure you bring the following documents on your first day of reporting:<br>•&nbsp;&nbsp;&nbsp;&nbsp;Original academic certificates and transcripts<br>•&nbsp;&nbsp;&nbsp;&nbsp;Birth certificate<br>•&nbsp;&nbsp;&nbsp;&nbsp;Completed medical examination form<br>We look forward to supporting your academic journey at MWECAU and encourage you to prepare for an exciting and enriching university experience.<br>Click here to view a list of selected applicants<br>For further inquiries, please contact the Admissions Office.<br><strong>Karibu Sana!</strong><br><strong>Issued by&nbsp;</strong><br><strong>Public Relations Office</strong></p>', '2024-10-04', '1728023765_Admission Round 2-compressed.pdf', '2024-10-04 03:36:05', '2024-10-04 03:36:05');
 
 -- --------------------------------------------------------
 
@@ -442,6 +459,12 @@ ALTER TABLE `conferences`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `documents`
 --
 ALTER TABLE `documents`
@@ -540,10 +563,16 @@ ALTER TABLE `conferences`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -579,7 +608,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `news_updates`
 --
 ALTER TABLE `news_updates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

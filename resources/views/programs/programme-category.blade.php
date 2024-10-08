@@ -33,18 +33,19 @@
         <img src="{{ asset('images/pageImages/' . $courseImage->image) }}" alt="" class="w-100">
     </div>
     <div class="container mt-5 mb-4">
-        <div>
+        {{-- <div>
             <a class="text-decoration-none" href="{{ route('postgraduate.pdf') }}">
                 <button class="btn btn-outline-primary darkMode">{{ $programme_category }} Programs PDF <i
                         class="favColor far fa-file-pdf fs-5" aria-hidden="true"></i></button>
                 </p>
             </a>
-        </div>
+        </div> --}}
         <div class="row">
-            <h1 class="fs-2 text-center favColor mt-3 mb-3">{{ $programme_category }} Programs</h1>
+            <h1 class="fs-2 text-center favColor mt-3 text-uppercase fw-bold mb-3">{{ $programme_category }} Programmes</h1>
             @php
                 $counter = 1;
             @endphp
+            <div class="list-table"> 
 
             <table class="myTable table table-bordered text-sm">
                 <thead>
@@ -72,6 +73,7 @@
                 </tbody>
 
             </table>
+            </div>
         </div>
         <div class="text-end mt-3 mb-5">
             <h3 class="">Total postgraduate programs: <strong>{{ $programmes_count }}</strong></h3>

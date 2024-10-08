@@ -18,7 +18,7 @@
                         <h3>About <strong class="favColor fs-4">{{ $eventDetails->event_title }} </strong></h3>
                     </div>
                     <p>
-                        {{ $eventDetails->event_description }}
+                        {!! $eventDetails->event_description !!}
                     </p>
 
                     @if ($eventDetails->file != null)
@@ -28,12 +28,6 @@
                                     Preview Attachment <i class="fa fa-download" aria-hidden="true"></i>
                                 </button>
                             </a>
-                        </div>
-                    @else
-
-                        <div class="col-12 mt-5 mb-5">
-                            <span class="alert alert-warning shadow">No attachment is available for this
-                                event.</span>
                         </div>
                     @endif
 

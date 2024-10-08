@@ -9,11 +9,11 @@ class Footer extends Model
 {
     use HasFactory;
 
-    protected $fillbale = [
+    protected $fillable = [
 
         'name',
         'description',
         'link',
-        'category'
+        'category',
     ];
 }

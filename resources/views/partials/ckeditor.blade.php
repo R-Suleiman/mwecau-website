@@ -7,6 +7,15 @@
     }
 </script>
 
+<script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.js",
+            "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.1.0/"
+        }
+    }
+</script>
+
 <script type="module">
     import {
         ClassicEditor,
@@ -16,18 +25,21 @@
         Italic,
         Font,
         List,
-        Alignment
+        Alignment,
+        Link,
+        Indent
     } from 'ckeditor5';
 
     ClassicEditor
         .create(document.querySelector('#editor'), {
             plugins: [
-                Essentials, Paragraph, Bold, Italic, Font, List, Alignment
+                Essentials, Paragraph, Bold, Italic, Font, List, Alignment, Link, Indent
             ],
             toolbar: [
                 'undo', 'redo', '|', 'bold', 'italic', '|',
                 'fontFamily', 'alignment:left', 'alignment:center', 'alignment:right', 'alignment:justify', '|',
-                'bulletedList', 'numberedList'
+                'bulletedList', 'numberedList', '|', 'link', '|',
+                'outdent', 'indent'
             ]
         })
         .then(editor => {
