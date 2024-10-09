@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap");
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(61, 60, 60, 0.4);
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.v-center-div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.bg-header, .footer-header, .footer-cont, h2, h3, h4, h4, h6 {
+    font-family: "Merriweather", sans-serif;
+}
+
+p {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode";
+}
+
+.philosophy {
+    height: 30rem;
+}
+
+.philosophy h3, .small-header {
+    font-family: "Oswald", sans-serif;
+}
