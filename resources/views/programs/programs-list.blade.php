@@ -14,7 +14,7 @@
                 }
             }
         }
-    } 
+    }
 @endphp
 
 @extends('layouts.web')
@@ -36,7 +36,7 @@
                     <i class="fa fa-graduation-cap favColor"></i> Non-Degrees
                 </button>
             </div>
-        </div>
+        </div> 
 
         {{-- postgraduate course --}}
         <div class="postgraduate-table my-5">

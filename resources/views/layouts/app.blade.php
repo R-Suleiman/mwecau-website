@@ -23,10 +23,10 @@
 
 <body style="background-color:#0f1520">
     <div id="ap">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-lg">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'MWECAU') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -78,9 +78,9 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
-        <main class="py-5">
+        <main class="py-5 mt-5">
             @yield('content')
         </main>
     </div>

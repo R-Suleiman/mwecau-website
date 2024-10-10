@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Footer;
 use App\Models\NewsUpdate;
 use App\Models\Document;
 use App\Models\event;
@@ -129,5 +130,9 @@ class AppServiceProvider extends ServiceProvider
 
         $news = NewsUpdate::orderBy('created_at', 'desc')->get();
         View::share('news', $news);
+
+        $footer = Footer::where('category', 'popular-links')
+            ->get();
+        View::share('footer', $footer);
     }
 }
