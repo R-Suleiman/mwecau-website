@@ -17,17 +17,14 @@ closeNav.addEventListener('click', () => {
 });
 
 // Main nav scroll effect
-const mainNavBar = document.getElementById('main-nav');
+const mainNavBar = document.querySelector('.main-nav');
 const smallNavBar = document.getElementById('small-nav');
-const mainSection = document.getElementById('main-section');
 const logo = document.getElementById('logo');
-const smallHeader = document.getElementById('small-header');
 
-const mainSectionHeight = mainSection.offsetHeight
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
 
-    const newWidth = Math.max(60, 150 - scrollY); // Minimum width of 100px
+    const newWidth = Math.max(60, 100 - scrollY); // Minimum width of 100px
     const navPadding = Math.max(8, 16 - scrollY); // Minimum width of 100px
     logo.style.width = `${newWidth}px`;
     mainNavBar.style.paddingTop = `${navPadding}px`;
@@ -38,13 +35,11 @@ window.addEventListener('scroll', () => {
         mainNavBar.classList.add('bg-purple-800');
         smallNavBar.classList.remove('bg-transparent');
         smallNavBar.classList.add('bg-purple-800');
-        smallHeader.classList.remove('hidden')
     } else {
         mainNavBar.classList.remove('bg-purple-800');
         mainNavBar.classList.add('bg-transparent');
         smallNavBar.classList.add('bg-transparent');
         smallNavBar.classList.remove('bg-purple-800');
-        smallHeader.classList.add('hidden')
     }
 });
 
