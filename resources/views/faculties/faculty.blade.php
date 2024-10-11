@@ -47,7 +47,7 @@
                 @if ($staff_details !== null)
                 <div class="container mt-2">
                     <div class="row mb-5 ">
-                        <h3 class="title favColor darkMode">{{ 'Staff Profile' }}</h3>
+                        <h3 class="title favColor darkMode text-center mb-4">{{ $faculty_data['faculty_name'] }}</h3>
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card shadow-lg darkMode">
                                 <div class="card-body">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-6 col-lg-8">
+                        <div class="col-12 col-md-6 col-lg-8 prof-details-block">
                             <table class="table table-success table-hover table-bordered table-striped ">
                                 <tr>
                                     <th>Name: </th>
