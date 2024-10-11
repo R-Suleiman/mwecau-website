@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'Local-Icons';
+  src:  url('fonts/Local-Icons.eot?ccunp0');
+  src:  url('fonts/Local-Icons.eot?ccunp0#iefix') format('embedded-opentype'),
+    url('fonts/Local-Icons.ttf?ccunp0') format('truetype'),
+    url('fonts/Local-Icons.woff?ccunp0') format('woff'),
+    url('fonts/Local-Icons.svg?ccunp0#Local-Icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="cmsms-demo-icon-"], [class*=" cmsms-demo-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Local-Icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cmsms-demo-icon-addiction:before {
+  content: "\e900";
+}
+.cmsms-demo-icon-amputation:before {
+  content: "\e901";
+}
+.cmsms-demo-icon-arrow-circle:before {
+  content: "\e902";
+}
+.cmsms-demo-icon-arrow-down:before {
+  content: "\e904";
+}
+.cmsms-demo-icon-arrow-left:before {
+  content: "\e905";
+}
+.cmsms-demo-icon-arrow-right:before {
+  content: "\e903";
+}
+.cmsms-demo-icon-arrow-up:before {
+  content: "\e906";
+}
+.cmsms-demo-icon-brain:before {
+  content: "\e907";
+}
+.cmsms-demo-icon-cancel:before {
+  content: "\e908";
+}
+.cmsms-demo-icon-check:before {
+  content: "\e909";
+}
+.cmsms-demo-icon-chevron-down:before {
+  content: "\e90a";
+}
+.cmsms-demo-icon-dropdown-down:before {
+  content: "\e90b";
+}
+.cmsms-demo-icon-chevron-left:before {
+  content: "\e90c";
+}
+.cmsms-demo-icon-chevron-right:before {
+  content: "\e90d";
+}
+.cmsms-demo-icon-chevron-up:before {
+  content: "\e90e";
+}
+.cmsms-demo-icon-dropdown-up:before {
+  content: "\e90f";
+}
+.cmsms-demo-icon-date:before {
+  content: "\e910";
+}
+.cmsms-demo-icon-heart:before {
+  content: "\e911";
+}
+.cmsms-demo-icon-injury:before {
+  content: "\e912";
+}
+.cmsms-demo-icon-menu:before {
+  content: "\e913";
+}
+.cmsms-demo-icon-neurology:before {
+  content: "\e914";
+}
+.cmsms-demo-icon-newsletter:before {
+  content: "\e915";
+}
+.cmsms-demo-icon-orthopedics:before {
+  content: "\e916";
+}
+.cmsms-demo-icon-outpatient:before {
+  content: "\e917";
+}
+.cmsms-demo-icon-search:before {
+  content: "\e918";
+}
+.cmsms-demo-icon-spinal-cord:before {
+  content: "\e919";
+}
+.cmsms-demo-icon-Star:before {
+  content: "\e91a";
+}
+.cmsms-demo-icon-stroke:before {
+  content: "\e91b";
+}
+.cmsms-demo-icon-time:before {
+  content: "\e91c";
+}
+.cmsms-demo-icon-wheelchair:before {
+  content: "\e91d";
+}

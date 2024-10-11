@@ -232,7 +232,8 @@
     </section>
     <!-- why choose MWECAU section -->
     <section>
-        <div class="container my-5  text-center rounded" data-aos="fade-up" data-aos-duration="2000">
+        <div class="container my-5  text-center rounded">
+            {{-- <div class="container my-5  text-center rounded" data-aos="fade-up" data-aos-duration="2000"> --}}
             <div class="row g-2 justify-content-around align-items-start">
                 <div class="mb-5 ">
                     <div class="underline">
@@ -242,7 +243,7 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
-                    <div class="mission-card card darkMode">
+                    <div class="whyChooseUS-card card">
                         <div class="card-body">
                             <i class="favColor fa fa-users display-3"></i>
                             <div class="card-text mt-5">
@@ -266,7 +267,7 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
-                    <div class="mission-card card darkMode">
+                    <div class="whyChooseUS-card card">
                         <div class="card-body">
                             <i class="favColor fa fa-file-invoice-dollar display-3"></i>
                             <div class="card-text mt-5">
@@ -287,7 +288,7 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
-                    <div class="mission-card card darkMode">
+                    <div class="whyChooseUS-card card">
                         <div class="card-body">
                             <i class="favColor fa fa-graduation-cap display-3"></i>
                             <div class="card-text mt-5 ">
@@ -340,14 +341,14 @@
                 </div>
 
                 @if (count($images) > 0)
-                    @php
+                    {{-- @php
                         // Array of animation classes
                         $animations = ['fade-down', 'fade-right', 'fade-up', 'fade-down', 'fade-in'];
-                    @endphp
+                    @endphp --}}
                     @foreach ($images as $index => $image)
                         @if ($image->page == 'home' && $image->image_section == 'homeprograms')
-                            <div class="col-md-4 mb-4" data-aos="{{ $animations[$index % count($animations)] }}"
-                                data-aos-duration="2000">
+                            {{-- <div class="col-md-4 mb-4" data-aos="{{ $animations[$index % count($animations)] }}" --}}
+                            <div class="col-md-4 mb-4" data-aos-duration="2000">
                                 <div class="card bottomBorder studyingAtMwenge darkMode">
                                     <div class="card-body">
                                         <img src="{{ asset('/images/pageImages/' . $image->image) }}"

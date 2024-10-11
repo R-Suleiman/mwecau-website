@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/*
+Theme Name: Renew Medical
+Theme URI: https://renew-medical.cmsmasters.net/
+Author: cmsmasters
+Author URI: https://cmsmasters.net/
+Description: Renew Medical WordPress Theme for Elementor is an all-in-one medical clinic and rehabilitatiob center theme – it has all the needed dedicated clinic functionality and clean medical style, so that lets you set up a rehab clinic website, as well as a any other medical website.
+Version: 1.0.0
+License:
+License URI:
+Text Domain: renew-medical
+Domain Path: /theme-config/languages
+Tags: one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+*/
+
+
+.sticky,
+.bypostauthor,
+.screen-reader-text {
+  outline: none;
+}

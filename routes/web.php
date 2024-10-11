@@ -193,5 +193,9 @@ Route::controller(AlumniController::class)->group(function () {
 // Route::domain('https://health.mwecau.ac.tz/')->group(function () {
 Route::controller(HealthServiceController::class)->group(function () {
     Route::get('health-center', 'index')->name('health.center');
+    Route::get('about-us', 'aboutUs')->name('health-center-about-us');
+    Route::get('department', 'department')->name('health-center-department');
+    Route::get('service', 'service')->name('health-center-service');
+    Route::get('services', 'services')->name('health-center-services');
 });
 // });
