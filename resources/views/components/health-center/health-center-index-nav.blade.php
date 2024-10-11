@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+<div>
+    <!-- Life is available only in the present moment. - Thich Nhat Hanh -->
+</div>
+=======
 <section class="w-full relative overflow-x-hidden" id="main-section">
     {{-- video --}}
     <video width="100%" autoplay loop muted>
@@ -105,3 +110,4 @@
         </div>
     </div>
 </section>
+>>>>>>> 1e20ecf2f26aef419817081caaa78b299aa70312
