@@ -23,10 +23,8 @@
         <div class="row py-5 ict-row">
             <div class="col-12 col-md-6 col-lg-6 mb-4">
                 <p>
-                    Welcome to the page for IT services of the Mwenge Catholic
-                    University (MWECAU). We are dedicated to providing students,
-                    teachers, and staff with the best possible technical support and
-                    services to improve their academic and administrative experiences.
+                    Welcome to Mwenge Catholic
+                    University's ICT services page. Our commitment is to provide students , faculty and staff with the best technical support and services to enhance their academic and administrative experiences .
                 </p>
 
                 <h3>ICT Resources</h3>
@@ -50,8 +48,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 mb-4">
                 <p>
-                    Our hardworking IT team is here to make sure that MWECAU community
-                    has dependable access to cutting-edge technological solutions.
+                    We are here to ensure that the MWECAU community has reliable access to cutting - edge technology solutions .
                 </p>
 
                 <h6>Contact details:</h6>
@@ -63,9 +60,7 @@
                 </p>
 
                 <p>
-                    We are committed to constantly enhancing our offerings in order to
-                    satisfy the changing technological requirements of the academic
-                    community.
+                    Our commitment is to constantly improve our offerings to meet the evolving technological demands of the academic community .
                 </p>
             </div>
         </div>

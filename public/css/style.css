@@ -2018,7 +2018,7 @@ a {
     }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 990px) {
     #sub-faculty {
         display: none;
         position: absolute;
@@ -2031,6 +2031,25 @@ a {
         left: 10%;
         top: 100%;
     }
+
+    .sub-nav {
+        width: 100%;
+    }
+
+    .sub-nav2 {
+        width: 100%;
+        overflow: hidden;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    .sub-nav2 a {
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+}
+
+@media screen and (max-width: 580px) {
     .counters {
         display: flex;
         flex-direction: column;
@@ -2060,12 +2079,21 @@ a {
     .news-small-div {
         width: 95%;
     }
+
+    .ict-resource-row {
+        padding: 0;
+    }
+
+    .gallery {
+        /* padding: 2px; */
+        margin: 20px 0px;
+    }
 }
 
 @media screen and (max-width: 950px) {
     .campus-row {
-        margin: 10px 5px;
-        padding: 10px 5px;
+        margin: 10px 0px;
+        padding: 10px 0px;
     }
 
     .campus-card img {
@@ -2075,7 +2103,8 @@ a {
     .talent-content-container {
         flex-direction: column;
         align-items: center;
-        width: 95%;
+        width: 100%;
+        padding: 0;
     }
 
     .talent-pics,
@@ -2165,5 +2194,9 @@ a {
 @media screen and (max-width: 480px) {
     .exploretxt h1 {
         font-size: 3rem;
+    }
+
+    .gallery-cont img {
+        height: 200px;
     }
 }

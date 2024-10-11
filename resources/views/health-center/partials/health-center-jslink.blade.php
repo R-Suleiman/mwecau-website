@@ -15,6 +15,8 @@
 <script src="{{ asset('../js/health-center/health-center.js') }}"></script>
 {{-- <script src="{{ asset('../css/aos/dist/aos.js') }}"></script> --}}
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
 
 <script src="{{ asset('../jquery/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('../jquery/js/dataTables.bootstrap5.min.js') }}"></script>

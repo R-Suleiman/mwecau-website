@@ -4,13 +4,14 @@ export default {
       "./resources/**/*.blade.php",
       "./resources/**/*.js",
       "./resources/**/*.vue",
+      "./public/**/*.js",
     ],
     theme: {
       extend: {
         height: {
-            'height': '46rem'
-        }
-      },
+            'phil-height': '30rem', // Custom height utility
+          },
+      }
     },
     plugins: [],
   }
