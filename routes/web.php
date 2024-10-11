@@ -4,6 +4,8 @@ use App\Http\Controllers\Announcement\AnnouncementController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HealthService\HealthServiceController;
+use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PdfController;
@@ -12,8 +14,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
-use App\Http\Controllers\HealthService\HealthServiceController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -198,3 +198,4 @@ Route::controller(AlumniController::class)->group(function () {
         Route::get('/health-center/events/{eventName}', 'viewEvent')->name('health.view-event');
     });
     // });
+
