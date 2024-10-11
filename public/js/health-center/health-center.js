@@ -56,3 +56,37 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('.events').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        cssEase: 'linear',
+        adaptiveHeight: true,
+        responsive: [
+            {
+              breakpoint: 800,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+              }
+            }
+          ]
+    });
+});
+

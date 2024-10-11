@@ -1,7 +1,6 @@
-<section class="w-full">
   {{-- side bar --}}
-  <div class="block lg:hidden w-full bg-transparent fixed top-0 left-0 z-50">
-    <div class="w-full flex items-center justify-between px-4 py-2" id="small-nav">
+  <div class="block lg:hidden w-full bg-blue-800 sticky top-0 left-0 z-50">
+    <div class="w-full flex items-center justify-between px-4 py-2">
         <div class="w-2/12 mr-auto">
         <img src="../../img/mwecau.png" alt="mwecau logo" class="w-10/12 rounded">
         </div>
@@ -9,10 +8,10 @@
         <div class="w-1/12 ml-auto text-white text-xl text-center hover:cursor-pointer" id="open-nav"><i class="ml-auto fa fa-bars"></i></div>
     </div>
 
-    <aside class=" fixed top-0 right-0 w-full py-2 block bg-purple-500 bg-opacity-90 bg-black-300 h-screen transform transition-transform duration-300 ease-out scale-0" id="navbar">
+    <aside class="fixed top-0 right-0 w-full py-2 block bg-purple-500 bg-opacity-90 bg-black-300 h-screen transform transition-transform duration-300 ease-out scale-0" id="navbar">
         <div class="w-1/12 text-white text-2xl text-center hover:cursor-pointer ml-auto mr-6" id="close-nav"><i class="ml-auto fa fa-multiply"></i></div>
         <ul class="w-full pt-4 flex flex-col items-center text-lg text-white font-semibold">
-            <a href="" class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
+            <a href="{{route('health.index')}}" class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
                 <li>Home</li>
             </a>
             <a href="" class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
@@ -42,7 +41,6 @@
     </aside>
 </div>
 
-</section>
 {{-- main nav --}}
 <div class="hidden lg:flex w-full flex items-center justify-between py-2 px-8 bg-purple-800 sticky top-0 z-50" >
     <div class="w-4/12 flex items-center lg:mr-auto">
@@ -55,7 +53,7 @@
 
     <nav class="w-8/12 py-2">
         <ul class="w-max ml-auto flex items-center text-lg text-white font-semibold">
-            <a href="" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
+            <a href="{{route('health.index')}}" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                 <li>Home</li>
             </a>
             <a href="" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">

@@ -5,7 +5,7 @@
     @endphp
 
     {{-- Services --}}
-    <section class="w-full px-4 py-20 mb-4 flex flex-col items-center bg-neutral-100">
+    <section class="w-full px-4 py-10 lg:py-20 mb-4 flex flex-col items-center bg-neutral-100">
         <div class="flex flex-col items-center w-max mb-4">
             <h2 class="uppercase text-2xl text-center text-blue-800">Our Services</h2>
             <div class="mt-3 border border-purple-500 w-3/5"></div>
@@ -150,7 +150,7 @@
     </section>
 
     {{-- Departments --}}
-    <section class="w-full px-4 py-20 mb-4 flex flex-col items-center bg-neutral-100">
+    <section class="w-full px-4 py-10 lg:py-20 mb-4 flex flex-col items-center bg-neutral-100">
         <div class="flex flex-col items-center w-max mb-4">
             <h2 class="uppercase text-2xl text-center text-blue-800">Hospital Departments</h2>
             <div class="mt-3 border border-purple-500 w-3/5"></div>
@@ -209,7 +209,7 @@
     </section>
 
     {{-- Doctors --}}
-    <section class="w-full px-4 py-10 my-4 flex flex-col items-center">
+    <section class="w-full px-4 pt-10 lg:py-10 my-4 flex flex-col items-center">
         <div class="flex flex-col items-center w-max mb-4">
             <h2 class="uppercase text-2xl text-center text-blue-800">Our Doctors</h2>
             <div class="mt-3 border border-purple-500 w-3/5"></div>

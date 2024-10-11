@@ -31,7 +31,7 @@
     height: 100%;
 }
 
-.bg-header, .footer-header, .footer-cont, h2, h3, h4, h4, h6 {
+.bg-header, .footer-header, .footer-cont, .event-details, h2, h3, h4, h4, h6 {
     font-family: "Merriweather", sans-serif;
 }
 
@@ -46,3 +46,12 @@ p {
 .philosophy h3, .small-header {
     font-family: "Oswald", sans-serif;
 }
+
+.slick-slide {
+    margin: 0 3px;
+}
+ .slick-track {
+    display: flex;
+    gap: 5px;
+ }
+

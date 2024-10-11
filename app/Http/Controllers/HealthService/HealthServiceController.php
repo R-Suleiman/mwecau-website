@@ -19,4 +19,8 @@ class HealthServiceController extends Controller
     public function events() {
         return view('health-center.events');
     }
+
+    public function viewEvent() {
+        return view('health-center.view-event');
+    }
 }

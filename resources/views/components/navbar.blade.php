@@ -174,20 +174,23 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Academics
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu ">
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle " i="faculty" href="#">Faculties</a>
-                                    <ul class="dropdown-menu" id="sub-faculty">
+                                    <a class="dropdown-item dropdown-toggle" id="faculty" href="#">Faculties</a>
+                                    <ul class="dropdown-menu" class="sub-nav" id="sub-faculty">
                                         @foreach ($faculties as $faculty)
                                             @if ($faculty['faculty_id'] !== '0')
-                                                <li><a class="dropdown-item"
-                                                        href="{{ route('faculty', $faculty['faculty_name']) }}">{{ $faculty['faculty_name'] }}
-                                                        ({{ $faculty['faculty_short_name'] }})
-                                                    </a></li>
+                                                <li class="sub-nav2">
+                                                    <a class="dropdown-item"
+                                                       href="{{ route('faculty', $faculty['faculty_name']) }}">
+                                                        {{ $faculty['faculty_name'] }} ({{ $faculty['faculty_short_name'] }})
+                                                    </a>
+                                                </li>
                                             @endif
                                         @endforeach
                                     </ul>
                                 </li>
+
                                 <li class="dropdown-item">
                                     <a href="{{ route('academics') }}">Programmes</a>
                                 </li>
@@ -265,7 +268,7 @@
                                     <a href="{{ route('IT.services') }}">ICT Sevices</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="{{route('health.center')}}">Health Center Services</a>
+                                    <a href="{{route('health.index')}}">Health Center Services</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a href="#">Guidance and Counseling</a>

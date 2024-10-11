@@ -8,7 +8,7 @@
     <img src="{{ asset('img/site banners/BANNER COMPUTER.jpg') }}" alt="banner" class="w-100">
 </div>
 
-    {{-- Services --}}
+    {{-- Events --}}
     <section class="w-full px-4 py-20 mb-4 flex flex-col items-center bg-neutral-100">
         <div class="flex flex-col items-center w-max mb-4">
             <h2 class="uppercase text-2xl text-center text-blue-800">Hospital Events</h2>
@@ -17,7 +17,7 @@
 
         <div class="my-4 w-fit justify-center flex p-4 flex-wrap flex-col items-center lg:flex-row ">
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
-                <a href="">
+                <a href="{{route('health.view-event', 'Treatment')}}">
                     <div class="w-full mb-2 overflow-hidden">
                         <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
