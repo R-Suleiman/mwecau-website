@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Footer;
 use App\Models\Pdf;
 use App\Models\About;
 use App\Models\Document;
@@ -54,6 +55,7 @@ class HomeController extends Controller
         $partnersImages = Image::where('image_section', 'about-partners')->get();
 
         $images = Image::all();
+        $youtubeLink = Footer::where('category', 'youtube-link')->first();
         $UniversityEvents = Event::all();
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
@@ -61,6 +63,7 @@ class HomeController extends Controller
             'latestEvent',
             'UniversityEvents',
             'images',
+            'youtubeLink',
             'announcements',
             'galleryImages',
             'partnersImages',

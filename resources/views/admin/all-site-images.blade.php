@@ -4,8 +4,8 @@
     <div class="container mt-5">
         <div class="text-end">
             <a href="{{ route('site.images') }}">
-                <button class="btn btn-primary"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Add
-                    New</button></a>
+                <button class="btn btn-primary"> <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                    <i class="fa fa-plus"></i> New</button></a>
         </div>
 
         <x-messages />
@@ -17,8 +17,15 @@
                         <div class="card h-100">
                             <div class="card-header">{{ $image->header }}</div>
                             <div class="card-body">
-                                <img src="{{ asset('/images/pageImages/' . $image->image) }}" class="img-fluid"
-                                    alt="{{ $image->header }}">
+                                @if ($image->type == 'image')
+                                    <img src="{{ asset('images/pageImages/' . $image->image) }}" class="d-block w-100"
+                                        alt="{{ $image->header }}" />
+                                @elseif ($image->type == 'video')
+                                    <video width="100%" autoplay loop muted>
+                                        <source src="{{ asset('images/pageImages/' . $image->image) }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                @endif
                                 <div class="mt-3 d-flex mx-3">
                                     <a href="{{ route('admin.update.image', [$image->id]) }}">
                                         <button class="btn btn-warning mt-2 mx-2">Change</button>

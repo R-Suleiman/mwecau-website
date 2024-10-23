@@ -12,9 +12,9 @@
 
 <body>
     @if ($pageId && $pageId === 'home')
-    <x-health-center.health-center-index-nav />
+        <x-health-center.health-center-index-nav />
     @else
-    <x-health-center.health-center-nav />
+        <x-health-center.health-center-nav />
     @endif
 
     <main>

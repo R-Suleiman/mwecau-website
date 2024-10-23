@@ -35,6 +35,7 @@
                         <option value="about-mwecau">Mwenge Catholic Univeristy</option>
                         <option value="popular-links">Popular Links</option>
                         <option value="contact">Contact</option>
+                        <option value="youtube-link">Live-stream Link</option>
                     </select>
 
                     @error('category')

@@ -43,7 +43,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         @if ($postgraduateTimetable)
-                            <li class="dropdown-submenu">
+                            <li class="dropdown-item">
                                 <a target="_blank" style="border: none; color: black"
                                     href="{{ route('uni-pdf-preview', $postgraduateTimetable->file) }}">Postgraduate</a>
                             </li>
@@ -69,7 +69,7 @@
                         Joining instructions
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
+                        <li class="dropdown-item">
                             <a target="_blank" style="border: none; color: black"
                                 href="{{ route('uni-pdf-preview', $postgraduateJoiningInstruction->file) }}">Postgraduate</a>
                         </li>
@@ -90,7 +90,7 @@
                         Fee Structure
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
+                        <li class="dropdown-item">
                             <a target="_blank" style="border: none; color: black"
                                 href="{{ route('uni-pdf-preview', $postgraduateFeeStructure->file) }}">Postgraduate</a>
                         </li>

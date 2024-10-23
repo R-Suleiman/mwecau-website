@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AcademicsController;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(AcademicsController::class)->group(function(){
     Route::get('/academics', 'academicsJson');
+});
+
+Route::controller(StaffController::class)->group(function(){
+    Route::post('/staff-Photo', 'staffPhoto');
 });
 
 Route::controller(ApiController::class)->group(function(){

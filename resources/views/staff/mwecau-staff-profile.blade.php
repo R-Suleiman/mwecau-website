@@ -23,29 +23,21 @@
                 {{-- <h3 class="title">Staff Profile</h3> --}}
             </div>
 
+            {{-- Hidden form to request photo --}}
+            <form id="photoForm">
+                @csrf
+                <input type="hidden" name="id" value="{{ $staff_details['person_id'] }}">
+            </form>
+
+
             <div class="container-fluid mt-5 staff-container">
                 <div class="row mb-5 ">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card shadow-lg darkMode">
                             <div class="card-body">
-                                @if ($staff_details['photo'] === '')
-                                    @if ($staff_details['gender'] === 'M')
-                                        <div class="text-center mb-4">
-                                            <img src="{{ asset('../img/staff profiles/Male_Avatar.jpg') }}"
-                                                class="img-fluid rounded-circle w-50 " alt="staff photo">
-                                        </div>
-                                    @else
-                                        <div class="text-center mb-4">
-                                            <img src="{{ asset('../img/staff profiles/female_avatar.jpg') }}"
-                                                class="img-fluid rounded-circle w-50 " alt="staff photo">
-                                        </div>
-                                    @endif
-                                @else
-                                    <div class="text-center mb-4">
-                                        <img src="{{ $staff_details['photo'] }}" class="img-fluid rounded-circle w-50 "
-                                            alt="staff photo">
+                            {{-- photo section --}}
+                                    <div class="text-center mb-4" id="picture" data-gender="{{$staff_details['gender']}}">
                                     </div>
-                                @endif
 
                                 <div class="card-text text-center ">
                                     <span>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}

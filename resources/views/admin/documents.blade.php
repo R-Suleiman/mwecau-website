@@ -24,6 +24,7 @@
             <div class="col-5 mt-3 mb-5">
                 <button class="btn btn-danger" onclick="resetFilters()">Reset Filters</button>
             </div>
+            <x-messages />
             <table class="myTable table table-active table-hover text-dark table-responsive table-striped">
                 <thead>
                     <tr class="favbg">
@@ -40,14 +41,19 @@
                                 <td>{{ $document->type }}</td>
                                 <td class="justify-content-evenly d-lg-flex">
                                     <a target="_blank" href="{{ route('uni-pdf-preview', $document->file) }}">
-                                        <button class="btn btn-primary">Preview Attachment</button>
+                                        <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                    </a>
+
+                                    <a href="{{ route('admin.edit.pdf', $document->id) }}">
+                                        <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
                                     </a>
 
                                     <form action="{{ route('admin.delete.pdf', $document->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger"
-                                            onclick="return confirm('Are you sure you want to delete this document?')">Delete</button>
+                                            onclick="return confirm('Are you sure you want to delete this document?')"> <i
+                                                class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

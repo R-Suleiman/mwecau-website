@@ -21,12 +21,30 @@
             @foreach ($images as $index => $image)
                 @if ($image->page == 'home' && $image->image_section == 'homeslider')
                     <div class="{{ $index === 0 ? 'active' : '' }}">
-                        <img src="{{ asset('images/pageImages/' . $image->image) }}" class="d-block w-100"
-                            alt="{{ $image->header }}" />
+                        @if ($image->type == 'image')
+                            <img src="{{ asset('images/pageImages/' . $image->image) }}" class="d-block w-100"
+                                alt="{{ $image->header }}" />
+                        @elseif ($image->type == 'video')
+                            <div class="vid">
+                                <video width="100%" autoplay loop muted>
+                                    <source src="{{ asset('images/pageImages/' . $image->image) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="overlay">
+                                    <div class="center-div">
+                                        <div class="text-white text-center">
+                                            <h1>{{ $image->header }}</h1>
+                                            <p>{{ $image->sub_header }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 @endif
             @endforeach
-        @endif --}}
+        @endif
+
     </div>
 
 
@@ -62,61 +80,63 @@
     </section>
 
     <!-- news and updates section -->
-
-    <div class="container">
-        <h4>Latest News and Updates</h4>
-        <div class="news-main-div" style="width: 100%;">
-            <div class="news-small-div" style="width: 100%">
-                {{-- <h5 class="favColor">Latest</h5> --}}
-                <div class="card border-0" style="width: 100%">
-                    <img class="img-fluid w-75 text-center" src="{{ asset('img/LATEST1.jpg') }}" alt=""
-                        style="border: 1px solid #513f83; border-radius: 7px;">
-                    @if ($announcements)
-                        @foreach ($announcements->take(1) as $event)
-                            <div class="card-body">
-                                <h6 class="card-title text-uppercase fw-bold favColor">
-                                    <a href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
-                                </h6>
-                                <p class="card-text fst-italic">{!! Str::limit($event->description, 50) !!}</p>
+    <section>
+        <div class="container">
+            <h4>Latest News and Updates</h4>
+            <div class="news-main-div" style="width: 100%;">
+                <div class="news-small-div" style="width: 100%">
+                    {{-- <h5 class="favColor">Latest</h5> --}}
+                    <div class="card border-0" style="width: 100%">
+                        <img class="img-fluid w-75 text-center" src="{{ asset('img/LATEST1.jpg') }}" alt=""
+                            style="border: 1px solid #513f83; border-radius: 7px;">
+                        @if ($announcements)
+                            @foreach ($announcements->take(1) as $event)
+                                <div class="card-body">
+                                    <h6 class="card-title text-uppercase fw-bold favColor">
+                                        <a
+                                            href="{{ route('announcement-details', [$event->name]) }}">{{ $event->name }}</a>
+                                    </h6>
+                                    <p class="card-text fst-italic">{!! Str::limit($event->description, 50) !!}</p>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+                <div class="news-small-div" style="width: 100%;">
+                    <h5 class="favColor">Other University Updates</h5>
+                    @if ($announcements->count() > 0)
+                        @foreach ($announcements->take(4) as $UniversityEvent)
+                            <div class="card mb-2" style="width: 100%">
+                                <div class="card-body">
+                                    <h6 class="card-title favColor">
+                                        <img src="{{ asset('img/new_icon.png') }}" alt=""
+                                            style="width: 40px; vertical-align: middle;">
+                                        <a
+                                            href="{{ route('announcement-details', [$UniversityEvent->name]) }}">{{ $UniversityEvent->name }}</a>
+                                    </h6>
+                                    <small class="fw-bold text-secondary">{{ $UniversityEvent->posting_date }}</small>
+                                </div>
                             </div>
                         @endforeach
-                    @endif
-                </div>
-            </div>
-            <div class="news-small-div" style="width: 100%;">
-                <h5 class="favColor">Other University Updates</h5>
-                @if ($announcements->count() > 0)
-                    @foreach ($announcements->take(4) as $UniversityEvent)
-                        <div class="card mb-2" style="width: 100%">
-                            <div class="card-body">
-                                <h6 class="card-title favColor">
-                                    <img src="{{ asset('img/new_icon.png') }}" alt=""
-                                        style="width: 40px; vertical-align: middle;">
-                                    <a
-                                        href="{{ route('announcement-details', [$UniversityEvent->name]) }}">{{ $UniversityEvent->name }}</a>
-                                </h6>
-                                <small class="fw-bold text-secondary">{{ $UniversityEvent->posting_date }}</small>
-                            </div>
+                    @else
+                        <div>
+                            <span class="alert alert-warning" role="alert"><strong>No news currently
+                                    posted.</strong></span>
                         </div>
-                    @endforeach
-                @else
-                    <div>
-                        <span class="alert alert-warning" role="alert"><strong>No news currently
-                                posted.</strong></span>
+                    @endif
+                    <div class="text-end mt-5">
+                        <a href="{{ route('university.news.updates') }}"><button class="newsBtn text-end"> View all News <i
+                                    class="fa fa-arrow-right"></i></button></a>
                     </div>
-                @endif
-                <div class="text-end mt-5">
-                    <a href="{{ route('university.news.updates') }}"><button class="newsBtn text-end"> View all News <i
-                                class="fa fa-arrow-right"></i></button></a>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
     <!-- why choose MWECAU section -->
     <section>
-        <div class="container my-5  text-center rounded" data-aos="fade-up" data-aos-duration="2000">
+        <div class="container my-5  text-center rounded">
+            {{-- <div class="container my-5  text-center rounded" data-aos="fade-up" data-aos-duration="2000"> --}}
             <div class="row g-2 justify-content-around align-items-start">
                 <div class="mb-5 ">
                     <div class="underline">
@@ -126,7 +146,7 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
-                    <div class="mission-card card darkMode">
+                    <div class="whyChooseUS-card card">
                         <div class="card-body">
                             <i class="favColor fa fa-users display-3"></i>
                             <div class="card-text mt-5">
@@ -150,7 +170,7 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
-                    <div class="mission-card card darkMode">
+                    <div class="whyChooseUS-card card">
                         <div class="card-body">
                             <i class="favColor fa fa-file-invoice-dollar display-3"></i>
                             <div class="card-text mt-5">
@@ -171,7 +191,7 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-4 mb-4">
-                    <div class="mission-card card darkMode">
+                    <div class="whyChooseUS-card card">
                         <div class="card-body">
                             <i class="favColor fa fa-graduation-cap display-3"></i>
                             <div class="card-text mt-5 ">
@@ -224,14 +244,14 @@
                 </div>
 
                 @if (count($images) > 0)
-                    @php
+                    {{-- @php
                         // Array of animation classes
                         $animations = ['fade-down', 'fade-right', 'fade-up', 'fade-down', 'fade-in'];
-                    @endphp
+                    @endphp --}}
                     @foreach ($images as $index => $image)
                         @if ($image->page == 'home' && $image->image_section == 'homeprograms')
-                            <div class="col-md-4 mb-4" data-aos="{{ $animations[$index % count($animations)] }}"
-                                data-aos-duration="2000">
+                            {{-- <div class="col-md-4 mb-4" data-aos="{{ $animations[$index % count($animations)] }}" --}}
+                            <div class="col-md-4 mb-4" data-aos-duration="2000">
                                 <div class="card bottomBorder studyingAtMwenge darkMode">
                                     <div class="card-body">
                                         <img src="{{ asset('/images/pageImages/' . $image->image) }}"
@@ -327,6 +347,29 @@
 
         </div>
     </section>
+{{--
+    <section>
+        <div class="bg-primary">
+<h1>aw</h1>
+        </div>
+    </section> --}}
+
+    @if ($youtubeLink)
+        <section>
+            <div class="container">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="ratio ratio-16x9 youtubeCards">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/{{ $youtubeLink->link }}" frameborder="0"
+                                allowfullscreen></iframe>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
 
     <!-- gallery -->
     <div class="container-fluid mt-5 mb-5">
