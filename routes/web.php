@@ -39,6 +39,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/research', 'research')->name('research');
     Route::get('IT-services', 'itServices')->name('IT.services');
     Route::get('/library', 'library')->name('library');
+    Route::get('/gallery', 'gallery')->name('university.gallery');
     Route::get('/news/updates', 'newsUpdates')->name('university.news.updates');
     Route::get('/university-events', 'uniEvents')->name('university.events');
     Route::get('/uni-pdf-preview/{id}', 'UniPdfsPreview')->name('uni-pdf-preview');
