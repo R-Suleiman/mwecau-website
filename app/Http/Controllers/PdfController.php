@@ -66,11 +66,40 @@ class PdfController extends Controller
         $types = Document::distinct()->pluck('type')->toArray();
         return view('admin.documents', compact('documents', 'types'));
     }
+    public function edit($id)
+    {
+        $document = Document::find($id);
+        return view('admin.documents.edit-document', compact('document'));
+    }
+    public function update(Request $request, $id)
+    {
+        $document = Document::find($id);
+
+        // Check if a new file is uploaded
+        if ($request->hasFile('file')) {
+
+            $existingFile = public_path('/documents/pdfs/' . $document->file);
+            if (File::exists($existingFile)) {
+                File::delete($existingFile);
+            }
+
+            $newFileName = time() . '-' . $request->file('file')->getClientOriginalName();
+            $request->file('file')->move(public_path('/documents/pdfs/'), $newFileName);
+
+            $document->file = $newFileName;
+        }
+
+        // Update other fields
+        $document->update($request->except('file'));
+
+        return redirect()->route('admin.documents.pdf')->with('message', 'Updated successfully');
+    }
+
     public function destroyDocument($id)
     {
         $destroyFile = Document::findOrFail($id);
         // Checking if the image exists, then deleting it
-        $existingFile = public_path('/documents/pdfs/' . $destroyFile->file);
+        $existingFile = public_path('/documents/pdfs/'  . $destroyFile->file);
         if (File::exists($existingFile)) {
             File::delete($existingFile);
         }

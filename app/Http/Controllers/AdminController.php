@@ -46,19 +46,17 @@ class AdminController extends Controller
     public function uploadPageImage(Request $request)
     {
         $request->validate([
-            'header' => ['string', 'max:255', 'nullable'],
-            'sub_header' => ['max:255', 'string', 'nullable'],
-            'description' => ['max:255', 'string', 'nullable'],
-            'page' => ['required', 'max:255', 'string'],
-            'image_section' => ['required', 'max:255', 'string'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,JPG,svg,gif|max:12288',
+            'header' => ['max:255', 'nullable'],
+            'sub_header' => ['max:255', 'nullable'],
+            'description' => ['max:255', 'nullable'],
+            'page' => ['required', 'max:255'],
+            'image_section' => ['required', 'max:255'],
+            'type' => ['required', 'max:255'],
+            'image' => 'required|mimes:jpeg,png,jpg,JPG,svg,gif|max:12288',
             'link' => ['nullable'],
-
-        ], [
-            'image.dimensions' => 'The image dimensions are not within the allowed range. Please upload an image between 100x100 and 2000x2000 pixels.',
         ]);
 
-        //logic to process uplaoded image
+        //logic to process uploaded image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '-' . $image->getClientOriginalName();
@@ -72,14 +70,32 @@ class AdminController extends Controller
         $newPageImage->description = $request->description;
         $newPageImage->page = $request->page;
         $newPageImage->image_section = $request->image_section;
+        $newPageImage->type = $request->type;
         $newPageImage->image = $imageName;
         $newPageImage->link = $request->link;
 
-        //saving records
-        $newPageImage->save();
-        Alert::success('Message', 'Image uploaded successfully');
+        //saving records with error handling
+        try {
+            if ($newPageImage->save()) {
+                // Retrieve the saved data to verify it
+                $savedData = Image::find($newPageImage->id);
+                \Log::info('Saved data: ' . json_encode($savedData->toArray()));
+                Alert::success('Message', 'Image uploaded successfully');
+            } else {
+                Alert::error('Error', 'Failed to save image data');
+                \Log::error('Failed to save image data: ' . json_encode($newPageImage->toArray()));
+            }
+        } catch (\Exception $e) {
+            Alert::error('Error', 'An error occurred while saving the image data');
+            \Log::error('Exception while saving image data: ' . $e->getMessage());
+        }
 
         return redirect()->back();
+    }
+    public function allImages()
+    {
+        $images = Image::orderBy('id', 'desc')->get();
+        dd($images);
     }
     public function allSiteImages()
     {
@@ -96,7 +112,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'header' => ['max:255'],
-            'image' => 'image|mimes:jpeg,png,jpg,gif'
+            'sub_header' => ['max:255'],
+            'type' => ['required'],
+            'image' => 'mimes:jpeg,png,jpg,gif,mp4'
         ]);
 
         $changeImage = Image::findOrFail($id);
@@ -116,10 +134,12 @@ class AdminController extends Controller
         }
 
         $changeImage->header = $request->header;
+        $changeImage->sub_header = $request->sub_header;
+        $changeImage->type = $request->type;
 
         $changeImage->update();
 
-        Alert::success('success', 'Image Updated successfully');
+        Alert::success('success', 'Updated successfully');
 
         return redirect()->back();
     }
@@ -128,14 +148,14 @@ class AdminController extends Controller
         $deleteImage = Image::findOrFail($id);
 
         // Deleting existing image
-        $existingImage = public_path('images/pageImages' . $deleteImage->picture);
+        $existingImage = public_path('/images/pageImages/' . $deleteImage->picture);
 
         if (File::exists($existingImage)) {
             File::delete($existingImage);
         }
         $deleteImage->delete();
 
-        return redirect()->back()->with('message', 'Image deleted successfully');
+        return redirect()->back()->with('message', 'Selected record Successfully deleted');
     }
     //returning view for specific course details
     public function courseDetails($programme_name)
@@ -153,7 +173,7 @@ class AdminController extends Controller
         return view('admin.list-of-programs', compact('listOfPrograms'));
     }
     // returning specific staff profile
-    public function staffProfile($first_name, $last_name)
+    public function staffProfile($first_name, $last_name, )
     {
         return view('admin.staff-profile', compact('first_name', 'last_name'));
     }

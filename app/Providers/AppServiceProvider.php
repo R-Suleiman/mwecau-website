@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        // $faculties = null;
+        // $faculties = null;clea
         try {
             // Make the API request
             $faculties = Cache::remember('faculty_data', 43200, function () {

@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <!-- admission programs -->
+    <!-- admission programmes -->
     <section>
         <div class="admissionOverlay container my-5 py-5 text-center rounded" data-aos="fade-up" data-aos-duration="3000">
             <div class="row justify-content-around align-items-start">
@@ -103,7 +103,7 @@
                                 </p>
                                 <a href="{{ route('programmeCategory', 'post-graduate') }}"> <button
                                         class="programsBtn">Post-Graduate
-                                        Programs <i class="fas fa-arrow-right"></i></button></a>
+                                        Programmes <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                                 </p>
                                 <a href="{{ route('programmeCategory', 'undergraduate') }}"><button
                                         class="programsBtn">Undergraduate
-                                        Programs <i class="fas fa-arrow-right"></i></button></a>
+                                        Programmes <i class="fas fa-arrow-right"></i></button></a>
                             </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                                     find the right one for you.
                                 </p>
                                 <a href="{{ route('programmeCategory', 'non-degree') }}"> <button
-                                        class="programsBtn">Non-Degree Programs
+                                        class="programsBtn">Non-Degree Programmes
                                         <i class="fas fa-arrow-right"></i></button></a>
 
                             </div>

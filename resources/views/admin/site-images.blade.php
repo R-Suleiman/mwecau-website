@@ -3,10 +3,10 @@
     <div class="container mb-4 mt-4">
         <h2 class="text-center fw-semibold favColor"> {{ 'Site Image Management' }} </h1>
 
-            <div class="text-end">
+            <div class="text-start">
                 <a href="{{ route('admin.all.site.images') }}">
                     <button class="btn btn-primary"> <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                        Back</button></a>
+                    </button></a>
             </div>
             <form action="{{ route('upload.page.image') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -85,6 +85,20 @@
                         @enderror
                     </div>
 
+                    <div class="col-12 col-md-6 col-lg-6 mb-4">
+                        <label class="mb-3 " for="type">{{ 'Media Type' }}</label>
+                        <select class="form-select @error('type') is-invalid @enderror" name="type" id="type">
+                            <option value="">Select Media type</option>
+                            <option value="image">Image</option>
+                            <option value="video">Video</option>
+
+                            @error('type')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+
                     <textarea name="description" id="description" cols="50" rows="5"
                         class="form-control darkMode @error('description') @enderror is-invalid" placeholder="Event Description"></textarea>
 
@@ -120,8 +134,9 @@
                             </span>
                         @enderror
                     </div>
+                    <button type="submit" class="admissionBtn">{{ 'Post Image' }}</button>
+                    <a href="{{ route('all-images') }}">dd images</a>
                 </div>
-                <button type="submit" class="admissionBtn">{{ 'Post Image' }}</button>
             </form>
     </div>
 @endsection

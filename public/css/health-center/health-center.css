@@ -5,6 +5,9 @@
     box-sizing: border-box;
 }
 
+.favFont {
+    font-family: "Merriweather", serif;
+}
 .overlay {
     position: absolute;
     top: 0;
@@ -50,8 +53,29 @@ p {
 .slick-slide {
     margin: 0 3px;
 }
- .slick-track {
+
+.slick-track {
     display: flex;
-    gap: 5px;
- }
+    gap: 10px;
+}
+
+.story {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.slick-dots li button::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    border: 2px solid #8f09dd; /* Tailwind orange-500 */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active button::before {
+    background-color: #8f09dd; /* Tailwind orange-500 */
+    border-color: #8f09dd;
+}
 

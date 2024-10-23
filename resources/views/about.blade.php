@@ -12,13 +12,13 @@
     </div> --}}
     <div class="vid">
         <video width="100%" autoplay loop muted>
-            <source src="{{asset('videos/Sequence 01.mp4')}}" type="video/mp4">
+            <source src="{{ asset('videos/Sequence 01.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="overlay">
             <div class="center-div">
                 <div class="text-white text-center">
-                    <h1 >About Mwenge Catholic University</h1>
+                    <h1>About Mwenge Catholic University</h1>
                     <p>We prepare students to make meaningful contributions to society as leaders in a complex world</p>
                 </div>
             </div>
@@ -220,48 +220,33 @@
 
     <!-- video -->
     <div class="container mb-5">
-        <div class="row">
-            <div class="col-12 col-lg 3 col-md-2 mb-3">
-                <div class="card youtubeCards">
-                    <div class="ratio ratio-16x9">
-
-                        <iframe width="100%" height="550"
-                            src="https://www.youtube.com/embed/kaI0KRVuo54?si=0vCoGxFQEUhnK68e"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg 3 col-md-2">
-                <div class="card youtubeCards">
-                    <div class="ratio ratio-16x9">
-
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/87dhot_YHHs?si=x-VxTsJtzanNT9N6"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
+        <div class="row g-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="ratio ratio-16x9 youtubeCards">
+                    <iframe src="https://www.youtube.com/embed/kaI0KRVuo54?si=pQOjsZArWE8OAlQ6"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <div class="col-12 col-lg 3 col-md-2">
-                <div class="card youtubeCards" style="width: 100%;">
-                    <!-- Video Embed -->
-                    <div class="ratio ratio-16x9">
-
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/gO9flfYARIA?si=pY5WodV24AVNBbeE"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-                    </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="ratio ratio-16x9 youtubeCards">
+                    <iframe src="https://www.youtube.com/embed/87dhot_YHHs?si=x-VxTsJtzanNT9N6"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
 
-
+            <div class="col-12 col-md-12 col-lg-4">
+                <div class="ratio ratio-16x9 youtubeCards">
+                    <iframe src="https://www.youtube.com/embed/gO9flfYARIA?si=pY5WodV24AVNBbeE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
     </div>
 

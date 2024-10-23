@@ -30,7 +30,7 @@ $(document).ready(function () {
       },
     ],
   })
-}) 
+})
 
 $(document).ready(function () {
   $('.gallery').slick({

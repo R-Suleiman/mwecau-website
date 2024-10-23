@@ -140,3 +140,56 @@ otherBtn.addEventListener('click', () => {
     otherTable.style.display = 'block'
     journalTable.style.display = 'none'
 })
+
+//  photo request
+form = document.getElementById('photoForm')
+const photo = document.getElementById('picture')
+
+    window.onload = function() {
+        autoSubmitForm();
+    };
+
+    function autoSubmitForm() {
+        let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        let formData = new FormData(form);
+
+        fetch('/api/staff-Photo', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json',
+            },
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const gender = photo.dataset.gender
+            if(data.user_photo !== '') {
+                photo.innerHTML = `
+            <img src="${data.user_photo}" class="img-fluid rounded-circle w-50" alt="staff photo">
+            `
+            } else {
+                if(gender == 'M') {
+                    photo.innerHTML = `
+            <img src="../img/staff profiles/Male_Avatar.jpg" class="img-fluid rounded-circle w-50 " alt="staff photo">
+            `
+                } else {
+                    photo.innerHTML = `
+                    <img src="../img/staff profiles/female_avatar.jpg" class="img-fluid rounded-circle w-50 " alt="staff photo">
+                    `
+                }
+            }
+
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            console.log(error.message)
+        });
+    }
+
+

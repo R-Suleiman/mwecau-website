@@ -7,7 +7,7 @@ const getStatistics = async () => {
      console.log(statistics)
      return statistics
 }
-
+ 
 const displayStatistics = async () => {
     const statistics = await getStatistics()
     if(statistics) {
