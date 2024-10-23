@@ -5,6 +5,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HealthService\HealthServiceController;
+use App\Http\Controllers\Project\ProjectsController;
 use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -59,10 +60,10 @@ Route::controller(FooterController::class)->middleware(['auth', 'admin'])->prefi
 //admin routes
 Route::controller(AdminController::class)->prefix('admin')->middleware('admin')->group(function () {
     Route::get('dashboard', 'adminHome')->name('admin.dashboard');
-
+    Route::get('all-images', 'allImages')->name('all-images');
     //webiste page management
-    Route::get('manage-site-images', 'siteImage')->name('site.images');
-    Route::post('manage-site-images', 'uploadPageImage')->name('upload.page.image');
+    Route::get('/manage-site-images', 'siteImage')->name('site.images');
+    Route::post('/upload-site-images', 'uploadPageImage')->name('upload.page.image');
     Route::get('/all-site-images', 'allSiteImages')->name('admin.all.site.images');
     Route::get('/image-update/{id}', 'changeImageView')->name('admin.update.image');
     Route::post('/change-image/{id}', 'changeImage')->name('admin.change.image');
@@ -171,8 +172,8 @@ Route::controller(PdfController::class)->group(function () {
         Route::get('university-documents', 'documents')->name('admin.documents.pdf');
         Route::get('pdf', 'postPdfView')->name('admin.post.pdf');
         Route::post('post-pdf', 'postPdf')->name('admin.new.pdf');
-        Route::get('edit-pdf', 'editDocumentView')->name('admin.edit.pdf');
-        Route::put('edit-pdf', 'updatePDF')->name('admin.update.pdf');
+        Route::get('edit-pdf/{id}', 'edit')->name('admin.edit.pdf');
+        Route::put('update-pdf/{id}', 'update')->name('admin.update.pdf');
         Route::delete('delete-pdf/{id}', 'destroyDocument')->name('admin.delete.pdf');
     });
     //Generating PDF
@@ -190,16 +191,22 @@ Route::controller(AlumniController::class)->group(function () {
 });
 // });
 
+//HEALTH CENTER RELATED ROUTES
 // Route::domain('https://health.mwecau.ac.tz/')->group(function () {
-
 Route::controller(HealthServiceController::class)->group(function () {
     Route::get('/health-center', 'index')->name('health.index');
     Route::get('about-us', 'aboutUs')->name('health-center-about-us');
     Route::get('department', 'department')->name('health-center-department');
     Route::get('/health-center/services', 'services')->name('health.services');
-    Route::get('service', 'service')->name('health-center-service');
     Route::get('/health-center/events', 'events')->name('health.events');
     Route::get('/health-center/events/{eventName}', 'viewEvent')->name('health.view-event');
+});
+// });
+
+//PROJECTS RELATED ROUTES
+// Route::domain('htts://projects.mwecau.ac.tz')->name('projects-')->group(function () {
+Route::controller(ProjectsController::class)->group(function () {
+    Route::get('projects-pro', 'index')->name('index');
 });
 // });
 

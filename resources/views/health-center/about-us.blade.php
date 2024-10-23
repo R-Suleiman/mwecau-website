@@ -12,7 +12,8 @@
                         <div class="md:mt-48">
                             <h3 class="text-gray-500 mb-11 font-semibold uppercase opacity-85">about us</h3>
                             <h1 class="favFont lg:text-6xl tracking-wider font-extralight text-wrap">Why We are the Best
-                                <span class="text-purple-600">Dispensary?</span>
+                                <span
+                                    class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-teal-500 to-purple-400">Dispensary?</span>
                             </h1>
                         </div>
                         <div class="lg:mt-10 text-gray-600">
@@ -23,12 +24,41 @@
                     </div>
                     <div class="bg--500 p-4 text-white">
                         <img src="{{ asset('img/health-center/about-1.webp') }}" alt=""
-                            class="object-cover rounded-3xl">
+                            class="object-cover rounded-3xl select-none">
                     </div>
                 </div>
             </div>
         </div>
 
+        <section class="mt-10 rounded-lg border-2 border-t-purple-600">
+            <div class="relative lg:h-[600px] bg-fixed bg-no-repeat bg-cover"
+                style="background-image: url('{{ asset('img/mwecau.jpg') }}');">
+                <div class="absolute inset-0 bg-black opacity-60 pt-10"></div> <!-- Overlay for better text visibility -->
+                <div class="container mx-auto relative z-10 py-20 content-center">
+                    <h2 class="text-3xl font-bold text-center text-white mb-8">Our Services</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-semibold mb-2">Service 1</h3>
+                            <p class="text-gray-700">Description of service 1 offered by the hospital.</p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-semibold mb-2">Service 2</h3>
+                            <p class="text-gray-700">Description of service 2 offered by the hospital. Lorem ipsum dolor
+                                sit,
+                                amet consectetur adipisicing elit. Magni, omnis.
+
+
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-semibold mb-2">Service 3</h3>
+                            <p class="text-gray-700">Description of service 3 offered by the hospital.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="w-9/12 mx-auto mt-11">
             <div class=" mt-11">
@@ -90,6 +120,7 @@
                 </div>
             </div>
 
+            {{-- our team --}}
             <div class="mt-28">
                 <div class="text-center">
                     <h5 class="favFont mb-10 col-span-full text-gray-400 uppercase">Meet our team</h5>
@@ -97,9 +128,20 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
                     <div class="flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg">
-                        <div class="m-2.5 overflow-hidden rounded-md h-80 flex justify-center items-center">
+                        <div class="overflow-hidden group relative m-2.5 rounded-md h-80 flex justify-center items-center">
                             <img class="w-full h-full object-cover" src="{{ asset('img/health-center/about-3.webp') }}"
                                 alt="profile-picture" />
+
+                            <!-- Social Media Icons on Hover -->
+                            <div
+                                class="absolute inset-0 flex justify-center items-center space-x-4 bg-gradient-to-t from-emerald-200 to-transparent bg-opacity-90  opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <a href="#"><i
+                                        class="fab fa-facebook-f text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                <a href="#"><i
+                                        class="fab fa-twitter text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                <a href="#"><i
+                                        class="fab fa-instagram text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                            </div>
                         </div>
                         <div class="p-6">
                             <h4 class="mb-1 text-xl font-semibold text-slate-800">
@@ -114,15 +156,29 @@
                             <button class="text-gray-800 hover:text-pink-700 font-semibold">
                                 Read More
                             </button>
-                            <i
-                                class="fa fa-arrow-right text-white transition-all ease-in rounded-3xl bg-emerald-400 hover:bg-pink-600 px-3 py-2"></i>
+                            <a href="#">
+                                <i
+                                    class="fa fa-arrow-right text-center text-white text-xl w-[30px] h-[30px] rounded-full bg-emerald-400 hover:bg-pink-600 transition-all ease-in px-2 py-2">
+                                </i>
+                            </a>
+
                         </div>
                     </div>
 
                     <div class="flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg ">
-                        <div class="m-2.5 overflow-hidden rounded-md h-80 flex justify-center items-center">
+                        <div class="overflow-hidden relative group m-2.5 rounded-md h-80 flex justify-center items-center">
                             <img class="w-full h-full object-cover" src="{{ asset('img/health-center/about-4.webp') }}"
                                 alt="profile-picture" />
+                            <!-- Social Media Icons on Hover -->
+                            <div
+                                class="absolute inset-0 flex justify-center items-center space-x-4 bg-gradient-to-t from-emerald-200 to-transparent bg-opacity-90  opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <a href="#"><i
+                                        class="fab fa-facebook-f text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                <a href="#"><i
+                                        class="fab fa-twitter text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                <a href="#"><i
+                                        class="fab fa-instagram text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                            </div>
                         </div>
                         <div class="p-6">
                             <h4 class="mb-1 text-xl font-semibold text-slate-800">
@@ -137,15 +193,29 @@
                             <button class="text-gray-800 hover:text-pink-700 font-semibold">
                                 Read More
                             </button>
-                            <i
-                                class="fa fa-arrow-right text-white transition-all ease-in rounded-3xl bg-emerald-400 hover:bg-pink-600 px-3 py-2"></i>
+                            <a href="#">
+                                <i
+                                    class="fa fa-arrow-right text-center text-white text-xl w-[30px] h-[30px] rounded-full bg-emerald-400 hover:bg-pink-600 transition-all ease-in px-2 py-2">
+                                </i>
+                            </a>
                         </div>
                     </div>
 
                     <div class="flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg ">
-                        <div class="m-2.5 overflow-hidden rounded-md h-80 flex justify-center items-center">
+                        <div class="overflow-hidden relative group m-2.5 rounded-md h-80 flex justify-center items-center">
                             <img class="w-full h-full object-cover" src="{{ asset('img/health-center/about-5.webp') }}"
                                 alt="profile-picture" />
+
+                            <!-- Social Media Icons on Hover -->
+                            <div
+                                class="absolute inset-0 flex justify-center items-center space-x-4 bg-gradient-to-t from-emerald-200 to-transparent bg-opacity-90  opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <a href="#"><i
+                                        class="fab fa-facebook-f text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                <a href="#"><i
+                                        class="fab fa-twitter text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                <a href="#"><i
+                                        class="fab fa-instagram text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                            </div>
                         </div>
                         <div class="p-6">
                             <h4 class="mb-1 text-xl font-semibold text-slate-800">
@@ -160,15 +230,18 @@
                             <button class="text-gray-800 hover:text-pink-700 font-semibold">
                                 Read More
                             </button>
-                            <i
-                                class="fa fa-arrow-right text-white transition-all ease-in rounded-3xl bg-emerald-400 hover:bg-pink-600 px-3 py-2"></i>
+                            <a href="#">
+                                <i
+                                    class="fa fa-arrow-right text-center text-white text-xl w-[30px] h-[30px] rounded-full bg-emerald-400 hover:bg-pink-600 transition-all ease-in px-2 py-2">
+                                </i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex justify-center items-center p-6 pt-12">
                     <button
-                        class="min-w-56 font-semibold rounded-xl bg-white py-4 px- px-9 border-2 border-gray-600 text-gray-900 hover:border-transparent text-center hover:text-white translate-x-10  transition  ease-in shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-emerald-300"
+                        class="min-w-56 font-semibold rounded-xl bg-white py-4 px- px-9 border-2 border-gray-600 text-gray-900 hover:border-transparent text-center hover:text-white translate-x-10  transition  ease-in shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-emerald-400"
                         type="button">
                         View All Doctors
                     </button>
@@ -190,36 +263,18 @@
                     <div class="w-full mx-4">
                         <div class="w-full relative mx-2 h-[550px] rounded-3xl overflow-hidden group">
                             <img src="{{ asset('img/health-center/about-3.webp') }}" alt="Image 1"
-                                class="object-cover h-full w-full">
-                            <i class="fa-regular fa-brain text-red-700 text-3xl"></i>
-
-                            <!-- Social Media Icons on Hover -->
+                                class="object-cover h-full w-full opacity-90 group-hover:opacity-70 transition-opacity duration-500">
+                            <!-- Overlay with Icons and Text -->
                             <div
-                                class="absolute inset-0 flex justify-center items-center space-x-4 bg-gradient-to-t from-pink-400 to-transparent bg-opacity-90 opa opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <a href="#"><i
-                                        class="fab fa-facebook-f text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-twitter text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-instagram text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class=" w-full mx-4">
-                        <div class="relative w-full mx-2 h-[550px] rounded-3xl overflow-hidden group">
-                            <img src="{{ asset('img/health-center/about-3.webp') }}" alt="Image 2"
-                                class="object-cover w-full h-full">
-                            <!-- Social Media Icons on Hover -->
-                            <div
-                                class="absolute inset-0 flex justify-center items-center space-x-4 bg-gradient-to-t from-purple-500 to-transparent bg-opacity-90 opa opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <a href="#"><i
-                                        class="fab fa-facebook-f text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-twitter text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-instagram text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                class="absolute inset-0 bg-gradient-to-t from-transparent to-transparent group-hover:bg-gradient-to-t group-hover:from-pink-500 bg-opacity-90 transition-all duration-500">
+                                <div class="absolute bottom-4 left-4">
+                                    <div class="p-6 rounded-xl border-transparent bg-gray-700 bg-opacity-80">
+                                        <p class="favFont uppercase text-white font-semibold tracking-wider">Neurologic
+                                            Rehabilitation
+                                        </p>
+                                        <p class="text-gray-100">Optimizing your individual abilities</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,15 +283,16 @@
                         <div class="relative w-full mx-2 h-[550px] rounded-3xl overflow-hidden group">
                             <img src="{{ asset('img/health-center/about-3.webp') }}" alt="Image 3"
                                 class="object-cover w-full h-full">
-                            <!-- Social Media Icons on Hover -->
+                            <!-- Overlay with Icons and Text -->
                             <div
-                                class="absolute inset-0 flex justify-center items-center space-x-4 bg-gradient-to-t from-pink-400 to-transparent bg-opacity-90 opa opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <a href="#"><i
-                                        class="fab fa-facebook-f text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-twitter text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-instagram text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                class="absolute inset-0 bg-gradient-to-t from-transparent to-transparent group-hover:bg-gradient-to-t group-hover:from-pink-500 bg-opacity-90 transition-all duration-500">
+                                <div class="absolute bottom-4 left-4">
+                                    <div class="p-6 rounded-xl border-transparent bg-gray-700 bg-opacity-80">
+                                        <p class="favFont uppercase text-white font-semibold tracking-wider">Brain Injuries
+                                        </p>
+                                        <p class="text-gray-100">Restoring the skills to rebuild your life</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -245,15 +301,36 @@
                         <div class="relative w-full mx-2 h-[550px] rounded-3xl overflow-hidden group">
                             <img src="{{ asset('img/health-center/about-3.webp') }}" alt="Image 3"
                                 class="object-cover w-full h-full">
-                            <!-- Social Media Icons on Hover -->
+                            <!-- Overlay with Icons and Text -->
                             <div
-                                class="absolute inset-0 rounded-xl flex justify-center items-center space-x-4 bg-gradient-to-t from-purple-500 to-transparent bg-opacity-90 opa opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <a href="#"><i
-                                        class="fab fa-facebook-f text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-twitter text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
-                                <a href="#"><i
-                                        class="fab fa-instagram text-center text-emerald-400 text-xl w-[40px] h-[40px] rounded-full bg-white hover:bg-emerald-100 px-2 py-2"></i></a>
+                                class="absolute inset-0 bg-gradient-to-t from-transparent to-transparent group-hover:bg-gradient-to-t group-hover:from-pink-500 bg-opacity-90 transition-all duration-500">
+                                <div class="absolute bottom-4 left-4">
+                                    <div class="p-6 rounded-xl border-transparent bg-gray-700 bg-opacity-80">
+                                        <p class="favFont uppercase text-white font-semibold tracking-wider">Spinal Cord
+                                            Injuries
+                                        </p>
+                                        <p class="text-gray-100">Discovering the path to independence</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full mx-4">
+                        <div class="relative w-full mx-2 h-[550px] rounded-3xl overflow-hidden group">
+                            <img src="{{ asset('img/health-center/about-3.webp') }}" alt="Image 3"
+                                class="object-cover w-full h-full">
+                            <!-- Overlay with Icons and Text -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-transparent to-transparent group-hover:bg-gradient-to-t group-hover:from-pink-500 bg-opacity-90 transition-all duration-500">
+                                <div class="absolute bottom-4 left-4">
+                                    <div class="p-6 rounded-xl border-transparent bg-gray-700 bg-opacity-80">
+                                        <p class="favFont uppercase text-white font-semibold tracking-wider">Medically
+                                            Complex Rehabilitation
+                                        </p>
+                                        <p class="text-gray-100">Finding solutions to complex needs</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -440,16 +517,8 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="flex justify-center items-center h-screen">
-            <div class="favFont w-1/1 m-3 rounded-3xl border border-gray-300 px-20 pb-32">
-                <div>
-                    <h1 class="uppercase mt-10 text-center tracking-widest text-gray-400">Schedule your visit online</h1>
-                    <p class="text-center mt-10 tracking-wide text-4xl text-wrap">
-                        Take the next step and schedule an <br> appointment today
-                    </p>
-                </div>
-            </div>
-        </div> --}}
+
+
         <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
 
     </section>

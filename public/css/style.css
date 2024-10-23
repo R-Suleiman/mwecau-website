@@ -353,11 +353,12 @@ a {
 
 /* css for explore more section starts here */
 .explore {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), #000),
-        url("../img/campus-life/0J3A0457MWECAU.JPG");
+    background: linear-gradient(rgba(0, 0, 0, 0.0), #423547),
+        url("../img/mwecau4.JPG");
     background-size: cover;
     background-position: center;
-    height: 460px;
+    background-attachment: fixed;
+    height: 700px;
     width: 100%;
     position: relative;
 }

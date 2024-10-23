@@ -19,7 +19,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="{{route('health.view-event', 'Treatment')}}">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">
@@ -31,7 +31,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">
@@ -43,7 +43,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">
@@ -55,7 +55,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">
@@ -68,7 +68,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">
@@ -80,7 +80,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">
@@ -92,7 +92,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">
@@ -104,7 +104,7 @@
             <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                 <a href="">
                     <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
                             class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                     </div>
                     <div class="w-full mt-2 p-2 text-justify">

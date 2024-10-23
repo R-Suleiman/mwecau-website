@@ -9,12 +9,15 @@ class Image extends Model
 {
     use HasFactory;
 
+    protected $table = 'images';
+
     protected $fillable = [
         'header',
         'sub_header',
         'descirption',
         'page',
         'image_section',
+        'type',
         'image',
         'link'
     ];

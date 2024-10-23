@@ -25,7 +25,7 @@
 
                             <select name="event_category" id="event_category" class="form-control darkMode">
 
-                                <option value="Event Category">{{ $event->event_category }}</option>
+                                <option value="{{ $event->event_category }}">{{ $event->event_category }}</option>
                                 <option value="academic">Academic</option>
                                 <option value="clubsOrganizations">Clubs & Organization</option>
                                 <option value="sportsEntertainment">Sports & Entertainment</option>

@@ -48,9 +48,9 @@
 
                 <p> 
                 <h3>Opening and closing of Library</h3>
-                Monday to Friday forom 09:00 AM - 10:00 PM
-                Sunday from 09:00 AM - 18:00 PM
-                Saturday and public Holiday are closed.
+                Monday to Friday from 09:00 AM - 10:00 PM,  
+                Saturday from 09:00 AM - 18:00 PM, 
+                Sunday and public Holiday are closed.
                 </p>
 
                 <p>
