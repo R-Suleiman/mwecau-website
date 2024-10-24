@@ -40,6 +40,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/research', 'research')->name('research');
     Route::get('IT-services', 'itServices')->name('IT.services');
     Route::get('/library', 'library')->name('library');
+    Route::get('/gallery', 'gallery')->name('university.gallery');
     Route::get('/news/updates', 'newsUpdates')->name('university.news.updates');
     Route::get('/university-events', 'uniEvents')->name('university.events');
     Route::get('/uni-pdf-preview/{id}', 'UniPdfsPreview')->name('uni-pdf-preview');
@@ -206,7 +207,9 @@ Route::controller(HealthServiceController::class)->group(function () {
 //PROJECTS RELATED ROUTES
 // Route::domain('htts://projects.mwecau.ac.tz')->name('projects-')->group(function () {
 Route::controller(ProjectsController::class)->group(function () {
-    Route::get('projects-pro', 'index')->name('index');
+    Route::get('/projects-pro', 'index')->name('index');
+    Route::get('/projects-list', 'projects')->name('projects-list');
+    Route::get('/projects-list/project', 'project')->name('single-project');
 });
 // });
 

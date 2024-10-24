@@ -2,7 +2,8 @@
 @section('content')
     <!-- Homepage section 22 -->
     <div class="homeSlider">
-        @if (count($images) > 0)
+
+         @if (count($images) > 0)
             @foreach ($images as $index => $image)
                 @if ($image->page == 'home' && $image->image_section == 'homeslider')
                     <div class="{{ $index === 0 ? 'active' : '' }}">
@@ -332,7 +333,7 @@
 
         </div>
     </section>
-{{-- 
+{{--
     <section>
         <div class="bg-primary">
 <h1>aw</h1>
