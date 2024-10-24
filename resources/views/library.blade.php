@@ -1,107 +1,184 @@
 @extends('layouts.web')
 @section('content')
-
-<style>
-    a {
-        color: blue;
-    }
-    .lib-links {
-        display: flex;
-        flex-direction: column
-    }
-   .lib-links a:hover {
-        text-decoration: underline
-    }
-</style>
-
-    <!-- bg -->
+    <!-- hero -->
     <section>
         <div>
             {{-- landing-image --}}
             <div class="">
-                {{-- <img class="img-fluid w-100" src="{{ asset('images/pageImages/' . $ictBanner->image) }}" alt=""> --}}
                 <img class="img-fluid w-100" src="{{ asset('img/site banners/BANNER-LIBRARY.jpg') }}" alt="">
             </div>
         </div>
     </section>
 
     <!-- main content -->
-    <div class="container-fluid" style="background-color: white">
-        <div class="row py-1 ict-row">
-            <div class="col-12 col-md-6 col-lg-6 mb-4">
-                <p>
-                    Welcome to the page for Library Services of the Mwenge Catholic
-                    University (MWECAU).
-                </p>
+    <div class="container-fluid mt-5" style="background-color: white">
+        <div class="main-heading">
+            <h2>Welcome to MWECAU Library</h2>
+            <div class="underline"></div>
+        </div>
 
+        <div class="row p-2 library-row">
+            <div class="col-12 col-md-6 col-lg-6 mb-4 lib-desc">
                 <p> The Library has diversity of information resources collected on various specialized disciplines as
                     provided for by the University Curricula and University community needs in particular , it has both
                     print and non-print formats of information resource.
                 </p>
-
-                <p>
-                <h3>Objectives of MWECAU Library</h3>
-                The main Objective is to develop and maintain library and information services in the relevant disciplines
-                so as to support core function of the university in teaching research and outreach including consultancy
-                services as well as provide information to other categories of users.
-                </p>
-
-                <p> 
-                <h3>Opening and closing of Library</h3>
-                Monday to Friday from 09:00 AM - 10:00 PM,  
-                Saturday from 09:00 AM - 18:00 PM, 
-                Sunday and public Holiday are closed.
-                </p>
-
-                <p>
-                    Our hardworking IT team is here to make sure that MWECAU community
-                    has dependable access to cutting-edge technological solutions.
-                </p>
+                <div class="lib-obj">
+                    <h3>Objectives of MWECAU Library</h3>
+                    <p>
+                        The main Objective is to develop and maintain library and information services in the relevant
+                        disciplines
+                        so as to support core function of the university in teaching research and outreach including
+                        consultancy
+                        services as well as provide information to other categories of users.
+                    </p>
+                </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6 mb-4">
-                <img style="width: 100%" src="{{ asset('img/campus life/library5.JPG') }}" alt="">
+                <div class="library-hrs">
+                    <h3>Opening & Closing Hours</h3>
+                    <div class="library-hr">
+                        <label>Monday to Friday</label>
+                        <span>09:00am – 06:00pm</span>
+                    </div>
+                    <div class="library-hr">
+                        <label>Saturday</label>
+                        <span>09:00am – 06:00pm</span>
+                    </div>
+                    <div class="library-hr">
+                        <label>Sunday & Public Holidays</label>
+                        <span>Closed!</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row py-1 ict-row">
-            <h3 class="text-center">Library Links</h3>
-            <div class="col-12 col-md-6 col-lg-6 mb-4 lib-links">
-                <h4>Free Electronic BOOKS</h4>
-                <a href="http://www.freefullpdf.com">http://www.freefullpdf.com</a>
-                <a href="www.pdfdrive.net">www.pdfdrive.ne</a>
-                <a href="www.b-ok.org">www.b-ok.org</a>
-                <a href="www.bookfi.net">www.bookfi.net</a>
-                <a href="www.sharebookfree.com">www.sharebookfree.com</a>
-                <a href="www.manybooks.net">www.manybooks.net</a>
-                <a href="www.bookyards.com">www.bookyards.com</a>
-                <a href="www.freecomputerbooks.com">www.freecomputerbooks.com</a>
-                <a href="www.essays.se">www.essays.se</a>
-                <a href="http://bookzz.org/"> http://bookzz.org/</a>
-                <a href="http://bookboon.com/">http://bookboon.com/</a>
-                <a href="https://books.google.com/">https://books.google.com/</a>
-                <a href="http://golibgen.io/">http://golibgen.io/</a>
-                <a href="www.libgen.info">www.libgen.info</a>
+    </div>
+
+{{-- Collections --}}
+    <div class="container mt-5 mb-5">
+        <div class="main-heading">
+            <h2>Our Collections</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 mb-4">
+                <div class="collection">
+                    <i class="fa fa-book icon"></i>
+                    <h5>General Collection</h5>
+                    <p>This collection has numerous resources in diverse disciplines offered by the university and they can
+                        be borrowed out of the library</p>
+                </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-6 mb-4 lib-links">
-                <h4>Subscribed E-Resource Books from COTUL.</h4>
-                <a href="http://www.jstor.org/">http://www.jstor.org</a>
-                <a href="http://www.tandfonline.com/">http://www.tandfonline.com/</a>
-                <a href="http://www.cambridge.org/">http://www.cambridge.org/</a>
-                <a href="http://emeraldinsight.com/">http://emeraldinsight.com/</a>
-                <a href="http://www.elibrary.imf.org/">http://www.elibrary.imf.org/</a>
-                <a href="https://research.ebsco.com/">https://research.ebsco.com/</a>
-                <a href="http://onlinelibrary.wiley.com/">http://onlinelibrary.wiley.com/</a>
-                <a href="http://www.siam.org/">http://www.siam.org/</a>
-                <a href="http://pubs.rsc.org/">http://pubs.rsc.org/</a>
-                <a href="https://www.astm.org/ ">https://www.astm.org/ </a>
-                <a href="http://www.liebertpub.com/">http://www.liebertpub.com/</a>
-                <a href=" http://www.birpublications.org/"> http://www.birpublications.org/</a>
-                <a href="https://journals.sagepub.com/ ">https://journals.sagepub.com/ </a>
-                <a href="https://academic.oup.com/journals ">https://academic.oup.com/journals </a>
+            <div class="col-12 col-md-4 col-lg-4 mb-4">
+                <div class="collection">
+                    <i class="fa fa-book-open icon"></i>
+                    <h5>Special Reserve Collection</h5>
+                    <p> This are rare materials found in the library and are in great demand by students and faculty; they
+                        are not in the lending system to allow access to many users</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 mb-4">
+                <div class="collection">
+                    <i class="fa fa-newspaper icon"></i>
+                    <h5>Reference Collection</h5>
+                    <p>This collection includes reference materials such as dictionaries, yearbooks, encyclopedias and
+                        gazettes</p>
+                </div>
             </div>
         </div>
-        <div class="row ict-resource-row">
-            <!-- gallery -->
+
+    </div>
+
+    {{-- Services --}}
+    <div class="container-fliud mt-5 mb-5">
+        <div class="row services-row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="services">
+                    <h3>Services Offered</h3>
+                    <div class="service"><i class="fa fa-check"></i> <span>Circulation-check out and check in of library materials</span></div>
+                    <div class="service"><i class="fa fa-check"></i> <span>Reference Services</span></div>
+                    <div class="service"><i class="fa fa-check"></i> <span>User Orientation</span></div>
+                    <div class="service"><i class="fa fa-check"></i> <span>Current Awareness Services</span></div>
+                    <div class="service"><i class="fa fa-check"></i> <span>Information Literacy</span></div>
+                    <div class="service"><i class="fa fa-check"></i> <span>Selective Dissemination of Information</span></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6">
+                <img class="service-img" src="{{ asset('img/campus life/library5.JPG') }}" alt="">
+            </div>
+        </div>
+
+    </div>
+
+    {{-- E-Resources --}}
+    <div class="containder-fluid mt-5 mb-5">
+        <div class="main-heading">
+            <h2>E-Resources</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="row">
+            <h3 class="text-center fs-5">Subscribed E-Resources</h3>
+            <div class="e-resouces">
+                <table class="table table-striped" style="width: 100%">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">s/n</th>
+                        <th scope="col">Database Name</th>
+                        <th scope="col">Descriptions</th>
+                        <th scope="col">Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Emerald Insight</td>
+                        <td>Over 300 multidisciplinary journals covering humanities, social sciences, Information Technology etc</td>
+                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Emerald Insight</td>
+                        <td>Over 300 multidisciplinary journals covering humanities, social sciences, Information Technology etc</td>
+                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Emerald Insight</td>
+                        <td>Over 300 multidisciplinary journals covering humanities, social sciences, Information Technology etc</td>
+                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <div class="row mt-4 mb-4">
+            <h3 class="text-center fs-5">Open Access Resources</h3>
+            <div class="e-resouces">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">s/n</th>
+                        <th scope="col">Descriptions</th>
+                        <th scope="col">Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>DOAB is a community-driven discovery service that indexes and provides access to scholarly, peer-reviewed open access books and helps users to find trusted open access book publishers</td>
+                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+    {{-- Gallery --}}
+    <div class="containder">
+        <div class="row library-resource-row">
             <div class="container-fluid mt-2 mb-5">
                 <div class="row gallery">
                     <div class="col-6 col-lg-2 col-md-4 gallery-cont">

@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap");
+
+:root {
+    --headColor: rgb(30, 64, 175);
+    --textColor: rgb(107 114 128);
+}
+
+*{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+}
+
+a {
+    color: blue;
+}
+.lib-links {
+    display: flex;
+    flex-direction: column
+}
+.lib-links a:hover {
+    text-decoration: underline
+}
+
+.library-row {
+    margin: 10px 10px;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.library-resource-row {
+    padding: 0 10px;
+}
+
+.gallery {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 10px;
+    border-radius: 10px;
+}
+
+.gallery-cont img {
+    width: 100%;
+    height: 280px;
+}
+
+.main-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    margin: 24px auto;
+    text-wrap: wrap;
+}
+
+.main-heading h2{
+    text-transform: uppercase;
+    font-size: 24px;
+    text-align: center;
+    color: var(--headColor);
+}
+
+.underline {
+    margin-top: 4px;
+    border: 2px solid rgb(168, 85, 247) ;
+    width: 60%;
+}
+
+h1, h2, h3, h4, h4, h6, span, p, label {
+    font-family: "Merriweather", sans-serif;
+}
+
+.lib-desc p {
+    color: var(--textColor);
+    font-size: 1.10rem;
+    line-height: 2rem;
+    text-align: justify5
+}
+
+.lib-desc h3 {
+    color: var(--headColor);
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.lib-obj {
+    margin-top: 2rem;
+}
+
+.library-hrs {
+    width: 80%;
+    margin: 2px auto;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(to bottom right, rgb(9, 9, 114), rgb(87, 13, 87), rgb(163, 31, 163));
+    color: white;
+    border-radius: 5%;
+}
+
+.library-hrs h3, .services h3 {
+    font-size: 1.8rem;
+    margin: 2rem 0;
+}
+ .library-hr {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.library-hr label {
+  margin: 2px 0;
+}
+
+.collection {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 3px 3px 8px purple;
+    border-radius: 5px;
+}
+
+.collection:hover {
+    transform: rotate(-3deg);
+}
+
+.icon {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    color: var(--headColor);
+}
+
+.collection h5 {
+    color: var(--headColor);
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.collection p {
+    color: var(--textColor);
+    text-align: justify;
+}
+
+.services-row {
+    background-color: rgb(14, 14, 87);
+    color: white;
+}
+
+.services {
+    padding: 2.5rem 3rem;
+}
+
+.service {
+    font-size: 1.2rem;
+    margin: .5rem 0;
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.e-resouces {
+    width: 90%;
+    margin: 2px auto;
+}
+
+@media screen and (max-width:580px) {
+    .library-resource-row {
+        padding: 0;
+    }
+
+    .gallery {
+        /* padding: 2px; */
+        margin: 20px 0px;
+    }
+
+    .library-hrs {
+        width: 100%;
+    }
+
+    .e-resouces {
+        width: 98%;
+        margin: 2px auto;
+        overflow-x: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-cont img {
+        height: 200px;
+    }
+
+    .library-hrs {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .main-heading {
+        width: 100%;
+    }
+}

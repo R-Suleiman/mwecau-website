@@ -207,7 +207,9 @@ Route::controller(HealthServiceController::class)->group(function () {
 //PROJECTS RELATED ROUTES
 // Route::domain('htts://projects.mwecau.ac.tz')->name('projects-')->group(function () {
 Route::controller(ProjectsController::class)->group(function () {
-    Route::get('projects-pro', 'index')->name('index');
+    Route::get('/projects-pro', 'index')->name('index');
+    Route::get('/projects-list', 'projects')->name('projects-list');
+    Route::get('/projects-list/project', 'project')->name('single-project');
 });
 // });
 

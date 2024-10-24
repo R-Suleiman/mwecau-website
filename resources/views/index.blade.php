@@ -2,22 +2,8 @@
 @section('content')
     <!-- Homepage section 22 -->
     <div class="homeSlider">
-        <div class="vid">
-            <video width="100%" autoplay loop muted>
-                <source src="{{asset('videos/USAJILI 2.mp4')}}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="overlay">
-                <div class="center-div">
-                    <div class="text-white text-center">
-                        <h1 >Welcome to Mwenge Catholic University</h1>
-                        {{-- <p>We prepare students to make meaningful contributions to society as leaders in a complex world</p> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        {{-- @if (count($images) > 0)
+         @if (count($images) > 0)
             @foreach ($images as $index => $image)
                 @if ($image->page == 'home' && $image->image_section == 'homeslider')
                     <div class="{{ $index === 0 ? 'active' : '' }}">
