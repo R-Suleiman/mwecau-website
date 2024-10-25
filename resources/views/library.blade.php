@@ -112,7 +112,7 @@
     </div>
 
     {{-- E-Resources --}}
-    <div class="containder-fluid mt-5 mb-5">
+    <div class="containder-fluid mt-5 mb-5 library-res">
         <div class="main-heading">
             <h2>E-Resources</h2>
             <div class="underline"></div>
