@@ -32,6 +32,9 @@
                 <li>
                     <a href="{{ route('uni.journals') }}">Journals</a>
                 </li>
+                <li>
+                    <a href="{{ route('university.gallery') }}">Gallery</a>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

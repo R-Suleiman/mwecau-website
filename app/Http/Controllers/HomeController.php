@@ -244,4 +244,11 @@ class HomeController extends Controller
         // Return the file for preview
         return response()->file($filePath);
     }
+
+    // gallery
+    public function gallery() {
+        $gallery = Image::all();
+
+        return view('gallery', compact('gallery'));
+    }
 }

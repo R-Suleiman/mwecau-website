@@ -23,3 +23,31 @@
 .footerText {
     color: white;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(4, 2, 54, 1), rgba(106, 105, 182, 0.6), rgba(190, 193, 226, 0.4));
+}
+
+h1, h2, h3, h4, h4, h6, span, p, label {
+    font-family: "Merriweather", sans-serif;
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.project-desc1 {
+    background: linear-gradient(to bottom right, rgb(4, 4, 70), rgb(16, 16, 136), rgb(25, 25, 153));
+}

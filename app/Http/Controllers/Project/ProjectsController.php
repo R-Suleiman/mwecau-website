@@ -17,6 +17,14 @@ class ProjectsController extends Controller
         return view('project.index');
     }
 
+    public function projects() {
+        return view('project.projects');
+    }
+
+    public function project() {
+        return view('project.project');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
