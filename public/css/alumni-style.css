@@ -1,5 +1,7 @@
 :root {
     --favColor: #3b2a68;
+    --headColor: rgb(30, 64, 175);
+    --textColor: rgb(107 114 128);
 }
 
 body {
@@ -57,6 +59,14 @@ body {
 
 .pgrapgh {
     text-align: justify;
+    color: var(--textColor);
+    font-family: "Merriweather", sans-serif;
+}
+
+.alumni p {
+    text-align: justify;
+    color: var(--textColor);
+    font-family: "Merriweather", sans-serif;
 }
 
 .alumni-events .card {

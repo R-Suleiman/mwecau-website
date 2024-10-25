@@ -14,7 +14,7 @@
     background-image: linear-gradient(to top, rgba(4, 2, 54, 1), rgba(106, 105, 182, 0.6), rgba(190, 193, 226, 0.4));
 }
 
-h1, h2, h3, h4, h4, h6, span, p, label {
+body {
     font-family: "Merriweather", sans-serif;
 }
 

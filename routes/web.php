@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/research', 'research')->name('research');
     Route::get('IT-services', 'itServices')->name('IT.services');
     Route::get('/library', 'library')->name('library');
-    Route::get('/gallery', 'gallery')->name('university.gallery');
     Route::get('/news/updates', 'newsUpdates')->name('university.news.updates');
     Route::get('/university-events', 'uniEvents')->name('university.events');
     Route::get('/uni-pdf-preview/{id}', 'UniPdfsPreview')->name('uni-pdf-preview');
@@ -48,6 +48,12 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/announcement-details/{announcementName}', 'announcementDetails')->where('announcementName', '.*')->name('announcement-details');
     Route::get('/event-attachment-preview/{eventFileName}', 'eventAttachmentPreview')->name('event-attachment-preview');
 
+});
+
+// Gallery
+Route::controller(GalleryController::class)->group(function() {
+    Route::get('/gallery', 'gallery')->name('university.gallery');
+    Route::get('/gallery/single', 'singleGallery')->name('university.single-gallery');
 });
 
 Route::controller(FooterController::class)->middleware(['auth', 'admin'])->prefix('admin')->group(function () {
@@ -210,6 +216,7 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects-pro', 'index')->name('index');
     Route::get('/projects-list', 'projects')->name('projects-list');
     Route::get('/projects-list/project', 'project')->name('single-project');
+    Route::get('/projects/researchers', 'researchers')->name('project-researchers');
 });
 // });
 

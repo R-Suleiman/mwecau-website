@@ -2,8 +2,8 @@
 @section('content')
     <div class="container-fluid my-5">
         <div>
-            <h2 class="favColor text-center text-uppercase">Mwecau Gallery</h2>
-            <p class="fs-5 text-center">Welcome to Mwenge Catholic University Gallery</p>
+            <h2 class="favColor text-center text-uppercase">Mwecau 5th International Conference</h2>
+            <p class="text-center fs-5 gallery-subh">07-08.11.2024</p>
         </div>
 
         <div class="row p-2">
