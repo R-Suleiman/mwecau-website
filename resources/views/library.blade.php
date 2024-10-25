@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('../css/library.css') }}">
 @extends('layouts.web')
 @section('content')
     <!-- hero -->
@@ -19,19 +20,28 @@
 
         <div class="row p-2 library-row">
             <div class="col-12 col-md-6 col-lg-6 mb-4 lib-desc">
-                <p> The Library has diversity of information resources collected on various specialized disciplines as
-                    provided for by the University Curricula and University community needs in particular , it has both
-                    print and non-print formats of information resource.
-                </p>
+                @if ($libraryIntroduction)
+                    <p> {!! $libraryIntroduction->description !!}</p>
+                @else
+                    <p>nothing found</p>
+                @endif
                 <div class="lib-obj">
-                    <h3>Objectives of MWECAU Library</h3>
-                    <p>
-                        The main Objective is to develop and maintain library and information services in the relevant
-                        disciplines
-                        so as to support core function of the university in teaching research and outreach including
-                        consultancy
-                        services as well as provide information to other categories of users.
-                    </p>
+                    @if ($library)
+                        <h3>{{ $library->name }}</h3>
+                        <p>
+                            {!! $library->description !!}
+                        </p>
+                    @else
+                        <h3>The Objective of the MWECAU Library</h3>
+                        <p>
+                            The main Objective is
+
+                            {{-- to develop and maintain library and information services in the relevant
+                            disciplines so as to support core function of the university in teaching research and outreach
+                            including consultancy services as well as provide information to other categories of users. --}}
+                        </p>
+                    @endif
+
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-6 mb-4">
@@ -55,7 +65,7 @@
 
     </div>
 
-{{-- Collections --}}
+    {{-- Collections --}}
     <div class="container mt-5 mb-5">
         <div class="main-heading">
             <h2>Our Collections</h2>
@@ -90,7 +100,7 @@
 
     </div>
 
-    {{-- Services --}}
+ {{-- Services --}}
     <div class="container-fliud mt-5 mb-5">
         <div class="row services-row">
             <div class="col-12 col-md-6 col-lg-6">
@@ -110,68 +120,84 @@
         </div>
 
     </div>
-
+ 
     {{-- E-Resources --}}
-    <div class="containder-fluid mt-5 mb-5">
+    <div class="container-fluid mt-5 mb-5">
         <div class="main-heading">
             <h2>E-Resources</h2>
             <div class="underline"></div>
         </div>
-        <div class="row">
+        <div class="row" style="width: 100%">
             <h3 class="text-center fs-5">Subscribed E-Resources</h3>
-            <div class="e-resouces">
+            <div class="e-resouces"> 
                 <table class="table table-striped" style="width: 100%">
                     <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">s/n</th>
-                        <th scope="col">Database Name</th>
-                        <th scope="col">Descriptions</th>
-                        <th scope="col">Link</th>
-                      </tr>
+                        <tr>
+                            <th scope="col">s/n</th>
+                            <th scope="col">Database Name</th>
+                            <th scope="col">Descriptions</th>
+                            <th scope="col">Link</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Emerald Insight</td>
-                        <td>Over 300 multidisciplinary journals covering humanities, social sciences, Information Technology etc</td>
-                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Emerald Insight</td>
-                        <td>Over 300 multidisciplinary journals covering humanities, social sciences, Information Technology etc</td>
-                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Emerald Insight</td>
-                        <td>Over 300 multidisciplinary journals covering humanities, social sciences, Information Technology etc</td>
-                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
-                      </tr>
+                        @php
+                            $counter = 1; 
+                        @endphp
+                        @foreach ($libraryResources as $libraryResource)
+                            @if ($libraryResource->category_name == 'e-resources')
+                                <tr>
+                                    <th scope="row">{{ $counter++ }}</th>
+                                    <td>{{ $libraryResource->name }}</td>
+                                    <td class="text-wrap">{!! $libraryResource->description !!}</td>
+                                    @if ($libraryResource->link)
+                                        <td><a href="{{ $libraryResource->link }}" target="_blank"><i
+                                                    class="fa fa-link"></i></a></td>
+                                    @else
+                                        <td><a href="#"><i class="fa fa-link"></i></a></td>
+                                    @endif
+
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
-                  </table>
+                </table>
             </div>
+
         </div>
 
-        <div class="row mt-4 mb-4">
+        <div class="row mt-4 mb-4" style="width: 100%">
             <h3 class="text-center fs-5">Open Access Resources</h3>
             <div class="e-resouces">
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">s/n</th>
-                        <th scope="col">Descriptions</th>
-                        <th scope="col">Link</th>
-                      </tr>
+                <table class="myTable table table-bordered table-hover table-striped">
+                    <thead class="favbg">
+                        <tr>
+                            <th scope="col">s/n</th>
+                            <th scope="col">Descriptions</th>
+                            <th scope="col">Link</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>DOAB is a community-driven discovery service that indexes and provides access to scholarly, peer-reviewed open access books and helps users to find trusted open access book publishers</td>
-                        <td><a href="#" target="_blank"><i class="fa fa-link"></i></a></td>
-                      </tr>
+                        @php
+                            $counter = 1;
+                        @endphp
+                        @foreach ($libraryResources as $libraryResource)
+                            @if ($libraryResource->category_name == 'open-access-resource')
+                                <tr>
+                                    <th scope="row">{{ $counter++ }}</th>
+                                    <td class="text-wrap">{!! $libraryResource->description !!}</td>
+                                    @if ($libraryResource->link)
+                                        <td><a href="{{ $libraryResource->link }}" target="_blank"><i
+                                                    class="fa fa-link"></i></a></td>
+                                    @else
+                                        <td><a href="#"><i class="fa fa-link"></i></a></td>
+                                    @endif
+
+                                </tr>
+                            @endif
+                        @endforeach
+
                     </tbody>
-                  </table>
+                </table>
             </div>
         </div>
     </div>

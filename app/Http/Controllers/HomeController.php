@@ -134,13 +134,6 @@ class HomeController extends Controller
         return view('IT-services', compact('ictBanner'));
     }
 
-    public function library()
-    {
-        // Set canonical URL
-        SEOTools::setCanonical(url()->current());
-        $ictBanner = Image::where('image_section', '=', 'ict-banner')->first();
-        return view('library', compact('ictBanner'));
-    }
     public function research()
     {
         // Set canonical URL

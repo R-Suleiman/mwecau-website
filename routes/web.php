@@ -5,6 +5,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HealthService\HealthServiceController;
+use App\Http\Controllers\Libray\LibraryController;
 use App\Http\Controllers\Project\ProjectsController;
 use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('campus-life', 'campusLife')->name('campus-life');
     Route::get('/research', 'research')->name('research');
     Route::get('IT-services', 'itServices')->name('IT.services');
-    Route::get('/library', 'library')->name('library');
+    // Route::get('/library', 'library')->name('library');
     Route::get('/gallery', 'gallery')->name('university.gallery');
     Route::get('/news/updates', 'newsUpdates')->name('university.news.updates');
     Route::get('/university-events', 'uniEvents')->name('university.events');
@@ -166,6 +167,21 @@ Route::controller(ResearchController::class)->group(function () {
         Route::delete('/delete-resource/{id}', 'destroyResearch')->name('admin-destroy.resource');
     });
 });
+
+//library related routes
+Route::controller(LibraryController::class)->group(function () {
+    Route::get('/library', 'index')->name('library');
+
+    Route::name('admin.library.')->prefix('admin/library')->middleware(['auth', 'admin'])->group(function () {
+        Route::get('/', 'show')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{itemName}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+    });
+});
+
 
 //HERE SHOULD TEST PDF GENERATE FROM UMS
 Route::controller(PdfController::class)->group(function () {

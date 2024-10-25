@@ -27,10 +27,9 @@
                 <a href="{{ route('admin.dashboard') }}">
                     <img src="../../img/mwecau.png" alt="mwecau logo" />
                 </a>
-
-                <span>MWECAU</span>
-                <p><i>"Lux Mundi" - </i>Light of the world</p>
+                {{ Auth::user()->name }}
             </div>
+
             <ul class="nav-list">
                 <a href="{{ route('admin.dashboard') }}">
                     <li class="nav-item">
@@ -46,7 +45,7 @@
                 </a>
                 <a href="{{ route('admin.research.list') }}">
                     <li class="nav-item">
-                        <i class="fa fa-university nav-icons"></i>
+                        <i class="fa-brands fa-researchgate nav-icons"></i>
                         <span class="nav-words">Manage Research</span>
                     </li>
                 </a>
@@ -54,14 +53,14 @@
                 </a>
                 <a href="{{ route('admin.events.list') }}">
                     <li class="nav-item">
-                        <i class="fa fa-calendar nav-icons"></i>
+                        <i class="fa-solid fa-calendar-days nav-icons"></i>
                         <span class="nav-words">Events</span>
                     </li>
                 </a>
 
                 <a href="{{ route('admin.announcement.list') }}">
                     <li class="nav-item">
-                        <i class="fa fa-calendar nav-icons"></i>
+                        <i class="fa-solid fa-bullhorn nav-icons"></i>
                         <span class="nav-words">Post Announcement</span>
                     </li>
                 </a>
@@ -80,9 +79,17 @@
                     </li>
                 </a>
 
+
+                <a href="{{ route('admin.library.index') }}">
+                    <li class="nav-item">
+                        <i class="fa-solid fa-book-open-reader nav-icons"></i>
+                        <span class="nav-words">Manage Libray</span>
+                    </li>
+                </a>
+
                 <a href="{{ route('admin.statistics') }}">
                     <li class="nav-item">
-                        <i class="fa fa-calendar nav-icons"></i>
+                        <i class="fa-solid fa-square-poll-vertical  nav-icons"></i>
                         <span class="nav-words">Uni statistics</span>
                     </li>
                 </a>
@@ -96,7 +103,7 @@
 
                 <a href="{{ route('site.images') }}">
                     <li class="nav-item">
-                        <i class="fa fa-key nav-icons"></i>
+                        <i class="fa-solid fa-key"></i>
                         <span class="nav-words">Change Password</span>
                     </li>
                 </a>
@@ -125,9 +132,9 @@
         <div class="nav-toggle show-nav">
             <i class="fa fa-bars"></i>
         </div>
-        <h2>MWENGE CATHOLIC UNIVERSITY | DASHBOARD</h2>
-
-        <h5 class="text-warning"> Welcome, <strong class="text-light">Mr. {{ Auth::user()->name }}</strong></h5>
+        <h2 class="headerFavFont text-center">MWENGE CATHOLIC UNIVERSITY | DASHBOARD</h2>
+        <small class="fst-italic favFont">"Lux Mundi" - Light of the world</small>
+        {{-- <h5 class="text-warning favFont"> Welcome, <strong class="text-light">Mr. {{ Auth::user()->name }}</strong></h5> --}}
     </div>
 
     <main class="py-0">

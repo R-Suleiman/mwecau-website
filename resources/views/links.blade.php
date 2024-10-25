@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="{{ asset('../fontawesome/css/all.min.css') }}">
 <link rel="stylesheet" href="{{ asset('../css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('../css/faculty.css') }}">
-<link rel="stylesheet" href="{{ asset('../css/library.css') }}">
 <link rel="stylesheet" href="{{ asset('../css/aos/dist/aos.css') }}">
 <link rel="stylesheet" href="{{ asset('../jquery/css/dataTables.bootstrap5.min.css') }}">
 
