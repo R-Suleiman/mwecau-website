@@ -7,7 +7,7 @@
             </div> <br>
         </div>
 
-        <div class="row">
+        <div class="row alumni">
             <div class="col-12 col-md-6">
                 <div class="underline">
                     <h3 class="favColor">Alumni Stories</h3>

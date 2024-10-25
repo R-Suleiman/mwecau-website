@@ -238,10 +238,4 @@ class HomeController extends Controller
         return response()->file($filePath);
     }
 
-    // gallery
-    public function gallery() {
-        $gallery = Image::all();
-
-        return view('gallery', compact('gallery'));
-    }
 }

@@ -120,16 +120,17 @@
         </div>
 
     </div>
- 
+
     {{-- E-Resources --}}
-    <div class="container-fluid mt-5 mb-5">
+
+    <div class="containder-fluid mt-5 mb-5 library-res">
         <div class="main-heading">
             <h2>E-Resources</h2>
             <div class="underline"></div>
         </div>
         <div class="row" style="width: 100%">
             <h3 class="text-center fs-5">Subscribed E-Resources</h3>
-            <div class="e-resouces"> 
+            <div class="e-resouces">
                 <table class="table table-striped" style="width: 100%">
                     <thead class="thead-dark">
                         <tr>
@@ -141,7 +142,7 @@
                     </thead>
                     <tbody>
                         @php
-                            $counter = 1; 
+                            $counter = 1;
                         @endphp
                         @foreach ($libraryResources as $libraryResource)
                             @if ($libraryResource->category_name == 'e-resources')

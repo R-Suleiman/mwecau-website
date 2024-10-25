@@ -12,7 +12,7 @@
  box-sizing: border-box;
 }
 
-a {
+.library-res a {
     color: blue;
 }
 .lib-links {
