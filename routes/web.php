@@ -17,6 +17,7 @@ use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\dpric\DpricController;
 
 /*
 |--------------------------------------------------------------------------
@@ -234,6 +235,9 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects-list', 'projects')->name('projects-list');
     Route::get('/projects-list/project', 'project')->name('single-project');
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
+    Route::get('/projects/contacts', 'contacts')->name('projects-contacts');
+    Route::get('/projects/scholarships', 'scholarships')->name('projects-scholarships');
 });
 // });
 
+Route::get('/dpric', [DpricController::class, 'index'])->name('dpric-index');
