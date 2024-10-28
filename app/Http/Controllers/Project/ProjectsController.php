@@ -29,6 +29,14 @@ class ProjectsController extends Controller
         return view('project.researchers');
     }
 
+    public function contacts() {
+        return view('project.contacts');
+    }
+
+    public function scholarships() {
+        return view('project.scholarships');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
