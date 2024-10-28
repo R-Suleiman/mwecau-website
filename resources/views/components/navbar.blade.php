@@ -179,14 +179,16 @@
                             </a>
                             <ul class="dropdown-menu ">
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" id="faculty" href="#">Faculties</a>
+                                    <a class="dropdown-item dropdown-toggle" id="faculty"
+                                        href="#">Faculties</a>
                                     <ul class="dropdown-menu" class="sub-nav" id="sub-faculty">
                                         @foreach ($faculties as $faculty)
                                             @if ($faculty['faculty_id'] !== '0')
                                                 <li class="sub-nav2">
                                                     <a class="dropdown-item"
-                                                       href="{{ route('faculty', $faculty['faculty_name']) }}">
-                                                        {{ $faculty['faculty_name'] }} ({{ $faculty['faculty_short_name'] }})
+                                                        href="{{ route('faculty', $faculty['faculty_name']) }}">
+                                                        {{ $faculty['faculty_name'] }}
+                                                        ({{ $faculty['faculty_short_name'] }})
                                                     </a>
                                                 </li>
                                             @endif
@@ -271,7 +273,8 @@
                                     <a href="{{ route('IT.services') }}">ICT Sevices</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="{{route('health.index')}}">Health Center Services</a>
+                                    {{-- <a href="{{route('health.index')}}">Health Center Services</a> --}}
+                                    <a href="#">Health Center Services</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a href="#">Guidance and Counseling</a>

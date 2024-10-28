@@ -1,64 +1,84 @@
 @extends('layouts.project.project-layout')
 @section('content')
     {{-- Navbar --}}
-    <nav class="bg-purple-600 p-4 fixed top-0 w-full z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4 text-white text-lg font-semibold">
+    <nav class="bg-purple-600 border-gray-200 py-2.5 dark:bg-purple-900">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+            <a href="#" class="flex items-center space-x-2">
                 <img src="{{ asset('img/mwecau.png') }}" class="h-16" alt="Mwecau Logo" />
                 <img src="{{ asset('img/project/logo.svg') }}" class="h-10" alt="Ku Leuven Logo" />
+            </a>
+
+            <di class="lg:hidden flex items-center justify-center">
+                <h1 class="headerFavFont text-white text-2xl"> Mwenge catholic University</h1>
+            </di>
+            <div class="flex items-center lg:order-2">
+                {{-- <div class="hidden mt-2 mr-4 sm:inline-block">
+                    <span>hhhh</span>
+                </div> --}}
+
+                <button data-collapse-toggle="mobile-menu-2" type="button"
+                    class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="mobile-menu-2" aria-expanded="true">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
             </div>
-
-            <div class="md:flex justify-center items-center">
-                <ul class="hidden md:flex space-x-3 text-white">
+            <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
                         <a href="#"
-                            class="hover:text-gray-100 bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
-                            Home
-                        </a>
+                            class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white"
+                            aria-current="page">Home</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="hover:text-gray-100 bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
-                            Our Projects
-                        </a>
+                            class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Our
+                            Projects</a>
                     </li>
-
                     <li>
                         <a href="#"
-                            class="hover:text-gray-100 bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
-                            Our Reseachers
-                        </a>
+                            class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Our
+                            Reseachers</a>
                     </li>
-
                     <li>
                         <a href="#"
-                            class="hover:text-gray-100 bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
-                            Living Lab
-                        </a>
+                            class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Living
+                            Lab</a>
                     </li>
-
                     <li>
                         <a href="#"
-                            class="hover:text-gray-100 bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
-                            Contacts
-                        </a>
+                            class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contacts</a>
                     </li>
                 </ul>
             </div>
-
-            {{-- <div class="ml-auto flex items-center space-x-4">
-                <a href="#" class="text-white hover:text-gray-400">Search</a>
-                <a href="#" class="text-white hover:text-gray-400">Profile</a>
-            </div> --}}
         </div>
     </nav>
-    <section class="pt-24">
-        <!-- Adjusted top padding to ensure content doesn't overlap with the fixed navbar -->
+
+    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+
+    <section class="">
         <div class="w-full relative overflow-hidden">
             <img class="w-full object-cover object-center h-auto" src="{{ asset('img/health-center/header.jpg') }}"
                 alt="">
+
+            <div class="absolute inset-0 flex items-center justify-center text-white bg-black bg-opacity-40">
+                <div class="text-center">
+                    <h1 class="text-4xl lg:text-8xl font-bold">Mwenge Catholic University</h1>
+                    <h3 class="text-2xl">PROJECTS</h3>
+                </div>
+            </div>
         </div>
     </section>
+
 
     {{-- Homepage projects --}}
     <section>
@@ -145,7 +165,7 @@
     <section>
         <div class="container mx-auto mt-16">
             <h1 class="text-center text-3xl font-extrabold headerFavFont uppercase">Photo Gallery</h1>
-            <div class="flex justify-center items-center py-4 md:py-8 flex-wrap">
+            <div class="flex justify-end items-center py-4 md:py-8 flex-wrap">
                 <button type="button"
                     class="text-gray-700 hover:text-gray-100  hover:bg-gradient-to-r from-purple-600 to-purple-400 border shadow-xl hover:border-transparent bg-white focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3"><i
                         class="fa-solid fa-list-check"></i> All categories</button>
@@ -161,7 +181,8 @@
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
-                    <img class="h-auto max-w-full rounded-xl" src="{{ asset('img/project/Dr.Minja.png') }}" alt="">
+                    <img class="h-auto max-w-full rounded-xl" src="{{ asset('img/project/Dr.Minja.png') }}"
+                        alt="">
                 </div>
                 <div>
                     <img class="h-auto max-w-full rounded-xl"

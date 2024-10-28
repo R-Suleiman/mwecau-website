@@ -59,13 +59,27 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
+            $logedInUser = Auth::user();
 
-            Alert::success('Message', 'You have loggen in successfully')->autoClose('7000');
-            return redirect()->route('admin.dashboard');
+            if ($logedInUser->role == 0) {
+                Alert::success('welcome', "{$logedInUser->name}")->autoClose('7000');
+                return redirect()->route('admin.dashboard');
+            } elseif ($logedInUser->role == 1) {
+                Alert::success('welcome', "{$logedInUser->name}")->autoClose('7000');
+                return redirect()->route('admin.library.index');
+            } elseif ($logedInUser->role == 2) {
+                Alert::success('welcome', "{$logedInUser->name}")->autoClose('7000');
+                return redirect()->route('admin.research.list');
+            } else {
+                Auth::logout();
+                Alert::error('Attention', 'Access Denied')->autoClose('7000');
+                return redirect()->route('login');
+            }
+
         } else {
 
-            Alert::error('Attention', 'Invalid email address or password')->autoClose('6000');
-            return back()->with('message' ,'Invalid email address/password');
+            Alert::error('Attention', 'Invalid Credentials')->autoClose('6000');
+            return back()->with('message', 'Invalid Credentials');
         }
     }
 }

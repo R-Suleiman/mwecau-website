@@ -31,82 +31,106 @@
             </div>
 
             <ul class="nav-list">
-                <a href="{{ route('admin.dashboard') }}">
-                    <li class="nav-item">
-                        <i class="fa fa-home nav-icons"></i>
-                        <span class="nav-words">Home</span>
-                    </li>
-                </a>
-                <a href="{{ route('admin.about') }}">
-                    <li class="nav-item">
-                        <i class="fa fa-home nav-icons"></i>
-                        <span class="nav-words">About Page</span>
-                    </li>
-                </a>
-                <a href="{{ route('admin.research.list') }}">
-                    <li class="nav-item">
-                        <i class="fa-brands fa-researchgate nav-icons"></i>
-                        <span class="nav-words">Manage Research</span>
-                    </li>
-                </a>
+                @if (Auth::user()->role == 1)
+                    <a href="{{ route('admin.library.index') }}">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-book-open-reader nav-icons"></i>
+                            <span class="nav-words">Manage Libray</span>
+                        </li>
+                    </a>
+                @elseif (Auth::user()->role == 2)
+                    <a href="{{ route('admin.research.list') }}">
+                        <li class="nav-item">
+                            <i class="fa-brands fa-researchgate nav-icons"></i>
+                            <span class="nav-words">Manage Research</span>
+                        </li>
+                    </a>
+                @elseif (Auth::user()->role == 0)
+                    <a href="{{ route('admin.dashboard') }}">
+                        <li class="nav-item">
+                            <i class="fa fa-home nav-icons"></i>
+                            <span class="nav-words">Home</span>
+                        </li>
+                    </a>
+                    <a href="{{ route('admin.about') }}">
+                        <li class="nav-item">
+                            <i class="fa fa-home nav-icons"></i>
+                            <span class="nav-words">About Page</span>
+                        </li>
+                    </a>
+                    <a href="{{ route('admin.research.list') }}">
+                        <li class="nav-item">
+                            <i class="fa-brands fa-researchgate nav-icons"></i>
+                            <span class="nav-words">Manage Research</span>
+                        </li>
+                    </a>
 
-                </a>
-                <a href="{{ route('admin.events.list') }}">
-                    <li class="nav-item">
-                        <i class="fa-solid fa-calendar-days nav-icons"></i>
-                        <span class="nav-words">Events</span>
-                    </li>
-                </a>
+                    </a>
+                    <a href="{{ route('admin.events.list') }}">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-calendar-days nav-icons"></i>
+                            <span class="nav-words">Events</span>
+                        </li>
+                    </a>
 
-                <a href="{{ route('admin.announcement.list') }}">
-                    <li class="nav-item">
-                        <i class="fa-solid fa-bullhorn nav-icons"></i>
-                        <span class="nav-words">Post Announcement</span>
-                    </li>
-                </a>
+                    <a href="{{ route('admin.announcement.list') }}">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-bullhorn nav-icons"></i>
+                            <span class="nav-words">Post Announcement</span>
+                        </li>
+                    </a>
 
-                <a href="{{ route('admin.all.site.images') }}">
-                    <li class="nav-item">
-                        <i class="fa fa-calendar nav-icons"></i>
-                        <span class="nav-words">Manage Site images</span>
-                    </li>
-                </a>
+                    <a href="{{ route('admin.all.site.images') }}">
+                        <li class="nav-item">
+                            <i class="fa fa-calendar nav-icons"></i>
+                            <span class="nav-words">Manage Site images</span>
+                        </li>
+                    </a>
 
-                <a href="{{ route('admin.documents.pdf') }}">
-                    <li class="nav-item">
-                        <i class="fa fa-calendar nav-icons"></i>
-                        <span class="nav-words">Manage Documents</span>
-                    </li>
-                </a>
+                    <a href="{{ route('admin.documents.pdf') }}">
+                        <li class="nav-item">
+                            <i class="fa fa-calendar nav-icons"></i>
+                            <span class="nav-words">Manage Documents</span>
+                        </li>
+                    </a>
 
 
-                <a href="{{ route('admin.library.index') }}">
-                    <li class="nav-item">
-                        <i class="fa-solid fa-book-open-reader nav-icons"></i>
-                        <span class="nav-words">Manage Libray</span>
-                    </li>
-                </a>
+                    <a href="{{ route('admin.library.index') }}">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-book-open-reader nav-icons"></i>
+                            <span class="nav-words">Manage Libray</span>
+                        </li>
+                    </a>
 
-                <a href="{{ route('admin.statistics') }}">
-                    <li class="nav-item">
-                        <i class="fa-solid fa-square-poll-vertical  nav-icons"></i>
-                        <span class="nav-words">Uni statistics</span>
-                    </li>
-                </a>
+                    {{-- <a href="{{ route('admin.gallery.create') }}"> --}}
+                    <a href="{{ route('admin.gallery.show-gallery') }}">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-book-open-reader nav-icons"></i>
+                            <span class="nav-words">Gallery</span>
+                        </li>
+                    </a>
 
-                <a href="{{ route('admin.footer.item.list.view') }}">
-                    <li class="nav-item">
-                        <i class="fa fa-calendar nav-icons"></i>
-                        <span class="nav-words">Manage Footer</span>
-                    </li>
-                </a>
+                    <a href="{{ route('admin.statistics') }}">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-square-poll-vertical  nav-icons"></i>
+                            <span class="nav-words">Uni statistics</span>
+                        </li>
+                    </a>
 
-                <a href="{{ route('site.images') }}">
-                    <li class="nav-item">
-                        <i class="fa-solid fa-key"></i>
-                        <span class="nav-words">Change Password</span>
-                    </li>
-                </a>
+                    <a href="{{ route('admin.footer.item.list.view') }}">
+                        <li class="nav-item">
+                            <i class="fa fa-calendar nav-icons"></i>
+                            <span class="nav-words">Manage Footer</span>
+                        </li>
+                    </a>
+
+                    <a href="{{ route('site.images') }}">
+                        <li class="nav-item">
+                            <i class="fa-solid fa-key"></i>
+                            <span class="nav-words">Change Password</span>
+                        </li>
+                    </a>
+                @endif
 
                 <li class="nav-item">
                     <div class="" aria-labelledby="">

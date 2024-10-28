@@ -6,6 +6,7 @@ use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HealthService\HealthServiceController;
 use App\Http\Controllers\Libray\LibraryController;
+use App\Http\Controllers\Project\AdminProjectController;
 use App\Http\Controllers\Project\ProjectsController;
 use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
@@ -53,9 +54,21 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 // Gallery
-Route::controller(GalleryController::class)->group(function() {
+Route::controller(GalleryController::class)->group(function () {
     Route::get('/gallery', 'gallery')->name('university.gallery');
-    Route::get('/gallery/single', 'singleGallery')->name('university.single-gallery');
+    Route::get('/gallery/single/{id}', 'singleGallery')->name('university.single-gallery');
+
+    Route::middleware(['auth', 'admin'])->name('admin.gallery.')->prefix('admin/gallery/')->group(function () {
+        Route::get('create', 'create')->name('create'); // create gallery
+        Route::post('store', 'store')->name('store');
+
+        Route::get('add-images-to-gallery/{gallery_id}', 'addImagesToGallery')->name('add-images-to-gallery');
+        Route::post('add-collection-to-gallery', 'galleryCollection')->name('gallery-collection');
+        Route::get('galleries', 'showGallery')->name('show-gallery');
+
+        Route::get('{id}/images', 'getGalleryImages'); //gallery images
+
+    });
 });
 
 Route::controller(FooterController::class)->middleware(['auth', 'admin'])->prefix('admin')->group(function () {
@@ -164,7 +177,7 @@ Route::controller(ResearchController::class)->group(function () {
     Route::get('/outreach-programs', 'outreach')->name('outreach');
     Route::get('/outreach-details/{header}', 'outreachDetails')->name('research.outreach.details');
     //routes accessible by admin only
-    Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::middleware(['auth', 'research'])->prefix('admin')->group(function () {
         Route::get('/research-details/{header}', 'resourceDetails')->where('header', '.*')->name('admin.research.details');
         Route::get('/list-of-research', 'listOfResearch')->name('admin.research.list');
         Route::get('/post-reseacrh', 'postResearchView')->name('admin.post.research');
@@ -179,7 +192,7 @@ Route::controller(ResearchController::class)->group(function () {
 Route::controller(LibraryController::class)->group(function () {
     Route::get('/library', 'index')->name('library');
 
-    Route::name('admin.library.')->prefix('admin/library')->middleware(['auth', 'admin'])->group(function () {
+    Route::name('admin.library.')->prefix('admin/library')->middleware(['auth', 'library'])->group(function () {
         Route::get('/', 'show')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
@@ -236,4 +249,7 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
 });
 // });
+Route::controller(AdminProjectController::class)->prefix('admin/projects')->name('admin.project.')->group(function () {
+    Route::get('', 'index')->name('index');
+});
 

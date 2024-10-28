@@ -15,7 +15,7 @@
 
         <div class="mt-5 message" id="error-message">
             @if (session()->has('fail'))
-                <div class="alert alert-success shadow d-flex justify-content-between align-items-center">
+                <div class="alert alert-danger shadow d-flex justify-content-between align-items-center">
                     <span>{{ session('fail') }}</span>
                     <button onclick="closeMessage('error-message')" class="btn btn-danger btn-sm ms-3">
                         <i class="fab fa-x"></i>
