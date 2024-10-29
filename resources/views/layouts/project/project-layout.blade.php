@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <x-project.project-nav />
+    {{-- <x-project.project-nav /> --}}
 
     <main>
         @yield('content')

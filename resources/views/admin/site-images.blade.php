@@ -113,7 +113,7 @@
                     <div class="col-12 col-md-6 col-lg-6 mb-4 mt-3">
                         <label class="mb-3 " for="image">{{ 'Image' }}</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror"
-                            value="{{ old('image') }}" name="image" id="image" placeholder="Enter course duration">
+                            value="{{ old('image') }}" name="image" id="image" placeholder="Enter course duration" multiple>
 
                         @error('image')
                             <span class="invalid-feedback" role="alert">
@@ -135,7 +135,6 @@
                         @enderror
                     </div>
                     <button type="submit" class="admissionBtn">{{ 'Post Image' }}</button>
-                    <a href="{{ route('all-images') }}">dd images</a>
                 </div>
             </form>
     </div>

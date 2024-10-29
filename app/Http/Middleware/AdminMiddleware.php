@@ -18,11 +18,12 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
-            Alert::error('Attention', 'You have to login first.')->width('450px');
-
-            return redirect(route('login'));
+        if (Auth::user()->role == 0) {
+            return $next($request);
+        } else {
+            Auth::logout();
+            // Alert::error('Access Denied', 'You do not have permission to access this page. Please contact the administrator if you believe this is an error.');
+            return redirect()->route('login')->with('fail', 'You have been logged out due to unauthorized access.');
         }
-        return $next($request);
     }
 }

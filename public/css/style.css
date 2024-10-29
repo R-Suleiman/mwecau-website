@@ -8,6 +8,12 @@ body {
     overflow-x: hidden;
     font-family: "Trebuchet MS", "Lucida Sans Unicode";
 }
+.favFont {
+    font-family: "Merriweather", serif;
+}
+.headerFavFont {
+    font-family: "Oswald", sans-serif;
+}
 .favbg {
     background-color: #513f83;
     color: white;
