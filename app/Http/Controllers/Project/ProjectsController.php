@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\ProjectTeam;
+use App\Models\Research;
 
 class ProjectsController extends Controller
 {
@@ -14,26 +16,37 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('project.index');
+        $projects = Project::with('gallery')->get();
+        return view('project.index', compact('projects'));
     }
 
-    public function projects() {
-        return view('project.projects');
+
+    public function projects()
+    {
+        $projects = project::all();
+        return view('project.projects', compact('projects'));
     }
 
-    public function project() {
-        return view('project.project');
+    public function project($id)
+    {
+        $singleProject = Project::findOrFail($id)->load(['gallery', 'projectTeam']);
+        // $projectDetails = Research::findOrFail($id);
+        return view('project.project', compact('singleProject'));
     }
 
-    public function researchers() {
-        return view('project.researchers');
+    public function researchers()
+    {
+        $team = ProjectTeam::all();
+        return view('project.researchers', compact('team'));
     }
 
-    public function contacts() {
+    public function contacts()
+    {
         return view('project.contacts');
     }
 
-    public function scholarships() {
+    public function scholarships()
+    {
         return view('project.scholarships');
     }
 

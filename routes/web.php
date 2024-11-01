@@ -193,7 +193,7 @@ Route::controller(ResearchController::class)->group(function () {
 Route::controller(LibraryController::class)->group(function () {
     Route::get('/library', 'index')->name('library');
 
-    Route::name('admin.library.')->prefix('admin/library')->middleware(['auth', 'library'])->group(function () {
+    Route::name('admin.library.')->prefix('admin/library')->middleware(['admin', 'library'])->group(function () {
         Route::get('/', 'show')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
@@ -245,16 +245,22 @@ Route::controller(HealthServiceController::class)->group(function () {
 // Route::domain('htts://projects.mwecau.ac.tz')->name('projects-')->group(function () {
 Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects-pro', 'index')->name('project.index');
-    Route::get('/projects-list', 'projects')->name('project-list');
-    Route::get('/projects-list/project', 'project')->name('single-project');
+    Route::get('/projects-list', 'projects')->name('projects-list');
+    Route::get('/projects-list/project/{id}', 'project')->name('single-project');
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
     Route::get('/projects/contacts', 'contacts')->name('project-contacts');
     Route::get('/projects/scholarships', 'scholarships')->name('project-scholarships');
     Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
 });
 // });
-Route::controller(AdminProjectController::class)->prefix('admin/projects')->name('admin.project.')->group(function () {
+
+Route::controller(AdminProjectController::class)->prefix('admin/projects/')->name('admin.project.')->group(function () {
     Route::get('', 'index')->name('index');
+    Route::get('projects', 'projects')->name('projects');
+    Route::get('scholarships', 'scholarships')->name('scholarships');
+    //team related routed
+    Route::get('team', 'team')->name('team');
+    Route::get('testmonial', 'testmonial')->name('testmonial');
 });
 
 Route::get('/dpric', [DpricController::class, 'index'])->name('dpric-index');
