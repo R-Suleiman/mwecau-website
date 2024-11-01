@@ -69,7 +69,7 @@ class LoginController extends Controller
                 return redirect()->route('admin.library.index');
             } elseif ($logedInUser->role == 2) {
                 Alert::success('welcome', "{$logedInUser->name}")->autoClose('7000');
-                return redirect()->route('admin.research.list');
+                return redirect()->route('admin.project.index');
             } else {
                 Auth::logout();
                 Alert::error('Attention', 'Access Denied')->autoClose('7000');
