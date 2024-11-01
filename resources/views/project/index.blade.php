@@ -1,7 +1,7 @@
 @extends('layouts.project.project-layout')
 @section('content')
     {{-- Navbar --}}
-    <nav class="bg-purple-600 border-gray-200 py-2.5 dark:bg-purple-900">
+    {{-- <nav class="bg-purple-600 border-gray-200 py-2.5 dark:bg-purple-900">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
             <a href="#" class="flex items-center space-x-2">
                 <img src="{{ asset('img/mwecau.png') }}" class="h-16" alt="Mwecau Logo" />
@@ -12,10 +12,6 @@
                 <h1 class="headerFavFont text-white text-2xl"> Mwenge catholic University</h1>
             </di>
             <div class="flex items-center lg:order-2">
-                {{-- <div class="hidden mt-2 mr-4 sm:inline-block">
-                    <span>hhhh</span>
-                </div> --}}
-
                 <button data-collapse-toggle="mobile-menu-2" type="button"
                     class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="mobile-menu-2" aria-expanded="true">
@@ -61,7 +57,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> --}}
 
     <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 
@@ -83,7 +79,7 @@
     {{-- Homepage projects --}}
     <section>
         <div class="container mx-auto mt-10">
-            <div class="lg:px-32 px-16 gap-10 w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div class="lg:px-28 px-16 gap-5 w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <h1
                     class="col-span-full text-center font-semibold text-xl uppercase md:text-2xl lg:text-3xl mb-8 headerFavFont">
                     Projects under VLIR

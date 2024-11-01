@@ -1,4 +1,3 @@
-    <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
     {{-- navbar --}}
     <section>
         <div class="uniHeader container-fluid text-center shadow-lg d-none d-lg-block d-md-none">

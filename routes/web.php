@@ -244,12 +244,13 @@ Route::controller(HealthServiceController::class)->group(function () {
 //PROJECTS RELATED ROUTES
 // Route::domain('htts://projects.mwecau.ac.tz')->name('projects-')->group(function () {
 Route::controller(ProjectsController::class)->group(function () {
-    Route::get('/projects-pro', 'index')->name('index');
-    Route::get('/projects-list', 'projects')->name('projects-list');
+    Route::get('/projects-pro', 'index')->name('project.index');
+    Route::get('/projects-list', 'projects')->name('project-list');
     Route::get('/projects-list/project', 'project')->name('single-project');
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
-    Route::get('/projects/contacts', 'contacts')->name('projects-contacts');
-    Route::get('/projects/scholarships', 'scholarships')->name('projects-scholarships');
+    Route::get('/projects/contacts', 'contacts')->name('project-contacts');
+    Route::get('/projects/scholarships', 'scholarships')->name('project-scholarships');
+    Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
 });
 // });
 Route::controller(AdminProjectController::class)->prefix('admin/projects')->name('admin.project.')->group(function () {

@@ -1,12 +1,11 @@
-    <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
     <!-- footer section -->
     <section class="footer-container text-white mt-10 fixed-bottom">
         <!-- Section: Social media -->
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 pt-16">
-                <div class="pb-10">
-                    <h6 class="uppercase text-center font-extrabold pb-10">Mwenge Catholic University</h6>
-                    <hr class=" mt-0 d-inline-block mx-auto"
+                <div class="pb-10 px-4 text-justify">
+                    <h6 class="uppercase text-center font-extrabold pb-4">Mwenge Catholic University</h6>
+                    <hr class=" mt-0 d-inline-block mx-auto mb-4"
                         style="width: 60px; background-color: #e000ef; height: 5px" />
                     <p style="color: white">
                         Welcome to Mwenge Catholic University (MWECAU), a University that gives you the opportunity to
@@ -15,9 +14,9 @@
                     </p>
                 </div>
 
-                <div class=" ">
-                    <h6 class="uppercase text-center font-extrabold pb-10">University Documents</h6>
-                    <hr class=" mt-0 d-inline-block mx-auto"
+                <div class="px-4">
+                    <h6 class="uppercase text-center font-extrabold pb-4">University Documents</h6>
+                    <hr class=" mt-0 d-inline-block mx-auto mb-4"
                         style="width: 60px; background-color: #e000ef; height: 5px" />
                     <ul class="list-unstyled">
                         @if ($postgraduateJoiningInstruction)
@@ -85,9 +84,9 @@
                 </div>
 
                 @if ($footer->isNotEmpty())
-                    <div class="">
-                        <h6 class="uppercase text-center font-extrabold pb-10">Popular links</h6>
-                        <hr class=" mt-0 d-inline-block mx-auto"
+                    <div class="px-4">
+                        <h6 class="uppercase text-center font-extrabold pb-4">Popular links</h6>
+                        <hr class=" mt-0 d-inline-block mx-auto mb-4"
                             style="width: 60px; background-color: #e000ef; height: 5px" />
                         @foreach ($footer as $item)
                             <ul class="list-unstyled">
@@ -100,9 +99,9 @@
                     </div>
                 @endif
 
-                <div class="">
-                    <h6 class="uppercase text-center font-extrabold pb-10">Contacts</h6>
-                    <hr class=" mt-0 d-inline-block mx-auto"
+                <div class="px-4">
+                    <h6 class="uppercase text-center font-extrabold pb-4">Contacts</h6>
+                    <hr class=" mt-0 d-inline-block mx-auto mb-4"
                         style="width: 60px; background-color: #e000ef; height: 5px" />
                     <p style="color: white">Mwenge Catholic University</p>
                     <p style="color: white"> P.O. Box 1226, Moshi, Kilimanjaro Tanzania, East Africa </p>

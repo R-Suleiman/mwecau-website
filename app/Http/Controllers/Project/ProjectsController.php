@@ -37,6 +37,10 @@ class ProjectsController extends Controller
         return view('project.scholarships');
     }
 
+    public function livingLab() {
+        return view('project.living-lab');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
