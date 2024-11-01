@@ -18,7 +18,13 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role == 0) {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('fail', 'You have been logged out due to unauthorized access.');
+        }
+
+        $authenticatedUser = Auth::user();
+
+        if ($authenticatedUser->role == 0) {
             return $next($request);
         } else {
             Auth::logout();
