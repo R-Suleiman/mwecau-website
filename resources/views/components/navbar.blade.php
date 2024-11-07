@@ -116,11 +116,17 @@
         </div>
     </section>
 
+    @if ($youtubeLink)
+    <section class="live-section">
+       <a href="{{ $youtubeLink->link }}" target="_blank"><div class="live-link">LIVE: MWECAU 5TH INTERNAATIONAL CONFERENCE</div></a>
+    </section>
+    @endif
+
     <section style="position: sticky; top: 0; z-index: 1">
         <nav class="navbar navbar-expand-lg" style="background-color: #513F83; color:#fff;">
             <div class="container-fluid">
 
-                <a class=" navbar-brand text-decoration-none fw-bold" href="{{ url('/') }}" style="color: #fff;">
+                <a class="navbar-brand text-decoration-none fw-bold" href="{{ url('/') }}" style="color: #fff;">
                     <img class="img-fluid d-none d-md-block d-sm-block" src="../../img/mwecau.png"
                         style="width: 100px;">
                 </a>

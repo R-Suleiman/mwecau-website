@@ -134,5 +134,8 @@ class AppServiceProvider extends ServiceProvider
         $footer = Footer::where('category', 'popular-links')
             ->get();
         View::share('footer', $footer);
+
+        $youtubeLink = Footer::where('category', 'youtube-link')->first();
+        view::share('youtubeLink', $youtubeLink);
     }
 }
