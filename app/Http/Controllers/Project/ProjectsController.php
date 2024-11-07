@@ -33,11 +33,7 @@ class ProjectsController extends Controller
 
     public function project($projectName)
     {
-        // Retrieve the project by name, or fail if it doesn't exist
-        $singleProject = Project::where('name', $projectName)->firstOrFail();
-
-        // Load the relationships after retrieving the single project
-        $singleProject->load(['gallery', 'projectTeam']);
+        $singleProject = Project::with(['gallery', 'projectTeam'])->where('name', $projectName)->firstOrFail();
         return view('project.project', compact('singleProject'));
     }
 
@@ -63,7 +59,8 @@ class ProjectsController extends Controller
         return view('project.conferences', compact('conferences'));
     }
 
-    public function livingLab() {
+    public function livingLab()
+    {
         return view('project.living-lab');
     }
 

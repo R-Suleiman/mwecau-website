@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectTeam extends Model
 {
-    protected $table = 'project_team';
+    protected $table = 'project_team_members';
     use HasFactory;
 
     protected $fillable = [
@@ -19,9 +19,9 @@ class ProjectTeam extends Model
         'project_id',
         'profile_picture'
     ];
-
-    public function project()
+    public function projects()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsToMany(Project::class, 'project_team_member_project', 'project_team_member_id', 'project_id');
     }
+
 }

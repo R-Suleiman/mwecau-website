@@ -77,7 +77,7 @@
                         @php
                             $counter = 1;
                         @endphp
-                        @if ($singleProject && $singleProject->projectTeam && $singleProject->projectTeam->isNotEmpty())
+                        @if ($singleProject && $singleProject->projectTeam->isNotEmpty())
                             @foreach ($singleProject->projectTeam as $teamMember)
                                 <tr>
                                     <td class="px-4 py-4 text-sm text-gray-800">
