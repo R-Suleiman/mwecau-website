@@ -51,7 +51,7 @@
   </div>
 
   {{-- main nav --}}
-  <div class="hidden lg:flex w-full flex items-center justify-between py-2 px-8 bg-purple-800 sticky top-0 z-50">
+  <div class="hidden lg:flex w-full items-center justify-between py-2 px-8 bg-purple-800 sticky top-0 z-50">
       <div class="w-4/12 flex items-center lg:mr-auto">
           <img src="../../img/mwecau.png" alt="mwecau logo"
               class="w-3/12 rounded transition-transform duration-1000 mr-2" id="logo">
@@ -64,14 +64,14 @@
       <nav class="w-8/12 py-2">
           <ul class="w-max ml-auto flex items-center text-lg text-white font-semibold">
               <a href="{{ route('health.index') }}"
-                  class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
+                  class="px-3 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                   <li>Home</li>
               </a>
-              <a href="{{ route('health-center-about-us') }}" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
+              <a href="{{ route('health-center-about-us') }}" class="px-3 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                   <li>About US</li>
               </a>
-              {{-- <a href="" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400"> --}}
-              <li class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
+              {{-- <a href="" class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400"> --}}
+              <li class="px-3 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
                   <a href="#">Departments <i class="fa fa-angle-down text-xs ml-1"></i></a>
                   <ul
                       class="w-max opacity-0 transform transition-opacity duration-500 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 absolute left-0 mt-3 bg-white shadow-lg text-purple-800">
@@ -82,14 +82,14 @@
 
               {{-- </a> --}}
               <a href="{{ route('health.services') }}"
-                  class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
+                  class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                   <li>Services</li>
               </a>
               <a href="{{ route('health.events') }}"
-                  class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
+                  class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                   <li>Events</li>
               </a>
-              <a href="#" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
+              <a href="#" class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                   <li>Gallery</li>
               </a>
           </ul>

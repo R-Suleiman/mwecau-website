@@ -333,29 +333,6 @@
 
         </div>
     </section>
-{{--
-    <section>
-        <div class="bg-primary">
-<h1>aw</h1>
-        </div>
-    </section> --}}
-
-    @if ($youtubeLink)
-        <section>
-            <div class="container">
-                <div class="row g-3">
-                    <div class="col-12">
-                        <div class="ratio ratio-16x9 youtubeCards">
-                            <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/{{ $youtubeLink->link }}" frameborder="0"
-                                allowfullscreen></iframe>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
 
     <!-- gallery -->
     <div class="container-fluid mt-5 mb-5">
@@ -372,8 +349,6 @@
 
     {{-- our partners --}}
     <section>
-        <!-- partners -->
-
         <div class="container text-center mt-5 mb-5">
             <div class="underline mt-2 " style="width: 100%;">
                 <h2> Partner Institutions</h2>

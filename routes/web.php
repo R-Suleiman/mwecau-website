@@ -254,6 +254,7 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects/scholarships', 'scholarships')->name('projects-scholarships');
     Route::get('/Conferences', 'conferences')->name('project-conferences');
     Route::get('/about/{conferenceName}/conference', 'conferenceDetails')->where('conferenceName', '.*')->name('about-conference');
+    Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
 });
 // });
 

@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap");
+
+:root {
+    --headColor: rgb(30, 64, 175);
+    --textColor: rgb(107 114 128);
+}
+
+body {
+    font-family: "Merriweather", sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h4, h6, span, p, label {
+    font-family: "Merriweather", sans-serif;
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(4, 2, 54, 1), rgba(106, 105, 182, 0.6), rgba(190, 193, 226, 0.4));
+}
+
+.overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.mission-card {
+    background: linear-gradient(to bottom left, rgb(4, 2, 54), rgb(6, 4, 75), rgb(33, 29, 133), rgb(46, 45, 141));
+}
+
+.img-bg {
+    background-image: url('/img/campus-life/spirtual2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* slider */
+.slick-slide {
+    margin: 0 3px;
+}
+
+.slick-track {
+    display: flex;
+    gap: 10px;
+}
+
+.slick-dots li button::before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    border: 2px solid #8f09dd; /* Tailwind orange-500 */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active button::before {
+    background-color: #8f09dd; /* Tailwind orange-500 */
+    border-color: #8f09dd;
+}

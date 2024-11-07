@@ -667,4 +667,7 @@
             });
         }
     </script>
+    </div>
+</section>
+
 @endsection

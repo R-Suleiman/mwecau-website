@@ -62,6 +62,11 @@ class ProjectsController extends Controller
         $conferences = ProjectConferences::all();
         return view('project.conferences', compact('conferences'));
     }
+
+    public function livingLab() {
+        return view('project.living-lab');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
