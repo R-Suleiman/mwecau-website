@@ -10,11 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('project_testmonial', function (Blueprint $table) {
+        Schema::create('project_conferences', function (Blueprint $table) {
             $table->id();
-            $table->string('initials');
-            $table->string('name');
-            $table->string('occupation');
+            $table->text('name');
+            $table->text('description');
+            $table->string('host')->nullable();
+            $table->string('location')->nullable();
+            $table->date('date');
+            $table->string('pdf')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_testmonial');
+        Schema::dropIfExists('project_conferences');
     }
 };

@@ -1,3 +1,4 @@
+    <!-- Because you are alive, everything is possible. - Thich Nhat Hanh -->
     <!-- footer section -->
     <section class="footer-container text-white ">
         <!-- Section: Social media -->
