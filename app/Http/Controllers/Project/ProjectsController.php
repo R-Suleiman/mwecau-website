@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\ProjectConferences;
 use App\Models\ProjectTeam;
+use App\Models\ProjectTestimonial;
 use App\Models\Research;
 
 class ProjectsController extends Controller
@@ -17,7 +19,9 @@ class ProjectsController extends Controller
     public function index()
     {
         $projects = Project::with('gallery')->get();
-        return view('project.index', compact('projects'));
+        $conferences = ProjectConferences::all();
+        $testimonials = ProjectTestimonial::all();
+        return view('project.index', compact('projects', 'conferences', 'testimonials'));
     }
 
 
@@ -27,12 +31,16 @@ class ProjectsController extends Controller
         return view('project.projects', compact('projects'));
     }
 
-    public function project($id)
+    public function project($projectName)
     {
-        $singleProject = Project::findOrFail($id)->load(['gallery', 'projectTeam']);
-        // $projectDetails = Research::findOrFail($id);
+        // Retrieve the project by name, or fail if it doesn't exist
+        $singleProject = Project::where('name', $projectName)->firstOrFail();
+
+        // Load the relationships after retrieving the single project
+        $singleProject->load(['gallery', 'projectTeam']);
         return view('project.project', compact('singleProject'));
     }
+
 
     public function researchers()
     {
@@ -49,7 +57,11 @@ class ProjectsController extends Controller
     {
         return view('project.scholarships');
     }
-
+    public function conferences()
+    {
+        $conferences = ProjectConferences::all();
+        return view('project.conferences', compact('conferences'));
+    }
     /**
      * Show the form for creating a new resource.
      */

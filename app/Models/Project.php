@@ -14,7 +14,8 @@ class Project extends Model
         'category',
         'date',
         'location',
-        'thumbnail'
+        'thumbnail',
+        'pdf'
     ];
 
     public function projectTeam()

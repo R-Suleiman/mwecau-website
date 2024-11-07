@@ -14,11 +14,14 @@ class ProjectTeam extends Model
         'initials',
         'name',
         'bio',
-        'category',
-        'project_id'
+        'institute',
+        'position',
+        'project_id',
+        'profile_picture'
     ];
 
-    public function project(){
+    public function project()
+    {
         return $this->belongsTo(Project::class);
     }
 }
