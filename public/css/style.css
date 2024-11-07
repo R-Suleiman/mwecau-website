@@ -2012,6 +2012,36 @@ a {
     width: 45%;
 }
 
+/* LIVE LINK */
+.live-section {
+    display: flex;
+    width: 100%;
+}
+
+.live-section a {
+    width: 100%;
+}
+
+.live-link {
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    color: white;
+    font-family: 'Merriweather', serif;
+    background-image: linear-gradient(45deg,  rgb(18, 18, 63), rgb(7, 7, 73), rgb(26, 26, 163), purple, rgb(177, 44, 177), rgb(238, 40, 238), rgb(230, 82, 230), rgb(26, 26, 163), rgb(61, 61, 185), rgb(7, 7, 73));
+    background-size: 300% 300%;
+    animation: rotateColors 2s linear infinite;
+}
+
+@keyframes rotateColors {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .center-div h1 {
         text-transform: uppercase;

@@ -13,7 +13,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 {{-- <script src="{{ asset('../js/health-center/health-center.js') }}"></script> --}}
-{{-- <script src="{{ asset('../css/aos/dist/aos.js') }}"></script> --}}
+<script src="{{ asset('../css/aos/dist/aos.js') }}"></script>
+<script src="{{ asset('../js/dpric/dpric.js') }}"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
