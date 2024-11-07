@@ -14,7 +14,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('project-list') }}"
+                        <a href="{{ route('projects-list') }}"
                             class="hover:text-gray-100 bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
                             Our Projects
                         </a>
@@ -103,7 +103,7 @@
                             Reseachers</a>
                     </li>
                     <li>
-                        <a href="{{ route('projects-scholarships') }}"
+                        <a href="{{ route('project-scholarships') }}"
                             class="block text-white lg:text-black hover:text-gray-100 lg:bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
                             Scholarships</a>
                     </li>
@@ -113,7 +113,7 @@
                             Lab</a>
                     </li>
                     <li>
-                        <a href="{{ route('projects-contacts') }}"
+                        <a href="{{ route('project-contacts') }}"
                             class="block text-white lg:text-black hover:text-gray-100 lg:bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">Contacts</a>
                     </li>
                 </ul>
