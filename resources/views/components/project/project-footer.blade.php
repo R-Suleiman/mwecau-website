@@ -16,7 +16,7 @@
                                     <li>
                                         <a href="{{route('about-conference', $conference->name)}}" class=" text-white py- text-md">
                                             <i
-                                                class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-2 mr-2 mt-3"></i>
+                                                class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-1 mr-2 mt-3"></i>
                                             <span>{{ $conference->name }}</span>
                                         </a>
                                     </li>
@@ -47,7 +47,7 @@
                                         <li>
                                             <a href="{{route('single-project', $project->name)}}" class=" text-white py-1 focus:text-slate-500 text-md">
                                                 <i
-                                                    class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-2 mr-2 mt-3"></i>
+                                                    class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-1 mr-2 mt-3"></i>
                                                 <span>{{ $project->name }}</span>
                                             </a>
                                         </li>
