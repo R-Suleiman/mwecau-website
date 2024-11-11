@@ -7,7 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HealthService\HealthServiceController;
 use App\Http\Controllers\Libray\LibraryController;
 use App\Http\Controllers\Project\AdminProjectController;
+use App\Http\Controllers\Project\AdminProjectScholarshipController;
 use App\Http\Controllers\Project\AdminProjectTeamController;
+use App\Http\Controllers\Project\AdminProjectTestimonialController;
 use App\Http\Controllers\Project\ProjectAdminConferenceController;
 use App\Http\Controllers\Project\ProjectsController;
 use App\Models\HealthService;
@@ -250,11 +252,13 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects-list', 'projects')->name('projects-list');
     Route::get('/project/{projectName}', 'project')->where('projectName', '.*')->name('single-project');
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
+    Route::get('project-team-members', 'projectTeamMembers')->name('project-team-members');
     Route::get('/projects/contacts', 'contacts')->name('projects-contacts');
     Route::get('/projects/scholarships', 'scholarships')->name('projects-scholarships');
     Route::get('/Conferences', 'conferences')->name('project-conferences');
     Route::get('/about/{conferenceName}/conference', 'conferenceDetails')->where('conferenceName', '.*')->name('about-conference');
     Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
+    Route::get('{attachment}', 'conferencePdfPreview')->name('conference-attachment-preview');
 });
 // });
 
@@ -265,13 +269,21 @@ Route::controller(AdminProjectController::class)->prefix('admin/projects/')->nam
     Route::get('create', 'createProject')->name('create');
     Route::post('store', 'storeProject')->name('store');
     Route::get('edit/{projectName}/project', 'edit')->where('projectName', '.*')->name('edit');
-    Route::put('update/{id}', 'update')->name('update');
+    Route::put('update-project/{id}', 'updateProject')->name('update-project');
+    //removing image from project gallery
+    Route::delete('remove-gallery-image/{id}', 'removeGalleryImage')->name('remove-gallery-image');
     Route::get('{projectName}/details', 'projectDatails')->where('projectName', '.*')->name('details');
     Route::delete('destroy/{id}', 'destroy')->name('destroy');
-    Route::get('scholarships', 'scholarships')->name('scholarships');
     //team related routed
     Route::get('team', 'team')->name('team');
-    Route::get('testmonial', 'testmonial')->name('testmonial');
+
+    // gallery creation relatd routes
+    Route::get('create-gallery-for/{projectName}', 'createGallery')->name('create-gallery');
+    Route::post('store-project-gallery', 'storeProjectGallery')->name('store-project-gallery');
+
+    //project page contents routes
+    Route::get('edit/{id}/{name}/section', 'editPageSection')->name('edit-page-section');
+    Route::put('update/{id}', 'updatePageSection')->name('update-page-section');
 });
 
 // project admin project team routes
@@ -283,6 +295,8 @@ Route::controller(AdminProjectTeamController::class)->prefix('admin/team/')->nam
     Route::put('update/{id}', 'update')->name('update');
     Route::get('{name}/profile', 'memberProfile')->where('name', '.*')->name('member-profile');
     Route::delete('destroy/{id}', 'destroy')->name('destroy');
+    Route::post('/assign-project', 'assignProject')->name('assignProject');
+
 
 });
 
@@ -294,6 +308,29 @@ Route::controller(ProjectAdminConferenceController::class)->prefix('admin/confer
     Route::get('edit/{name}/conference', 'edit')->name('edit');
     Route::put('update/{id}', 'update')->name('update');
     Route::delete('destroy/{id}', 'destroy')->name('destroy');
+
+});
+
+//project admin scholarship routes
+Route::controller(AdminProjectScholarshipController::class)->prefix('admin/scholarship/')->name('admin.project.scholarship.')->group(function () {
+    Route::get('index', 'scholarships')->name('scholarships');
+    Route::get('create', 'create')->name('create');
+    Route::post('store', 'store')->name('store');
+    Route::get('edit/{scholarshipName}/scholarship', 'edit')->where('scholarshipName', '.*')->name('edit');
+    Route::put('update/{id}', 'update')->name('update');
+    Route::delete('destroy/{id}', 'destroy')->name('destroy');
+
+});
+
+//project admin testimonial routes
+Route::controller(AdminProjectTestimonialController::class)->prefix('admin/testimonial/')->name('admin.project.testimonial.')->group(function () {
+    Route::get('testimonials', 'testimonials')->name('testimonials');
+    Route::get('post-testimonial', 'createTestimonial')->name('create-testimonial');
+    Route::post('store-testimonial', 'storeTestimonial')->name('store-testimonial');
+    Route::get('about/{testifierName}', 'aboutTestimonial')->where('testifierName', '.*')->name('about-testimonial');
+    Route::get('edit/{testimonialName}/testimonial', 'editTestimonial')->where('testimonialName', '.*')->name('edit-testimonial');
+    Route::put('update/{id}', 'updateTestimonial')->name('update-testimonial');
+    Route::delete('destroy/{id}', 'destroyTestimonial')->name('destroy-testimonial');
 
 });
 

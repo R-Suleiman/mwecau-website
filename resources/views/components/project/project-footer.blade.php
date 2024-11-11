@@ -7,66 +7,54 @@
                         Mwenge Catholic University
                     </h5>
                     <div class="grid justify-between grid-cols-3 gap-4 pt-10">
-                        <ul>
-                            <p class="block mb-1 text-xl favFont font-semibold  text-white">
-                                Conferences
-                            </p>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                    Conference 1
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                    Conference 2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                    Conference 3
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                    Conference 4
-                                </a>
-                            </li>
-                        </ul>
-                        <ul>
-                            <p class="block mb-1 favFont font-semibold text-white text-xl">
-                                Partner Institutions
-                            </p>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                    Ku Leuven
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                    Kisubi University
-                                </a>
-                            </li>
-                        </ul>
-                        <ul>
-                            <p class="block mb-1 favFont text-xl font-semibold">
-                                Projects
-                            </p>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                    Bega Kwa Bega
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500">
-                                    Mtu ni Watu
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="block text-white py-1 focus:text-slate-500">
-                                    Live Lablink
-                                </a>
-                            </li>
-                        </ul>
+                        @if ($projectConferences->isNotEmpty())
+                            <ul>
+                                <p class="block mb-1 text-xl favFont font-semibold  text-white">
+                                    Conferences
+                                </p>
+                                @foreach ($projectConferences as $conference)
+                                    <li>
+                                        <a href="{{route('about-conference', $conference->name)}}" class=" text-white py- text-md">
+                                            <i
+                                                class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-2 mr-2 mt-3"></i>
+                                            <span>{{ $conference->name }}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            @endif
+                            <ul>
+                                <p class="block mb-1 favFont font-semibold text-white text-xl">
+                                    Partner Institutions
+                                </p>
+                                <li>
+                                    <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
+                                        Ku Leuven
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
+                                        Kisubi University
+                                    </a>
+                                </li>
+                            </ul>
+                            @if ($projectFooter->isNotEmpty())
+                                <ul>
+                                    <p class="block mb-1 favFont text-xl font-semibold">
+                                        Projects
+                                    </p>
+                                    @foreach ($projectFooter as $project)
+                                        <li>
+                                            <a href="{{route('single-project', $project->name)}}" class=" text-white py-1 focus:text-slate-500 text-md">
+                                                <i
+                                                    class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-2 mr-2 mt-3"></i>
+                                                <span>{{ $project->name }}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
                     </div>
                 </div>
                 <div

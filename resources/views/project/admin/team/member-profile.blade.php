@@ -89,11 +89,13 @@
                             @php
                                 $counter = 1;
                             @endphp
-                            @if ($teamMember && $teamMember->project)
+                            @if ($teamMember && $teamMember->projects->isNotEmpty())
                                 <div class="w-full space-y-3">
-                                    <div class="bg-slate-100 p-3 rounded-md shadow-sm">
-                                        {{ $counter++ }} : <span>Project: {{ $teamMember->project->name }}</span>
-                                    </div>
+                                    @foreach ($teamMember->projects as $project)
+                                        <div class="bg-slate-100 p-3 rounded-md shadow-sm">
+                                            {{ $counter++ }} : <span>Project: {{ $project->name }}</span>
+                                        </div>
+                                    @endforeach
                                 </div>
                             @else
                                 <p class="text-red-600 font-semibold">This team member is currently not assigned to any
@@ -125,10 +127,9 @@
 
                                         <!-- Modal Body -->
                                         <div class="py-4 text-slate-600">
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('admin.project.team.assignProject') }}" method="POST">
                                                 @csrf
                                                 @method('POST')
-
                                                 <label for="project_id"
                                                     class="block text-sm font-medium text-slate-700 mb-2">Project</label>
                                                 <select name="project_id" id="project_id"
@@ -141,6 +142,10 @@
                                                         @endforeach
                                                     @endif
                                                 </select>
+
+                                                <!-- Hidden input for team_member_id -->
+                                                <input type="hidden" name="team_member_id" value="{{ $teamMember->id }}">
+
                                                 <!-- Modal Footer -->
                                                 <div class="flex justify-end pt-4">
                                                     <button @click.prevent="open = false"
@@ -153,6 +158,7 @@
                                                     </button>
                                                 </div>
                                             </form>
+
                                         </div>
 
                                     </div>

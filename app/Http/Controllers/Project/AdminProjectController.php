@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\ProjectContent;
+use App\Models\ProjectGallery;
+use App\Models\ProjectScholarship;
 use App\Models\ProjectTeam;
 use App\Models\Research;
 use File;
@@ -13,7 +16,10 @@ class AdminProjectController extends Controller
 {
     public function index()
     {
-        return view('project.admin.dashboard');
+        $totalprojects = Project::all()->count();
+        $totalScholarships = ProjectScholarship::all()->count();
+        $websiteContents = ProjectContent::all();
+        return view('project.admin.dashboard', compact('totalScholarships', 'totalprojects', 'websiteContents'));
     }
     public function projects()
     {
@@ -106,7 +112,7 @@ class AdminProjectController extends Controller
         $project = Project::where('name', $projectName)->first();
         return view('project.admin.projects.edit', compact('project'));
     }
-    public function update(Request $request, $id)
+    public function updateProject(Request $request, $id)
     {
         $request->validate([
             'name' => ['required'],
@@ -218,10 +224,26 @@ class AdminProjectController extends Controller
     public function projectDatails($projectName)
     {
         $project = Project::where('name', $projectName)->first();
-
-        $projectTeam = ProjectTeam::where('project_id', $project->id)->count();
-        return view('project.admin.projects.project-details', compact('project', 'projectTeam'));
+        $projectGallery = ProjectGallery::where('project_id', $project->id)->get();
+        // $projectTeam = ProjectTeam::where('project_id', $project->id)->count();
+        return view('project.admin.projects.project-details', compact('project', 'projectGallery'));
     }
+    public function removeGalleryImage($id)
+    {
+        $image = ProjectGallery::findOrFail($id);
+        $existingImage = public_path('/images/projects/images/project-gallery/' . $image->image);
+        if (File::exists($existingImage)) {
+            File::delete($existingImage);
+        } else {
+            return redirect()->back()->with('error', 'Image not found on the server.');
+        }
+        if ($image->delete()) {
+            return redirect()->back()->with('success', 'Image successfully removed.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to delete the image from the database.');
+        }
+    }
+
     public function scholarships()
     {
         return view('project.admin.scholarships');
@@ -235,5 +257,85 @@ class AdminProjectController extends Controller
     {
         $projects = Project::all();
         return view('project.admin.testmonial', compact('projects'));
+    }
+    public function createGallery(Request $request, $projectName)
+    {
+        $project = Project::where('name', $projectName)->firstOrFail();
+        return view('project.admin.projects.create-project-gallery', compact('project'));
+    }
+    public function storeProjectGallery(Request $request)
+    {
+        $request->validate([
+            'project_id' => ['integer'],
+            'image' => ['required', 'array'],
+            'image.*' => ['file', 'max:12048']
+        ]);
+
+        //processing uploaded images
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
+                $imageOriginalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $ImageFileNameExtension = $image->getClientOriginalExtension();
+                $random = rand(1, 9999);
+
+                $newImageName = $imageOriginalName . '-' . $random . '-' . $ImageFileNameExtension;
+
+                $image->move(public_path('images/projects/images/project-gallery'), $newImageName);
+
+                $newGallery = new ProjectGallery();
+                $newGallery->project_id = $request->project_id;
+                $newGallery->image = $newImageName;
+
+                $newGallery->save();
+            }
+        }
+        return redirect()->back()->with('success', "Gallery for {$newGallery->title} has been created successfully");
+
+    }
+    public function editPageSection($id)
+    {
+        $content = Projectcontent::findOrFail($id);
+        return view('project.admin.edit-page-sections', compact('content'));
+    }
+    public function updatePageSection(Request $request, $id)
+    {
+        $request->validate([
+            'section_header' => ['nullable'],
+            'section_sub_header' => ['nullable'],
+            'section_description' => ['nullable'],
+            'image' => ['max:2028'],
+        ]);
+
+        $pageSection = ProjectContent::findOrFail($id);
+
+        $newImageName = $pageSection->image;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageOriginalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $imageFileExtension = $image->getClientOriginalExtension();
+            $randomNumbers = rand(1, 9999);
+            $newImageName = $imageOriginalName . '-' . $randomNumbers . '-' . $imageFileExtension;
+
+            $image->move(public_path('images/projects/images/page-section-images'), $newImageName);
+
+            //deleting existing image
+            $existingPageSectionImage = public_path('/images.projects/images/page-section-images/' . $pageSection->image);
+            if (File::exists($existingPageSectionImage)) {
+                File::delete($existingPageSectionImage);
+            }
+        }
+
+        $pageSection->section_header = $request->section_header;
+        $pageSection->section_sub_header = $request->section_sub_header;
+        $pageSection->section_description = $request->section_description;
+        $pageSection->image = $newImageName;
+
+        $pageSection->update();
+
+        if ($pageSection->update()) {
+            return redirect()->route('admin.project.index')->with('success', 'Updated Successfully');
+        } else {
+            return redirect()->back()->with('fail', 'Something went wrong, Failed to update');
+        }
     }
 }

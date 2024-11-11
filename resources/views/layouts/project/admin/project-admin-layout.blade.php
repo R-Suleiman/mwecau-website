@@ -27,7 +27,7 @@
 
 <body class="font-sans antialiased bg-gray-100" x-data="{ open: false }">
     <div class="container mx-auto">
-        <div class="lg:hidden flex items-center justify-between mt-10">
+        <div class="lg:hidden flex items-center justify-between mt-10 shadow-xl pb-7">
             <h1 class="headerFavFont font-semibold text-gray-900 text-3xl mx-auto">Mwenge Catholic University</h1>
 
             <div class="ml-10">
@@ -78,7 +78,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.project.scholarships') }}"
+                        <a href="{{ route('admin.project.scholarship.scholarships') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-graduation-cap text-indigo-400 text-xl mr-3"></i>
                             <span class="flex-1 whitespace-nowrap">Scholarships</span>
@@ -93,7 +93,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.project.testmonial') }}"
+                        <a href="{{ route('admin.project.testimonial.testimonials') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-comment-dots text-indigo-400 text-xl mr-3"></i>
                             <span class="flex-1 whitespace-nowrap">Testimonials</span>

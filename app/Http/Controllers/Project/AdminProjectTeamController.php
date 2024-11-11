@@ -144,13 +144,33 @@ class AdminProjectTeamController extends Controller
     public function memberProfile($name)
     {
         $projects = Project::all();
-        $teamMember = ProjectTeam::where('name', $name)->first();
-
-        if ($teamMember) {
-            $teamMember->load('project'); // Eager load the related project
-        }
+        $teamMember = ProjectTeam::with('projects')->where('name', $name)->firstOrFail();
         return view('project.admin.team.member-profile', compact('teamMember', 'projects'));
     }
+    public function assignProject(Request $request)
+    {
+        $request->validate([
+            'project_id' => 'required|exists:projects,id',
+            'team_member_id' => 'required|exists:project_team_members,id',
+        ]);
+
+        $teamMemberId = $request->team_member_id;
+        $projectId = $request->project_id;
+
+        // Retrieve the team member and check if they are already assigned
+        $teamMember = ProjectTeam::findOrFail($teamMemberId);
+
+        // Check if the team member is already assigned to this project
+        if ($teamMember->projects()->where('project_id', $projectId)->exists()) {
+            return redirect()->back()->withErrors(['error' => 'This team member is already assigned to the selected project.']);
+        }
+
+        // Attach the team member to the project
+        $teamMember->projects()->attach($projectId);
+
+        return redirect()->back()->with('success', 'Team member assigned to project successfully.');
+    }
+
 
     public function destroy($id)
     {

@@ -126,7 +126,7 @@
                     @foreach ($singleProject->gallery as $gallery)
                         <div class="w-1/2 my-4 lg:w-1/4">
                             <div class="relative w-11/12 mx-auto overflow-hidden group">
-                                <img src="{{ asset('images/projects/images/' . $gallery->image) }}" alt="gallery photo"
+                                <img src="{{ asset('/images/projects/images/project-gallery/' . $gallery->image) }}" alt="gallery photo"
                                     class="w-full transition-transform duration-500 scale-100 group-hover:scale-105">
                                 <div class="overlay hidden group-hover:block"></div>
                             </div>
@@ -178,7 +178,7 @@
             @if ($singleProject->gallery->isNotEmpty())
                 @foreach ($singleProject->gallery->take(1) as $gallery)
                     <div class="w-full md:w-8/12 p-4">
-                        <img src="{{ asset('images/projects/images/' . $gallery->image) }}" alt="gallery photo"
+                        <img src="{{ asset('/images/projects/images/project-gallery/' . $gallery->image) }}" alt="gallery photo"
                             class="w-full rounded-lg transition-transform duration-500 scale-100 group-hover:scale-105">
                     </div>
                 @endforeach

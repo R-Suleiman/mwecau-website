@@ -76,6 +76,16 @@
                             <input type="file" id="pdf" name="pdf"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
                             <x-input-error :messages="$errors->get('pdf')" class="mt-2" />
+                            <div class="mt-4">
+                                @if ($conference->pdf != null)
+                                    <a target="_blank" href="{{ route('conference-attachment-preview', $conference->pdf) }}"
+                                        class="text-green-600 font-semibold"> <i class="fas fa-eye"></i>
+                                        <span>Attachment is Available</span>
+                                    </a>
+                                @else
+                                    <span class="text-green-500">No Attachment is available</span>
+                                @endif
+                            </div>
 
                         </div>
                     </div>
