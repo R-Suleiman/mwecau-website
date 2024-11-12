@@ -282,8 +282,15 @@ Route::controller(AdminProjectController::class)->prefix('admin/projects/')->nam
     Route::post('store-project-gallery', 'storeProjectGallery')->name('store-project-gallery');
 
     //project page contents routes
-    Route::get('edit/{id}/{name}/section', 'editPageSection')->name('edit-page-section');
+    Route::get('edit/{id}/section', 'editPageSection')->name('edit-page-section');
     Route::put('update/{id}', 'updatePageSection')->name('update-page-section');
+
+    //project partners routes
+    Route::get('project-partners', 'partners')->name('partners');
+    Route::post('store-project-partner', 'storeProjectPartner')->name('store-project-partner');
+    Route::get('edit/{partnerName}', 'editPartner')->where('partnerName', '.*')->name('edit-project-partner');
+    Route::get('update/{id}', 'updateProjectPartner')->name('update-project-partner');
+    Route::delete('partner/{id}', 'destroyProjectPartner')->name('destroy-project-partner');
 });
 
 // project admin project team routes

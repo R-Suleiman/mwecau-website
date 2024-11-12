@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\ProjectContent;
 use App\Models\ProjectGallery;
+use App\Models\ProjectPartner;
 use App\Models\ProjectScholarship;
 use App\Models\ProjectTeam;
 use App\Models\Research;
@@ -337,5 +338,98 @@ class AdminProjectController extends Controller
         } else {
             return redirect()->back()->with('fail', 'Something went wrong, Failed to update');
         }
+    }
+
+    //paroject partners
+    public function partners()
+    {
+        $partners = ProjectPartner::all();
+        return view('project.admin.partners.new-project-partners', compact('partners'));
+    }
+    public function storeProjectPartner(Request $request)
+    {
+        $request->validate([
+            'name' => ['required'],
+            'link' => ['required'],
+            'partner_logo' => ['required', 'max:2048']
+        ]);
+
+        //processing partner logo
+        if ($request->hasFile('partner_logo')) {
+            $logo = $request->file('partner_logo');
+            $logoOriginalName = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
+            $logoExtension = $logo->getClientOriginalExtension();
+            $randomNumber = rand(1, 9999);
+
+            $newLogoName = $logoOriginalName . '-' . $randomNumber . '-' . $logoExtension;
+
+            $logo->move(public_path('images/projects/images/partners-logo/'), $newLogoName);
+        }
+
+        $newPartner = new ProjectPartner();
+
+        $newPartner->name = $request->name;
+        $newPartner->link = $request->link;
+        $newPartner->partner_logo = $newLogoName;
+
+        $newPartner->save();
+
+        return redirect()->back()->with('success', 'New Project partner has been added successfully');
+    }
+    public function editPartner($partnerName)
+    {
+        $partner = ProjectPartner::where('name', $partnerName)->firstOrFail();
+        return view('project.admin.partners.edit-partner', compact('partner'));
+    }
+    public function updateProjectPartner(Request $request, $id)
+    {
+        $request->validate([
+            'name' => ['required'],
+            'link' => ['required'],
+            'partner_logo' => ['required', 'max:2048']
+        ]);
+        $partner = ProjectPartner::findOrFail($id);
+
+        //processing partner logo
+        $newLogoName = $partner->partner_logo;
+        if ($request->hasFile('partner_logo')) {
+            $logo = $request->file('partner_logo');
+            $logoOriginalName = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
+            $logoExtension = $logo->getClientOriginalExtension();
+            $randomNumber = rand(1, 9999);
+
+            $newLogoName = $logoOriginalName . '-' . $randomNumber . '-' . $logoExtension;
+
+            $logo->move(public_path('images/projects/images/partners-logo/'), $newLogoName);
+
+            //deleting partner logo
+            $existingLogo = public_path('/images/projects/images/partners-logo/' . $partner->partner_logo);
+            if (File::exists($existingLogo)) {
+                File::delete($existingLogo);
+            }
+
+        }
+
+        $partner->name = $request->name;
+        $partner->link = $request->link;
+        $partner->partner_logo = $newLogoName;
+
+        $partner->update();
+
+        return redirect()->back()->with('success', 'New Project partner has been added successfully');
+    }
+    public function destroyProjectPartner($id)
+    {
+        $partner = ProjectPartner::findOrFail($id);
+
+        //deleting partner logo
+        $existingLogo = public_path('/images/projects/images/partners-logo/' . $partner->partner_logo);
+        if (File::exists($existingLogo)) {
+            File::delete($existingLogo);
+        }
+
+        $partner->delete();
+
+        return redirect()->back()->with('success', 'Partner removed Successfully');
     }
 }
