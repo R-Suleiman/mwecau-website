@@ -66,12 +66,15 @@ h1, h2, h3, h4, h4, h6, span, p, label {
     width: 15px;
     height: 15px;
     background-color: transparent;
-    border: 2px solid #8f09dd; /* Tailwind orange-500 */
+    border: 2px solid #8f09dd;
     border-radius: 50%;
     transition: all 0.3s ease;
 }
 
 .slick-dots li.slick-active button::before {
-    background-color: #8f09dd; /* Tailwind orange-500 */
+    background-color: #8f09dd;
     border-color: #8f09dd;
 }
+
+
+

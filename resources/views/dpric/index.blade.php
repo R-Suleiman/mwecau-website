@@ -54,7 +54,7 @@
                     architecto ipsa quia mollitia nesciunt commodi.</p>
             </div>
             <div class="mt-4 md:mt-0">
-                <x-dpric-btn btnLink='#'>Read More</x-dpric-btn>
+                <x-dpric-btn btnLink='/dpric/welcome-message'>Read More</x-dpric-btn>
             </div>
 
         </div>
@@ -237,7 +237,7 @@
     </section>
 
     {{-- Research Projects --}}
-    <section class="w-full flex flex-col md:flex-row my-8 bg-neutral-100">
+    <section class="w-full flex flex-col md:flex-row mt-8 bg-neutral-100">
         <div class="w-full lg:w-1/2 p-8">
             <div class="w-fit mx-auto my-8"><i class="fas fa-microscope text-5xl text-default-head"></i></div>
             <h3 class="text-default-head text-xl lg:text-2xl my-6 text-center">Discover Our Research Projects</h3>
@@ -267,7 +267,7 @@
     </section>
 
     {{-- Innovation Hub --}}
-    <section class="relative w-full h-96 bg-center bg-cover my-8 bg-fixed"
+    <section class="relative w-full h-96 bg-center bg-cover bg-fixed"
         style="background-image: url('{{ asset('img/health-center/header.jpg') }}')">
         <div class="overlay">
             <div class="center-div">
@@ -290,7 +290,7 @@
     </section>
 
     {{-- Awards --}}
-    <section class="w-full bg-blue-900 text-white p-4">
+    <section class="w-full bg-purple-900 text-white p-4">
         <div class="w-full md:w-11/12 mx-auto p-4 text-center">
             <div class="w-full my-4">
                 <h3 class="uppercase text-xl md:text-3xl">Celebrating Excellence with Research Awards</h3>

@@ -73,7 +73,7 @@ $(document).ready(function () {
                 infinite: true,
                 speed: 1000,
                 autoplay: true,
-                autoplaySpeed: 3000,
+                autoplaySpeed: 7000,
                 fade: true,
                 cssEase: 'linear',
                 adaptiveHeight: true

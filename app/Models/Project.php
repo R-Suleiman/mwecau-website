@@ -14,13 +14,16 @@ class Project extends Model
         'category',
         'date',
         'location',
-        'thumbnail'
+        'thumbnail',
+        'pdf'
     ];
+
 
     public function projectTeam()
     {
-        return $this->hasMany(ProjectTeam::class);
+        return $this->belongsToMany(ProjectTeam::class, 'project_team_member_project', 'project_id', 'project_team_member_id');
     }
+
     public function gallery()
     {
         return $this->hasMany(ProjectGallery::class);

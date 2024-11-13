@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HealthService\HealthServiceController;
 use App\Http\Controllers\Libray\LibraryController;
 use App\Http\Controllers\Project\AdminProjectController;
+use App\Http\Controllers\Project\AdminProjectTeamController;
+use App\Http\Controllers\Project\ProjectAdminConferenceController;
 use App\Http\Controllers\Project\ProjectsController;
 use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
@@ -246,21 +248,73 @@ Route::controller(HealthServiceController::class)->group(function () {
 Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects-pro', 'index')->name('project.index');
     Route::get('/projects-list', 'projects')->name('projects-list');
-    Route::get('/projects-list/project/{id}', 'project')->name('single-project');
+    Route::get('/project/{projectName}', 'project')->where('projectName', '.*')->name('single-project');
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
-    Route::get('/projects/contacts', 'contacts')->name('project-contacts');
-    Route::get('/projects/scholarships', 'scholarships')->name('project-scholarships');
+    Route::get('/projects/contacts', 'contacts')->name('projects-contacts');
+    Route::get('/projects/scholarships', 'scholarships')->name('projects-scholarships');
+    Route::get('/Conferences', 'conferences')->name('project-conferences');
+    Route::get('/about/{conferenceName}/conference', 'conferenceDetails')->where('conferenceName', '.*')->name('about-conference');
     Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
 });
 // });
 
 Route::controller(AdminProjectController::class)->prefix('admin/projects/')->name('admin.project.')->group(function () {
     Route::get('', 'index')->name('index');
+    // project admin related routes
     Route::get('projects', 'projects')->name('projects');
+    Route::get('create', 'createProject')->name('create');
+    Route::post('store', 'storeProject')->name('store');
+    Route::get('edit/{projectName}/project', 'edit')->where('projectName', '.*')->name('edit');
+    Route::put('update/{id}', 'update')->name('update');
+    Route::get('{projectName}/details', 'projectDatails')->where('projectName', '.*')->name('details');
+    Route::delete('destroy/{id}', 'destroy')->name('destroy');
     Route::get('scholarships', 'scholarships')->name('scholarships');
     //team related routed
     Route::get('team', 'team')->name('team');
     Route::get('testmonial', 'testmonial')->name('testmonial');
 });
 
-Route::get('/dpric', [DpricController::class, 'index'])->name('dpric-index');
+// project admin project team routes
+Route::controller(AdminProjectTeamController::class)->prefix('admin/team/')->name('admin.project.team.')->group(function () {
+    Route::get('index', 'index')->name('index');
+    Route::get('create/{id}', 'create')->name('create');
+    Route::post('store', 'store')->name('store');
+    Route::get('edit/{name}/profile', 'edit')->name('edit');
+    Route::put('update/{id}', 'update')->name('update');
+    Route::get('{name}/profile', 'memberProfile')->where('name', '.*')->name('member-profile');
+    Route::delete('destroy/{id}', 'destroy')->name('destroy');
+
+});
+
+//project admin conference routes
+Route::controller(ProjectAdminConferenceController::class)->prefix('admin/conference/')->name('admin.project.conference.')->group(function () {
+    Route::get('index', 'index')->name('index');
+    Route::get('create', 'create')->name('create');
+    Route::post('store', 'store')->name('store');
+    Route::get('edit/{name}/conference', 'edit')->name('edit');
+    Route::put('update/{id}', 'update')->name('update');
+    Route::delete('destroy/{id}', 'destroy')->name('destroy');
+
+});
+
+// DPRIC
+Route::controller(DpricController::class)->name('dpric.')->group(function() {
+    Route::get('/dpric', 'index')->name('index');
+    Route::get('/dpric/welcome-message', 'welcomeMessage')->name('welcome-message');
+    Route::get('/dpric/directorate-management', 'directorateManagement')->name('directorate-management');
+    Route::get('/dpric/directorate-staff', 'directorateStaff')->name('directorate-staff');
+    Route::get('/dpric/directorate-programmes', 'directorateProgrammes')->name('directorate-programmes');
+    Route::get('/dpric/application-procedures', 'applicationProcedures')->name('application-procedures');
+    Route::get('/dpric/joining-instruction', 'joiningInstruction')->name('joining-instruction');
+    Route::get('/dpric/student-forms', 'studentForms')->name('student-forms');
+    Route::get('/dpric/research-projects', 'researchProjects')->name('research-projects');
+    Route::get('/dpric/research-policies', 'researchPolicies')->name('research-policies');
+    Route::get('/dpric/research-guidelines', 'researchGuidelines')->name('research-guidelines');
+    Route::get('/dpric/report-research-progress', 'reportResearchProgress')->name('report-research-progress');
+    Route::get('/dpric/research-opportunities', 'researchOpportunities')->name('research-opportunities');
+    Route::get('/dpric/research-awards', 'researchAwards')->name('research-awards');
+    Route::get('/dpric/partner-with-us', 'partnerWithUs')->name('partner-with-us');
+    Route::get('/dpric/journals', 'journals')->name('journals');
+    Route::get('/dpric/conference-proceedings', 'conferenceProceedings')->name('conference-proceedings');
+    // Route::get('/dpric/research-programmes', 'researchProgrammes')->name('research-programmes');
+});

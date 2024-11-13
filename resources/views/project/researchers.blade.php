@@ -26,13 +26,24 @@
 
                             <div class="w-full mt-2 p-2 text-justify">
                                 <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
-                                 {{$teamMember->initials}} {{ $teamMember->name }}</h4>
+                                    {{ $teamMember->initials }} {{ $teamMember->name }}</h4>
                                 <span class="my-4 text-gray-400 text-sm"><i
                                         class="fa fa-calendar"></i>{{ $teamMember->institute }}</span>
                             </div>
                         </a>
                     </div>
                 @endforeach
+            @else
+                <div class="container mx-auto">
+                    <div
+                        class="w-full p-4 flex flex-col items-center justify-center text-center bg-blue-50 rounded-xl border border-dashed border-blue-200">
+                        <h2 class="text-2xl font-bold text-blue-700 mb-2">Meet Our Researchers Soon!</h2>
+                        <p class="text-gray-600 text-sm">Our research team is constantly growing. Check back soon to learn
+                            more about the experts driving our projects forward.</p>
+                        <i class="fas fa-user-graduate text-blue-400 text-5xl mt-4"></i>
+                    </div>
+
+                </div>
             @endif
         </div>
     </section>

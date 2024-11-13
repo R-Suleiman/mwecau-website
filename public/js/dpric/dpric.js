@@ -26,6 +26,21 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $(".dpric-awards").slick({
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        cssEase: "linear",
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '0',
+        adaptiveHeight: false
+    });
+});
+
+$(document).ready(function () {
     $(".dpric-units").slick({
         dots: true,
         infinite: true,
