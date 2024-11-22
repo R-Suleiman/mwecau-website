@@ -96,7 +96,7 @@
                     <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
                         <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
                         <div class="p-2 text-white w-full">
-                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="">Title of the
+                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news') }}">Title of the
                                     News/Announcement/Article</a></h3>
                             <p class="text-sm md:text-lg my-2 hidden lg:block">Lorem ipsum dolor, sit amet consectetur
                                 adipisicing elit. Blanditiis, a
@@ -113,7 +113,7 @@
                     <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
                         <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
                         <div class="p-2 text-white w-full">
-                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="">Title of the
+                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news') }}">Title of the
                                     News/Announcement/Article</a></h3>
                             <p class="text-sm md:text-lg my-2 hidden lg:block">Lorem ipsum dolor, sit amet consectetur
                                 adipisicing elit. Blanditiis, a
@@ -130,7 +130,7 @@
                     <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
                         <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
                         <div class="p-2 text-white w-full">
-                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="">Title of the
+                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news') }}">Title of the
                                     News/Announcement/Article</a></h3>
                             <p class="text-sm md:text-lg my-2 hidden lg:block">Lorem ipsum dolor, sit amet consectetur
                                 adipisicing elit. Blanditiis, a
@@ -140,6 +140,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="my-4 w-fit mx-auto">
+            <x-dpric-btn btnLink='/dpric/news'>More News</x-dpric-btn>
         </div>
     </section>
 
@@ -169,7 +173,9 @@
                     <div class="w-full lg:w-10/12 mx-auto flex flex-col">
                         <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" class="w-full rounded-lg" alt="">
                         <div class="p-2">
-                            <h4 class="text-default-head text-lg my-2">Name of the Unit</h4>
+                            <a href="{{ route('dpric.postgraduate-unit') }}">
+                                <h4 class="text-default-head hover:text-blue-950 text-lg my-2">Name of the Unit</h4>
+                            </a>
                             <p class="text-default-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat,
                                 eaque corporis quod </p>
                         </div>
@@ -179,7 +185,9 @@
                     <div class="w-full lg:w-10/12 mx-auto flex flex-col">
                         <img src="{{ asset('img/campus-life/spirtual3.jpg') }}" class="w-full rounded-lg" alt="">
                         <div class="p-2">
-                            <h4 class="text-default-head text-lg my-2">Name of the Unit</h4>
+                            <a href="{{ route('dpric.postgraduate-unit') }}">
+                                <h4 class="text-default-head hover:text-blue-950 text-lg my-2">Name of the Unit</h4>
+                            </a>
                             <p class="text-default-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat,
                                 eaque corporis quod </p>
                         </div>
@@ -232,7 +240,7 @@
         </div>
 
         <div class="w-fit mx-auto my-8">
-            <x-dpric-btn btnLink='#'>More Programmes</x-dpric-btn>
+            <x-dpric-btn btnLink='/dpric/directorate-programmes'>More Programmes</x-dpric-btn>
         </div>
     </section>
 
@@ -258,7 +266,7 @@
             </div>
 
             <div class="w-fit mx-auto mt-6">
-                <a href="#"><button
+                <a href="/dpric/research-projects"><button
                         class="p-2 text-lg text-white bg-purple-800 hover:text-purple-800 hover:bg-white border-2 border-white hover:border-purple-800">
                         Explore More
                     </button></a>
@@ -279,7 +287,7 @@
                         entrepreneur, or visionary, our hub is the place to bring ideas to life and drive meaningful change!
                     </p>
                     <div class="w-fit mx-auto mt-6">
-                        <a href="#"><button
+                        <a href="/dpric/innovations-hub"><button
                                 class="p-2 text-lg text-white bg-purple-800 hover:text-purple-800 hover:bg-white border-2 border-white hover:border-purple-800">
                                 Explore More
                             </button></a>
@@ -305,17 +313,17 @@
                 <div class="w-full md:w-1/3 flex flex-col items-center my-8">
                     <img src="{{ asset('img/mwecau.png') }}" alt=""
                         class="w-2/5 mx-auto border-2 border-white rounded-full">
-                    <h4 class="mt-4 text-xl"><a href="#">Award title</a></h4>
+                    <h4 class="mt-4 text-xl"><a href="{{ route('dpric.research-awards') }}">Award title</a></h4>
                 </div>
                 <div class="w-full md:w-1/3 flex flex-col items-center my-8">
                     <img src="{{ asset('img/mwecau.png') }}" alt=""
                         class="w-2/5 mx-auto border-2 border-white rounded-full">
-                    <h4 class="mt-4 text-xl"><a href="#">Award title</a></h4>
+                    <h4 class="mt-4 text-xl"><a href="{{ route('dpric.research-awards') }}">Award title</a></h4>
                 </div>
                 <div class="w-full md:w-1/3 flex flex-col items-center my-8">
                     <img src="{{ asset('img/mwecau.png') }}" alt=""
                         class="w-2/5 mx-auto border-2 border-white rounded-full">
-                    <h4 class="mt-4 text-xl"><a href="#">Award title</a></h4>
+                    <h4 class="mt-4 text-xl"><a href="{{ route('dpric.research-awards') }}">Award title</a></h4>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 <nav class="bg-purple-600 sticky p-4 top-0 w-full z-50">
     <div class="container mx-auto flex flex-col lg:flex-row justify-between lg:items-center">
         <div class="flex items-center justify-between space-x-4 text-white text-lg font-semibold">
-            <img src="{{ asset('img/mwecau.png') }}" class="h-16" alt="Mwecau Logo" />
+            <a href="{{ route('index') }}"><img src="{{ asset('img/mwecau.png') }}" class="h-16" alt="Mwecau Logo" /></a>
             <div class="open-nav text-white text-2xl w-6 cursor-pointer block lg:hidden">
                 <i class="fa fa-align-justify"></i>
             </div>
@@ -39,7 +39,6 @@
                     </a>
                     <ul
                         class="w-max max-w-md opacity-0 invisible transform transition-all duration-500 ease-out  group-hover:opacity-100 group-hover:visible flex flex-col absolute -left-1/2 top-8 mt-3 bg-white shadow-lg text-purple-800 whitespace-normal break-words z-50">
-                      <li class="px-4 py-2 hover:bg-purple-100">
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.directorate-programmes')}}">Postgraduate Programmes</a></li>
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.application-procedures')}}">Application Procedures</a></li>
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.joining-instruction')}}">Joining Instruction</a></li>
@@ -55,7 +54,6 @@
 
                     <ul
                         class="w-max max-w-md opacity-0 invisible transform transition-all duration-500 ease-out  group-hover:opacity-100 group-hover:visible flex flex-col absolute -left-1/2 top-8 mt-3 bg-white shadow-lg text-purple-800 whitespace-normal break-words z-50">
-                      <li class="px-4 py-2 hover:bg-purple-100">
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.research-projects')}}">Research Projects</a></li>
                         {{-- <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.research-programmes')}}">Research Programmes</a></li> --}}
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{ route('dpric.research-policies') }}">Research Policies</a></li>
@@ -78,6 +76,7 @@
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="https://scholar.google.com/citations?view_op=search_authors&hl=en&mauthors=mwecau.ac.tz&btnG="
                             target="_blank">Google Scholar</a></li>
                     </ul>
+                </li>
                 <li class="group relative my-4 lg:my-0">
                     <a href="#"
                         class="hover:text-gray-100 bg-purple-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition duration-300 ease-in-out px-3 py-2 rounded-lg border-transparent hover:border-transparent">
@@ -85,8 +84,7 @@
                     </a>
                     <ul
                         class="w-max max-w-md opacity-0 invisible transform transition-all duration-500 ease-out  group-hover:opacity-100 group-hover:visible flex flex-col absolute -left-1/2 top-8 mt-3 bg-white shadow-lg text-purple-800 whitespace-normal break-words z-50">
-                      <li class="px-4 py-2 hover:bg-purple-100">
-                        <li class="px-4 py-2 hover:bg-purple-100"><a href="#">MWECAU Innovations Hub</a></li>
+                        <li class="px-4 py-2 hover:bg-purple-100"><a href="{{ route('dpric.innovations-hub') }}">MWECAU Innovations Hub</a></li>
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="#">MWECAU Innovations Database </a>
                         </li>
                     </ul>
@@ -100,11 +98,11 @@
                     <ul
                         class="w-max max-w-md opacity-0 invisible transform transition-all duration-500 ease-out  group-hover:opacity-100 group-hover:visible flex flex-col absolute lg:right-0 top-8 mt-3 bg-white shadow-lg text-purple-800 whitespace-normal break-words z-50">
                         <li class="px-4 py-2 hover:bg-purple-100">
-                            <a href="#" class="block">Technology Transfer, Consultancy and Continuing Education
+                            <a href="{{ route('dpric.tcce') }}" class="block">Technology Transfer, Consultancy and Continuing Education
                                 (TCCU)</a>
                         </li>
                         <li class="px-4 py-2 hover:bg-purple-100">
-                            <a href="#">Consultancy Policy and Guidelines 2024</a>
+                            <a href="{{ route('dpric.consultancy-policy-and-guidelines') }}">Consultancy Policy and Guidelines 2024</a>
                         </li>
                     </ul>
                 </li>
@@ -116,9 +114,10 @@
 
                     <ul
                         class="w-max max-w-md opacity-0 invisible transform transition-all duration-500 ease-out  group-hover:opacity-100 group-hover:visible flex flex-col absolute lg:right-0 top-8 mt-3 bg-white shadow-lg text-purple-800 whitespace-normal break-words z-50">
-                        <li class="px-4 py-2 hover:bg-purple-100"><a href="#">Policies</a></li>
-                        <li class="px-4 py-2 hover:bg-purple-100"><a href="#">Regulations and Guidelines</a></li>
+                        <li class="px-4 py-2 hover:bg-purple-100"><a href="{{ route('dpric.policies') }}">Policies</a></li>
+                        <li class="px-4 py-2 hover:bg-purple-100"><a href="{{ route('dpric.regulations-and-guidelines') }}">Regulations and Guidelines</a></li>
                     </ul>
+                </li>
             </ul>
         </div>
 

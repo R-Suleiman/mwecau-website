@@ -75,6 +75,58 @@ class DpricController extends Controller
         return view('dpric.conference-proceedings');
     }
 
+    public function innovationsHub() {
+        return view('dpric.innovations-hub');
+    }
+
+    public function innovationsProjects() {
+        return view('dpric.innovations-projects');
+    }
+
+    public function innovationsProject() {
+        return view('dpric.innovations-project');
+    }
+
+    public function innovationsClubs() {
+        return view('dpric.innovations-clubs');
+    }
+
+    public function innovationsClub() {
+        return view('dpric.innovations-club');
+    }
+
+    public function innovationsClubProjects() {
+        return view('dpric.club-projects');
+    }
+
+    public function tcce() {
+        return view('dpric.tcce');
+    }
+
+    public function consultancyPolicyAndGuidelines() {
+        return view('dpric.consultancy-policy-and-guidelines');
+    }
+
+    public function policies() {
+        return view('dpric.policies');
+    }
+
+    public function regulationsAndGuidelines() {
+        return view('dpric.regulations-and-guidelines');
+    }
+
+    public function news() {
+        return view('dpric.news');
+    }
+
+    public function singleNews() {
+        return view('dpric.single-news');
+    }
+
+    public function postgraduateUnit() {
+        return view('dpric.postgraduate-unit');
+    }
+
     // public function researchProgrammes() {
     //     return view('dpric.research-programmes');
     // }
