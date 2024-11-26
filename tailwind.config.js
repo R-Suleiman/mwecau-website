@@ -22,6 +22,10 @@ export default {
           },
           backgroundImage: {
             'news-bg': "url('/img/campus-life/spirtual2.jp')",
+          },
+          rotate: {
+            '10': '10deg',
+            '15': '-15deg'
           }
       }
     },

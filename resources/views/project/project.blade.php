@@ -7,7 +7,6 @@
         <div class="overlay">
             <img class="w-full object-cover object-center h-96" src="{{ asset('img/projects/cocoa.jpg') }}" alt="">
 
-
             {{-- <div class="center-div">
             <div class="text-white text-center">
                 <h1 class="uppercase text-4xl">mtu ni watu</h1>
