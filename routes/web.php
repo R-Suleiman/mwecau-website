@@ -21,6 +21,7 @@ use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\dpric\DpricController;
+use App\Http\Controllers\dpric\DpricAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -330,4 +331,13 @@ Route::controller(DpricController::class)->name('dpric.')->group(function() {
     Route::get('/dpric/news/single-news', 'singleNews')->name('single-news');
     Route::get('/dpric/postgraduate-units/single-unit', 'postgraduateUnit')->name('postgraduate-unit');
     // Route::get('/dpric/research-programmes', 'researchProgrammes')->name('research-programmes');
+});
+
+// DPRIC ADMIN
+Route::controller(DpricAdminController::class)->name('dpric.admin.')->group(function() {
+    Route::get('/dpric/admin', 'index')->name('index');
+    Route::get('/dpric/admin/news', 'news')->name('news');
+    Route::get('/dpric/admin/news/add', 'addNews')->name('add-news');
+    Route::get('/dpric/admin/news/newsName', 'viewNews')->name('view-news');
+    Route::get('/dpric/admin/news/newsName/edit', 'editNews')->name('edit-news');
 });
