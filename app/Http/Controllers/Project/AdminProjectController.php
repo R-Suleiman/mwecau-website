@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Project;
 use App\Models\ProjectContent;
 use App\Models\ProjectGallery;
@@ -12,6 +13,7 @@ use App\Models\ProjectTeam;
 use App\Models\Research;
 use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AdminProjectController extends Controller
 {
@@ -61,10 +63,15 @@ class AdminProjectController extends Controller
             $originalName = pathinfo($thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
             $extension = $thumbnail->getClientOriginalExtension();
             // Generate a random 4-digit number
-            $randomNumber = rand(1000, 9999);
+            $randomNumber = rand(1, 9999);
             //new file name
             $thumbnailName = $originalName . '-' . $randomNumber . '.' . $extension;
-            $thumbnail->move(public_path('images/projects/images/'), $thumbnailName);
+            $storagePath = 'images/projects/images/project-thumbnail';
+            try {
+                $thumbnail->storeAs($storagePath, $thumbnailName, 'public');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Project thumbnail failed to upload, Please try again.');
+            }
         }
 
 
@@ -78,9 +85,13 @@ class AdminProjectController extends Controller
             $randomNumber = rand(1000, 9999);
             //new file name
             $pdfName = $originalName . '-' . $randomNumber . '.' . $extension;
-            $pdf->move(public_path('documents/projects/projectsDocuments/'), $pdfName);
+            $storagePath = 'documents/projects';
+            try {
+                $pdf->storeAs($storagePath, $pdfName, 'public');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Project attachment failed to upload');
+            }
         }
-
 
         $newProject = new Project();
 
@@ -138,27 +149,32 @@ class AdminProjectController extends Controller
         $project = Project::findOrFail($id);
 
         //processing thumbnail
-        $thumbnailName = null;
+        $thumbnailName = $project->thumbnail;
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $originalName = pathinfo($thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
             $extension = $thumbnail->getClientOriginalExtension();
             // Generate a random 4-digit number
-            $randomNumber = rand(1000, 9999);
+            $randomNumber = rand(1, 9999);
             //new file name
             $thumbnailName = $originalName . '-' . $randomNumber . '.' . $extension;
-            $thumbnail->move(public_path('images/projects/images/'), $thumbnailName);
 
-            $existingThummbnail = public_path('/images/projects/images/' . $project->thumbnail);
-            if (File::exists($existingThummbnail)) {
-                File::delete($existingThummbnail);
+            $storagePath = 'images/projects/images/project-thumbnail';
+
+            $existingThumbnail = $storagePath . '/' . $project->thumbnail;
+            try {
+                if ($project->thumbnail && Storage::disk('public')->exists($existingThumbnail)) {
+                    Storage::disk('public')->delete($existingThumbnail);
+                }
+                $thumbnail->storeAs($storagePath, $thumbnailName, 'public');//store the image
+                $project->thumbnail = $thumbnailName;
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Project thumbnail failed to upload, Please try again.');
             }
-            $project->thumbnail = $thumbnailName;
         }
 
-
         //processing pdf
-        $pdfName = null;
+        $pdfName = $project->pdf;
         if ($request->hasFile('pdf')) {
             $pdf = $request->file('pdf');
             $originalName = pathinfo($pdf->getClientOriginalName(), PATHINFO_FILENAME);
@@ -167,13 +183,18 @@ class AdminProjectController extends Controller
             $randomNumber = rand(1000, 9999);
             //new file name
             $pdfName = $originalName . '-' . $randomNumber . '.' . $extension;
-            $pdf->move(public_path('documents/projects/projectsDocuments/'), $pdfName);
+            $storagePath = 'documents/projects';
+            $existingAttachment = $storagePath . '/' . $project->pdf;
 
-            $existingPdf = public_path('/documents/projects/projectDocuments/' . $project->pdf);
-            if (File::exists($existingPdf)) {
-                File::delete($existingPdf);
+            try {
+                if ($project->pdf && Storage::disk('public')->exists($existingAttachment)) {
+                    Storage::disk('public')->delete($existingAttachment);
+                }
+                $pdf->storeAs($storagePath, $pdfName, 'public');
+                $project->pdf = $pdfName;
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Project attachment failed to upload.');
             }
-            $project->pdf = $pdfName;
         }
 
         $project->name = $request->name;
@@ -186,7 +207,7 @@ class AdminProjectController extends Controller
         $project->thumbnail = $thumbnailName;
 
         try {
-            if ($project->save()) {
+            if ($project->update()) {
                 return redirect()->route('admin.project.projects')
                     ->with('success', 'The project has been successfully updated! You can view and manage the latest changes in the projects dashboard.');
             } else {
@@ -202,25 +223,30 @@ class AdminProjectController extends Controller
     }
     public function destroy($id)
     {
+        //find project by an id
         $project = Project::findOrFail($id);
 
-        $existingPdfFile = public_path('/documents/projects/projectsDocuments/' . $project->pdf);
-        if (File::exists($existingPdfFile)) {
-            File::delete($existingPdfFile);
+        // deleting existing attachment if any
+        $existingPdfFile = 'documents/projects' . $project->pdf;
+        if ($project->pdf && Storage::disk('public')->exists($existingPdfFile)) {
+            Storage::disk('public')->delete($existingPdfFile);
         }
 
-        $existingThumbnail = public_path('/images/projects/images/' . $project->thumbnail);
-        if (File::exists($existingThumbnail)) {
-            File::delete($existingThumbnail);
+        // deleting existing thumbnail if any
+        $existingThumbnail = 'images/projects/images/project-thumbnail' . $project->thumbnail;
+        if ($project->thumbnail && Storage::disk('public')->exists($existingThumbnail)) {
+            Storage::disk('public')->delete($existingThumbnail);
         }
 
-        if ($project->delete()) {
-            return redirect()->route('admin.project.projects')
-                ->with('success', 'The project and all related data have been successfully deleted.');
-        } else {
+        try {
+            $project->delete();
+            return redirect()->route('admin.project.projects')->with('success', 'The project and all related data have been removed successfully.');
+
+        } catch (\Exception $e) {
             return redirect()->back()
                 ->with('fail', 'An error occurred while trying to delete the project. Please try again or contact support if the issue persists.');
         }
+
     }
     public function projectDatails($projectName)
     {
@@ -231,12 +257,12 @@ class AdminProjectController extends Controller
     }
     public function removeGalleryImage($id)
     {
+        // find a project by an id
         $image = ProjectGallery::findOrFail($id);
-        $existingImage = public_path('/images/projects/images/project-gallery/' . $image->image);
-        if (File::exists($existingImage)) {
-            File::delete($existingImage);
-        } else {
-            return redirect()->back()->with('error', 'Image not found on the server.');
+        $storagePath = 'images/projects/images/project-gallery/';
+        $existingImage = $storagePath . $image->image;
+        if ($image->image && Storage::disk('public')->exists($existingImage)) {
+            Storage::disk('public')->delete($existingImage);
         }
         if ($image->delete()) {
             return redirect()->back()->with('success', 'Image successfully removed.');
@@ -259,6 +285,8 @@ class AdminProjectController extends Controller
         $projects = Project::all();
         return view('project.admin.testmonial', compact('projects'));
     }
+
+    //contents Management
     public function createGallery(Request $request, $projectName)
     {
         $project = Project::where('name', $projectName)->firstOrFail();
@@ -277,11 +305,16 @@ class AdminProjectController extends Controller
             foreach ($request->file('image') as $image) {
                 $imageOriginalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
                 $ImageFileNameExtension = $image->getClientOriginalExtension();
-                $random = rand(1, 9999);
+                $uniqueId = uniqid(1, 9999);
 
-                $newImageName = $imageOriginalName . '-' . $random . '-' . $ImageFileNameExtension;
+                $newImageName = $imageOriginalName . '-' . $uniqueId . '.' . $ImageFileNameExtension;
+                $storagePath = 'images/projects/images/project-gallery';
 
-                $image->move(public_path('images/projects/images/project-gallery'), $newImageName);
+                try {
+                    $image->storeAs($storagePath, $newImageName, 'public');
+                } catch (\Exception $e) {
+                    return redirect()->back()->with('fail', 'Something went wrong');
+                }
 
                 $newGallery = new ProjectGallery();
                 $newGallery->project_id = $request->project_id;
@@ -320,7 +353,7 @@ class AdminProjectController extends Controller
             $image->move(public_path('images/projects/images/page-section-images'), $newImageName);
 
             //deleting existing image
-            $existingPageSectionImage = public_path('/images.projects/images/page-section-images/' . $pageSection->image);
+            $existingPageSectionImage = public_path('/images/projects/images/page-section-images/' . $pageSection->image);
             if (File::exists($existingPageSectionImage)) {
                 File::delete($existingPageSectionImage);
             }
@@ -349,33 +382,49 @@ class AdminProjectController extends Controller
     public function storeProjectPartner(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
-            'link' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
+            'link' => ['required', 'url'],
             'partner_logo' => ['required', 'max:2048']
+        ], [
+            'name.required' => 'Please provide the partner name.',
+            'link.required' => 'Please provide the partner link.',
+            'link.url' => 'Please provide a valid URL for the partner link.',
+            'partner_logo.required' => 'Please upload a logo for the partner.',
+            'partner_logo.max' => 'The logo image size should not exceed 2MB.'
         ]);
 
-        //processing partner logo
         if ($request->hasFile('partner_logo')) {
             $logo = $request->file('partner_logo');
             $logoOriginalName = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
             $logoExtension = $logo->getClientOriginalExtension();
             $randomNumber = rand(1, 9999);
 
-            $newLogoName = $logoOriginalName . '-' . $randomNumber . '-' . $logoExtension;
+            // Ensure the filename uses dot before extension
+            $newLogoName = $logoOriginalName . '-' . $randomNumber . '.' . $logoExtension;
 
-            $logo->move(public_path('images/projects/images/partners-logo/'), $newLogoName);
+            $storagePath = 'images/projects/images/partners-logo/';
+
+            try {
+                $logo->storeAs($storagePath, $newLogoName, 'public');
+
+                $newPartner = new ProjectPartner();
+                $newPartner->name = $request->name;
+                $newPartner->link = $request->link;
+                $newPartner->partner_logo = $newLogoName;
+
+                $newPartner->save();
+
+                return redirect()->back()->with('success', 'The project partner has been successfully added to the list!.');
+            } catch (\Exception $e) {
+                // \Log::error('Error storing project partner logo: ' . $e->getMessage());
+
+                return redirect()->back()->with('fail', 'Oops! There was an issue adding the project partner. Please try again, and if the problem persists, don’t hesitate to reach out to support.');
+            }
+        } else {
+            return redirect()->back()->with('fail', 'Logo file is missing.');
         }
-
-        $newPartner = new ProjectPartner();
-
-        $newPartner->name = $request->name;
-        $newPartner->link = $request->link;
-        $newPartner->partner_logo = $newLogoName;
-
-        $newPartner->save();
-
-        return redirect()->back()->with('success', 'New Project partner has been added successfully');
     }
+
     public function editPartner($partnerName)
     {
         $partner = ProjectPartner::where('name', $partnerName)->firstOrFail();
@@ -386,50 +435,113 @@ class AdminProjectController extends Controller
         $request->validate([
             'name' => ['required'],
             'link' => ['required'],
-            'partner_logo' => ['required', 'max:2048']
+            'partner_logo' => ['max:2048']
         ]);
         $partner = ProjectPartner::findOrFail($id);
 
-        //processing partner logo
         $newLogoName = $partner->partner_logo;
+
         if ($request->hasFile('partner_logo')) {
             $logo = $request->file('partner_logo');
             $logoOriginalName = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
             $logoExtension = $logo->getClientOriginalExtension();
             $randomNumber = rand(1, 9999);
 
-            $newLogoName = $logoOriginalName . '-' . $randomNumber . '-' . $logoExtension;
+            $newLogoName = $logoOriginalName . '-' . $randomNumber . '.' . $logoExtension;
 
-            $logo->move(public_path('images/projects/images/partners-logo/'), $newLogoName);
+            $storagePath = 'images/projects/images/partners-logo/';
 
-            //deleting partner logo
-            $existingLogo = public_path('/images/projects/images/partners-logo/' . $partner->partner_logo);
-            if (File::exists($existingLogo)) {
-                File::delete($existingLogo);
+            try {
+                $filePath = $logo->storeAs($storagePath, $newLogoName, 'public');
+
+                // Delete old logo file if it exists
+                $existingLogoPath = $storagePath . $partner->partner_logo;
+                if (Storage::disk('public')->exists($existingLogoPath)) {
+                    Storage::disk('public')->delete($existingLogoPath);
+                }
+
+                // Set new logo name if uploaded successfully
+                $partner->partner_logo = $newLogoName;
+
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Unable to upload due to an error.');
             }
-
         }
-
         $partner->name = $request->name;
         $partner->link = $request->link;
-        $partner->partner_logo = $newLogoName;
 
+        // Save the changes
         $partner->update();
 
-        return redirect()->back()->with('success', 'New Project partner has been added successfully');
+        return redirect()->route('admin.project.index')->with('success', 'Partner has been updated successfully');
+
     }
     public function destroyProjectPartner($id)
     {
         $partner = ProjectPartner::findOrFail($id);
 
         //deleting partner logo
-        $existingLogo = public_path('/images/projects/images/partners-logo/' . $partner->partner_logo);
-        if (File::exists($existingLogo)) {
-            File::delete($existingLogo);
+        $storagePath = 'images/projects/images/partners-logo/';
+        $existingLogo = $storagePath . $partner->partner_logo;
+        if (Storage::disk('public')->exists($existingLogo)) {
+            Storage::disk('public')->delete($existingLogo);
         }
 
         $partner->delete();
-
         return redirect()->back()->with('success', 'Partner removed Successfully');
+    }
+
+    //managing sliding images
+    public function newContent()
+    {
+        return view('project.admin.page-contents.new-content');
+    }
+    public function storeHomeSliderContent(Request $request)
+    {
+        $request->validate([
+            'section_header' => ['nullable'],
+            'section_sub_header' => ['nullable'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+        ]);
+
+        $newHomeItem = new ProjectContent();
+        // Processing uploaded image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+
+            // Getting original name, image file extension, generating unique ID
+            $imageOriginalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+            $imageExtension = $image->getClientOriginalExtension();
+            $randomNumber = uniqid(); // Use uniqid for uniqueness
+
+            $newImageName = $imageOriginalName . '-' . $randomNumber . '.' . $imageExtension;
+
+            // Defining path for storing uploaded image
+            $imagePath = 'images/projects/images/sliding-images/';
+
+            try {
+                $image->storeAs('public/' . $imagePath, $newImageName);
+                $newHomeItem->image = $newImageName;
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Something went wrong. Image failed to upload. Please try again.');
+            }
+        }
+
+        $newHomeItem->page_section = "home_slider";
+        $newHomeItem->section_header = $request->section_header;
+        $newHomeItem->section_sub_header = $request->section_sub_header;
+
+        $newHomeItem->save();
+        return redirect()->back()->with('success', 'Uploaded successfully');
+    }
+    public function destroyHomeContent($id)
+    {
+        $homeContent = ProjectContent::findOrFail($id);
+        //deleting content image if any
+        $imagePath = 'images/projects/images/sliding-images/';
+        if ($homeContent->image && Storage::disk('public')->exists($imagePath)) {
+            storage::disk('public')->delete($imagePath);
+        }
+        $homeContent->delete();
     }
 }

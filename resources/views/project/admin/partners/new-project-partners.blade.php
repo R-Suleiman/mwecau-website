@@ -91,8 +91,8 @@
                             </td>
                             <td class="px-4 py-2 border-r text-center">{{ $partner->link }}</td>
                             <td class="px-4 py-2 border-r text-center text-green-600 font-semibold">
-                                <img src="{{ asset('/images/projects/images/partners-logo/' . $partner->partner_logo) }}"
-                                    class="w-14 h-14 rounded-full shadow-xl border-2 border-pink-500" alt="">
+                                <img src="{{  url('/storage/images/projects/images/partners-logo/' . $partner->partner_logo) }}"
+                                    class="w-14 h-14 rounded-full" alt="">
                             </td>
                             {{-- logo here --}}
                             <td class="px-4 py-2 flex items-center justify-center space-x-2">

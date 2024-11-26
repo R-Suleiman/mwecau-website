@@ -5,8 +5,9 @@
             <div class="container mx-auto px-6 py-10">
                 <!-- Title-->
                 <div class="text-center mb-10">
-                    <h1 class="text-4xl font-bold text-purple-700 mb-4">Available Project Scholarships</h1>
-                    <p class="text-gray-600">Explore and apply for scholarships suited to your needs and qualifications.</p>
+                    <h1 class="text-4xl font-bold text-blue-700 mb-4 headerFavFont">Available Project Scholarships</h1>
+                    <p class="text-gray-500 italic">Explore and apply for scholarships suited to your needs and
+                        qualifications.</p>
                 </div>
 
                 <!-- Scholarship Cards Grid -->
@@ -22,19 +23,19 @@
                                 <!-- Details with Icons -->
                                 <ul class="text-gray-700 space-y-2">
                                     <li class="flex items-center">
-                                        <i class="fas fa-graduation-cap text-purple-500 mr-2"></i>
+                                        <i class="fas fa-graduation-cap text-green-500 mr-2"></i>
                                         <strong>Offred by: </strong> {!! $scholarship->offerd_by !!}
                                     </li>
                                     <li class="flex items-center">
-                                        <i class="fas fa-dollar-sign text-purple-500 mr-2"></i>
+                                        <i class="fas fa-dollar-sign text-green-500 mr-2"></i>
                                         <strong>Duration:</strong> {!! $scholarship->duration !!}
                                     </li>
                                     <li class="flex items-center">
-                                        <i class="fas fa-user-check text-purple-500 mr-2"></i>
+                                        <i class="fas fa-user-check text-green-500 mr-2"></i>
                                         <strong>Status:</strong> {!! $scholarship->status !!}
                                     </li>
                                     <li class="flex items-center">
-                                        <i class="fas fa-calendar-alt text-purple-500 mr-2"></i>
+                                        <i class="fas fa-calendar-alt text-green-500 mr-2"></i>
                                         <strong>Deadline:</strong>
                                         {{ Carbon\Carbon::parse($scholarship->end_date)->isoFormat('dddd, MMMM Do YYYY') }}
                                     </li>
@@ -42,9 +43,14 @@
 
                                 <!-- Apply Button -->
                                 <div class="mt-4">
-                                    <a href="/scholarship-details/1"
-                                        class="block w-full text-center bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600">
-                                        View & Apply
+                                    @if ($scholarship->application_url)
+                                        <a target="__blank" href="{{ $scholarship->application_url }}"
+                                            class="block w-full text-center bg-blue-400 text-white py-2 rounded-lg hover:bg-purple-600">
+                                        @else
+                                            <a href="#"
+                                                class="block w-full text-center bg-blue-400 text-white py-2 rounded-lg hover:bg-purple-600">
+                                    @endif
+                                    View & Apply
                                     </a>
                                 </div>
                             </div>

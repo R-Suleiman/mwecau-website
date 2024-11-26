@@ -21,10 +21,6 @@
                     <div class="bg-white p-8 rounded-xl shadow-md">
                         <h3 class="text-2xl font-semibold text-gray-800 mb-4 favFont">About the Conference</h3>
                         <p class="text-gray-600 leading-relaxed">{{ $conference->description }}</p> <br>
-                        <p class="favFont">lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-                            quibusdam. Eligendi sit
-                            temporibus, fugit, officiis sint sed explicabo corrupti nihil voluptas perspiciatis nesciunt
-                            ratione quo commodi fuga cumque doloribus voluptatum.</p>
                     </div>
                 </div>
 

@@ -1,16 +1,25 @@
 @extends('layouts.project.project-layout')
+<!--slick  -->
 @section('content')
     {{-- Navbar --}}
     <section class="">
-        <div class="w-full relative overflow-hidden">
-            <img class="w-full object-cover object-center h-96 lg:h-[37rem]" src="{{ asset('img/projects/cocoa.jpg') }}"
-                alt="">
-
-            <div class="absolute inset-0 flex items-center justify-center text-white bg-black bg-opacity-40">
-                <div class="text-center">
-                    <h1 class="text-4xl lg:text-8xl font-bold headerFavFont">Mwenge Catholic University</h1>
-                    <h3 class="text-3xl">PROJECTS</h3>
-                </div>
+        <div class="w-full relative overflow-hidden rounded">
+            <div class="homeslider">
+                @if ($homeslider->isNotEmpty())
+                    @foreach ($homeslider as $slider)
+                        <div class="relative">
+                            <img class="w-full object-cover object-center h-96 lg:h-[37rem]"
+                                src="{{ asset('storage/images/projects/images/sliding-images/' . $slider->image) }}"
+                                alt="">
+                            <div class="absolute inset-0 flex items-center justify-center text-white bg-black bg-opacity-40">
+                                <div class="w-10/12 text-center">
+                                    <h1 class="text-4xl lg:text-8xl font-bold headerFavFont">{!! $slider->section_header !!}</h1>
+                                    <h3 class="text-md italic">{!! $slider->section_sub_header !!}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
@@ -43,7 +52,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <h3 class="text-center text-xl font-bold text-purple-700 mb-4">{!! Str::limit($project->name, 15) !!}
+                                <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
                                 </h3>
                                 <div class="mb-6 px-4 text-gray-600 favFont text-lg leading-relaxed">
                                     <p class="text-justify">
@@ -52,7 +61,7 @@
                                 </div>
                                 <div class="flex justify-center">
                                     <a href="{{ route('single-project', $project->name) }}"
-                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-purple-600 text-white rounded-full hover:bg-purple-500 focus:ring-4 focus:ring-purple-200">
+                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-indigo-600 text-white rounded-full hover:bg-indigo-400 focus:ring-4 focus:ring-purple-200">
                                         Read More
                                     </a>
                                 </div>
@@ -81,7 +90,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <h3 class="text-center text-xl font-bold text-purple-700 mb-4">{!! Str::limit($project->name, 15) !!}
+                                <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
                                 </h3>
                                 <div class="mb-6 px-4 text-gray-600 text-sm leading-relaxed">
                                     <p class="text-justify">
@@ -90,7 +99,7 @@
                                 </div>
                                 <div class="flex justify-center">
                                     <a href="{{ route('single-project', $project->name) }}"
-                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-purple-600 text-white rounded-full hover:bg-purple-500 focus:ring-4 focus:ring-purple-200">
+                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-indigo-600 text-white rounded-full hover:bg-indigo-400 focus:ring-4 focus:ring-purple-200">
                                         Read More
                                     </a>
                                 </div>
@@ -119,7 +128,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <h3 class="text-center text-xl font-bold text-purple-700 mb-4">{!! Str::limit($project->name, 15) !!}
+                                <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
                                 </h3>
                                 <div class="mb-6 px-4 text-gray-600 text-sm leading-relaxed">
                                     <p class="text-justify">
@@ -128,7 +137,7 @@
                                 </div>
                                 <div class="flex justify-center">
                                     <a href="{{ route('single-project', $project->name) }}"
-                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-purple-600 text-white rounded-full hover:bg-purple-500 focus:ring-4 focus:ring-purple-200">
+                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-indigo-600 text-white rounded-full hover:bg-indigo-400 focus:ring-4 focus:ring-purple-200">
                                         Read More
                                     </a>
                                 </div>
@@ -157,7 +166,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <h3 class="text-center text-xl font-bold text-purple-700 mb-4">{!! Str::limit($project->name, 15) !!}
+                                <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
                                 </h3>
                                 <div class="mb-6 px-4 text-gray-600 text-sm leading-relaxed">
                                     <p class="text-justify">
@@ -166,7 +175,7 @@
                                 </div>
                                 <div class="flex justify-center">
                                     <a href="{{ route('single-project', $project->name) }}"
-                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-purple-600 text-white rounded-full hover:bg-purple-500 focus:ring-4 focus:ring-purple-200">
+                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-indigo-600 text-white rounded-full hover:bg-indigo-400 focus:ring-4 focus:ring-purple-200">
                                         Read More
                                     </a>
                                 </div>
@@ -174,48 +183,6 @@
                         @endforeach
                     </div>
                 @endif
-                {{-- <div class="lg:px-32 px-16 gap-10 w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    <h1
-                        class="col-span-full text-center font-semibold text-xl uppercase md:text-2xl lg:text-3xl mb-8 headerFavFont">
-                        Projects under VLIR
-                    </h1>
-                        <!-- Check if projects are not empty -->
-                        @foreach ($projects->take(3) as $project)
-                            <!-- Loop through projects -->
-                            <div
-                                class="border border-gray-300 rounded-3xl p-8 shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out hover:shadow-2xl hover:shadow-purple-300 bg-white">
-                                <div class="flex justify-center items-center mb-6">
-                                    <div
-                                        class="h-[80px] w-[80px] rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            class="h-[40px] w-[40px] text-purple-600">
-                                            <rect x="2" y="3" width="20" height="18" rx="2" ry="2"
-                                                fill="currentColor" />
-                                            <path d="M4 5h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 10h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 15h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 20h16v2H4z" fill="#D1D5DB" />
-                                            <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
-                                            <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <h3 class="text-center text-xl font-bold text-purple-700 mb-4">{!! Str::limit($project->name, 15) !!}
-                                </h3>
-                                <div class="mb-6 px-4 text-gray-600 text-sm leading-relaxed">
-                                    <p class="text-justify">
-                                        {!! Str::limit($project->description, 50) !!}
-                                    </p>
-                                </div>
-                                <div class="flex justify-center">
-                                    <a href="{{ route('single-project', $project->name) }}"
-                                        class="px-5 py-2 transition ease-in-out duration-200 text-xs uppercase font-semibold bg-purple-600 text-white rounded-full hover:bg-purple-500 focus:ring-4 focus:ring-purple-200">
-                                        Read More
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-                </div> --}}
             </div>
         </section>
     @endif
@@ -245,7 +212,7 @@
                     @foreach ($project->gallery as $image)
                         <div class="project-image project{{ $project->id }}">
                             <img class="h-auto max-w-full rounded-xl transition-transform duration-500 scale-100 hover:scale-105"
-                                src="{{ asset('/images/projects/images/project-gallery/' . $image->image) }}"
+                                src="{{ asset('storage/images/projects/images/project-gallery/' . $image->image) }}"
                                 alt="">
                         </div>
                     @endforeach
@@ -265,7 +232,7 @@
             </div>
             <div class="mt-4">
                 <a href="#"
-                    class="text-md font-semibold uppercase px-7 py-3 rounded-md bg-purple-500 text-white border-transparent">Read
+                    class="text-md font-semibold uppercase px-12 py-3 rounded-xl hover:bg-blue-400 text-indigo-400 hover:text-white border border-gray-400">Read
                     More</a>
             </div>
         </div>
@@ -273,9 +240,11 @@
 
     {{-- conferences --}}
     @if ($conferences->isNotEmpty())
-        <section class="bg-purple-100 pb-16">
+        <section class="bg-gray-100 pb-16">
             <div class="w-10/12 lg:container mx-auto pt-9">
-                <h1 class="md:text-start lg:text-center headerFavFont font-semibold text-3xl pb-10 uppercase">Conferences
+                <h1
+                    class="md:text-start lg:text-center headerFavFont font-semibold text-4xl pb-10 uppercase text-blue-500">
+                    Conferences
                 </h1>
                 @if ($conferences->count() == 1)
                     <div class="flex items-center justify-center">
@@ -284,7 +253,7 @@
                                 <div
                                     class="border border-emerald-500 rounded-3xl p-6 shadow-lg bg-gray-50 hover:shadow-xl transition-shadow duration-300">
                                     <h1
-                                        class="text-center font-bold text-2xl text-purple-700 tracking-tight leading-tight mb-4">
+                                        class="text-center font-bold text-2xl text-indigo-400 tracking-tight leading-tight mb-4">
                                         {!! Str::ucfirst($conference->name) !!}
                                     </h1>
                                     <div class="text-gray-700 text-base leading-relaxed">
@@ -294,7 +263,7 @@
                                     </div>
                                     <div class="flex justify-center mt-8">
                                         <a href="{{ route('about-conference', $conference->name) }}"
-                                            class="px-5 py-3 bg-emerald-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                                            class="px-5 py-3 bg-indigo-500 text-white uppercase font-semibold rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
                                             Read More
                                         </a>
                                     </div>
@@ -318,7 +287,7 @@
                                 </div>
                                 <div class="flex justify-center mt-8">
                                     <a href="{{ route('about-conference', $conference->name) }}"
-                                        class="px-5 py-3 bg-emerald-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                                        class="px-5 py-3 bg-green-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
                                         Read More
                                     </a>
                                 </div>
@@ -341,7 +310,7 @@
                                 </div>
                                 <div class="flex justify-center mt-8">
                                     <a href="{{ route('about-conference', $conference->name) }}"
-                                        class="px-5 py-3 bg-emerald-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                                        class="px-5 py-3 bg-green-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
                                         Read More
                                     </a>
                                 </div>
@@ -364,7 +333,7 @@
                                 </div>
                                 <div class="flex justify-center mt-8">
                                     <a href="{{ route('about-conference', $conference->name) }}"
-                                        class="px-5 py-3 bg-emerald-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                                        class="px-5 py-3 bg-green-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
                                         Read More
                                     </a>
                                 </div>
@@ -375,11 +344,10 @@
 
                 <div class="text-end mt-8">
                     <a href="{{ route('project-conferences') }}"
-                        class="px-6 py-3 border border-transparent rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-600 text-white font-semibold hover:bg-gradient-to-l hover:from-purple-500 hover:to-purple-400 transition-all duration-500 ease-in-out shadow-lg hover:shadow-xl transform hover:scale-105">
+                        class="px-6 py-3 border border-indigo-500 text-gray-900 rounded-xl bg-white hover:bg-gradient-to-r from-gray-900 to-gray-800 hover:text-white font-semibold transition-all duration-500 ease-in-out shadow-lg hover:shadow-xl transform hover:scale-105">
                         View All
                     </a>
                 </div>
-
             </div>
         </section>
     @endif
@@ -387,12 +355,13 @@
     {{-- project team --}}
     <section class="mt-28">
         <div class="container mx-auto">
-            <h1 class="text-3xl font-semibold uppercase text-center headerFavFont">{!! $teamContents->section_header !!}</h1>
+            <h1 class="text-4xl text-blue-500 font-semibold uppercase text-center headerFavFont">{!! $teamContents->section_header !!}
+            </h1>
             <div class="w-9/12 mx-auto mt-10">
                 <div class="pb-7 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10">
                     <div
-                        class="p-6 border border-purple-600 rounded-xl shadow-lg bg-white flex flex-col h-full hover:shadow-2xl transition-shadow duration-300 ease-in-out">
-                        <h1 class="uppercase text-3xl font-semibold FavFont pb-6 text-purple-700 tracking-wide">
+                        class="p-6 border border-green-600 rounded-xl shadow-lg bg-white flex flex-col h-full hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                        <h1 class="uppercase text-3xl italic font-semibold FavFont pb-6 text-gray-700 tracking-wide">
                             {!! $teamContents->section_sub_header !!}
                         </h1>
                         <p class="text-justify text-gray-700 leading-relaxed flex-grow">
@@ -403,14 +372,14 @@
                     @if ($teamMembers->isNotEmpty())
                         <div
                             class="grid grid-cols-1 bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 gradient rounded-xl">
-                            <div class="p-4 border border-b-purple-600 xl divide-y-2 divide-purple-500">
+                            <div class="p-4 border border-b-purple-600 xl divide-y-2 divide-green-500">
 
                                 @foreach ($teamMembers->take(2) as $teamMember)
                                     <div class="lg:flex space-x-5 w-full pt-7">
                                         <div class="px-5 order-2 sm:order-1 flex justify-center items-center sm:pb-4 pb-4">
-                                            <img src="{{ asset('/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
+                                            <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
                                                 alt=""
-                                                class="rounded-full border-4 border-t-purple-500 border-b-pink-600 h-[150px] w-[150px] object-cover">
+                                                class="rounded-full border-2  h-[150px] w-[150px] object-cover">
                                         </div>
                                         <div class="order-1 sm:order-2 flex-1">
                                             <div class="sm:text-center">
@@ -426,16 +395,16 @@
                                             {{-- Social Media Icons --}}
                                             <div class="flex justify-center items-center space-x-5 text-white mt-6 pb-6">
                                                 <a href="#"
-                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500 hover:bg-purple-600 transition duration-200">
+                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
                                                     <i class="fa-brands fa-x-twitter text-2xl"></i>
                                                 </a>
                                                 <a href="#"
-                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500 hover:bg-purple-600 transition duration-200">
+                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
                                                     <i class="fa-brands fa-google-scholar text-3xl"></i>
                                                 </a>
 
                                                 <a href="#"
-                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500 hover:bg-purple-600 transition duration-200">
+                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
                                                     <i class="fa-brands fa-linkedin text-3xl"></i>
                                                 </a>
                                             </div>
@@ -449,7 +418,7 @@
 
                 </div>
                 <div class="flex justify-center lg:justify-end items-center">
-                    <a href="{{route('project-team-members')}}"
+                    <a href="{{ route('project-team-members') }}"
                         class="py-4 px-4 text-md transition ease-in-out duration-200 focus:ring-4 focus:ring-purple-500 bg-gradient bg-gradient-to-r from-purple-950 to-purple-900 font-semibold text-purple-200 rounded-xl favFont">
                         Complete project team</a>
                 </div>
@@ -461,7 +430,7 @@
     <section class=" mt-16">
         <div class="max-w-6xl mx-auto w-full">
             <div class="max-w-2xl mx-auto w-full text-center">
-                <h1 class="text-gray-800 text-3xl font-extrabold headerFavFont">{!! $testimonialContents->section_header !!}</h1>
+                <h1 class="text-blue-500 text-4xl font-extrabold headerFavFont">{!! $testimonialContents->section_header !!}</h1>
                 <p class="text-gray-800 text-lg leading-relaxed mt-6 favFont">
                     {!! $testimonialContents->section_description !!}
                 </p>
@@ -475,7 +444,7 @@
                                 <div class="grid md:grid-cols-1 md:gap-6 max-md:gap-10 max-md:justify-center mt-16">
                                     <div class="relative rounded-xl border-2 h-auto shadow-xl p-7">
                                         <div
-                                            class="w-16 h-16 rounded-full absolute -top-5 -right-5 flex items-center justify-center bg-purple-950 hover:bg-purple-800 text-white border-transparent">
+                                            class="w-16 h-16 rounded-full absolute -top-5 -right-5 flex items-center justify-center bg-green-500 hover:bg-purple-800 text-white border-transparent">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 fill-white"
                                                 viewBox="0 0 475.082 475.081">
                                                 <path
@@ -486,7 +455,7 @@
 
                                         <div class="flex items-center">
                                             @if ($testimonial->testifier_profile_picture != null)
-                                                <img src="{{ asset('/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture) }}"
+                                                <img src="{{ asset('/storage/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture) }}"
                                                     class="w-14 h-14 rounded-full shadow-xl border-2 border-pink-500"
                                                     alt="">
                                             @endif
@@ -496,18 +465,18 @@
                                                     {{ $testimonial->testifier_name }}</h4>
                                                 <h5 class="font-semibold">{!! $testimonial->testifier_occupation !!}</h5>
                                                 <div class="flex space-x-3 mt-2">
-                                                    <i class="fa-sharp fa-solid fa-star text-purple-400"></i>
-                                                    <i class="fa-sharp fa-solid fa-star text-purple-400"></i>
-                                                    <i class="fa-sharp fa-solid fa-star text-purple-400"></i>
-                                                    <i class="fa-sharp fa-solid fa-star text-purple-400"></i>
-                                                    <i class="fa-sharp fa-solid fa-star text-purple-400"></i>
+                                                    <i class="fa-sharp fa-solid fa-star text-green-400"></i>
+                                                    <i class="fa-sharp fa-solid fa-star text-green-400"></i>
+                                                    <i class="fa-sharp fa-solid fa-star text-green-400"></i>
+                                                    <i class="fa-sharp fa-solid fa-star text-green-400"></i>
+                                                    <i class="fa-sharp fa-solid fa-star text-green-400"></i>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="mt-6">
-                                            <p class="text-md text-center leading-relaxed favFont">
-                                                {!! Str::limit($testimonial->testimonial_description, 500) !!}
+                                            <p class="text-md text-center leading-relaxed favFont italic">
+                                                {!! Str::limit($testimonial->testimonial_description, 200) !!}
                                             </p>
                                         </div>
                                     </div>
@@ -528,7 +497,7 @@
                                         </div>
 
                                         <div class="flex items-center">
-                                            <img src="{{ asset('/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture) }}"
+                                            <img src="{{ asset('storage/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture) }}"
                                                 class="w-14 h-14 rounded-full shadow-xl border-2 border-transparent"
                                                 alt="">
                                             <div class="ml-4">
@@ -573,7 +542,7 @@
                                         </div>
 
                                         <div class="flex items-center">
-                                            <img src="{{ asset('/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture) }}"
+                                            <img src="{{ asset('storage/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture) }}"
                                                 class="w-14 h-14 rounded-full shadow-xl border-2 border-transparent"
                                                 alt="">
                                             <div class="ml-4">
@@ -610,6 +579,41 @@
             @endif
         </div>
     </section>
+
+    {{-- project partners --}}
+    <section class="mt-32 lg:pb-1">
+        <div class="w-11/12 container mx-auto">
+            <div class="flex flex-col items-center justify-start">
+                <h1 class="headerFavFont uppercase text-blue-500 font-semibold text-4xl">Our trusted Partners</h1>
+                <span class="italic text-gray-500">we work with Best Valuable Partners accross the global</span>
+            </div>
+            <div class="mt-20">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="flex flex-col itens justify-center">
+                        <h6
+                            class="font-semibold mb-5 text-4xl italic bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-600">
+                            We Work with the best partners</h1>
+                            <p class="text-wrap">We are confident that we can cant find process that will help you meet
+                                your goal</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-7 Partnercenter">
+                        @if ($projectPartners->isNotEmpty())
+                            @foreach ($projectPartners as $partner)
+                                <a href="{{ $partner->link }}" target="__blank"
+                                    class="flex justify-center items-center mb-4"> <!-- Center alignment -->
+                                    <div class="flex items-center">
+                                        <img src="{{ asset('/storage/images/projects/images/partners-logo/' . $partner->partner_logo) }}"
+                                            class="w-32 h-auto mr-2" alt="{{ $partner->name }}"> <i
+                                            class="fas fa-check-circle text-green-500"></i>
+                                    </div>
+                                </a>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         function filterImages(project) {
             const allImages = document.querySelectorAll('.project-image');
@@ -620,5 +624,4 @@
     </script>
     </div>
     </section>
-
 @endsection

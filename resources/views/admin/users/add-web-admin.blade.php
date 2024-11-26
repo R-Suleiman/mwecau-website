@@ -1,18 +1,18 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
-    <div class="container favFont">
+    <div class="container favFont mt-5 py-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header headerFavFont text-center fw-bold fs-4 favColor">{{ __('Register New User') }}
-                    </div>
+                <div class="card border-none">
 
                     <div class="card-body">
                         <div class="text-center">
-                            <img src="../img/mwecau.png" class="img-fluid rounded-circle w-25 h-25 mb-4" alt="club">
+                            <img src="../img/mwecau.png" class="img-fluid rounded-circle mb-4" alt="club"
+                                style="width: 70px; height:70px;">
                         </div>
-                        <form method="POST" action="{{ route('admin-registration') }}">
+                        <x-messages />
+
+                        <form method="POST" action="{{ route('admin.store-web-admin') }}">
                             @method('POST')
                             @csrf
                             <div class="row mb-3">
@@ -50,6 +50,25 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label for="role"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+
+                                <div class="col-md-6">
+                                    <select class="form-select" name="role" id="role">
+                                        <option value="1">Librarian</option>
+                                        <option value="2">Research and
+                                            Consultancy</option>
+                                    </select>
+
+                                    @error('role')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="password"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -75,7 +94,6 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
-                            
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -90,3 +108,6 @@
         </div>
     </div>
 @endsection
+</body>
+
+</html>

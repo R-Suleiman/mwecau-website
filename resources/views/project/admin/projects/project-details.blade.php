@@ -75,16 +75,6 @@
                     class="mt-1 text-slate-800 flex gap-3 w-full items-center rounded-md p-1 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
                     <strong>Location: </strong> {{ $project->location }}
                 </div>
-
-                {{-- <div role="button"
-                    class="mt-1 text-slate-800 flex gap-3 w-full items-center rounded-md p-1 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                    @if ($projectTeam != 0)
-                        <h1 class="text-2xl headerFavFont">{{ $projectTeam }} member(s) assigned to this project.</h1>
-                    @else
-                        <strong>Project Team Members: </strong>
-                        <p class="text-red-600 font-semibold">No team members have been assigned to this project yet.</p>
-                    @endif
-                </div> --}}
             </nav>
             <p class="text-justify leading-relaxed favFont">{!! $project->description !!}</p>
             @if ($project->thumbnail != null)
@@ -113,7 +103,7 @@
                 @if ($projectGallery->isNotEmpty())
                     @foreach ($projectGallery as $gallery)
                         <div class="rounded-xl border border-purple-500 hover:shadow-2xl overflow-hidden relative">
-                            <img src="{{ asset('/images/projects/images/project-gallery/' . $gallery->image) }}"
+                            <img src="{{ asset('/storage/images/projects/images/project-gallery/' . $gallery->image) }}"
                                 class="object-cover w-full h-[300px]" alt="Campus Life Image">
                             <div
                                 class="absolute inset-0 text-white bg-black bg-opacity-30 flex justify-center items-center flex-col gap-4">

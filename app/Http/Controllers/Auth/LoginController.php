@@ -49,12 +49,15 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ], [
-            'email' => 'Please type in your email address.',
-            'password' => 'Please type in your password.',
+            'email.required' => 'Oops! You forgot to enter your email address. Please fill it in.',
+            'email.email' => 'Hmm, that doesn’t look like a valid email address. Please check and try again.',
+            'password.required' => 'Don’t leave the password field empty! Please type in your password.',
+            'password.min' => 'Your password is too short! It needs to be at least 6 characters long.',
         ]);
+
         // $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -78,8 +81,8 @@ class LoginController extends Controller
 
         } else {
 
-            Alert::error('Attention', 'Invalid Credentials')->autoClose('6000');
-            return back()->with('message', 'Invalid Credentials');
+            // Alert::error('Attention', 'Invalid Credentials')->autoClose('6000');
+            return back()->with('fail', 'Invalid Credentials');
         }
     }
 }

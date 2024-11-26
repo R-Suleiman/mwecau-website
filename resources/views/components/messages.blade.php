@@ -1,6 +1,4 @@
 <div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
-
     <div class="container mb-4">
         <div class="mt-5 message" id="success-message">
             @if (session()->has('message'))

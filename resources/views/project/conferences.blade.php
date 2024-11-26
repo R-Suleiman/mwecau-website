@@ -15,8 +15,8 @@
         @if ($conferences->isNotEmpty())
             <!-- Page Header -->
             <section class="container mx-auto px-6 py-12 lg:py-20 text-center">
-                <h2 class="text-4xl font-bold text-purple-600">Upcoming Conferences</h2>
-                <p class="mt-4 text-lg text-gray-600">Explore our curated list of top conferences happening worldwide. Find
+                <h2 class="text-4xl font-bold text-blue-600 headerFavFont">Upcoming Conferences</h2>
+                <p class="mt-4 text-lg text-gray-600 italic">Explore our curated list of top conferences happening worldwide. Find
                     the best events to enhance your knowledge and connect with industry leaders.</p>
             </section>
 
@@ -26,7 +26,7 @@
                     <!-- Conference Card -->
                     @foreach ($conferences as $conference)
                         <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200">
-                            <h3 class="text-xl font-semibold text-purple-600">{{ $conference->name }}</h3>
+                            <h3 class="text-xl font-semibold text-indigo-600">{{ $conference->name }}</h3>
                             <p class="text-gray-600 mt-2">{{ $conference->location }}</p>
                             <p class="text-gray-500 mt-1">
                                 {{ \Carbon\Carbon::parse($conference->date)->isoFormat('dddd, MMMM od YYYY') }}</p>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="mt-6 text-center">
                                 <a href="{{ route('about-conference', $conference->name) }}"
-                                    class="inline-block bg-purple-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-purple-700 transition duration-200">Learn
+                                    class="inline-block bg-indigo-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-purple-700 transition duration-200">Learn
                                     More</a>
                             </div>
                         </div>

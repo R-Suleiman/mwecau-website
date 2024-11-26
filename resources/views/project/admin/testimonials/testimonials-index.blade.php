@@ -39,11 +39,12 @@
                                 <td class="px-4 py-2 border-r text-center">{{ $counter++ }}</td>
                                 <td
                                     class="px-4 py-2 border-r text-center hover:text-blue-600 font-semibold favFont text-wrap w-1/2">
-                                    <a href="{{ route('admin.project.testimonial.about-testimonial', $testimonial->testifier_name) }}">{{ $testimonial->testifier_initials }}
+                                    <a
+                                        href="{{ route('admin.project.testimonial.about-testimonial', $testimonial->testifier_name) }}">{{ $testimonial->testifier_initials }}
                                         {{ $testimonial->testifier_name }}<a>
                                 </td>
-                                <td class="px-4 py-2 border-r text-center font-semibold favFont text-wrap w-1/2">
-                                    {{ $testimonial->testimonial_description }}</td>
+                                <td class="px-4 py-2 border-r text-center italic favFont text-wrap w-1/2">
+                                    {{ Str::limit($testimonial->testimonial_description, 100) }}</td>
                                 <td class="px-4 py-2 border-r text-center text-green-600 font-semibold">
                                     {{ $testimonial->created_at->isoFormat('dddd, MMMM Do YYYY') }}</td>
                                 <td class="px-4 py-2 flex items-center justify-center space-x-2">

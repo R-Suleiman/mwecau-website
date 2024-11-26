@@ -29,7 +29,7 @@
                         <div class="stamps">
                             <i class="fa fa-map-marker"></i> <span>{{ $events->event_location }}</span>
                         </div>
-                        <a href="{{ route('event-details', $events->id) }}"><button class="btn search-btn event-btn">view
+                        <a href="{{ route('event-details', $events->event_title) }}"><button class="btn search-btn event-btn">view
                                 more</button></a>
                     </div>
                 </div>

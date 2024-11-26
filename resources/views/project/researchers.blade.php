@@ -15,8 +15,15 @@
                     <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 shadow-md shadow-purple-800">
                         <a href="">
                             <div class="relative w-full mb-2 overflow-hidden group">
+                                @if ($teamMember->profile_picture)
+                                <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
+                                alt="service image"
+                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                @else
                                 <img src="{{ asset('img/projects/Male_Avatar.jpg') }}" alt="service image"
                                     class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                @endif
+
                                 <div
                                     class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
                                     <a href="https://scholar.google.com/" class="text-white mx-2"><i

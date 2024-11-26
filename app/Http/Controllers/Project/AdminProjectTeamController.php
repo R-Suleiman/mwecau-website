@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\ProjectTeam;
 use File;
 use Illuminate\Http\Request;
+use Storage;
 
 class AdminProjectTeamController extends Controller
 {
@@ -55,7 +56,13 @@ class AdminProjectTeamController extends Controller
             $randomNumber = rand(1000, 9999);
             //new profile picture name
             $profilePictureName = $profilePictureOriginalName . '-' . $randomNumber . '-' . $profilePictureFileNameExtension;
-            $profilePicture->move(public_path('images/projects/images/team-member-profile-pictures'), $profilePictureName);
+            $storagePath = 'images/projects/images/team-member-profile-pictures';
+
+            try {
+                $profilePicture->storeAs($storagePath, $profilePictureName, 'public');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Profile Image failed to upload, Please try again.');
+            }
         }
 
         $teamMember = new ProjectTeam();
@@ -116,13 +123,18 @@ class AdminProjectTeamController extends Controller
             $profilePictureFileNameExtension = $profilePicture->getClientOriginalExtension();
             $randomNumber = rand(1000, 9999);
             //new profile picture name
-            $profilePictureName = $profilePictureOriginalName . '-' . $randomNumber . '-' . $profilePictureFileNameExtension;
-            $profilePicture->move(public_path('images/projects/images/team-member-profile-pictures'), $profilePictureName);
+            $profilePictureName = $profilePictureOriginalName . '-' . $randomNumber . '.' . $profilePictureFileNameExtension;
+            $storagePath = 'images/projects/images/team-member-profile-pictures';
+            try {
+                $profilePicture->storeAs($storagePath, $profilePictureName, 'public');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', 'Profile Image failed to upload, Please try again.');
+            }
 
             //deleting the existing profile picture
-            $existingProfilePicture = public_path('/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture);
-            if (File::exists($existingProfilePicture)) {
-                File::delete($existingProfilePicture);
+            $existingProfilePicture = $storagePath . '/' . $teamMember->profile_picture;
+            if ($teamMember->profile_picture && Storage::disk('public')->exists($existingProfilePicture)) {
+                Storage::disk('public')->delete($existingProfilePicture);
             }
         }
 
@@ -144,8 +156,9 @@ class AdminProjectTeamController extends Controller
     public function memberProfile($name)
     {
         $projects = Project::all();
+        $profileImagePath = 'storage/images/projects/images/team-member-profile-pictures/';
         $teamMember = ProjectTeam::with('projects')->where('name', $name)->firstOrFail();
-        return view('project.admin.team.member-profile', compact('teamMember', 'projects'));
+        return view('project.admin.team.member-profile', compact('teamMember', 'projects', 'profileImagePath'));
     }
     public function assignProject(Request $request)
     {
@@ -171,16 +184,15 @@ class AdminProjectTeamController extends Controller
         return redirect()->back()->with('success', 'Team member assigned to project successfully.');
     }
 
-
     public function destroy($id)
     {
         $teamMember = ProjectTeam::findOrFail($id);
 
         //deleting team member profile picture
-        $profilePicture = public_path('/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture);
-
-        if (File::exists($profilePicture)) {
-            File::delete($profilePicture);
+        $storagePath = 'images/projects/images/team-member-profile-pictures';
+        $existingProfilePicture = $storagePath . '/' . $teamMember->profile_picture;
+        if ($teamMember->profile_picture && Storage::disk('public')->exists($existingProfilePicture)) {
+            Storage::disk('public')->delete($existingProfilePicture);
         }
 
         if ($teamMember->delete()) {

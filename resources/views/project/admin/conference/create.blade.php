@@ -61,13 +61,17 @@
                         </div>
                     </div>
 
+                    {{-- about the conference --}}
                     <div class="w-full">
                         <div class="mb-4">
                             <label for="description" class="block text-sm mb-4 font-medium text-gray-700">About the
                                 Conference</label>
-                            <textarea name="description" id="" cols="30" rows="10"
+                            <textarea name="description" id="editor" cols="30" rows="10"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ old('description') }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
+
+                            <textarea id="ckeditor"></textarea>
+
                         </div>
                         <!-- PDF file -->
                         <div class="mb-4">

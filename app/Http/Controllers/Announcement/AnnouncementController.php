@@ -25,20 +25,30 @@ class AnnouncementController extends Controller
             'posting_date' => 'Please Select date',
         ]);
 
+        $newAnnouncement = new NewsUpdate();
         // File upload processing
         $attachmentName = null;
         if ($request->hasFile('attachment')) {
             $attachment = $request->file('attachment');
-            $attachmentName = time() . '_' . $attachment->getClientOriginalName();
-            $attachment->move(public_path('documents/announcementAttachments'), $attachmentName);
+            $attachmentName = pathinfo($attachment->getClientOriginalName(), PATHINFO_FILENAME);
+            $attachmentExtension = $attachment->getClientOriginalExtension();
+            $uniqueId = substr(uniqid(), 0, 4);
+
+            $attachmentName = $attachmentName . '-' . $uniqueId . '.' . $attachmentExtension;
+            $storagePath = 'documents/announcementAttachments';
+
+            try {
+                $attachment->move(public_path($storagePath), $attachmentName);
+                // Save the announcement
+                $newAnnouncement->name = $request->name;
+                $newAnnouncement->description = $request->description;
+                $newAnnouncement->posting_date = $request->posting_date;
+                $newAnnouncement->attachment = $attachmentName;
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', "Something went wrong, failed to post announcement.");
+            }
         }
 
-        // Save the announcement
-        $newAnnouncement = new NewsUpdate();
-        $newAnnouncement->name = $request->name;
-        $newAnnouncement->description = $request->description;
-        $newAnnouncement->posting_date = $request->posting_date;
-        $newAnnouncement->attachment = $attachmentName;
         $newAnnouncement->save();
 
         return redirect()->back()->with('message', 'Announcement Posted Successfully');
@@ -69,44 +79,56 @@ class AnnouncementController extends Controller
         ]);
 
         // Find the existing announcement
-        $updatedAnnouncement = NewsUpdate::find($id);
+        $updatedAnnouncement = NewsUpdate::findOrFail($id);
 
-        if (!$updatedAnnouncement) {
-            return redirect()->back()->with('fail', 'Announcement not found');
-        }
-
+        // Update basic information
         $updatedAnnouncement->name = $request->name;
         $updatedAnnouncement->description = $request->description;
         $updatedAnnouncement->posting_date = $request->posting_date;
 
-        // File upload processing
         if ($request->hasFile('attachment')) {
-            // Delete the old attachment if it exists
-            if ($updatedAnnouncement->attachment) {
-                $oldAttachmentPath = public_path('documents/announcementAttachments/' . $updatedAnnouncement->attachment);
-                if (File::exists($oldAttachmentPath)) {
-                    File::delete($oldAttachmentPath);
-                }
-            }
-
             $attachment = $request->file('attachment');
-            $attachmentName = time() . '_' . $attachment->getClientOriginalName();
-            $attachment->move(public_path('documents/announcementAttachments'), $attachmentName);
 
-            $updatedAnnouncement->attachment = $attachmentName;
+            $attachmentName = pathinfo($attachment->getClientOriginalName(), PATHINFO_FILENAME);
+            $attachmentExtension = $attachment->getClientOriginalExtension();
+            $uniqueId = substr(uniqid(), 0, 4);
+
+            $attachmentName = $attachmentName . '-' . $uniqueId . '.' . $attachmentExtension;
+            $storagePath = 'documents/announcementAttachments';
+
+            try {
+                $attachment->move(public_path($storagePath), $attachmentName);
+
+                // Delete existing attachment if it exists
+                $existingAttachmentPath = public_path($storagePath . '/' . $updatedAnnouncement->attachment);
+                if ($updatedAnnouncement->attachment && File::exists($existingAttachmentPath)) {
+                    File::delete($existingAttachmentPath);
+                }
+
+                // Update the attachment path in the database
+                $updatedAnnouncement->attachment = $attachmentName;
+            } catch (\Exception $e) {
+                return redirect()->back()->with('fail', "{$updatedAnnouncement->name} failed to update. Please try again.");
+            }
         }
 
+        // Save all updates to the announcement
         $updatedAnnouncement->save();
 
-        return redirect()->back()->with('message', 'Announcement updated successfully');
+        return redirect()->route('admin.dashboard')->with('message', "{$updatedAnnouncement->name} updated successfully.");
     }
 
     public function deleteAnnouncement($id)
     {
         $destroyAnnouncement = NewsUpdate::findOrFail($id);
 
-        $destroyAnnouncement->delete();
+        // deleting the existing announcement attachment
+        $existingAttachment = public_path('/documents/announcementAttachments/' . $destroyAnnouncement->attachment);
+        if (File::exists($existingAttachment)) {
+            File::delete($existingAttachment);
+        }
 
+        $destroyAnnouncement->delete();
         return redirect()->back()->with('message', 'Announcement Successfully Deleted');
     }
 }

@@ -1,6 +1,6 @@
     <section>
         <footer
-            class="relative mt-32 w-full bg-gradient bg-gradient-to-r from-purple-900 via-purple-700 text-white to-purple-400">
+            class="relative mt-32 w-full bg-gradient bg-gradient-to-r from-blue-950 text-white to-blue-700">
             <div class="w-full px-8 mx-auto max-w-7xl">
                 <div class="grid justify-between grid-cols-1 gap-4 md:grid-cols-2">
                     <h5 class="mb-6 text-3xl font-semibold text-white headerFavFont pt-10">
@@ -14,7 +14,8 @@
                                 </p>
                                 @foreach ($projectConferences as $conference)
                                     <li>
-                                        <a href="{{route('about-conference', $conference->name)}}" class=" text-white py- text-md">
+                                        <a href="{{ route('about-conference', $conference->name) }}"
+                                            class=" text-white py- text-md">
                                             <i
                                                 class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-1 mr-2 mt-3"></i>
                                             <span>{{ $conference->name }}</span>
@@ -22,38 +23,49 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            @endif
+                        @endif
+                        @if ($projectPartners->isNotEmpty())
                             <ul>
                                 <p class="block mb-1 favFont font-semibold text-white text-xl">
                                     Partner Institutions
                                 </p>
-                                <li>
-                                    <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                        Ku Leuven
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block text-white py-1 focus:text-slate-500 text-md">
-                                        Kisubi University
-                                    </a>
+                                @foreach ($projectPartners as $partner)
+                                    <li>
+                                        <a href="{{ $partner->link }}"
+                                            class="block text-white py-1 focus:text-slate-500 text-md">
+                                            {{ $partner->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p class="block mb-1 favFont font-semibold text-white text-xl">
+                                Partner Institutions
+                            </p>
+                            <ul>
+                                <li class="leading-relaxed text-justify">We collaborate with various institutions to
+                                    enhance our projects and initiatives.
                                 </li>
                             </ul>
-                            @if ($projectFooter->isNotEmpty())
-                                <ul>
-                                    <p class="block mb-1 favFont text-xl font-semibold">
-                                        Projects
-                                    </p>
-                                    @foreach ($projectFooter as $project)
-                                        <li>
-                                            <a href="{{route('single-project', $project->name)}}" class=" text-white py-1 focus:text-slate-500 text-md">
-                                                <i
-                                                    class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-1 mr-2 mt-3"></i>
-                                                <span>{{ $project->name }}</span>
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
+                        @endif
+
+                        @if ($projectFooter->isNotEmpty())
+                            <ul>
+                                <p class="block mb-1 favFont text-xl font-semibold">
+                                    Projects
+                                </p>
+                                @foreach ($projectFooter as $project)
+                                    <li>
+                                        <a href="{{ route('single-project', $project->name) }}"
+                                            class=" text-white py-1 focus:text-slate-500 text-md">
+                                            <i
+                                                class="fa fa-arrow-right text-gray-900 bg-gray-300 rounded-full p-1 mr-2 mt-3"></i>
+                                            <span>{{ $project->name }}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
 
                     </div>
                 </div>

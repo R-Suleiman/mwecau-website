@@ -17,14 +17,19 @@ class LibraryMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role == 0 || Auth::user()->role == 1) {
-            return $next($request);
-        } else {
-            Auth::logout();
-            // Alert::error('Access Denied', 'You do not have permission to access this page. Please contact the administrator if you believe this is an error.');
-            return redirect()->route('login')->with('fail', 'You have been logged out due to unauthorized access.');
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('fail', 'Please log in to continue.');
         }
 
+        $authenticatedUser = Auth::user();
+
+        if ($authenticatedUser->role == 0 || $authenticatedUser->role == 1) {
+            return $next($request);
+        }
+
+        Auth::logout();
+        return redirect()->route('login')->with('fail', 'Unauthorized access detected.');
     }
+
 }
 

@@ -24,7 +24,7 @@
                     <div class="flex flex-col items-center text-center">
                         @if ($testifier->testifier_profile_picture != null)
                             <img class="rounded-full border-4 border-t-purple-500 border-b-pink-600 h-[150px] w-[150px] object-cover shadow-lg"
-                                src="{{ asset('/images/projects/images/testimonials/profile-pictures/' . $testifier->testifier_profile_picture) }}"
+                                src="{{ asset('/storage/images/projects/images/testimonials/profile-pictures/' . $testifier->testifier_profile_picture) }}"
                                 alt="{{ $testifier->testifier_name }} profile picture">
                         @else
                             <img class="rounded-full border-4 border-t-purple-500 border-b-pink-600 h-[150px] w-[150px] object-cover shadow-lg"

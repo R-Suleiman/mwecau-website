@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ProjectTestimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Storage;
 
 class AdminProjectTestimonialController extends Controller
 {
@@ -37,7 +38,10 @@ class AdminProjectTestimonialController extends Controller
             $randomNumber = rand(1000, 9999);
             $profilePictureName = $profilePictureOriginalName . '-' . $randomNumber . '-' . $profilePictureFileExtensidon;
 
-            $profile_picture->move(public_path('images/projects/images/testimonials/profile-pictures'), $profilePictureName);
+            $storagePath = 'images/projects/images/testimonials/profile-pictures';
+
+            $profile_picture->storeAs($storagePath, $profilePictureName, 'public');
+
         }
 
 
@@ -70,23 +74,24 @@ class AdminProjectTestimonialController extends Controller
             'testifier_profile_picture' => ['nullable', 'max:2048']
         ]);
 
-        //processing scholarships file
+        //processing profile picture file
         $testimonial = ProjectTestimonial::findOrFail($id);
 
         $profilePictureName = $testimonial->testifier_profile_picture;
         if ($request->hasFile('testifier_profile_picture')) {
             $profile_picture = $request->file('testifier_profile_picture');
             $profilePictureOriginalName = pathinfo($profile_picture->getClientOriginalName(), PATHINFO_FILENAME);
-            $profilePictureFileExtensidon = $profile_picture->getClientOriginalExtension();
+            $profilePictureFileExtension = $profile_picture->getClientOriginalExtension();
             $randomNumber = rand(1000, 9999);
-            $profilePictureName = $profilePictureOriginalName . '-' . $randomNumber . '-' . $profilePictureFileExtensidon;
+            $profilePictureName = $profilePictureOriginalName . '-' . $randomNumber . '.' . $profilePictureFileExtension;
 
-            $profile_picture->move(public_path('images/projects/images/testimonials/profile-pictures'), $profilePictureName);
+            $storagePath = 'images/projects/images/testimonials/profile-pictures/';
+            $profile_picture->storeAs($storagePath, $profilePictureName, 'public');
 
-            //deleting the existing scholarship file
-            $existingProfilePicture = public_path('/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture);
-            if (File::exists($existingProfilePicture)) {
-                File::delete($existingProfilePicture);
+            //deleting the existing profile image
+            $existingProfilePicture = $storagePath . $testimonial->testifier_profile_picture;
+            if ($testimonial->testifier_profile_picture && Storage::disk('public')->exists($existingProfilePicture)) {
+                Storage::disk('public')->delete($existingProfilePicture);
             }
         }
 
@@ -114,9 +119,10 @@ class AdminProjectTestimonialController extends Controller
         $testimonial = ProjectTestimonial::findOrFail($id);
 
         //removing conference related PDF file
-        $existingProfilePicture = public_path('/images/projects/images/testimonials/profile_pictures/' . $testimonial->testifier_profile_picture);
-        if (File::exists($existingProfilePicture)) {
-            File::delete($existingProfilePicture);
+        $storagePath = 'images/projects/images/testimonials/profile-pictures/';
+        $existingProfilePicture = $storagePath . $testimonial->testifier_profile_picture;
+        if ($testimonial->testifier_profile_picture && Storage::disk('public')->exists($existingProfilePicture)) {
+            Storage::disk('public')->delete($existingProfilePicture);
         }
 
         if ($testimonial->delete()) {

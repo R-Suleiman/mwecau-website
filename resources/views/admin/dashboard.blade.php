@@ -13,6 +13,7 @@
 
 @extends('layouts.admin')
 @section('content')
+    <x-messages />
     <div class="stats-box">
         <div class="stat">
             <div class="top-label">

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Models\ProjectConferences;
 use App\Models\ProjectContent;
+use App\Models\ProjectPartner;
 use App\Models\ProjectScholarship;
 use App\Models\ProjectTeam;
 use App\Models\ProjectTestimonial;
@@ -27,6 +28,8 @@ class ProjectsController extends Controller
         $conferences = ProjectConferences::all();
         $teamMembers = ProjectTeam::all();
         $testimonials = ProjectTestimonial::all();
+        $projectPartners = ProjectPartner::all();
+        $homeslider = ProjectContent::where('page_section', 'home_slider')->get();
         return view('project.index', compact(
             'projects',
             'conferences',
@@ -34,7 +37,9 @@ class ProjectsController extends Controller
             'teamMembers',
             'aboutVlir',
             'teamContents',
-            'testimonialContents'
+            'testimonialContents',
+            'projectPartners',
+            'homeslider'
         ));
     }
 
@@ -48,9 +53,9 @@ class ProjectsController extends Controller
     public function project($projectName)
     {
         $singleProject = Project::with(['gallery', 'projectTeam'])->where('name', $projectName)->firstOrFail();
-        return view('project.project', compact('singleProject'));
+        $relatedProjects = Project::where('category',  $singleProject->category)->get();
+        return view('project.project', compact('singleProject', 'relatedProjects'));
     }
-
 
     public function researchers()
     {

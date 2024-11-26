@@ -12,6 +12,8 @@ use App\Http\Controllers\Project\AdminProjectTeamController;
 use App\Http\Controllers\Project\AdminProjectTestimonialController;
 use App\Http\Controllers\Project\ProjectAdminConferenceController;
 use App\Http\Controllers\Project\ProjectsController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\WebAdminsController;
 use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +25,7 @@ use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\dpric\DpricController;
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +38,7 @@ use App\Http\Controllers\dpric\DpricController;
 */
 Auth::routes();
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::get('/register', [App\Http\Controllers\Auth\LoginController::class, 'register'])->middleware(['auth', 'admin'])->name('register');
+Route::post('/admin-registration', [App\Http\Controllers\HomeController::class, 'register'])->name('admin-registration');
 
 Route::controller(HomeController::class)->group(function () {
     // Route::get('/home', 'index')->name('home');
@@ -106,6 +108,17 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
     Route::get('edit-staff-profile/{id}', 'editStaffProfile')->name('edit.staff.profile'); //editing specific staff profile details
     Route::put('updateStaffProfile/{id}', 'updateStaffProfile')->name('admin.update.staff.profile');
     Route::delete('staff/{id}', 'destroyStaff')->name('staff.destroy');
+
+});
+
+//user management
+Route::controller(WebAdminsController::class)->prefix('admin')->name('admin.')->middleware(['admin'])->group(function () {
+    Route::get('manage-web-admins', 'webAdmins')->name('web');
+    Route::get('new-web-admin', 'newWebAdmin')->name('new-web-admin');
+    Route::post('new-web-admin', 'storeWebAdmin')->name('store-web-admin');
+    Route::get('update/{name}/profile', 'editWebAdmin')->name('edit-web-admin');
+    Route::put('update-web-admin/{id}', 'updateWebAdmin')->name('update-web-admin');
+    Route::delete('destroy-web-admin/{id}', 'destroyWebAdmin')->name('destroy-web-admin');
 });
 
 // Event related routes
@@ -121,7 +134,7 @@ Route::controller(EventsController::class)->group(function () {
         Route::post('/destroy-event/{id}', 'eventDestroty')->name('admin.destroy.event');
     });
     //web view event routes
-    Route::get('/events/event-details/{id}', 'eventDetails')->where('id', '.*')->name('event-details');
+    Route::get('{eventName}/event', 'eventDetails')->where('id', '.*')->name('event-details');
 });
 
 //News and updates related routes
@@ -197,7 +210,7 @@ Route::controller(ResearchController::class)->group(function () {
 Route::controller(LibraryController::class)->group(function () {
     Route::get('/library', 'index')->name('library');
 
-    Route::name('admin.library.')->prefix('admin/library')->middleware(['admin', 'library'])->group(function () {
+    Route::name('admin.library.')->prefix('admin/library')->middleware(['library'])->group(function () {
         Route::get('/', 'show')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
@@ -262,83 +275,95 @@ Route::controller(ProjectsController::class)->group(function () {
 });
 // });
 
-Route::controller(AdminProjectController::class)->prefix('admin/projects/')->name('admin.project.')->group(function () {
-    Route::get('', 'index')->name('index');
-    // project admin related routes
-    Route::get('projects', 'projects')->name('projects');
-    Route::get('create', 'createProject')->name('create');
-    Route::post('store', 'storeProject')->name('store');
-    Route::get('edit/{projectName}/project', 'edit')->where('projectName', '.*')->name('edit');
-    Route::put('update-project/{id}', 'updateProject')->name('update-project');
-    //removing image from project gallery
-    Route::delete('remove-gallery-image/{id}', 'removeGalleryImage')->name('remove-gallery-image');
-    Route::get('{projectName}/details', 'projectDatails')->where('projectName', '.*')->name('details');
-    Route::delete('destroy/{id}', 'destroy')->name('destroy');
-    //team related routed
-    Route::get('team', 'team')->name('team');
+Route::middleware(['research'])->group(function () {
+    Route::controller(AdminProjectController::class)->prefix('admin/projects/')->name('admin.project.')->group(function () {
+        Route::get('', 'index')->name('index');
+        // project admin related routes
+        Route::get('projects', 'projects')->name('projects');
+        Route::get('create', 'createProject')->name('create');
+        Route::post('store', 'storeProject')->name('store');
+        Route::get('edit/{projectName}/project', 'edit')->where('projectName', '.*')->name('edit');
+        Route::put('update-project/{id}', 'updateProject')->name('update-project');
+        //removing image from project gallery
+        Route::delete('remove-gallery-image/{id}', 'removeGalleryImage')->name('remove-gallery-image');
+        Route::get('{projectName}/details', 'projectDatails')->where('projectName', '.*')->name('details');
+        Route::delete('destroy/{id}', 'destroy')->name('destroy');
+        //team related routed
+        Route::get('team', 'team')->name('team');
 
-    // gallery creation relatd routes
-    Route::get('create-gallery-for/{projectName}', 'createGallery')->name('create-gallery');
-    Route::post('store-project-gallery', 'storeProjectGallery')->name('store-project-gallery');
+        // gallery creation relatd routes
+        Route::get('create-gallery-for/{projectName}', 'createGallery')->name('create-gallery');
+        Route::post('store-project-gallery', 'storeProjectGallery')->name('store-project-gallery');
 
-    //project page contents routes
-    Route::get('edit/{id}/section', 'editPageSection')->name('edit-page-section');
-    Route::put('update/{id}', 'updatePageSection')->name('update-page-section');
+        //project page contents routes
+        Route::get('home-slider-content', 'newContent')->name('new-content');
+        Route::post('store-home-slider-content', 'storeHomeSliderContent')->name('store-home-item');
+        Route::get('edit/{id}/section', 'editPageSection')->name('edit-page-section');
+        Route::put('content-update/{id}', 'updatePageSection')->name('update-page-section');
 
-    //project partners routes
-    Route::get('project-partners', 'partners')->name('partners');
-    Route::post('store-project-partner', 'storeProjectPartner')->name('store-project-partner');
-    Route::get('edit/{partnerName}', 'editPartner')->where('partnerName', '.*')->name('edit-project-partner');
-    Route::get('update/{id}', 'updateProjectPartner')->name('update-project-partner');
-    Route::delete('partner/{id}', 'destroyProjectPartner')->name('destroy-project-partner');
-});
+        //project partners routes
+        Route::get('project-partners', 'partners')->name('partners');
+        Route::post('store-project-partner', 'storeProjectPartner')->name('store-project-partner');
+        Route::get('edit/{partnerName}', 'editPartner')->where('partnerName', '.*')->name('edit-project-partner');
+        Route::put('update/{id}', 'updateProjectPartner')->name('update-project-partner');
+        Route::delete('partner/{id}', 'destroyProjectPartner')->name('destroy-project-partner');
+    });
 
-// project admin project team routes
-Route::controller(AdminProjectTeamController::class)->prefix('admin/team/')->name('admin.project.team.')->group(function () {
-    Route::get('index', 'index')->name('index');
-    Route::get('create/{id}', 'create')->name('create');
-    Route::post('store', 'store')->name('store');
-    Route::get('edit/{name}/profile', 'edit')->name('edit');
-    Route::put('update/{id}', 'update')->name('update');
-    Route::get('{name}/profile', 'memberProfile')->where('name', '.*')->name('member-profile');
-    Route::delete('destroy/{id}', 'destroy')->name('destroy');
-    Route::post('/assign-project', 'assignProject')->name('assignProject');
+    // project admin project team routes
+    Route::controller(AdminProjectTeamController::class)->prefix('admin/team/')->name('admin.project.team.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create/{id}', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('edit/{name}/profile', 'edit')->name('edit');
+        Route::put('update/{id}', 'update')->name('update');
+        Route::get('{name}/profile', 'memberProfile')->where('name', '.*')->name('member-profile');
+        Route::delete('destroy/{id}', 'destroy')->name('destroy');
+        Route::post('/assign-project', 'assignProject')->name('assignProject');
+    });
 
+    //project admin conference routes
+    Route::controller(ProjectAdminConferenceController::class)->prefix('admin/conference/')->name('admin.project.conference.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('edit/{name}/conference', 'edit')->name('edit');
+        Route::put('update/{id}', 'update')->name('update');
+        Route::delete('destroy/{id}', 'destroy')->name('destroy');
 
-});
+    });
 
-//project admin conference routes
-Route::controller(ProjectAdminConferenceController::class)->prefix('admin/conference/')->name('admin.project.conference.')->group(function () {
-    Route::get('index', 'index')->name('index');
-    Route::get('create', 'create')->name('create');
-    Route::post('store', 'store')->name('store');
-    Route::get('edit/{name}/conference', 'edit')->name('edit');
-    Route::put('update/{id}', 'update')->name('update');
-    Route::delete('destroy/{id}', 'destroy')->name('destroy');
+    //project admin scholarship routes
+    Route::controller(AdminProjectScholarshipController::class)->prefix('admin/scholarship/')->name('admin.project.scholarship.')->group(function () {
+        Route::get('index', 'scholarships')->name('scholarships');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('edit/{scholarshipName}/scholarship', 'edit')->where('scholarshipName', '.*')->name('edit');
+        Route::put('update/{id}', 'update')->name('update');
+        Route::delete('destroy/{id}', 'destroy')->name('destroy');
 
-});
+    });
 
-//project admin scholarship routes
-Route::controller(AdminProjectScholarshipController::class)->prefix('admin/scholarship/')->name('admin.project.scholarship.')->group(function () {
-    Route::get('index', 'scholarships')->name('scholarships');
-    Route::get('create', 'create')->name('create');
-    Route::post('store', 'store')->name('store');
-    Route::get('edit/{scholarshipName}/scholarship', 'edit')->where('scholarshipName', '.*')->name('edit');
-    Route::put('update/{id}', 'update')->name('update');
-    Route::delete('destroy/{id}', 'destroy')->name('destroy');
+    //project admin testimonial routes
+    Route::controller(AdminProjectTestimonialController::class)->prefix('admin/testimonial/')->name('admin.project.testimonial.')->group(function () {
+        Route::get('testimonials', 'testimonials')->name('testimonials');
+        Route::get('post-testimonial', 'createTestimonial')->name('create-testimonial');
+        Route::post('store-testimonial', 'storeTestimonial')->name('store-testimonial');
+        Route::get('about/{testifierName}', 'aboutTestimonial')->where('testifierName', '.*')->name('about-testimonial');
+        Route::get('edit/{testimonialName}/testimonial', 'editTestimonial')->where('testimonialName', '.*')->name('edit-testimonial');
+        Route::put('update/{id}', 'updateTestimonial')->name('update-testimonial');
+        Route::delete('destroy/{id}', 'destroyTestimonial')->name('destroy-testimonial');
 
-});
-
-//project admin testimonial routes
-Route::controller(AdminProjectTestimonialController::class)->prefix('admin/testimonial/')->name('admin.project.testimonial.')->group(function () {
-    Route::get('testimonials', 'testimonials')->name('testimonials');
-    Route::get('post-testimonial', 'createTestimonial')->name('create-testimonial');
-    Route::post('store-testimonial', 'storeTestimonial')->name('store-testimonial');
-    Route::get('about/{testifierName}', 'aboutTestimonial')->where('testifierName', '.*')->name('about-testimonial');
-    Route::get('edit/{testimonialName}/testimonial', 'editTestimonial')->where('testimonialName', '.*')->name('edit-testimonial');
-    Route::put('update/{id}', 'updateTestimonial')->name('update-testimonial');
-    Route::delete('destroy/{id}', 'destroyTestimonial')->name('destroy-testimonial');
-
+    });
 });
 
 Route::get('/dpric', [DpricController::class, 'index'])->name('dpric-index');
+
+Route::get('/storage/{path}', function ($path) {
+    $filePath = 'public/' . $path;
+
+    if (!Storage::exists($filePath)) {
+        abort(404);
+    }
+
+    return response()->file(storage_path('app/' . $filePath));
+})->where('path', '.*');

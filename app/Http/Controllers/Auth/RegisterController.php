@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -37,9 +37,12 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
-
+    public function register()
+    {
+        return view('auth.register');
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -58,10 +61,10 @@ class RegisterController extends Controller
                 'confirmed',
                 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
                 'not_regex:/^(?=.*\b(?:\w)+\b)[\w!@#$%^&*()-=+`~{}\[\]:";\'<>?,.\/]+$/'
-,
+                ,
 
             ],
-        ],[
+        ], [
             'password.required' => 'password field can\'t be empty is requir.',
             'password.confirmed' => 'password mismatch.',
             'password.string' => 'password must be string.',

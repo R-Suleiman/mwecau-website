@@ -124,12 +124,13 @@
                         </li>
                     </a>
 
-                    <a href="{{ route('site.images') }}">
+                    <a href="{{ route('admin.web') }}">
                         <li class="nav-item">
                             <i class="fa-solid fa-key"></i>
-                            <span class="nav-words">Change Password</span>
+                            <span class="nav-words">Manage Members</span>
                         </li>
                     </a>
+
                 @endif
 
                 <li class="nav-item">
@@ -147,7 +148,6 @@
                     {{-- <i class="fa fa-sign-out-alt nav-icons"></i>
                         <span class="nav-words">Logout</span> --}}
                 </li>
-
             </ul>
         </div>
     </div>

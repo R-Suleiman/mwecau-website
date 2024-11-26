@@ -8,19 +8,15 @@
         </h1>
     </div>
     <hr class="my-4 border-t border-purple-500">
-
     <div class="text-end mt-10  mb-9">
-        <div class="">
-
-        </div>
         <a href="{{ route('admin.project.projects') }}"
             class="favFont py-2 px-4 text-xs font-semibold uppercase border border-gray-600 rounded-md bg-purple-800 text-white">
             <i class="fa fa-arrow-left"></i></a>
     </div>
 
+    <x-project-admin-messages />
     <div class="flex items-center justify-center p-7">
         <div class="w-full p-8 bg-white rounded-2xl shadow-2xl shadow-purple-200">
-            <x-project-admin-messages />
             <div class="w-full">
                 <form action="{{ route('admin.project.store-project-gallery') }}" method="POST"
                     enctype="multipart/form-data" class="space-y-4">

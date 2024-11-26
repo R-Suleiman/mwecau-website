@@ -17,7 +17,7 @@
     <div class="flex items-center justify-center">
         @if ($teamMember->profile_picture != null)
             <img class="rounded-full border-4 border-t-purple-500 border-b-pink-600 h-[150px] w-[150px] object-cover shadow-2xl shadow-purple-400"
-                src="{{ asset('/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
+                src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
                 alt="{{ $teamMember->name }} profile picture">
         @else
             <img class="rounded-full border-4 border-t-purple-500 border-b-pink-600 h-[150px] w-[150px] object-cover shadow-2xl"

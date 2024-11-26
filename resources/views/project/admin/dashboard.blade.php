@@ -10,11 +10,11 @@
     <div class="p-4 rounded-lg dark:border-gray-700">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
             <div
-                class="relative p-6 rounded-lg bg-gradient-to-r from-purple-700 to-purple-300 shadow-lg text-center text-white">
-                <span class="text-xl font-bold favFont uppercase">Projects</span>
+                class="relative p-6 rounded-lg bg-gradient-to-r from-gray-900 via-gray-800 to-purple-900 shadow-lg text-center text-white">
+                <span class="text-3xl font-bold favFont uppercase headerFavFont">Projects</span>
                 <div class="mt-2 text-sm font-medium text-white flex items-center justify-center space-x-1">
-                    <span class="favFont lg:text-6xl">{{ $totalprojects }}</span>
-                    <i class="fas fa-folder-open text-xl mr-2"></i>
+                    <span class="favFont lg:text-8xl text-yellow-400">{{ $totalprojects }}</span>
+                    <i class="fas fa-folder-open text-2xl mr-2"></i>
                 </div>
                 <div class="flex items-center justify-center mt-7">
                     <a href="{{ route('admin.project.projects') }}"
@@ -24,14 +24,14 @@
             </div>
 
             <div
-                class="relative p-6 rounded-lg bg-gradient-to-r from-purple-800 via-purple-600 to-purple-400 shadow-lg text-center text-white">
+                class="relative p-6 rounded-lg bg-gradient-to-r from-gray-900 via-gray-800 to-purple-900 shadow-lg text-center text-white">
                 <!-- Card Title -->
-                <span class="text-xl font-bold favFont uppercase">Scholarships</span>
+                <span class="text-3xl font-bold favFont uppercase headerFavFont">Scholarships</span>
 
                 <!-- Statistic and Icon -->
                 <div class="mt-4 text-sm font-medium flex items-center justify-center space-x-2">
-                    <span class="favFont lg:text-5xl">{{ $totalScholarships }}</span>
-                    <i class="fas fa-graduation-cap text-xl mr-2"></i>
+                    <span class="favFont lg:text-8xl text-yellow-400">{{ $totalScholarships }}</span>
+                    <i class="fas fa-graduation-cap text-2xl mr-2"></i>
 
                 </div>
 
@@ -45,11 +45,11 @@
             </div>
 
             <div
-                class="relative p-6 rounded-lg bg-gradient-to-r from-purple-700 to-pink-300 shadow-lg text-center text-white">
-                <span class="text-xl font-bold favFont uppercase">Researchers</span>
+                class="relative p-6 rounded-lg bg-gradient-to-r from-gray-900 via-gray-800 to-purple-900 shadow-lg text-center text-white">
+                <span class="text-3xl font-bold favFont uppercase headerFavFont">Researchers</span>
                 <div class="mt-2 text-sm font-medium text-green-100 flex items-center justify-center space-x-1">
-                    <span class="favFont lg:text-6xl">{{ $totalprojects }}</span>
-                    <i class="fas fa-microscope text-xl mr-2"></i>
+                    <span class="favFont lg:text-8xl text-yellow-400">{{ $totalprojects }}</span>
+                    <i class="fas fa-microscope text-2xl mr-2"></i>
                 </div>
                 <div class="flex items-center justify-center mt-7">
                     <a href="#"

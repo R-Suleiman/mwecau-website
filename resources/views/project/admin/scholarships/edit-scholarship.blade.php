@@ -107,6 +107,15 @@
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $scholarship->description }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
+                        <!--Application Url -->
+                        <div class="mb-4">
+                            <label for="application_url" class="block text-sm mb-4 font-medium text-gray-700">Scholarship
+                                application url</label>
+                            <input type="text" id="application_url" value="{{ $scholarship->application_url }}"
+                                name="application_url"
+                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
+                            <x-input-error :messages="$errors->get('application_url')" class="mt-2" />
+                        </div>
                         <!-- PDF file -->
                         <div class="mb-4">
                             <label for="attachment" class="block text-sm mb-4 font-medium text-gray-700">Scholarship
@@ -129,6 +138,7 @@
                             <x-input-error :messages="$errors->get('pdf')" class="mt-2" />
                         </div>
                     </div>
+
 
                     <!-- Submit Button -->
                     <div class="mt-6 max-w-[180px]">
