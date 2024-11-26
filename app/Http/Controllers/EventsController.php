@@ -121,10 +121,10 @@ class EventsController extends Controller
         return view('admin.event-details', compact('eventDetails'));
     }
     // for web user
-    public function eventDetails($id)
+    public function eventDetails($eventName)
     {
 
-        $eventDetails = event::findOrFail($id);
+        $eventDetails = event::where('event_title', $eventName)->firstOrFail();
         return view('event-details', compact('eventDetails'));
     }
     //editing an event

@@ -288,7 +288,7 @@
                         <div class="row gallery g-5">
                             @foreach ($UniversityEvents as $UniversityEvent)
                                 <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
-                                    <a href="{{ route('event-details', $UniversityEvent->id) }}"
+                                    <a href="{{ route('event-details', $UniversityEvent->event_title) }}"
                                         class="text-decoration-none">
                                         <div class="card">
                                             <div class="card-body text-center">

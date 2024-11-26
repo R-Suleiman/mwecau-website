@@ -6,6 +6,9 @@ use App\Models\Footer;
 use App\Models\NewsUpdate;
 use App\Models\Document;
 use App\Models\event;
+use App\Models\Project;
+use App\Models\ProjectConferences;
+use App\Models\ProjectPartner;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Http;
@@ -25,19 +28,19 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        // $faculties = null;clea
+        // $faculties = null;
         try {
             // Make the API request
             $faculties = Cache::remember('faculty_data', 43200, function () {
-            $response = Http::get('https://ums.mwecau.ac.tz/Api/get_university_structure');
-            if ($response->successful()) {
-                return $response->json();
-                // $faculties = $response->json();
-            } else {
-                Log::error('Failed to fetch programs from API: ' . $response->status());
-                // $faculties = null;
-                return null;
-            }
+                $response = Http::get('https://ums.mwecau.ac.tz/Api/get_university_structure');
+                if ($response->successful()) {
+                    return $response->json();
+                    // $faculties = $response->json();
+                } else {
+                    Log::error('Failed to fetch programs from API: ' . $response->status());
+                    // $faculties = null;
+                    return null;
+                }
             });
 
             // If cache or API call failed, provide a fallback
@@ -137,5 +140,15 @@ class AppServiceProvider extends ServiceProvider
 
         $youtubeLink = Footer::where('category', 'youtube-link')->first();
         view::share('youtubeLink', $youtubeLink);
+
+        //projects view shares
+        $projectFooter = Project::all();
+        view::share('projectFooter', $projectFooter);
+
+        $projectConferences = ProjectConferences::all();
+        view::share('projectConferences', $projectConferences);
+
+        $projectPartners = ProjectPartner::all();
+        view::share('projectPartners', $projectPartners);
     }
 }

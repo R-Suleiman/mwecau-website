@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Mwenge Catholic University ') }}</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.css">
 
     <!--Tailwinds Scripts for production development -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 
@@ -27,7 +26,7 @@
 
 <body class="font-sans antialiased bg-gray-100" x-data="{ open: false }">
     <div class="container mx-auto">
-        <div class="lg:hidden flex items-center justify-between mt-10">
+        <div class="lg:hidden flex items-center justify-between mt-10 shadow-xl pb-7">
             <h1 class="headerFavFont font-semibold text-gray-900 text-3xl mx-auto">Mwenge Catholic University</h1>
 
             <div class="ml-10">
@@ -45,13 +44,14 @@
         </div>
     </div>
 
-
     <div class="flex flex-col w-full min-h-screen md:flex-row">
         <!-- Sidebar Toggle Button (visible on small to medium screens) -->
         <aside id="sidebar-multi-level-sidebar" x-bind:class="{ 'translate-x-0': open, '-translate-x-full': !open }"
             class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0 lg:block lg:static"
             aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                <img src="{{ asset('img/mwecau.png') }}"
+                    class="object-cover rounded-full h-[120px] w-[120px] mb-6 ml-11" alt="University logo">
                 {{-- {{ Auth::user()->name }} --}}
                 <ul class="space-y-2 font-medium">
                     <li>
@@ -70,7 +70,7 @@
                     </li>
 
                     <li>
-                        <a href="{{route('admin.project.conference.index')}}"
+                        <a href="{{ route('admin.project.conference.index') }}"
                             class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-calendar-alt text-indigo-400 text-xl mr-3"></i>
                             <span class="flex-1 whitespace-nowrap">Conferences</span>
@@ -78,7 +78,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.project.scholarships') }}"
+                        <a href="{{ route('admin.project.scholarship.scholarships') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-graduation-cap text-indigo-400 text-xl mr-3"></i>
                             <span class="flex-1 whitespace-nowrap">Scholarships</span>
@@ -93,7 +93,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.project.testmonial') }}"
+                        <a href="{{ route('admin.project.testimonial.testimonials') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-comment-dots text-indigo-400 text-xl mr-3"></i>
                             <span class="flex-1 whitespace-nowrap">Testimonials</span>
@@ -101,12 +101,40 @@
                     </li>
 
                     <li>
-                        <a href="#"
+                        <a href="{{ route('admin.project.partners') }}"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <i class="fas fa-handshake text-indigo-400 text-xl mr-3"></i>
+                            <span class="flex-1 whitespace-nowrap">Partners</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.project.new-content') }}"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <i class="fas fa-handshake text-indigo-400 text-xl mr-3"></i>
+                            <span class="flex-1 whitespace-nowrap">Manage sliding images</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <div class="" aria-labelledby="">
+                            <a class="text-decoration-none text-light " href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out-alt nav-icons"></i> {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    {{-- <a href="#"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-sign-out-alt text-indigo-400 text-xl mr-3"></i>
                             <span class="flex-1 whitespace-nowrap">Sign Out</span>
-                        </a>
-                    </li>
+                        </a> --}}
                 </ul>
             </div>
         </aside>
@@ -124,6 +152,7 @@
         @stack('modals')
         @stack('scripts')
     </div>
+    @include('partials.ckeditor')
 </body>
 
 

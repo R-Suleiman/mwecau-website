@@ -106,6 +106,7 @@ class ProjectAdminConferenceController extends Controller
             return redirect()->back()->with('fail', 'An error occured while updating, please  try again if the issue presist pleas report the issue.');
         }
     }
+
     public function destroy($id)
     {
         $conference = ProjectConferences::findOrFail($id);

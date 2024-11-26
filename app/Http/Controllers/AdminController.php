@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\event;
 use App\Models\Image;
 use App\Models\course;
+use App\Models\User;
 use Barryvdh\DomPDF\PDF;
 use App\Models\Statistic;
 use Illuminate\Http\Request;

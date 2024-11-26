@@ -7,17 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectTestimonial extends Model
 {
-    protected $table = "project_testmonials";
+    protected $table = "project_testimonials";
     use HasFactory;
 
     protected $fillable = [
-        'atestant_initials',
-        'atestant_name',
-        'profile_picture',
-        'institute',
-        'occupation',
-        'google_scholar',
-        'twitter_x',
-        'linkdein'
+        'testifier_initials',
+        'testifier_name',
+        'testimonial_description',
+        'testifier_occupation',
+        'testifier_profile_picture',
     ];
 }

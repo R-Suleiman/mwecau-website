@@ -22,7 +22,7 @@
         <div class="w-full p-8 bg-white rounded-2xl shadow-2xl shadow-purple-200">
             <x-project-admin-messages />
             <div class="w-full">
-                <form action="{{ route('admin.project.update', $project->id) }}" method="POST"
+                <form action="{{route('admin.project.update-project', $project->id)}}" method="POST"
                     enctype="multipart/form-data" class="space-y-4">
                     @csrf
                     @method('PUT')

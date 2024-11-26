@@ -25,7 +25,7 @@
                         <div class="flex flex-col items-center text-center">
                             @if ($teamMember->profile_picture != null)
                                 <img class="rounded-full border-4 border-t-purple-500 border-b-pink-600 h-[150px] w-[150px] object-cover shadow-lg"
-                                    src="{{ asset('/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
+                                    src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
                                     alt="{{ $teamMember->name }} profile picture">
                             @else
                                 <img class="rounded-full border-4 border-t-purple-500 border-b-pink-600 h-[150px] w-[150px] object-cover shadow-lg"
@@ -89,11 +89,13 @@
                             @php
                                 $counter = 1;
                             @endphp
-                            @if ($teamMember && $teamMember->project)
+                            @if ($teamMember && $teamMember->projects->isNotEmpty())
                                 <div class="w-full space-y-3">
-                                    <div class="bg-slate-100 p-3 rounded-md shadow-sm">
-                                        {{ $counter++ }} : <span>Project: {{ $teamMember->project->name }}</span>
-                                    </div>
+                                    @foreach ($teamMember->projects as $project)
+                                        <div class="bg-slate-100 p-3 rounded-md shadow-sm">
+                                            {{ $counter++ }} : <span>Project: {{ $project->name }}</span>
+                                        </div>
+                                    @endforeach
                                 </div>
                             @else
                                 <p class="text-red-600 font-semibold">This team member is currently not assigned to any
@@ -112,7 +114,7 @@
                                     class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300"
                                     x-transition:enter="transition ease-out duration-300"
                                     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                                    x-transition:leave="transition ease-in duration-200"
+                                    x-transition:leave="transition ease-in duration-500"
                                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                                     <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 transform transition-all">
                                         <!-- Modal Header -->
@@ -125,10 +127,9 @@
 
                                         <!-- Modal Body -->
                                         <div class="py-4 text-slate-600">
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('admin.project.team.assignProject') }}" method="POST">
                                                 @csrf
                                                 @method('POST')
-
                                                 <label for="project_id"
                                                     class="block text-sm font-medium text-slate-700 mb-2">Project</label>
                                                 <select name="project_id" id="project_id"
@@ -141,6 +142,10 @@
                                                         @endforeach
                                                     @endif
                                                 </select>
+
+                                                <!-- Hidden input for team_member_id -->
+                                                <input type="hidden" name="team_member_id" value="{{ $teamMember->id }}">
+
                                                 <!-- Modal Footer -->
                                                 <div class="flex justify-end pt-4">
                                                     <button @click.prevent="open = false"
@@ -153,6 +158,7 @@
                                                     </button>
                                                 </div>
                                             </form>
+
                                         </div>
 
                                     </div>

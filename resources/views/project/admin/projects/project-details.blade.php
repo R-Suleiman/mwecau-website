@@ -29,7 +29,7 @@
                         <a href="{{ route('admin.project.team.create', $project->name) }}"
                             class="block mx-4 mb-2 mt-2 px-4 py-2 text-sm text-purple-700 font-semibold border hover:border-purple-600 rounded-md hover:bg-gray-100">Add
                             Member</a>
-                        <a href="#"
+                        <a href="{{ route('admin.project.create-gallery', $project->name) }}"
                             class="block mx-4 mb-2 px-4 py-2 text-sm text-gray-900 font-semibold border hover:border-gray-600 rounded-md hover:bg-gray-100">Create/Add
                             Gallery</a>
 
@@ -75,16 +75,6 @@
                     class="mt-1 text-slate-800 flex gap-3 w-full items-center rounded-md p-1 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
                     <strong>Location: </strong> {{ $project->location }}
                 </div>
-
-                <div role="button"
-                    class="mt-1 text-slate-800 flex gap-3 w-full items-center rounded-md p-1 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                    @if ($projectTeam != 0)
-                        <h1 class="text-2xl headerFavFont">{{ $projectTeam }} member(s) assigned to this project.</h1>
-                    @else
-                        <strong>Project Team Members: </strong>
-                        <p class="text-red-600 font-semibold">No team members have been assigned to this project yet.</p>
-                    @endif
-                </div>
             </nav>
             <p class="text-justify leading-relaxed favFont">{!! $project->description !!}</p>
             @if ($project->thumbnail != null)
@@ -104,6 +94,33 @@
                         </a>
                     @endif
                 </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto mt-10">
+            <h1 class="text-center uppercase headerFavFont text-4xl">Project Gallery</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+                @if ($projectGallery->isNotEmpty())
+                    @foreach ($projectGallery as $gallery)
+                        <div class="rounded-xl border border-purple-500 hover:shadow-2xl overflow-hidden relative">
+                            <img src="{{ asset('/storage/images/projects/images/project-gallery/' . $gallery->image) }}"
+                                class="object-cover w-full h-[300px]" alt="Campus Life Image">
+                            <div
+                                class="absolute inset-0 text-white bg-black bg-opacity-30 flex justify-center items-center flex-col gap-4">
+                                <form action="{{ route('admin.project.remove-gallery-image', $gallery->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        onclick="return confirm('Are you sure? This action can’t be reversed.');"
+                                        class="block px-4 py-2 font-semibold text-white bg-red-600 hover:bg-red-500 rounded-xl">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

@@ -9,8 +9,8 @@
                 <div class="card">
                     <div class="card-header favColor fw-bold text-center text-uppercase">
                         <h3>{{ __('login') }}</h3>
-                        <x-messages />
                     </div>
+                    <x-messages />
 
                     <div class="card-body">
                         <div class="text-center">

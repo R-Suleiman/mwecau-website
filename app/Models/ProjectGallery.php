@@ -11,7 +11,6 @@ class ProjectGallery extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
         'project_id',
         'image',
     ];

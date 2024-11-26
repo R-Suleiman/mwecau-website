@@ -125,35 +125,14 @@
                     @foreach ($singleProject->gallery as $gallery)
                         <div class="w-1/2 my-4 lg:w-1/4">
                             <div class="relative w-11/12 mx-auto overflow-hidden group">
-                                <img src="{{ asset('images/projects/images/' . $gallery->image) }}" alt="gallery photo"
+                                <img src="{{ asset('storage/images/projects/images/project-gallery/' . $gallery->image) }}"
+                                    alt="gallery photo"
                                     class="w-full transition-transform duration-500 scale-100 group-hover:scale-105">
                                 <div class="overlay hidden group-hover:block"></div>
                             </div>
                         </div>
                     @endforeach
                 @endif
-                {{--
-            <div class="w-1/2 my-4 lg:w-1/4">
-                <div class="relative w-11/12 mx-auto overflow-hidden group">
-                    <img src="{{ asset('img/projects/project1.jpeg') }}" alt="gallery photo"
-                        class="w-full transition-transform duration-500 scale-100 group-hover:scale-105">
-                    <div class="overlay hidden group-hover:block"></div>
-                </div>
-            </div>
-            <div class="w-1/2 my-4 lg:w-1/4">
-                <div class="relative w-11/12 mx-auto overflow-hidden group">
-                    <img src="{{ asset('img/projects/project3.webp') }}" alt="gallery photo"
-                        class="w-full transition-transform duration-500 scale-100 group-hover:scale-105">
-                    <div class="overlay hidden group-hover:block"></div>
-                </div>
-            </div>
-            <div class="w-1/2 my-4 lg:w-1/4">
-                <div class="relative w-11/12 mx-auto overflow-hidden group">
-                    <img src="{{ asset('img/projects/project2.webp') }}" alt="gallery photo"
-                        class="w-full transition-transform duration-500 scale-100 group-hover:scale-105">
-                    <div class="overlay hidden group-hover:block"></div>
-                </div>
-            </div> --}}
 
             </div>
             @if ($singleProject->gallery->isEmpty())
@@ -177,7 +156,8 @@
             @if ($singleProject->gallery->isNotEmpty())
                 @foreach ($singleProject->gallery->take(1) as $gallery)
                     <div class="w-full md:w-8/12 p-4">
-                        <img src="{{ asset('images/projects/images/' . $gallery->image) }}" alt="gallery photo"
+                        <img src="{{ asset('storage/images/projects/images/project-gallery/' . $gallery->image) }}"
+                            alt="gallery photo"
                             class="w-full rounded-lg transition-transform duration-500 scale-100 group-hover:scale-105">
                     </div>
                 @endforeach
@@ -196,22 +176,18 @@
             <div class="w-full md:w-4/12 p-4">
                 <h5 class="text-xl mb-4 text-blue-800">Related Projects</h5>
                 <ul>
-                    <li
-                        class="bg-white w-full p-2 my-3 text-lg border-2 border-purple-500 transition-transform  scale-100 hover:scale-105 duration-500">
-                        <a href="#" class="flex items-center justify-between">
-                            <div class="w-fit flex gap-2 items-center"><i class="fa fa-microscope text-purple-500"></i><span
-                                    class="ml-8 text-gray-500">Bega Kwa Bega</span> </div><i
-                                class="fa fa-arrow-right text-gray-500"></i>
-                        </a>
-                    </li>
-                    <li
-                        class="bg-white w-full p-2 my-3 text-lg border-2 border-purple-500 transition-transform  scale-100 hover:scale-105 duration-500">
-                        <a href="#" class="flex items-center justify-between">
-                            <div class="w-fit flex gap-2 items-center"><i class="fa fa-microscope text-purple-500"></i><span
-                                    class="ml-8 text-gray-500">Mtu ni Watu</span> </div><i
-                                class="fa fa-arrow-right text-gray-500"></i>
-                        </a>
-                    </li>
+                    @foreach ($relatedProjects as $project)
+                        <li
+                            class="bg-white w-full p-2 my-3 text-lg border-2 border-purple-500 transition-transform  scale-100 hover:scale-105 duration-500">
+                            <a href="{{ route('single-project', $project->name) }}"
+                                class="flex items-center justify-between">
+                                <div class="w-fit flex gap-2 items-center"><i
+                                        class="fa fa-microscope text-purple-500"></i><span
+                                        class="ml-8 text-gray-500">{{ $project->name }}</span> </div><i
+                                    class="fa fa-arrow-right text-gray-500"></i>
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </section>
