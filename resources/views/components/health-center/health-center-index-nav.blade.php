@@ -24,11 +24,11 @@
             <div class="w-1/12 text-white text-2xl text-center hover:cursor-pointer ml-auto mr-6" id="close-nav"><i
                     class="ml-auto fa fa-multiply"></i></div>
             <ul class="w-full pt-4 flex flex-col items-center text-lg text-white font-semibold">
-                <a href="{{ route('health.index') }}"
+                <a href="{{ route('health-center.index') }}"
                     class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
                     <li>Home</li>
                 </a>
-                <a href="{{ route('health-center-about-us') }}"
+                <a href="{{ route('health-center.about-us') }}"
                     class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
                     <li>About US</li>
                 </a>
@@ -37,16 +37,17 @@
                     <ul
                         class="w-max transform transition-transform duration-300 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 absolute left-0 mt-3 bg-white shadow-lg text-purple-800 pointer-events-none group-hover:pointer-events-auto">
                         <li class="px-4 py-2 hover:bg-purple-100"><a
-                                href="{{ route('health-center-department') }}">Cardiology</a></li>
-                        <li class="px-4 py-2 hover:bg-purple-100"><a href="{{ route('health-center-department') }}">Haematology and Cancer</a></li>
+                                href="{{ route('health-center.department') }}">Cardiology</a></li>
+                        <li class="px-4 py-2 hover:bg-purple-100"><a
+                                href="{{ route('health-center.department') }}">Haematology and Cancer</a></li>
                     </ul>
                 </li>
 
-                <a href="{{ route('health.services') }}"
+                <a href="{{ route('health-center.services') }}"
                     class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
                     <li>Services</li>
                 </a>
-                <a href="{{ route('health.events') }}"
+                <a href="{{ route('health-center.events') }}"
                     class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
                     <li>Events</li>
                 </a>
@@ -71,11 +72,11 @@
 
         <nav class="w-8/12 py-2">
             <ul class="w-max ml-auto flex items-center text-lg text-white font-semibold">
-                <a href="{{ route('health.index') }}"
+                <a href="{{ route('health-center.index') }}"
                     class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                     <li>Home</li>
                 </a>
-                <a href="{{ route('health-center-about-us') }}"
+                <a href="{{ route('health-center.about-us') }}"
                     class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                     <li>About US</li>
                 </a>
@@ -85,17 +86,18 @@
                     <ul
                         class="w-max opacity-0 transform transition-opacity duration-500 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 absolute left-0 mt-3 bg-white shadow-lg text-purple-800">
                         <li class="px-4 py-2 hover:bg-purple-100"><a
-                                href="{{ route('health-center-department') }}">Cardiology</a></li>
-                        <li class="px-4 py-2 hover:bg-purple-100"><a href="{{ route('health-center-department') }}">Haematology and Cancer</a></li>
+                                href="{{ route('health-center.department') }}">Cardiology</a></li>
+                        <li class="px-4 py-2 hover:bg-purple-100"><a
+                                href="{{ route('health-center.department') }}">Haematology and Cancer</a></li>
                     </ul>
                 </li>
 
                 {{-- </a> --}}
-                <a href="{{ route('health.services') }}"
+                <a href="{{ route('health-center.services') }}"
                     class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                     <li>Services</li>
                 </a>
-                <a href="{{ route('health.events') }}"
+                <a href="{{ route('health-center.events') }}"
                     class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                     <li>Events</li>
                 </a>

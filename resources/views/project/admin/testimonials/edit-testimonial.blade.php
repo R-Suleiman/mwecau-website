@@ -15,6 +15,12 @@
     <div class="flex items-center justify-center p-7">
         <div class="w-full p-8 bg-white rounded-2xl shadow-2xl shadow-purple-200">
             <x-project-admin-messages />
+
+            <div class="flex flex-col items-center text-center">
+                <img class="rounded-full h-[150px] w-[150px] object-cover shadow-lg"
+                    src="{{ asset('/storage/images/projects/images/testimonials/profile-pictures/' . $testimonial->testifier_profile_picture) }}"
+                    alt="{{ $testimonial->testifier_name }} profile picture">
+            </div>
             <div class="w-full">
                 <form action="{{ route('admin.project.testimonial.update-testimonial', $testimonial->id) }}" method="POST"
                     enctype="multipart/form-data" class="space-y-4">
@@ -71,10 +77,7 @@
                                 <input type="file" id="testifier_profile_picture" name="testifier_profile_picture"
                                     class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
                                 <div class="mt-6">
-                                    @if ($testimonial->testifier_profile_picture != null)
-                                        <span class="text-green-600 font-semibold">This testifier has a profile
-                                            picture</span>
-                                    @else
+                                    @if ($testimonial->testifier_profile_picture = null)
                                         <span class="text-red-600 font-semibold">This testifier has no profile
                                             picture</span>
                                     @endif
