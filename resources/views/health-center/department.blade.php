@@ -44,7 +44,7 @@
     {{-- description --}}
     <section>
         <div class="w-8/12 container mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-9">
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-9">
                 <div class="w-full flex">
                     <div class="">
                         <img src="{{ asset('img/health-center/Depositphotos_24648537_original-400x400.jpg') }}"
@@ -82,41 +82,164 @@
                         in repellendus sunt quidem deserunt ad assumenda molestiae eum eveniet repudiandae, adipisci earum!
                     </p>
                 </div>
-                {{-- Third div --}}
-                <div class="flex flex-col items-center space-y-4">
-                    <h6
-                        class="text-center font-semibold tracking-wide text-md text-gray-600 border-t-2 border-r-2 p-3 border-gray-300 pb-2 rounded-lg">
-                        Other Departments
-                    </h6>
-                    <div class="relative flex flex-col rounded-lg bg-white shadow-sm border border-slate-200">
-                        <nav class="flex min-w-[240px] flex-col gap-1 p-1.5">
-                            <div role="button"
-                                class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all bg-slate-100 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Urology
-                            </div>
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                Cardiology
-                            </div>
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Dental
-                            </div>
+            </div>
+        </div>
+    </section>
 
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                Neurologist
-                            </div>
+    {{-- Services --}}
+    <section class="w-full px-4 py-10 lg:py-20 mb-4 flex flex-col items-center">
+        <div class="flex flex-col items-center w-max mb-4">
+            <h2 class="uppercase text-2xl text-center text-blue-800">Cardiology Services</h2>
+            <div class="mt-3 border border-purple-500 w-3/5"></div>
+        </div>
 
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Pediatric
-                            </div>
-                        </nav>
+        <div class="my-4 p-4 w-full flex flex-col items-center lg:flex-row lg:space-x-8">
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
+                <a href="{{ route('health.service') }}">
+                    <div class="w-full mb-2 overflow-hidden">
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
                     </div>
-                </div>
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                    </div>
+                </a>
+            </div>
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
+                <a href="{{ route('health.service') }}">
+                    <div class="w-full mb-2 overflow-hidden">
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
+                    </div>
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                    </div>
+                </a>
+            </div>
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
+                <a href="{{ route('health.service') }}">
+                    <div class="w-full mb-2 overflow-hidden">
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
+                    </div>
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                    </div>
+                </a>
+            </div>
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
+                <a href="{{ route('health.service') }}">
+                    <div class="w-full mb-2 overflow-hidden">
+                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
+                    </div>
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
+       {{-- Doctors --}}
+       <section class="w-full px-4 pt-10 lg:py-10 my-4 flex flex-col items-center">
+        <div class="flex flex-col items-center w-max mb-4">
+            <h2 class="uppercase text-2xl text-center text-blue-800">Cardiology Staff</h2>
+            <div class="mt-3 border border-purple-500 w-3/5"></div>
+        </div>
 
+        <div class="my-4 p-4 w-full flex flex-col items-center lg:flex-row lg:space-x-8">
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
+
+                    <div class="relative w-full mb-2 overflow-hidden group">
+                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                        <div
+                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
+                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
+                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
+                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
+                            praesentium nostrum</p>
+                    </div>
+            </div>
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
+
+                    <div class="relative w-full mb-2 overflow-hidden group">
+                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                        <div
+                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
+                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
+                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
+                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
+                            praesentium nostrum</p>
+                    </div>
+            </div>
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
+
+                    <div class="relative w-full mb-2 overflow-hidden group">
+                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                        <div
+                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
+                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
+                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
+                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
+                            praesentium nostrum</p>
+                    </div>
+            </div>
+            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
+
+                    <div class="relative w-full mb-2 overflow-hidden group">
+                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
+                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                        <div
+                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
+                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="w-full mt-2 p-2 text-justify">
+                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
+                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
+                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
+                            praesentium nostrum</p>
+                    </div>
             </div>
         </div>
     </section>

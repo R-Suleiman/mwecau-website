@@ -44,7 +44,7 @@
     {{-- description --}}
     <section>
         <div class="w-8/12 container mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-9">
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-9">
                 <div class="w-full flex">
                     <div class="">
                         <img src="{{ asset('img/health-center/Depositphotos_24648537_original-400x400.jpg') }}"
@@ -66,39 +66,6 @@
                         Family. Neat. Sweet. Petite. So get a witches shawl on, a broomstick you can crawl on. We’re gonna
                         pay a call on the Addams Family.
                     </p>
-                </div>
-                {{-- Third div --}}
-                <div class="flex flex-col items-center space-y-4">
-                    <h6
-                        class="text-center font-semibold tracking-wide text-md text-gray-600 border-t-2 border-r-2 p-3 border-gray-300 pb-2 rounded-lg">
-                        Other Services
-                    </h6>
-                    <div class="relative flex flex-col rounded-lg bg-white shadow-sm border border-slate-200">
-                        <nav class="flex min-w-[240px] flex-col gap-1 p-1.5">
-                            <div role="button"
-                                class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all bg-slate-100 hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Nephrologist Care
-                            </div>
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Eye Care
-                            </div>
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Pediatrician Clinic
-                            </div>
-
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Prenatal Care
-                            </div>
-
-                            <div role="button"
-                                class="mt-1 text-slate-800 flex w-full items-center rounded-md p-3 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                <i class="fa-solid fa-circle-arrow-right mx-2"></i> Pediatric
-                            </div>
-                        </nav>
-                    </div>
                 </div>
             </div>
         </div>
