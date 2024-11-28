@@ -5,10 +5,10 @@
     @endphp
 
     <section class="w-full p-4">
-        <h2 class="bg-header text-center text-blue-800 text-2xl my-8">Eating a Healthy Meal</h2>
+        <h2 class="bg-header text-center text-blue-800 text-3xl my-8">Eating a Healthy Meal</h2>
 
         <div class="w-full lg:w-10/12 mx-auto flex flex-col lg:flex-row border-box gap-4">
-            <div class="w-full lg:w-3/5 text-justify text-gray-600 p-2">
+            <div class="w-full lg:w-3/5 text-justify text-default-text text-lg p-2">
                 <p class="mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius nisi illum est cum, ducimus
                     odio, quis doloremque molestias quos possimus corrupti, magni adipisci sint error laboriosam quibusdam
                     officiis. Id, necessitatibus.Facilis sed quos nostrum sapiente dicta, quia impedit nemo tenetur quas id
@@ -71,63 +71,73 @@
             </div>
 
             <div class="events w-full">
-                <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
-                    <a href="{{route('health.view-event', 'Treatment')}}">
+                <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300">
+                    <a href="{{ route('health.view-event', 1) }}">
                         <div class="w-full mb-2 overflow-hidden">
-                            <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                            <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" alt="service image"
                                 class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                         </div>
                         <div class="w-full mt-2 p-2 text-justify">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Event Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> News Title</h4>
+                            <span class="my-4 text-gray-400 text-sm"><i class="fa fa-calendar"></i> 12 April, 2024</span>
+                            <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium
+                                nostrum</p>
                         </div>
                     </a>
                 </div>
-                <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
-                    <a href="">
+                <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300">
+                    <a href="{{ route('health.view-event', 1) }}">
                         <div class="w-full mb-2 overflow-hidden">
-                            <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                            <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" alt="service image"
                                 class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                         </div>
                         <div class="w-full mt-2 p-2 text-justify">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Event Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> News Title</h4>
+                            <span class="my-4 text-gray-400 text-sm"><i class="fa fa-calendar"></i> 12 April, 2024</span>
+                            <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium
+                                nostrum</p>
                         </div>
                     </a>
                 </div>
-                <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
-                    <a href="">
+                <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300">
+                    <a href="{{ route('health.view-event', 1) }}">
                         <div class="w-full mb-2 overflow-hidden">
-                            <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                            <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" alt="service image"
                                 class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                         </div>
                         <div class="w-full mt-2 p-2 text-justify">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Event Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> News Title</h4>
+                            <span class="my-4 text-gray-400 text-sm"><i class="fa fa-calendar"></i> 12 April, 2024</span>
+                            <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium
+                                nostrum</p>
                         </div>
                     </a>
                 </div>
-                <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
-                    <a href="">
+                <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300">
+                    <a href="{{ route('health.view-event', 1) }}">
                         <div class="w-full mb-2 overflow-hidden">
-                            <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                            <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" alt="service image"
                                 class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                         </div>
                         <div class="w-full mt-2 p-2 text-justify">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Event Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> News Title</h4>
+                            <span class="my-4 text-gray-400 text-sm"><i class="fa fa-calendar"></i> 12 April, 2024</span>
+                            <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium
+                                nostrum</p>
                         </div>
                     </a>
                 </div>
-                <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
-                    <a href="">
+                <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300">
+                    <a href="{{ route('health.view-event', 1) }}">
                         <div class="w-full mb-2 overflow-hidden">
-                            <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                            <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" alt="service image"
                                 class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                         </div>
                         <div class="w-full mt-2 p-2 text-justify">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Event Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
+                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> News Title</h4>
+                            <span class="my-4 text-gray-400 text-sm"><i class="fa fa-calendar"></i> 12 April, 2024</span>
+                            <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium
+                                nostrum</p>
                         </div>
                     </a>
                 </div>

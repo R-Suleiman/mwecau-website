@@ -26,6 +26,7 @@ use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\dpric\DpricController;
 use App\Http\Controllers\dpric\DpricAdminController;
+use App\Http\Controllers\dpric\NewsController;
 use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
@@ -249,13 +250,14 @@ Route::controller(AlumniController::class)->group(function () {
 
 //HEALTH CENTER RELATED ROUTES
 // Route::domain('https://health.mwecau.ac.tz/')->group(function () {
-Route::controller(HealthServiceController::class)->group(function () {
-    Route::get('/health-center', 'index')->name('health.index');
-    Route::get('about-us', 'aboutUs')->name('health-center-about-us');
-    Route::get('department', 'department')->name('health-center-department');
-    Route::get('/health-center/services', 'services')->name('health.services');
-    Route::get('/health-center/events', 'events')->name('health.events');
-    Route::get('/health-center/events/{eventName}', 'viewEvent')->name('health.view-event');
+Route::controller(HealthServiceController::class)->prefix('health-center')->group(function () {
+    Route::get('/home', 'index')->name('health.index');
+    Route::get('/about-us', 'aboutUs')->name('health-center-about-us');
+    Route::get('/department', 'department')->name('health-center-department');
+    Route::get('/services', 'services')->name('health.services');
+    Route::get('/services/single-service', 'service')->name('health.service');
+    Route::get('/events', 'events')->name('health.events');
+    Route::get('/events/{eventName}', 'viewEvent')->name('health.view-event');
 });
 // });
 
@@ -358,49 +360,51 @@ Route::middleware(['research'])->group(function () {
 });
 
 // DPRIC
-Route::controller(DpricController::class)->name('dpric.')->group(function() {
-    Route::get('/dpric', 'index')->name('index');
-    Route::get('/dpric/welcome-message', 'welcomeMessage')->name('welcome-message');
-    Route::get('/dpric/directorate-management', 'directorateManagement')->name('directorate-management');
-    Route::get('/dpric/directorate-staff', 'directorateStaff')->name('directorate-staff');
-    Route::get('/dpric/directorate-programmes', 'directorateProgrammes')->name('directorate-programmes');
-    Route::get('/dpric/application-procedures', 'applicationProcedures')->name('application-procedures');
-    Route::get('/dpric/joining-instruction', 'joiningInstruction')->name('joining-instruction');
-    Route::get('/dpric/student-forms', 'studentForms')->name('student-forms');
-    Route::get('/dpric/research-projects', 'researchProjects')->name('research-projects');
-    Route::get('/dpric/research-policies', 'researchPolicies')->name('research-policies');
-    Route::get('/dpric/research-guidelines', 'researchGuidelines')->name('research-guidelines');
-    Route::get('/dpric/report-research-progress', 'reportResearchProgress')->name('report-research-progress');
-    Route::get('/dpric/research-opportunities', 'researchOpportunities')->name('research-opportunities');
-    Route::get('/dpric/research-awards', 'researchAwards')->name('research-awards');
-    Route::get('/dpric/partner-with-us', 'partnerWithUs')->name('partner-with-us');
-    Route::get('/dpric/journals', 'journals')->name('journals');
-    Route::get('/dpric/conference-proceedings', 'conferenceProceedings')->name('conference-proceedings');
-    Route::get('/dpric/innovations-hub', 'innovationsHub')->name('innovations-hub');
-    Route::get('/dpric/innovations-hub/projects', 'innovationsProjects')->name('innovations-projects');
-    Route::get('/dpric/innovations-hub/projects/single-project', 'innovationsProject')->name('innovations-project');
-    Route::get('/dpric/innovations-hub/clubs', 'innovationsClubs')->name('innovations-clubs');
-    Route::get('/dpric/innovations-hub/clubs/single-club', 'innovationsClub')->name('innovations-club');
-    Route::get('/dpric/innovations-hub/clubs/single-club/projects', 'innovationsClubProjects')->name('innovations-club-projects');
-    Route::get('/dpric/tcce', 'tcce')->name('tcce');
-    Route::get('/dpric/consultancy-policy-and-guidelines', 'consultancyPolicyAndGuidelines')->name('consultancy-policy-and-guidelines');
-    Route::get('/dpric/policies', 'policies')->name('policies');
-    Route::get('/dpric/regulations-and-guidelines', 'regulationsAndGuidelines')->name('regulations-and-guidelines');
-    Route::get('/dpric/news', 'news')->name('news');
-    Route::get('/dpric/news/single-news', 'singleNews')->name('single-news');
-    Route::get('/dpric/postgraduate-units/single-unit', 'postgraduateUnit')->name('postgraduate-unit');
+Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->group(function() {
+    Route::get('home', 'index')->name('index');
+    Route::get('welcome-message', 'welcomeMessage')->name('welcome-message');
+    Route::get('directorate-management', 'directorateManagement')->name('directorate-management');
+    Route::get('directorate-staff', 'directorateStaff')->name('directorate-staff');
+    Route::get('directorate-programmes', 'directorateProgrammes')->name('directorate-programmes');
+    Route::get('application-procedures', 'applicationProcedures')->name('application-procedures');
+    Route::get('joining-instruction', 'joiningInstruction')->name('joining-instruction');
+    Route::get('student-forms', 'studentForms')->name('student-forms');
+    Route::get('research-projects', 'researchProjects')->name('research-projects');
+    Route::get('research-policies', 'researchPolicies')->name('research-policies');
+    Route::get('research-guidelines', 'researchGuidelines')->name('research-guidelines');
+    Route::get('report-research-progress', 'reportResearchProgress')->name('report-research-progress');
+    Route::get('research-opportunities', 'researchOpportunities')->name('research-opportunities');
+    Route::get('research-awards', 'researchAwards')->name('research-awards');
+    Route::get('partner-with-us', 'partnerWithUs')->name('partner-with-us');
+    Route::get('journals', 'journals')->name('journals');
+    Route::get('conference-proceedings', 'conferenceProceedings')->name('conference-proceedings');
+    Route::get('innovations-hub', 'innovationsHub')->name('innovations-hub');
+    Route::get('innovations-hub/projects', 'innovationsProjects')->name('innovations-projects');
+    Route::get('innovations-hub/projects/single-project', 'innovationsProject')->name('innovations-project');
+    Route::get('innovations-hub/clubs', 'innovationsClubs')->name('innovations-clubs');
+    Route::get('innovations-hub/clubs/single-club', 'innovationsClub')->name('innovations-club');
+    Route::get('innovations-hub/clubs/single-club/projects', 'innovationsClubProjects')->name('innovations-club-projects');
+    Route::get('tcce', 'tcce')->name('tcce');
+    Route::get('consultancy-policy-and-guidelines', 'consultancyPolicyAndGuidelines')->name('consultancy-policy-and-guidelines');
+    Route::get('policies', 'policies')->name('policies');
+    Route::get('regulations-and-guidelines', 'regulationsAndGuidelines')->name('regulations-and-guidelines');
+    Route::get('news', 'news')->name('news');
+    Route::get('news/single-news', 'singleNews')->name('single-news');
+    Route::get('postgraduate-units/single-unit', 'postgraduateUnit')->name('postgraduate-unit');
     // Route::get('/dpric/research-programmes', 'researchProgrammes')->name('research-programmes');
 });
+
 
 // DPRIC ADMIN
 Route::controller(DpricAdminController::class)->name('dpric.admin.')->group(function() {
     Route::get('/dpric/admin', 'index')->name('index');
-    Route::get('/dpric/admin/news', 'news')->name('news');
-    Route::get('/dpric/admin/news/add', 'addNews')->name('add-news');
-    Route::get('/dpric/admin/news/newsName', 'viewNews')->name('view-news');
-    Route::get('/dpric/admin/news/newsName/edit', 'editNews')->name('edit-news');
 });
 
+Route::prefix('admin')->as('admin.')->group(function() {
+    Route::resource('dpric-news', NewsController::class);
+});
+
+// STORAGE
 Route::get('/storage/{path}', function ($path) {
     $filePath = 'public/' . $path;
 
@@ -410,3 +414,4 @@ Route::get('/storage/{path}', function ($path) {
 
     return response()->file(storage_path('app/' . $filePath));
 })->where('path', '.*');
+
