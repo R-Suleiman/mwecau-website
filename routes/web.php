@@ -27,6 +27,9 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\dpric\DpricController;
 use App\Http\Controllers\dpric\DpricAdminController;
 use App\Http\Controllers\dpric\NewsController;
+use App\Http\Controllers\dpric\UnitsController;
+use App\Http\Controllers\dpric\AwardsController;
+use App\Http\Controllers\dpric\DocumentsController;
 use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
@@ -399,9 +402,11 @@ Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->gro
 Route::controller(DpricAdminController::class)->name('dpric.admin.')->group(function() {
     Route::get('/dpric/admin', 'index')->name('index');
 });
-
 Route::prefix('admin')->as('admin.')->group(function() {
     Route::resource('dpric-news', NewsController::class);
+    Route::resource('dpric-units', UnitsController::class);
+    Route::resource('dpric-awards', AwardsController::class);
+    Route::resource('dpric-documents', DocumentsController::class);
 });
 
 // STORAGE

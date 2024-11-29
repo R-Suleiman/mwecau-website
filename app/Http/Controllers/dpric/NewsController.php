@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dpric;
 use App\Http\Controllers\Controller;
 use App\Models\DpricNews;
 use Illuminate\Http\Request;
+use Storage;
 
 class NewsController extends Controller
 {
@@ -37,10 +38,10 @@ class NewsController extends Controller
             'image' => ['nullable', 'max:2048'],
         ]);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '-' . $image->getClientOriginalName();
-            $imagePath = 'images/dpric/news';
+            $imageName = $image->getClientOriginalName() . '-' . time();
+            $imagePath = 'images/dpric/news/';
             $image->storeAs($imagePath, $imageName, 'public');
             $news['image'] = $imageName;
         }
@@ -77,19 +78,20 @@ class NewsController extends Controller
             'image' => ['nullable', 'max:2048'],
         ]);
 
-        if($request->hasFile('image')) {
+        $imageName = $dpricNews->image;
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '-' . $image->getClientOriginalName();
-            $imagePath = 'images/dpric/news';
+            $imageName = $image->getClientOriginalName() . '-' . time();
+            $imagePath = 'images/dpric/news/';
             $image->storeAs($imagePath, $imageName, 'public');
-            $news['image'] = $imageName;
 
             // delete the existing image
             $existingImage = $imagePath . $dpricNews->image;
-            if($dpricNews->image && Storage::disk('public')->exists($existingImage)) {
+            if ($dpricNews->image && Storage::disk('public')->exists($existingImage)) {
                 Storage::disk('public')->delete($existingImage);
             }
         }
+        $news['image'] = $imageName;
 
         $dpricNews->update($news);
         return to_route('admin.dpric-news.show', $dpricNews)->with('message', 'News Updated Successfully!');
@@ -100,6 +102,15 @@ class NewsController extends Controller
      */
     public function destroy(DpricNews $dpricNews)
     {
-        //
+        $imagePath = 'images/dpric/news/';
+
+        // delete the existing image
+        $existingImage = $imagePath . $dpricNews->image;
+        if ($dpricNews->image && Storage::disk('public')->exists($existingImage)) {
+            Storage::disk('public')->delete($existingImage);
+        }
+
+        $dpricNews->delete();
+        return to_route('admin.dpric-news.index')->with('message', 'News deleted Successfully!');
     }
 }

@@ -10,7 +10,7 @@
     </div>
 
     <div class="w-full md:w-2/3 mx-auto h-96">
-        <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" alt="" class="w-full h-full object-cover">
+        <img src="{{ $news->image ? asset('/storage/images/dpric/news/' . $news->image) : '../../img/mwecau.png' }}" alt="" class="w-full rounded-md object-cover h-full">
     </div>
 
     <div class="my-8 w-full md:w-2/3 mx-auto">
