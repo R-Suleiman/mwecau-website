@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Announcement\AnnouncementController;
+use App\Http\Controllers\dpric\ClubActivityController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
@@ -30,6 +31,8 @@ use App\Http\Controllers\dpric\NewsController;
 use App\Http\Controllers\dpric\UnitsController;
 use App\Http\Controllers\dpric\AwardsController;
 use App\Http\Controllers\dpric\DocumentsController;
+use App\Http\Controllers\dpric\ImagesController;
+use App\Http\Controllers\dpric\ClubController;
 use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
@@ -407,6 +410,9 @@ Route::prefix('admin')->as('admin.')->group(function() {
     Route::resource('dpric-units', UnitsController::class);
     Route::resource('dpric-awards', AwardsController::class);
     Route::resource('dpric-documents', DocumentsController::class);
+    Route::resource('dpric-images', ImagesController::class);
+    Route::resource('dpric-clubs', ClubController::class);
+    Route::resource('clubs/{club_name}/activities', ClubActivityController::class);
 });
 
 // STORAGE
