@@ -62,9 +62,13 @@ class ClubController extends Controller
      */
     public function show(Club $dpricClub)
     {
-        $clubActivities = $dpricClub->activities;
+        $clubActivities = $dpricClub->activities->take(4);
+        $clubLeaders = $dpricClub->leaders;
+        $projects = $dpricClub->projects->take(3);
+        $gallery = $dpricClub->images->take(8);
+        $randomImage = $dpricClub->images()->inRandomOrder()->first();
 
-        return view('dpric.admin.Clubs.show', ['club' => $dpricClub, 'clubActivities' => $clubActivities]);
+        return view('dpric.admin.Clubs.show', ['club' => $dpricClub, 'clubActivities' => $clubActivities, 'leaders' => $clubLeaders, 'projects' => $projects, 'gallery' => $gallery, 'randomImg' => $randomImage]);
     }
 
     /**

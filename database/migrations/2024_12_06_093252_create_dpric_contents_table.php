@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('club_leaders', function (Blueprint $table) {
+        Schema::create('dpric_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
+            $table->string('page');
+            $table->string('section');
             $table->string('title');
-            $table->string('email')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('image')->nullable();
-            $table->foreignId('club_id')->constrained('clubs')->onDelete('cascade');
+            $table->text('description');
             $table->timestamps();
-
-            $table->unique(['title', 'club_id']);
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('club_leaders');
+        Schema::dropIfExists('dpric_contents');
     }
 };

@@ -12,7 +12,7 @@ class InnovationProject extends Model
     use HasFactory;
 
     protected $fillable = ['project_title', 'club_id', 'description', 'category', 'duration', 'primary_image'];
-
+ 
     public function club():BelongsTo {
         return $this->belongsTo(Club::class);
     }

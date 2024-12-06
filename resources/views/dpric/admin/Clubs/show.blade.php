@@ -1,10 +1,9 @@
 @extends('layouts.dpric.dpric-admin-layout')
 
 @section('content')
-
     {{-- hero --}}
     <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('img/health-center/header.jpg') }}')">
+        style="background-image: url('{{ $randomImg ? asset('/storage/images/dpric/clubs/clubs-gallery/' . $randomImg->image) : asset('img/health-center/header.jpg') }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="text-white text-center">
@@ -21,26 +20,31 @@
                 <h3 class="text-3xl my-4 text-default-head">Welcome Message from the Club Chairperson</h3>
                 <p class="text-lg my-2 text-default-text text-justify">{{ $club->welcome_message }}</p>
             </div>
-            <div class="w-full md:w-1/3 my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md h-min">
-                <div class="relative w-full mb-2 overflow-hidden group">
-                    <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                        class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                    <div
-                        class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                        <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                        <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                        <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                        <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                        <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
-                    </div>
-                </div>
+            @foreach ($leaders as $leader)
+                @if ($leader->title == 'Chairperson')
+                    <div class="w-full md:w-1/3 my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md h-min">
+                        <div class="relative w-full mb-2 overflow-hidden group">
+                            <img src="{{ $leader->image ? asset('/storage/images/dpric/clubs/leaders/' . $leader->image) : '../../img/mwecau.png' }}"
+                                alt="service image"
+                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                            <div
+                                class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                                <a href="mailto:{{ $leader->email }}" class="text-white mx-2"><i
+                                        class="fa fa-envelope"></i></a>
+                                <a href="tel:{{ $leader->phone_number }}" class="text-white mx-2"><i
+                                        class="fa fa-phone"></i></a>
+                            </div>
+                        </div>
 
-                <div class="w-full mt-2 p-2 text-center flex flex-col">
-                    <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">John Doe</h4>
-                    <span class="text-default-text text-md">Club's Chairperson</span>
-                    {{-- <span class="text-default-text text-md">Student</span> --}}
-                </div>
-            </div>
+                        <div class="w-full mt-2 p-2 text-center flex flex-col">
+                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
+                                {{ $leader->full_name }}</h4>
+                            <span class="text-default-text text-md">Club {{ $leader->title }}</span>
+                            {{-- <span class="text-default-text text-md">Student</span> --}}
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
 
         {{-- About --}}
@@ -92,7 +96,7 @@
                 </div>
             </div>
             <div class="w-full md:w-8/12 md:h-96">
-                <img src="{{ asset('img/campus-life/spirtual4.jpg') }}" alt=""
+                <img src="{{ $randomImg ? asset('/storage/images/dpric/clubs/clubs-gallery/' . $randomImg->image) : asset('img/health-center/header.jpg') }}" alt=""
                     class="md:object-cover md:h-96 w-full">
             </div>
         </div>
@@ -111,13 +115,17 @@
                                 class="ml-2 text-2xl">{{ $activity->activity_name }}</span></div>
                     @endforeach
                     <div class="mt-auto">
-                        <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a href="{{ route('admin.activities.index', ['club_name' => $club->name]) }}">Manage Activities</a></button>
+                        <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                                href="{{ route('admin.activities.index', ['club_name' => $club->name]) }}">Manage
+                                Activities</a></button>
                     </div>
                 @else
-                            <div class="my-4">
-                                <p class="text-xl">No Activies Found!</p>
-                                <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a href="{{ route('admin.activities.create', ['club_name' => $club->name]) }}">Add Activities</a></button>
-                            </div>
+                    <div class="my-4">
+                        <p class="text-xl">No Activies Found!</p>
+                        <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                                href="{{ route('admin.activities.create', ['club_name' => $club->name]) }}">Add
+                                Activities</a></button>
+                    </div>
                 @endif
 
             </div>
@@ -126,214 +134,203 @@
         {{-- Projects --}}
         <div class="w-full p-4">
             <h3 class="text-3xl my-4 text-default-head text-center">Explore Our Projects</h3>
-            <div class="w-full md:w-11/12 mx-auto flex flex-col lg:flex-row my-4">
-                <div class="w-full lg:w-1/3 my-4">
-                    <a href="{{ route('dpric.innovations-project') }}">
-                        <div
-                            class="relative w-11/12 mx-auto h-80 bg-blue-800 border border-blue-500 shadow-md shadow-blue-800 hover:shadow-lg hover:shadow-blue-900">
-                            <div class="img-bg relative rounded-br-full h-full">
-                                <div class="px-6 py-4 flex flex-col  bg-white overlay3">
-                                    <span class="bg-blue-800 py-1 px-2 rounded-lg text-white w-fit">Technology</span>
-                                    <div class="mt-4 flex flex-col text-white">
-                                        <h3 class="text-xl my-1">Title of the Project</h3>
-                                        <span class="mb-1 text-lg">Participants: MWECAU ICT CLub</span>
-                                        <span class="mb-1 text-lg">Location: MWECAU</span>
+            @if ($projects->count() > 0)
+                <div class="w-full md:w-11/12 mx-auto flex flex-col lg:flex-row my-4">
+                    @foreach ($projects as $project)
+                        <div class="w-full lg:w-1/3 my-4">
+                            <a
+                                href="{{ route('admin.projects.show', ['project' => $project, 'club_name' => $club->name]) }}">
+                                <div
+                                    class="relative w-11/12 mx-auto h-80 bg-blue-800 border border-blue-500 shadow-md shadow-blue-800 hover:shadow-lg hover:shadow-blue-900">
+                                    <div class="img-bg relative rounded-br-full h-full">
+                                        <div class="px-6 py-4 flex flex-col  bg-white overlay3">
+                                            <span
+                                                class="bg-blue-800 py-1 px-2 rounded-lg text-white w-fit">{{ $project->category }}</span>
+                                            <div class="mt-4 flex flex-col text-white">
+                                                <h3 class="text-xl my-1">{{ $project->project_title }}</h3>
+                                                <span class="mb-1 text-lg">Participants: {{ $club->name }} </span>
+                                                <span class="mb-1 text-lg">Location: MWECAU</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-0 right-0 m-6 w-fit">
+                                        <i class="fa fa-lightbulb text-4xl text-white"></i>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="absolute bottom-0 right-0 m-6 w-fit">
-                                <i class="fa fa-lightbulb text-4xl text-white"></i>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    @endforeach
                 </div>
-                <div class="w-full lg:w-1/3 my-4">
-                    <a href="{{ route('dpric.innovations-project') }}">
-                        <div
-                            class="relative w-11/12 mx-auto h-80 bg-blue-800 border border-blue-500 shadow-md shadow-blue-800 hover:shadow-lg hover:shadow-blue-900">
-                            <div class="img-bg relative rounded-br-full h-full">
-                                <div class="px-6 py-4 flex flex-col  bg-white overlay3">
-                                    <span class="bg-blue-800 py-1 px-2 rounded-lg text-white w-fit">Environment</span>
-                                    <div class="mt-4 flex flex-col text-white">
-                                        <h3 class="text-xl my-1">Title of the Project</h3>
-                                        <span class="mb-1 text-lg">Participants: MWECAU PCCB CLub</span>
-                                        <span class="mb-1 text-lg">Location: MWECAU</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-0 right-0 m-6 w-fit">
-                                <i class="fa fa-lightbulb text-4xl text-white"></i>
-                            </div>
-                        </div>
-                    </a>
+                <div class="mt-auto w-max mx-auto">
+                    <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                            href="{{ route('admin.projects.index', ['club_name' => $club->name]) }}">All
+                            Projects</a></button>
                 </div>
-                <div class="w-full lg:w-1/3 my-4">
-                    <a href="{{ route('dpric.innovations-project') }}">
-                        <div
-                            class="relative w-11/12 mx-auto h-80 bg-blue-800 border border-blue-500 shadow-md shadow-blue-800 hover:shadow-lg hover:shadow-blue-900">
-                            <div class="img-bg relative rounded-br-full h-full">
-                                <div class="px-6 py-4 flex flex-col  bg-white overlay3">
-                                    <span class="bg-blue-800 py-1 px-2 rounded-lg text-white w-fit">Agricluture</span>
-                                    <div class="mt-4 flex flex-col text-white">
-                                        <h3 class="text-xl my-1">Title of the Project</h3>
-                                        <span class="mb-1 text-lg">Participants: MWECAU Agriculture CLub</span>
-                                        <span class="mb-1 text-lg">Location: MWECAU</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-0 right-0 m-6 w-fit">
-                                <i class="fa fa-lightbulb text-4xl text-white"></i>
-                            </div>
-                        </div>
-                    </a>
+            @else
+                <div class="my-4 w-max mx-auto flex flex-col items-center">
+                    <p class="text-lg text-red-600">No Projects Found!</p>
+                    <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                            href="{{ route('admin.projects.create', ['club_name' => $club->name]) }}">Add
+                            Projects</a></button>
                 </div>
-            </div>
-            <div class="w-fit mx-auto mb-4">
-                <x-dpric-btn btnLink="/dpric/innovations-hub/clubs/single-club/projects">
-                    All Projects
-                </x-dpric-btn>
-            </div>
+            @endif
         </div>
 
         {{-- Leaders --}}
         <div class="w-full p-4">
-            <h3 class="text-3xl my-4 text-default-head text-center">ICT Club's Leadership</h3>
-            <div class="w-full flex flex-col md:flex-row">
-                <div class="p-4 w-full md:w-1/4">
-                    <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
-                        <div class="relative w-full mb-2 overflow-hidden group">
-                            <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                            <div
-                                class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                                <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                                <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                                <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                                <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
-                            </div>
-                        </div>
+            <h3 class="text-3xl my-4 text-default-head text-center">{{ $club->name }} Leadership</h3>
+            @if ($leaders->count() > 0)
+                <div class="w-full flex flex-col md:flex-row">
+                    @foreach ($leaders as $leader)
+                        @if ($leader->title == 'Supervisor')
+                            <div class="p-4 w-full md:w-1/4">
+                                <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
+                                    <div class="relative h-40 w-full mb-2 overflow-hidden group">
+                                        <img src="{{ $leader->image ? asset('/storage/images/dpric/clubs/leaders/' . $leader->image) : '../../img/mwecau.png' }}"
+                                            alt="service image"
+                                            class="w-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                        <div
+                                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                                            <a href="mailto:{{ $leader->email }}" class="text-white mx-2"><i
+                                                    class="fa fa-envelope"></i></a>
+                                            <a href="tel:{{ $leader->phone_number }}" class="text-white mx-2"><i
+                                                    class="fa fa-phone"></i></a>
+                                        </div>
+                                    </div>
 
-                        <div class="w-full mt-2 p-2 text-center flex flex-col">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">John Doe</h4>
-                            <span class="text-default-text text-md">Club Supervisor</span>
-                            {{-- <span class="text-default-text text-md">Assistant Lecturer</span> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4 w-full md:w-1/4">
-                    <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
-                        <div class="relative w-full mb-2 overflow-hidden group">
-                            <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                            <div
-                                class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                                <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                                <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                                <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                                <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                                    <div class="w-full mt-2 p-2 text-center flex flex-col">
+                                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
+                                            {{ $leader->full_name }}</h4>
+                                        <span class="text-default-text text-md">Club {{ $leader->title }}</span>
+                                        {{-- <span class="text-default-text text-md">Assistant Lecturer</span> --}}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @elseif ($leader->title == 'Chairperson')
+                            <div class="p-4 w-full md:w-1/4">
+                                <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
+                                    <div class="relative h-40 w-full mb-2 overflow-hidden group">
+                                        <img src="{{ $leader->image ? asset('/storage/images/dpric/clubs/leaders/' . $leader->image) : '../../img/mwecau.png' }}"
+                                            alt="service image"
+                                            class="w-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                        <div
+                                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                                            <a href="mailto:{{ $leader->email }}" class="text-white mx-2"><i
+                                                    class="fa fa-envelope"></i></a>
+                                            <a href="tel:{{ $leader->phone_number }}" class="text-white mx-2"><i
+                                                    class="fa fa-phone"></i></a>
+                                        </div>
+                                    </div>
 
-                        <div class="w-full mt-2 p-2 text-center flex flex-col">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">John Doe</h4>
-                            <span class="text-default-text text-md">Club Chairperson</span>
-                            {{-- <span class="text-default-text text-md">Student</span> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4 w-full md:w-1/4">
-                    <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
-                        <div class="relative w-full mb-2 overflow-hidden group">
-                            <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                            <div
-                                class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                                <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                                <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                                <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                                <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                                    <div class="w-full mt-2 p-2 text-center flex flex-col">
+                                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
+                                            {{ $leader->full_name }}</h4>
+                                        <span class="text-default-text text-md">Club {{ $leader->title }}</span>
+                                        {{-- <span class="text-default-text text-md">Assistant Lecturer</span> --}}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @elseif ($leader->title == 'Vice Chairperson')
+                            <div class="p-4 w-full md:w-1/4">
+                                <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
+                                    <div class="relative h-40 w-full mb-2 overflow-hidden group">
+                                        <img src="{{ $leader->image ? asset('/storage/images/dpric/clubs/leaders/' . $leader->image) : '../../img/mwecau.png' }}"
+                                            alt="service image"
+                                            class="w-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                        <div
+                                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                                            <a href="mailto:{{ $leader->email }}" class="text-white mx-2"><i
+                                                    class="fa fa-envelope"></i></a>
+                                            <a href="tel:{{ $leader->phone_number }}" class="text-white mx-2"><i
+                                                    class="fa fa-phone"></i></a>
+                                        </div>
+                                    </div>
 
-                        <div class="w-full mt-2 p-2 text-center flex flex-col">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">John Doe</h4>
-                            <span class="text-default-text text-md">Club Vice Chairperson</span>
-                            {{-- <span class="text-default-text text-md">Student</span> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4 w-full md:w-1/4">
-                    <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
-                        <div class="relative w-full mb-2 overflow-hidden group">
-                            <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                            <div
-                                class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                                <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                                <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                                <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                                <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                                    <div class="w-full mt-2 p-2 text-center flex flex-col">
+                                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
+                                            {{ $leader->full_name }}</h4>
+                                        <span class="text-default-text text-md">Club {{ $leader->title }}</span>
+                                        {{-- <span class="text-default-text text-md">Assistant Lecturer</span> --}}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="p-4 w-full md:w-1/4">
+                                <div class="w-full my-0 md:my-4 order-1 md:order-2 border border-blue-800 rounded-md">
+                                    <div class="relative h-40 w-full mb-2 overflow-hidden group">
+                                        <img src="{{ $leader->image ? asset('/storage/images/dpric/clubs/leaders/' . $leader->image) : '../../img/mwecau.png' }}"
+                                            alt="service image"
+                                            class="w-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                        <div
+                                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                                            <a href="mailto:{{ $leader->email }}" class="text-white mx-2"><i
+                                                    class="fa fa-envelope"></i></a>
+                                            <a href="tel:{{ $leader->phone_number }}" class="text-white mx-2"><i
+                                                    class="fa fa-phone"></i></a>
+                                        </div>
+                                    </div>
 
-                        <div class="w-full mt-2 p-2 text-center flex flex-col">
-                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">John Doe</h4>
-                            <span class="text-default-text text-md">Club Secretary</span>
-                            {{-- <span class="text-default-text text-md">Student</span> --}}
-                        </div>
-                    </div>
+                                    <div class="w-full mt-2 p-2 text-center flex flex-col">
+                                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
+                                            {{ $leader->full_name }}</h4>
+                                        <span class="text-default-text text-md">Club {{ $leader->title }}</span>
+                                        {{-- <span class="text-default-text text-md">Assistant Lecturer</span> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-            </div>
+
+                <div class="mt-auto w-max mx-auto">
+                    <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                            href="{{ route('admin.leaders.index', ['club_name' => $club->name]) }}">Manage
+                            Leaders</a></button>
+                </div>
+            @else
+                <div class="my-4 w-max mx-auto flex flex-col items-center">
+                    <p class="text-lg text-red-600">No Club Leaders registered!</p>
+                    <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                            href="{{ route('admin.leaders.create', ['club_name' => $club->name]) }}">Add
+                            Leaders</a></button>
+                </div>
+            @endif
         </div>
 
         {{-- gallery --}}
         <section class="w-full py-8">
             <div class="flex flex-col items-center w-max mb-4 mx-auto my-8">
-                <h2 class="uppercase text-2xl text-center text-blue-800">More on our Club</h2>
+                <h2 class="uppercase text-2xl text-center text-blue-800">Club Gallery</h2>
                 <div class="mt-3 border border-purple-500 w-3/5"></div>
             </div>
 
-            <div class="w-full flex p-4 flex-wrap items-center">
-                <div class="w-1/2 my-4 lg:w-1/4">
-                    <div class="relative w-11/12 mx-auto overflow-hidden group h-52">
-                        <img src="{{ asset('img/projects/project1.jpeg') }}" alt="gallery photo"
-                            class="w-full transition-transform duration-500 scale-100 group-hover:scale-105 h-52 object-cover">
-                        <div class="overlay hidden group-hover:block h-52"></div>
-                    </div>
+            @if ($gallery->count() > 0)
+                <div class="w-full flex p-4 flex-wrap items-center">
+                    @foreach ($gallery as $image)
+                        <div class="w-1/2 my-4 lg:w-1/4">
+                            <div class="relative w-11/12 mx-auto overflow-hidden group h-52">
+                                <img src="{{ asset('/storage/images/dpric/clubs/clubs-gallery/' . $image->image) }}"
+                                    alt="gallery photo"
+                                    class="w-full transition-transform duration-500 scale-100 group-hover:scale-105 h-52 object-cover">
+                                <div class="overlay hidden group-hover:block h-52"></div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="w-1/2 my-4 lg:w-1/4">
-                    <div class="relative w-11/12 mx-auto overflow-hidden group h-52">
-                        <img src="{{ asset('img/projects/project3.webp') }}" alt="gallery photo"
-                            class="w-full transition-transform duration-500 scale-100 group-hover:scale-105 h-52 object-cover">
-                        <div class="overlay hidden group-hover:block h-52"></div>
-                    </div>
+
+                <div class="mt-auto w-max mx-auto">
+                    <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                            href="{{ route('admin.club-gallery.index', ['club_name' => $club->name]) }}">All
+                            Images</a></button>
                 </div>
-                <div class="w-1/2 my-4 lg:w-1/4">
-                    <div class="relative w-11/12 mx-auto overflow-hidden group h-52">
-                        <img src="{{ asset('img/projects/project2.webp') }}" alt="gallery photo"
-                            class="w-full transition-transform duration-500 scale-100 group-hover:scale-105 h-52 object-cover">
-                        <div class="overlay hidden group-hover:block h-52"></div>
-                    </div>
+            @else
+                <div class="my-4 w-max mx-auto flex flex-col items-center">
+                    <p class="text-lg text-red-600">No images found!</p>
+                    <button class="p-2 bg-purple-600 border-2 border-white text-white my-4"><a
+                            href="{{ route('admin.club-gallery.create', ['club_name' => $club->name]) }}">Add
+                            Images to Gallery</a></button>
                 </div>
-                <div class="w-1/2 my-4 lg:w-1/4">
-                    <div class="relative w-11/12 mx-auto overflow-hidden group h-52">
-                        <img src="{{ asset('img/projects/project2.webp') }}" alt="gallery photo"
-                            class="w-full transition-transform duration-500 scale-100 group-hover:scale-105 h-52 object-cover">
-                        <div class="overlay hidden group-hover:block h-52"></div>
-                    </div>
-                </div>
-                <div class="w-1/2 my-4 lg:w-1/4">
-                    <div class="relative w-11/12 mx-auto overflow-hidden group h-52">
-                        <img src="{{ asset('img/projects/project2.webp') }}" alt="gallery photo"
-                            class="w-full transition-transform duration-500 scale-100 group-hover:scale-105 h-52 object-cover">
-                        <div class="overlay hidden group-hover:block h-52"></div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </section>
     </section>
 @endsection

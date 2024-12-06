@@ -42,14 +42,6 @@ class ClubActivityController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(ClubActivity $clubActivity)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit($club_name, ClubActivity $activity)

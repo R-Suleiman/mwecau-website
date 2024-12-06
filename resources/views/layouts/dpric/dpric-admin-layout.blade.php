@@ -31,6 +31,8 @@
 
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.dpric-documents.index') }}" class="w-full flex items-center text-lg"><i class="fas fa-folder-open mx-2"></i><span class="font-semibold mx-2">Documents</span></a></li>
 
+                    <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.contents.get-pages') }}" class="w-full flex items-center text-lg"><i class="fas fa-edit mx-2"></i><span class="font-semibold mx-2">Contents</span></a></li>
+
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.dpric-images.index') }}" class="w-full flex items-center text-lg"><i class="fas fa-image mx-2"></i><span class="font-semibold mx-2">Images</span></a></li>
 
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.dpric-awards.index') }}" class="w-full flex items-center text-lg"><i class="fa fa-trophy mx-2"></i><span class="font-semibold mx-2">Awards & Honors</span></a></li>

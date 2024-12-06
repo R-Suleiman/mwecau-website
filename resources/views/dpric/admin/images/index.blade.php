@@ -7,6 +7,7 @@
                 class="border border-blue-500 p-2 rounded-sm bg-purple-800 text-white hover:bg-purple-950 my-4 md:my-0">Add
                 Image</button></a>
     </div>
+    <p class="text-red-700">note: Render images by titles section!!!</p>
 
     @if ($images->count() > 0)
         <div class="w-full flex p-4 flex-wrap items-center">

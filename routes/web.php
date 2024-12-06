@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\Announcement\AnnouncementController;
 use App\Http\Controllers\dpric\ClubActivityController;
+use App\Http\Controllers\dpric\ClubGalleryController;
+use App\Http\Controllers\dpric\ClubLeaderController;
+use App\Http\Controllers\dpric\InnovationProjectController;
+use App\Http\Controllers\dpric\InnovationProjectGalleryController;
+use App\Http\Controllers\dpric\DpricContentController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
@@ -413,6 +418,17 @@ Route::prefix('admin')->as('admin.')->group(function() {
     Route::resource('dpric-images', ImagesController::class);
     Route::resource('dpric-clubs', ClubController::class);
     Route::resource('clubs/{club_name}/activities', ClubActivityController::class);
+    Route::resource('clubs/{club_name}/leaders', ClubLeaderController::class);
+    Route::resource('clubs/{club_name}/club-gallery', ClubGalleryController::class);
+    Route::resource('clubs/{club_name}/projects', InnovationProjectController::class);
+    Route::resource('clubs/{club_name}/projects/{project_name}/project-gallery', InnovationProjectGalleryController::class);
+
+    Route::get('/dpric-contents/pages', [DpricContentController::class, 'getPages'])->name('contents.get-pages');
+    Route::get('/dpric-contents/pages/{page_name}', [DpricContentController::class, 'getPage'])->name('contents.get-page');
+    Route::get('/dpric-contents/pages/{page_name}/{content_title}', [DpricContentController::class, 'getContent'])->name('contents.get-content');
+    Route::get('/dpric-contents/pages/{page_name}/{content_title}/edit', [DpricContentController::class, 'editContent'])->name('contents.edit-content');
+    Route::put('/dpric-contents/pages/{page_name}/{content_title}', [DpricContentController::class, 'updateContent'])->name('contents.update-content');
+
 });
 
 // STORAGE
