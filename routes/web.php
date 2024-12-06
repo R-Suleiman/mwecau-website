@@ -3,6 +3,13 @@
 use App\Http\Controllers\Announcement\AnnouncementController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
+use App\Http\Controllers\HealthService\HealthCenterAdminController;
+use App\Http\Controllers\HealthService\HealthCenterController;
+use App\Http\Controllers\HealthService\HealthCenterDepartmentController;
+use App\Http\Controllers\HealthService\HealthCenterDoctorsController;
+use App\Http\Controllers\HealthService\HealthCenterNewsEventController;
+use App\Http\Controllers\HealthService\HealthCenterServiceController;
+use App\Http\Controllers\HealthService\HealthCenterTestimonialController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HealthService\HealthServiceController;
 use App\Http\Controllers\Libray\LibraryController;
@@ -14,6 +21,7 @@ use App\Http\Controllers\Project\ProjectAdminConferenceController;
 use App\Http\Controllers\Project\ProjectsController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\WebAdminsController;
+use App\Models\HealthCenterNewsEvent;
 use App\Models\HealthService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +34,7 @@ use App\Http\Controllers\AcademicsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\dpric\DpricController;
 use App\Http\Controllers\dpric\DpricAdminController;
+use App\Http\Controllers\dpric\NewsController;
 use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
@@ -249,23 +258,84 @@ Route::controller(AlumniController::class)->group(function () {
 
 //HEALTH CENTER RELATED ROUTES
 // Route::domain('https://health.mwecau.ac.tz/')->group(function () {
-Route::controller(HealthServiceController::class)->name('health-center.')->group(function () {
+Route::controller(HealthCenterController::class)->name('health-center.')->group(function () {
     Route::get('/health-center', 'index')->name('index');
     Route::get('about-us', 'aboutUs')->name('about-us');
-    Route::get('department', 'department')->name('department');
+    Route::get('department/{name}', 'department')->name('department');
     Route::get('/health-center/services', 'services')->name('services');
+    Route::get('/services/{name}', 'service')->where('name', '.*')->name('service');
     Route::get('/health-center/events', 'events')->name('events');
     Route::get('/health-center/events/{eventName}', 'viewEvent')->name('view-event');
+});
+
+
+// Health Center Admin Routes
+Route::prefix('admin/health-center/')->middleware(['health-center'])->name('health-center.')->group(function () {
+    Route::controller(HealthCenterAdminController::class)->group(function () {
+        Route::get('dashboard', 'healthCenterDashboard')->name('dashboard');
+    });
+
+    // health center admin departments routes
+    Route::controller(HealthCenterDepartmentController::class)->group(function () {
+        Route::get('departments', 'departments')->name('departments');
+        Route::get('create-department', 'createDepartment')->name('create-department');
+        Route::post('store-department', 'storeDepartment')->name('store-department');
+        Route::get('edit/{name}/department', 'editDepartment')->name('edit-department');
+        Route::put('update-department/{id}', 'updateDepartment')->name('update-department');
+        Route::delete('destroy-department/{id}', 'destroyDepartment')->name('destroy-department');
+    });
+
+    // health center admin services routes
+    Route::controller(HealthCenterServiceController::class)->group(function () {
+        Route::get('healthCenterServices', 'services')->name('healthservices');
+        Route::get('new-service', 'createService')->name('create-service');
+        Route::post('store-service', 'storeService')->name('store-service');
+        Route::get('edit/{name}/service', 'editService')->where('name', '.*')->name('edit-service');
+        Route::put('service/{id}', 'updateService')->name('update-service');
+        Route::delete('destroy-service/{id}', 'destroyService')->name('destroy-service');
+    });
+
+    // health center admin doctors routes
+    Route::controller(HealthCenterDoctorsController::class)->group(function () {
+        Route::get('doctors', 'doctors')->name('doctors');
+        Route::get('add-doctor', 'createDoctor')->name('create-doctor');
+        Route::post('store-doctor', 'storeDoctor')->name('store-doctor');
+        Route::get('edit/{name}/doctor', 'editDoctor')->where('name', '.*')->name('edit-doctor');
+        Route::put('update-doctor/{id}', 'updateDoctor')->name('update-doctor');
+        Route::delete('destroy-doctor/{id}', 'destroyDoctor')->name('destroy-doctor');
+    });
+
+
+    // health center news/events routes
+    Route::controller(HealthCenterNewsEventController::class)->group(function () {
+        Route::get('news-events', 'newsEvents')->name('news-events');
+        Route::get('create-news-event', 'createNewsEvent')->name('create-news-event');
+        Route::post('store-news-event', 'storeNewsEvent')->name('store-news-event');
+        Route::get('edit/{name}/news-event', 'editNewsEvent')->name('edit-news-event');
+        Route::put('news-event/{id}', 'updateNewsEvent')->name('update-news-event');
+        Route::delete('destroy-news-event/{id}', 'destroyNewsEvent')->name('destroy-news-event');
+    });
+
+    // health center admin testimonials routes
+    Route::controller(HealthCenterTestimonialController::class)->group(function () {
+        Route::get('testimonials', 'testimonials')->name('testimonials');
+        Route::get('publish-testimonial', 'createTestimonial')->name('create-testimonial');
+        Route::post('store-testimonial', 'storeTestimonial')->name('store-testimonial');
+        Route::get('edit/{name}/testimonial', 'editTestimonial')->name('edit-testimonial');
+        Route::put('testimonial/{id}', 'updateTestimonial')->name('update-testimonial');
+        Route::delete('destroy-testimonial/{id}', 'destroyTestimonial')->name('destroy-testimonial');
+    });
 });
 // });
 
 //PROJECTS RELATED ROUTES
-// Route::domain('htts://projects.mwecau.ac.tz')->name('projects-')->group(function () {
+// Route::domain('htts://projects.mwecau.ac.tz')->group(function () {
 Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects-pro', 'index')->name('project.index');
     Route::get('/projects-list', 'projects')->name('projects-list');
     Route::get('/project/{projectName}', 'project')->where('projectName', '.*')->name('single-project');
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
+    Route::get('about/{name}', 'projectTeamMemberDetails')->where('name', '.*')->name('tema-member-profile-description');
     Route::get('project-team-members', 'projectTeamMembers')->name('project-team-members');
     Route::get('/projects/contacts', 'contacts')->name('projects-contacts');
     Route::get('/projects/scholarships', 'scholarships')->name('projects-scholarships');
@@ -274,8 +344,8 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
     Route::get('{attachment}', 'conferencePdfPreview')->name('conference-attachment-preview');
 });
-// });
 
+// Research and Consultancy Routes
 Route::middleware(['research'])->group(function () {
     Route::controller(AdminProjectController::class)->prefix('admin/projects/')->name('admin.project.')->group(function () {
         Route::get('', 'index')->name('index');
@@ -312,9 +382,9 @@ Route::middleware(['research'])->group(function () {
 
     // project admin project team routes
     Route::controller(AdminProjectTeamController::class)->prefix('admin/team/')->name('admin.project.team.')->group(function () {
-        Route::get('index', 'index')->name('index');
-        Route::get('create/{id}', 'create')->name('create');
-        Route::post('store', 'store')->name('store');
+        Route::get('team-members', 'index')->name('index');
+        Route::get('add-members', 'create')->name('create');
+        Route::post('store-team-member', 'store')->name('store');
         Route::get('edit/{name}/profile', 'edit')->name('edit');
         Route::put('update/{id}', 'update')->name('update');
         Route::get('{name}/profile', 'memberProfile')->where('name', '.*')->name('member-profile');
@@ -342,6 +412,12 @@ Route::middleware(['research'])->group(function () {
         Route::put('update/{id}', 'update')->name('update');
         Route::delete('destroy/{id}', 'destroy')->name('destroy');
 
+        // Project Scholarship beneficiary routes
+        Route::get('add/{name}/beneficiary', 'createScholarshipBeneficiary')->where('name', '.*')->name('create-project-beneficiary');
+        Route::post('store-project-beneficiary', 'storeScholarshipBeneficiary')->name('store-project-beneficiary');
+        Route::get('add/{name}/to-project', 'scholarshipToProject')->where('name', '.*')->name('scholarship-to-project');
+        Route::post('store-scholarship-to-project/{id}', 'storeScholarshipToProject')->name('store-scholarship-to-project');
+        Route::delete('destroy-beneficiary/{id}', 'destroyBeneficiary')->name('destroy-beneficiary');
     });
 
     //project admin testimonial routes
@@ -356,6 +432,8 @@ Route::middleware(['research'])->group(function () {
 
     });
 });
+// });
+
 
 // DPRIC
 Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->group(function () {
@@ -392,15 +470,17 @@ Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->gro
     // Route::get('/dpric/research-programmes', 'researchProgrammes')->name('research-programmes');
 });
 
+
 // DPRIC ADMIN
 Route::controller(DpricAdminController::class)->name('dpric.admin.')->group(function () {
     Route::get('/dpric/admin', 'index')->name('index');
-    Route::get('/dpric/admin/news', 'news')->name('news');
-    Route::get('/dpric/admin/news/add', 'addNews')->name('add-news');
-    Route::get('/dpric/admin/news/newsName', 'viewNews')->name('view-news');
-    Route::get('/dpric/admin/news/newsName/edit', 'editNews')->name('edit-news');
 });
 
+Route::prefix('admin')->as('admin.')->group(function () {
+    Route::resource('dpric-news', NewsController::class);
+});
+
+// STORAGE
 Route::get('/storage/{path}', function ($path) {
     $filePath = 'public/' . $path;
 
@@ -410,3 +490,4 @@ Route::get('/storage/{path}', function ($path) {
 
     return response()->file(storage_path('app/' . $filePath));
 })->where('path', '.*');
+

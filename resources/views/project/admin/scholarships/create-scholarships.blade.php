@@ -10,9 +10,6 @@
     <hr class="my-4 border-t border-purple-500">
 
     <div class="text-end mt-10  mb-9">
-        <div class="">
-
-        </div>
         <a href="{{ route('admin.project.scholarship.scholarships') }}"
             class="favFont py-2 px-4 text-xs font-semibold uppercase border border-gray-600 rounded-md bg-purple-800 text-white">
             <i class="fa fa-arrow-left"></i></a>
@@ -20,13 +17,35 @@
 
     <div class="flex items-center justify-center p-7">
         <div class="w-full p-8 bg-white rounded-2xl shadow-2xl shadow-purple-200">
+
             <x-project-admin-messages />
+
             <div class="w-full">
-                <form action="{{ route('admin.project.store') }}" method="POST" enctype="multipart/form-data"
+                <form action="{{ route('admin.project.scholarship.store') }}" method="POST" enctype="multipart/form-data"
                     class="space-y-4">
                     @csrf
                     @method('POST')
 
+                    <div class="w-full">
+                        <!-- Project -->
+                        <div class="mb-4">
+                            <label for="project_id" class="block text-sm mb-4 font-medium text-gray-700">Select Project
+                            </label>
+                            <select name="project_id" id="project_id"
+                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
+                            @if ($projects)
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->id }}"
+                                        {{ old('project_id') == $project->id ? 'selected' : '' }}>
+                                        {{ $project->name }}
+                                    </option>
+                                @endforeach
+                            @endif
+
+                            </select>
+                            <x-input-error :messages="$errors->get('project_id')" class="mt-2" />
+                        </div>
+                    </div>
                     <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-3">
                         <!-- Name -->
                         <div class="mb-4">

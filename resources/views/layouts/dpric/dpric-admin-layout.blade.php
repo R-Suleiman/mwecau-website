@@ -22,7 +22,7 @@
             <div class="w-full my-4">
                 <ul class="w-full p-2">
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('dpric.admin.index') }}" class="w-full flex items-center text-lg"><i class="fa fa-house mx-2"></i><span class="font-semibold mx-2">Home</span></a></li>
-                    <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('dpric.admin.news') }}" class="w-full flex items-center text-lg"><i class="fa fa-newspaper mx-2"></i><span class="font-semibold mx-2">News</span></a></li>
+                    <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.dpric-news.index') }}" class="w-full flex items-center text-lg"><i class="fa fa-newspaper mx-2"></i><span class="font-semibold mx-2">News</span></a></li>
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="#" class="w-full flex items-center text-lg"><i class="fa fa-users mx-2"></i><span class="font-semibold mx-2">Units</span></a></li>
                 </ul>
             </div>
@@ -38,6 +38,11 @@
                 </div>
             </div>
 
+            @session('message')
+                <div class="w-full bg-green-700 py-2 px-4 my-4 mx-2 text-lg text-white">
+                    {{ session('message') }}
+                </div>
+            @endsession
             <main>
                 @yield('content')
             </main>

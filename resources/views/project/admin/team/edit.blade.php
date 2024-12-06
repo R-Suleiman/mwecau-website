@@ -4,7 +4,7 @@
     <div class="text-gray-900 uppercase text-center rounded-md py-4 px-7 mt-7 bg-gray-100">
         <h1
             class="headerFavFont text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400">
-            Edit Member Profile
+            {{ $teamMember->name }} Profile
         </h1>
     </div>
     <hr class="my-4 border-t border-purple-500">
@@ -74,10 +74,8 @@
                     {{-- bio --}}
                     <div class="w-full">
                         <div class="mb-4">
-                            <label for="description" class="block text-sm mb-4 font-medium text-gray-700">
-                                Bio </label>
-                            <textarea name="bio" id="" cols="30" rows="10"
-                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $teamMember->bio }}</textarea>
+                            <label for="description" class="block text-sm mb-4 font-medium text-gray-700">Bio</label>
+                            <textarea name="bio" id="editor" cols="30" rows="10" class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $teamMember->bio }}</textarea>
                             <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                         </div>
                         <!-- profile picture -->
@@ -100,7 +98,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Footer;
+use App\Models\HealthCenterDepartment;
 use App\Models\NewsUpdate;
 use App\Models\Document;
 use App\Models\event;
@@ -28,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        // $faculties = null;
+        // // $faculties = null;
         try {
             // Make the API request
             $faculties = Cache::remember('faculty_data', 43200, function () {
@@ -150,5 +151,9 @@ class AppServiceProvider extends ServiceProvider
 
         $projectPartners = ProjectPartner::all();
         view::share('projectPartners', $projectPartners);
+
+        //health-center global variables
+        $departments = HealthCenterDepartment::all();
+        view::share('departments', $departments);
     }
 }

@@ -27,6 +27,6 @@ class HealthCenterDoctor extends Model
 
     public function phones()
     {
-        return $this->hasMany(HealthCenterDoctorPhone::class);
+        return $this->hasMany(HealthCenterDoctorPhone::class, 'doctor_id');
     }
 }

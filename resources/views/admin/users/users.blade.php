@@ -35,6 +35,8 @@
                                     <span class="text-success">{{ 'Librarian' }}</span>
                                 @elseif ($user->role == 2)
                                     <span class="text-success">{{ 'Research and Consultancy' }}</span>
+                                @elseif ($user->role == 3)
+                                    <span class="text-red-600">{{ 'Health Center' }}</span>
                                 @else
                                     <span class="text-danger fst-italic">{{ 'Unknown Role' }}</span>
                                 @endif

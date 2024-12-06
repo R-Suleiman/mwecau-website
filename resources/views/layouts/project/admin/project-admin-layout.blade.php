@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Mwenge Catholic University ') }}</title>
-
-    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.css">
+    <title>{{ config('app.name', 'MWECAU Projects') }}</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.15/css/froala_editor.pkgd.min.css">
 
     <!--Tailwinds Scripts for production development -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
 
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
@@ -47,12 +47,13 @@
     <div class="flex flex-col w-full min-h-screen md:flex-row">
         <!-- Sidebar Toggle Button (visible on small to medium screens) -->
         <aside id="sidebar-multi-level-sidebar" x-bind:class="{ 'translate-x-0': open, '-translate-x-full': !open }"
-            class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0 lg:block lg:static"
+            class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform lg:translate-x-0 lg:block lg:static overflow-auto"
             aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <img src="{{ asset('img/mwecau.png') }}"
                     class="object-cover rounded-full h-[120px] w-[120px] mb-6 ml-11" alt="University logo">
-                {{-- {{ Auth::user()->name }} --}}
+                <div class="text-white text-xl pb-7 text-center uppercase font-bold"> <span>
+                        {{ Auth::user()->name }}</span></div>
                 <ul class="space-y-2 font-medium">
                     <li>
                         <a href="{{ route('admin.project.index') }}"
@@ -116,25 +117,17 @@
                         </a>
                     </li>
 
-
-                    <li class="nav-item">
-                        <div class="" aria-labelledby="">
-                            <a class="text-decoration-none text-light " href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                <i class="fa fa-sign-out-alt nav-icons"></i> {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    {{-- <a href="#"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <i class="fas fa-sign-out-alt text-indigo-400 text-xl mr-3"></i>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white bg-red-600 group">
+                            <i class="fas fa-sign-out-alt text-indigo-100 text-xl mr-3"></i>
                             <span class="flex-1 whitespace-nowrap">Sign Out</span>
-                        </a> --}}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </aside>
@@ -152,8 +145,15 @@
         @stack('modals')
         @stack('scripts')
     </div>
-    @include('partials.ckeditor')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.15/js/froala_editor.pkgd.min.js"></script>
+    <script>
+        new FroalaEditor('#editor', {
+            toolbarButtons: ['undo', 'redo', '|', 'bold', 'italic', 'underline', '|', 'formatOL', 'formatUL',
+                'align', '|', 'insertLink'
+            ],
+            quickInsertEnabled: false
+        });
+    </script>
 </body>
-
 
 </html>

@@ -56,6 +56,7 @@
                                         <option value="1" {{ $admin->role == 1 ? 'selected' : '' }}>Librarian</option>
                                         <option value="2" {{ $admin->role == 2 ? 'selected' : '' }}>Research and
                                             Consultancy</option>
+                                            <option value="3" {{$admin->role == 3 ? 'selected' : ''}}>Health Center</option>
                                     </select>
 
                                     @error('role')

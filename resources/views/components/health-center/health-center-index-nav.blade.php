@@ -32,14 +32,16 @@
                     class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
                     <li>About US</li>
                 </a>
-                <li class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
+                <li class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
                     <a href="#">Departments <i class="fa fa-caret-down"></i></a>
                     <ul
                         class="w-max transform transition-transform duration-300 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 absolute left-0 mt-3 bg-white shadow-lg text-purple-800 pointer-events-none group-hover:pointer-events-auto">
-                        <li class="px-4 py-2 hover:bg-purple-100"><a
-                                href="{{ route('health-center.department') }}">Cardiology</a></li>
-                        <li class="px-4 py-2 hover:bg-purple-100"><a
-                                href="{{ route('health-center.department') }}">Haematology and Cancer</a></li>
+                        @if ($departments->isNotEmpty())
+                            @foreach ($departments as $department)
+                                <li class="px-4 py-2 hover:bg-purple-100"><a
+                                    href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </li>
 
@@ -60,14 +62,16 @@
 
     {{-- large nav --}}
     <div
-        class="main-nav hidden lg:flex w-full flex items-center justify-between bg-transparent py-4 px-8 fixed top-0 left-0 z-50 ">
-        <div class="w-4/12 flex items-center lg:mr-auto">
-            <img src="../../img/mwecau.png" alt="mwecau logo"
-                class="w-3/12 rounded transition-transform duration-1000 mr-2" id="logo">
-            <div class="w-9/12 flex flex-col text-sm lg:text-xl footer-header text-white">
-                <span>Health Center</span>
-                <span>Mwenge Catholic University</span>
-            </div>
+        class="main-nav lg:flex w-full flex items-center justify-between bg-transparent py-4 px-8 fixed top-0 left-0 z-50 ">
+        <div class="w-4/12">
+            <a href="/" class="w-full flex items-center lg:mr-auto">
+                <img src="../../img/mwecau.png" alt="mwecau logo"
+                    class="w-3/12 rounded transition-transform duration-1000 mr-2" id="logo">
+                <div class="w-9/12 flex flex-col text-sm lg:text-xl footer-header text-white">
+                    <span>Health Center</span>
+                    <span>Mwenge Catholic University</span>
+                </div>
+            </a>
         </div>
 
         <nav class="w-8/12 py-2">
@@ -80,15 +84,17 @@
                     class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                     <li>About US</li>
                 </a>
-                {{-- <a href="" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400"> --}}
-                <li class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
+                {{-- <a href="" class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400"> --}}
+                <li class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
                     <a href="#">Departments <i class="fa fa-angle-down text-xs ml-1"></i></a>
                     <ul
                         class="w-max opacity-0 transform transition-opacity duration-500 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 absolute left-0 mt-3 bg-white shadow-lg text-purple-800">
-                        <li class="px-4 py-2 hover:bg-purple-100"><a
-                                href="{{ route('health-center.department') }}">Cardiology</a></li>
-                        <li class="px-4 py-2 hover:bg-purple-100"><a
-                                href="{{ route('health-center.department') }}">Haematology and Cancer</a></li>
+                        @if ($departments->isNotEmpty())
+                        @foreach ($departments as $department)
+                            <li class="px-4 py-2 hover:bg-purple-100"><a
+                                    href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a></li>
+                        @endforeach
+                    @endif
                     </ul>
                 </li>
 
@@ -101,7 +107,7 @@
                     class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                     <li>Events</li>
                 </a>
-                <a href="#" class="px-3 px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
+                <a href="#" class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400">
                     <li>Gallery</li>
                 </a>
             </ul>
@@ -112,12 +118,10 @@
         <div class="center-div lg:static lg:v-center-div w-full lg:w-max">
             <div
                 class="lg:static flex flex-col lg:block items-center w-full lg:w-2/5 lg:mr-auto pt-10 md:py-5 lg:pl-8 lg:ml-2 text-white bg-header">
-                <h1 class="text-md lg:text-6xl text-center lg:text-left">Empowering Recovery on Your Journey to Wellness
+                <h1 class="text-md lg:text-6xl text-center lg:text-left my-4">Empowering Recovery on Your Journey to
+                    Wellness
                 </h1>
-                <p class="my-8 hidden lg:block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium
-                    perspiciatis magni accusantium quasi molestiae cupiditate voluptatibus. Accusamus non corporis vel
-                    temporibus, ab ducimus voluptates placeat dolore, quaerat ipsum in libero.</p>
-                <div class="mt-2 md:mt-0 flex flex-col text-xl border-l border-white pl-5 hidden lg:block">
+                <div class="mt-2 md:mt-0 flex-col text-xl border-l border-white pl-5 hidden lg:flex">
                     <span>Contact Us: </span>
                     <span class="ml-2 lg:ml-0">0712345678</span>
                 </div>

@@ -209,7 +209,7 @@
             <!-- Image Gallery -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 @foreach ($projects as $project)
-                    @foreach ($project->gallery as $image)
+                    @foreach ($project->gallery->take(8) as $image)
                         <div class="project-image project{{ $project->id }}">
                             <img class="h-auto max-w-full rounded-xl transition-transform duration-500 scale-100 hover:scale-105"
                                 src="{{ asset('storage/images/projects/images/project-gallery/' . $image->image) }}"
@@ -408,7 +408,11 @@
                                                     <i class="fa-brands fa-linkedin text-3xl"></i>
                                                 </a>
                                             </div>
-
+                                            <button
+                                            class="px-4 py-2 mb-2 text-xs rounded-lg border border-transparent text-white font-semibold bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 shadow-md hover:shadow-lg transition-all duration-300">
+                                            <a href="{{ route('tema-member-profile-description', $teamMember->name) }}"> View
+                                                Profile</a>
+                                        </button>
                                         </div>
                                     </div>
                                 @endforeach

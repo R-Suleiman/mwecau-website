@@ -16,15 +16,13 @@ class AdminProjectTeamController extends Controller
         $team = ProjectTeam::all();
         return view('project.admin.team.team', compact('team'));
     }
-    public function create($projectName)
+    public function create()
     {
-        $project = Project::where('name', $projectName)->first();
-        return view('project.admin.team.create', compact('project'));
+        return view('project.admin.team.create');
     }
     public function store(Request $request)
     {
         $request->validate([
-            'project_id' => ['integer'],
             'initials' => ['required', 'max:5'],
             'name' => ['required', 'string', 'max:100'],
             'institute' => ['nullable', 'string'],
@@ -32,7 +30,6 @@ class AdminProjectTeamController extends Controller
             'position' => ['nullable', 'string', 'max:50'],
             'profile_picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ], [
-            'project_id.integer' => 'The project ID must be a valid number.',
             'initials.required' => 'Please provide the initials.',
             'initials.max' => 'Initials cannot exceed 5 characters.',
             'name.required' => 'Please enter the name of the team member.',
@@ -67,7 +64,6 @@ class AdminProjectTeamController extends Controller
 
         $teamMember = new ProjectTeam();
 
-        $teamMember->project_id = $request->project_id;
         $teamMember->initials = $request->initials;
         $teamMember->name = $request->name;
         $teamMember->institute = $request->institute;

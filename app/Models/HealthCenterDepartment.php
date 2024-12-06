@@ -18,10 +18,10 @@ class HealthCenterDepartment extends Model
 
     public function services()
     {
-        return $this->hasMany(HealthCenterService::class);
+        return $this->hasMany(HealthCenterService::class, 'department_id');
     }
     public function doctors()
     {
-        return $this->hasMany(HealthCenterDoctor::class);
+        return $this->hasMany(HealthCenterDoctor::class, 'department_id');
     }
 }

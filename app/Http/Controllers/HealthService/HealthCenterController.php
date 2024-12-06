@@ -10,7 +10,7 @@ use App\Models\HealthCenterService;
 use App\Models\HealthCenterTestimonial;
 use Illuminate\Http\Request;
 
-class HealthServiceController extends Controller
+class HealthCenterController extends Controller
 {
 
     public function index()
@@ -40,15 +40,21 @@ class HealthServiceController extends Controller
         $testimonials = HealthCenterTestimonial::all();
         return view('health-center.about-us', compact('departments', 'team', 'services', 'testimonials'));
     }
-    public function department()
+    public function department($name)
     {
-        return view('health-center.department');
+        $department = HealthCenterDepartment::where('name', $name)->firstOrFail();
+        $allDepartments = HealthCenterDepartment::all();
+        return view('health-center.department', compact('department', 'allDepartments'));
     }
     public function service($name)
     {
-        $service = HealthCenterService::where('name', $name);
-        return view('health-center.service', compact('service'));
+        $service = HealthCenterService::where('name', $name)->firstOrFail();
+        $relatedServices = HealthCenterService::where('health_center_department_id', $service->health_center_department_id)
+            ->where('name', '!=', $service->name)
+            ->get();
+        return view('health-center.service', compact('service', 'relatedServices'));
     }
+
 
     public function services()
     {

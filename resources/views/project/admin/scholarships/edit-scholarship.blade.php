@@ -66,9 +66,12 @@
                         <div class="mb-4">
                             <label for="status" class="block text-sm mb-4 font-medium text-gray-700">Status of the
                                 Scholarship</label>
-                            <input type="text" id="status" name="status" value="{{ $scholarship->status }}"
-                                placeholder="Status of the Scholarship"
-                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
+                            <select name="status" id="status"
+                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">
+                                <option value="Open" {{ $scholarship->status == 'Open' ? 'selected' : '' }}>Open</option>
+                                <option value="Closed" {{ $scholarship->status == 'Closed' ? 'selected' : '' }}>Closed
+                                </option>
+                            </select>
                             <x-input-error :messages="$errors->get('status')" class="mt-2" />
                         </div>
 

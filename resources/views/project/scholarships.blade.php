@@ -1,7 +1,7 @@
 @extends('layouts.project.project-layout')
 @section('content')
     <div class="container mx-auto">
-        @if ($projectScholarships->isNotEmpty())
+        @if ($scholarshipBeneficiaries->isNotEmpty())
             <div class="container mx-auto px-6 py-10">
                 <!-- Title-->
                 <div class="text-center mb-10">
@@ -10,48 +10,47 @@
                         qualifications.</p>
                 </div>
 
-                <!-- Scholarship Cards Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Scholarship Card -->
-                    @foreach ($projectScholarships as $scholarship)
+                <div class="my-4 p-4 w-full flex flex-col items-center lg:flex-row lg:space-x-8">
+                    {{-- loop here --}}
+                    @foreach ($scholarshipBeneficiaries as $beneficiary)
                         <div
-                            class="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
-                            <div class="p-6">
-                                <h2 class="text-xl font-semibold text-gray-800 mb-2">{!! $scholarship->name !!}</h2>
-                                <p class="text-gray-500 mb-4">{!! $scholarship->description !!}</p>
-
-                                <!-- Details with Icons -->
-                                <ul class="text-gray-700 space-y-2">
-                                    <li class="flex items-center">
-                                        <i class="fas fa-graduation-cap text-green-500 mr-2"></i>
-                                        <strong>Offred by: </strong> {!! $scholarship->offerd_by !!}
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-dollar-sign text-green-500 mr-2"></i>
-                                        <strong>Duration:</strong> {!! $scholarship->duration !!}
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-user-check text-green-500 mr-2"></i>
-                                        <strong>Status:</strong> {!! $scholarship->status !!}
-                                    </li>
-                                    <li class="flex items-center">
-                                        <i class="fas fa-calendar-alt text-green-500 mr-2"></i>
-                                        <strong>Deadline:</strong>
-                                        {{ Carbon\Carbon::parse($scholarship->end_date)->isoFormat('dddd, MMMM Do YYYY') }}
-                                    </li>
-                                </ul>
-
-                                <!-- Apply Button -->
-                                <div class="mt-4">
-                                    @if ($scholarship->application_url)
-                                        <a target="__blank" href="{{ $scholarship->application_url }}"
-                                            class="block w-full text-center bg-blue-400 text-white py-2 rounded-lg hover:bg-purple-600">
-                                        @else
-                                            <a href="#"
-                                                class="block w-full text-center bg-blue-400 text-white py-2 rounded-lg hover:bg-purple-600">
+                            class="w-full my-4 lg:my-0 lg:w-1/{{ $beneficiary->count() }}  shadow-sm shadow-blue-800 rounded-lg">
+                            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                                <div class="flex items-center space-x-4 p-4">
+                                    <!-- Profile Image -->
+                                    @if ($beneficiary->beneficiary_photo)
+                                        <img class="w-16 h-16 rounded-full border-2 border-gray-300"
+                                            src="{{ asset($storagePath . $beneficiary->beneficiary_photo) }}"
+                                            alt="Profile Image">
+                                    @else
+                                        <img class="w-16 h-16 rounded-full border-2 border-gray-300"
+                                            src="{{ asset('img/mwecau.png') }}" alt="Profile Image">
                                     @endif
-                                    View & Apply
-                                    </a>
+
+                                    <div>
+                                        <h2 class="text-xl font-semibold text-gray-800">{{ $beneficiary->beneficiary_name }}
+                                        </h2>
+                                        <p class="text-sm text-gray-500">Funded under: <span
+                                                class="font-semibold text-blue-600">{{ $beneficiary->scholarship->name }}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <p class="text-lg font-semibold text-gray-800">Research Title: <span
+                                            class="text-blue-500 italic">{{ $beneficiary->beneficiary_research_title ?? 'Null' }}</span>
+                                    </p>
+                                    <ul class="space-y-2 mt-4">
+                                        <li><span class="font-semibold text-gray-800">Duration:</span>
+                                            {{ $beneficiary->scholarship_duration ?? 'Undefined' }}</li>
+                                        <li><span class="font-semibold text-gray-800">University:</span>
+                                            {{ $beneficiary->university ?? 'Null' }}</li>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-gray-100 text-center">
+                                    <button
+                                        class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">View
+                                        Research</button>
                                 </div>
                             </div>
                         </div>
