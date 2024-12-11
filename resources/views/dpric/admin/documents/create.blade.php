@@ -23,6 +23,7 @@
                         <option value="Joining Instruction" class="text-default-text">Joining Instruction</option>
                         <option value="Fee Structure" class="text-default-text">Fee Structure</option>
                         <option value="Student Form" class="text-default-text">Student Form</option>
+                        <option value="Consultancy Policy & Guidelines" class="text-default-text">Consultancy Policy & Guidelines</option>
                         <option value="Regulations and Guidelines" class="text-default-text">Regulations and Guidelines</option>
                     </select>
                     @error('type')

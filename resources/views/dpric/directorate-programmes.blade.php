@@ -1,9 +1,24 @@
+@php
+    $postgraduateProgrammes = [];
+
+    foreach ($faculties as $faculty) {
+        foreach ($faculty['departments'] as $department) {
+            foreach ($department['programmes'] as $programme) {
+                if ($programme['study_level_code'] === 'MAS' || $programme['study_level_code'] === 'PHD') {
+                    array_push($postgraduateProgrammes, $programme);
+                }
+            }
+        }
+    }
+    $counter = 1;
+@endphp
+
 @extends('layouts.dpric.dpric-layout')
 
 @section('content')
     {{-- Hero --}}
     <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('img/health-center/header.jpg') }}')">
+        style="background-image: url('{{ asset('img/mwecau4.jpg') }}')">
         <div class="overlay">
         </div>
     </section>
@@ -36,36 +51,23 @@
                 </thead>
 
                 <tbody class="bg-white divide-y divide-gray-200 whitespace-nowrap">
+                    @foreach ($postgraduateProgrammes as $programme)
                     <tr>
                         <td class="px-4 py-4 text-sm text-gray-800">
-                            1
+                            {{ $counter++ }}
                         </td>
                         <td class="px-4 py-4 text-sm text-gray-800">
-                            Msc. Computer Science
+                           {{ $programme['programme_name'] }}
                         </td>
                         <td class="px-4 py-4 text-sm text-gray-800">
-                            3 Years
+                            {{ $programme['prog_duration'] }}
                         </td>
                         <td class="px-4 py-4 text-sm text-gray-800">
-                            <a href="#"><button
+                            <a href="{{ route('course_details', ['post-graduate', $programme['programme_name']]) }}"><button
                                     class="border-2 border-purple-600 px-2 text-lg hover:bg-gray-600 hover:text-white rounded-lg">view</button></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            1
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            Msc. Computer Science
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            3 Years
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            <a href="#"><button
-                                    class="border-2 border-purple-600 px-2 text-lg hover:bg-gray-600 hover:text-white rounded-lg">view</button></a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

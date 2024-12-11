@@ -1,9 +1,23 @@
+@php
+    $postgraduateProgrammes = [];
+
+    foreach ($faculties as $faculty) {
+        foreach ($faculty['departments'] as $department) {
+            foreach ($department['programmes'] as $programme) {
+                if ($programme['study_level_code'] === 'MAS' || $programme['study_level_code'] === 'PHD') {
+                    array_push($postgraduateProgrammes, $programme);
+                }
+            }
+        }
+    }
+@endphp
+
 @extends('layouts.dpric.dpric-layout')
 
 @section('content')
     {{-- Hero --}}
     <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('img/health-center/header.jpg') }}')">
+        style="background-image: url('{{ asset('img/uni.jpg') }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="text-white text-center">
@@ -19,18 +33,16 @@
     <section class="w-full mt-8 lg:my-8 flex flex-col lg:flex-row md:p-4">
         <div class="w-full lg:w-7/12 p-4 lg:p-8 order-2 lg:order-1">
             <div class="w-full lg:w-10/12  lg:relative mx-auto">
-                <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" class="w-full rounded-3xl" alt="">
+                <img src="{{ asset('img/students3.jpg') }}" class="w-full rounded-3xl" alt="">
                 <div class="w-7/12 hidden lg:block absolute -bottom-8 -right-8 rounded-full">
-                    <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" class="w-full rounded-full" alt="">
+                    <img src="{{ asset('img/students1.jpg') }}" class="w-full rounded-full" alt="">
                 </div>
             </div>
         </div>
         <div class="w-full lg:w-5/12 px-8 lg:py-12 order-1 lg:order-2" data-aos="fade-left" data-aos-duration="1000">
-            <h3 class="text-2xl mb-8 text-default-head">Welcome to the Heart of Innovation at MWECAU!</h3>
+            <h3 class="text-2xl mb-8 text-default-head">{{ $welcomMessage->title }}</h3>
             <p class="text-justify text-default-text text-lg">
-                Explore new horizons with the Directorate of Postgraduate Studies, Research, Innovations, and Consultancy.
-                We’re here to fuel your academic passion, support groundbreaking research, and turn bold ideas into
-                impactful realities. Join us in shaping a brighter, more innovative future!
+                {{ $welcomMessage->description }}
             </p>
         </div>
     </section>
@@ -45,13 +57,7 @@
                         <div class="w-4/5 border border-purple-500"></div>
                     </div>
                 </div>
-                <p class="text-justify text-default-text text-lg">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ut
-                    dicta odio itaque quaerat unde eos quod distinctio nobis? Commodi reprehenderit facilis tenetur magnam
-                    saepe
-                    ad ipsa temporibus perspiciatis voluptate aut.Ea unde officiis iusto aliquid ad. Quasi odit iure nostrum
-                    autem. Neque beatae enim nihil iure laudantium tempore culpa consectetur maiores temporibus aut, facere
-                    architecto ipsa quia mollitia nesciunt commodi.</p>
+                <p class="text-justify text-default-text text-lg">{{ Str::words($about->description, 70, '...') }}</p>
             </div>
             <div class="mt-4 md:mt-0">
                 <x-dpric-btn btnLink='/dpric/welcome-message'>Read More</x-dpric-btn>
@@ -61,16 +67,12 @@
         <div
             class="w-full relative overflow-hidden md:w-5/12 p-4 my-4 md:my-0 md:p-8 shadow-lg shadow-purple-300 hover:shadow-purple-400 rounded-lg text-white group">
             <div class="my-4">
-                <h3 class="text-xl mb-2 text-default-head">Our Mission</h3>
-                <p class="text-justify text-default-text text-md">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Eaque doloribus a voluptates tenetur, ipsa harum magnam quo, velit rem enim veritatis quasi excepturi
-                    officia quia. Possimus iure laudantium aliquam accusantium.</p>
+                <h3 class="text-xl mb-2 text-default-head">{{ $mission->title }}</h3>
+                <p class="text-justify text-default-text text-md">{{ $mission->description }}</p>
             </div>
             <div class="my-4">
-                <h3 class="text-xl mb-2 text-default-head">Our Vision</h3>
-                <p class="text-justify text-default-text text-md">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Eaque doloribus a voluptates tenetur, ipsa harum magnam quo, velit rem enim veritatis quasi excepturi
-                    officia quia. Possimus iure laudantium aliquam accusantium.</p>
+                <h3 class="text-xl mb-2 text-default-head">{{ $vision->title }}</h3>
+                <p class="text-justify text-default-text text-md">{{ $vision->description }}</p>
             </div>
             <div
                 class="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-purple-800 transform transition-transform duration-2000 group-hover:-top-8 group-hover:-right-8">
@@ -88,63 +90,39 @@
             <span class="text-default-text my-2 text-lg">Latest News, Announcements, Events, and more</span>
         </div>
 
-        <div class="dpric-news w-full mx-auto">
-            <div class="w-full relative img-bg h-96">
-                <div class="w-full flex flex-col justify-between lg:flex-row border border-purple-500 overlay2 h-96">
-                    <div class="w-full lg:w-2/6 bg-transparent">
-                    </div>
-                    <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
-                        <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
-                        <div class="p-2 text-white w-full">
-                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news') }}">Title of the
-                                    News/Announcement/Article</a></h3>
-                            <p class="text-sm md:text-lg my-2 hidden lg:block">Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Blanditiis, a
-                                repellendus nemo voluptatibus atque debitis rem vitae itaque aliquid iste.</p>
-                            <span class="my-2 text-gray-300 text-md">11/12/2024</span>
+        @if ($allNews->count() > 0)
+            <div class="dpric-news w-full mx-auto">
+                @foreach ($allNews as $news)
+                    <div class="w-full relative h-96 bg-cover bg-center bg-no-repeat"
+                        style="background-image: url({{ $news->image ? '/storage/images/dpric/news/' . $news->image : '../../img/mwecau.png' }})">
+                        <div
+                            class="w-full flex flex-col justify-between lg:flex-row border border-purple-500 overlay2 h-96">
+                            <div class="w-full lg:w-2/6 bg-transparent">
+                            </div>
+                            <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
+                                <span
+                                    class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">{{ $news->category }}</span>
+                                <div class="p-2 text-white w-full">
+                                    <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a
+                                            href="{{ route('dpric.single-news', $news->title) }}">{{ $news->title }}</a>
+                                    </h3>
+                                    <p class="text-sm md:text-lg my-2 hidden lg:block">
+                                        {{ Str::words($news->description, 20, '...') }}</p>
+                                    <span
+                                        class="my-2 text-gray-300 text-md">{{ explode(' ', $news->created_at)[0] }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
-            <div class="w-full relative img-bg h-96">
-                <div class="w-full flex flex-col justify-between lg:flex-row border border-purple-500 overlay2 h-96">
-                    <div class="w-full lg:w-2/6 bg-transparent">
-                    </div>
-                    <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
-                        <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
-                        <div class="p-2 text-white w-full">
-                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news') }}">Title of the
-                                    News/Announcement/Article</a></h3>
-                            <p class="text-sm md:text-lg my-2 hidden lg:block">Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Blanditiis, a
-                                repellendus nemo voluptatibus atque debitis rem vitae itaque aliquid iste.</p>
-                            <span class="my-2 text-gray-300 text-md">11/12/2024</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full relative img-bg h-96">
-                <div class="w-full flex flex-col justify-between lg:flex-row border border-purple-500 overlay2 h-96">
-                    <div class="w-full lg:w-2/6 bg-transparent">
-                    </div>
-                    <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
-                        <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
-                        <div class="p-2 text-white w-full">
-                            <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news') }}">Title of the
-                                    News/Announcement/Article</a></h3>
-                            <p class="text-sm md:text-lg my-2 hidden lg:block">Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Blanditiis, a
-                                repellendus nemo voluptatibus atque debitis rem vitae itaque aliquid iste.</p>
-                            <span class="my-2 text-gray-300 text-md">11/12/2024</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="my-4 w-fit mx-auto">
-            <x-dpric-btn btnLink='/dpric/news'>More News</x-dpric-btn>
-        </div>
+            <div class="my-4 w-fit mx-auto">
+                <x-dpric-btn btnLink='/dpric/news'>More News</x-dpric-btn>
+            </div>
+        @else
+            <div class="w-2/3 mx-auto bg-blue-300 my-8 p-4 text-xl">No News found!</div>
+        @endif
     </section>
 
     {{-- postgrad units --}}
@@ -161,37 +139,31 @@
         <div class="w-full md:w-11/12 mx-auto flex flex-col lg:flex-row p-4  shadow-lg shadow-purple-300 rounded-lg">
             <div class="w-full lg:w-1/2 px-2 lg:px-4" data-aos="fade-up" data-aos-duration="1000">
                 <div class="w-fit mx-auto my-8"><i class="fas fa-user-graduate text-5xl text-default-head"></i></div>
-                <h3 class="text-default-head text-xl lg:text-2xl my-6 text-center">Explore Our Postgraduate Academic Units
+                <h3 class="text-default-head text-xl lg:text-2xl my-6 text-center">{{ $unitMessade->title }}
                 </h3>
-                <p class="my-2 text-default-text text-md lg:text-xl text-justify">Our Academic Teaching Units are dedicated
-                    to delivering advanced, world-class education for postgraduate scholars. From specialized courses to
-                    expert mentorship, we’re here to equip you with the skills and knowledge to excel in your field. Dive
-                    deep into learning that shapes careers and transforms futures!</p>
+                <p class="my-2 text-default-text text-md lg:text-xl text-justify">{{ $unitMessade->description }}</p>
             </div>
-            <div class="dpric-units w-full lg:w-1/2">
-                <div class="w-full">
-                    <div class="w-full lg:w-10/12 mx-auto flex flex-col">
-                        <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" class="w-full rounded-lg" alt="">
-                        <div class="p-2">
-                            <a href="{{ route('dpric.postgraduate-unit') }}">
-                                <h4 class="text-default-head hover:text-blue-950 text-lg my-2">Name of the Unit</h4>
-                            </a>
-                            <p class="text-default-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat,
-                                eaque corporis quod </p>
+            <div class="w-full lg:w-1/2">
+                <div class="dpric-units w-full">
+                    @foreach ($units as $unit)
+                        <div class="w-full">
+                            <div class="w-full lg:w-10/12 mx-auto flex flex-col">
+                                <div class="w-full h-48 overflow-hidden">
+                                    <img src="{{ $unit->image ? asset('/storage/images/dpric/units/' . $unit->image) : '../../img/mwecau.png' }}"
+                                        class="w-full rounded-lg object-cover object-center" alt="">
+                                </div>
+                                <div class="p-2">
+                                    <a href="{{ route('dpric.postgraduate-unit', $unit->title) }}">
+                                        <h4 class="text-default-head hover:text-blue-950 text-lg my-2">{{ $unit->title }}<h4>
+                                    </a>
+                                    <p class="text-default-text">{{ Str::words($unit->description, 30, '...') }}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="w-full">
-                    <div class="w-full lg:w-10/12 mx-auto flex flex-col">
-                        <img src="{{ asset('img/campus-life/spirtual3.jpg') }}" class="w-full rounded-lg" alt="">
-                        <div class="p-2">
-                            <a href="{{ route('dpric.postgraduate-unit') }}">
-                                <h4 class="text-default-head hover:text-blue-950 text-lg my-2">Name of the Unit</h4>
-                            </a>
-                            <p class="text-default-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat,
-                                eaque corporis quod </p>
-                        </div>
-                    </div>
+                <div class="my-4 w-fit mx-auto">
+                    <x-dpric-btn btnLink='/dpric/postgraduate-units'>All Units</x-dpric-btn>
                 </div>
             </div>
         </div>
@@ -207,36 +179,18 @@
         </div>
 
         <div class="w-full md:w-11/12 mx-auto p-2 flex flex-col md:flex-row gap-4">
-            <a href="#"
+            @foreach (array_slice($postgraduateProgrammes, 0, 3) as $programme)
+            <a href="{{ route('course_details', ['post-graduate', $programme['programme_name']]) }}"
                 class="w-full md:w-1/3 p-8 my-4 md:my-0 shadow-md shadow-purple-400 scale-100 transform transition-transform duration-500 hover:scale-105">
                 {{-- <div class="w-full h-24 bg-purple-600 rounded-full absolute -top-14"></div> --}}
                 <div class="w-full flex flex-col items-center">
                     <i class="fa fa-graduation-cap text-5xl my-8 text-default-head"></i>
                     <div class="w-full">
-                        <h4 class="text-center text-default-text text-xl">Doctor of Philosophy in Education</h4>
+                        <h4 class="text-center text-default-text text-xl">{{ $programme['programme_name'] }}</h4>
                     </div>
                 </div>
             </a>
-
-            <a href="#"
-                class="w-full md:w-1/3 p-8 my-4 md:my-0 shadow-md shadow-purple-400 scale-100 transform transition-transform duration-500 hover:scale-105">
-                <div class="w-full flex flex-col items-center">
-                    <i class="fa fa-graduation-cap text-5xl my-8 text-default-head"></i>
-                    <div class="w-full p-3">
-                        <h4 class="text-center text-default-text text-xl">Doctor of Philosophy in Education</h4>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#"
-                class="w-full md:w-1/3 p-8 my-4 md:my-0 shadow-md shadow-purple-400 scale-100 transform transition-transform duration-500 hover:scale-105">
-                <div class="w-full flex flex-col items-center">
-                    <i class="fa fa-graduation-cap text-5xl my-8 text-default-head"></i>
-                    <div class="w-full">
-                        <h4 class="text-center text-default-text text-xl">Doctor of Philosophy in Education</h4>
-                    </div>
-                </div>
-            </a>
+            @endforeach
         </div>
 
         <div class="w-fit mx-auto my-8">
@@ -248,21 +202,16 @@
     <section class="w-full flex flex-col md:flex-row mt-8 bg-neutral-100">
         <div class="w-full lg:w-1/2 p-8">
             <div class="w-fit mx-auto my-8"><i class="fas fa-microscope text-5xl text-default-head"></i></div>
-            <h3 class="text-default-head text-xl lg:text-2xl my-6 text-center">Discover Our Research Projects</h3>
-            <p class="my-2 text-default-text text-md lg:text-xl text-justify">Our Research Projects drive innovation and
-                uncover new knowledge across diverse fields. Led by passionate scholars and fueled by curiosity, these
-                projects tackle real-world challenges and contribute to sustainable solutions. Join us in pioneering
-                research that makes a difference!
-            </p>
+            <h3 class="text-default-head text-xl lg:text-2xl my-6 text-center">{{ $researchMessage->title }}</h3>
+            <p class="my-2 text-default-text text-md lg:text-xl text-justify">{{ $researchMessage->description }}
         </div>
         <div class="w-full lg:w-1/2 py-8 px-12 bg-purple-900 flex flex-col justify-between">
             <div class="w-full">
-                <div class="text-white text-2xl my-2"><a href=""><i class="fa fa-check"></i> <span
-                            class="ml-2">Bega Kwa Bega (BKB)</span></a>
+                @foreach ($projects as $project)
+                <div class="text-white hover:text-blue-300 text-2xl my-2"><a href="{{ route('single-project', $project->name) }}"><i class="fa fa-check"></i> <span
+                            class="ml-2">{{ $project->name }}</span></a>
                 </div>
-                <div class="text-white text-2xl my-2"><a href=""><i class="fa fa-check"></i> <span
-                            class="ml-2">Mtu Ni Watu</span></a>
-                </div>
+                @endforeach
             </div>
 
             <div class="w-fit mx-auto mt-6">
@@ -276,15 +225,13 @@
 
     {{-- Innovation Hub --}}
     <section class="relative w-full h-96 bg-center bg-cover bg-fixed"
-        style="background-image: url('{{ asset('img/health-center/header.jpg') }}')">
+        style="background-image: url('{{ asset('img/mwecau3.jpg') }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="w-11/12 mx-auto text-white text-center">
-                    <h3 class="uppercase text-2xl md:text-4xl">Welcome to the Innovations Hub</h3>
+                    <h3 class="uppercase text-2xl md:text-4xl">{{ $innovationMessage->title }}</h3>
                     <p class="mt-4 text-xl leading-8">
-                        The Innovations Hub is where bold ideas meet real-world impact. Here, creativity and cutting-edge
-                        technology converge to develop solutions that shape the future. Whether you’re an inventor,
-                        entrepreneur, or visionary, our hub is the place to bring ideas to life and drive meaningful change!
+                        {{ $innovationMessage->description }}
                     </p>
                     <div class="w-fit mx-auto mt-6">
                         <a href="/dpric/innovations-hub"><button
@@ -301,30 +248,22 @@
     <section class="w-full bg-purple-900 text-white p-4">
         <div class="w-full md:w-11/12 mx-auto p-4 text-center">
             <div class="w-full my-4">
-                <h3 class="uppercase text-xl md:text-3xl">Celebrating Excellence with Research Awards</h3>
+                <h3 class="uppercase text-xl md:text-3xl">{{ $awardsMessage->title }}</h3>
                 <p class="mt-6 text-xl leading-8">
-                    Our Research Awards honor outstanding contributions that push the boundaries of knowledge and make a
-                    lasting impact. These awards recognize innovation, dedication, and achievements in research that inspire
-                    and lead the way to a brighter future. Join us in celebrating excellence!
+                    {{ $awardsMessage->description }}
                 </p>
             </div>
 
             <div class="w-full md:w-11/12 flex flex-col md:flex-row">
-                <div class="w-full md:w-1/3 flex flex-col items-center my-8">
-                    <img src="{{ asset('img/mwecau.png') }}" alt=""
-                        class="w-2/5 mx-auto border-2 border-white rounded-full">
-                    <h4 class="mt-4 text-xl"><a href="{{ route('dpric.research-awards') }}">Award title</a></h4>
-                </div>
-                <div class="w-full md:w-1/3 flex flex-col items-center my-8">
-                    <img src="{{ asset('img/mwecau.png') }}" alt=""
-                        class="w-2/5 mx-auto border-2 border-white rounded-full">
-                    <h4 class="mt-4 text-xl"><a href="{{ route('dpric.research-awards') }}">Award title</a></h4>
-                </div>
-                <div class="w-full md:w-1/3 flex flex-col items-center my-8">
-                    <img src="{{ asset('img/mwecau.png') }}" alt=""
-                        class="w-2/5 mx-auto border-2 border-white rounded-full">
-                    <h4 class="mt-4 text-xl"><a href="{{ route('dpric.research-awards') }}">Award title</a></h4>
-                </div>
+                @foreach ($awards as $award)
+                    <div class="w-full md:w-1/3 flex flex-col items-center my-8">
+                        <a href="{{ route('dpric.research-awards') }}" class="w-full"> <img
+                                src="{{ $award->image ? asset('/storage/images/dpric/awards/' . $award->image) : '../../img/mwecau.png' }}"
+                                alt="" class="w-2/5 h-32 mx-auto border-2 border-white rounded-full"></a>
+                        <h4 class="mt-4 text-xl hover:text-blue-300"><a
+                                href="{{ route('dpric.research-awards') }}">{{ $award->title }}</a></h4>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

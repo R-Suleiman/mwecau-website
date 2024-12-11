@@ -380,6 +380,7 @@ Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->gro
     Route::get('application-procedures', 'applicationProcedures')->name('application-procedures');
     Route::get('joining-instruction', 'joiningInstruction')->name('joining-instruction');
     Route::get('student-forms', 'studentForms')->name('student-forms');
+    Route::get('documents/{document}', 'viewDocument')->name('view-document');
     Route::get('research-projects', 'researchProjects')->name('research-projects');
     Route::get('research-policies', 'researchPolicies')->name('research-policies');
     Route::get('research-guidelines', 'researchGuidelines')->name('research-guidelines');
@@ -391,17 +392,18 @@ Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->gro
     Route::get('conference-proceedings', 'conferenceProceedings')->name('conference-proceedings');
     Route::get('innovations-hub', 'innovationsHub')->name('innovations-hub');
     Route::get('innovations-hub/projects', 'innovationsProjects')->name('innovations-projects');
-    Route::get('innovations-hub/projects/single-project', 'innovationsProject')->name('innovations-project');
+    Route::get('innovations-hub/projects/{project_title}', 'innovationsProject')->name('innovations-project');
     Route::get('innovations-hub/clubs', 'innovationsClubs')->name('innovations-clubs');
-    Route::get('innovations-hub/clubs/single-club', 'innovationsClub')->name('innovations-club');
-    Route::get('innovations-hub/clubs/single-club/projects', 'innovationsClubProjects')->name('innovations-club-projects');
+    Route::get('innovations-hub/clubs/{club_name}', 'innovationsClub')->name('innovations-club');
+    Route::get('innovations-hub/clubs/{club_name}/projects', 'innovationsClubProjects')->name('innovations-club-projects');
     Route::get('tcce', 'tcce')->name('tcce');
     Route::get('consultancy-policy-and-guidelines', 'consultancyPolicyAndGuidelines')->name('consultancy-policy-and-guidelines');
     Route::get('policies', 'policies')->name('policies');
     Route::get('regulations-and-guidelines', 'regulationsAndGuidelines')->name('regulations-and-guidelines');
     Route::get('news', 'news')->name('news');
-    Route::get('news/single-news', 'singleNews')->name('single-news');
-    Route::get('postgraduate-units/single-unit', 'postgraduateUnit')->name('postgraduate-unit');
+    Route::get('news/{news_title}', 'singleNews')->name('single-news');
+    Route::get('postgraduate-units', 'postgraduateUnits')->name('postgraduate-units');
+    Route::get('postgraduate-units/{unit_title}', 'postgraduateUnit')->name('postgraduate-unit');
     // Route::get('/dpric/research-programmes', 'researchProgrammes')->name('research-programmes');
 });
 

@@ -100,7 +100,7 @@
                     class="md:object-cover md:h-96 w-full">
             </div>
         </div>
-
+ 
         {{-- What we do --}}
         <div class="w-full mx-auto flex flex-col md:flex-row p-4 bg-blue-900 my-8">
             <div class="w-full md:w-1/2 p-2 md:p-4 my-0 md:my-4 flex flex-col content-center items-center">

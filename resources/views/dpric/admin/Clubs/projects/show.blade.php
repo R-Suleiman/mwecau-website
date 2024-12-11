@@ -28,7 +28,7 @@
                     <div class="project-desc my-6 flex flex-col">
                         <label class="text-md text-blue-900">Category</label>
                         <span class="text-xl text-default-text">{{ $project->category }}</span>
-                    </div>
+                    </div> 
                     <div class="project-desc my-6 flex flex-col">
                         <label class="text-md text-blue-900">Duration</label>
                         <span class="text-xl text-default-text">{{ $project->duration }}</span>

@@ -1,7 +1,8 @@
 @extends('layouts.dpric.dpric-layout')
 
 @section('content')
-    <section>
+{{-- remove height screen!!!!!! --}}
+    <section class="h-screen">
         <div class="flex flex-col my-4 p-4 ">
             <div class="w-fit mx-auto">
                 <h2 class="uppercase text-xl lg:text-3xl text-center text-default-head">Directorate Staff</h2>
@@ -35,7 +36,7 @@
                 </thead>
 
                 <tbody class="bg-white divide-y divide-gray-200 whitespace-nowrap">
-                    <tr>
+                    {{-- <tr>
                         <td class="px-4 py-4 text-sm text-gray-800">
                             1
                         </td>
@@ -55,26 +56,10 @@
                             <a href="#"><button
                                 class="border-2 border-purple-600 px-2 text-lg hover:bg-gray-600 hover:text-white rounded-lg">view</button></a>
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            1
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            Jane
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            Doe
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            Doe
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            DNSIT
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-800">
-                            <a href=""><button
-                                class="border-2 border-purple-600 px-2 text-lg hover:bg-gray-600 hover:text-white rounded-lg">view</button></a>
+                        <td class="px-4 py-4 text-sm text-gray-800 text-center" colspan="6">
+                            Staff Coming soon!
                         </td>
                     </tr>
                 </tbody>

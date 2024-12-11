@@ -11,9 +11,10 @@
 
         {{-- REMOVE h-screen !!!!!!! --}}
         <div class="w-full md:w-10/12 mx-auto my-4 h-screen">
-            <div><a href="#" class="text-lg text-default-head hover:underline"><i class="fa fa-newspaper"></i> <span class="ml-2">This is a Journal</span></a></div>
-            <div><a href="#" class="text-lg text-default-head hover:underline"><i class="fa fa-newspaper"></i> <span class="ml-2">This is a Journal</span></a></div>
-            <div><a href="#" class="text-lg text-default-head hover:underline"><i class="fa fa-newspaper"></i> <span class="ml-2">This is a Journal</span></a></div>
+            @foreach ($journals as $journal)
+                <div><a href="{{ route('uni-pdf-preview', $journal->file) }}" class="text-lg text-default-head hover:underline"><i class="fa fa-newspaper"></i> <span
+                            class="ml-2">{{ $journal->header }}</span></a></div>
+            @endforeach
         </div>
     </section>
 @endsection

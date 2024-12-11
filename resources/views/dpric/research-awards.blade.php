@@ -14,62 +14,43 @@
                 <i class="fa fa-award text-8xl text-default-head"></i>
             </div>
             <div class="text-center absolute top-0">
-                <h2 class="text-default-head text-3xl my-4">Honoring Achievement with Research Awards</h2>
+                <h2 class="text-default-head text-3xl my-4">{{ $researchAwards->title }}</h2>
                 <p class="text-lg text-default-text my-2">
-                    Our Research Awards celebrate exceptional work that advances knowledge and drives innovation. These
-                    awards recognize researchers whose contributions have made a significant impact, inspiring the academic
-                    community and beyond. Join us in acknowledging excellence and fostering a culture of discovery!
+                    {{ $researchAwards->description }}
                 </p>
             </div>
         </div>
 
-        <div class="dpric-awards px-4 py-8 lg:p-4 my-8 w-full md:w-9/12 mx-auto">
-            <div class="w-full">
-                <div class="w-full mx-auto flex flex-col lg:flex-row border border-blue-500  rounded-lg">
-                    <div class="w-full lg:w-1/2">
-                        <img src="{{ asset('img/campus-life/spirtual3.jpg') }}" alt=""
-                            class="w-full mx-auto rounded-lg">
-                    </div>
-                    <div class="w-full lg:w-1/2 lg:bg-blue-800 relative">
-                        <div class="lg:rounded-br-full lg:rounded-bl-full h-full bg-white py-2 px-4 text-center">
-                            <h3 class="text-default-head text-xl my-2">Award Title</h3>
-                            <p class="text-lg text-default-text my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Earum laudantium dolore quae culpa architecto commodi adipisci reprehenderit voluptate doloribus
-                                iste sit recusandae voluptatem atque quas dignissimos, officia qui quis ipsa.</p>
-                            <span class="text-default-text text-lg my-2">11/12/2023</span>
-                        </div>
-                        <div class="w-fit m-4 p-2">
-                            <i class="fa fa-trophy text-5xl text-default-head lg:text-white absolute bottom-4 left-3"></i>
-                        </div>
-                        <div class="w-fit m-4 p-2">
-                            <i class="fa fa-award text-5xl text-default-head lg:text-white absolute bottom-4 right-4"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <div class="w-full mx-auto flex flex-col lg:flex-row border border-blue-500  rounded-lg">
-                    <div class="w-full lg:w-1/2">
-                        <img src="{{ asset('img/campus-life/spirtual3.jpg') }}" alt=""
-                            class="w-full mx-auto rounded-lg">
-                    </div>
-                    <div class="w-full lg:w-1/2 lg:bg-blue-800 relative">
-                        <div class="lg:rounded-br-full lg:rounded-bl-full h-full bg-white py-2 px-4 text-center">
-                            <h3 class="text-default-head text-xl my-2">Award Title</h3>
-                            <p class="text-lg text-default-text my-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Earum laudantium dolore quae culpa architecto commodi adipisci reprehenderit voluptate doloribus
-                                iste sit recusandae voluptatem atque quas dignissimos, officia qui quis ipsa.</p>
-                            <span class="text-default-text text-lg my-2">11/12/2023</span>
-                        </div>
-                        <div class="w-fit m-4 p-2">
-                            <i class="fa fa-trophy text-5xl text-default-head lg:text-white absolute bottom-4 left-3"></i>
-                        </div>
-                        <div class="w-fit m-4 p-2">
-                            <i class="fa fa-award text-5xl text-default-head lg:text-white absolute bottom-4 right-4"></i>
+        <div class="px-4 py-8 lg:p-4 my-8 w-full mx-auto flex flex-wrap flex-col lg:flex-row">
+            @if ($awards->count() > 0)
+                @foreach ($awards as $award)
+                    <div class="w-full lg:w-1/3">
+                        <div class="w-11/12 mx-auto flex flex-col  border border-blue-500  rounded-lg">
+                            <div class="w-full overflow-hidden h-52">
+                                <img src="{{ $award->image ? asset('/storage/images/dpric/awards/' . $award->image) : '../../img/mwecau.png' }}" alt=""
+                                    class="w-full rounded-lg object-cover">
+                            </div>
+                            <div class="w-full lg:bg-blue-800 relative">
+                                <div class="lg:rounded-br-full lg:rounded-bl-full h-full bg-white py-2 px-4 text-center">
+                                    <h3 class="text-default-head text-xl my-2">{{ $award->title }}</h3>
+                                    <p class="text-lg text-default-text my-2">{{ $award->description }}</p>
+                                    <span class="text-default-text text-lg my-2">{{ explode(' ', $award->created_at)[0] }}</span>
+                                </div>
+                                <div class="w-fit m-4 p-2">
+                                    <i
+                                        class="fa fa-trophy text-5xl text-default-head lg:text-white absolute bottom-4 left-3"></i>
+                                </div>
+                                <div class="w-fit m-4 p-2">
+                                    <i
+                                        class="fa fa-award text-5xl text-default-head lg:text-white absolute bottom-4 right-4"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                @endforeach
+            @else
+                <div class="w-2/3 mx-auto bg-blue-300 my-8 p-4 text-xl">No Awards found!</div>
+            @endif
         </div>
     </section>
 @endsection
