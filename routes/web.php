@@ -340,7 +340,7 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects/contacts', 'contacts')->name('projects-contacts');
     Route::get('/projects/scholarships', 'scholarships')->name('projects-scholarships');
     Route::get('/Conferences', 'conferences')->name('project-conferences');
-    Route::get('/about/{conferenceName}/conference', 'conferenceDetails')->where('conferenceName', '.*')->name('about-conference');
+    Route::get('/about-{conferenceName}', 'conferenceDetails')->where('conferenceName', '.*')->name('about-conference');
     Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
     Route::get('{attachment}', 'conferencePdfPreview')->name('conference-attachment-preview');
 });
@@ -405,7 +405,7 @@ Route::middleware(['research'])->group(function () {
 
     //project admin scholarship routes
     Route::controller(AdminProjectScholarshipController::class)->prefix('admin/scholarship/')->name('admin.project.scholarship.')->group(function () {
-        Route::get('index', 'scholarships')->name('scholarships');
+        Route::get('project-scholarships', 'scholarships')->name('scholarships');
         Route::get('create', 'create')->name('create');
         Route::post('store', 'store')->name('store');
         Route::get('edit/{scholarshipName}/scholarship', 'edit')->where('scholarshipName', '.*')->name('edit');
@@ -418,6 +418,9 @@ Route::middleware(['research'])->group(function () {
         Route::get('add/{name}/to-project', 'scholarshipToProject')->where('name', '.*')->name('scholarship-to-project');
         Route::post('store-scholarship-to-project/{id}', 'storeScholarshipToProject')->name('store-scholarship-to-project');
         Route::delete('destroy-beneficiary/{id}', 'destroyBeneficiary')->name('destroy-beneficiary');
+        // editing beneficiary
+        Route::get('project-scholarship-beneficiary/{name}', 'editprojectScholarshipBeneficiary')->where('name', '.*')->name('edit-project-scholarship-beneficiary');
+        Route::put('update-project-scholarship-beneficiary/{id}', 'updateProjectScholarshipBeneficiary')->name('update-project-scholarship-beneficiary');
     });
 
     //project admin testimonial routes

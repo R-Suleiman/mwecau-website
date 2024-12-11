@@ -36,8 +36,8 @@
                                 <div class="w-full mt-2 p-2 text-justify">
                                     <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
                                         {{ $teamMember->initials }} {{ $teamMember->name }}</h4>
-                                    <span class="my-4 text-gray-400 text-sm"><i
-                                            class="fa fa-calendar"></i>{{ $teamMember->institute }}</span>
+                                    <span class="my-4 text-gray-700 text-sm"><i
+                                            class="fa fa-university"></i>{{ $teamMember->institute }}</span>
                                 </div>
                             </a>
                         </div>

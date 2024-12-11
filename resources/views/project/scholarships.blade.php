@@ -5,9 +5,15 @@
             <div class="container mx-auto px-6 py-10">
                 <!-- Title-->
                 <div class="text-center mb-10">
-                    <h1 class="text-4xl font-bold text-blue-700 mb-4 headerFavFont">Available Project Scholarships</h1>
-                    <p class="text-gray-500 italic">Explore and apply for scholarships suited to your needs and
-                        qualifications.</p>
+                    <!-- Header -->
+                    <h1 class="text-4xl font-bold text-blue-700 mb-4 headerFavFont">
+                        Beneficiaries of Our Projects
+                    </h1>
+                    <!-- Description -->
+                    <p class="text-gray-500 italic text-lg">
+                        Discover the transformative power of our initiatives through stories of hope and change. Be part of
+                        a journey that empowers lives and builds a brighter future for all.
+                    </p>
                 </div>
 
                 <div class="my-4 p-4 w-full flex flex-col items-center lg:flex-row lg:space-x-8">
@@ -19,7 +25,7 @@
                                 <div class="flex items-center space-x-4 p-4">
                                     <!-- Profile Image -->
                                     @if ($beneficiary->beneficiary_photo)
-                                        <img class="w-16 h-16 rounded-full border-2 border-gray-300"
+                                        <img class="w-20 h-20 rounded-full border-2 border-gray-300"
                                             src="{{ asset($storagePath . $beneficiary->beneficiary_photo) }}"
                                             alt="Profile Image">
                                     @else
@@ -37,7 +43,8 @@
                                 </div>
                                 <div class="p-4">
                                     <p class="text-lg font-semibold text-gray-800">Research Title: <span
-                                            class="text-blue-500 italic">{{ $beneficiary->beneficiary_research_title ?? 'Null' }}</span>
+                                            class="text-blue-500 italic">{!! $beneficiary->beneficiary_research_title ??
+                                                '<span class="text-red-600 italic">No Research title provided</span>' !!}</span>
                                     </p>
                                     <ul class="space-y-2 mt-4">
                                         <li><span class="font-semibold text-gray-800">Duration:</span>
@@ -46,11 +53,6 @@
                                             {{ $beneficiary->university ?? 'Null' }}</li>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="p-4 bg-gray-100 text-center">
-                                    <button
-                                        class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">View
-                                        Research</button>
                                 </div>
                             </div>
                         </div>

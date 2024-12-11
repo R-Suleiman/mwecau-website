@@ -25,6 +25,17 @@
                     @csrf
                     @method('POST')
 
+                    <div class="mb-4">
+                        <label for="project_id" class="block text-sm mb-4 font-medium text-gray-700">Select Status
+                        </label>
+                        <select name="role" id="role"
+                            class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">
+                            <option value="">Select Status</option>
+                            <option value="member">Member</option>
+                            <option value="top">Top Leader</option>
+                        </select>
+                        <x-input-error :messages="$errors->get('role')" class="mt-2" />
+                    </div>
                     {{-- <input type="hidden" name="project_id" value="{{ $project->id }}"> --}}
 
                     <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-3">
@@ -86,7 +97,7 @@
                         <div class="mb-4">
                             <label for="bio" class="block text-sm mb-4 font-medium text-gray-700">
                                 Bio </label>
-                            <textarea name="bio" id="" cols="30" rows="10"
+                            <textarea name="bio" id="editor" cols="30" rows="10"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ old('bio') }}</textarea>
                             <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                         </div>
@@ -110,7 +121,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 @endsection

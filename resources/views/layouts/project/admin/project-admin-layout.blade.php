@@ -7,8 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'MWECAU Projects') }}</title>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.15/css/froala_editor.pkgd.min.css">
+
+
+    {{-- CKEditor CDN --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <!--Tailwinds Scripts for production development -->
 
@@ -145,15 +147,14 @@
         @stack('modals')
         @stack('scripts')
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.15/js/froala_editor.pkgd.min.js"></script>
     <script>
-        new FroalaEditor('#editor', {
-            toolbarButtons: ['undo', 'redo', '|', 'bold', 'italic', 'underline', '|', 'formatOL', 'formatUL',
-                'align', '|', 'insertLink'
-            ],
-            quickInsertEnabled: false
-        });
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
+
 </body>
 
 </html>

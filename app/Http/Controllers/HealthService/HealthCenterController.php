@@ -49,7 +49,7 @@ class HealthCenterController extends Controller
     public function service($name)
     {
         $service = HealthCenterService::where('name', $name)->firstOrFail();
-        $relatedServices = HealthCenterService::where('health_center_department_id', $service->health_center_department_id)
+        $relatedServices = HealthCenterService::where('department_id', $service->department_id)
             ->where('name', '!=', $service->name)
             ->get();
         return view('health-center.service', compact('service', 'relatedServices'));

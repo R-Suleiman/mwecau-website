@@ -92,7 +92,7 @@
 
 
                                     <li class="text-gray-600"><span class="font-semibold text-gray-800">Description:</span>
-                                        {{ $scholarship->description ?? 'Description' }}</li>
+                                        {!! $scholarship->description ?? 'Description' !!}</li>
                                     </li>
                                 </ul>
                                 </p>

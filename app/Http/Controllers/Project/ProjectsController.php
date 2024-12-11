@@ -22,11 +22,12 @@ class ProjectsController extends Controller
      */
     public function index()
     {
+        $topLeaders = ProjectTeam::where('role', 'top')->get();
         $aboutVlir = ProjectContent::where('page_section', 'about-vlir')->first();
         $teamContents = ProjectContent::where('page_section', 'team_section')->first();
         $testimonialContents = ProjectContent::where('page_section', 'testimonial_section')->first();
         $projects = Project::with('gallery')->get();
-        $conferences = ProjectConferences::all();
+        $conferences = ProjectConferences::orderBy('created_at', 'desc')->get();
         $teamMembers = ProjectTeam::all();
         $testimonials = ProjectTestimonial::all();
         $projectPartners = ProjectPartner::all();
@@ -35,6 +36,7 @@ class ProjectsController extends Controller
             'projects',
             'conferences',
             'testimonials',
+            'topLeaders',
             'teamMembers',
             'aboutVlir',
             'teamContents',
@@ -43,7 +45,6 @@ class ProjectsController extends Controller
             'homeslider'
         ));
     }
-
 
     public function projects()
     {
@@ -91,7 +92,7 @@ class ProjectsController extends Controller
     }
     public function conferences()
     {
-        $conferences = ProjectConferences::all();
+        $conferences = ProjectConferences::orderBy('created_at', 'desc')->get();
         return view('project.conferences', compact('conferences'));
     }
     public function conferenceDetails($conferenceName)

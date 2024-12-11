@@ -46,12 +46,12 @@
 
                     </div>
 
-                    {{-- bio --}}
+                    {{-- Testimonial --}}
                     <div class="w-full">
                         <div class="mb-4">
                             <label for="testimonial_description" class="block text-sm mb-4 font-medium text-gray-700">
                                 Bio </label>
-                            <textarea name="testimonial_description" id="" cols="30" rows="10"
+                            <textarea name="testimonial_description" id="editor" cols="30" rows="10"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ old('testimonial_description') }}</textarea>
                             <x-input-error :messages="$errors->get('testimonial_description')" class="mt-2" />
                         </div>

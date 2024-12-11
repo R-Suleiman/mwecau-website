@@ -29,7 +29,7 @@
                     @php
                         $counter = 1;
                     @endphp
-                    @if ($scholarships->isNotEmpty())
+                    @if ($scholarships && $scholarships->isNotEmpty())
                         @foreach ($scholarships as $scholarship)
                             <tr class="hover:bg-gray-100">
                                 <td class="px-4 py-2 border-r text-center">{{ $counter++ }}</td>
@@ -37,7 +37,7 @@
                                     <div class="text-lg font-medium text-gray-900">
                                         {{ $scholarship->name }}
                                     </div>
-                                    @if ($scholarship->beneficiaries && $scholarship->beneficiaries->isNotEmpty())
+                                    @if (optional($scholarship->beneficiaries)->isNotEmpty())
                                         <div class="mt-4">
                                             <span
                                                 class="text-sm font-semibold text-blue-600 uppercase tracking-wide underline">
@@ -56,10 +56,13 @@
                                                         </div>
                                                         <div class="flex space-x-2">
                                                             <!-- Edit Button -->
-                                                            <button type="button"
-                                                                class="px-3 py-1 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
-                                                                <i class="fas fa-pencil"></i>
-                                                            </button>
+                                                            <a
+                                                                href="{{ route('admin.project.scholarship.edit-project-scholarship-beneficiary', $beneficiary->beneficiary_name) }}">
+                                                                <button type="button"
+                                                                    class="px-3 py-1 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
+                                                                    <i class="fas fa-pencil"></i>
+                                                                </button>
+                                                            </a>
                                                             <!-- Delete Button -->
                                                             <form method="POST"
                                                                 action="{{ route('admin.project.scholarship.destroy-beneficiary', $beneficiary->id) }}">
@@ -110,7 +113,7 @@
 
                                     <!-- Delete Button -->
                                     <form method="POST"
-                                        action="{{ route('admin.project.scholarship.destroy', $beneficiary->id) }}">
+                                        action="{{ route('admin.project.scholarship.destroy', $scholarship->id) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"

@@ -36,7 +36,7 @@
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
                             <x-input-error :messages="$errors->get('testifier_initials')" class="mt-2" />
                         </div>
-                        <!-- name -->
+                        <!--testifier name -->
                         <div class="mb-4">
                             <label for="testifier_name"
                                 class="block text-sm mb-4 font-medium text-gray-700">Fullname</label>
@@ -48,18 +48,20 @@
 
                     </div>
 
-                    {{-- bio --}}
+                    {{-- Testimonial --}}
                     <div class="w-full">
-                        <div class="mb-4">
-                            <label for="testimonial_description" class="block text-sm mb-4 font-medium text-gray-700">
-                                Bio </label>
-                            <textarea name="testimonial_description" id="" cols="30" rows="10"
-                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $testimonial->testimonial_description }}</textarea>
-                            <x-input-error :messages="$errors->get('testimonial_description')" class="mt-2" />
+                        <label for="description" class="block text-sm mb-4 font-medium text-gray-700">Bio</label>
+                        <div class="flex items-center justify-center">
+                            <div class="mb-4 max-w-[1300px] flex flex-col items-center justify-center">
+                                <textarea name="testimonial_description" id="editor" cols="30" rows="10"
+                                    class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $testimonial->testimonial_description }}</textarea>
+                                <x-input-error :messages="$errors->get('testimonial_description')" class="mt-2" />
+                            </div>
                         </div>
+
                         <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-3">
 
-                            <!-- Occupation -->
+                            <!--testifier Occupation -->
                             <div class="mb-4">
                                 <label for="testifier_occupation"
                                     class="block text-sm mb-4 font-medium text-gray-700">Occupation</label>

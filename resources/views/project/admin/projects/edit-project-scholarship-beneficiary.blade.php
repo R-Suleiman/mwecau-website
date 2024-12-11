@@ -4,7 +4,7 @@
     <div class="text-gray-900 uppercase text-center rounded-md py-4 px-7 mt-7 bg-gray-100">
         <h1
             class="headerFavFont text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400">
-            {{ $scholarship->name }} Beneficiary
+            <span class="text-gray-400">scholarship beneficiary</span> {{ $beneficiary->beneficiary_name }}
         </h1>
     </div>
 
@@ -20,13 +20,14 @@
         <div class="w-full p-8 bg-white rounded-2xl shadow-2xl shadow-purple-200">
             <x-project-admin-messages />
             <div class="w-full">
-                <form action="{{ route('admin.project.scholarship.store-project-beneficiary') }}" method="POST"
-                    enctype="multipart/form-data" class="space-y-4">
+                <form
+                    action="{{ route('admin.project.scholarship.update-project-scholarship-beneficiary', $beneficiary->id) }}"
+                    method="POST" enctype="multipart/form-data" class="space-y-4">
                     @csrf
-                    @method('POST')
+                    @method('PUT')
 
-                    <input type="hidden" name="project_id" value="{{ $scholarship->project->id }}">
-                    <input type="hidden" name="scholarship_id" value="{{ $scholarship->id }}"></input>
+                    <input type="hidden" name="project_id" value="{{ $beneficiary->project_id }}">
+                    <input type="hidden" name="scholarship_id" value="{{ $beneficiary->scholarship_id }}"></input>
 
                     <div class="w-full">
                         <!-- Beneficiary Name -->
@@ -34,7 +35,7 @@
                             <label for="beneficiary_name" class="block text-sm mb-4 font-medium text-gray-700">Beneficiary
                                 Name</label>
                             <input type="text" id="beneficiary_name" name="beneficiary_name"
-                                value="{{ old('beneficiary_name') }}" placeholder="Godfrey Erick"
+                                value="{{ $beneficiary->beneficiary_name }}" placeholder="Godfrey Erick"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
                             <x-input-error :messages="$errors->get('beneficiary_name')" class="mt-2" />
                         </div>
@@ -44,7 +45,7 @@
                             <label for="beneficiary_research_title"
                                 class="block text-sm mb-4 font-medium text-gray-700">Beneficiary Research title</label>
                             <input type="text" id="beneficiary_research_title" name="beneficiary_research_title"
-                                value="{{ old('beneficiary_research_title') }}"
+                                value="{{ $beneficiary->beneficiary_research_title }}"
                                 placeholder="Advancements in Renewable Energy Solutions for Sustainable Development"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
                             <x-input-error :messages="$errors->get('beneficiary_research_title')" class="mt-2" />
@@ -56,7 +57,7 @@
                                 class="block text-sm mb-4 font-medium text-gray-700">Project Description
                                 <strong>(Optional)</strong> </label>
                             <textarea name="beneficiary_research_title" id="editor" cols="30" rows="10"
-                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ old('beneficiary_research_title') }}</textarea>
+                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $beneficiary->beneficiary_research_title }}</textarea>
                             <x-input-error :messages="$errors->get('beneficiary_research_title')" class="mt-2" />
                         </div>
 

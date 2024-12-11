@@ -147,19 +147,19 @@ class AdminProjectScholarshipController extends Controller
         }
     }
 
+    // storing project beneficiary
     public function createScholarshipBeneficiary($name)
     {
         $scholarship = ProjectScholarship::where('name', $name)->firstOrFail();
         return view('project.admin.projects.add-project-scholarship-beneficiary', compact('scholarship'));
     }
-
     public function storeScholarshipBeneficiary(Request $request)
     {
         //validation
         $request->validate([
             'beneficiary_name' => ['required'],
             'beneficiary_research_title' => ['nullable'],
-            'beneficiary_photo' => ['nullable', 'mimes:png,jpg', 'max:600']
+            'beneficiary_photo' => ['nullable', 'mimes:png,jpg', 'max:1024']
         ]);
 
         $beneficiary = new ProjectScholarshipBeneficiary();
@@ -194,6 +194,65 @@ class AdminProjectScholarshipController extends Controller
             return redirect()->back()->with('fail', 'Something went wrong, Failed to add a beneficiary please try again');
         }
     }
+    // editing scholarship beneficiary
+    public function editprojectScholarshipBeneficiary($name)
+    {
+        $beneficiary = ProjectScholarshipBeneficiary::where('beneficiary_name', $name)->firstOrFail();
+        return view('project.admin.projects.edit-project-scholarship-beneficiary', compact('beneficiary'));
+    }
+    // updating project Scholarship beneficiary
+    public function updateProjectScholarshipBeneficiary(Request $request, $id)
+    {
+        //validation
+        $request->validate([
+            'beneficiary_name' => ['required'],
+            'beneficiary_research_title' => ['nullable'],
+            'beneficiary_photo' => ['nullable', 'mimes:png,jpg', 'max:1024']
+        ]);
+
+        $beneficiary = ProjectScholarshipBeneficiary::findOrFail($id);
+
+        //beneficiary profile photo processing
+        $profilePhotoName = $beneficiary->beneficiary_photo;
+        if ($request->hasFile('beneficiary_photo')) {
+            $profilePhoto = $request->file('beneficiary_photo');
+            $profilePhotoOriginalName = pathinfo($profilePhoto->getClientOriginalName(), PATHINFO_FILENAME);
+            $profilePhotoFileExtension = $profilePhoto->getClientOriginalExtension();
+            $UniqueNumber = substr(uniqid(), 0, 0);
+
+            $profilePhotoName = $profilePhotoOriginalName . '-' . $UniqueNumber . '.' . $profilePhotoFileExtension;
+            $storagePath = 'images/projects/images/scholarships/beneficiaries-profile-photos';
+            $existingPhoto = $storagePath . $beneficiary->profile_photo;
+
+            try {
+                // Check and delete the existing photo if it exists
+                if ($beneficiary->beneficiary_photo) {
+                    $existingPhoto = $storagePath . $beneficiary->beneficiary_photo;
+                    if (Storage::disk('public')->exists($existingPhoto)) {
+                        Storage::disk('public')->delete($existingPhoto);
+                    }
+                }
+
+                $profilePhoto->storeAs($storagePath, $profilePhotoName, 'public');
+                $beneficiary->beneficiary_photo = $profilePhotoName;
+            } catch (\Exception $e) {
+
+                return redirect()->back()->with('fail', 'Beneficiary profile photo failed to upload');
+            }
+
+        }
+
+        $beneficiary->project_id = $request->input('project_id');
+        $beneficiary->scholarship_id = $request->input('scholarship_id');
+        $beneficiary->beneficiary_name = $request->beneficiary_name;
+        $beneficiary->beneficiary_research_title = $request->beneficiary_research_title;
+        if ($beneficiary->update()) {
+            return redirect()->route('admin.project.scholarship.scholarships')->with('success', 'Beneficiary has been updated successfully');
+        } else {
+            return redirect()->back()->with('fail', 'Something went wrong, Failed to update a beneficiary please try again');
+        }
+    }
+
     //adding scholarship to project
     public function scholarshipToProject($name)
     {
@@ -219,14 +278,14 @@ class AdminProjectScholarshipController extends Controller
             return redirect()->back()->with('fail', 'Failed to add scholarship to project');
         }
     }
-
+    // deleting project scholarship beneficiary
     public function destroyBeneficiary($id)
     {
         $beneficiary = ProjectScholarshipBeneficiary::findOrFail($id);
 
         //deleting beneficiary photo
         $storagePath = 'images/projects/images/scholarships/beneficiaries-profile-photos/';
-        $existingPhoto = $storagePath . $beneficiary->profile_photo;
+        $existingPhoto = $storagePath . $beneficiary->beneficiary_photo;
 
         if ($beneficiary->beneficiary_photo && Storage::disk('public')->exists($existingPhoto)) {
             Storage::disk('public')->delete($existingPhoto);

@@ -33,6 +33,19 @@
                     enctype="multipart/form-data" class="space-y-4">
                     @csrf
                     @method('PUT')
+                    <!-- Project -->
+                    <div class="mb-4">
+                        <label for="role" class="block text-sm mb-4 font-medium text-gray-700">
+                            Is the member a top leader?
+                        </label>
+                        <select name="role" id="role"
+                            class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">
+                            <option value="{{ $teamMember->role }}">{{ $teamMember->role }}</option>
+                            <option value="top">Top Leader</option>
+                            <option value="member">Member</option>
+                        </select>
+                        <x-input-error :messages="$errors->get('role')" class="mt-2" />
+                    </div>
                     <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-3">
                         <!-- Initials -->
                         <div class="mb-4">
@@ -73,10 +86,13 @@
 
                     {{-- bio --}}
                     <div class="w-full">
-                        <div class="mb-4">
-                            <label for="description" class="block text-sm mb-4 font-medium text-gray-700">Bio</label>
-                            <textarea name="bio" id="editor" cols="30" rows="10" class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $teamMember->bio }}</textarea>
-                            <x-input-error :messages="$errors->get('bio')" class="mt-2" />
+                        <label for="description" class="block text-sm mb-4 font-medium text-gray-700">Bio</label>
+                        <div class="flex items-center justify-center">
+                            <div class="mb-4 max-w-[1300px] flex flex-col items-center justify-center">
+                                <textarea name="bio" id="editor" cols="30" rows="10"
+                                    class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ $teamMember->bio }}</textarea>
+                                <x-input-error :messages="$errors->get('bio')" class="mt-2" />
+                            </div>
                         </div>
                         <!-- profile picture -->
                         <div class="mb-4">
