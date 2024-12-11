@@ -10,7 +10,7 @@
             <div class="w-full">
                 @foreach ($allNews as $news )
                 <div class="flex w-full my-2 p-2 rounded-md border border-blue-200 h-32">
-                    <div class="w-2/12 hidden md:block h-full"><a href="#"><img src="{{ $news->image ? asset('/images/dpric/news/' . $news->image) : '../../img/mwecau.png' }}" alt=""
+                    <div class="w-2/12 hidden md:block h-full"><a href="#"><img src="{{ $news->image ? asset('/storage/images/dpric/news/' . $news->image) : '../../img/mwecau.png' }}" alt=""
                             class="w-full rounded-md object-cover h-full"></a>
                     </div>
                     <div class="w-10/12 md:w-9/12 px-2">
@@ -19,7 +19,11 @@
                     </div>
                     <div class="w-2/12 md:w-1/12 flex flex-col">
                         <button class="bg-green-700 hover:bg-green-800 text-white p-1 rounded-md my-2"><a href="{{ route('admin.dpric-news.edit', $news) }}">Edit</a></button>
-                        <button class="bg-orange-700 hover:bg-orange-800 text-white p-1 rounded-md my-2">Delete</button>
+                        <form action="{{ route('admin.dpric-news.destroy', $news) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="w-full bg-orange-700 hover:bg-orange-800 text-white p-1 rounded-md my-2">Delete</button>
+                        </form>
                     </div>
                 </div>
                 @endforeach

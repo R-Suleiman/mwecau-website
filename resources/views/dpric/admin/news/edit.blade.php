@@ -4,7 +4,7 @@
     <section class="w-full">
         <div class="w-11/12 mx-auto">
             <h2 class="oswald my-4 text-3xl text-blue-800">News Management</h2>
-            <form action="{{ route('admin.dpric-news.update', $news) }}" method="POST" class="w-full">
+            <form action="{{ route('admin.dpric-news.update', $news) }}" method="POST" enctype="multipart/form-data" class="w-full">
                 @csrf
                 @method('PUT')
                 <h3 class="oswald text-center my-4 text-2xl text-blue-800">Edit News</h3>
@@ -46,6 +46,10 @@
                         @error('image')
                         <p class="text-lg text-red-600 my-2">{{ $message }}</p>
                     @enderror
+
+                    <div class="w-full md:w-2/4 mx-auto h-64">
+                        <img src="{{ $news->image ? asset('/storage/images/dpric/news/' . $news->image) : '../../img/mwecau.png' }}" alt="" class="w-full rounded-md object-cover h-full">
+                    </div>
                 </div>
 
                 <div class="w-full md:w-10/12 my-8">

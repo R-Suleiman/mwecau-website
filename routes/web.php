@@ -1,6 +1,12 @@
 <?php
 
 use App\Http\Controllers\Announcement\AnnouncementController;
+use App\Http\Controllers\dpric\ClubActivityController;
+use App\Http\Controllers\dpric\ClubGalleryController;
+use App\Http\Controllers\dpric\ClubLeaderController;
+use App\Http\Controllers\dpric\InnovationProjectController;
+use App\Http\Controllers\dpric\InnovationProjectGalleryController;
+use App\Http\Controllers\dpric\DpricContentController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HealthService\HealthCenterAdminController;
@@ -35,6 +41,11 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\dpric\DpricController;
 use App\Http\Controllers\dpric\DpricAdminController;
 use App\Http\Controllers\dpric\NewsController;
+use App\Http\Controllers\dpric\UnitsController;
+use App\Http\Controllers\dpric\AwardsController;
+use App\Http\Controllers\dpric\DocumentsController;
+use App\Http\Controllers\dpric\ImagesController;
+use App\Http\Controllers\dpric\ClubController;
 use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
@@ -448,6 +459,7 @@ Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->gro
     Route::get('application-procedures', 'applicationProcedures')->name('application-procedures');
     Route::get('joining-instruction', 'joiningInstruction')->name('joining-instruction');
     Route::get('student-forms', 'studentForms')->name('student-forms');
+    Route::get('documents/{document}', 'viewDocument')->name('view-document');
     Route::get('research-projects', 'researchProjects')->name('research-projects');
     Route::get('research-policies', 'researchPolicies')->name('research-policies');
     Route::get('research-guidelines', 'researchGuidelines')->name('research-guidelines');
@@ -459,17 +471,18 @@ Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->gro
     Route::get('conference-proceedings', 'conferenceProceedings')->name('conference-proceedings');
     Route::get('innovations-hub', 'innovationsHub')->name('innovations-hub');
     Route::get('innovations-hub/projects', 'innovationsProjects')->name('innovations-projects');
-    Route::get('innovations-hub/projects/single-project', 'innovationsProject')->name('innovations-project');
+    Route::get('innovations-hub/projects/{project_title}', 'innovationsProject')->name('innovations-project');
     Route::get('innovations-hub/clubs', 'innovationsClubs')->name('innovations-clubs');
-    Route::get('innovations-hub/clubs/single-club', 'innovationsClub')->name('innovations-club');
-    Route::get('innovations-hub/clubs/single-club/projects', 'innovationsClubProjects')->name('innovations-club-projects');
+    Route::get('innovations-hub/clubs/{club_name}', 'innovationsClub')->name('innovations-club');
+    Route::get('innovations-hub/clubs/{club_name}/projects', 'innovationsClubProjects')->name('innovations-club-projects');
     Route::get('tcce', 'tcce')->name('tcce');
     Route::get('consultancy-policy-and-guidelines', 'consultancyPolicyAndGuidelines')->name('consultancy-policy-and-guidelines');
     Route::get('policies', 'policies')->name('policies');
     Route::get('regulations-and-guidelines', 'regulationsAndGuidelines')->name('regulations-and-guidelines');
     Route::get('news', 'news')->name('news');
-    Route::get('news/single-news', 'singleNews')->name('single-news');
-    Route::get('postgraduate-units/single-unit', 'postgraduateUnit')->name('postgraduate-unit');
+    Route::get('news/{news_title}', 'singleNews')->name('single-news');
+    Route::get('postgraduate-units', 'postgraduateUnits')->name('postgraduate-units');
+    Route::get('postgraduate-units/{unit_title}', 'postgraduateUnit')->name('postgraduate-unit');
     // Route::get('/dpric/research-programmes', 'researchProgrammes')->name('research-programmes');
 });
 
@@ -481,6 +494,23 @@ Route::controller(DpricAdminController::class)->name('dpric.admin.')->group(func
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::resource('dpric-news', NewsController::class);
+    Route::resource('dpric-units', UnitsController::class);
+    Route::resource('dpric-awards', AwardsController::class);
+    Route::resource('dpric-documents', DocumentsController::class);
+    Route::resource('dpric-images', ImagesController::class);
+    Route::resource('dpric-clubs', ClubController::class);
+    Route::resource('clubs/{club_name}/activities', ClubActivityController::class);
+    Route::resource('clubs/{club_name}/leaders', ClubLeaderController::class);
+    Route::resource('clubs/{club_name}/club-gallery', ClubGalleryController::class);
+    Route::resource('clubs/{club_name}/projects', InnovationProjectController::class);
+    Route::resource('clubs/{club_name}/projects/{project_name}/project-gallery', InnovationProjectGalleryController::class);
+
+    Route::get('/dpric-contents/pages', [DpricContentController::class, 'getPages'])->name('contents.get-pages');
+    Route::get('/dpric-contents/pages/{page_name}', [DpricContentController::class, 'getPage'])->name('contents.get-page');
+    Route::get('/dpric-contents/pages/{page_name}/{content_title}', [DpricContentController::class, 'getContent'])->name('contents.get-content');
+    Route::get('/dpric-contents/pages/{page_name}/{content_title}/edit', [DpricContentController::class, 'editContent'])->name('contents.edit-content');
+    Route::put('/dpric-contents/pages/{page_name}/{content_title}', [DpricContentController::class, 'updateContent'])->name('contents.update-content');
+
 });
 
 // STORAGE

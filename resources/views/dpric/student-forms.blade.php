@@ -11,9 +11,13 @@
 
         {{-- REMOVE h-screen !!!!!!! --}}
         <div class="w-full md:w-10/12 mx-auto my-4 h-screen">
-            <div><a href="#" class="text-lg text-default-head hover:underline"><i class="fa fa-download"></i> <span class="ml-2">This is a form name</span></a></div>
-            <div><a href="#" class="text-lg text-default-head hover:underline"><i class="fa fa-download"></i> <span class="ml-2">This is a form name</span></a></div>
-            <div><a href="#" class="text-lg text-default-head hover:underline"><i class="fa fa-download"></i> <span class="ml-2">This is a form name</span></a></div>
+            @if ($studentForms->count() > 0)
+                @foreach ($studentForms as $form)
+                <div><a href="{{ route('dpric.view-document', $form->name) }}" class="text-lg text-default-head hover:underline"><i class="fa fa-download"></i> <span class="ml-2">{{ $form->name }}</span></a></div>
+                @endforeach
+            @else
+            <div class="w-2/3 mx-auto bg-blue-300 my-8 p-2 text-lg">No Documents found!</div>
+            @endif
         </div>
     </section>
 @endsection
