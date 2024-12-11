@@ -24,4 +24,16 @@ class ProjectScholarship extends Model
         'attachment'
 
     ];
+
+    // scholarship project relation
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
+
+    //scholarship and scholarship beneficiary relationship
+    public function beneficiaries()
+    {
+        return $this->hasMany(ProjectScholarshipBeneficiary::class, 'scholarship_id');
+    }
 }

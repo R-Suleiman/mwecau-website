@@ -2,16 +2,25 @@
 
 @section('content')
     {{-- hero --}}
-    <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('images/projects/images/' . $singleProject->thumbnail) }}')">
+    <section class="relative w-full h-96 bg-center">
         <div class="overlay">
-            <img class="w-full object-cover object-center h-96" src="{{ asset('img/projects/cocoa.jpg') }}" alt="">
-
-            {{-- <div class="center-div">
-            <div class="text-white text-center">
-                <h1 class="uppercase text-4xl">mtu ni watu</h1>
-            </div>
-        </div> --}}
+            @if ($singleProject->thumbnail)
+                <img class="w-full object-cover object-center h-96"
+                    src="{{ asset($storagePath . $singleProject->thumbnail) }}" alt="">
+                <div class="center-div absolute inset-0 z-30">
+                    <div class="text-white text-center">
+                        <h1 class="uppercase text-6xl font-bold italic">{{ $singleProject->name }}</h1>
+                    </div>
+                </div>
+            @else
+                <img class="w-full object-cover object-center h-96" src="{{ asset('img/projects/cocoa.jpg') }}"
+                    alt="">
+                <div class="center-div absolute inset-0">
+                    <div class="text-white text-center">
+                        <h1 class="uppercase text-4xl">{{ $singleProject->name }}</h1>
+                    </div>
+                </div>
+            @endif
         </div>
     </section>
 
@@ -45,6 +54,74 @@
                 </div>
             </div>
         </section>
+
+        <!-- Scholarship Cards Grid -->
+        @if ($singleProject->scholarships && $singleProject->scholarships->isNotEmpty())
+        <section>
+            <div class="w-full md:w-8/12 p-4">
+                <h2 class="mb-2 text-4xl text-blue-800 FavFont">Project scholarships</h2>
+            </div>
+            <div class="my-4 p-4 w-full flex flex-col items-center justify-center lg:flex-row lg:space-x-8">
+                <!-- Scholarship Card -->
+                @foreach ($singleProject->scholarships as $scholarship)
+                    <div
+                        class="w-full my-4 lg:my-0 lg:w-1/{{ $singleProject->count() }}  shadow-sm shadow-blue-800 rounded-lg">
+                        {{-- <div class="bg-white shadow-lg rounded-lg overflow-hidden"> --}}
+                        <div class="flex items-center space-x-4 p-4">
+                            <!-- Profile Image -->
+                            <div>
+                                <h2 class="text-xl font-semibold text-gray-800">{{ $scholarship->name }}
+                                </h2>
+                                <p class="text-sm text-gray-500">
+                                <ul class="space-y-2 mt-4">
+                                    <li>
+                                        <span class="font-semibold text-gray-800">Offered by:</span>
+                                        {!! $scholarship->offred_by ?? '<span class="text-red-600 italic">Not specified</span>' !!}
+                                    </li>
+
+                                    <li class="text-gray-600"><span class="font-semibold text-gray-800">Status:</span>
+                                        @if ($scholarship->status == 'Open')
+                                            <strong class="text-green-500">Open</strong>
+                                        @else
+                                            <strong class="text-red-600">Closed</strong>
+                                        @endif
+                                    </li>
+                                    <li class="text-gray-600"><span class="font-semibold text-gray-800">Country:</span>
+                                        {{ $scholarship->country ?? 'Tanzania' }}</li>
+                                    </li>
+
+
+                                    <li class="text-gray-600"><span class="font-semibold text-gray-800">Description:</span>
+                                        {!! $scholarship->description ?? 'Description' !!}</li>
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                        {{-- <div class="p-4">
+                            <p class="text-lg font-semibold text-gray-800">Research Title: <span
+                                    class="text-blue-500 italic">{{ $beneficiary->beneficiary_research_title ?? 'Null' }}</span>
+                            </p>
+                            <ul class="space-y-2 mt-4">
+                                <li><span class="font-semibold text-gray-800">Duration:</span>
+                                    {{ $beneficiary->scholarship_duration ?? 'Undefined' }}</li>
+                                <li><span class="font-semibold text-gray-800">University:</span>
+                                    {{ $beneficiary->university ?? 'Null' }}</li>
+                                </li>
+                            </ul>
+                        </div> --}}
+                        <div class="p-4 bg-gray-100 text-center">
+                            <button
+                                class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">View
+                                Beneficiaries
+                            </button>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+        @endif
+
 
         {{-- Members --}}
         <section class="w-full px-4 pt-12">

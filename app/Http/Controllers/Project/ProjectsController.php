@@ -10,6 +10,7 @@ use App\Models\ProjectConferences;
 use App\Models\ProjectContent;
 use App\Models\ProjectPartner;
 use App\Models\ProjectScholarship;
+use App\Models\ProjectScholarshipBeneficiary;
 use App\Models\ProjectTeam;
 use App\Models\ProjectTestimonial;
 use App\Models\Research;
@@ -21,11 +22,12 @@ class ProjectsController extends Controller
      */
     public function index()
     {
+        $topLeaders = ProjectTeam::where('role', 'top')->get();
         $aboutVlir = ProjectContent::where('page_section', 'about-vlir')->first();
         $teamContents = ProjectContent::where('page_section', 'team_section')->first();
         $testimonialContents = ProjectContent::where('page_section', 'testimonial_section')->first();
         $projects = Project::with('gallery')->get();
-        $conferences = ProjectConferences::all();
+        $conferences = ProjectConferences::orderBy('created_at', 'desc')->get();
         $teamMembers = ProjectTeam::all();
         $testimonials = ProjectTestimonial::all();
         $projectPartners = ProjectPartner::all();
@@ -34,6 +36,7 @@ class ProjectsController extends Controller
             'projects',
             'conferences',
             'testimonials',
+            'topLeaders',
             'teamMembers',
             'aboutVlir',
             'teamContents',
@@ -43,7 +46,6 @@ class ProjectsController extends Controller
         ));
     }
 
-
     public function projects()
     {
         $projects = project::all();
@@ -52,15 +54,23 @@ class ProjectsController extends Controller
 
     public function project($projectName)
     {
+        $beneficiaryPhoto = '/storage/images/projects/images/scholarships/beneficiaries-profile-photos/';
+        $storagePath = '/storage/images/projects/images/project-thumbnail/';
         $singleProject = Project::with(['gallery', 'projectTeam'])->where('name', $projectName)->firstOrFail();
-        $relatedProjects = Project::where('category',  $singleProject->category)->get();
-        return view('project.project', compact('singleProject', 'relatedProjects'));
+        $relatedProjects = Project::where('category', $singleProject->category)->get();
+        return view('project.project', compact('singleProject', 'relatedProjects', 'storagePath', 'beneficiaryPhoto'));
     }
 
     public function researchers()
     {
         $team = ProjectTeam::all();
         return view('project.researchers', compact('team'));
+    }
+    public function projectTeamMemberDetails($name)
+    {
+        $storagePath = 'storage/images/projects/images/team-member-profile-pictures/';
+        $teamMember = ProjectTeam::where('name', $name)->firstOrFail();
+        return view('project.team-member-profile-description', compact('teamMember', 'storagePath'));
     }
     public function projectTeamMembers()
     {
@@ -75,12 +85,14 @@ class ProjectsController extends Controller
 
     public function scholarships()
     {
+        $storagePath = 'storage/images/projects/images/scholarships/beneficiaries-profile-photos/';
+        $scholarshipBeneficiaries = ProjectScholarshipBeneficiary::all();
         $projectScholarships = ProjectScholarship::all();
-        return view('project.scholarships', compact('projectScholarships'));
+        return view('project.scholarships', compact('projectScholarships', 'scholarshipBeneficiaries', 'storagePath'));
     }
     public function conferences()
     {
-        $conferences = ProjectConferences::all();
+        $conferences = ProjectConferences::orderBy('created_at', 'desc')->get();
         return view('project.conferences', compact('conferences'));
     }
     public function conferenceDetails($conferenceName)
@@ -108,51 +120,4 @@ class ProjectsController extends Controller
         return response()->file($pdfFilePath);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreProjectRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Project $project)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Project $project)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateProjectRequest $request, Project $project)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Project $project)
-    {
-        //
-    }
 }

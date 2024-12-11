@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.css">
-    <!-- Include SweetAlert CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <x-application-logo />
     @include('links')
@@ -130,7 +128,6 @@
                             <span class="nav-words">Manage Members</span>
                         </li>
                     </a>
-
                 @endif
 
                 <li class="nav-item">

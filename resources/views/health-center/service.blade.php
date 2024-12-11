@@ -6,11 +6,16 @@
     {{-- image section --}}
     <section>
         <div class="w-full relative overflow-hidden">
-            <img class="w-full object-cover object-center h-96" src="{{ asset('img/health-center/header.jpg') }}"
-                alt="">
+            @if ($service->thumbnail)
+                <img class="w-full object-cover object-center h-96"
+                    src="{{ asset('storage/images/health-center/services-images/' . $service->thumbnail) }}" alt="">
+            @else
+                <img class="w-full object-cover object-center h-96" src="{{ asset('img/health-center/header.jpg') }}"
+                    alt="">
+            @endif
             <div
                 class="favFont absolute inset-0 flex justify-center items-center font-semibold tracking-wide text-6xl container mx-auto mt-52">
-                <h1>Services</h1>
+                <h1>{{ $service->name }}</h1>
             </div>
         </div>
     </section>
@@ -52,19 +57,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <h5 class="favFont pb-4 font-semibold text-purple-600 text-3xl">Eye Care</h5>
+                    <h5 class="favFont pb-3 font-semibold text-purple-600 text-3xl">{{ $service->name }}</h5>
+                    @if ($service->department)
+                        <h6 class="text-purple-500 pb-3 font-semibold">{{ $service->department->name }}</h6>
+                    @endif
                     <p class="text-justify">
-                        Well we’re movin’ on up, to the east side. To a deluxe apartment in the sky. Movin’ on up, To the
-                        east side. We finally got a piece of the pie. Fish don’t fry in the kitchen, beans don’t burn on the
-                        grill. Took a whole lotta tryin’ just to get up that hill. Now we’re up in the big leagues, gettin’
-                        our turn at bat. As long as we live, it’s you and me baby, There ain’t nothin’ wrong with that. Well
-                        we’re movin’ on up, to the east side. To a deluxe apartment in the sky. Movin’ on up, to the east
-                        side. We finally got a piece of the pie. <br> <br>
-
-                        They’re creepy and they’re kooky, mysterious and spooky. They’re all together ooky, the Addams
-                        Family. Their house is a museum where people come to see ’em. They really are a scream, the Addams
-                        Family. Neat. Sweet. Petite. So get a witches shawl on, a broomstick you can crawl on. We’re gonna
-                        pay a call on the Addams Family.
+                        {{ $service->description }}
                     </p>
                 </div>
             </div>
@@ -72,75 +70,46 @@
     </section>
 
     {{-- //other departments --}}
-    <section>
-        <div class="container mx-auto mt-16 pb-32">
-            <div class="w-max flex flex-col pb-8 items-center">
-                <h2 class="favFont text-purple-700 font-semibold tracking-wide text-2xl  ">
-                    Other Service</h2>
-                <div class="border-2 border-purple-500 m-5 w-2/3"></div>
+    @if ($relatedServices->isNotEmpty())
+        <section>
+            <div class="container mx-auto mt-16 pb-32">
+                <div class="w-max flex flex-col pb-8 items-center">
+                    <h2 class="favFont text-purple-700 font-semibold tracking-wide text-2xl  ">
+                        Other Service</h2>
+                    <div class="border-2 border-purple-500 m-5 w-2/3"></div>
+                </div>
+                <div class="departmentSlider">
+                    {{-- <div class=" w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> --}}
+                    @foreach ($relatedServices as $relatedService)
+                        <div class="shadow-lg rounded-xl">
+                            <div class="flex justify-center items-center">
+                                @if ($relatedService->thumbnail)
+                                    <img class="w-[400px] text-center rounded-xl object-cover overflow-hidden object-center"
+                                        src="{{ asset('storage/images/health-center/services-images/' . $relatedService->thumbnail) }}"
+                                        alt="">
+                                @else
+                                    <img class="w-[400px] text-center rounded-xl object-cover overflow-hidden object-center"
+                                        src="{{ asset('img/health-center/Depositphotos_11882261_original-280x215.jpg') }}"
+                                        alt="">
+                                @endif
+
+                            </div>
+                            <div class="mx-3 favFont p-4">
+                                <a href="{{ route('health-center.service', $relatedService->name) }}">
+                                    <h4 class="text-purple-500 font-semibold">{{ $relatedService->name }}</h4>
+                                </a>
+                                @if ($service->department)
+                                    <h5 class="text-purple-500 font-semibold">{{ $service->department->name }}</h5>
+                                @endif
+
+                                <p class="text-justify">
+                                    {{ $relatedService->description }}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-            <div class="departmentSlider">
-                {{-- <div class=" w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> --}}
-                <div class="shadow-lg rounded-xl">
-                    <div class="flex justify-center items-center">
-                        <img class="w-[400px] text-center rounded-xl object-cover overflow-hidden object-center"
-                            src="{{ asset('img/health-center/Depositphotos_11882261_original-280x215.jpg') }}"
-                            alt="">
-                    </div>
-                    <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Pediatrician Clinic</h4>
-                        <p class="text-justify">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore ex velit corrupti ad facere
-                            assumenda nobis fuga, neque similique numquam veritatis dignissimos est alias dolores! Magnam
-                            totam excepturi consequatur! Adipisci.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-xl">
-                    <div class="flex justify-center items-center">
-
-                        <img class="w-[400px] sm:w-full rounded-xl object-cover object-center transition-transform transform hover:scale-105 hover:opacity-80 duration-300 ease-in-out"
-                            src="{{ asset('img/health-center/Depositphotos_11295039_original-280x215.jpg') }}"
-                            alt="">
-
-                    </div>
-                    <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Competitive Doctors</h4>
-                        <p class="text-justify">
-                            They're creepy and they're kooky, mysterious and spooky. They're all together ooky, the
-                            Addams...
-                        </p>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-xl">
-                    <img class="w-full rounded-xl object-cover overflow-hidden object-center"
-                        src="{{ asset('img/health-center/Depositphotos_80150830_original-280x215.jpg') }}" alt="">
-                    <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Eye Care</h4>
-                        <p class="text-justify">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore ex velit corrupti ad facere
-                            assumenda nobis fuga, neque similique numquam veritatis dignissimos est alias dolores! Magnam
-                            totam excepturi consequatur! Adipisci.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-xl">
-                    <img class="w-full rounded-xl object-cover overflow-hidden object-center"
-                        src="{{ asset('img/health-center/Depositphotos_5711983_original-280x215.jpg') }}" alt="">
-                    <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Nephrologist Care</h4>
-                        <p class="text-justify">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore ex velit corrupti ad facere
-                            assumenda nobis fuga, neque similique numquam veritatis dignissimos est alias dolores! Magnam
-                            totam excepturi consequatur! Adipisci.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection

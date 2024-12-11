@@ -26,9 +26,9 @@
                     class="origin-top-right absolute right-0 mt-2 w-56 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                     <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
 
-                        <a href="{{ route('admin.project.team.create', $project->name) }}"
+                        {{-- <a href="{{ route('admin.project.team.create', $project->name) }}"
                             class="block mx-4 mb-2 mt-2 px-4 py-2 text-sm text-purple-700 font-semibold border hover:border-purple-600 rounded-md hover:bg-gray-100">Add
-                            Member</a>
+                            Member</a> --}}
                         <a href="{{ route('admin.project.create-gallery', $project->name) }}"
                             class="block mx-4 mb-2 px-4 py-2 text-sm text-gray-900 font-semibold border hover:border-gray-600 rounded-md hover:bg-gray-100">Create/Add
                             Gallery</a>
