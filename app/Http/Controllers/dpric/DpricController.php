@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dpric;
 
 use App\Http\Controllers\Controller;
 use App\Models\DpricContent;
+use App\Models\DpricImage;
 use App\Models\DpricNews;
 use App\Models\DpricUnits;
 use App\Models\DpricAwards;
@@ -34,7 +35,12 @@ class DpricController extends Controller
         $awards = DpricAwards::query()->orderBy('created_at', 'desc')->limit(3)->get();
         $projects = Project::query()->orderBy('created_at', 'desc')->limit(5)->get();
 
-        return view('dpric.index', ['welcomMessage' => $welcomeMessage, 'about' => $about, 'mission' => $mission, 'vision' => $vision, 'unitMessade' => $unitMessage, 'researchMessage' => $researchMessage, 'innovationMessage' => $innovationMessage, 'awardsMessage' => $awardsMessage, 'allNews' => $allNews, 'units' => $units, 'awards' => $awards, 'projects' => $projects]);
+        //images
+        $bannerImg = DpricImage::where('page_name', 'Home')->where('page_section', 'Banner')->first();
+        $welcomeImgs = DpricImage::where('page_name', 'Home')->where('page_section', 'Welcome section')->get();
+        $otherImg = DpricImage::where('page_name', 'Home')->where('page_section', 'Other')->first();
+
+        return view('dpric.index', ['welcomMessage' => $welcomeMessage, 'about' => $about, 'mission' => $mission, 'vision' => $vision, 'unitMessade' => $unitMessage, 'researchMessage' => $researchMessage, 'innovationMessage' => $innovationMessage, 'awardsMessage' => $awardsMessage, 'allNews' => $allNews, 'units' => $units, 'awards' => $awards, 'projects' => $projects, 'bannerImg' => $bannerImg->image_path, 'welcomeImgs' => $welcomeImgs, 'otherImg' => $otherImg->image_path]);
     }
 
     public function welcomeMessage()
@@ -58,7 +64,9 @@ class DpricController extends Controller
 
     public function directorateProgrammes()
     {
-        return view('dpric.directorate-programmes');
+        $bannerImg = DpricImage::where('page_name', 'Postgraduate Programmes')->where('page_section', 'Banner')->first();
+
+        return view('dpric.directorate-programmes', ['bannerImg' => $bannerImg->image_path]);
     }
 
     public function applicationProcedures()
@@ -89,7 +97,11 @@ class DpricController extends Controller
 
         $projects = Project::query()->orderBy('created_at', 'desc')->get();
 
-        return view('dpric.research-projects', ['welcomeMessage' => $welcomeMessage, 'projects' => $projects]);
+        //images
+        $bannerImg = DpricImage::where('page_name', 'Research Projects')->where('page_section', 'Banner')->first();
+        $welcomeImgs = DpricImage::where('page_name', 'Research Projects')->where('page_section', 'Welcome section')->get();
+
+        return view('dpric.research-projects', ['welcomeMessage' => $welcomeMessage, 'projects' => $projects, 'bannerImg' => $bannerImg->image_path, 'welcomeImgs' => $welcomeImgs]);
     }
 
     public function researchPolicies()
@@ -118,7 +130,9 @@ class DpricController extends Controller
         $welcomeMessage = DpricContent::where('page', 'Research Opportunities')->where('section', 'Seize Research Opportunities')->first();
         $opportunitiesContent = DpricContent::where('page', 'Research Opportunities')->where('section', 'Research Opportunities')->first();
 
-        return view('dpric.research-opportunities', ['welcomeMessage' => $welcomeMessage, 'opportunitiesContent' => $opportunitiesContent]);
+        $welcomeImg = DpricImage::where('page_name', 'Research Opportunities')->where('page_section', 'Welcome section')->first();
+
+        return view('dpric.research-opportunities', ['welcomeMessage' => $welcomeMessage, 'opportunitiesContent' => $opportunitiesContent, 'welcomeImg' => $welcomeImg->image_path]);
     }
 
     public function researchAwards()
@@ -159,14 +173,19 @@ class DpricController extends Controller
         $projects = InnovationProject::limit(3)->orderBy('created_at','desc')->get();
         $clubs = Club::limit(4)->get();
 
-        return view('dpric.innovations-hub', ['welcomeMessage' => $welcomeMessage, 'innovationProjects' => $innovationProjects, 'innovationClubs' => $innovationClubs, 'innovationPrinciple' => $innovationPrinciple, 'projects' => $projects, 'clubs' => $clubs]);
+        //images
+        $bannerImg = DpricImage::where('page_name', 'Innovations hub')->where('page_section', 'Banner')->first();
+        $otherImg = DpricImage::where('page_name', 'Innovations hub')->where('page_section', 'Other')->first();
+
+        return view('dpric.innovations-hub', ['welcomeMessage' => $welcomeMessage, 'innovationProjects' => $innovationProjects, 'innovationClubs' => $innovationClubs, 'innovationPrinciple' => $innovationPrinciple, 'projects' => $projects, 'clubs' => $clubs, 'bannerImg' => $bannerImg->image_path, 'otherImg' => $otherImg->image_path]);
     }
 
     public function innovationsProjects()
     {
         $projects = InnovationProject::orderBy('created_at','desc')->get();
+        $filepath = '/storage/images/dpric/clubs/projects/';
 
-        return view('dpric.innovations-projects', ['projects' => $projects]);
+        return view('dpric.innovations-projects', ['projects' => $projects, 'filepath' => $filepath]);
     }
 
     public function innovationsProject($project_title)

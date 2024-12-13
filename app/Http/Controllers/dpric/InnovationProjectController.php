@@ -94,7 +94,7 @@ class InnovationProjectController extends Controller
                 'description' => 'required',
                 'category' => 'required',
                 'duration' => 'required',
-                'primary_image' => 'nullable, max:2048',
+                'primary_image' => ['nullable', 'max:2048'],
             ]
         );
 

@@ -5,7 +5,7 @@
     <div class="w-full md:w-11/12 mx-auto my-4 p-4 flex flex-col md:flex-row">
         <div class="w-full md:w-1/2">
             <div class="w-full md:w-11/12 mx-auto">
-                <img src="{{ asset('img/students3.jpg') }}" alt="">
+                <img src="{{ asset('/storage/images/dpric/general/' . $welcomeImg) }}" alt="">
             </div>
         </div>
         <div class="w-full md:w-1/2">
