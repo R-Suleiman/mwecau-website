@@ -58,6 +58,7 @@
                                         <option value="1">Librarian</option>
                                         <option value="2">Research and
                                             Consultancy</option>
+                                            <option value="3">Health Center</option>
                                     </select>
 
                                     @error('role')

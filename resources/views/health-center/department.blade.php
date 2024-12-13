@@ -10,7 +10,7 @@
                 alt="">
             <div
                 class="absolute inset-0 flex justify-center items-center font-semibold tracking-wider text-6xl container mx-auto mt-52">
-                <h1>Department</h1>
+                <h1>Department<h1>
             </div>
         </div>
     </section>
@@ -72,246 +72,118 @@
                     </div>
                 </div>
                 <div class="">
-                    <h5 class="favFont pb-4 font-semibold text-purple-600 text-3xl">Cardiology</h5>
+                    <h5 class="favFont pb-4 font-semibold text-purple-600 text-3xl">{{ $department->name }}</h5>
                     <p class="text-justify">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim similique expedita nostrum sint
-                        maiores repellat voluptatem id unde pariatur repudiandae, vitae, consequatur saepe iste numquam
-                        aperiam harum, cum ipsam. Dolore at recusandae earum praesentium autem obcaecati unde dicta, quos
-                        dolorum nihil rerum pariatur impedit vitae similique. Sunt quae molestiae explicabo at ad suscipit
-                        pariatur nisi corrupti facilis deserunt! Eius molestias animi nam quis, tempora eaque hic similique
-                        in repellendus sunt quidem deserunt ad assumenda molestiae eum eveniet repudiandae, adipisci earum!
-                    </p>
+                        {{ $department->description }}</ </p>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- Services --}}
-    <section class="w-full px-4 py-10 lg:py-20 mb-4 flex flex-col items-center">
-        <div class="flex flex-col items-center w-max mb-4">
-            <h2 class="uppercase text-2xl text-center text-blue-800">Cardiology Services</h2>
-            <div class="mt-3 border border-purple-500 w-3/5"></div>
-        </div>
-
-        <div class="my-4 p-4 w-full flex flex-col items-center lg:flex-row lg:space-x-8">
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
-                <a href="{{ route('health.service') }}">
-                    <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
-                    </div>
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
-                    </div>
-                </a>
+    @if ($department->services->isNotEmpty())
+        <section class="w-full px-4 py-10 lg:py-20 mb-4 flex flex-col items-center">
+            <div class="flex flex-col items-center w-max mb-4">
+                <h2 class="uppercase text-2xl text-center text-blue-800">{{ $department->name }} Services</h2>
+                <div class="mt-3 border border-purple-500 w-3/5"></div>
             </div>
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
-                <a href="{{ route('health.service') }}">
-                    <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
-                    </div>
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
-                    </div>
-                </a>
-            </div>
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
-                <a href="{{ route('health.service') }}">
-                    <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
-                    </div>
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
-                    </div>
-                </a>
-            </div>
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
-                <a href="{{ route('health.service') }}">
-                    <div class="w-full mb-2 overflow-hidden">
-                        <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
-                    </div>
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">Service Name</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis praesentium nostrum</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
 
-       {{-- Doctors --}}
-       <section class="w-full px-4 pt-10 lg:py-10 my-4 flex flex-col items-center">
-        <div class="flex flex-col items-center w-max mb-4">
-            <h2 class="uppercase text-2xl text-center text-blue-800">Cardiology Staff</h2>
-            <div class="mt-3 border border-purple-500 w-3/5"></div>
-        </div>
+            <div class="my-4 p-4 w-full flex flex-col items-center justify-center lg:flex-row lg:space-x-8">
+                @foreach ($department->services as $service)
+                    <div class="w-full my-4 lg:my-0 lg:w-1/4 shadow-md shadow-gray-300 rounded-md">
+                        <a href="{{ route('health-center.service', $service->name) }}">
+                            <div class="w-full mb-2 overflow-hidden">
+                                <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
+                                    class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 rounded-lg">
+                            </div>
+                            <div class="w-full mt-2 p-2 text-justify">
+                                <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
+                                    {{ $service->name }}</h4>
+                                <p>{{ $service->description }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
 
-        <div class="my-4 p-4 w-full flex flex-col items-center lg:flex-row lg:space-x-8">
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
+    {{-- Doctors --}}
+    @if ($department->doctors->isNotEmpty())
+        <section class="w-full px-4 pt-10 lg:py-10 my-4 flex flex-col items-center">
+            <div class="flex flex-col items-center w-max mb-4">
+                <h2 class="uppercase text-2xl text-center text-blue-800">{{ $department->name }} Staff</h2>
+                <div class="mt-3 border border-purple-500 w-3/5"></div>
+            </div>
 
-                    <div class="relative w-full mb-2 overflow-hidden group">
-                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                        <div
-                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+            <div class="my-4 p-4 w-full flex flex-col items-center justify-center lg:flex-row lg:space-x-8">
+                @foreach ($department->doctors as $doctor)
+                    <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
+                        <div class="relative w-full mb-2 overflow-hidden group">
+                            @if ($doctor->profile_picture)
+                                <img src="{{ asset('storage/images/health-center/doctors-profile-pictures/' . $doctor->profile_picture) }}"
+                                    alt="{{ $doctor->name }} Profile picture"
+                                    class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                            @else
+                                <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
+                                    class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                            @endif
+                            <div
+                                class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                                <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                                <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
+                                <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                                <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                                <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="w-full mt-2 p-2 text-justify">
+                            <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> {{ $doctor->name }}
+                            </h4>
+                            <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i>
+                                {{ $department->name }}</span>
+                            <p class="mt-2"> <strong>Carde: </strong>{{ $doctor->carde }}</p> <br>
+                            <p> <strong>Education Level: </strong>{{ $doctor->education_level }}</p>
                         </div>
                     </div>
-
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
-                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
-                            praesentium nostrum</p>
-                    </div>
+                @endforeach
             </div>
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
-
-                    <div class="relative w-full mb-2 overflow-hidden group">
-                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                        <div
-                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
-                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
-                            praesentium nostrum</p>
-                    </div>
-            </div>
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
-
-                    <div class="relative w-full mb-2 overflow-hidden group">
-                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                        <div
-                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
-                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
-                            praesentium nostrum</p>
-                    </div>
-            </div>
-            <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
-
-                    <div class="relative w-full mb-2 overflow-hidden group">
-                        <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                        <div
-                            class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                            <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-                            <a href="x.com" class="text-white mx-2"><i class="fab fa-x"></i></a>
-                            <a href="instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
-                            <a href="linkedin.com" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                            <a href="mail" class="text-white mx-2"><i class="fa fa-envelope"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="w-full mt-2 p-2 text-justify">
-                        <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold"> Doctor's Name</h4>
-                        <span class="my-4 text-gray-400 text-md"><i class="fa fa-stethoscope mr-1"></i> Surgeon</span>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quis
-                            praesentium nostrum</p>
-                    </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     {{-- //other departments --}}
-    <section>
-        <div class="container mx-auto mt-16 pb-32">
-            <div class="w-max flex flex-col pb-8 items-center">
-                <h2 class="favFont text-purple-700 font-semibold tracking-wide text-2xl  ">
-                    Other Department</h2>
-                <div class="border-2 border-purple-500 m-5 w-2/3"></div>
+    @if ($allDepartments)
+        <section>
+            <div class="container mx-auto mt-16 pb-32">
+                <div class="w-max flex flex-col pb-8 items-center">
+                    <h2 class="favFont text-purple-700 font-semibold tracking-wide text-2xl  ">
+                        Other Department</h2>
+                    <div class="border-2 border-purple-500 m-5 w-2/3"></div>
+                </div>
+                <div class="departmentSlider">
+                    {{-- <div class=" w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> --}}
+                    @foreach ($allDepartments as $department)
+                        <div class="shadow-lg rounded-xl">
+                            <div class="flex justify-center items-center">
+                                <img class="w-[400px] text-center rounded-xl object-cover overflow-hidden object-center"
+                                    src="{{ asset('img/health-center/Depositphotos_11882261_original-280x215.jpg') }}"
+                                    alt="">
+                            </div>
+                            <div class="mx-3 favFont p-4">
+                                <h4 class="text-purple-500 font-semibold">
+                                    <a
+                                        href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a>
+                                </h4>
+                                <p class="text-justify">
+                                    {{ $department->description }}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-            <div class="departmentSlider">
-                {{-- <div class=" w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> --}}
-                <div class="shadow-lg rounded-xl">
-                    <div class="flex justify-center items-center">
-                        <img class="w-[400px] text-center rounded-xl object-cover overflow-hidden object-center"
-                            src="{{ asset('img/health-center/Depositphotos_11882261_original-280x215.jpg') }}"
-                            alt="">
-                    </div>
-                    <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Urology</h4>
-                        <p class="text-justify">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore ex velit corrupti ad facere
-                            assumenda nobis fuga, neque similique numquam veritatis dignissimos est alias dolores! Magnam
-                            totam excepturi consequatur! Adipisci.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-xl">
-                    <div class="flex justify-center items-center">
-
-                    <img class="w-[400px] sm:w-full hover:translate-y-2 ease-in rounded-xl object-cover overflow-hidden object-center"
-                        src="{{ asset('img/health-center/Depositphotos_11295039_original-280x215.jpg') }}" alt="">
-                    </div>
-                        <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Urology</h4>
-                        <p class="text-justify">
-                            They're creepy and they're kooky, mysterious and spooky. They're all together ooky, the
-                            Addams...
-                        </p>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-xl">
-                    <img class="w-full rounded-xl object-cover overflow-hidden object-center"
-                        src="{{ asset('img/health-center/Depositphotos_80150830_original-280x215.jpg') }}" alt="">
-                    <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Urology</h4>
-                        <p class="text-justify">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore ex velit corrupti ad facere
-                            assumenda nobis fuga, neque similique numquam veritatis dignissimos est alias dolores! Magnam
-                            totam excepturi consequatur! Adipisci.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="shadow-lg rounded-xl">
-                    <img class="w-full rounded-xl object-cover overflow-hidden object-center"
-                        src="{{ asset('img/health-center/Depositphotos_5711983_original-280x215.jpg') }}" alt="">
-                    <div class="mx-3 favFont p-4">
-                        <h4 class="text-purple-500 font-semibold">Urology</h4>
-                        <p class="text-justify">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore ex velit corrupti ad facere
-                            assumenda nobis fuga, neque similique numquam veritatis dignissimos est alias dolores! Magnam
-                            totam excepturi consequatur! Adipisci.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection

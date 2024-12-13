@@ -9,35 +9,38 @@
         </div>
 
 
-        <div class="my-4 p-4 w-full flex flex-col items-center lg:flex-row lg:space-x-8">
+        <div class="my-4 p-4 w-full flex flex-col flex-wrap lg:flex-row">
             @if ($team->isNotEmpty())
                 @foreach ($team as $teamMember)
-                    <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 shadow-md shadow-purple-800">
-                        <a href="">
-                            <div class="relative w-full mb-2 overflow-hidden group">
-                                @if ($teamMember->profile_picture)
-                                <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
-                                alt="service image"
-                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                                @else
-                                <img src="{{ asset('img/projects/Male_Avatar.jpg') }}" alt="service image"
-                                    class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
-                                @endif
-
-                                <div
-                                    class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
-                                    <a href="https://scholar.google.com/" class="text-white mx-2"><i
-                                            class="fa-brands fa-google-scholar"></i> Google Scholar</a>
+                    <div class="w-full lg:w-1/4 h-max my-4">
+                        <div class="w-11/12 mx-auto border border-gray-300 shadow-md shadow-purple-800">
+                            <a href="">
+                                <div class="relative w-full mb-2 overflow-hidden group">
+                                    <div class="w-full h-72 overflow-hidden">
+                                        @if ($teamMember->profile_picture)
+                                            <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
+                                                alt="service image"
+                                                class="w-full h-72 object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                        @else
+                                            <img src="{{ asset('img/projects/Male_Avatar.jpg') }}" alt="service image"
+                                                class="w-full h-72 object-cover transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                        @endif
+                                    </div>
+                                    <div
+                                        class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                                        <a href="https://scholar.google.com/" class="text-white mx-2"><i
+                                                class="fa-brands fa-google-scholar"></i> Google Scholar</a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="w-full mt-2 p-2 text-justify">
-                                <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
-                                    {{ $teamMember->initials }} {{ $teamMember->name }}</h4>
-                                <span class="my-4 text-gray-400 text-sm"><i
-                                        class="fa fa-calendar"></i>{{ $teamMember->institute }}</span>
-                            </div>
-                        </a>
+                                <div class="w-full mt-2 p-2 text-justify">
+                                    <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
+                                        {{ $teamMember->initials }} {{ $teamMember->name }}</h4>
+                                    <span class="my-4 text-gray-700 text-sm"><i
+                                            class="fa fa-university"></i>{{ $teamMember->institute }}</span>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             @else
@@ -54,5 +57,4 @@
             @endif
         </div>
     </section>
-
 @endsection

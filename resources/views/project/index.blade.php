@@ -38,18 +38,24 @@
                                 class="border border-gray-300 rounded-3xl p-8 shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out hover:shadow-2xl hover:shadow-purple-300 bg-white">
                                 <div class="flex justify-center items-center mb-6">
                                     <div
-                                        class="h-[80px] w-[80px] rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            class="h-[40px] w-[40px] text-purple-600">
-                                            <rect x="2" y="3" width="20" height="18" rx="2" ry="2"
-                                                fill="currentColor" />
-                                            <path d="M4 5h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 10h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 15h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 20h16v2H4z" fill="#D1D5DB" />
-                                            <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
-                                            <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
-                                        </svg>
+                                        class="h-[180px] w-full rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
+                                        @if ($project->thumbnail)
+                                            <img src="{{ asset('storage/images/projects/images/project-thumbnail/' . $project->thumbnail) }}"
+                                                alt="Profile Picture"
+                                                class="h-full w-full object-cover rounded-xl border-2 border-white">
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                class="h-[40px] w-[40px] text-purple-600">
+                                                <rect x="2" y="3" width="20" height="18" rx="2"
+                                                    ry="2" fill="currentColor" />
+                                                <path d="M4 5h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 10h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 15h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 20h16v2H4z" fill="#D1D5DB" />
+                                                <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
+                                                <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
+                                            </svg>
+                                        @endif
                                     </div>
                                 </div>
                                 <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
@@ -76,18 +82,24 @@
                                 class="border border-gray-300 rounded-3xl p-8 shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out hover:shadow-2xl hover:shadow-purple-300 bg-white">
                                 <div class="flex justify-center items-center mb-6">
                                     <div
-                                        class="h-[80px] w-[80px] rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            class="h-[40px] w-[40px] text-purple-600">
-                                            <rect x="2" y="3" width="20" height="18" rx="2" ry="2"
-                                                fill="currentColor" />
-                                            <path d="M4 5h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 10h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 15h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 20h16v2H4z" fill="#D1D5DB" />
-                                            <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
-                                            <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
-                                        </svg>
+                                        class="h-[180px] w-full rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
+                                        @if ($project->thumbnail)
+                                            <img src="{{ asset('storage/images/projects/images/project-thumbnail/' . $project->thumbnail) }}"
+                                                alt="Profile Picture"
+                                                class="h-full w-full object-cover rounded-xl border-2 border-white">
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                class="h-[40px] w-[40px] text-purple-600">
+                                                <rect x="2" y="3" width="20" height="18" rx="2"
+                                                    ry="2" fill="currentColor" />
+                                                <path d="M4 5h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 10h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 15h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 20h16v2H4z" fill="#D1D5DB" />
+                                                <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
+                                                <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
+                                            </svg>
+                                        @endif
                                     </div>
                                 </div>
                                 <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
@@ -114,18 +126,24 @@
                                 class="border border-gray-300 rounded-3xl p-8 shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out hover:shadow-2xl hover:shadow-purple-300 bg-white">
                                 <div class="flex justify-center items-center mb-6">
                                     <div
-                                        class="h-[80px] w-[80px] rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            class="h-[40px] w-[40px] text-purple-600">
-                                            <rect x="2" y="3" width="20" height="18" rx="2" ry="2"
-                                                fill="currentColor" />
-                                            <path d="M4 5h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 10h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 15h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 20h16v2H4z" fill="#D1D5DB" />
-                                            <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
-                                            <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
-                                        </svg>
+                                        class="h-[180px] w-full rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
+                                        @if ($project->thumbnail)
+                                            <img src="{{ asset('storage/images/projects/images/project-thumbnail/' . $project->thumbnail) }}"
+                                                alt="Profile Picture"
+                                                class="h-full w-full object-cover rounded-xl border-2 border-white">
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                class="h-[40px] w-[40px] text-purple-600">
+                                                <rect x="2" y="3" width="20" height="18" rx="2"
+                                                    ry="2" fill="currentColor" />
+                                                <path d="M4 5h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 10h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 15h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 20h16v2H4z" fill="#D1D5DB" />
+                                                <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
+                                                <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
+                                            </svg>
+                                        @endif
                                     </div>
                                 </div>
                                 <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
@@ -145,25 +163,32 @@
                         @endforeach
                     </div>
                 @else
-                    <div class="lg:px-32 px-16 gap-10 w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                    <div
+                        class="lg:px-32 px-16 gap-10 w-full grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                         @foreach ($projects->take(4) as $project)
                             <!-- Loop through projects -->
                             <div
                                 class="border border-gray-300 rounded-3xl p-8 shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out hover:shadow-xl hover:shadow-purple-300 bg-white">
                                 <div class="flex justify-center items-center mb-6">
                                     <div
-                                        class="h-[80px] w-[80px] rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            class="h-[40px] w-[40px] text-purple-600">
-                                            <rect x="2" y="3" width="20" height="18" rx="2"
-                                                ry="2" fill="currentColor" />
-                                            <path d="M4 5h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 10h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 15h16v2H4z" fill="#D1D5DB" />
-                                            <path d="M4 20h16v2H4z" fill="#D1D5DB" />
-                                            <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
-                                            <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
-                                        </svg>
+                                        class="h-[180px] w-full rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
+                                        @if ($project->thumbnail)
+                                            <img src="{{ asset('storage/images/projects/images/project-thumbnail/' . $project->thumbnail) }}"
+                                                alt="Profile Picture"
+                                                class="h-full w-full object-cover rounded-xl border-2 border-white">
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                class="h-[40px] w-[40px] text-purple-600">
+                                                <rect x="2" y="3" width="20" height="18" rx="2"
+                                                    ry="2" fill="currentColor" />
+                                                <path d="M4 5h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 10h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 15h16v2H4z" fill="#D1D5DB" />
+                                                <path d="M4 20h16v2H4z" fill="#D1D5DB" />
+                                                <circle cx="5" cy="11" r="1.5" fill="#FF5722" />
+                                                <circle cx="5" cy="16" r="1.5" fill="#FF5722" />
+                                            </svg>
+                                        @endif
                                     </div>
                                 </div>
                                 <h3 class="text-center text-xl font-bold text-blue-700 mb-4">{!! Str::limit($project->name, 15) !!}
@@ -193,9 +218,9 @@
             <h1 class="text-center text-3xl font-extrabold headerFavFont uppercase">Photo Gallery</h1>
 
             <!-- Filter Buttons -->
-            <div class="flex justify-end items-center py-4 md:py-8 flex-wrap">
+            <div class="flex justify-center items-center py-4 md:py-8 flex-wrap">
                 <button type="button" onclick="filterImages('all')"
-                    class="text-gray-200 hover:text-gray-100 hover:bg-gradient-to-r from-purple-600 to-purple-400 border shadow-xl hover:border-transparent bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3">
+                    class="text-gray-200 text-start hover:text-gray-100 hover:bg-gradient-to-r from-purple-600 to-purple-400 border shadow-xl hover:border-transparent bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 me-3 mb-3">
                     <i class="fa-solid fa-list-check"></i> All categories
                 </button>
                 @foreach ($projects as $project)
@@ -209,7 +234,7 @@
             <!-- Image Gallery -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 @foreach ($projects as $project)
-                    @foreach ($project->gallery as $image)
+                    @foreach ($project->gallery->take(8) as $image)
                         <div class="project-image project{{ $project->id }}">
                             <img class="h-auto max-w-full rounded-xl transition-transform duration-500 scale-100 hover:scale-105"
                                 src="{{ asset('storage/images/projects/images/project-gallery/' . $image->image) }}"
@@ -225,14 +250,14 @@
     <section class="bg-gray-100 pb-16">
         <div class="container mx-auto mt-16 w-full text-center">
             <h1 class="font-semibold tracking-wide pt-20 text-2xl">{!! $aboutVlir->section_header !!}</h1>
-            <div class="p-7 mx-auto lg:w-1/2">
+            <div class="p-7 mx-auto">
                 <p class="text-justify favFont leading-relaxed text-lg">
                     {!! $aboutVlir->section_description !!}
                 </p>
             </div>
             <div class="mt-4">
                 <a href="#"
-                    class="text-md font-semibold uppercase px-12 py-3 rounded-xl hover:bg-blue-400 text-indigo-400 hover:text-white border border-gray-400">Read
+                    class="text-md font-semibold uppercase px-12 py-3 rounded-xl bg-blue-400 text-white border border-gray-400">Read
                     More</a>
             </div>
         </div>
@@ -246,10 +271,11 @@
                     class="md:text-start lg:text-center headerFavFont font-semibold text-4xl pb-10 uppercase text-blue-500">
                     Conferences
                 </h1>
-                @if ($conferences->count() == 1)
+                @if ($conferences)
                     <div class="flex items-center justify-center">
-                        <div class="grid grid:cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
-                            @foreach ($conferences as $conference)
+                        <div
+                            class="grid grid:cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-{{ $conferences->count() }} gap-4">
+                            @foreach ($conferences->take(3) as $conference)
                                 <div
                                     class="border border-emerald-500 rounded-3xl p-6 shadow-lg bg-gray-50 hover:shadow-xl transition-shadow duration-300">
                                     <h1
@@ -258,7 +284,7 @@
                                     </h1>
                                     <div class="text-gray-700 text-base leading-relaxed">
                                         <p class="text-justify">
-                                            {!! Str::ucfirst($conference->description) !!}
+                                            {!! Str::ucfirst(Str::limit($conference->description, 170)) !!}
                                         </p>
                                     </div>
                                     <div class="flex justify-center mt-8">
@@ -270,75 +296,6 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
-                @elseif ($conferences->count() == 2)
-                    <div class="grid grid:cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-                        @foreach ($conferences as $conference)
-                            <div
-                                class="border border-purple-300 rounded-3xl p-6 shadow-lg bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                                <h1
-                                    class="text-center font-bold text-2xl text-purple-700 tracking-tight leading-tight mb-4">
-                                    {!! Str::ucfirst($conference->name) !!}
-                                </h1>
-                                <div class="text-gray-700 text-base leading-relaxed">
-                                    <p class="text-justify">
-                                        {!! Str::ucfirst($conference->description) !!}
-                                    </p>
-                                </div>
-                                <div class="flex justify-center mt-8">
-                                    <a href="{{ route('about-conference', $conference->name) }}"
-                                        class="px-5 py-3 bg-green-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
-                                        Read More
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @elseif ($conferences->count() == 3)
-                    <div class="grid grid:cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        @foreach ($conferences as $conference)
-                            <div
-                                class="border border-emerald-500 rounded-3xl p-6 shadow-lg bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                                <h1
-                                    class="text-center font-bold text-2xl text-purple-700 tracking-tight leading-tight mb-4">
-                                    {!! Str::ucfirst($conference->name) !!}
-                                </h1>
-                                <div class="text-gray-700 text-base leading-relaxed">
-                                    <p class="text-justify">
-                                        {!! Str::ucfirst($conference->description) !!}
-                                    </p>
-                                </div>
-                                <div class="flex justify-center mt-8">
-                                    <a href="{{ route('about-conference', $conference->name) }}"
-                                        class="px-5 py-3 bg-green-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
-                                        Read More
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <div class="grid grid:cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        @foreach ($conferences as $conference)
-                            <div
-                                class="border border-emerald-500 rounded-3xl p-6 shadow-lg bg-gray-50 hover:shadow-xl transition-shadow duration-300">
-                                <h1
-                                    class="text-center font-bold text-2xl text-purple-700 tracking-tight leading-tight mb-4">
-                                    {!! Str::ucfirst($conference->name) !!}
-                                </h1>
-                                <div class="text-gray-700 text-base leading-relaxed">
-                                    <p class="text-justify">
-                                        {!! Str::ucfirst($conference->description) !!}
-                                    </p>
-                                </div>
-                                <div class="flex justify-center mt-8">
-                                    <a href="{{ route('about-conference', $conference->name) }}"
-                                        class="px-5 py-3 bg-green-500 text-white uppercase font-medium rounded-full border border-emerald-500 hover:bg-transparent hover:text-emerald-500 hover:border-emerald-500 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300">
-                                        Read More
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
                     </div>
                 @endif
 
@@ -352,75 +309,132 @@
         </section>
     @endif
 
+    {{-- top management team --}}
+    <section class="mt-28">
+        @if ($topLeaders->isNotEmpty())
+            <div class="container mx-auto">
+                <h1 class="text-4xl pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
+                    Meet Our Top Leader
+                </h1>
+
+                <div class="container mx-auto  mt-11">
+                    <div class="grid grid-cols-3 gap-9">
+                        @foreach ($topLeaders->take(3) as $leader)
+                            <div class="bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
+                                <div class="lg:flex lg:space-x-5 w-full pt-7">
+                                    <!-- Profile Image -->
+                                    <div class="flex justify-center items-center px-5 pb-4">
+                                        <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $leader->profile_picture) }}"
+                                            alt="Profile Picture"
+                                            class="rounded-full border-2 border-white h-[100px] w-[100px] object-cover">
+                                    </div>
+
+                                    <!-- Personal Details -->
+                                    <div class="flex-1">
+                                        <div class="text-center lg:text-left text-white">
+                                            <h1 class="uppercase font-semibold text-white">
+                                                {{ $leader->initials }} {{ $leader->name }}
+                                            </h1>
+                                            <span class="text-gray-400">{{ $leader->institute }}</span>
+                                            <p class="pt-3 text-white">{!! Str::limit($leader->bio, 70) !!}</p>
+                                        </div>
+
+                                        <!-- Social Media Icons -->
+                                        {{-- <div class="flex justify-center lg:justify-start space-x-5 text-white mt-6 pb-6">
+                                            <a href="#"
+                                                class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
+                                                <i class="fa-brands fa-x-twitter text-2xl"></i>
+                                            </a>
+                                            <a href="#"
+                                                class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
+                                                <i class="fa-brands fa-google-scholar text-3xl"></i>
+                                            </a>
+                                            <a href="#"
+                                                class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
+                                                <i class="fa-brands fa-linkedin text-3xl"></i>
+                                            </a>
+                                        </div> --}}
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="flex justify-center items-center pb-6">
+                                    <button
+                                        class="px-4 py-2 text-xs rounded-lg text-white font-semibold bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 shadow-md hover:shadow-lg transition-all duration-300">
+                                        <a href="{{ route('tema-member-profile-description', $leader->name) }}">
+                                            View Profile
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+    </section>
+
     {{-- project team --}}
     <section class="mt-28">
         <div class="container mx-auto">
-            <h1 class="text-4xl text-blue-500 font-semibold uppercase text-center headerFavFont">{!! $teamContents->section_header !!}
+            <h1 class="text-4xl pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
+                {!! $teamContents->section_header !!}
             </h1>
-            <div class="w-9/12 mx-auto mt-10">
-                <div class="pb-7 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div
-                        class="p-6 border border-green-600 rounded-xl shadow-lg bg-white flex flex-col h-full hover:shadow-2xl transition-shadow duration-300 ease-in-out">
-                        <h1 class="uppercase text-3xl italic font-semibold FavFont pb-6 text-gray-700 tracking-wide">
-                            {!! $teamContents->section_sub_header !!}
-                        </h1>
-                        <p class="text-justify text-gray-700 leading-relaxed flex-grow">
-                            {!! $teamContents->section_description !!}
-                        </p>
-                    </div>
+            <div
+                class="p-6 border-r-2 border-l-2 border-blue-900 rounded-xl shadow-lg bg-white flex flex-col h-full hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                <h1 class="uppercase text-xl italic font-semibold FavFont pb-6 text-gray-700 tracking-wide">
+                    {!! $teamContents->section_sub_header !!}
+                </h1>
+                <p class="text-justify text-gray-700 leading-relaxed flex-grow">
+                    {!! $teamContents->section_description !!}
+                </p>
+            </div>
 
-                    @if ($teamMembers->isNotEmpty())
-                        <div
-                            class="grid grid-cols-1 bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 gradient rounded-xl">
-                            <div class="p-4 border border-b-purple-600 xl divide-y-2 divide-green-500">
+            <div class="container mx-auto  mt-11">
+                <div class="grid grid-cols-3 justify-center gap-9">
+                    @if ($teamMembers->count() > 0)
+                        @foreach ($teamMembers->take(3) as $teamMember)
+                            <div class="bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
+                                <div class="lg:flex lg:space-x-5 w-full pt-7">
+                                    <!-- Profile Image -->
+                                    <div class="flex justify-center items-center px-5 pb-4">
+                                        <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
+                                            alt="Profile Picture"
+                                            class="rounded-full border-2 border-white h-[100px] w-[100px] object-cover">
+                                    </div>
 
-                                @foreach ($teamMembers->take(2) as $teamMember)
-                                    <div class="lg:flex space-x-5 w-full pt-7">
-                                        <div class="px-5 order-2 sm:order-1 flex justify-center items-center sm:pb-4 pb-4">
-                                            <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
-                                                alt=""
-                                                class="rounded-full border-2  h-[150px] w-[150px] object-cover">
-                                        </div>
-                                        <div class="order-1 sm:order-2 flex-1">
-                                            <div class="sm:text-center">
-
-                                                <h1 class="uppercase font-semibold text-white">{{ $teamMember->initials }}
-                                                    {{ $teamMember->name }}
-                                                </h1>
-                                                <span class="text-gray-400">{{ $teamMember->institute }}</span>
-                                                <p class="pt-3 text-white">
-                                                    {!! Str::limit($teamMember->bio, 70) !!} </p>
-                                            </div>
-
-                                            {{-- Social Media Icons --}}
-                                            <div class="flex justify-center items-center space-x-5 text-white mt-6 pb-6">
-                                                <a href="#"
-                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
-                                                    <i class="fa-brands fa-x-twitter text-2xl"></i>
-                                                </a>
-                                                <a href="#"
-                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
-                                                    <i class="fa-brands fa-google-scholar text-3xl"></i>
-                                                </a>
-
-                                                <a href="#"
-                                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
-                                                    <i class="fa-brands fa-linkedin text-3xl"></i>
-                                                </a>
-                                            </div>
-
+                                    <!-- Personal Details -->
+                                    <div class="flex-1">
+                                        <div class="text-center lg:text-left text-white">
+                                            <h1 class="uppercase font-semibold text-white">
+                                                {{ $teamMember->initials }} {{ $teamMember->name }}
+                                            </h1>
+                                            <span class="text-gray-400">{{ $teamMember->institute }}</span>
+                                            <p class="pt-3 text-white">{!! Str::limit($teamMember->bio, 70) !!}</p>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
+                                </div>
 
+                                <!-- Button -->
+                                <div class="flex justify-center items-center pb-6">
+                                    <button
+                                        class="px-4 py-2 text-xs rounded-lg text-white font-semibold bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 shadow-md hover:shadow-lg transition-all duration-300">
+                                        <a href="{{ route('tema-member-profile-description', $teamMember->name) }}">
+                                            View Profile
+                                        </a>
+                                    </button>
+                                </div>
+
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
-                <div class="flex justify-center lg:justify-end items-center">
-                    <a href="{{ route('project-team-members') }}"
-                        class="py-4 px-4 text-md transition ease-in-out duration-200 focus:ring-4 focus:ring-purple-500 bg-gradient bg-gradient-to-r from-purple-950 to-purple-900 font-semibold text-purple-200 rounded-xl favFont">
-                        Complete project team</a>
+                <div class="w-9/12 mx-auto mt-10">
+                    <div class="flex justify-center lg:justify-center items-center">
+                        <a href="{{ route('project-team-members') }}"
+                            class="py-2 px-4 transition ease-in-out duration-200 focus:ring-4 focus:ring-purple-500 bg-gradient bg-gradient-to-r from-purple-950 to-purple-900 font-semibold text-purple-200 rounded-xl favFont">
+                            Complete project team</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -431,7 +445,9 @@
         <div class="max-w-6xl mx-auto w-full">
             <div class="max-w-2xl mx-auto w-full text-center">
                 <h1 class="text-blue-500 text-4xl font-extrabold headerFavFont">{!! $testimonialContents->section_header !!}</h1>
-                <p class="text-gray-800 text-lg leading-relaxed mt-6 favFont">
+            </div>
+            <div class="w-full">
+                <p class="text-gray-600 text-lg leading-relaxed mt-6">
                     {!! $testimonialContents->section_description !!}
                 </p>
             </div>
@@ -476,7 +492,7 @@
 
                                         <div class="mt-6">
                                             <p class="text-md text-center leading-relaxed favFont italic">
-                                                {!! Str::limit($testimonial->testimonial_description, 200) !!}
+                                                {!! Str::limit($testimonial->testimonial_description, 600) !!}
                                             </p>
                                         </div>
                                     </div>
@@ -588,28 +604,26 @@
                 <span class="italic text-gray-500">we work with Best Valuable Partners accross the global</span>
             </div>
             <div class="mt-20">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="flex flex-col itens justify-center">
+                <div class="w-full flex space-x-16 justify-center items-center">
+                    {{-- <div class="flex flex-col itens justify-center">
                         <h6
                             class="font-semibold mb-5 text-4xl italic bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-600">
                             We Work with the best partners</h1>
                             <p class="text-wrap">We are confident that we can cant find process that will help you meet
                                 your goal</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-7 Partnercenter">
-                        @if ($projectPartners->isNotEmpty())
-                            @foreach ($projectPartners as $partner)
-                                <a href="{{ $partner->link }}" target="__blank"
-                                    class="flex justify-center items-center mb-4"> <!-- Center alignment -->
-                                    <div class="flex items-center">
-                                        <img src="{{ asset('/storage/images/projects/images/partners-logo/' . $partner->partner_logo) }}"
-                                            class="w-32 h-auto mr-2" alt="{{ $partner->name }}"> <i
-                                            class="fas fa-check-circle text-green-500"></i>
-                                    </div>
-                                </a>
-                            @endforeach
-                        @endif
-                    </div>
+                    </div> --}}
+                    @if ($projectPartners->isNotEmpty())
+                        @foreach ($projectPartners as $partner)
+                            <a href="{{ $partner->link }}" target="__blank"
+                                class="flex justify-center items-center mb-4"> <!-- Center alignment -->
+                                <div class="flex items-center">
+                                    <img src="{{ asset('/storage/images/projects/images/partners-logo/' . $partner->partner_logo) }}"
+                                        class="w-32 h-auto mr-2" alt="{{ $partner->name }}"> <i
+                                        class="fas fa-check-circle text-green-500"></i>
+                                </div>
+                            </a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

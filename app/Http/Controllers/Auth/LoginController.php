@@ -73,6 +73,8 @@ class LoginController extends Controller
             } elseif ($logedInUser->role == 2) {
                 Alert::success('welcome', "{$logedInUser->name}")->autoClose('7000');
                 return redirect()->route('admin.project.index');
+            } elseif ($logedInUser->role == 3) {
+                return redirect()->route('health-center.dashboard')->with('success', "Welcome {$logedInUser->name}");
             } else {
                 Auth::logout();
                 Alert::error('Attention', 'Access Denied')->autoClose('7000');

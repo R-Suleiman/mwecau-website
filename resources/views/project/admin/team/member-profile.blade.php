@@ -98,8 +98,9 @@
                                     @endforeach
                                 </div>
                             @else
-                                <p class="text-red-600 font-semibold">This team member is currently not assigned to any
-                                    project. Consider assigning them to a project to utilize their skills.</p>
+                                <p class="text-red-600 font-semibold italic">This team member is not currently assigned to any
+                                    project. Assign them to a project to make the most of their skills and contributions.
+                                </p>
                             @endif
 
                             <div x-data="{ open: false }">

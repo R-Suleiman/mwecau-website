@@ -16,23 +16,21 @@ class AdminProjectTeamController extends Controller
         $team = ProjectTeam::all();
         return view('project.admin.team.team', compact('team'));
     }
-    public function create($projectName)
+    public function create()
     {
-        $project = Project::where('name', $projectName)->first();
-        return view('project.admin.team.create', compact('project'));
+        return view('project.admin.team.create');
     }
     public function store(Request $request)
     {
         $request->validate([
-            'project_id' => ['integer'],
             'initials' => ['required', 'max:5'],
             'name' => ['required', 'string', 'max:100'],
             'institute' => ['nullable', 'string'],
             'bio' => ['nullable', 'string'],
             'position' => ['nullable', 'string', 'max:50'],
+            'role' => ['nullable', 'string', 'max:50'],
             'profile_picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ], [
-            'project_id.integer' => 'The project ID must be a valid number.',
             'initials.required' => 'Please provide the initials.',
             'initials.max' => 'Initials cannot exceed 5 characters.',
             'name.required' => 'Please enter the name of the team member.',
@@ -67,12 +65,12 @@ class AdminProjectTeamController extends Controller
 
         $teamMember = new ProjectTeam();
 
-        $teamMember->project_id = $request->project_id;
         $teamMember->initials = $request->initials;
         $teamMember->name = $request->name;
         $teamMember->institute = $request->institute;
         $teamMember->bio = $request->bio;
         $teamMember->position = $request->position;
+        $teamMember->role = $request->role;
         $teamMember->profile_picture = $profilePictureName;
 
         if ($teamMember->save()) {
@@ -97,6 +95,7 @@ class AdminProjectTeamController extends Controller
             'institute' => ['nullable', 'string'],
             'bio' => ['nullable', 'string'],
             'position' => ['nullable', 'string', 'max:50'],
+            'role' => ['nullable', 'string', 'max:50'],
             'profile_picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
         ], [
             'project_id.integer' => 'The project ID must be a valid number.',
@@ -143,6 +142,7 @@ class AdminProjectTeamController extends Controller
         $teamMember->institute = $request->institute;
         $teamMember->bio = $request->bio;
         $teamMember->position = $request->position;
+        $teamMember->role = $request->role;
         $teamMember->profile_picture = $profilePictureName;
 
         if ($teamMember->update()) {
