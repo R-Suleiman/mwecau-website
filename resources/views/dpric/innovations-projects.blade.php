@@ -19,8 +19,9 @@
                             <div
                                 class="relative w-11/12 mx-auto h-80 bg-blue-800 border border-blue-500 shadow-md shadow-blue-800 hover:shadow-lg hover:shadow-blue-900">
                                 <div class="relative rounded-br-full h-full bg-cover bg-center bg-no-repeat"
-                                style="background-image: url('{{ $project->primary_image ? '/storage/images/dpric/clubs/projects/' . $project->primary_image : asset('img/health-center/header.jpg') }}')">
-                                <div class="px-6 py-4 flex flex-col overlay3">
+                                style="background-image: url({{asset('/storage/images/dpric/clubs/projects/' . $project->primary_image)}})"
+                                style="background-image: url('{{ $project->primary_image ? asset('/storage/images/dpric/clubs/projects/' . $project->primary_image) : asset('img/health-center/header.jpg') }}')">
+                                    <div class="px-6 py-4 flex flex-col  bg-white overlay3">
                                         <span
                                             class="bg-blue-800 py-1 px-2 rounded-lg text-white w-fit">{{ $project->category }}</span>
                                         <div class="mt-4 flex flex-col text-white">

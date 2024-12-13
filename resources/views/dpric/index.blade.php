@@ -17,7 +17,7 @@
 @section('content')
     {{-- Hero --}}
     <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('img/uni.jpg') }}')">
+        style="background-image: url('{{ asset('/storage/images/dpric/general/' . $bannerImg) }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="text-white text-center">
@@ -33,9 +33,9 @@
     <section class="w-full mt-8 lg:my-8 flex flex-col lg:flex-row md:p-4">
         <div class="w-full lg:w-7/12 p-4 lg:p-8 order-2 lg:order-1">
             <div class="w-full lg:w-10/12  lg:relative mx-auto">
-                <img src="{{ asset('img/students3.jpg') }}" class="w-full rounded-3xl" alt="">
+                <img src="{{ asset('/storage/images/dpric/general/' . $welcomeImgs[0]->image_path) }}" class="w-full rounded-3xl" alt="">
                 <div class="w-7/12 hidden lg:block absolute -bottom-8 -right-8 rounded-full">
-                    <img src="{{ asset('img/uni.jpg') }}" class="w-full rounded-full" alt="">
+                    <img src="{{ asset('/storage/images/dpric/general/' . $welcomeImgs[1]->image_path) }}" class="w-full rounded-full" alt="">
                 </div>
             </div>
         </div>
@@ -225,7 +225,7 @@
 
     {{-- Innovation Hub --}}
     <section class="relative w-full h-96 bg-center bg-cover bg-fixed"
-        style="background-image: url('{{ asset('img/uni.jpg') }}')">
+        style="background-image: url('{{ asset('/storage/images/dpric/general/' . $otherImg) }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="w-11/12 mx-auto text-white text-center">

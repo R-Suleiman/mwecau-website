@@ -6,7 +6,7 @@
             <div class="open-nav text-white text-2xl w-6 cursor-pointer block lg:hidden">
                 <i class="fa fa-align-justify"></i>
             </div>
-            {{-- doesn't hide when large screen is resised: Also RESIZE THE WINDOW AND LOOK AT THE NAV GEHAVIOUR --}}
+            {{-- doesn't hide when large screen is resised: Also RESIZE THE WINDOW AND LOOK AT THE NAV BEHAVIOUR --}}
             <div class="close-nav text-white text-2xl w-6 cursor-pointer hidden">
                 <i class="fa fa-times"></i>
             </div>

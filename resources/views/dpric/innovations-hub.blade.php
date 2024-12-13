@@ -3,7 +3,7 @@
 @section('content')
     {{-- Hero --}}
     <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('img/health-center/header.jpg') }}')">
+        style="background-image: url('{{ asset('/storage/images/dpric/general/' . $bannerImg) }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="text-white text-center">
@@ -114,7 +114,7 @@
     {{-- key features --}}
     <section class="w-full flex flex-col md:flex-row my-8">
         <div class="w-full md:w-1/2">
-            <img src="{{ asset('img/campus life/library2.jpg') }}" alt="" class="w-full">
+            <img src="{{ asset('/storage/images/dpric/general/' . $otherImg) }}" alt="" class="w-full">
         </div>
         <div class="w-full md:w-1/2 py-4 px-4 md:px-12 text-blue-100 bg-blue-800">
             <p class="my-4 text-xl text-justify">{{ $innovationPrinciple->description }}</p>

@@ -100,7 +100,7 @@
                     class="md:object-cover md:h-96 w-full">
             </div>
         </div>
- 
+
         {{-- What we do --}}
         <div class="w-full mx-auto flex flex-col md:flex-row p-4 bg-blue-900 my-8">
             <div class="w-full md:w-1/2 p-2 md:p-4 my-0 md:my-4 flex flex-col content-center items-center">
@@ -143,8 +143,8 @@
                                 <div
                                     class="relative w-11/12 mx-auto h-80 bg-blue-800 border border-blue-500 shadow-md shadow-blue-800 hover:shadow-lg hover:shadow-blue-900">
                                     <div class="relative rounded-br-full h-full bg-cover bg-center bg-no-repeat"
-                                    style="background-image: url('{{ $project->primary_image ? '/storage/images/dpric/clubs/projects/' . $project->primary_image : asset('img/health-center/header.jpg') }}')">
-                                        <div class="px-6 py-4 flex flex-col overlay3">
+                                    style="background-image: url({{ $project->primary_image ? '/storage/images/dpric/clubs/projects/' . $project->primary_image : '../../img/mwecau.png' }})">
+                                        <div class="px-6 py-4 flex flex-col  bg-white overlay3">
                                             <span
                                                 class="bg-blue-800 py-1 px-2 rounded-lg text-white w-fit">{{ $project->category }}</span>
                                             <div class="mt-4 flex flex-col text-white">

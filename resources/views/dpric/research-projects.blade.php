@@ -3,7 +3,7 @@
 @section('content')
     {{-- Hero --}}
     <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('img/university-image-4.jpg') }}')">
+        style="background-image: url('{{ asset('/storage/images/dpric/general/' . $bannerImg) }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="text-white text-center">
@@ -23,10 +23,10 @@
         </div>
         <div class="w-full lg:w-1/2 p-4">
             <div class="flex flex-wrap gap-2 mx-auto">
-                <img src="{{ asset('img/students2.jpg') }}" alt="" class="w-2/6">
-                <img src="{{ asset('img/students3.jpg') }}" alt="" class="w-3/6">
-                <img src="{{ asset('img/students1.jpg') }}" alt="" class="w-3/6">
-                <img src="{{ asset('img/uni.jpg') }}" alt="" class="w-2/6">
+                <img src="{{ asset('/storage/images/dpric/general/' . $welcomeImgs[0]->image_path) }}" alt="" class="w-2/6 object-cover">
+                <img src="{{ asset('/storage/images/dpric/general/' . $welcomeImgs[1]->image_path) }}" alt="" class="w-3/6">
+                <img src="{{ asset('/storage/images/dpric/general/' . $welcomeImgs[2]->image_path) }}" alt="" class="w-3/6">
+                <img src="{{ asset('/storage/images/dpric/general/' . $welcomeImgs[3]->image_path) }}" alt="" class="w-2/6 object-cover">
             </div>
         </div>
         {{-- <div class="w-full lg:w-1/2 p-4 relative hidden lg:block">
