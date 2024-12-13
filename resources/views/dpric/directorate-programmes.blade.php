@@ -18,7 +18,7 @@
 @section('content')
     {{-- Hero --}}
     <section class="relative w-full h-96 bg-center bg-cover"
-        style="background-image: url('{{ asset('img/mwecau4.jpg') }}')">
+        style="background-image: url('{{ asset('/storage/images/dpric/general/' . $bannerImg) }}')">
         <div class="overlay">
         </div>
     </section>

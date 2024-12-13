@@ -14,8 +14,9 @@ class ImagesController extends Controller
      */
     public function index()
     {
-        $images = DpricImage::query()->get();
-        return view('dpric.admin.images.index', ['images' => $images]);
+        $images = DpricImage::all()->groupBy('page_name');
+
+        return view('dpric.admin.images.index', ['AllImages' => $images]);
     }
 
     /**

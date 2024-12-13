@@ -8,9 +8,9 @@
                 <div class="mt-3 border border-purple-500 w-3/5"></div>
             </div>
 
-            <div class="w-full flex flex-wrap items-center">
+            <div class="w-full flex flex-wrap flex-col md:flex-row items-center">
                 @foreach ($projects as $project)
-                    <div class="w-1/3  p-4 my-2 h-96">
+                    <div class="w-full md:w-1/2 lg:w-1/3  p-4 my-2 h-96">
                         @if ($project->thumbnail)
                             <div class="relative w-full p-4 text-white font-semibold mx-auto rounded-3xl  bg-cover bg-center  overflow-hidden h-full"
                                 style="background-image: url('{{ asset('storage/images/projects/images/project-thumbnail/' . $project->thumbnail) }}')">
