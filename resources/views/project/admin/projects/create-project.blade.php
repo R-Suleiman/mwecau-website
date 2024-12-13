@@ -73,7 +73,8 @@
 
                         <!-- PDF file -->
                         <div class="mb-4">
-                            <label for="pdf" class="block text-sm mb-4 font-medium text-gray-700">Project PDFn<strong>(if Applicable)</strong> </label>
+                            <label for="pdf" class="block text-sm mb-4 font-medium text-gray-700">Project
+                                PDFn<strong>(if Applicable)</strong> </label>
                             <input type="file" id="pdf" name="pdf"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
                             <x-input-error :messages="$errors->get('pdf')" class="mt-2" />
@@ -82,6 +83,7 @@
 
                     </div>
 
+                    {{-- project description --}}
                     <div class="w-full">
                         <div class="mb-4">
                             <label for="description" class="block text-sm mb-4 font-medium text-gray-700">Project
@@ -89,6 +91,22 @@
                             <textarea name="description" id="editor" cols="30" rows="10"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ old('description') }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                        </div>
+                        {{-- project objectives --}}
+                        <div class="mb-4">
+                            <label for="project_objectives" class="block text-sm mb-4 font-medium text-gray-700">Project
+                                Objectives </label>
+                            <textarea name="project_objectives" id="editor1" cols="30" rows="10"
+                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ old('project_objectives') }}</textarea>
+                            <x-input-error :messages="$errors->get('project_objectives')" class="mt-2" />
+                        </div>
+                        {{-- project outputs --}}
+                        <div class="mb-4">
+                            <label for="project_outputs" class="block text-sm mb-4 font-medium text-gray-700">Project
+                                Outputs </label>
+                            <textarea name="project_outputs" id="editor2" cols="30" rows="10"
+                                class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out">{{ old('project_outputs') }}</textarea>
+                            <x-input-error :messages="$errors->get('project_outputs')" class="mt-2" />
                         </div>
                         <!-- thumbnail file -->
                         <div class="mb-4">

@@ -7,15 +7,26 @@
     {{-- Welcome --}}
     <section class="w-10/12 mx-auto p-4 my-4">
         <h2 class="text-2xl text-default-head text-center my-2">Welcome to Mwenge Catholic University Health Center</h2>
-        <p class="text-lg text-default-text my-2 text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel
-            eum voluptas dolore placeat veniam. Mollitia quibusdam vel facilis minus neque debitis eius quae inventore atque
-            cupiditate quisquam, ad molestiae omnis.
-            Ipsa incidunt fugiat quo adipisci consequuntur consequatur maiores? Dolore nulla corporis praesentium nobis
-            quidem cum laborum illum? Doloremque, officia. Quod, voluptatem! Cum totam eaque architecto voluptate quia
-            provident ipsum soluta.
-            Deleniti possimus et molestiae perferendis veritatis alias velit, illum, corrupti voluptatibus molestias dolor
-            odio sunt repudiandae praesentium. Dolores nisi rem optio, rerum quia, natus doloremque et, quisquam ipsum sit
-            aliquam.</p>
+        <p class="text-lg text-default-text my-2 text-justify">
+            Mwenge Catholic University Health Center is owned and run by Mwenge Catholic University. The center was
+            inaguated in 2018. The facility offers Medical Service to students, staff and community of uru south Ward in
+            Moshi Rural District Council. The center is located on the Campus within easy reach of student and community.
+
+            The center is registered under the Ministry of Health with registration No: 034212 and it offers services in
+            accordance with Ministry of Health requirements. The Faciltiy operates on 24 hours basis with average minimum
+            daily outpatient attendance of 90-120 patients
+            Reproductive and child health, Care and Treatment clinic (CTC) services are conducted form Monday through
+            Friday.
+
+            The Facility has s functioning Laboratory, Main Operating Theater, Pharmacy and delivery room with 2 delivery
+            beds. The Center has also surgical wards with capacity of 24 beds, Medical wards with capacity of 24 beds,
+            Dental Unity with one Dental Chair, Minor surgical operation including cut wounds and stiching. Inpatient
+            services are available for 24 hours and referral system is in place.
+
+            Currently the Mwenge Catholic Health Center is constructing CT Scan and X-Ray rooms. The X-Ray rooms is expected
+            to be completed in this final year 2024/25. Also the center has ultrasound machine for obsterics and
+            gynecology,c abdominal and pelvic organs muscle and tendos or their heart or blood vessels and echocardiogram.
+        </p>
     </section>
 
     {{-- Mission/Vision --}}
@@ -24,27 +35,29 @@
             <div class="w-11/12 mx-auto p-4 flex flex-col items-center shadow-md shadow-blue-800 rounded-lg">
                 <i class="fa fa-bullseye text-3xl text-default-head my-2"></i>
                 <h3 class="text-2xl text-default-head my-2">Our Mission</h3>
-                <p class="text-lg text-default-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sunt nam non ut dolor. Commodi porro voluptatibus eum error, delectus, odio nihil fuga quos optio, sit
-                    deserunt. Repellat consequuntur delectus voluptas.</p>
+                <p class="text-lg text-default-text text-justify">To provide holistic scientific sound medical, physical,
+                    mental and spriritual care appropriate to scholara and neighbouring community</p>
             </div>
         </div>
         <div class="w-1/3 my-4">
             <div class="w-11/12 mx-auto p-4 flex flex-col items-center shadow-md shadow-blue-800 rounded-lg">
                 <i class="fa fa-eye text-3xl text-default-head my-2"></i>
                 <h3 class="text-2xl text-default-head my-2">Our Vision</h3>
-                <p class="text-lg text-default-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sunt nam non ut dolor. Commodi porro voluptatibus eum error, delectus, odio nihil fuga quos optio, sit
-                    deserunt. Repellat consequuntur delectus voluptas.</p>
+                <p class="text-lg text-default-text text-justify">Oour vision is to build a healthly community served with
+                    compassion through n competent health care providers in a participatory approach enabling learning and
+                    carrier development in a positive manner.</p>
             </div>
         </div>
         <div class="w-1/3 my-4">
             <div class="w-11/12 mx-auto p-4 flex flex-col items-center shadow-md shadow-blue-800 rounded-lg">
                 <i class="fa fa-pen text-3xl text-default-head my-2"></i>
                 <h3 class="text-2xl text-default-head my-2">Core Values</h3>
-                <p class="text-lg text-default-text text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sunt nam non ut dolor. Commodi porro voluptatibus eum error, delectus, odio nihil fuga quos optio, sit
-                    deserunt. Repellat consequuntur delectus voluptas.</p>
+                <p class="text-lg text-default-text text-justify">1. We are commited stewards entrusted to serve all people
+                    with integrity, compassion and love <br>
+                    2. We are commited to provide services that are affordable and accessible to all. <br>
+
+                    3. We protect dignity of human life irrespective of tribe, culture and belief.
+                </p>
             </div>
         </div>
     </section>
@@ -218,17 +231,17 @@
                                 {{-- @endif --}}
                             </span>
 
-                @if ($doctor->phones && $doctor->phones->isNotEmpty())
-                    <p class="mt-2">Contacts
-                        @foreach ($doctor->phones->take(1) as $phone)
-                            <span class="text-gray-400 text-sm"> {{ $phone->phone_number }}</span>
-                        @endforeach
-                    </p>
-                @endif
+                            @if ($doctor->phones && $doctor->phones->isNotEmpty())
+                                <p class="mt-2">Contacts
+                                    @foreach ($doctor->phones->take(1) as $phone)
+                                        <span class="text-gray-400 text-sm"> {{ $phone->phone_number }}</span>
+                                    @endforeach
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            </div>
-        @endforeach
-        </div>
         @endif
     </section>
 

@@ -18,7 +18,7 @@ class ClubLeaderController extends Controller
     {
         $club = Club::where("name", $club_name)->first();
         $leaders = $club->leaders;
-        return view("dpric.admin.clubs.leaders.index", ['club_name' => $club_name, 'leaders' => $leaders]);
+        return view("dpric.admin.Clubs.leaders.index", ['club_name' => $club_name, 'leaders' => $leaders]);
     }
 
     /**
@@ -76,7 +76,7 @@ class ClubLeaderController extends Controller
      */
     public function edit($club_name, ClubLeader $leader)
     {
-        return view('dpric.admin.clubs.leaders.edit', ['club_name' => $club_name, 'leader' => $leader]);
+        return view('dpric.admin.Clubs.leaders.edit', ['club_name' => $club_name, 'leader' => $leader]);
     }
 
     /**

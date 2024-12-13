@@ -30,6 +30,21 @@
             <div class="w-full md:w-8/12 p-4">
                 <h2 class="mb-2 text-4xl text-blue-800 FavFont">{{ $singleProject->name }}</h2>
                 <p class="text-justify text-gray-500 text-lg my-4 favFont">{!! $singleProject->description !!}</p>
+
+                <div class="w-full flex gap-10 mt-11">
+                    @if ($singleProject->project_objectives)
+                        <div class="w-1/2">
+                            <h1 class="favFont text-center text-blue-800 text-3xl">Project Objectives</h1>
+                            <p>{!! $singleProject->project_objectives ?? '<span class="text-red-600  italic">No records found.</span>' !!}</p>
+                        </div>
+                    @endif
+                    @if ($singleProject->project_outputs)
+                        <div class="w-1/2">
+                            <h1 class="favFont text-center text-blue-800 text-3xl">Project Outputs</h1>
+                            <p>{!! $singleProject->project_outputs ?? '<span class="text-red-600  italic">No records found.</span>' !!}</p>
+                        </div>
+                    @endif
+                </div>
             </div>
 
             <div class="w-full md:w-4/12 p-4">
@@ -57,48 +72,49 @@
 
         <!-- Scholarship Cards Grid -->
         @if ($singleProject->scholarships && $singleProject->scholarships->isNotEmpty())
-        <section>
-            <div class="w-full md:w-8/12 p-4">
-                <h2 class="mb-2 text-4xl text-blue-800 FavFont">Project scholarships</h2>
-            </div>
-            <div class="my-4 p-4 w-full flex flex-col items-center justify-center lg:flex-row lg:space-x-8">
-                <!-- Scholarship Card -->
-                @foreach ($singleProject->scholarships as $scholarship)
-                    <div
-                        class="w-full my-4 lg:my-0 lg:w-1/{{ $singleProject->count() }}  shadow-sm shadow-blue-800 rounded-lg">
-                        {{-- <div class="bg-white shadow-lg rounded-lg overflow-hidden"> --}}
-                        <div class="flex items-center space-x-4 p-4">
-                            <!-- Profile Image -->
-                            <div>
-                                <h2 class="text-xl font-semibold text-gray-800">{{ $scholarship->name }}
-                                </h2>
-                                <p class="text-sm text-gray-500">
-                                <ul class="space-y-2 mt-4">
-                                    <li>
-                                        <span class="font-semibold text-gray-800">Offered by:</span>
-                                        {!! $scholarship->offred_by ?? '<span class="text-red-600 italic">Not specified</span>' !!}
-                                    </li>
+            <section>
+                <div class="w-full md:w-8/12 p-4">
+                    <h2 class="mb-2 text-4xl text-blue-800 FavFont">Project scholarships</h2>
+                </div>
+                <div class="my-4 p-4 w-full flex flex-col items-center justify-center lg:flex-row lg:space-x-8">
+                    <!-- Scholarship Card -->
+                    @foreach ($singleProject->scholarships as $scholarship)
+                        <div
+                            class="w-full my-4 lg:my-0 lg:w-1/{{ $singleProject->count() }}  shadow-sm shadow-blue-800 rounded-lg">
+                            {{-- <div class="bg-white shadow-lg rounded-lg overflow-hidden"> --}}
+                            <div class="flex items-center space-x-4 p-4">
+                                <!-- Profile Image -->
+                                <div>
+                                    <h2 class="text-xl font-semibold text-gray-800">{{ $scholarship->name }}
+                                    </h2>
+                                    <p class="text-sm text-gray-500">
+                                    <ul class="space-y-2 mt-4">
+                                        <li>
+                                            <span class="font-semibold text-gray-800">Offered by:</span>
+                                            {!! $scholarship->offred_by ?? '<span class="text-red-600 italic">Not specified</span>' !!}
+                                        </li>
 
-                                    <li class="text-gray-600"><span class="font-semibold text-gray-800">Status:</span>
-                                        @if ($scholarship->status == 'Open')
-                                            <strong class="text-green-500">Open</strong>
-                                        @else
-                                            <strong class="text-red-600">Closed</strong>
-                                        @endif
-                                    </li>
-                                    <li class="text-gray-600"><span class="font-semibold text-gray-800">Country:</span>
-                                        {{ $scholarship->country ?? 'Tanzania' }}</li>
-                                    </li>
+                                        <li class="text-gray-600"><span class="font-semibold text-gray-800">Status:</span>
+                                            @if ($scholarship->status == 'Open')
+                                                <strong class="text-green-500">Open</strong>
+                                            @else
+                                                <strong class="text-red-600">Closed</strong>
+                                            @endif
+                                        </li>
+                                        <li class="text-gray-600"><span class="font-semibold text-gray-800">Country:</span>
+                                            {{ $scholarship->country ?? 'Tanzania' }}</li>
+                                        </li>
 
 
-                                    <li class="text-gray-600"><span class="font-semibold text-gray-800">Description:</span>
-                                        {!! $scholarship->description ?? 'Description' !!}</li>
-                                    </li>
-                                </ul>
-                                </p>
+                                        <li class="text-gray-600"><span
+                                                class="font-semibold text-gray-800">Description:</span>
+                                            {!! $scholarship->description ?? 'Description' !!}</li>
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        {{-- <div class="p-4">
+                            {{-- <div class="p-4">
                             <p class="text-lg font-semibold text-gray-800">Research Title: <span
                                     class="text-blue-500 italic">{{ $beneficiary->beneficiary_research_title ?? 'Null' }}</span>
                             </p>
@@ -110,16 +126,16 @@
                                 </li>
                             </ul>
                         </div> --}}
-                        <div class="p-4 bg-gray-100 text-center">
-                            <button
-                                class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">View
-                                Beneficiaries
-                            </button>
+                            <div class="p-4 bg-gray-100 text-center">
+                                <button
+                                    class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">View
+                                    Beneficiaries
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-        </section>
+                    @endforeach
+                </div>
+            </section>
         @endif
 
 
@@ -253,7 +269,7 @@
             <div class="w-full md:w-4/12 p-4">
                 <h5 class="text-xl mb-4 text-blue-800">Related Projects</h5>
                 <ul>
-                    @foreach ($relatedProjects as $project)
+                    @foreach ($otherProjects as $project)
                         <li
                             class="bg-white w-full p-2 my-3 text-lg border-2 border-purple-500 transition-transform  scale-100 hover:scale-105 duration-500">
                             <a href="{{ route('single-project', $project->name) }}"

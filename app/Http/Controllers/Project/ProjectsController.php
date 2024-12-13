@@ -57,8 +57,8 @@ class ProjectsController extends Controller
         $beneficiaryPhoto = '/storage/images/projects/images/scholarships/beneficiaries-profile-photos/';
         $storagePath = '/storage/images/projects/images/project-thumbnail/';
         $singleProject = Project::with(['gallery', 'projectTeam'])->where('name', $projectName)->firstOrFail();
-        $relatedProjects = Project::where('category', $singleProject->category)->get();
-        return view('project.project', compact('singleProject', 'relatedProjects', 'storagePath', 'beneficiaryPhoto'));
+        $otherProjects = Project::all();
+        return view('project.project', compact('singleProject', 'otherProjects', 'storagePath', 'beneficiaryPhoto'));
     }
 
     public function researchers()

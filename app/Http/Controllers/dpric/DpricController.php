@@ -154,7 +154,7 @@ class DpricController extends Controller
         $innovationProjects = DpricContent::where('page', 'MWECAU Innovations Hub')->where('section', 'Bringing Ideas to Life with Innovation Projects')->first();
         $innovationClubs = DpricContent::where('page', 'MWECAU Innovations Hub')->where('section', 'Our Innovation Clubs and Organizations')->first();
         $innovationPrinciple = DpricContent::where('page', 'MWECAU Innovations Hub')->where('section', 'Principle')->first();
-
+        
         // data
         $projects = InnovationProject::limit(3)->orderBy('created_at','desc')->get();
         $clubs = Club::limit(4)->get();
@@ -166,7 +166,9 @@ class DpricController extends Controller
     {
         $projects = InnovationProject::orderBy('created_at','desc')->get();
 
-        return view('dpric.innovations-projects', ['projects' => $projects]);
+        $filepath = '/storage/images/dpric/clubs/projects/';
+        
+        return view('dpric.innovations-projects', ['projects' => $projects, 'filepath' => $filepath]);
     }
 
     public function innovationsProject($project_title)

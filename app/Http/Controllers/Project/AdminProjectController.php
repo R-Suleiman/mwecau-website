@@ -40,6 +40,8 @@ class AdminProjectController extends Controller
             'name' => ['required'],
             'category' => ['nullable'],
             'description' => ['required'],
+            'project_objectives' => ['nullable'],
+            'project_outputs' => ['nullable'],
             'date' => ['nullable', 'date'],
             'duration' => ['nullable'],
             'location' => ['nullable', 'string'],
@@ -98,6 +100,8 @@ class AdminProjectController extends Controller
         $newProject->name = $request->name;
         $newProject->category = $request->category;
         $newProject->description = $request->description;
+        $newProject->project_objectives = $request->project_objectives;
+        $newProject->project_outputs = $request->project_outputs;
         $newProject->date = $request->date;
         $newProject->duration = $request->duration;
         $newProject->location = $request->location;
@@ -130,6 +134,8 @@ class AdminProjectController extends Controller
             'name' => ['required'],
             'category' => ['nullable'],
             'description' => ['required'],
+            'project_objectives' => ['nullable'],
+            'project_outputs' => ['nullable'],
             'date' => ['nullable', 'date'],
             'duration' => ['nullable'],
             'location' => ['nullable', 'string'],
@@ -200,6 +206,8 @@ class AdminProjectController extends Controller
         $project->name = $request->name;
         $project->category = $request->category;
         $project->description = $request->description;
+        $project->project_objectives = $request->project_objectives;
+        $project->project_outputs = $request->project_outputs;
         $project->date = $request->date;
         $project->duration = $request->duration;
         $project->location = $request->location;

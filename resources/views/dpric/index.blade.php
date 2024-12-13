@@ -35,7 +35,7 @@
             <div class="w-full lg:w-10/12  lg:relative mx-auto">
                 <img src="{{ asset('img/students3.jpg') }}" class="w-full rounded-3xl" alt="">
                 <div class="w-7/12 hidden lg:block absolute -bottom-8 -right-8 rounded-full">
-                    <img src="{{ asset('img/students1.jpg') }}" class="w-full rounded-full" alt="">
+                    <img src="{{ asset('img/uni.jpg') }}" class="w-full rounded-full" alt="">
                 </div>
             </div>
         </div>
@@ -225,7 +225,7 @@
 
     {{-- Innovation Hub --}}
     <section class="relative w-full h-96 bg-center bg-cover bg-fixed"
-        style="background-image: url('{{ asset('img/mwecau3.jpg') }}')">
+        style="background-image: url('{{ asset('img/uni.jpg') }}')">
         <div class="overlay">
             <div class="center-div">
                 <div class="w-11/12 mx-auto text-white text-center">

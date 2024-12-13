@@ -17,7 +17,7 @@ class InnovationProjectController extends Controller
     {
         $club = Club::where("name", $club_name)->first();
         $projects = $club->projects->take(3);
-        return view("dpric.admin.clubs.projects.index", ['club_name' => $club_name, 'projects' => $projects]);
+        return view("dpric.admin.Clubs.projects.index", ['club_name' => $club_name, 'projects' => $projects]);
     }
 
     /**
@@ -80,7 +80,7 @@ class InnovationProjectController extends Controller
      */
     public function edit($club_name, InnovationProject $project)
     {
-        return view('dpric.admin.clubs.projects.edit', ['club_name' => $club_name, 'project' => $project]);
+        return view('dpric.admin.Clubs.projects.edit', ['club_name' => $club_name, 'project' => $project]);
     }
 
     /**
@@ -94,7 +94,7 @@ class InnovationProjectController extends Controller
                 'description' => 'required',
                 'category' => 'required',
                 'duration' => 'required',
-                'primary_image' => 'nullable, max:2048',
+                'primary_image' => ['nullable', 'max:2048'],
             ]
         );
 
