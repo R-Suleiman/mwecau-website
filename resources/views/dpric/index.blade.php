@@ -65,7 +65,7 @@
 
         </div>
         <div
-            class="w-full relative overflow-hidden md:w-5/12 p-4 my-4 md:my-0 md:p-8 shadow-lg shadow-purple-300 hover:shadow-purple-400 rounded-lg text-white group">
+            class="w-full relative overflow-hidden md:w-5/12 p-4 my-4 md:my-0 md:p-8 shadow-lg shadow-purple-300 hover:shadow-purple-400 rounded-lg group">
             <div class="my-4">
                 <h3 class="text-xl mb-2 text-default-head">{{ $mission->title }}</h3>
                 <p class="text-justify text-default-text text-md">{{ $mission->description }}</p>
@@ -91,31 +91,27 @@
         </div>
 
         @if ($allNews->count() > 0)
-            <div class="dpric-news w-full mx-auto">
-                @foreach ($allNews as $news)
-                    <div class="w-full relative h-96 bg-cover bg-center bg-no-repeat"
+        <div class="w-full mx-auto flex flex-col lg:flex-row flex-wrap">
+            @foreach ($allNews as $news)
+            <div class="w-full lg:w-1/2 my-4">
+                <div class="w-full lg:w-11/12 mx-auto relative h-96 bg-cover bg-center bg-no-repeat"
                         style="background-image: url({{ $news->image ? '/storage/images/dpric/news/' . $news->image : '../../img/mwecau.png' }})">
-                        <div
-                            class="w-full flex flex-col justify-between lg:flex-row border border-purple-500 overlay2 h-96">
-                            <div class="w-full lg:w-2/6 bg-transparent">
-                            </div>
-                            <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
-                                <span
-                                    class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">{{ $news->category }}</span>
-                                <div class="p-2 text-white w-full">
-                                    <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a
-                                            href="{{ route('dpric.single-news', $news->title) }}">{{ $news->title }}</a>
-                                    </h3>
-                                    <p class="text-sm md:text-lg my-2 hidden lg:block">
-                                        {{ Str::words($news->description, 20, '...') }}</p>
-                                    <span
-                                        class="my-2 text-gray-300 text-md">{{ explode(' ', $news->created_at)[0] }}</span>
-                                </div>
+                    <div class="w-full flex flex-col justify-between lg:flex-row border border-purple-500 overlay2 h-96">
+                        <div class="w-full lg:w-2/6 bg-transparent">
+                        </div>
+                        <div class="w-full lg:w-4/6 bg-blue-800 opacity-85 bg-blend-multiply p-4 h-fit lg:h-96">
+                            <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
+                            <div class="p-2 text-white w-full">
+                                <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news', $news->title) }}">{{ $news->title }}</a></h3>
+                                <p class="text-sm md:text-lg my-2 hidden lg:block">{{ Str::words($news->description, 30, '...') }}</p>
+                                <span class="my-2 text-gray-300 text-md">{{ explode(' ', $news->created_at)[0] }}</span>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                </div>
             </div>
+            @endforeach
+        </div>
 
             <div class="my-4 w-fit mx-auto">
                 <x-dpric-btn btnLink='/dpric/news'>More News</x-dpric-btn>
@@ -224,9 +220,9 @@
     </section>
 
     {{-- Innovation Hub --}}
-    <section class="relative w-full h-96 bg-center bg-cover bg-fixed"
+    <section class="relative w-full h-[600px] bg-center bg-cover bg-fixed"
         style="background-image: url('{{ asset('/storage/images/dpric/general/' . $otherImg) }}')">
-        <div class="overlay">
+        <div class="overlay py-24">
             <div class="center-div">
                 <div class="w-11/12 mx-auto text-white text-center">
                     <h3 class="uppercase text-2xl md:text-4xl">{{ $innovationMessage->title }}</h3>
