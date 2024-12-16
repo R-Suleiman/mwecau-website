@@ -1,12 +1,12 @@
 <footer
     class="bg-gradient-to-r from-purple-500 to-purple-800 px-4 py-2 text-white flex flex-col justify-between md:flex-row">
-    <div class="w-full lg:w-2/5 p-2 flex lg:mr-auto my-3 lg:my-0 ">
-        <div class="w-3/6 md:w-3/5 lg:w-1/3 mr-4">
-            <img src="../../img/mwecau.png" alt="mwecau logo" class="w-full rounded">
-        </div>
-        <div class="flex flex-col text-lg lg:text-lg footer-header">
+    <div class="w-full lg:w-2/5 md:p-2 flex lg:mr-auto my-3 lg:my-0 ">
+        <div class="flex flex-col text-lg lg:text-lg footer-header order-1 md:order-2">
             <p>Directorate of Postgraduate studies, Research, Innovations and Consultancy
                 (DPRIC)</p>
+        </div>
+        <div class="w-3/6 md:w-3/5 lg:w-1/3 mr-4 order-2 md:order-1">
+            <img src="../../img/mwecau.png" alt="mwecau logo" class="w-full rounded">
         </div>
     </div>
     <div class="w-full lg:w-2/5 lg:mx-auto md:px-2 my-3 lg:my-0 footer-cont text:sm lg:text-lg flex flex-col">
