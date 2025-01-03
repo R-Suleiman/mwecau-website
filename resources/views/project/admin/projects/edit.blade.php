@@ -98,7 +98,7 @@
 
                         </div>
                         {{-- project description --}}
-                        <div class="mb-4">
+                        <div class="mb-4 w-[70rem]">
                             <label for="description" class="block text-sm mb-4 font-medium text-gray-700">Project
                                 Description </label>
                             <textarea name="description" id="editor" cols="30" rows="10"
@@ -106,7 +106,7 @@
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
                         {{-- project objectives --}}
-                        <div class="mb-4">
+                        <div class="mb-4 w-[70rem]">
                             <label for="project_objectives" class="block text-sm mb-4 font-medium text-gray-700">Project
                                 Objectives </label>
                             <textarea name="project_objectives" id="editor1" cols="30" rows="10"
@@ -114,7 +114,7 @@
                             <x-input-error :messages="$errors->get('project_objectives')" class="mt-2" />
                         </div>
                         {{-- project outputs --}}
-                        <div class="mb-4">
+                        <div class="mb-4 w-[70rem]">
                             <label for="project_outputs" class="block text-sm mb-4 font-medium text-gray-700">Project
                                 Outputs </label>
                             <textarea name="project_outputs" id="editor2" cols="30" rows="10"

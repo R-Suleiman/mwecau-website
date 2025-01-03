@@ -1,7 +1,5 @@
 @extends('layouts.project.project-layout')
 @section('content')
-
-    {{-- project team --}}
     {{-- project team --}}
     <section class="mt-28">
         <div class="container mx-auto">
@@ -18,31 +16,39 @@
                 </p>
             </div>
 
-            <div class="container mx-auto  mt-11">
-                <div class="grid grid-cols-3 justify-center gap-3">
-                    @if ($projectTeamMembers->count() > 0)
-                        @foreach ($projectTeamMembers as $teamMember)
-                            <div class="bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
-                                <div class="lg:flex lg:space-x-5 w-full pt-7">
-                                    <!-- Profile Image -->
-                                    <div class="flex justify-center items-center px-5 pb-4">
-                                        <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
-                                            alt="Profile Picture"
-                                            class="rounded-full border-2 border-white h-[100px] w-[100px] object-cover">
-                                    </div>
+            {{-- top management team --}}
+            <section class="mt-28">
+                @if ($topLeaders->isNotEmpty())
+                    <div class="container mx-auto">
+                        <h1 class="text-4xl mt-5 pb-3 text-blue-500 font-semibold uppercase text-center headerFavFont">
+                            Meet Our Top Leaders
+                        </h1>
 
-                                    <!-- Personal Details -->
-                                    <div class="flex-1">
-                                        <div class="text-center lg:text-left text-white">
-                                            <h1 class="uppercase font-semibold text-white">
-                                                {{ $teamMember->initials }} {{ $teamMember->name }}
-                                            </h1>
-                                            <span class="text-gray-400">{{ $teamMember->institute }}</span>
-                                            <p class="pt-3 text-white">{!! Str::limit($teamMember->bio, 100) !!}</p>
-                                        </div>
+                        <div class="container mx-auto  mt-11 mb-11">
+                            <div class="w-full flex flex-col md:flex-row justify-center items-center gap-9">
+                                @foreach ($topLeaders->take(3) as $leader)
+                                    <div
+                                        class="w-full md:w-1/3 bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
+                                        <div class="lg:flex lg:space-x-5 w-full pt-7">
+                                            <!-- Profile Image -->
+                                            <div class="flex justify-center items-center px-5 pb-4">
+                                                <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $leader->profile_picture) }}"
+                                                    alt="Profile Picture"
+                                                    class="rounded-full border-2 border-white h-[100px] w-[100px] object-cover">
+                                            </div>
 
-                                        {{-- <!-- Social Media Icons -->
-                                        <div class="flex justify-center lg:justify-start space-x-5 text-white mt-6 pb-6">
+                                            <!-- Profile Information -->
+                                            <div class="flex-1">
+                                                <div class="text-center lg:text-left text-white">
+                                                    <h1 class="uppercase font-semibold text-white">
+                                                        {{ $leader->initials }} {{ $leader->name }}
+                                                    </h1>
+                                                    <span class="text-gray-400">{{ $leader->institute }}</span>
+                                                    <p class="pt-3 text-white">{!! Str::limit($leader->bio, 70) !!}</p>
+                                                </div>
+
+                                                <!-- Social Media Icons -->
+                                                {{-- <div class="flex justify-center lg:justify-start space-x-5 text-white mt-6 pb-6">
                                             <a href="#"
                                                 class="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 hover:bg-green-600 transition duration-200">
                                                 <i class="fa-brands fa-x-twitter text-2xl"></i>
@@ -56,24 +62,52 @@
                                                 <i class="fa-brands fa-linkedin text-3xl"></i>
                                             </a>
                                         </div> --}}
+                                            </div>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div class="flex justify-center items-center pb-6">
+                                            <button
+                                                class="px-4 py-2 text-xs rounded-lg text-white font-semibold bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 shadow-md hover:shadow-lg transition-all duration-300">
+                                                <a href="{{ route('tema-member-profile-description', $leader->name) }}">
+                                                    View Profile
+                                                </a>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <!-- Button -->
-                                <div class="flex justify-center items-center pb-6">
-                                    <button
-                                        class="px-4 py-2 text-xs rounded-lg text-white font-semibold bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 shadow-md hover:shadow-lg transition-all duration-300">
-                                        <a href="{{ route('tema-member-profile-description', $teamMember->name) }}">
-                                            View Profile
-                                        </a>
-                                    </button>
-                                </div>
-
+                                @endforeach
                             </div>
-                        @endforeach
-                    @endif
+                        </div>
+                    </div>
+                @endif
+            </section>
+
+            <div class="container mx-auto px-6 lg:px-12">
+                <h1 class="text-4xl mt-11 pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
+                    Other team members
+                </h1>
+                <div class="space-y-6">
+                    @foreach ($projectTeamMembers as $teamMember)
+                        <div class="flex flex-col lg:flex-row bg-gray-800 text-white rounded-lg shadow p-4">
+                            <img src="{{ asset('/storage/images/projects/images/team-member-profile-pictures/' . $teamMember->profile_picture) }}"
+                                alt="{{ $teamMember->name }}"
+                                class="rounded-lg w-24 h-24 lg:w-32 lg:h-32 object-cover border-4 border-gray-700">
+                            <div class="ml-0 lg:ml-6 mt-4 lg:mt-0">
+                                <h3 class="text-lg font-semibold">{{ $teamMember->initials }} {{ $teamMember->name }}</h3>
+                                <p class="text-sm text-gray-400">{{ $teamMember->institute }}</p>
+                                <p class="text-sm text-gray-300 mt-2">
+                                    {!! Str::limit($teamMember->bio, 70) !!}
+                                </p>
+                                <div class="mt-4">
+                                    <a href="{{ route('tema-member-profile-description', $teamMember->name) }}"
+                                        class="px-4 py-2 bg-green-500 rounded text-sm font-medium hover:bg-green-600">
+                                        View Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
     </section>
 @endsection

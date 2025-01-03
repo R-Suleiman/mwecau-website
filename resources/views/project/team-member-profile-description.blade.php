@@ -22,7 +22,7 @@
                                 <li class="pb-3"><strong>Institute:</strong> {{ $teamMember->institute }}</li>
                                 <li class="pb-3"><strong>Position:</strong> {{ $teamMember->position }}</li>
                                 <li class="pb-3">
-                                    <strong>Date Joined:</strong> {{ $teamMember->created_at->format('Y-M-d') }}
+                                    <strong>Date Joined:</strong> {{ $teamMember->created_at }}
                                 </li>
                             </ul>
                         </div>

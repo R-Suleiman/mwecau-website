@@ -43,8 +43,13 @@ class HealthCenterController extends Controller
     public function department($name)
     {
         $department = HealthCenterDepartment::where('name', $name)->firstOrFail();
+        $departmentThumbnail = '/storage/images/health-center/department-images/' . $department->thumbnail;
         $allDepartments = HealthCenterDepartment::all();
-        return view('health-center.department', compact('department', 'allDepartments'));
+        return view('health-center.department', compact(
+            'department',
+            'allDepartments',
+            'departmentThumbnail'
+        ));
     }
     public function service($name)
     {

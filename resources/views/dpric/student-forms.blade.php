@@ -10,7 +10,7 @@
         </div>
 
         {{-- REMOVE h-screen !!!!!!! --}}
-        <div class="w-full md:w-10/12 mx-auto my-4 h-screen">
+        <div class="w-11/12 md:w-10/12 mx-auto my-4 h-screen">
             @if ($studentForms->count() > 0)
                 @foreach ($studentForms as $form)
                 <div><a href="{{ route('dpric.view-document', $form->name) }}" class="text-lg text-default-head hover:underline"><i class="fa fa-download"></i> <span class="ml-2">{{ $form->name }}</span></a></div>

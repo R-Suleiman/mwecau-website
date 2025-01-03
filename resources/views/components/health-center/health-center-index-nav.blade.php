@@ -1,9 +1,12 @@
 <section class="w-full relative overflow-x-hidden" id="main-section">
     {{-- video --}}
-    <video width="100%" autoplay loop muted>
+    {{-- <video width="100%" autoplay loop muted>
         <source src="{{ asset('videos/health-center.mp4') }}" type="video/mp4">
         Your browser does not support the video tag.
-    </video>
+    </video> --}}
+
+    <img src="{{ asset('img/health-center/default-service-image.jpg') }}" alt="Health Center Image"
+        class="w-full h-screen object-cover object-center">
 
     {{-- side bar --}}
     <div class="block lg:hidden w-full bg-transparent fixed top-0 left-0 z-50">
@@ -39,7 +42,8 @@
                         @if ($departments->isNotEmpty())
                             @foreach ($departments as $department)
                                 <li class="px-4 py-2 hover:bg-purple-100"><a
-                                    href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a></li>
+                                        href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a>
+                                </li>
                             @endforeach
                         @endif
                     </ul>
@@ -68,8 +72,8 @@
                 <img src="../../img/mwecau.png" alt="mwecau logo"
                     class="w-3/12 rounded transition-transform duration-1000 mr-2" id="logo">
                 <div class="w-9/12 flex flex-col text-sm lg:text-xl footer-header text-white">
-                    <span>Health Center</span>
                     <span>Mwenge Catholic University</span>
+                    <span>Health Center</span>
                 </div>
             </a>
         </div>
@@ -90,11 +94,12 @@
                     <ul
                         class="w-max opacity-0 transform transition-opacity duration-500 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 absolute left-0 mt-3 bg-white shadow-lg text-purple-800">
                         @if ($departments->isNotEmpty())
-                        @foreach ($departments as $department)
-                            <li class="px-4 py-2 hover:bg-purple-100"><a
-                                    href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a></li>
-                        @endforeach
-                    @endif
+                            @foreach ($departments as $department)
+                                <li class="px-4 py-2 hover:bg-purple-100"><a
+                                        href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </li>
 
@@ -123,7 +128,8 @@
                 </h1>
                 <div class="mt-2 md:mt-0 flex-col text-xl border-l border-white pl-5 hidden lg:flex">
                     <span>Contact Us: </span>
-                    <span class="ml-2 lg:ml-0">0712345678</span>
+                    <span class="ml-2 lg:ml-0">+255 753 028 309</span>
+                    <span class="ml-2 lg:ml-0">+255 656 792 404 </span>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.health-center.admin.health-center-admin-layout')
 @section('content')
     {{-- //parent div --}}
-        <div class="text-end mt-10  mb-9">
+        <div class="ml-16 mt-10  mb-9">
         <a href="{{ route('health-center.doctors') }}"
             class="favFont py-2 px-4 text-xs font-semibold uppercase border border-gray-600 rounded-md bg-purple-800 text-white">
             <i class="fa fa-arrow-left"></i></a>

@@ -26,7 +26,7 @@ export default {
           rotate: {
             '10': '10deg',
             '15': '-15deg'
-          }
+          },
       }
     },
     plugins: [],

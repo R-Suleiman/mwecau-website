@@ -8,20 +8,20 @@
         <div class="w-full relative overflow-hidden">
             @if ($service->thumbnail)
                 <img class="w-full object-cover object-center h-96"
-                    src="{{ asset('storage/images/health-center/services-images/' . $service->thumbnail) }}" alt="">
+                    src="{{ asset('/storage/images/health-center/services-images/' . $service->thumbnail) }}" alt="">
             @else
-                <img class="w-full object-cover object-center h-96" src="{{ asset('img/health-center/header.jpg') }}"
-                    alt="">
+                <img class="w-full object-cover object-center h-96"
+                    src="{{ asset('img/health-center/default-service-image.jpg') }}" alt="">
             @endif
             <div
-                class="favFont absolute inset-0 flex justify-center items-center font-semibold tracking-wide text-6xl container mx-auto mt-52">
+                class="favFont rounded-2xl border-transparent bg-opacity-60 bg-gray-600 text-white absolute inset-0 flex justify-center items-center font-extrabold tracking-wide text-6xl container mx-auto mt-52">
                 <h1>{{ $service->name }}</h1>
             </div>
         </div>
     </section>
 
     {{-- breadcrumb --}}
-    <div class="container mx-auto mt-24 pb-11">
+    {{-- <div class="container mx-auto mt-24 pb-11">
         <nav aria-label="breadcrumb" class="w-max">
             <ol class="flex w-full flex-wrap items-center rounded-md bg-slate-50 px-4 py-2">
                 <li
@@ -44,16 +44,22 @@
                 </li>
             </ol>
         </nav>
-    </div>
+    </div> --}}
 
     {{-- description --}}
     <section>
-        <div class="w-8/12 container mx-auto">
+        <div class="w-8/12 container mx-auto mt-20">
             <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-9">
                 <div class="w-full flex">
                     <div class="">
-                        <img src="{{ asset('img/health-center/Depositphotos_24648537_original-400x400.jpg') }}"
-                            alt="" class="object-cover rounded-md">
+                        @if ($service->thumbnail)
+                            <img class="w-full object-cover object-center h-96"
+                                src="{{ asset('/storage/images/health-center/services-images/' . $service->thumbnail) }}"
+                                alt="">
+                        @else
+                            <img class="w-full object-cover object-center h-96"
+                                src="{{ asset('img/health-center/default-service-image.jpg') }}" alt="">
+                        @endif
                     </div>
                 </div>
                 <div class="">
@@ -89,8 +95,7 @@
                                         alt="">
                                 @else
                                     <img class="w-[400px] text-center rounded-xl object-cover overflow-hidden object-center"
-                                        src="{{ asset('img/health-center/Depositphotos_11882261_original-280x215.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('img/health-center/default-service-image.jpg') }}" alt="">
                                 @endif
 
                             </div>

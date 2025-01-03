@@ -63,8 +63,12 @@ class ProjectsController extends Controller
 
     public function researchers()
     {
-        $team = ProjectTeam::all();
-        return view('project.researchers', compact('team'));
+        $topResearchers = ProjectTeam::where('role', 'top')->get();
+        $projects = Project::all();
+        return view('project.researchers', compact(
+            'topResearchers',
+            'projects'
+        ));
     }
     public function projectTeamMemberDetails($name)
     {
@@ -74,9 +78,14 @@ class ProjectsController extends Controller
     }
     public function projectTeamMembers()
     {
+        $topLeaders = ProjectTeam::where('role', 'top')->get();
         $teamContents = ProjectContent::where('page_section', 'team_section')->first();
         $projectTeamMembers = ProjectTeam::all();
-        return view('project.project-team-members', compact('projectTeamMembers', 'teamContents'));
+        return view('project.project-team-members', compact(
+            'projectTeamMembers',
+            'teamContents',
+            'topLeaders'
+        ));
     }
     public function contacts()
     {

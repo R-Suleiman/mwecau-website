@@ -311,16 +311,29 @@
 
     {{-- top management team --}}
     <section class="mt-28">
+        <h1 class="text-4xl pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
+            {!! $teamContents->section_header !!}
+        </h1>
+        <div
+            class="p-6 border-r-2 border-l-2 border-blue-900 rounded-xl shadow-lg bg-white flex flex-col h-full hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+            <h1 class="uppercase text-xl italic font-semibold FavFont pb-6 text-gray-700 tracking-wide">
+                {!! $teamContents->section_sub_header !!}
+            </h1>
+            <p class="text-justify text-gray-700 leading-relaxed flex-grow">
+                {!! $teamContents->section_description !!}
+            </p>
+        </div>
         @if ($topLeaders->isNotEmpty())
             <div class="container mx-auto">
-                <h1 class="text-4xl pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
-                    Meet Our Top Leader
+                <h1 class="text-4xl mt-11 pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
+                    Meet Our Top Leaders
                 </h1>
 
                 <div class="container mx-auto  mt-11">
-                    <div class="grid grid-cols-3 gap-9">
+                    <div class="w-full flex flex-col md:flex-row justify-center items-center gap-9">
                         @foreach ($topLeaders->take(3) as $leader)
-                            <div class="bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
+                            <div
+                                class="w-full md:w-1/3 bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
                                 <div class="lg:flex lg:space-x-5 w-full pt-7">
                                     <!-- Profile Image -->
                                     <div class="flex justify-center items-center px-5 pb-4">
@@ -329,7 +342,7 @@
                                             class="rounded-full border-2 border-white h-[100px] w-[100px] object-cover">
                                     </div>
 
-                                    <!-- Personal Details -->
+                                    <!-- Profile Information -->
                                     <div class="flex-1">
                                         <div class="text-center lg:text-left text-white">
                                             <h1 class="uppercase font-semibold text-white">
@@ -377,24 +390,15 @@
     {{-- project team --}}
     <section class="mt-28">
         <div class="container mx-auto">
-            <h1 class="text-4xl pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
-                {!! $teamContents->section_header !!}
-            </h1>
-            <div
-                class="p-6 border-r-2 border-l-2 border-blue-900 rounded-xl shadow-lg bg-white flex flex-col h-full hover:shadow-2xl transition-shadow duration-300 ease-in-out">
-                <h1 class="uppercase text-xl italic font-semibold FavFont pb-6 text-gray-700 tracking-wide">
-                    {!! $teamContents->section_sub_header !!}
-                </h1>
-                <p class="text-justify text-gray-700 leading-relaxed flex-grow">
-                    {!! $teamContents->section_description !!}
-                </p>
-            </div>
-
             <div class="container mx-auto  mt-11">
-                <div class="grid grid-cols-3 justify-center gap-9">
+                <h1 class="text-4xl mt-11 pb-6 text-blue-500 font-semibold uppercase text-center headerFavFont">
+                    Other team members
+                </h1>
+                <div class="w-full flex flex-col md:flex-row lg:flex-row items-center justify-center gap-7">
                     @if ($teamMembers->count() > 0)
                         @foreach ($teamMembers->take(3) as $teamMember)
-                            <div class="bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
+                            <div
+                                class="w-full md:w-1/2 lg:w-1/3 bg-gradient-to-r from-gray-900 via-purple-950 to-gray-900 rounded-xl">
                                 <div class="lg:flex lg:space-x-5 w-full pt-7">
                                     <!-- Profile Image -->
                                     <div class="flex justify-center items-center px-5 pb-4">
@@ -424,7 +428,6 @@
                                         </a>
                                     </button>
                                 </div>
-
                             </div>
                         @endforeach
                     @endif
@@ -440,7 +443,7 @@
         </div>
     </section>
 
-    {{-- //Testimonial --}}
+    {{-- //Testimonials --}}
     <section class=" mt-16">
         <div class="max-w-6xl mx-auto w-full">
             <div class="max-w-2xl mx-auto w-full text-center">
@@ -488,13 +491,13 @@
                                                     <i class="fa-sharp fa-solid fa-star text-green-400"></i>
                                                 </div>
                                             </div>
+                                            <div class="mt-6">
+                                                <p class="text-md text-center leading-relaxed favFont italic">
+                                                    {!! Str::limit($testimonial->testimonial_description, 600) !!}
+                                                </p>
+                                            </div>
                                         </div>
 
-                                        <div class="mt-6">
-                                            <p class="text-md text-center leading-relaxed favFont italic">
-                                                {!! Str::limit($testimonial->testimonial_description, 600) !!}
-                                            </p>
-                                        </div>
                                     </div>
                                 </div>
                             @endforeach

@@ -37,7 +37,7 @@ class HealthCenterServiceController extends Controller
             'department_id' => ['required', 'integer'],
             'name' => ['required'],
             'description' => ['nullable'],
-            'thumbnail' => ['required', 'max:2048'],
+            'thumbnail' => ['max:2048'],
         ]);
 
         $newService = new HealthCenterService();

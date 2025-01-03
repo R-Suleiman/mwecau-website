@@ -30,7 +30,7 @@
                             <label for="name" class="block text-sm mb-4 font-medium text-gray-700">Department
                                 Name</label>
                             <input type="text" id="name" name="name" value="{{ old('name') }}"
-                                placeholder="Service Name"
+                                placeholder="Department Name"
                                 class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out" />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>

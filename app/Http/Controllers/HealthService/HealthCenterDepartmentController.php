@@ -34,7 +34,7 @@ class HealthCenterDepartmentController extends Controller
         $request->validate([
             'name' => ['required'],
             'description' => ['nullable'],
-            'thumbnail' => ['required', 'max:2048'],
+            'thumbnail' => ['max:2048'],
         ]);
 
         $newDepartment = new HealthCenterDepartment();

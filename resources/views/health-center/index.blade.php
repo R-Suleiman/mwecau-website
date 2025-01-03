@@ -77,8 +77,15 @@
                             {{-- <a href="#"> --}}
                             <div class="w-full mb-2 relative bg-blue-900">
                                 <div class="w-full overflow-hidden rounded-tr-full">
-                                    <img src="{{ asset('img/campus-life/spirtual1.jpg') }}" alt="service image"
-                                        class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 object-cover">
+                                    @if ($service->thumbnail)
+                                        <img src="{{ asset('/storage/images/health-center/services-images/' . $service->thumbnail) }}"
+                                            alt="{{ $service->name }} picture"
+                                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 object-cover">
+                                    @else
+                                        <img src="{{ asset('img/health-center/default-service-image.jpg') }}"
+                                            alt="service image"
+                                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110 object-cover">
+                                    @endif
                                 </div>
                                 <div class="w-fit absolute right-2 top-2">
                                     <i class="fa fa-heartbeat text-4xl text-white p-2 rounded-full ml-2"></i>
@@ -116,11 +123,12 @@
                         <a href="{{ route('health-center.view-event', $newsEvent->title) }}">
                             <div class="w-full mb-2 overflow-hidden">
                                 @if ($newsEvent->image)
-                                    <img src="{{ asset('storage/images/health-center/news-events-images/' . $newsEvent->image) }}"
+                                    <img src="{{ asset('/storage/images/health-center/news-events-images/' . $newsEvent->image) }}"
                                         alt="service image"
                                         class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                                 @else
-                                    <img src="{{ asset('img/campus-life/spirtual2.jpg') }}" alt="service image"
+                                    <img src="{{ asset('img/health-center/default-service-image.jpg') }}"
+                                        alt="service image"
                                         class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                                 @endif
                             </div>
@@ -144,16 +152,13 @@
     {{-- Philosophy --}}
     <section class="flex flex-col lg:flex-row mt-4 bg-blue-900">
         <div class="w-full lg:w-1/2 h-full">
-            <img src="{{ asset('img/campus-life/spirtual3.jpg') }}" alt="" class="w-full h-full object-cover">
+            <img src="{{ asset('img/health-center/health-center-2.jpg') }}" alt=""
+                class="w-full h-full object-cover">
         </div>
         <div class="w-full lg:w-1/2 p-8 text-blue-100 text-justify">
             <h3 class="uppercase mb-2 text-4xl">Our Philosophy</h3>
-            <p class="py-2 text-justify text-lg">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda labore
-                magni alias laborum
-                excepturi sit illo molestiae voluptas dignissimos laboriosam consectetur perspiciatis et libero unde
-                inventore, beatae debitis maiores aperiam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem magnam facere porro incidunt. Ea blanditiis
-                commodi at ipsam quam culpa nemo, corrupti pariatur itaque ad nulla dolorum odit quia et.
+            <p class="py-2 text-justify text-lg">To provide holistic scientific sound medical, physical,
+                mental and spriritual care appropriate to scholara and neighbouring community
             </p>
         </div>
     </section>
@@ -175,9 +180,11 @@
                                     <img src="{{ asset('storage/images/health-center/department-images/' . $department->thumbnail) }}"
                                         alt="service image"
                                         class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                @else
+                                    <img src="{{ asset('img/health-center/default-service-image.jpg') }}"
+                                        alt="service image"
+                                        class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                                 @endif
-                                <img src="{{ asset('img/campus-life/spirtual4.jpg') }}" alt="service image"
-                                    class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                             </div>
                             <div class="w-full mt-2 p-4 text-justify">
                                 <h4 class="text-blue-800 hover:text-purple-600 mb-1 text-lg font-semibold">
@@ -194,7 +201,6 @@
         </div>
     </section>
 
-
     {{-- Doctors --}}
     <section class="w-full px-4 pt-10 lg:py-10 my-4 flex flex-col items-center">
         <div class="flex flex-col items-center w-max mb-4">
@@ -203,13 +209,20 @@
         </div>
 
         @if ($doctors->isNotEmpty())
-            <div class="my-4 p-4 w-full flex flex-col items-center justify-center lg:flex-row lg:space-x-8">
-                @foreach ($doctors as $doctor)
+            <div class="my-4 p-4 w-full flex flex-wrap items-center justify-center lg:flex-row lg:space-x-8">
+                @foreach ($doctors->take(6) as $doctor)
                     <div class="w-full my-4 lg:my-0 lg:w-1/4 border border-gray-300 rounded-md">
 
                         <div class="relative w-full mb-2 overflow-hidden group">
-                            <img src="{{ asset('img/campus-life/spirtual5.jpg') }}" alt="service image"
-                                class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                            @if ($doctor->profile_picture)
+                                <img src="{{ asset('/storage/images/health-center/doctors-profile-pictures/' . $doctor->profile_picture) }}"
+                                    alt="{{ $doctor->name }} Profile picture"
+                                    class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                            @else
+                                <img src="{{ asset('img/health-center/default-profile-avatar.jpg') }}" alt="service image"
+                                    class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                            @endif
+
                             <div
                                 class="absolute bottom-0 w-full p-2 bg-purple-500 opacity-90 text-center transform translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
                                 <a href="facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
@@ -257,9 +270,9 @@
                 <div class="w-full">
                     @foreach ($testimonials as $testimonial)
                         <div class="w-full lg:w-3/5 mx-auto flex flex-col items-center text-gray-500 my-4">
-                            <p class="text-center my-4 italic"> <i class="fa fa-quote-left text-sm mr-1"></i>
+                            <p class="text-center my-4 italic"> <i class="fa fa-quote-left text-2xl mr-1"></i>
                                 {!! $testimonial->testimonial_description !!}
-                                <i class="fa fa-quote-right text-sm ml-1"></i>
+                                <i class="fa fa-quote-right text-2xl ml-1"></i>
                             </p>
                             <span
                                 class="font-semibold italic">{{ $testimonial->testifier_name ?? 'Testifier Name' }}</span>

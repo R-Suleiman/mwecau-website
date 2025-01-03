@@ -1,11 +1,11 @@
     <section>
-        <footer class="relative mt-32 w-full bg-gradient bg-gradient-to-r from-blue-950 text-white to-blue-700">
-            <div class="container mx-auto">
+        <footer class="relative mt-32 w-full bg-blue-900 text-white">
+            <div class="container mx-10">
                 <div class="text-center p-8">
                     <h1 class="text-3xl headerFavFont">Quick Links</h1>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-5">
-                    <div class="text-center">
+                    <div class="mt-5">
                         <h1 class="favFont text-xl font-semibold mb-4">Projects</h1>
                         @if ($projectFooter->isNotEmpty())
                             <ul class="space-y-3">
@@ -26,8 +26,8 @@
                     </div>
 
                     {{-- our Partner Institution --}}
-                    <div class="">
-                        <h1 class="font-semibold text-white text-center text-xl mb-4">Partner Institutions</h1>
+                    <div class="mt-5">
+                        <h1 class="font-semibold text-white text-xl mb-4">Partner Institutions</h1>
                         @if ($projectPartners->isNotEmpty())
                             <ul class="space-y-3">
                                 @foreach ($projectPartners as $partner)
@@ -49,12 +49,12 @@
                     </div>
 
                     {{-- publications --}}
-                    <div>
-                        <h1 class="font-semibold text-white text-center text-xl mb-4">Publications</h1>
+                    <div class="mt-5">
+                        <h1 class="font-semibold text-white text-xl mb-4">Publications</h1>
                     </div>
                     {{-- conferences --}}
-                    <div>
-                        <h1 class="text-center text-xl favFont font-semibold text-white mb-4">Conferences</h1>
+                    <div class="mt-5">
+                        <h1 class="text-xl favFont font-semibold text-white mb-4">Conferences</h1>
                         @if ($projectConferences->isNotEmpty())
                             <ul class="space-y-3">
                                 @foreach ($projectConferences as $conference)
@@ -74,8 +74,8 @@
                         @endif
                     </div>
                     {{-- contacts --}}
-                    <div>
-                        <h1 class="font-semibold text-white text-center text-xl mb-4">Contacts</h1>
+                    <div class="mt-5">
+                        <h1 class="font-semibold text-white text-xl mb-4">Contacts</h1>
                         <ul>
                             <li>
                                 <a href="#"
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div
-                    class="flex flex-col items-center justify-center w-full py-4 mt-12 border-t border-slate-200 md:flex-row md:justify-between">
+                    class="flex flex-col items-center justify-center py-4 mt-12 border-t border-slate-200 md:flex-row md:justify-between">
                     <p class="block mb-4 text-sm text-center text-white md:mb-0 favFont">
                         Copyright © 2024
                         <a href="https://mwecau.ac.tz/">Mwenge Catholic university</a>. All
