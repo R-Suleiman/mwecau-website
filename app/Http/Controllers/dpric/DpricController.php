@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dpric;
 use App\Http\Controllers\Controller;
 use App\Models\DpricContent;
 use App\Models\DpricImage;
+use App\Models\DpricManagement;
 use App\Models\DpricNews;
 use App\Models\DpricUnits;
 use App\Models\DpricAwards;
@@ -39,8 +40,9 @@ class DpricController extends Controller
         $bannerImg = DpricImage::where('page_name', 'Home')->where('page_section', 'Banner')->first();
         $welcomeImgs = DpricImage::where('page_name', 'Home')->where('page_section', 'Welcome section')->get();
         $otherImg = DpricImage::where('page_name', 'Home')->where('page_section', 'Other')->first();
+        $unitsImg = DpricImage::where('page_name', 'Home')->where('page_section', 'academics teaching postgraduate Units')->first();
 
-        return view('dpric.index', ['welcomMessage' => $welcomeMessage, 'about' => $about, 'mission' => $mission, 'vision' => $vision, 'unitMessade' => $unitMessage, 'researchMessage' => $researchMessage, 'innovationMessage' => $innovationMessage, 'awardsMessage' => $awardsMessage, 'allNews' => $allNews, 'units' => $units, 'awards' => $awards, 'projects' => $projects, 'bannerImg' => $bannerImg->image_path, 'welcomeImgs' => $welcomeImgs, 'otherImg' => $otherImg->image_path]);
+        return view('dpric.index', ['welcomMessage' => $welcomeMessage, 'about' => $about, 'mission' => $mission, 'vision' => $vision, 'unitMessade' => $unitMessage, 'researchMessage' => $researchMessage, 'innovationMessage' => $innovationMessage, 'awardsMessage' => $awardsMessage, 'allNews' => $allNews, 'units' => $units, 'awards' => $awards, 'projects' => $projects, 'bannerImg' => $bannerImg->image_path, 'welcomeImgs' => $welcomeImgs, 'otherImg' => $otherImg->image_path, 'unitsImg' => $unitsImg->image_path]);
     }
 
     public function welcomeMessage()
@@ -48,18 +50,17 @@ class DpricController extends Controller
         $about = DpricContent::where('page', 'About Us')->where('section', 'Welcome Message From The Director')->first();
         $mission = DpricContent::where('page', 'About Us')->where('section', 'Our Mission')->first();
         $vision = DpricContent::where('page', 'About Us')->where('section', 'Our Vision')->first();
+        $director = DpricManagement::where('rank', 1)->first();
 
-        return view('dpric.welcome-message', ['about' => $about, 'mission' => $mission, 'vision' => $vision]);
+        return view('dpric.welcome-message', ['about' => $about, 'mission' => $mission, 'vision' => $vision, 'director' => $director]);
     }
 
     public function directorateManagement()
     {
-        return view('dpric.directorate-management');
-    }
+        $managementStaff = DpricManagement::where('rank', '!=', 0)->get();
+        $otherStaff = DpricManagement::where('rank', 0)->get();
 
-    public function directorateStaff()
-    {
-        return view('dpric.directorate-staff');
+        return view('dpric.directorate-management', ['managementStaff' => $managementStaff, 'otherStaff' => $otherStaff]);
     }
 
     public function directorateProgrammes()

@@ -29,7 +29,6 @@
                         class="w-max max-w-md opacity-0 invisible transform transition-all duration-500 ease-out  group-hover:opacity-100 group-hover:visible flex flex-col absolute -left-1/2 top-8 mt-3 bg-white shadow-lg text-purple-800 whitespace-normal break-words z-50">
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.welcome-message')}}">Welcome Message from the Director</a></li>
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.directorate-management')}}">Directorate Management</a></li>
-                        <li class="px-4 py-2 hover:bg-purple-100"><a href="{{route('dpric.directorate-staff')}}">Our Staff</a></li>
                     </ul>
                 </li>
                 <li class="group relative my-4 lg:my-0">
@@ -85,8 +84,6 @@
                     <ul
                         class="w-max max-w-md opacity-0 invisible transform transition-all duration-500 ease-out  group-hover:opacity-100 group-hover:visible flex flex-col absolute -left-1/2 top-8 mt-3 bg-white shadow-lg text-purple-800 whitespace-normal break-words z-50">
                         <li class="px-4 py-2 hover:bg-purple-100"><a href="{{ route('dpric.innovations-hub') }}">MWECAU Innovations Hub</a></li>
-                        <li class="px-4 py-2 hover:bg-purple-100"><a href="#">MWECAU Innovations Database </a>
-                        </li>
                     </ul>
                 </li>
                 <li class="group relative my-4 lg:my-0">

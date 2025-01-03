@@ -21,7 +21,7 @@
                 <div class="flex flex-col w-full md:w-10/12 my-4">
                     <label for="description" class="text-default-text text-lg my-2">About Project: </label>
                     <textarea name="description" cols="30" rows="10"
-                        class="border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
+                        class="editor border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
                         {{ $project->description }}
                     </textarea>
                     @error('description')

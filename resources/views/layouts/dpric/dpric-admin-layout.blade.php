@@ -10,6 +10,10 @@
     {{-- tailwindcss cdn --}}
     <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/app.css')
+
+     {{-- CKEditor CDN --}}
+     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
     @include('dpric.partials.dpric-links')
 </head>
 
@@ -29,6 +33,8 @@
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('dpric.admin.index') }}" class="w-full flex items-center text-lg"><i class="fa fa-house mx-2"></i><span class="font-semibold mx-2">Home</span></a></li>
 
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.dpric-units.index') }}" class="w-full flex items-center text-lg"><i class="fa fa-users mx-2"></i><span class="font-semibold mx-2">Units</span></a></li>
+
+                    <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.dpric-management.index') }}" class="w-full flex items-center text-lg"><i class="fa fa-users mx-2"></i><span class="font-semibold mx-2">Management</span></a></li>
 
                     <li class="w-full p-2 my-2 text-blue-800 bg-blue-100 hover:bg-white rounded-md border-l-4 border-blue-950"><a href="{{ route('admin.dpric-news.index') }}" class="w-full flex items-center text-lg"><i class="fa fa-newspaper mx-2"></i><span class="font-semibold mx-2">News</span></a></li>
 
@@ -63,7 +69,7 @@
             </div>
 
             @session('message')
-                <div class="w-full bg-green-700 py-2 px-4 my-4 mx-2 text-lg text-white">
+                <div id="flash-message" class="w-full bg-green-700 py-2 px-4 my-4 mx-2 text-lg text-white">
                     {{ session('message') }}
                 </div>
             @endsession
@@ -74,6 +80,28 @@
     </section>
 
     @include('dpric.partials.dpric-jslink')
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const flashMessage = document.getElementById("flash-message");
+            if (flashMessage) {
+
+                setTimeout(() => {
+                    flashMessage.style.transition = "opacity 0.5s ease";
+                    flashMessage.style.opacity = "0";
+                    setTimeout(() => flashMessage.remove(), 500);
+                }, 5000);
+            }
+        });
+    </script>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('.editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 </body>
 
 </html>

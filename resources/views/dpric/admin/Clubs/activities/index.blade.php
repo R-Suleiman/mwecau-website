@@ -11,7 +11,7 @@
             </div>
         </div>
 
-            <div class="w-full lg:w-11/12 overflow-x-auto mx-auto my-4 ">
+            <div class="w-full lg:w-11/12 overflow-x-auto mx-auto my-4">
                 <table class="min-w-full divide-y divide-gray-200 table-auto">
                     <thead class="bg-gray-500 whitespace-nowrap">
                         <tr>

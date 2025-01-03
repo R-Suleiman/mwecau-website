@@ -20,7 +20,7 @@
                 <div class="flex flex-col w-full md:w-10/12 my-4">
                     <label for="description" class="text-default-text text-lg my-2">About Club: </label>
                     <textarea name="description" cols="30" rows="10"
-                        class="border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
+                        class="editor border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
                         {{ $club->description }}
                     </textarea>
                     @error('description')
@@ -60,7 +60,7 @@
                 <div class="flex flex-col w-full md:w-10/12 my-4">
                     <label for="mission" class="text-default-text text-lg my-2">CLub Mission: </label>
                     <textarea name="mission" cols="30" rows="10"
-                        class="border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
+                        class="editor border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
                         {{ $club->mission }}
                     </textarea>
                     @error('mission')
@@ -71,7 +71,7 @@
                 <div class="flex flex-col w-full md:w-10/12 my-4">
                     <label for="vision" class="text-default-text text-lg my-2">Club Vision: </label>
                     <textarea name="vision" cols="30" rows="10"
-                        class="border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
+                        class="editor border border-blue-500 p-2 rounded-sm bg-blue-100 focus:outline-none focus:border-2 text-gray-700">
                         {{ $club->vision }}
                     </textarea>
                     @error('vision')
