@@ -11,6 +11,23 @@
         </div>
     </div>
 
+    <div class="w-full mb-8">
+        <div class="w-full md:w-1/3 my-2 mx-auto">
+            <div class="w-11/12">
+                <div class="w-full overflow-hidden h-72 rounded-full">
+                    <img src="{{ asset('/Storage/images/dpric/staff/' . $director->photo) }}" alt=""
+                        class="w-full h-72 object-cover rounded-full">
+                </div>
+                <div class="p-2 flex flex-col items-center text-center">
+                    <h3 class="text-xl text-gray-800">
+                        {{ $director->initial . ' ' . $director->first_name . ' ' . $director->other_name . ' ' . $director->last_name }}
+                    </h3>
+                    <span class="text-gray-700">{{ $director->position }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="w-11/12 mx-auto text-default-text text-lg">
         <p class="my-3">{{ $about->description }}</p>
     </div>

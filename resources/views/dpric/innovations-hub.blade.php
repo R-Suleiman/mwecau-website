@@ -93,7 +93,7 @@
                                     <h3 class="text-3xl my-4 text-default-head hover:text-blue-950 uppercase oswald">
                                         {{ $club->name }}</h3>
                                 </a>
-                                <p class="text-md my-2 text-default-text">{{ Str::words($club->description, 50, '...') }}
+                                <p class="text-md my-2 text-default-text">{{ Str::words($club->description, 30, '...') }}
                                 </p>
                             </div>
                         </div>

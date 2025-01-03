@@ -7,6 +7,7 @@ use App\Http\Controllers\dpric\ClubLeaderController;
 use App\Http\Controllers\dpric\InnovationProjectController;
 use App\Http\Controllers\dpric\InnovationProjectGalleryController;
 use App\Http\Controllers\dpric\DpricContentController;
+use App\Http\Controllers\dpric\DpricManagementController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HealthService\HealthCenterAdminController;
@@ -454,7 +455,6 @@ Route::controller(DpricController::class)->prefix('dpric/')->name('dpric.')->gro
     Route::get('home', 'index')->name('index');
     Route::get('welcome-message', 'welcomeMessage')->name('welcome-message');
     Route::get('directorate-management', 'directorateManagement')->name('directorate-management');
-    Route::get('directorate-staff', 'directorateStaff')->name('directorate-staff');
     Route::get('directorate-programmes', 'directorateProgrammes')->name('directorate-programmes');
     Route::get('application-procedures', 'applicationProcedures')->name('application-procedures');
     Route::get('joining-instruction', 'joiningInstruction')->name('joining-instruction');
@@ -504,6 +504,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::resource('clubs/{club_name}/club-gallery', ClubGalleryController::class);
     Route::resource('clubs/{club_name}/projects', InnovationProjectController::class);
     Route::resource('clubs/{club_name}/projects/{project_name}/project-gallery', InnovationProjectGalleryController::class);
+    Route::resource('dpric-management', DpricManagementController::class);
 
     Route::get('/dpric-contents/pages', [DpricContentController::class, 'getPages'])->name('contents.get-pages');
     Route::get('/dpric-contents/pages/{page_name}', [DpricContentController::class, 'getPage'])->name('contents.get-page');

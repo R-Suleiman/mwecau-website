@@ -18,7 +18,7 @@
         </div>
 
         <div class="w-11/12 mx-auto my-8">
-            <p class="my-4 text-lg text-default-text text-justify">{{ $news->description }}</p>
+            <p class="my-4 text-lg text-default-text text-justify">{!! $news->description !!}</p>
         </div>
     </section>
 @endsection

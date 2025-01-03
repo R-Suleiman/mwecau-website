@@ -25,7 +25,7 @@
                             <span class="bg-purple-900 text-white p-2 text-md md:text-lg rounded-lg md:mx-4">Category</span>
                             <div class="p-2 text-white w-full">
                                 <h3 class="my-4 text-lg md:text-xl lg:text-2xl"><a href="{{ route('dpric.single-news', $news->title) }}">{{ $news->title }}</a></h3>
-                                <p class="text-sm md:text-lg my-2 hidden lg:block">{{ Str::words($news->description, 30, '...') }}</p>
+                                <p class="text-sm md:text-lg my-2 hidden lg:block">{!! Str::words($news->description, 30, '...') !!}</p>
                                 <span class="my-2 text-gray-300 text-md">{{ explode(' ', $news->created_at)[0] }}</span>
                             </div>
                         </div>
