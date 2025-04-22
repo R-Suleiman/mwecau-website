@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="bg--500 p-4 text-white">
-                        <img src="{{ asset('img/health-center/about-1.webp') }}" alt=""
+                        <img src="{{ asset('img/health-center/health-center-3.jpg') }}" alt=""
                             class="object-cover rounded-3xl select-none">
                     </div>
                 </div>
@@ -33,7 +33,7 @@
 
         <section class="mt-10 rounded-lg border-2 border-t-purple-600">
             <div class="relative lg:h-[600px] bg-fixed bg-no-repeat bg-cover"
-                style="background-image: url('{{ asset('img/mwecau.jpg') }}');">
+                style="background-image: url('{{ asset('img/health-center/theater.jpg') }}');">
                 <div class="absolute inset-0 bg-black opacity-60 pt-10"></div> <!-- Overlay for better text visibility -->
                 <div class="container mx-auto relative z-10 py-20 content-center">
                     <h2 class="text-3xl font-bold text-center text-white mb-8">Our Departments</h2>
@@ -41,7 +41,9 @@
                         @if ($departments)
                             @foreach ($departments as $department)
                                 <div class="bg-white rounded-lg shadow-lg p-6">
-                                    <h3 class="text-xl font-semibold mb-2">{{ $department->name }}</h3>
+                                    <a href="{{ route('health-center.department', $department->name) }}">
+                                        <h3 class="text-xl font-semibold mb-2">{{ $department->name }}</h3>
+                                    </a>
                                 </div>
                             @endforeach
                         @endif
@@ -55,7 +57,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="bg--500 p-4 order-last md:order-first">
                         <div class="bg--500 p-0 text-white">
-                            <img src="{{ asset('img/health-center/about-2.webp') }}" alt=""
+                            <img src="{{ asset('img/health-center/health-center-5.jpg') }}" alt=""
                                 class="object-cover rounded-3xl">
                         </div>
                     </div>
@@ -84,18 +86,17 @@
                                 <h3 class="favFont text-5xl mt-18 font-extralight tracking-wide mb-10 uppercase">Our Story
                                 </h3>
                                 <p class="text-gray-600 text-lg">
-                                    Welcome to Our Dispensary, where your health and well-being are our top priority. Our
-                                    team
-                                    of experienced
+                                    Welcome to Our Health Center, where your health and well-being are our top priority. Our
+                                    team of experienced
                                     physicians, nurses, and healthcare professionals is dedicated to delivering personalized
                                     medical services
                                     tailored to meet your unique needs.
                                 </p>
                             </div>
                             <div class="w-full flex p-4 gap-3 mt-24">
-                                <img src="{{ asset('img/health-center/about-3.webp') }}" alt=""
+                                <img src="{{ asset('img/health-center/health-center-3.jpg') }}" alt=""
                                     class="object-cover rounded-3xl w-1/2">
-                                <img src="{{ asset('img/health-center/about-4.webp') }}" alt=""
+                                <img src="{{ asset('img/health-center/health-center-2.jpg') }}" alt=""
                                     class="object-cover rounded-3xl w-1/2">
                             </div>
                         </div>
@@ -120,9 +121,15 @@
                             <div class="flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg">
                                 <div
                                     class="overflow-hidden group relative m-2.5 rounded-md h-80 flex justify-center items-center">
-                                    <img class="w-full h-full object-cover"
-                                        src="{{ asset('img/health-center/about-3.webp') }}" alt="profile-picture" />
-
+                                    @if ($member->profile_picture)
+                                        <img src="{{ asset('/storage/images/health-center/doctors-profile-pictures/' . $member->profile_picture) }}"
+                                            alt="{{ $member->name }} Profile picture"
+                                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                    @else
+                                        <img src="{{ asset('img/health-center/default-profile-avatar.jpg') }}"
+                                            alt="service image"
+                                            class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                    @endif
                                     <!-- Social Media Icons on Hover -->
                                     <div
                                         class="absolute inset-0 flex justify-center items-center space-x-4 bg-gradient-to-t from-emerald-200 to-transparent bg-opacity-90  opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -184,8 +191,13 @@
                         @foreach ($services as $service)
                             <div class="w-full mx-4">
                                 <div class="relative w-full mx-2 h-[550px] rounded-3xl overflow-hidden group">
-                                    <img src="{{ asset('img/health-center/about-3.webp') }}" alt="Image 3"
-                                        class="object-cover w-full h-full">
+                                    @if ($service->thumbnail)
+                                        <img src="{{ asset('/storage/images/health-center/services-images/' . $service->thumbnail) }}"
+                                            alt="{{ $service->name }} picture" class="object-cover w-full h-full">
+                                    @else
+                                        <img src="{{ asset('img/health-center/default-service-image.jpg') }}"
+                                            alt="service image" class="object-cover w-full h-full">
+                                    @endif
                                     <!-- Overlay with Icons and Text -->
                                     <div
                                         class="absolute inset-0 bg-gradient-to-t from-transparent to-transparent group-hover:bg-gradient-to-t group-hover:from-pink-500 bg-opacity-90 transition-all duration-500">

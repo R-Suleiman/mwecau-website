@@ -21,6 +21,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HealthService\HealthServiceController;
 use App\Http\Controllers\Libray\LibraryController;
 use App\Http\Controllers\Project\AdminProjectController;
+use App\Http\Controllers\Project\AdminProjectPublicationController;
 use App\Http\Controllers\Project\AdminProjectScholarshipController;
 use App\Http\Controllers\Project\AdminProjectTeamController;
 use App\Http\Controllers\Project\AdminProjectTestimonialController;
@@ -58,8 +59,19 @@ use Illuminate\Support\Facades\Storage;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Route::get('/depts', [App\Http\Controllers\AboutController::class, 'getDepartments'])->name('getUms3');
+
 Auth::routes();
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/login', function () {
+    abort(404); // aborting default login route
+});
+
+// The GET route to return login form
+Route::get('/auth/admin', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+// Define the POST route for the login submission
+Route::post('/auth/admin', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::post('/admin-registration', [App\Http\Controllers\HomeController::class, 'register'])->name('admin-registration');
 
 Route::controller(HomeController::class)->group(function () {
@@ -100,13 +112,13 @@ Route::controller(GalleryController::class)->group(function () {
     });
 });
 
-Route::controller(FooterController::class)->middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/list-of-footer-items', 'show')->name('admin.footer.item.list.view');
-    Route::get('/post-footer-items', 'storeFooterView')->name('admin.footer.store.view');
-    Route::post('new-footer-item', 'storeFooter')->name('admin.new.footer.item');
-    Route::get('edit/{name}/footer-item', 'edit')->name('admin.edit.footer.item.view');
-    Route::put('new-footer-item/{id}', 'updateFooter')->name('admin.update.footer.item');
-    Route::delete('/destroy-item/{id}', 'destroyFooter')->name('admin.destroy.footer.item');
+Route::controller(FooterController::class)->middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/list-of-footer-items', 'show')->name('footer.item.list.view');
+    Route::get('/post-footer-items', 'storeFooterView')->name('footer.store.view');
+    Route::post('new-footer-item', 'storeFooter')->name('new.footer.item');
+    Route::get('edit/{name}/footer-item', 'edit')->name('edit.footer.item.view');
+    Route::put('new-footer-item/{id}', 'updateFooter')->name('update.footer.item');
+    Route::delete('/destroy-item/{id}', 'destroyFooter')->name('destroy.footer.item');
 });
 //admin routes
 Route::controller(AdminController::class)->prefix('admin')->middleware('admin')->group(function () {
@@ -153,7 +165,7 @@ Route::controller(EventsController::class)->group(function () {
         Route::post('update-event/{id}', 'updateEvent')->name('admin-update-event');
         Route::get('events', 'eventslist')->name('admin.events.list');
         Route::get('event-details/{id}', 'adminEventDetails')->name('admin.event-details');
-        Route::post('/destroy-event/{id}', 'eventDestroty')->name('admin.destroy.event');
+        Route::post('/destroy-event/{id}', 'eventDestroy')->name('admin.destroy.event');
     });
     //web view event routes
     Route::get('{eventName}/event', 'eventDetails')->where('id', '.*')->name('event-details');
@@ -165,14 +177,15 @@ Route::controller(AnnouncementController::class)->group(function () {
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/post-announcement', 'postAnnouncementView')->name('admin.post.announcement');
         Route::post('/post-announcement', 'postAnnouncement')->name('post.announcement');
-        Route::get('/about/{name}/announcement', 'announcementDetails')->name('admin.announcement.details');
+        Route::get('/about/{name}/announcement', 'announcementDetails')->where('name', '.*')->name('admin.announcement.details');
         //editing announcements
         Route::get('/news-updates', 'announcementtsList')->name('admin.announcement.list');
-        Route::get('/edit/{name}/announcement', 'editAnnouncementView')->name('admin.edit.announcement');
+        Route::get('/edit/{name}/announcement', 'editAnnouncementView')->where('name', '.*')->name('admin.edit.announcement');
         Route::put('/edit-announcement/{id}', 'editAnnouncement')->name('admin.update.announcement');
         Route::delete('delete-announcement/{id}', 'deleteAnnouncement')->name(name: 'admin.destroy.annoucement');
     });
 });
+
 //managing about page admin
 Route::controller(AboutController::class)->prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/about', 'postAboutView')->name('admin.about');
@@ -273,6 +286,7 @@ Route::controller(AlumniController::class)->group(function () {
 Route::controller(HealthCenterController::class)->name('health-center.')->group(function () {
     Route::get('/health-center', 'index')->name('index');
     Route::get('about-us', 'aboutUs')->name('about-us');
+    Route::get('/departments', 'healthCenterDepartment')->name('departments.web');
     Route::get('department/{name}', 'department')->name('department');
     Route::get('/health-center/services', 'services')->name('services');
     Route::get('/services/{name}', 'service')->where('name', '.*')->name('service');
@@ -347,6 +361,9 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects-list', 'projects')->name('projects-list');
     Route::get('/project/{projectName}', 'project')->where('projectName', '.*')->name('single-project');
     Route::get('/projects/researchers', 'researchers')->name('project-researchers');
+    Route::get('capacity-building', 'capacityBuilding')->name('project-capacity-building');
+    Route::get('network-and-partnership', 'networkPartnership')->name('project-network-partnership');
+    Route::get('projects/publications', 'publications')->name('projects-publications');
     Route::get('about/{name}', 'projectTeamMemberDetails')->where('name', '.*')->name('tema-member-profile-description');
     Route::get('project-team-members', 'projectTeamMembers')->name('project-team-members');
     Route::get('/projects/contacts', 'contacts')->name('projects-contacts');
@@ -356,6 +373,7 @@ Route::controller(ProjectsController::class)->group(function () {
     Route::get('/projects/livinglab', 'livingLab')->name('project-livinglab');
     Route::get('{attachment}', 'conferencePdfPreview')->name('conference-attachment-preview');
 });
+// });
 
 // Research and Consultancy Routes
 Route::middleware(['research'])->group(function () {
@@ -383,6 +401,7 @@ Route::middleware(['research'])->group(function () {
         Route::post('store-home-slider-content', 'storeHomeSliderContent')->name('store-home-item');
         Route::get('edit/{id}/section', 'editPageSection')->name('edit-page-section');
         Route::put('content-update/{id}', 'updatePageSection')->name('update-page-section');
+        Route::delete('destroy-slider/{id}', 'destroyHomeContent')->name('delete-home-slider');
 
         //project partners routes
         Route::get('project-partners', 'partners')->name('partners');
@@ -413,6 +432,16 @@ Route::middleware(['research'])->group(function () {
         Route::put('update/{id}', 'update')->name('update');
         Route::delete('destroy/{id}', 'destroy')->name('destroy');
 
+    });
+
+    // Project publications controller
+    Route::controller(AdminProjectPublicationController::class)->prefix('admin/publications')->name('admin.project.publication.')->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('edit/{title}', 'edit')->name('edit');
+        Route::put('update/{id}', 'update')->name('update');
+        Route::delete('destroy/{id}', 'destroy')->name('destroy');
     });
 
     //project admin scholarship routes

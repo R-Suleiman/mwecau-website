@@ -6,18 +6,15 @@
     {{-- image section --}}
     <section>
         <div class="w-full relative overflow-hidden">
-            @if ($service->thumbnail)
-                <img class="w-full object-cover object-center h-96"
-                    src="{{ asset('/storage/images/health-center/services-images/' . $service->thumbnail) }}" alt="">
-            @else
-                <img class="w-full object-cover object-center h-96"
-                    src="{{ asset('img/health-center/default-service-image.jpg') }}" alt="">
-            @endif
-            <div
-                class="favFont rounded-2xl border-transparent bg-opacity-60 bg-gray-600 text-white absolute inset-0 flex justify-center items-center font-extrabold tracking-wide text-6xl container mx-auto mt-52">
+            <img class="w-full object-cover object-center h-96"
+                src="{{ asset($service->thumbnail ? '/storage/images/health-center/services-images/' . $service->thumbnail : 'img/health-center/default-service-image.jpg') }}"
+                alt="">
+
+            <div class="favFont rounded-2xl border-transparent bg-opacity-60 bg-gray-600 text-white absolute inset-0 flex justify-center items-center font-extrabold tracking-wide text-6xl container mx-auto mt-52">
                 <h1>{{ $service->name }}</h1>
             </div>
         </div>
+
     </section>
 
     {{-- breadcrumb --}}

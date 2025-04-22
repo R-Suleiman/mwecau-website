@@ -5,9 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Http;
 
 class AboutController extends Controller
 {
+
+
+    public function getDepartments()
+    {
+        $departments2 = null;
+
+        try {
+
+            $response = Http::withoutVerifying()
+                ->post('https://ums3.mwecau.ac.tz/api/academic/department', [
+                    'faculty_id' => 5
+                ]);
+
+            if ($response->successful()) {
+                $departments2 = $response['data'];
+                // dd($response['data']);
+            } else {
+                dd('Request failed', $response->status(), $response->body());
+            }
+            return view('ums3', compact('departments2'));
+        } catch (\Exception $e) {
+            dd('Exception occurred', $e->getMessage());
+        }
+    }
+
     public function postAboutView()
     {
         $about = About::first();

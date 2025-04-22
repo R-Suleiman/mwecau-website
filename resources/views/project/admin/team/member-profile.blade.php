@@ -8,7 +8,7 @@
         </h1>
     </div>
     <hr class="my-4 border-t border-purple-500">
-    <div class="text-end mt-10  mb-9">
+    <div class="ml-5 mt-10  mb-9">
         <a href="{{ route('admin.project.team.index') }}"
             class="favFont py-2 px-4 text-xs font-semibold uppercase border border-gray-600 rounded-md bg-purple-800 text-white">
             <i class="fa fa-arrow-left"></i></a>
@@ -98,25 +98,26 @@
                                     @endforeach
                                 </div>
                             @else
-                                <p class="text-red-600 font-semibold italic">This team member is not currently assigned to any
+                                <p class="text-red-600 font-semibold italic">This team member is not currently assigned to
+                                    any
                                     project. Assign them to a project to make the most of their skills and contributions.
                                 </p>
                             @endif
 
                             <div x-data="{ open: false }">
                                 <!-- Trigger Button -->
-                                <button @click="open = true" type="button"
+                                <button @click.prevent="open = true; console.log('Button clicked')" type="button"
                                     class="rounded-md bg-slate-800 py-2 px-4 text-white text-sm transition-all shadow-md hover:bg-slate-700 focus:bg-slate-700">
                                     Assign to Projects
                                 </button>
 
                                 <!-- Modal -->
                                 <div x-show="open" @click.away="open = false"
-                                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300"
-                                    x-transition:enter="transition ease-out duration-300"
+                                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur"
+                                    {{-- x-transition:enter="transition ease-out duration-300"
                                     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                                     x-transition:leave="transition ease-in duration-500"
-                                    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                                    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" --}}>
                                     <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 transform transition-all">
                                         <!-- Modal Header -->
                                         <div class="flex justify-between items-center pb-4 border-b border-slate-200">
@@ -159,9 +160,7 @@
                                                     </button>
                                                 </div>
                                             </form>
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

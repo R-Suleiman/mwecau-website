@@ -53,7 +53,8 @@ class HomeController extends Controller
             ->get();
         $partnersImages = Image::where('image_section', 'about-partners')->get();
 
-        $images = Image::all();
+        $images = Image::orderBy('created_at', 'desc')->get();
+
         $UniversityEvents = Event::all();
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();

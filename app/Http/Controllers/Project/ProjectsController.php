@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\ProjectConferences;
 use App\Models\ProjectContent;
 use App\Models\ProjectPartner;
+use App\Models\ProjectPublication;
 use App\Models\ProjectScholarship;
 use App\Models\ProjectScholarshipBeneficiary;
 use App\Models\ProjectTeam;
@@ -46,6 +47,7 @@ class ProjectsController extends Controller
         ));
     }
 
+
     public function projects()
     {
         $projects = project::all();
@@ -64,11 +66,25 @@ class ProjectsController extends Controller
     public function researchers()
     {
         $topResearchers = ProjectTeam::where('role', 'top')->get();
+        $otherMembers = ProjectTeam::whereDoesntHave('projects')->get();
         $projects = Project::all();
         return view('project.researchers', compact(
             'topResearchers',
-            'projects'
+            'projects',
+            'otherMembers'
         ));
+    }
+    public function capacityBuilding()
+    {
+        // fetching testmonials
+        $testimonialContents = ProjectContent::where('page_section', 'testimonial_section')->first();
+        $projectStudents = ProjectTeam::where('role', '!=', 'top')->get();
+        $testimonials = ProjectTestimonial::all();
+        return view('project.capacity-building', compact('testimonials', 'projectStudents', 'testimonialContents'));
+    }
+    public function networkPartnership()
+    {
+        return view('project.network-partnerhsip');
     }
     public function projectTeamMemberDetails($name)
     {
@@ -109,6 +125,11 @@ class ProjectsController extends Controller
 
         $conference = ProjectConferences::where('name', $conferenceName)->firstOrFail();
         return view('project.conference-details', compact('conference'));
+    }
+    public function publications()
+    {
+        $publications = ProjectPublication::all();
+        return view('project.publications', compact('publications'));
     }
 
     public function livingLab()

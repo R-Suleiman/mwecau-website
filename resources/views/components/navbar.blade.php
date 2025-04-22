@@ -185,10 +185,10 @@
                             <ul class="dropdown-menu ">
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle" id="faculty"
-                                        href="#">Faculties</a>
+                                        href="#">Faculties & Directorates</a>
                                     <ul class="dropdown-menu" class="sub-nav" id="sub-faculty">
                                         @foreach ($faculties as $faculty)
-                                            @if ($faculty['faculty_id'] !== '0')
+                                            @if ($faculty['faculty_id'] !== '0' && $faculty['faculty_id'] !== '5')
                                                 <li class="sub-nav2">
                                                     <a class="dropdown-item"
                                                         href="{{ route('faculty', $faculty['faculty_name']) }}">

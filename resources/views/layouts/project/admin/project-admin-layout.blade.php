@@ -81,6 +81,14 @@
                     </li>
 
                     <li>
+                        <a href="{{ route('admin.project.publication.index') }}"
+                            class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <i class="fas fa-calendar-alt text-indigo-400 text-xl mr-3"></i>
+                            <span class="flex-1 whitespace-nowrap">Publications</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="{{ route('admin.project.scholarship.scholarships') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fas fa-graduation-cap text-indigo-400 text-xl mr-3"></i>

@@ -76,9 +76,16 @@ class HealthCenterServiceController extends Controller
      */
     public function editService(string $name)
     {
+
         $service = HealthCenterService::where('name', $name)->firstOrFail();
         $departments = HealthCenterDepartment::all();
-        return view('health-center.admin.services.edit-service', compact('departments', 'service'));
+
+        $imagePath = 'storage/images/health-center/services-images/' . $service->thumbnail;
+        return view('health-center.admin.services.edit-service', compact(
+            'departments',
+            'service',
+            'imagePath'
+        ));
     }
 
     /**

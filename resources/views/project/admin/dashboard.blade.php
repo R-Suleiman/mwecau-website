@@ -70,8 +70,11 @@
             @if ($websiteContents->isNotEmpty())
                 @foreach ($websiteContents as $content)
                     <div class="rounded-xl border border-purple-500 hover:shadow-2xl overflow-hidden relative">
-                        <img src="{{ asset('img/campus-life/parking.JPG') }}" class="object-cover w-full h-[300px]"
-                            alt="Campus Life Image">
+                        {{-- <img src="{{ asset('img/campus-life/parking.JPG') }}" class="object-cover w-full h-[300px]"
+                            alt="Campus Life Image"> --}}
+                        <img src="{{ $content->image ? asset('storage/images/projects/images/sliding-images/' . $content->image) : asset('img/campus-life/parking.JPG') }}"
+                            alt="Profile Picture" class="h-full w-full object-cover rounded-xl border-2 border-white">
+
                         <div
                             class="absolute inset-0 text-white bg-black bg-opacity-60 flex justify-center items-center flex-col gap-4">
                             <h1 class="text-4xl headerFavFont">{{ $content->section_header }}</h1>
@@ -79,6 +82,16 @@
                                 class="bg-purple-600 text-white px-12 py-2 rounded-lg shadow-lg hover:bg-purple-700 transition">
                                 Edit
                             </a>
+                            @if ($content->page_section == 'home_slider')
+                                <form action="{{route('admin.project.delete-home-slider', $content->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Are you sure you want to remove this slider?')"
+                                        class="bg-red-600 text-white px-12 py-2 rounded-lg shadow-lg hover:bg-red-500 transition">
+                                        Remove
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 @endforeach

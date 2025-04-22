@@ -64,7 +64,7 @@
                         <th style="width: 27%">Event Category</th>
                         <th style="width: 19%">Location</th>
                         <th style="width: 15%">Date</th>
-                        <th style="width: 19%">Host</th>
+                        <th style="width: 19%">Status</th>
                         <th style="width: 15%">Actions</th>
                     </tr>
                 </thead>
@@ -76,7 +76,7 @@
                             <td class="favColor">{{ $allUniEvent->event_category }}</td>
                             <td>{{ $allUniEvent->event_location }}</td>
                             <td>{{ $allUniEvent->event_date }}</td>
-                            <td class="text-uppercase favColor">{{ $allUniEvent->event_organizer }}</td>
+                            <td class=" @if ($allUniEvent->status == 'upcoming') text-primary @else text-success @endif favColor">{{$allUniEvent->status }}</td>
                             <td class="actions-col">
                                 <a href="{{ route('admin.event-details', [$allUniEvent->id]) }}">
                                     <button class="btn btn-secondary"> <i class="fa fa-eye" aria-hidden="true"></i></button>

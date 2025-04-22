@@ -1,13 +1,11 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container mb-4 mt-4">
-        <div class="text-end">
-            <a href="{{ route('admin.documents.pdf') }}"> <button class="btn btn-primary btn-sm"> <i
-                        class="fa fa-arrow-left"></i> back</button></a>
-        </div>
         <h2 class="text-center">{{ 'Post Universtiy Documents' }}</h2>
         <hr>
-
+        <div class="text-start">
+            <a href="{{ route('admin.documents.pdf') }}"> <button class="btn btn-primary btn-sm">Back</button></a>
+        </div>
         <form action="{{ route('admin.new.pdf') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')

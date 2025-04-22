@@ -6,8 +6,8 @@
 
     <div class="">
         @if ($newsEvents->isNotEmpty() && $newsEvents->first()->image)
-            <img src="{{ asset('storage/images/health-center/news-events-images/' . $newsEvent->first()->image) }}"
-                alt="banner" class="w-100">
+            <img src="{{ asset('storage/images/health-center/news-events-images/' . $newsEvents->first()->image) }}"
+                alt="banner" class="w-full object-center object-cover h-96">
         @else
             <img src="{{ asset('img/site banners/BANNER COMPUTER.jpg') }}" alt="banner" class="w-100">
         @endif

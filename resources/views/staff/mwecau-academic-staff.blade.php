@@ -18,14 +18,14 @@
                             <th>Last Name</th>
                             <th>Department</th>
                             <th>Action</th>
-                        </tr>
+                        </tr> 
                     </thead>
                     <tbody>
                         @php
                             $counter = 1;
                         @endphp
                         @foreach ($faculties as $faculty)
-                            @if ($faculty['faculty_id'] !== '0')
+                            @if ($faculty['faculty_id'] !== '0' )
                                 @foreach ($faculty['departments'] as $department)
                                     @foreach ($department['staffs'] as $staff)
                                         <tr>

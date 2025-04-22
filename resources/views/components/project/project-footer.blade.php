@@ -51,6 +51,22 @@
                     {{-- publications --}}
                     <div class="mt-5">
                         <h1 class="font-semibold text-white text-xl mb-4">Publications</h1>
+                        @if ($projectPublications->isNotEmpty())
+                        <ul class="space-y-3">
+                            @foreach ($projectPublications as $publication)
+                                <li>
+                                    <a href=""
+                                        class="flex items-center text-white text-md hover:text-yellow-500 transition-colors">
+                                        <i
+                                            class="fa fa-arrow-right text-yellow-700 bg-gray-300 rounded-full p-1 mr-2"></i>
+                                        <span>{{ $publication->title }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p class="text-gray-400 italic">No projects available at the moment.</p>
+                    @endif
                     </div>
                     {{-- conferences --}}
                     <div class="mt-5">

@@ -24,8 +24,6 @@
         </div>
     </section>
 
-    {{-- Project rearengement number sort on interface --}}
-
     {{-- Homepage projects --}}
     @if ($projects->isNotEmpty())
         <section>
@@ -40,9 +38,9 @@
                                     <div
                                         class="h-[180px] w-full rounded-full bg-purple-100 flex items-center justify-center shadow-inner">
                                         @if ($project->thumbnail)
-                                            <img src="{{ asset('storage/images/projects/images/project-thumbnail/' . $project->thumbnail) }}"
-                                                alt="Profile Picture"
-                                                class="h-full w-full object-cover rounded-xl border-2 border-white">
+                                        <img src="{{ asset('storage/images/projects/images/project-thumbnail/' . $project->thumbnail) }}"
+                                        alt="Profile Picture"
+                                        class="h-full w-full object-cover rounded-xl border-2 border-white">
                                         @else
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 class="h-[40px] w-[40px] text-purple-600">
@@ -232,17 +230,19 @@
             </div>
 
             <!-- Image Gallery -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div id="image-gallery" class="grid grid-cols-2 md:grid-cols-3 gap-5">
                 @foreach ($projects as $project)
-                    @foreach ($project->gallery->take(8) as $image)
-                        <div class="project-image project{{ $project->id }}">
-                            <img class="h-auto max-w-full rounded-xl transition-transform duration-500 scale-100 hover:scale-105"
+                    @foreach ($project->gallery as $key => $image)
+                        <div class="project-image project{{ $project->id }}" data-project="{{ $project->id }}"
+                            style="display: {{ $key < 2 ? 'block' : 'none' }};">
+                            <img class="h-[20rem] max-w-full rounded-xl transition-transform duration-500 scale-100 hover:scale-105"
                                 src="{{ asset('storage/images/projects/images/project-gallery/' . $image->image) }}"
                                 alt="">
                         </div>
                     @endforeach
                 @endforeach
             </div>
+
         </div>
     </section>
 
@@ -264,7 +264,7 @@
     </section>
 
     {{-- conferences --}}
-    @if ($conferences->isNotEmpty())
+    {{-- @if ($conferences->isNotEmpty())
         <section class="bg-gray-100 pb-16">
             <div class="w-10/12 lg:container mx-auto pt-9">
                 <h1
@@ -307,7 +307,7 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
 
     {{-- top management team --}}
     <section class="mt-28">
@@ -634,11 +634,25 @@
     <script>
         function filterImages(project) {
             const allImages = document.querySelectorAll('.project-image');
-            allImages.forEach(image => {
-                image.style.display = (project === 'all' || image.classList.contains(project)) ? 'block' : 'none';
-            });
+            if (project === 'all') {
+                // Reset to show 2 images per category
+                allImages.forEach(image => {
+                    const projectId = image.getAttribute('data-project');
+                    const imagesInCategory = document.querySelectorAll(
+                        `.project-image[data-project="${projectId}"]`);
+                    imagesInCategory.forEach((img, index) => {
+                        img.style.display = index < 2 ? 'block' : 'none'; // Show only first 2 images
+                    });
+                });
+            } else {
+                // Show all images from the selected category
+                allImages.forEach(image => {
+                    image.style.display = image.classList.contains(project) ? 'block' : 'none';
+                });
+            }
         }
     </script>
+
     </div>
     </section>
 @endsection

@@ -138,7 +138,6 @@
             </section>
         @endif
 
-
         {{-- Members --}}
         <section class="w-full px-4 pt-12">
             <div class="flex flex-col items-center w-max mb-4 mx-auto my-8">
@@ -176,7 +175,9 @@
                                         {{ $counter++ }}
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-800">
-                                        {{ $teamMember->name }}
+                                        <a href="{{ route('tema-member-profile-description', $teamMember->name) }}" class="hover:text-blue-700 hover:font-semibold">
+                                            {{ $teamMember->name }}
+                                        </a>
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-800">
                                         {{ $teamMember->institute }}

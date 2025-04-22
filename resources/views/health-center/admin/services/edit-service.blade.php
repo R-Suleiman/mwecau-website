@@ -7,6 +7,12 @@
             <i class="fa fa-arrow-left"></i></a>
     </div>
 
+    <div>
+
+        <img src="{{ asset('storage/images/health-center/services-images/' . $service->thumbnail) }}" alt=""
+            class="h-96 w-full object-cover">
+    </div>
+
     <div class="text-gray-900 uppercase rounded-md py-4 px-7 mt-7 bg-gray-100">
         <h1
             class="headerFavFont text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-700 via-purple-500 to-purple-400">

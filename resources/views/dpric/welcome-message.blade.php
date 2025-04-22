@@ -15,7 +15,7 @@
         <div class="w-full md:w-1/3 my-2 mx-auto">
             <div class="w-11/12">
                 <div class="w-full overflow-hidden h-72 rounded-full">
-                    <img src="{{ asset('/Storage/images/dpric/staff/' . $director->photo) }}" alt=""
+                    <img src="{{ asset('/storage/images/dpric/staff/' . $director->photo) }}" alt=""
                         class="w-full h-72 object-cover rounded-full">
                 </div>
                 <div class="p-2 flex flex-col items-center text-center">

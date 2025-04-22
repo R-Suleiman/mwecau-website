@@ -35,18 +35,8 @@
                     class="px-4 py-3 hover:text-purple-800 hover:border-b-2 border-purple-800">
                     <li>About US</li>
                 </a>
-                <li class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
-                    <a href="#">Departments <i class="fa fa-caret-down"></i></a>
-                    <ul
-                        class="w-max transform transition-transform duration-300 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 absolute left-0 mt-3 bg-white shadow-lg text-purple-800 pointer-events-none group-hover:pointer-events-auto">
-                        @if ($departments->isNotEmpty())
-                            @foreach ($departments as $department)
-                                <li class="px-4 py-2 hover:bg-purple-100"><a
-                                        href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
+                <li class="px-3 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
+                    <a href="{{ route('health-center.departments.web') }}">Departments</a>
                 </li>
 
                 <a href="{{ route('health-center.services') }}"
@@ -89,18 +79,8 @@
                     <li>About US</li>
                 </a>
                 {{-- <a href="" class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400"> --}}
-                <li class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
-                    <a href="#">Departments <i class="fa fa-angle-down text-xs ml-1"></i></a>
-                    <ul
-                        class="w-max opacity-0 transform transition-opacity duration-500 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 absolute left-0 mt-3 bg-white shadow-lg text-purple-800">
-                        @if ($departments->isNotEmpty())
-                            @foreach ($departments as $department)
-                                <li class="px-4 py-2 hover:bg-purple-100"><a
-                                        href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
+                <li class="px-3 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
+                    <a href="{{ route('health-center.departments.web') }}">Departments</a>
                 </li>
 
                 {{-- </a> --}}

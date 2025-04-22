@@ -15,6 +15,9 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+// Suppress deprecation and notice warnings
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

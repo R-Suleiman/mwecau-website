@@ -42,7 +42,8 @@
                             class="w-full p-3 border border-purple-300 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition duration-150 ease-in-out"
                             id="image" multiple accept="image/*" onchange="previewImages(event)" />
 
-                        <div class="flex mt-2" id="imagePreviewContainer"></div>
+                        <div class="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-3 mt-2"
+                            id="imagePreviewContainer"></div>
                         <x-input-error :messages="$errors->get('image')" class="mt-2" />
                     </div>
             </div>

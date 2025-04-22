@@ -18,7 +18,8 @@
                 </div>
 
                 <div class="w-full mx-auto">
-                    <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="event image" class="w-full">
+                    <img src="{{ asset('storage/images/health-center/news-events-images/' . ($aboutNewsEvent->image ?? 'default-image.jpg')) }}"
+                        alt="event image" class="w-full">
                 </div>
                 <div class="w-full event-details">
                     <ul class="my-4">
@@ -52,7 +53,8 @@
                         <div class="w-full my-4 mx-2 lg:w-1/5 border border-gray-300">
                             <a href="{{ route('health-center.view-event', 'Treatment') }}">
                                 <div class="w-full mb-2 overflow-hidden">
-                                    <img src="{{ asset('img/campus-life/spirtual1.JPG') }}" alt="service image"
+                                    <img src="{{ asset('storage/images/health-center/news-events-images/' . ($aboutNewsEvent->image ?? 'default-image.jpg')) }}"
+                                        alt="event image"
                                         class="w-full transform transition-transform duration-300 ease-in-out hover:scale-110">
                                 </div>
                                 <div class="w-full mt-2 p-2 text-justify">

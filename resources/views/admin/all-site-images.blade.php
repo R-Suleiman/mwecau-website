@@ -4,8 +4,7 @@
     <div class="container mt-5">
         <div class="text-end">
             <a href="{{ route('site.images') }}">
-                <button class="btn btn-primary"> <i class="fa fa-plus-square-o" aria-hidden="true"></i>
-                    <i class="fa fa-plus"></i> New</button></a>
+                <button class="btn btn-primary"> Add New Image</button></a>
         </div>
 
         <x-messages />
@@ -35,7 +34,9 @@
                                         enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger mt-2">Remove</button>
+                                        <button type="submit"
+                                            onclick="return confirm('Are you sure want to delete this image?')"
+                                            class="btn btn-danger mt-2">Remove</button>
                                     </form>
                                 </div>
                             </div>

@@ -35,9 +35,9 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card shadow-lg darkMode">
                             <div class="card-body">
-                            {{-- photo section --}}
-                                    <div class="text-center mb-4" id="picture" data-gender="{{$staff_details['gender']}}">
-                                    </div>
+                                {{-- photo section --}}
+                                <div class="text-center mb-4" id="picture" data-gender="{{ $staff_details['gender'] }}">
+                                </div>
 
                                 <div class="card-text text-center ">
                                     <span>{{ $staff_details['salutation'] }}. {{ $staff_details['first_name'] }}
@@ -84,9 +84,11 @@
                     <div class="row">
                         <div class="col-12 col-md-8">
                             <div class="about">
-                                <h4 class="favColor">About {{ $staff_details['first_name'] }} {{ $staff_details['last_name'] }}
+                                <h4 class="favColor">About {{ $staff_details['first_name'] }}
+                                    {{ $staff_details['last_name'] }}
                                 </h4>
-                                <p>Bio Coming soon...</p>
+                                <p>{{ $staff_details['bio'] ?? 'Bio Coming soon...' }}</p>
+                                </p>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
@@ -374,5 +376,5 @@
         </div>
     </section>
 
-    <script src="{{asset('../js/staff-profile.js')}}"></script>
+    <script src="{{ asset('../js/staff-profile.js') }}"></script>
 @endsection

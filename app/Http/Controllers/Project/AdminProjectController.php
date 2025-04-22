@@ -502,6 +502,7 @@ class AdminProjectController extends Controller
     //managing sliding images
     public function newContent()
     {
+        $homeslider = ProjectContent::where('page_section', 'home_slider')->get();
         return view('project.admin.page-contents.new-content');
     }
     public function storeHomeSliderContent(Request $request)
@@ -517,7 +518,6 @@ class AdminProjectController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
 
-            // Getting original name, image file extension, generating unique ID
             $imageOriginalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
             $imageExtension = $image->getClientOriginalExtension();
             $randomNumber = uniqid(); // Use uniqid for uniqueness
@@ -551,5 +551,7 @@ class AdminProjectController extends Controller
             storage::disk('public')->delete($imagePath);
         }
         $homeContent->delete();
+
+        return redirect()->back()->with('success', 'Content removed Successfully');
     }
 }

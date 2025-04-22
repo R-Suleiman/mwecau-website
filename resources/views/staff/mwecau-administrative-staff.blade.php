@@ -62,7 +62,8 @@
                 </div>
 
                 <div class="col-sm-6 col-md-3 col-lg-4 text-center my-4">
-                    <img class="img-fluid" src="{{ asset('../img/staff profiles/prof. kimaro.jpg') }}" alt="" style="border-radius: 9px; width: 170px">
+                    <img class="img-fluid" src="{{ asset('../img/staff profiles/prof. kimaro.jpg') }}" alt=""
+                        style="border-radius: 9px; width: 170px">
                     <div class="my-3 d-flex flex-column">
                         <label class="fw-bold">Prof. Didas Kimaro</label>
                         <label>DVC-PFA</label>
@@ -85,6 +86,7 @@
                             <th>Middle name</th>
                             <th>Last Name</th>
                             <th>Department</th>
+                            <th>type</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -92,26 +94,30 @@
                         @php
                             $counter = 1;
                         @endphp
-                        @foreach ($faculties as $faculty)
-                            @if ($faculty['faculty_id'] === '0')
-                                @foreach ($faculty['departments'] as $department)
-                                    @foreach ($department['staffs'] as $staff)
-                                        <tr>
-                                            <td>{{ $counter++ }}</td>
-                                            <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
-                                            <td>{{ $staff['other_name'] }}</td>
-                                            <td>{{ $staff['last_name'] }}</td>
-                                            <td>{{ $department['dept_short_name'] }}</td>
-                                            <td>
-                                                <a
-                                                    href="{{ route('staff-profile', [$staff['first_name'], $staff['last_name']]) }}"><button
-                                                        class="btn btn-outline-secondary">view</button></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endforeach
-                            @endif
-                        @endforeach
+                      @foreach ($faculties as $faculty)
+                      @if ($faculty['faculty_id'] === '0')
+                          @foreach ($faculty['departments'] as $department)
+                              @foreach ($department['staffs'] as $staff)
+                                  {{-- @if (isset($staff['employee_type_id']) && $staff['employee_type_id'] === '3') --}}
+                                      <tr>
+                                          <td>{{ $counter++ }}</td>
+                                          <td>{{ $staff['salutation'] }}. {{ $staff['first_name'] }}</td>
+                                          <td>{{ $staff['other_name'] ?? '' }}</td>
+                                          <td>{{ $staff['last_name'] ?? '' }}</td>
+                                          <td>{{ $department['dept_short_name'] }}</td>
+                                          <td>{{$staff['employee_type_id']?? ''}}</td>
+                                          <td>
+                                              <a href="{{ route('staff-profile', [$staff['first_name'], $staff['last_name'] ?? '']) }}">
+                                                  <button class="btn btn-outline-secondary">View</button>
+                                              </a>
+                                          </td>
+                                      </tr>
+                                  {{-- @endif --}}
+                              @endforeach
+                          @endforeach
+                      @endif
+                  @endforeach
+
                     </tbody>
                 </table>
             </div>

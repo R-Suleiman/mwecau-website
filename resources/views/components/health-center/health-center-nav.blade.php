@@ -26,17 +26,7 @@
                   <li>About US</li>
               </a>
               <li class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
-                  <a href="#">Departments <i class="fa fa-angle-down text-xs ml-1"></i></a>
-                  <ul
-                      class="w-max opacity-0 transform transition-opacity duration-500 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 absolute left-0 mt-3 bg-white shadow-lg text-purple-800">
-                      @if ($departments->isNotEmpty())
-                          @foreach ($departments as $department)
-                              <li class="px-4 py-2 hover:bg-purple-100"><a
-                                      href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a>
-                              </li>
-                          @endforeach
-                      @endif
-                  </ul>
+                  <a href="{{route('health-center.departments')}}">Departments <i class="fa fa-angle-down text-xs ml-1"></i></a>
               </li>
 
               <a href="{{ route('health-center.services') }}"
@@ -79,17 +69,7 @@
               </a>
               {{-- <a href="" class="px-4 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400"> --}}
               <li class="px-3 py-2 hover:text-purple-400 hover:border-b-2 border-purple-400 group relative">
-                  <a href="#">Departments <i class="fa fa-angle-down text-xs ml-1"></i></a>
-                  <ul
-                      class="w-max opacity-0 transform transition-opacity duration-500 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 absolute left-0 mt-3 bg-white shadow-lg text-purple-800">
-                      @if ($departments->isNotEmpty())
-                          @foreach ($departments as $department)
-                              <li class="px-4 py-2 hover:bg-purple-100"><a
-                                      href="{{ route('health-center.department', $department->name) }}">{{ $department->name }}</a>
-                              </li>
-                          @endforeach
-                      @endif
-                  </ul>
+                  <a href="{{route('health-center.departments.web')}}">Departments</a>
               </li>
 
               {{-- </a> --}}

@@ -7,6 +7,7 @@ use App\Models\HealthCenterDepartment;
 use App\Models\HealthCenterDoctor;
 use App\Models\HealthCenterNewsEvent;
 use App\Models\HealthCenterService;
+use Illuminate\Support\Facades\Http;
 use App\Models\HealthCenterTestimonial;
 use Illuminate\Http\Request;
 
@@ -48,8 +49,34 @@ class HealthCenterController extends Controller
         return view('health-center.department', compact(
             'department',
             'allDepartments',
-            'departmentThumbnail'
+            'departmentThumbnail',
         ));
+    }
+    public function healthCenterDepartment()
+    {
+
+        $allDepartments = null;
+
+        try {
+
+            $response = Http::withoutVerifying()
+                ->post('https://ums3.mwecau.ac.tz/api/academic/department', [
+                    'faculty_id' => 5
+                ]);
+
+            if ($response->successful()) {
+                $allDepartments = $response['data'];
+                // dd($response['data']);
+            } else {
+                dd('Request failed', $response->status(), $response->body());
+            }
+
+
+            return view('health-center.departments', compact('allDepartments'));
+        } catch (\Exception $e) {
+            dd('Exception occurred', $e->getMessage());
+        }
+
     }
     public function service($name)
     {

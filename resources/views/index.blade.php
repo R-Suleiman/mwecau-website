@@ -3,7 +3,7 @@
     <!-- Homepage section 22 -->
     <div class="homeSlider">
 
-         @if (count($images) > 0)
+        @if (count($images) > 0)
             @foreach ($images as $index => $image)
                 @if ($image->page == 'home' && $image->image_section == 'homeslider')
                     <div class="{{ $index === 0 ? 'active' : '' }}">
@@ -32,7 +32,6 @@
         @endif
 
     </div>
-
 
     <!-- Welcome section -->
     <section>
@@ -73,10 +72,14 @@
                 <div class="news-small-div" style="width: 100%">
                     {{-- <h5 class="favColor">Latest</h5> --}}
                     <div class="card border-0" style="width: 100%">
-                        <img class="img-fluid w-75 text-center" src="{{ asset('img/LATEST1.jpg') }}" alt=""
-                            style="border: 1px solid #513f83; border-radius: 7px;">
                         @if ($announcements)
                             @foreach ($announcements->take(1) as $event)
+                            <img class="img-fluid w-75 text-center"
+                            src="{{ $event->thumbnail ? asset('/images/announcementImages/' . $event->thumbnail) : asset('img/LATEST1.jpg') }}"
+                            alt="Event Thumbnail"
+                            style="border: 1px solid #513f83; border-radius: 7px;">
+
+
                                 <div class="card-body">
                                     <h6 class="card-title text-uppercase fw-bold favColor">
                                         <a
@@ -286,8 +289,8 @@
                 <div class="container-fluid mt-5 mb-5">
                     @if ($UniversityEvents->isNotEmpty())
                         <div class="row gallery g-5">
-                            @foreach ($UniversityEvents as $UniversityEvent)
-                                <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
+                            @foreach ($UniversityEvents->sortByDesc('created_at')->take(4) as $UniversityEvent)
+                            <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
                                     <a href="{{ route('event-details', $UniversityEvent->event_title) }}"
                                         class="text-decoration-none">
                                         <div class="card">
