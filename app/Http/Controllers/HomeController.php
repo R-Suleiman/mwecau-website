@@ -55,7 +55,7 @@ class HomeController extends Controller
 
         $images = Image::orderBy('created_at', 'desc')->get();
 
-        $UniversityEvents = Event::all();
+        $UniversityEvents = Event::orderBy('created_at', 'desc')->get();
         $announcements = newsUpdate::orderBy('created_at', 'desc')->get();
         $latestEvent = Event::orderBy('created_at', 'desc')->get();
         return view('index', compact(

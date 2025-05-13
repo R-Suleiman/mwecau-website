@@ -6,6 +6,7 @@ use App\Models\event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
+use Str;
 
 class EventsController extends Controller
 {
@@ -159,38 +160,39 @@ class EventsController extends Controller
         $eventUpdate = Event::findOrFail($id);
 
         // Handle attachment upload
-        if ($request->hasFile('file')) {
-            $eventAttachment = public_path('documents/event-documents/' . $eventUpdate->file);
-            if (File::exists($eventAttachment)) {
-                File::delete($eventAttachment);
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            if ($eventUpdate->file && File::exists(public_path('documents/event-documents/' . $eventUpdate->file))) {
+                File::delete(public_path('documents/event-documents/' . $eventUpdate->file));
             }
             $file = $request->file('file');
-            $fileName = time() . '-' . $file->getClientOriginalName();
-            $file->move(public_path('documents/event-documents'), $fileName);
-            $eventUpdate->file = $fileName;
-        } else {
-            $fileName = $eventUpdate->file;
+            $fileName = time() . '-' . Str::slug($file->getClientOriginalName());
+            if ($file->move(public_path('documents/event-documents'), $fileName)) {
+                $eventUpdate->file = $fileName;
+            }
         }
 
         // Handle event image upload
-        if ($request->hasFile('event_image')) {
+        if ($request->hasFile('event_image') && $request->file('event_image')->isValid()) {
+            if ($eventUpdate->event_image && File::exists(public_path('images/eventImages/' . $eventUpdate->event_image))) {
+                File::delete(public_path('images/eventImages/' . $eventUpdate->event_image));
+            }
             $event_image = $request->file('event_image');
-            $eventImageName = time() . '-' . $event_image->getClientOriginalName();
-            $event_image->move(public_path('images/eventImages'), $eventImageName);
-            $eventUpdate->event_image = $eventImageName;
-        } else {
-            $eventImageName = $eventUpdate->event_image;
+            $eventImageName = time() . '-' . Str::slug($event_image->getClientOriginalName());
+            if ($event_image->move(public_path('images/eventImages'), $eventImageName)) {
+                $eventUpdate->event_image = $eventImageName;
+            }
         }
 
         // Handle speaker photo upload
-        if ($request->hasFile('speaker_photo')) {
+        if ($request->hasFile('speaker_photo') && $request->file('speaker_photo')->isValid()) {
+            if ($eventUpdate->speaker_photo && File::exists(public_path('images/eventSpeakerImages/' . $eventUpdate->speaker_photo))) {
+                File::delete(public_path('images/eventSpeakerImages/' . $eventUpdate->speaker_photo));
+            }
             $speaker_photo = $request->file('speaker_photo');
-            $speakerPhotoName = time() . '-' . $speaker_photo->getClientOriginalName();
-            $speaker_photo->move(public_path('images/eventSpeakerImages'), $speakerPhotoName);
-            $eventUpdate->speaker_photo = $speakerPhotoName;
-        } else {
-
-            $speakerPhotoName = $eventUpdate->speaker_photo;
+            $speakerPhotoName = time() . '-' . Str::slug($speaker_photo->getClientOriginalName());
+            if ($speaker_photo->move(public_path('images/eventSpeakerImages'), $speakerPhotoName)) {
+                $eventUpdate->speaker_photo = $speakerPhotoName;
+            }
         }
 
         // Update event fields
@@ -209,6 +211,8 @@ class EventsController extends Controller
         $eventUpdate->total_slots = $request->total_slots;
         $eventUpdate->booked_slots = $request->booked_slots;
         $eventUpdate->file = $fileName;
+        $eventUpdate->event_image = $eventImageName;
+        $eventUpdate->speaker_photo = $speakerPhotoName;
 
         $eventUpdate->save();
 

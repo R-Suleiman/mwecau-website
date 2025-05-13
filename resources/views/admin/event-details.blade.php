@@ -5,10 +5,12 @@
             <div class=" container-fluid event-header">
                 <p>Category</p>
                 <h2 class="favColor">{{ $eventDetails->event_title }}</h2>
-                {{-- <div class="">
-                            <img src="{{ asset('images/eventImages/' . $eventDetails->event_image) }}"
-                                alt="{{ $eventDetails->event_image }}" class="h-15 img-fluid ">
-                        </div> --}}
+                <div class="text-center" style="width: 100%; height: 300px; overflow-y: auto;">
+                    <img src="{{ asset('images/eventImages/' . $eventDetails->event_image) }}"
+                        alt="{{ $eventDetails->event_image }}" style="width: 100%; height: auto;">
+                </div>
+
+
             </div>
 
             <div class="container-fluid ">

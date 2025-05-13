@@ -74,10 +74,9 @@
                     <div class="card border-0" style="width: 100%">
                         @if ($announcements)
                             @foreach ($announcements->take(1) as $event)
-                            <img class="img-fluid w-75 text-center"
-                            src="{{ $event->thumbnail ? asset('/images/announcementImages/' . $event->thumbnail) : asset('img/LATEST1.jpg') }}"
-                            alt="Event Thumbnail"
-                            style="border: 1px solid #513f83; border-radius: 7px;">
+                                <img class="img-fluid w-75 text-center"
+                                    src="{{ $event->thumbnail ? asset('/images/announcementImages/' . $event->thumbnail) : asset('img/LATEST1.jpg') }}"
+                                    alt="Event Thumbnail" style="border: 1px solid #513f83; border-radius: 7px;">
 
 
                                 <div class="card-body">
@@ -290,20 +289,23 @@
                     @if ($UniversityEvents->isNotEmpty())
                         <div class="row gallery g-5">
                             @foreach ($UniversityEvents->sortByDesc('created_at')->take(4) as $UniversityEvent)
-                            <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
+                                <div class="upComingEvent2 col-12 col-md-6 col-lg-3 mb-3">
                                     <a href="{{ route('event-details', $UniversityEvent->event_title) }}"
                                         class="text-decoration-none">
                                         <div class="card">
-                                            <div class="card-body text-center">
+                                            <div class="card-body text-center p-0"
+                                                style="width: 100%; height: 300px; overflow: hidden;">
                                                 @if ($UniversityEvent->event_image == null)
                                                     <img src="{{ asset('img/mwecau.png') }}" alt="Default Image"
-                                                        class="img-fluid mx-auto d-block" style="width: 30%;">
+                                                        class="img-fluid mx-auto d-block"
+                                                        style="width: 100%; height: 100%; object-fit: contain;">
                                                 @else
                                                     <img src="{{ asset('images/eventImages/' . $UniversityEvent->event_image) }}"
-                                                        class="img-fluid" style="width: 100%;" alt="Event Image">
+                                                        alt="Event Image" class="img-fluid mx-auto d-block"
+                                                        style="width: 100%; height: 100%; object-fit: cover;">
                                                 @endif
-
                                             </div>
+
                                             <div class="card-text">
                                                 <p>
                                                 <h6 class="fst-italic fw-bold favColor">

@@ -13,7 +13,13 @@
             {{-- <div class="row event-row"> --}}
             <div class="row">
                 <div class="col-sm-12 col-lg-8">
-                    {{-- <div class="about-event"> --}}
+                    @if ($eventDetails->event_image)
+                        <div class="mb-4" style="width: 100%; max-width: 600px; height: 300px; overflow: hidden;">
+                            <img src="{{ asset('images/eventImages/' . $eventDetails->event_image) }}" alt="Event Image"
+                                class="w-100 h-100 rounded shadow" style="object-fit: cover;">
+                        </div>
+                    @endif
+
                     <div class="mt-1 mb-5">
                         <h3>About <strong class="favColor fs-4">{{ $eventDetails->event_title }} </strong></h3>
                     </div>
@@ -31,7 +37,7 @@
                         </div>
                     @endif
 
-                    {{-- </div> --}}
+
                     <div class="event-speaker">
                         <div class="underline mt-1 mb-3">
                             <h3 class="text-center favColor fw-bold ">Event Host</h3>

@@ -41,9 +41,7 @@
                                     </div>
                                 @enderror
                             </div>
-
                         </div>
-
 
                         <div>
                             <textarea name="event_description" id="event_description" cols="50" rows="5"
